@@ -31,3 +31,7 @@ jobs:
          cd ultra
          dir
          ./setup.bat
+         cd ultra/GCC/MIPSE/BIN
+         chmod 755 *EXE
+         ./GCC.EXE -v
+
