@@ -29,5 +29,5 @@ jobs:
       - name: Run a one-line script
         run: |
          cd ultra
-         ls -l
+         dir
          setup.bat
