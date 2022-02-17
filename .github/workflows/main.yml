@@ -25,6 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Install MSYS2 texinfo bison flex
+        if: matrix.os[0] == 'windows-latest'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW32
+          shell: msys2 {0}
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
