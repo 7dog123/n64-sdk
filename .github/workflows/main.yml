@@ -29,4 +29,4 @@ jobs:
       - name: Run a one-line script
         run: |
          cd ultra/GCC/MIPSE/BIN
-         GCC.EXE --version
+         GCC.EXE -v
