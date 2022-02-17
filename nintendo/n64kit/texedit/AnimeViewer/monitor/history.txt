@@ -1,0 +1,7 @@
+Revision
+1. Removed is_debug.o dependent relation from makefile.
+2. Removed is_debug.c and is_debug.h.
+3. Removed an routine for print debug initialization from
+   main.c to automatically detect using the common
+   initialization function osInitialize().
+ 

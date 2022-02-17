@@ -1,0 +1,222 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-21. SwitchList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(2)Switchエリア</font></h4>
+
+<blockquote><font size=+0>　Switchエリアは実際のSwitchノードにあたる部分です。Switchノードは他のノードとは多少異なる性質を持っています。通常、例えばノードA→ノードBというリンクを張る場合に、ある条件化ではノードA→ノードCというリンクに変更したいという場合があります。その場合に、デフォルト値としてノードBをリンクしておき、ノードCに切り替わるためのu32型の定数を決めておくことができます。マッピングは以下のようになっています。</font>
+<p><font size=+0>&nbsp;　尚、各ノードからSwitchノードにリンクする際に指定する方法は、SwitchListエリア中の指定したいSwitchエリアのインデックスがNの場合、0x80000000
+| Nとして指定します。このようにすることによってNIFFのコンバータ側で記述されているフィールドの最上位ビットが1の場合に、本来インデックス番号を検索するべきノードのリストではなく、SwitchList中のインデックス番号であると判断します。従って、各リスト中は0x80000000以上のインデックスは存在しないことになります。（もちろん、それほどのインデックスを持つファイルは現実的ではありません。）</font></blockquote>
+
+<center><table BORDER WIDTH="300" >
+<tr>
+<td>u32</td>
+
+<td>switch_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_switch_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>link_list_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>default_link_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>case_node_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_condition</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>case_val(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>case_val(case_node_num - 1)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>case_dest_index(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>cese_dest_index(case_node_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintedoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　Switchエリアメモリマップ</font></b></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 switch_tag</td>
+
+<td><font size=+0>Tag indicating Switch</font>
+<pre>
+<b><font size=+0>TAG_SWITCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00130100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_switch_index</td>
+
+<td><font size=+0>Index number of Switch corresponding to SwitchList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_size</td>
+
+<td><font size=+0>Size of this Switch</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 link_list_type</td>
+
+<td><font size=+0>Index of node linking to this Switch node</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 default_link_index</td>
+
+<td><font size=+0>デフォルトでリンクするノードのインデックスを記述します。</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 case_node_num</td>
+
+<td><font size=+0>Number of nodes which branch off</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_condition</td>
+
+<td><font size=+0>Condition of branching off</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>任天堂拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>ユーザー拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 case_val</td>
+
+<td><font size=+0>Constant formula of condition</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 case_dest_index</td>
+
+<td><font size=+0>Index number of destination when fulfill the case</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>任天堂拡張ブロック</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>ユーザー拡張ブロック</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg22.htm">次へ</a></font><a href="seg22.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

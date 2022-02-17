@@ -1,0 +1,46 @@
+Function 
+-  Macro group for uni-directional lists
+
+Macros 
+-  _msoListBaseDefine( nodetype )
+  Defines the nodetype list type by the name nodetypeList. 
+
+-  _msoListBaseBegin( list_ptr )
+  Returns the head of the list. 
+
+-  _msoListBaseEnd( list_ptr )
+  Returns the end of the list.  (Actually NULL)
+
+-  _msoListBaseIsEmpty( list_ptr )
+  Returns whether or not the list is empty. 
+
+-  _msoListBaseInit( list_ptr )
+  Initializes the list. 
+
+-  _msoListBasePushFront( list_ptr, node_ptr )
+  Adds a node from the head of the list. 
+
+-  _msoListBasePopFront( list_ptr )
+  Deletes a node from the head of the list. 
+
+Usage Examples 
+-  Create a list of MxxObject's called mxxObjectList and create mxxObjectListPushFront( ) as follows. 
+  _msoListBaseDefine( MxxObject );
+  #define _mxxObjectListPushFront(list_ptr,node_ptr) \
+          _msoListBasePushFront(list_ptr,node_ptr)
+
+-  Scan MxxObject
+  for ( node_ptr = mxxObjectListBegin( list_ptr );
+        node_ptr != mxxObjectListEnd( list_ptr );
+        node_ptr = node_ptr->next_ptr )
+  {
+      ....
+  }
+
+History
+  1998/08/21 Takamitsu Hirata 
+    ListBase.h :  Initial version 
+  1998/08/26 Takamitsu Hirata 
+    ListBase.h :  Changed pointer expression. 
+  1998/09/22  Takamitsu Hirata 
+    ListBase.h :  Corrected so that a warning is not output when _msoListBaseDefine( ) is compiled. 

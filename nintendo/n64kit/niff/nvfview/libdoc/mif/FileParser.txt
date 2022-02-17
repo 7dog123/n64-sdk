@@ -1,0 +1,14 @@
+Function 
+(  Analyzes IFF file. 
+
+Functions 
+(  void mifFileParserInit( MifFileParser *, ... )
+  Initializes MifFileParser. 
+  List the MifFormParser that you wish to use in the variable argument. 
+
+(  int mifFileParserRead(MifFileParser *, MisInput *, void *)
+  Reads file. 
+
+History 
+  1998/10/06 Junji Takae
+    FileParser.h, fileparser.c:  Initial version 

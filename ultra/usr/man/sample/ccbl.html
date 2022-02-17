@@ -1,0 +1,1449 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+<!--
+**********************************************************************
+			   ccbl Manual
+**********************************************************************
+-->
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder V3.0.7  for Windows">
+<META name="Author" content="Shusaku Kimura">
+<LINK href="mailto:skimura@monegi.co.jp" rev="MADE">
+<TITLE>ccbl Manualã</TITLE>
+<STYLE TYPE="text/css">
+   
+   body{
+       background-color: CCFFFF;
+   }
+
+   h1{
+       color: blue;
+       text-align: center;
+       font-size: 30pt ;
+   }
+
+   h2{
+       color: green;
+       text-align: left;
+       font-size: 15pt ;
+   }
+
+   h3{
+       color: black;
+       text-lign: left;
+       font-size: 13pt;
+   }
+
+   p{
+       margin-left: 1em;
+       margin-right: 1em;
+   }
+
+   div.copyright{
+       color: gray;
+       text-align: center;
+       font-size: 8pt;
+   }
+
+   div.ctrlmethod{
+       text-align: center;
+   }
+
+   div.ctrlmethod table{
+       margin-top: 1em;
+       margin-bottom: 1em;
+   }
+
+   div.attention{
+       text-align: center;
+       margin-top: 1em;
+       margin-bottom: 1em;
+   }
+
+   div.attention td.attention{
+       color: red;
+   }
+
+   div.MenuDescription{
+       text-align: center;
+   }
+
+   div.MenuDescription table.Term{
+       margin-top: 1em;
+       margin-bottom: 1em;
+   }
+
+   div.Example{
+       text-align: center;
+   }
+
+   div.Example th.Title{
+       color: yellow;
+       border-width: 2pt;
+       border-style: none;
+       background-color: green;
+   }
+
+   div.Example p.Example{
+       color: white;
+       margin-left: 2em;
+       border-width: 1pt;
+       border-style: none;
+       padding-top: 5pt ;
+       padding-bottom: 5pt ;
+       padding-left: 10pt ;
+       border-color: gray;
+       background-color: gray;
+   }
+
+   div.Example pre.Example{
+       color: white;
+       margin-left: 2em;
+       border-width: 1;
+       border-style: none;
+       padding-top: 10pt ;
+       padding-bottom: 10pt ;
+       padding-left: 10pt ;
+       padding-right: 10pt ;
+       background-color: gray;
+   }
+
+   div.Example table.Screen{
+       color: white;
+       background-color: gray;
+       padding-top: 10pt ;
+       padding-bottom: 10pt ;
+       padding-left: 10pt ;
+       padding-right: 10pt ;
+   }
+
+   div.Example pre.Screen{
+       color: white;
+   }
+
+   table.Others th{
+       color: yellow;
+       border-width: 2pt;
+       border-style: none;
+       background-color: green;
+   }
+
+   table.Others td p{
+       margin-left: 10pt ;
+   }
+
+<!-- Navigator 4.5 Ç≈ÇÕÇ»Ç∫Ç© table ÇÃ margin Ç™Ç§Ç‹Ç≠ì≠Ç©Ç»Ç¢
+   table.MenuContents{
+       margin-left: 20pt ;
+   }
+
+   table.ExampleContents{
+       margin-left: 20pt ;
+   }
+
+   table.OthersContents{
+       margin-left: 20pt ;
+   }
+-->
+
+   
+</STYLE>
+</HEAD>
+
+<BODY>
+
+<H1>ccbl</H1>
+<P align="center">
+<A HREF="../app/index.htm"><IMG BORDER=0 src="ccbl.gif"></a>
+</P>
+<DIV class="copyright">
+
+<P>
+Copyright (C) 1999, Nintendo of America Inc.<BR>
+Copyright (C) 1998, NINTENDO Co,Ltd.
+</P>
+<P>
+Copyright (C) 1998, MONEGI CORPORATION.
+</P>
+</DIV>
+<HR>
+<H2>Contents</H2>
+<P>
+<A href="#Overview">Overview</A>
+</P>
+<P>
+<A href="#Operation">Operation</A>
+</P>
+<P>
+<A href="#Menu Descriptions">Menu Descriptions</A>
+</P>
+<CENTER>
+<TABLE width="80%" border="0" class="MenuContents">
+  <TR>
+    <TH align="left" valign="top">RSP</TH></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#GEO_MODE">GEO_MODE</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#LIGHT_COL">LIGHT_COL</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#FOG_POS">FOG_POS</A>
+    </P>
+</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="MenuContents">
+  <TR>
+    <TH align="left" valign="top">RDP</TH></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#CYCLE_TYPE">CYCLE_TYPE</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#CL_COMBINER-" href="#CL_COMBINER->COMBINE_MD&quot;&gt;CL_COMBINER-&gt;COMBINE_MD</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#CL_COMBINER-" href="#CL_COMBINER->ENV_COLOR&quot;&gt;CL_COMBINER-&gt;ENV_COLOR</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#CL_COMBINER-" href="#CL_COMBINER->PRIM_COLOR&quot;&gt;CL_COMBINER-&gt;PRIM_COLOR</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#BLENDER-" href="#BLENDER->RENDER_MODE&quot;&gt;BLENDER-&gt;RENDER_MODE</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#BLENDER-" href="#BLENDER->BL_COLOR&quot;&gt;BLENDER-&gt;BL_COLOR</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#BLENDER-" href="#BLENDER->FOG_COLOR&quot;&gt;BLENDER-&gt;FOG_COLOR</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#BLENDER-" href="#BLENDER->CD AD AC&quot;&gt;BLENDER-&gt;CD AD
+AC</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#TEX_FILTER">TEX_FILTER</A>
+    </P>
+</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="MenuContents">
+  <TR>
+    <TH align="left" valign="top">VI</TH></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#SPECIAL FEATURES">SPECIAL FEATURES</A>
+    </P>
+</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="MenuContents">
+  <TR>
+    <TH align="left" valign="top">MISC</TH></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#MODEL">MODEL</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#TEXTURE">TEXTURE</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#BG_COLOR">BG_COLOR</A>
+    </P>
+</TD></TR>
+  <TR>
+    <TD>
+    <P>
+<A href="#BG_MODEL">BG_MODEL</A>
+    </P>
+</TD></TR>
+</TABLE>
+
+</CENTER>
+<P>
+<A href="#Example Settings">Example Settings</A>
+</P>
+<CENTER>
+<TABLE width="80%" border="0" class="ExampleContents">
+  <TR>
+    <TD><A href="#Primitive Color">Primitive Color</A></TD></TR>
+  <TR>
+    <TD><A href="#Texture Decal">Texture Decal</A></TD></TR>
+  <TR>
+    <TD><A href="#Writing">Writing</A></TD></TR>
+  <TR>
+    <TD><A href="#Reflection Mapping">Reflection Mapping</A></TD></TR>
+  <TR>
+    <TD><A href="#Specular Highlighting">Specular Highlighting</A></TD></TR>
+  <TR>
+    <TD><A href="#Fog">Fog</A></TD></TR>
+  <TR>
+    <TD><A href="#Trilinear MIP Mapping">Trilinear MIP Mapping</A></TD></TR>
+  <TR>
+    <TD><A href="#Antialiasing">Antialiasing</A></TD></TR>
+  <TR>
+    <TD><A href="#Transparent Surface">Transparent Surface</A></TD></TR>
+  <TR>
+    <TD><A href="#Texture Edge Mode">Texture Edge Mode</A></TD></TR>
+  <TR>
+    <TD><A href="#Decal Surface">Decal Surface</A></TD></TR>
+  <TR>
+    <TD><A href="#Interpenetration Modes">Interpenetration Modes</A></TD></TR>
+  <TR>
+    <TD><A href="#Particle Effects">Particle Effects</A></TD></TR>
+</TABLE>
+
+</CENTER>
+<P>
+<A href="#Miscellaneous Items">Miscellaneous Items</A>
+</P>
+<CENTER>
+<TABLE width="80%" border="0" class="OthersContents">
+  <TR>
+    <TD><A href="#Menu Rendering Mode">Menu Rendering Mode</A></TD></TR>
+  <TR>
+    <TD><A href="#Near/Far-plane Clipping Values">Near/Far-plane Clipping Values</A></TD></TR>
+  <TR>
+    <TD><A href="#Unsupported Combine Modes">Unsupported Combine Modes</A></TD></TR>
+  <TR>
+    <TD><A href="#Performance Meter">Performance Meter</A></TD></TR>
+  <TR>
+    <TD><A href="#Parameters that ccbl Cannot Set">Parameters that ccbl Cannot Set</A></TD></TR>
+</TABLE>
+
+</CENTER>
+<HR>
+<P>
+<A name="Overview"></A>
+</P>
+<H2>Overview</H2>
+
+<p>This program was created as a means of easily learning about the Nintendo 64 RDP feature block, particularly the ColorCombiner and Blender features. </p>
+
+<p>ccbl is typically started by the Windows application dptest.   Work performed in ccbl cannot be saved or loaded.  However, ccbl can be run by downloading it to the debugging target as a normal N64 application.  It also can be run by writing it to a flash ROM Pak.</p>
+
+<HR>
+<P>
+<A name="Operation"></A>
+</P>
+<H2>Operation</H2>
+
+<p>Although two Controllers are normally used, the program can be operated with only one Controller if necessary. </p>
+
+<DIV class="ctrlmethod">
+
+<table summary="Camera Operations" border="2pt" width="80%">
+<caption> Camera Operations (Controller 1)</caption>
+<tr><td>Control Stick</td><td>Rotates model. </td>
+<tr><td>Z Button+Control Stick UP/DOWN</td><td>Changes camera position.</td>
+</table>
+
+<table summary="Menu Operations" border="2pt" width="80%">
+<caption> Menu Operations (Controller 1)</caption>
+<tr><td>R Button</td><td>Turns menu ON/OFF.</td>
+<tr><td>Control Pad</td><td>Moves cursor.</td>
+<tr><td>A Button</td><td>Opens next window.<br>
+                         Determines menu.</td>
+<tr><td>B Button</td><td>Closes window.</td>
+<tr><td>C Buttons</tr><td>Change parameters.</td>
+</table>
+
+<table summary="Changing Parameters" border="2pt" width="80%">
+<caption>Changing Parameters (Controller 1)</caption>
+<tr><th colspan="2">Hexadecimal Display Parameters (e.g. changing *_COLOR )</th>
+<tr><td>C<IMG src="sample_gif/LtArrow-1.gif" height=12></td><td>Decreases value by 1.</td>
+<tr><td>C<IMG src="sample_gif/RtArrow-1.gif" height=11></td><td>Increases value by 1.</td>
+<tr><td>C<IMG src="sample_gif/UpArrow.gif" width=7></td><td>Decreases value by 0x10.</td>
+<tr><td>C<IMG src="sample_gif/downarrow.gif" width=12></td><td>Increases value by 0x10.</td>
+<tr><td>L+C<IMG src="sample_gif/LtArrow-1.gif" height=12></td><td>Sets to minimum value.</td>
+<tr><td>L+C<IMG src="sample_gif/RtArrow-1.gif" height=11></td><td>Sets to maximum value.</td>
+<tr><th colspan="2">Decimal Display Parameters (change FogPosition)</th>
+<tr><td>C<IMG src="sample_gif/downarrow.gif" width=12></td><td>Decreases by the specified number of decimal places.</td>
+<tr><td>C<IMG src="sample_gif/UpArrow.gif" width=7></td><td>Increases by the specified number of decimal places. </td>
+<tr><th colspan="2">Changing the ON/OFF parameter</th>
+<tr><td>C<IMG src="sample_gif/downarrow.gif" width=12></td><td>Changes the ON/OFF (Åõ/Å~) Parameter. </td>
+</table>
+
+<table summary="" border="2pt" width="80%">
+<caption>Menu Screen Dump (Controller 2)</caption>
+<tr><td>L Button*</td><td>Processes menu screen dump with osSyncPrintf().</td>
+</table>
+
+<table summary="" border="2pt" width="80%">
+<caption>Toggling Cover Value Visualization (Controller 2)</caption>
+<tr><td>R Button</td><td>Uses RM_VISCVG to visualize cover values.<br>
+                          See> Programming Manual, section 15.7.11.</td>
+</table>
+
+<table summary="" border="2pt" width="80%">
+<caption>GBI Macro Output (Controller 2)</caption>
+<tr><td>A Button*</td><td>Processes settings parameters in GBI format (gSP*,gDP*) with osSyncPrintf().</td>
+<tr><td>B Button*</td><td>Processes settings parameters in GBI format (gsSP*,gsDP*) with osSyncPrintf().</td>
+</table>
+
+</div>
+
+<div class="attention">
+<table summary="Note" border="0pt" width="80%">
+<tr><td class="symbol" align="left" valign="top">*</td>
+    <td class="attention">Not supported in programs created using make DPTEST=1 and make FINAL=1.</td>
+</table>
+</div>
+
+
+<hr>
+<a name="Menu Descriptions"></a>
+<h2>Menu Descriptions</h2>
+
+<!--  RSP Menu Description-->
+<div class="MenuDescription">
+
+<hr width="90%">
+<table summary="[RSP] Menu Description" border="0pt" width="90%">
+<tr><th class="MenuName" align="left">RSP</th><td class="Outline">Changes RSP parameters.</td>
+</table>
+
+<!-- GEO_MODE Description  -->
+<a name="GEO_MODE"></a>
+<table class="Term" summary="[RSP]-[GEO_MODE] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">GEO_MODE</th>
+
+<tr><td class="Description">
+  <p>Changes the geometry mode and enables reflection mapping.</p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class="RelGBI">
+  <tr><th align="left" valign="top">Related GBI functions:  </th><td>g*SPSetGeometryMode()</td>
+  </table>
+</td>
+
+</table>
+<!-- GEO_MODE description ends here. -->
+
+<!-- LIGHT_COL Description-->
+<a name="LIGHT_COL"></a>
+<table class="Term" summary="[RSP]-[LIGHT] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">LIGHT_COL</th>
+
+<tr><td class="Description">
+  <p>Changes the light color.</p>
+  <p>ccbl uses all 8 of the lights that can be used in N64. </p>
+  <p>ON/OFF can be implemented by setting the light color to (RGB=[0,0,0]), although RSP processing speed will vary slightly.
+  <p>The position of a light cannot be changed. </p>
+  <p>The position and direction of the lights are as follows:</p>
+
+  <table summary="Light position and direction" border="2pt" width="90%" align="center">
+  <tr><td>DIF1</td><td>from camera position toward (0,0,0)</td>
+  <tr><td>DIF2</td><td>from (0,1,0) toward (0,0,0)</td>
+  <tr><td>DIF3</td><td>from (1,0,0) toward (0,0,0)</td>
+  <tr><td>DIF4</td><td>from (0,-1,0) toward (0,0,0)</td>
+  <tr><td>DIF5</td><td>from (-1,0,0) toward (0,0,0)</td>
+  <tr><td>DIF6</td><td>from (-1,1,1) toward (0,0,0)</td>
+  <tr><td>DIF7</td><td>toward (0,0,0) while describing a circular orbit that has (0,0,0) on the X-Z plane as its center</td>
+  <tr><td>AMB </td><td>ambient light; illuminates the entire model</td>
+  </table>
+
+  <p></p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class="RelGBI" summary="Related GBI functions" border="0pt">
+  <tr><th align="left" valign="top"> Related GBI functions:   </th><td>g*SPLightColor()</td>
+  <tr><td>                                 </td><td>g*SPLight()</td>
+  <tr><td>                                 </td><td>g*SPSetLights()</td>
+  </table>
+</td>
+
+</table>
+<!-- LIGHT_COL description ends here. -->
+
+<!-- FOG_POS Description -->
+<a name="FOG_POS"></a>
+<table class="Term" summary="[RSP]-[FOG_POS]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">FOG_POS</th>
+<tr><td class="Description">
+  <p>Changes the Fog position.</p>
+  <p>A restriction of g*SPFogPosition() is that min must be less than max.  Thus min cannot be set to a value greater than max nor max to a value less than min (min != max is OK).</p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class="RelGBI" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*SPFogPosition()</td>
+  </table>
+</td>
+
+</table>
+<!-- FOG_POS description ends here. -->
+
+</div>
+
+<!-- RDP Menu Description -->
+<div class="MenuDescription">
+
+<hr width="90%">
+<a name="RDP"></a>
+<table summary="[RDP] Menu Description" border="0pt" width="90%">
+<tr><th class="MenuName" align="left">RDP</th><td class="Outline">Changes RDP parameters. </td>
+</table>
+
+<!-- CYCLE_TYPE Description -->
+<a name="CYCLE_TYPE"></a>
+<table class="Term" summary="[RDP]-[CYCLE_TYPE] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">CYCLE_TYPE</th>
+
+<tr><td class="Description">
+  <p>Changes the RDP cycle type.</p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>	g*DPSetCycleType()</td>
+  </table>
+</td>
+
+</table>
+
+<!-- CL_COMBINER->COMBINE_MD Description-->
+<a name="CL_COMBINER->COMBINE_MD"></a>
+<table class="Term" summary="[RDP]-[CL_COMBINER]-[COMBINE_MD]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">CL_COMBINER->COMBINE_MD</th>
+
+<tr><td class="Description">
+  <p>Changes the Color Combiner setting.</p>
+  <p>When the cycle type is G_CYC_1CYCLE, the parameter for the second cycle cannot be changed.  The fields in the bottom two lines of the Configuration menu were provided to enable quick selection of the same settings as those of the Combine mode macros defined in gbi.h.</p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetCombineMode()</td>
+  <tr><td>                    </td><td>g*DPSetCombineLERP()<td>
+  </table>
+</td>
+
+<tr><td>
+<div class="attention">
+<table summary="Note" border="0pt" width="80%">
+<tr><td class="symbol" align="left" valign="top">Note:  </td>
+<td class="attention">Setting the parameter to the typical setting causes the macro settings display to indicate **** NO MACRO ****.  This is a ccbl specification designed to serve as a warning that the typical setting may differ from the macro setting. </td>
+</table>
+</div>
+
+</td>
+</table>
+
+<!-- CL_COMBINER->ENV_COLOR Description -->
+<a name="CL_COMBINER->ENV_COLOR"></a>
+<table class="Term" summary="[RDP]-[CL_COMBINER]-[ENV_COLOR] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">CL_COMBINER->ENV_COLOR</th>
+
+<tr><td class="Description">
+  <p>Changes the ambient color used as an input source for the Color Combiner. </p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetEnvColor()</td>
+  </table>
+</td>
+
+</table>
+
+<!-- CL_COMBINER->PRIM_COLOR Description -->
+<a name="CL_COMBINER->PRIM_COLOR"></a>
+<table class="Term" summary="[RDP]-[CL_COMBINER]-[PRIM_COLOR]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">CL_COMBINER->PRIM_COLOR</th>
+
+<tr><td class="Description">
+  <p> Changes the Primitive color used as an input source for the Color Combiner. </p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetPrimColor()</td>
+  </table>
+</td>
+
+</table>
+
+<!-- BLENDER->RENDER_MODE Description -->
+<a name="BLENDER->RENDER_MODE"></a>
+<table class="Term" summary="[RDP]-[BLENDER] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">BLENDER->RENDER_MODE</th>
+
+<tr><td class="Description">
+  <p>Changes the Render mode setting. </p>
+  <p>
+As with COMBINE_MD, when the cycle type is G_CYC_1CYCLE, the parameter for the second cycle cannot be changed. </p>
+  <p> The fields in the bottom two lines of the Configuration menu enable quick selection of the same settings as those of the Render mode macros defined in gbi.h. </p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions" border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetRenderMode()</td>
+  </table>
+</td>
+
+<tr><td>
+<div class="attention">
+<table summary="Note" border="0pt" width="80%">
+<tr><td class="symbol" align="left" valign="top">Note:  </td>
+<td class="attention">
+  <p>Setting the parameter to the typical setting causes the macro settings display to indicate **** NO MACRO ****.  This is a ccbl specification designed to serve as a warning that the typical setting may differ from the macro setting. </p>
+  <p>Similarly, according to the ccbl specifications, the alpha comparison cannot be set with RENDER MODE when the RM_G_*_PCL_SURFACTANT setting is in effect.</p>
+  <p>For more information, see the Particle Effects example in Setting Examples.</p>
+</td>
+</table>
+</div>
+
+</table>
+
+<!-- BLENDER->BL_COLOR Description -->
+<a name="BLENDER->BL_COLOR"></a>
+<table class="Term" summary="[RDP]-[BLENDER]-[BL_COLOR] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">BLENDER->BL_COLOR</th>
+
+<tr><td class="Description">
+  <p>Changes the Blend Color used as an input source for Blender. </p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetBlendColor()</td>
+  </table>
+</td>
+
+</table>
+
+<!-- BLENDER->FOG_COLOR Description -->
+<a name="BLENDER->FOG_COLOR"></a>
+<table class="Term" summary="[RDP]-[BLENDER]-[FOG_COLOR] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">BLENDER->FOG_COLOR</th>
+
+<tr><td class="Description">
+  <p> Changes the Fog Color used as an input source for Blender. </p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetFogColor()</td>
+  </table>
+</td>
+
+</table>
+
+<!-- BLENDER->CD AD AC Description -->
+<a name="BLENDER->CD AD AC"></a>
+<table class="Term" summary="[RDP]-[BLENDER]-[CD AD AC]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">BLENDER->CD AD AC</th>
+
+<tr><td class="Description">
+  <p>Changes the settings for color dithering, alpha dithering, and alpha comparison.</p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetColorDither()</td>
+  <tr><td>                    </td><td>g*DPSetAlphaDither()</td>
+  <tr><td>                    </td><td>g*DPSetAlphaCompare()</td>
+  </table>
+</td>
+
+</table>
+
+<!-- BLENDER->TEX_FILTER Description -->
+<a name="TEX_FILTER"></a>
+<table class="Term" summary="[RDP]-[TEX_FILTER] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">TEX_FILTER</th>
+
+<tr><td class="Description">
+  <p>Changes the texture filter settings.</p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>g*DPSetTextureFilter()</td>
+  </table>
+</td>
+
+</table>
+
+</div>
+
+<!-- VI menu settings -->
+<div class="MenuDescription">
+
+<hr width="90%">
+<table summary="[VI] Menu Description" border="0pt" width="90%">
+<tr><th class="MenuName" align="left">VI</th><td class="Outline">Changes the VI parameters.</td>
+</table>
+
+<!-- SPECIAL FEATURES Description -->
+<a name="SPECIAL FEATURES"></a>
+<table class="Term" summary="[VI]-[SPECIAL FEATURES]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">SPECIAL FEATURES</th>
+
+<tr><td class="Description">
+  <p>Changes the settings for VI gamma correction, gamma dithering, divot filtering, and dither filtering. </p>
+  <p>Although these parameters are not directly related to the Color Combiner or Blender, they do play a large role in the N64 screen display.  Thus ccbl was designed to also enable changes in these parameters. </p>
+  <p> VI does not operate completely independently.  N64 does not display the original pixel values that Blender writes to the frame buffer.  Rather, VI creates and displays the final colors based on the original color and cover values.   Thus, where display is concerned, VI cannot be ignored. </p>
+</td>
+
+<tr><td class="RelGBI">
+  <table class=" summary="Related GBI functions:  " border="0pt">
+  <tr><th align="left">Related GBI functions:  </th><td>osViSetSpecialFeatures()</td>
+  </table>
+</td>
+
+</table>
+
+</div>
+
+<!-- MISC menu settings -->
+<div class="MenuDescription">
+
+<hr width="90%">
+<a name="MISC"></a>
+<table summary="[MISC] Menu Description" border="0pt" width="90%">
+<tr><th class="MenuName" align="left">MISC</th><td class="Outline"> Sets the other settings.</td>
+</table>
+
+<!-- MODEL Description -->
+<a name="MODEL"></a>
+<table class="Term" summary="[MISC]-[MODEL] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">MODEL</th>
+
+<tr><td class="Description"><p>Changes the display model.<p>
+
+  <table summary="Model Descriptions" border="1pt" width="80%" align="center">
+  <caption>Model Descriptions</caption>
+  <tr><th align="left">TETRA</th><td>A regular tetrahedron (triangular pyramid)<td>
+  <tr><th align="left">CUBE</th><td>A cube<td>
+  <tr><th align="left">SPHERE</th><td>A sphere<td>
+  <tr><th align="left">XY-YZ</th><td>Combination of X-Y and Y-Z planes<td>
+  <tr><th align="left">MOUNTAIN</th><td>Terrain<td>
+  <tr><th align="left">TRIANGLE</th><td>A single triangle<td>
+  <tr><th align="left">A</th><td>The letter A<td>
+  <tr><th align="left">MIZO</th><td>Terrain with a ditch<td>
+  <tr><th align="left">TORUS2</th><td>A combination of two doughnuts <td>
+  </table>
+</td>
+
+</table>
+
+<!-- TEXTURE Description -->
+<a name="TEXTURE"></a>
+<table class="Term" summary="[MISC]-[TEXTURE]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">TEXTURE</th>
+
+<tr><td class="Description">
+  <p>Changes the texture applied to the model.</p>
+
+  <table summary="Texture Descriptions" border="1pt" width="80%" align="center">
+  <caption>Texture Descriptions</caption>
+  <tr><th align="left" valign="top">RGBA16 MARIO</th><td> The file mario.rgb located in $(ROOT)/usr/src/PR/demos/Texture/.  Alpha of 1. </td>
+  <tr><th align="left" valign="top">RGBA16 TREE</th><td>Has an alpha that allows elimination.  Masked using an alpha value a bit smaller than that of the RGB image. </td>
+  <tr><th align="left" valign="top">RGBA16 BRICK</th><td> The file brick.rgb in $(ROOT)/usr/src/PR/demos/Texture/.</td>
+  <tr><th align="left" valign="top">RGBA16 CHECKER</th><td>Has an elimination alpha.  An alpha of 1 is assigned to the white portion of the RGB image and an alpha of 0 to the black portion. </td>
+  <tr><th align="left" valign="top">RGBA16 BRICK_MM</th><td> Designed for MIP mapping, this has a total of 6 levels of MIP mapping textures.  Other textures do not allow trilinear MIP mapping to be properly represented. </td>
+  <tr><th align="left" valign="top">RGBA32 GRADIENT</th><td>A texture with an 8-bit alpha channel. </td>
+  <tr><th align="left" valign="top">IA16 GRADIENT</th><td>A texture for which both the intensity and alpha are 8 bits.  *Garbage* in the central region. </td>
+  <tr><th align="left" valign="top">RGBA16 REFLECT</th><td>Texture that simulates a specular map; used mainly for reflection mapping.  Note that the alpha is 0 for the entire texture. </td>
+  <tr><th align="left" valign="top">I8 HIGHLIGHT</th><td>Texture with an effect like specular highlighting.  Although ccbl does not support specular highlighting, *quasi-specular highlighting* can always be displayed using reflection mapping. </td>
+  </table>
+
+  <p>Except for BRICK_MM, all textures are 32Çò32 pixel images. gDPTextureLoadblock() transfers them to texture memory and sets tiling to 0.  Texture wrapping is set by specifying st with G_TX_WRAP (wrapping).</p>
+  <p>Except in the case of BRICK_MM, gSPTexture() is given the following arguments.</p>
+
+  <div class="Example">
+  <p class="Example">gSPTexture(glistp++,0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON);</p>
+  </div>
+
+  <p></p>
+  <p>When BRICK_MM is specified,</p>
+
+  <div class="Example">
+  <p class="Example">gSPTexture(glistp++,0x8000, 0x8000, 5, G_TX_RENDERTILE, G_ON);</p>
+  </div>
+
+  <p>is used.</p>
+  <p>However, when reflection mapping is enabled, gSPTexture() is forcibly set to </p>
+
+  <div class="Example">
+  <p class="Example">gSPTexture(glistp++,(32<<6),(32 <<6), 0, G_TX_RENDERTILE, G_ON);</p>
+  </div>
+
+  <p></p>
+</td>
+
+</table>
+
+
+<!-- BG_COLOR Description -->
+<a name="BG_COLOR"></a>
+<table class="Term" summary="[MISC]-[BG_COLOR]Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">BG_COLOR</th>
+
+<tr><td class="Description">
+  <p>Changes the background color. </p>
+  <p>Actually writes the specified color when the frame buffer is cleared. </p>
+  <p>When IMAGE1,2 is specified, a 16-bit RGBA-format image is copied to clear the frame buffer rather than a color value. </p>
+</td>
+</table>
+
+
+<!-- BG_MODEL Description -->
+<a name="BG_MODEL"></a>
+<table class="Term" summary="[MISC]-[BG_MODEL] Description" border="2pt" width="80%">
+
+<tr><th class="MenuName" align="left">BG_MODEL</th>
+
+<tr><td class="Description">
+  <p>Displays the model, unaffected by the ccbl parameters. </p>
+  <p>Render mode uses G_RM_AA_ZB_OPA_SURF.</p>
+
+  <table summary="Model Descriptions" border="1pt" width="80%" align="center">
+  <caption>Model Descriptions </caption>
+  <tr><th align="left" valign="top">DISABLE</th><td>Disables display of the BG model.</td>
+  <tr><th align="left" valign="top">PLANE</th><td>A simple plane. <br>
+                                                  Used mainly when displaying G_RM_*_DECAL or G_RM_*_INTER. </td>
+  <tr><th align="left" valign="top">STARS</th><td> 9 star-shaped models are distributed.<br>
+                                                  Used to show the stacking relation with the display model. </td>
+  </table>
+</td>
+
+</table>					  
+
+</div>
+
+
+<hr>
+<a name="Example Settings"></a>
+<h2>Example Settings</h2>
+
+<p>Cycle mode is set to 1 cycle unless otherwise indicated. </p>
+<p>Default parameter values are used unless otherwise indicated. </p>
+<p>The * symbol indicates settings that are required to view the effect with ccbl. </p>
+
+<div class="Example">
+<hr width="90%">
+<a name="Primitive color"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Primitive color</th>
+<tr><td>
+<p>Displays an object using the primitive color. </p>
+<p>Set the Combine mode to PRIMITIVE.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: PRIMITIVE<br>
+</p>
+
+<p>Try changing the primitive color and see the results. </p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->PRIM_COLOR
+</p>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Texture Decal"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Texture Decal</th>
+<tr><td>
+<p>Applies a texel color unchanged. </p>
+<p>Sets Combine mode to DECALRGB. *</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: DECALRGB
+</p>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Writing"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Writing</th>
+<tr><td>
+<p>Sets to a display with writing.</p>
+<p>Set the Geometry mode. </p>
+
+<p>Settings for [RSP]->GEO_MODE are as follows.</p>
+
+<table class="Screen" align="center">
+<tr><td>
+<pre class="Screen">
++[GEO_MODE]---------+        
+| G_SHADE         :O|*        
+| G_LIGHTING      :O|*        
+| G_SHADING_SMOOTH:O|*        
+| G_ZBUFFER       :O|*        
+| G_TEXTURE_GEN   :x|        
+| G_TEXTURE_GEN_L :x|        
+|&gt;G_CULL_FRONT    &lt;x|        
+| G_CULL_BACK     :O|        
+| G_FOG           :x|        
+|- - - - - - - - - -|        
+|  REFLECTION EN  :x|        
++-------------------+        
+</pre>
+</td>
+</table>
+
+<p>Settings for Combine mode are as follows.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: SHADE
+</p>
+
+<p>Try changing the light color and see the results. </p>
+
+<p class="Example">
+[RSP]->LIGHT_COL
+</p>
+
+<p>Using MODULATERGB for Combine mode enables a light to be applied to a textured object. </p>
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Reflection Map"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Reflection Map</th>
+<tr><td>
+<p>Performs reflection mapping. </p>
+
+<p>Set the Geometry mode. </p>
+<p>[RSP]->The GEO_MODE setting is as follows. </p>
+
+<table class="Screen" align="center">
+<tr><td>
+<pre class="Screen">
++[GEO_MODE]---------+        
+| G_SHADE         :O|*        
+| G_LIGHTING      :O|*        
+| G_SHADING_SMOOTH:O|*        
+| G_ZBUFFER       :O|*        
+| G_TEXTURE_GEN   :O|*        
+| G_TEXTURE_GEN_L :x|        
+| G_CULL_FRONT    :x|        
+| G_CULL_BACK     :O|        
+| G_FOG           :x|        
+|- - - - - - - - - -|        
+|&gt; REFLECTION EN  &lt;O|*        
++-------------------+        
+</pre>
+</td>
+</table>
+
+<p>The Combine mode setting is as follows.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: DECALRGB
+</p>
+
+Note:  If reflection mapping is enabled without performing only the ccbl settings, the settings performed internally will be insufficient.
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Specular Highlight"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Specular Highlight</th>
+<tr><td>
+<p>Uses reflection mapping to simulate specular highlighting. </p>
+
+<p> TORUS2 is used as the model so that the effect is readily seen. </p>
+
+<p>Select IA8 HIGHLIGHT for the texture. </p>
+
+<p>The Geometry mode settings used are the same as for reflection mapping.*</p>
+
+<p>Because reflection mapping is used, the light is assumed be located at the viewpoint.  Thus, only DIF1 is used. </p>
+<p>Light color settings are as follows.*</p>
+
+<table class="Screen" align="center">
+<tr><td>
+<pre class="Screen">
++[LIGHT COLOR]--+        
+|      R  G  B  |        
+|DIF1: 50 50&gt;00&lt;|        
+|DIF2: 00 00 00 |        
+|DIF3: 00 00 00 |        
+|DIF4: 00 00 00 |        
+|DIF5: 00 00 00 |        
+|DIF6: 00 00 00 |        
+|DIF7: 00 00 00 |        
+|AMB : 00 00 00 |        
++---------------+        
+</pre>
+</td>
+</table>
+
+<p>The Combine mode setting is as follows.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: HILIGHTRGB
+</p>
+
+<p>The primitive color is set to the same color as the light color.*</p>
+
+<table class="Screen" align="center">
+<tr><td>
+<pre class="Screen">
++[PRIM COL]-+           
+| RED  : FF |           
+| GREEN: FF |           
+| BLUE : 00 |           
+|&gt;ALPHA&lt; 80 |           
+|- - - - - -|           
+| MIN  : 80 |           
+| LOD  : 80 |           
++-----------+           
+</pre>
+</td>
+</table>
+
+<p>The primitive color becomes the light color. </p>
+
+<div class="attention">
+<table summary="Note" border="0pt" width="80%">
+<tr><td class="symbol" align="left" valign="top">Note:  </td>
+<td class="attention">Specular highlighting can always be simulated using reflection mapping. <br>
+For examples of the correct settings, see the Programming Manual. </td>
+</table>
+</div>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Fog"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Fog</th>
+<tr><td>
+<p>Uses Fog.</p>
+
+<p>Set the Geometry mode.</p>
+<p>[RSP]->GEO_MODE settings are as follows. </p>
+
+<table class="Screen" align="center">
+<tr><td>
+<pre class="Screen">
++[GEO_MODE]---------+
+| G_SHADE         :O|(*)
+| G_LIGHTING      :O|(*)
+| G_SHADING_SMOOTH:O|
+| G_ZBUFFER       :O|(*)
+| G_TEXTURE_GEN   :x|
+| G_TEXTURE_GEN_L :x|
+| G_CULL_FRONT    :x|
+| G_CULL_BACK     :x|
+| G_FOG           :O|(*)
+|- - - - - - - - - -|
+|&gt; REFLECTION EN  &lt;x|
++-------------------+
+</pre>
+</td>
+</table>
+
+<p>The cycle type is set to 2 cycles.*</p>
+
+<p class="Example">
+[RDP]->CYCLE_TYPE->G_CYC_2CYCLE
+</p>
+
+<p>To make the effect readily visible, select DECALRGB as the Combine mode, CUBE as the model, and BRICK as the texture.  In addition, specify the following Combine mode settings. </p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: DECALRGB<br>
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: PASS2
+</p>
+
+
+<p>Set the Rendering mode.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: FOG_SHADE_A<br>
+[RDP]->BLENDER->RENDER_MODE->CYCLE2: AA_ZB_OPA_SURF2
+</p>
+
+<p>Select the Fog color.*</p>
+
+<p>[RDP]->BLENDER->FOG_COLOR settings are as follows.</p>
+
+<table class="Screen" align="center">
+<tr><td>
+<pre class="Screen">
++[FOG COL]--+            
+|&lt;RED  &gt; 80 |            
+| GREEN: 80 |            
+| BLUE : 80 |            
+| ALPHA: 80 |            
++-----------+            
+</pre>
+</td>
+</table>
+
+<p>Set the BG color to a color close to that of the Fog. </p>
+
+<p class="Example">
+[MISC]->BG_COLOR->GRAY
+</p>
+
+<p>The positions of the Fog threshold and Fog color saturation can be changed by changing the Fog position ([RSP]->FOG_POS). </p>
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Trilinear MIP Mapping"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Trilinear MIP Mapping</th>
+<tr><td>
+
+<p>Set the cycle type to 2 cycles.*</p>
+
+<p class="Example">
+[RDP]->CYCLE_TYPE->G_CYC_2CYCLE
+</p>
+
+<p>Set the Combine mode.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: TRILERP<br>
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: DECALRGB2
+</p>
+
+<p>Set the Rendering mode.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: PASS<br>
+[RDP]->BLENDER->RENDER_MODE->CYCLE2: AA_ZB_OPA_SURF2
+</p>
+
+<p>Set the texture.*</p>
+
+<p class="Example">
+[MISC]->TEXTURE->RGBA16 BRICK_MM
+</p>
+
+<div class="attention">
+<table summary="Note" border="0pt" width="80%">
+<tr><td class="symbol" align="left" valign="top">Note:  </td>
+<td class="attention"> ccbl specifies texture tiling internally when BRICK_MM is used as the texture. </td>
+</table>
+</div>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Antialiasing"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Antialiasing</th>
+<tr><td>
+
+<p>Antialiasing in N64 is ultimately performed by VI.  Blender writes the antialiasing data (cover values) to the frame buffer when it writes the pixel values to that buffer. </p>
+<p>Using the G_RM_VISCVG, ccbl enables cover values to be visualized.  Try changing the Blender settings and using this feature to see the types of cover values generated.   The result will likely be many very interesting discoveries. </p>
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Transparent Surface"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Transparent Surface</th>
+<tr><td>
+
+<p>Combine mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: PRIM
+</p>
+
+<p>Blender mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: AA_ZB_XLU_SURF
+</p>
+
+<p>Change BG_COLOR so that the effect is easily seen. </p>
+
+<p class="Example">
+[MISC]->BG_COLOR->IMAGE2
+</p>
+
+<p>Try changing the alpha for the primitive color and see the results. </p>
+
+<p class="Example">
+[RDP]->CL_COMBINER->PRIM_COLOR->ALPHA
+</p>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Texture Edge Mode"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Texture Edge Mode</th>
+<tr><td>
+
+<p>The model and texture are set as follows. </p>
+
+<p class="Example">
+[MISC]->MODEL->CUBE<br>
+[MISC]->TEXTURE->RGBA16 TREE
+</p>
+
+<p>Combine mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->CL_COMBINE->COMBINE_MODE->CYCLE1: DECALRGBA
+</p>
+
+<p>Rendering mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: AA_ZB_TEX_EDGE
+</p>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Decal surface"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Decal surface</th>
+<tr><td>
+
+<p>The model is set as follows.*</p>
+
+<p class="Example">
+[MISC]->MODEL->TRIANGLE
+</p>
+
+<p>Rendering mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: AA_ZB_OPA_DECAL
+</p>
+
+<p>The BG model is set as follows.*</p>
+
+<p class="Example">
+[MISC]->BG_MODEL->PLANE
+</p>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Interpenetration Mode"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Interpenetration Mode</th>
+<tr><td>
+
+<p>The model is set as follows.*</p>
+
+<p class="Example">
+[MISC]->MODEL->TETRA
+</p>
+
+<p>Rendering mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: AA_ZB_OPA_INTER
+</p>
+
+<p>The BG model is set as follows.*</p>
+
+<p class="Example">
+[MISC]->BG_MODEL->PLANE
+</p>
+
+<p>Try visualizing the cover values and see how they change when the Rendering mode is AA_ZB_OPA_SURF. </p>
+
+</td>
+</table>
+</div>
+
+<div class="Example">
+<hr width="90%">
+<a name="Particle Effects"></a>
+<table class="Example" border="0pt" width="90%">
+<tr><th class="Title" align="left" valign="top">Particle Effects</th>
+<tr><td>
+<p>Rendering mode is set as follows.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->RENDER_MODE->CYCLE1: AA_ZB_PCL_SURF
+</p>
+
+<p>Alpha comparison is set as follows.*</p>
+
+<p class="Example">
+[RDP]->BLENDER->CD AD AC->G_AC_DITHER
+</p>
+
+<div class="attention">
+<table summary="Note" border="0pt" width="80%">
+<tr><td class="symbol" align="left" valign="top">Note:  </td>
+<td class="attention">With the macros in PR/gbi.h, the alpha comparison is set automatically when the G_RM_*_PCL_SURF setting is specified. Under the ccbl specifications, the alpha comparison cannot be set while in a RENDER_MODE, so be sure to specify the alpha comparison here. </td>
+</table>
+</div>
+
+<p>A common bug is to set the alpha comparison after the rendering mode, so that even if G_RM_*_PCL_SURF is specified as the rendering mode, it is subsequently overwritten with the alpha comparison setting. </p>
+</td>
+</table>
+</div>
+
+<hr>
+<a name="Miscellaneous Items"></a>
+<h2> Miscellaneous Items </h2>
+
+<hr width="90%" align="center">
+<a name="Menu Rendering Mode"></a>
+<table class="Others" border="0pt" width="90%" align="center">
+<tr><th align=left valign="top">Menu Rendering Mode</th>
+<tr><td>
+<p> The menu rendering mode used is G_RM_XLU_SURF.<br>
+Because this mode uses the CVG_DIST_FULL setting, it may corrupt the cover values for the display model.  For a proper display, turn off the menu display.</p>
+</td>
+</table>
+
+<hr width="90%" align="center">
+<a name="Near/Far-Plane Clipping Values"></a>
+<table class="Others" border="0pt" width="90%" align="center">
+<tr><th align=left valign="top">Near/Far-Plane Clipping Values</th>
+<tr><td>
+<p>ccbl sets the near-plane clipping value to 500 and the far-plane clipping value to 20,000.  These are not necessarily recommended values.<br>
+Values that are appopriate for the application should be selected. </p>
+</td>
+</table>
+
+<hr width="90%" align="center">
+<a name="Unsupported Combine Modes"></a>
+<table class="Others" border="0pt" width="90%" align="center">
+<tr><th align=left valign="top"> Unsupported Combine Modes</th>
+<tr><td>
+<p>The Combine mode macro settings shown below are not supported.  In addition, parameters for these settings have been omitted.  The Color Combiner parameters can be set directly. </p>
+
+<table align="center">
+<tr><td>G_CC_TEMPLERP</td>
+<tr><td>G_CC_1CYUV2RGB</td>
+<tr><td>G_CC_YUV2RGB</td>
+<tr><td>G_CC_CHROMA_KEY2</td>
+</table>
+
+</td>
+</table>
+
+<hr width="90%" align="center">
+<a name="Performance Meter"></a>
+<table class="Others" border="0pt" width="90%" align="center">
+<tr><th align=left valign="top">Performance Meter</th>
+<tr><td>
+<p>The nuDebTaskPerfBar1() function of NuSystem is used as the performance meter. For information on the performance meter, see the NuSysytem documentation. <br>
+<br>The performance meter includes not only the model display time but also latencies such as the time for frame buffer clearing and menu display. </td>
+</table>
+
+
+<hr width="90%" align="center">
+<a name="Parameters that ccbl Cannot Set"></a>
+<table class="Others" border="0pt" width="90%" align="center">
+<tr><th align=left valign="top">Parameters that ccbl Cannot Set</th>
+<tr><td>
+<p>ccbl cannot be used to set items that are not closely related to Color Combiner and Blender. <br>
+<br>In developing an actual application, setting only those parameters that can be set by ccbl will not produce a proper display.  Please use the documentation and sample source code available as references. </td>
+</table>
+
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,2563 @@
+<html>
+<title>
+nd関数群リファレンス
+</title>
+<body bgcolor=#fefef8>
+<h1>
+nd関数群リファレンス
+</h1>
+<hr size=3>
+<a name="NDGENINSTANCE"></a>
+<h2>
+ndGenInstance
+</h2>
+<dl>
+<dt><font color=008080>関数名</font>
+<dd>ndGenInstance
+<dt><font color=008080>構文</font>
+<dd>NDD_INSTANCE *ndGenInstance(NDD_INSTANCE *parent, u16 type, u16 prio, int gid);
+<dt><font color=008080>説明</font>
+<dd>インスタンス構造体を作成して、リンクをつなぐ。
+<dt><font color=008080>パラメータ</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *parent;
+<dd>親インスタンスのポインタ
+<dt>u16 type;
+<dd>インスタンスタイプ。
+<dt>u16 prio;
+<dd>プライオリティコード。表示インスタンスの評価順に影響します。
+<dd>type によって指定出来る範囲が決まっています。
+<dt>int gid;
+<dd>インスタンスのグループＩＤ。
+</dl>
+<dt><font color=008080>戻り値</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *;
+<dd>生成したインスタンスポインタ。
+</dl>
+<dt><font color=008080>注意</font>
+<dd>インスタンスを作成します。タイプによって特性が決定されます。
+</dl>
+<hr size=1>
+
+<a name="NDCHANGEPRIORITY"></a>
+<h2>
+ndChangePriority
+</h2>
+<dl>
+<dt><font color=008080>関数名</font>
+<dd>ndChangePriority
+<dt><font color=008080>構文</font>
+<dd>u16 ndChangePriority(NDD_INSTANCE *isp, u16 newprio);
+<dt><font color=008080>説明</font>
+<dd>インスタンス一つのプライオリティを変更します。
+<dt><font color=008080>パラメータ</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *isp;
+<dd>インスタンスポインタ。
+<dt>u16 newprio;
+<dd>新しいプライオリティ値。
+</dl>
+<dt><font color=008080>戻り値</font>
+<dd>
+<dl>
+<dt>u16;
+<dd>古いプライオリティ値
+</dl>
+<dt><font color=008080>注意</font>
+<dd>
+指定したプライオリティの最上位にリンクします。
+</dl>
+<hr size=1>
+
+<a name="NDCHANGEPARENT"></a>
+<h2>
+ndChangeParent
+</h2>
+<dl>
+<dt><font color=008080>関数名</font>
+<dd>ndChangeParent
+<dt><font color=008080>構文</font>
+<dd>
+NDD_INSTANCE ndChangeParent(NDD_INSTANCE *isp, NDD_INSTANCE *newparent);
+<dt><font color=008080>説明</font>
+<dd>
+インスタンスの親を変更します。
+<dt><font color=008080>パラメータ</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *isp;
+<dd>対象のインスタンスポインタ。
+<dt>NDD_INSTANCE *newparent;
+<dd>新しい親インスタンスのポインタ。
+</dl>
+<dt><font color=008080>戻り値</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *;
+<dd>
+直前まで親だったインスタンス。
+</dl>
+<dt><font color=008080>注意</font>
+<dd>
+newparent は、NULL であってはいけません。
+</dl>
+<hr size=1>
+
+<a name="NDDELETEINSTANCEGID"></a>
+<h2>
+ndDeleteInstanceGID
+</h2>
+<dl>
+<dt><font color=008080>関数名</font>
+<dd>ndDeleteInstanceGID
+<dt><font color=008080>構文</font>
+<dd>
+void ndDeleteInstanceGID(NDD_INSTANCE *isp, int type, int gid, int mask);
+<dt><font color=008080>説明</font>
+<dd>
+　type と gid と mask によって指定された、パラメータに一致するインスタンスを削除します。<p>
+　実際には、[TYPE] == type で [GID] & mask == gid にヒットするものが削除
+    の対象になります。ただし、type に -1 を指定すると type のチェックは
+    行ないません。<p>
+　isp の子、全てに対して評価を行ないます。また、親が検索にヒットした場合、以下の子は、無条件で削除します。
+<dt><font color=008080>パラメータ</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *isp;
+<dt>int type;
+<dt>int gid;
+<dt>int mask;
+</dl>
+<dt><font color=008080>注意</font>
+<dd>
+注意）インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+
+<a name="NDINIT"></a>
+<h2>
+ndInit
+</h2>
+<dl>
+<dt><font color=008080>関数名</font>
+<dd>ndInit
+<dt><font color=008080>構文</font>
+<dd>
+ void ndInit(void);
+<dt><font color=008080>説明</font>
+<dd>モジュールの初期化
+<dt><font color=008080>注意</font>
+<dd>'nd' 全般のＡＰＩの使用を始める前に必ず呼ぶ必要があります。
+    カレントのシーンを用意します。シーンの設定がなくても、オブジェクトを
+    表示する土台は用意されます。
+</dl>
+<hr size=1>
+
+
+
+
+<a name="NDENTRYANIMATION"></a>
+<h2>
+ndEntryAnimation
+</h2>
+<dl>
+<dt><font color=008080>
+関数名
+</font>
+<dd>ndEntryAnimation
+<dt><font color=008080>
+構文
+</font>
+<dd>       NDD_INSTANCE *ndEntryAnimation(NDD_INSTANCE *parent, int animno, int id, NDD_INSTANCE *tarinst);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>    アニメーション参照テーブルからタイムキーパーインスタンスを一つと
+    チャンネル数分のアニメーションインスタンスを作成する。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+<dt>    NDD_INSTANCE *parent;
+<dd>	親インスタンスのポインタ
+<dt>    int animno;
+<dd>	アニメーション番号
+<dt>    int id;
+<dd>	インスタンスＩＤ
+<dt>    NDD_INSTANCE *tarinst;
+<dd>	アニメーションをアタッチするインスタンスポインタ
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;<br>
+	アニメーションタイムキーパーインスタンスのポインタ
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+  注意）インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+<a name="NDENTRYANIMATIONRAW"></a>
+<h2>
+ndEntryAnimationRaw
+</h2>
+<dl>
+<dt><font color=008080>
+関数名
+</font>
+<dd>
+ndEntryAnimationRaw
+<dt><font color=008080>
+構文
+</font>
+<dd>
+NDD_INSTANCE *ndEntryAnimationRaw(NDD_INSTANCE *parent, NDR_ANIM *anp, int gid, NDD_INSTANCE *tarinst);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+アニメーション参照テーブルからタイムキーパーインスタンスを一つとチャンネル数分のアニメーションインスタンスを作成する。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *parent;
+<dd>親インスタンスのポインタ
+<dt>NDR_ANIM *anp;
+<dd>アニメーション参照テーブルへのポインタ
+<dt>int gid;
+<dd>インスタンスグループＩＤ
+<dt>NDD_INSTANCE *tarinst;
+<dd>アニメーションをアタッチするインスタンスポインタ
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;<br>
+	アニメーションタイムキーパーインスタンスのポインタ
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+  注意）インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+
+
+
+<a name="NDENTRYOBJECT"></a>
+<h2>
+ndEntryObject
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>    ndEntryObject
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+NDD_INSTANCE *ndEntryObject(NDD_INSTANCE *parent, int objno, int shapeno, int animno, int gid, int flag);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>    オブジェクト参照テーブルからインスタンスを一つ作成する。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *parent;
+<dd>親インスタンスのポインタ。NULL なら、オブジェクトのルートにぶら下がります。
+<dt>int objno;
+<dd>オブジェクト参照テーブルのインデックス。
+<dt>int shapeno;
+<dd>シェープ参照テーブルのオフセット。オブジェクトの保持するシェープは、オブジェクト参照テーブルの shape と、この指定する数値を足した位置のリストのものが登録される。
+<dt>int animno;
+<dd>アニメーション参照テーブルのオフセット。アニメーションを同時にエントリーする場合、NDR_OBJ.geom_animの値にこの値を加えたテーブルのアニメーションをエントリーする。
+<dt>int gid;
+<dd>インスタンスＩＤのベース値。この値に、NDR_OBJ で指定される、gid を足したものが作成されるオブジェクトインスタンス構造体に登録される。
+<dt>int flag;
+<dd>ビットアサインされた生成フラグ。ビットが１の時有効になります
+<dd>　bit 0 ... 一緒にNDR_OBJ のアニメーションリンクを設定する。
+<dd>　bit 1 ... リンクを辿って親子関係の端に向かって評価する。
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;<br>
+作成されたインスタンスの内、一番親のポインタ
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+ 内部では、ndEntryObjectRaw を呼び出しています。
+<dd>  注意）インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+
+
+
+<a name="NDENTRYOBJECTRAW"></a>
+<h2>
+ndEntryObjectRaw
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>   ndEntryObjectRaw
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+ NDD_INSTANCE *ndEntryObjectRaw(NDD_INSTANCE *parent, NDR_OBJ *rop, int gid);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+オブジェクト参照テーブルからインスタンスを一つ作成する。
+    リンクは辿らず、アニメーションインスタンスも生成しない。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+<dt>NDD_INSTANCE *parent;
+<dd>親インスタンスのポインタ。NULL なら、オブジェクトのルートにぶら下がります。
+<dt>NDR_OBJ *rop;
+<dd>オブジェクト参照テーブルへのポインタ
+<dt>int gid;
+<dd>インスタンスＩＤのベース値。この値に、NDR_OBJ で指定される、gid を足したものが作成されるオブジェクトインスタンス構造体に登録される。
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;<br>
+	作成されたインスタンスのポインタ
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+  注意）インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+
+<a name="NDATTACHANIMATION"></a>
+<h2>
+ndAttachAnimation
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndAttachAnimation
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+ void ndAttachAnimation(NDD_INSTANCE *parent, NDD_INSTANCE *isp, int objno, int animno, int gid, int flag)
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+オブジェクト参照テーブルのアニメーションリンクを参照し、既存のオブジェクトインスタンスにアニメーションをアタッチする。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *parent;
+<dd>親インスタンスのポインタ。NULL なら、アニメーションルートにぶら下がります。
+<dt>NDD_INSTANCE *isp;
+<dd>アニメーションをアタッチするオブジェクトインスタンスのポインタ。
+<dt>int objno;
+<dd>グローバルリソースリスト上でのオブジェクト番号。
+<dt>int animno;
+<dd>アニメーション参照テーブルのオフセット。アニメーションを同時にエントリーする場合、NDR_OBJ.geom_animの値にこの値を加えたテーブルのアニメーションをエントリーする。
+<dt>int gid;
+<dd>インスタンスグループＩＤのベース値。この値に、NDR_OBJ で指定される、gid を足したものが作成されるオブジェクトインスタンス構造体に登録される。
+<dt>int flag;
+<dd>ビットアサインされた生成フラグ。ビットが１の時有効になります
+<dd>　bit 0 ... 未使用
+<dd>　bit 1 ... リンクを辿って親子関係の端に向かって評価する。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;<br>
+<dd>作成されたインスタンスの内、一番親のポインタ
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+isp で渡されるオブジェクトインスタンスは、objno で指定された NDR_OBJ
+    構造体リストによって生成されたものとして扱います。
+<dd>  注意）インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+<a name="NDENTRYDEFORMVTX"></a>
+<h2>
+ndEntryDeformVtx
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndEntryDeformVtx
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+NDD_INSTANCE *ndEntryDeformVtx(NDD_INSTANCE *isp, NDR_DEFORM *dmfp, int ofs, int gid);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+頂点デフォームインスタンスをエントリーする
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+<dd>活性頂点インスタンスへのポインタ
+<dt>NDR_DEFORM *dmfp;
+<dd>頂点デフォーム構造体へのポインタ
+<dt>int ofs;
+<dd>生頂点データリストを参照するときのオフセット
+<dt>int gid;
+<dd>インスタンスグループＩＤ
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;
+<dd>
+作成した、頂点デフォームインスタンスのポインタ。
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+このインスタンスは、専用の親(deform_root_instp)にぶら下がります。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+<a name="NDENTRYDEFORMVTXCOL"></a>
+<h2>
+ndEntryDeformVtxcol
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndEntryDeformVtxcol
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+NDD_INSTANCE *ndEntryDeformVtxcol(NDD_INSTANCE *isp, NDR_DEFORM *dmfp, int ofs, int gid);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+頂点カラーデフォームインスタンスをエントリーする
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+<dd>活性頂点インスタンスへのポインタ
+<dt>NDR_DEFORM *dmfp;
+<dd>頂点カラーデフォーム構造体へのポインタ
+<dt>int ofs;
+<dd>生頂点カラーデータリストを参照するときのオフセット
+<dt>int gid;
+<dd>インスタンスグループＩＤ
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;
+<dd>
+作成した、頂点カラーデフォームインスタンスのポインタ。
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+このインスタンスは、専用の親(deform_root_instp)にぶら下がります。
+    内部では３つのメモリを、システム関数の malloc()を使用して確保しています。
+    また、終了時のコールバックを設定しており、コールバックルーチン内にて
+    malloc() で確保したメモリの解放を行ないます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+<a name="NDENTRYDEFORMVTXNV"></a>
+<h2>
+ndEntryDeformVtxnv
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndEntryDeformVtxnv
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+NDD_INSTANCE *ndEntryDeformVtxnv(NDD_INSTANCE *isp, NDR_DEFORM *dmfp, int ofs, int gid);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+頂点法線デフォームインスタンスをエントリーする
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+<dd>活性頂点インスタンスへのポインタ
+<dt>NDR_DEFORM *dmfp;
+<dd>頂点法線デフォーム構造体へのポインタ
+<dt>int ofs;
+<dd>生頂点法線データリストを参照するときのオフセット
+<dt>int gid;
+<dd>インスタンスグループＩＤ
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;
+<dd>
+作成した、頂点法線デフォームインスタンスのポインタ。
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+このインスタンスは、専用の親(deform_root_instp)にぶら下がります。
+    内部では３つのメモリを、システム関数の malloc()を使用して確保しています。
+    また、終了時のコールバックを設定しており、コールバックルーチン内にて
+    malloc() で確保したメモリの解放を行ないます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+<a name="NDENTRYDEFORMVTXST"></a>
+<h2>
+ndEntryDeformVtxst <img src="../../gif/new.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+Function name
+</font>
+<dd>
+ndEntryDeformVtxst
+<dt>
+<font color=008080>
+Syntax
+</font>
+<dd>
+NDD_INSTANCE *ndEntryDeformVtxst(NDD_INSTANCE *isp, NDR_DEFORM *dmfp, int ofs, int gid);
+<dt>
+<font color=008080>
+Explanation
+</font>
+<dd>
+Make an entry of vertex texture coordinate deform instance.    
+<dt>
+<font color=008080>
+Parameter
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+<dd>Pointer for active vertex instance 
+<dt>NDR_DEFORM *dmfp;
+<dd>Pointer for vertex texture coordinate deform structure   
+<dt>int ofs;
+<dd>Offset when referring raw vertex texture coordinate data list 
+<dt>int gid;
+<dd>Instance group ＩＤ
+
+</dl>
+<dt>
+<font color=008080>
+Return value
+</font>
+<dd>    NDD_INSTANCE *;
+<dd>
+Pointer for the created vertex texture coordinate deform instance 
+<font color=008080>
+<dt>
+Note
+</font>
+<dd>
+This instance is linked to the exclusive parent(deform_root_instp).  
+ 3 memories are reserved inside using the system function, malloc().   
+ Also, a call back for terminating is set, and the memory reserved by    
+ malloc() is released  inside the call back routine.  
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+<a name="NDENTRYDEFORMSHAPE"></a>
+<h2>
+ndEntryDeformShape <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndEntryDeformShape
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+NDD_INSTANCE *ndEntryDeformShape(NDD_INSTANCE *isp, int ofs_rawvtx, int ofs_rawvtxcol, int ofs_rawvtxnv, int ofs_rawvtxst, int gid, int flag);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+オブジェクトインスタンスの参照するシェープを乗っとり、変調した頂点情報
+    にすり替えます。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+<dd>変調対象のオブジェクトインスタンスへのポインタ
+<dt>int ofs_rawvtx;
+<dd>int ofs_rawvtxcol;
+<dt>int ofs_rawvtxnv;
+<dt>int ofs_rawvtxst;
+<dd>Offset when referring each data list 
+<dt>int gid;
+<dd>インスタンスグループＩＤ
+<dt>int flag;
+<dd>ビットアサインされた生成フラグ。ビットが１の時有効になります
+<dd>　bit 0 ... 頂点デフォームをエントリーする
+<dd>　bit 1 ... 頂点カラーデフォームをエントリーする
+<dd>　bit 2 ... 頂点法線デフォームをエントリーする
+<dd>　bit 3 ... Make an entry of vertex texture coordinate doform. 
+
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    NDD_INSTANCE *;
+<dd>
+生成した、活性頂点インスタンスのポインタ
+<font color=008080>
+<dt>
+注意
+</font>
+<dd>
+The upper instance of ndEntryDeformVtx(), ndEntryDeformVtxnv(), ndEntryDeformVtxcol(), and 
+ndEntryDeformVtxst() are created.   
+      関数内で、各デフォームインスタンスの生成を、パラメータの flag を
+    見ながら評価します。
+      Gfx の構築の非同期性に整合させる為、Vtx バッファは２つ持っています。
+    内部では３つのメモリを、システム関数の malloc()を使用して確保しています。
+<dd>    また、終了時のコールバックを設定しており、コールバックルーチン内にて
+    malloc() で確保したメモリの解放を行ないます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+<a name="NDATTACHDEFORM"></a>
+<h2>
+ndAttachDeform <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndAttachDeform
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+void ndAttachDeform(NDD_INSTANCE *isp, int rawvtxno, int rawvtxcolno, int rawvtxnvno, int rawvtxstno, int gid, int flag);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+階層化されているオブジェクトインスタンスについて、デフォームが用意されて
+    いる場合、エントリーする。
+<dt>
+<font color=008080>
+パラメータ
+</font>
+<dd>
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+<dd>活性頂点インスタンスの生成対象戸なるオブジェクトインスタンスのポインタ
+<dt>int rawvtxno;
+<dt>int rawvtxcolno;
+<dt>int rawvtxnvno;
+<dt>int rawvtxstno;
+<dd>Offset when referring each data list. 
+<dt>int gid;
+<dd>インスタンスグループＩＤ
+<dt>int flag;
+<dd>ビットアサインされた生成フラグ。ビットが１の時有効になります
+<dd>　bit 0 ... 未使用。
+<dd>　bit 1 ... リンクを辿って親子関係の端に向かって評価する。
+<dd>　bit 2 ... 頂点デフォームをエントリーする
+<dd>　bit 3 ... 頂点カラーデフォームをエントリーする
+<dd>　bit 4 ... 頂点法線デフォームをエントリーする
+<dd>　bit 5 ... Make an entry of vertex texture coordinate deform. 
+
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+
+<font color=008080>
+<dt>
+注意
+</font>
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+<a name="NDSETUPSCENE"></a>
+<h2>
+ndSetupScene <img src="../../gif/update.gif" width="48" height="12">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>    ndSetupScene
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+ void ndSetupScene(NDD_RESINFO *rip, int gid, int flag);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    シーンの参照テーブルからシーンを構築する。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dd>
+<dl>
+
+<dt>NDD_RESINFO *rip;
+<dd>リソースインフォメーション
+<dt>int gid;
+<dd>オブジェクトインスタンス登録時のグループＩＤ。
+<dt>int flag;
+<dd>生成状況設定フラグ作成フラグ。それぞれのビットが１の時、有効になるものは以下の通りです。
+<dd>　bit 0 ... 一緒にNDR_OBJ のアニメーションリンクを設定する。
+<dd>　bit 1 ... リンクを辿って親子関係の端に向かって評価する。
+<dd>　bit 2 ... 頂点デフォームをエントリーする
+<dd>　bit 3 ... 頂点カラーデフォームをエントリーする
+<dd>　bit 4 ... 頂点法線デフォームをエントリーする
+<dd>　bit 5 ... Make an entry of vertex texture coordinate deform.  
+
+</dl>
+<dt><font color=008080>
+注意
+</font>
+<dd>設定に使用するシーンデータ構造体は、rip->resinfo->scene を参照します。
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+<a name="NDSETUPSCREEN"></a>
+<h2>
+ndSetScreen
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndSetScreen
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+void ndSetScreen(int top, int bottom, int left, int right);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+スクリーン表示領域の画面幅と高さを設定する。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dd>
+<dl>
+
+<dt>int top;
+<dt>int bottom;
+   <dt> int left;
+    <dt>int right;
+	<dd>ピクセル単位の表示範囲。
+
+</dl>
+<dt><font color=008080>
+注意
+</font>
+
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+<a name="NDRESINIT"></a>
+<h2>
+ndResInit <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndResInit
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+void ndResInit(int olplim, int slplim, int alplim, int rvlplim, int rvclplim, int rvnlplim, int rvslplim);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+リソースモジュールの初期化
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dd>
+<dl>
+
+<dt>int olplim;
+   <dt> int slplim;
+  <dt>  int alplim;
+<dt>    int rvlplim;
+   <dt> int rvclplim;
+<dt>    int rvnlplim;
+<dt>    int rvslplim;
+	<dd>List managing pointer of each data class and the maximum number 
+
+</dl>
+<dt><font color=008080>
+注意
+</font>
+ポインタリストは、システム関数の、malloc() を通して確保されます。
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDRESENTRY"></a>
+<h2>
+ndResEntry <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndResEntry
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+NDD_RESINFO *ndResEntry(NDR_RESINFO *rrp, int usemask);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+指定リソースをグローバルリソースリストに追加する。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dd>
+<dl>
+
+<dt>NDR_RESINFO *rrp;
+	<dd>参照用リソースインフォメーション構造体へのポインタ。
+<dt>    int usemask;
+	<dd>rrp の内容から、エントリーの対象になるデータの種類をビットで指定する。
+
+</dl>
+
+<dt><font color=008080>
+戻り値
+</font>
+<dd>NDR_RESINFO *drp;
+<dd>リソースインフォメーション構造体へのポインタ。
+<dt><font color=008080>
+注意
+</font>
+
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDRESRELEASE"></a>
+<h2>
+ndResRelease <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>
+ndResRelease
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+void ndResRelease(NDD_RESINFO *drp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+指定リソースをグローバルリストから切り離します。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dd>
+<dl>
+<dt>NDD_RESINFO *drp;
+	<dd>リソースインフォメーション構造体へのポインタ。
+
+</dl>
+
+<dt><font color=008080>
+戻り値
+</font>
+<dt><font color=008080>
+注意
+</font>
+<dd>引数の、drp は解放されます。
+<dd>    直前にエントリーしたリソースのみ、解放可能です。
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDELETEINSTANCE"></a>
+<h2>
+ndDeleteInstance
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>    ndDeleteInstance
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>    void ndDeleteInstance(NDD_INSTANCE *isp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    インスタンスを削除します。所有する子も削除します。
+<dt>
+<font color=008080>
+注意
+</font >
+<dd>インスタンスコールバック内では、使用できません。
+</dl>
+<hr size=1>
+<a name="NDGETINSTANCETRXPOINTER"></a>
+<h2>
+ndGetInstanceTRXPointer
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>    ndGetInstanceTRXPointer
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>    TRX *ndGetInstanceTRXPointer(NDD_INSTANCE *isp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    インスタンスのポインタからトランスフォームバッファのポインタを返す。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dd>
+<dl>
+<dt>    NDD_INSTANCE *isp;
+<dd>	インスタンスポインタ。
+</dl>
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>    なぜこのような関数があるかというと、インスタンス構造体が、データタイプに
+    よって TRX の位置が違うためです。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+<a name="NDSETUPIDENTTRX"></a>
+<h2>
+ndSetupIdentTRX
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>    ndSetupIdentTRX
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>    void ndSetupIdentTRX(TRX *p)
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    単位行列を返す。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    TRX *p;
+<dt>	トランスフォームマトリクスのポインタ。
+</dl>
+<dt>
+<font color=008080>
+注意
+</font >
+<dd>	並行移動、回転、拡大縮小の計９個のパラメータに単位行列に当たる、
+	0,0,0, 0,0,0, 1,1,1 を代入します。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDPROGRESSANIMTIME"></a>
+<h2>
+ndProgressAnimTime
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndProgressAnimTime
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+int ndProgressAnimTime(NDD_INST_ANIMTK *ntkp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+タイムキーパーの時間進行処理
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+
+<dt> NDD_INST_ANIMTK *ntkp
+	<dd>アニメーションタイムキーパーインスタンスのポインタ。
+
+</dl>
+
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>int;
+<dd>	実行結果。現在は必ず１が返ります。
+
+<dt>
+<font color=008080>
+注意
+</font >
+<dd>
+ndEvalInstance より呼ばれます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDSETANIMCHANNEL"></a>
+<h2>
+ndSetAnimChannel
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndSetAnimChannel
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+int ndSetAnimChannel(NDD_INST_ANIM *niap);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+キーフレームアニメーションチャンネル処理
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>NDD_INST_ANIM *niap;
+<dd>	アニメーションインスタンスのポインタ。
+
+</dl>
+
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>int;
+<dd>	実行結果。
+
+<dt>
+<font color=008080>
+注意
+</font >
+<dd>
+ndEvalInstance より呼ばれます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDRELOADDYNAMICVERTEX"></a>
+<h2>
+ndReloadDynamicVertex <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndReloadDynamicVertex
+
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+void ndReloadDynamicVertex(NDD_INST_DYNAMICVTX *nidp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+各種デフォームインスタンスの変調テーブルを参照し、Vtx を組み立てる。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+
+<dt>NDD_INST_DYNAMICVTX *nidp;
+	<dd>活性頂点インスタンスの内部構造体のポインタ
+
+
+</dl>
+
+<dt>
+<font color=008080>
+戻り値
+</font>
+
+<dt>
+<font color=008080>
+注意
+</font >
+<dd>
+描画ドライバに一部依存しており、設定する Vtx テーブルは２つ用意して
+    います。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDEFORMVERTEX"></a>
+<h2>
+ndDeformVertex
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndDeformVertex
+
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+ void ndDeformVertex(NDD_INST_DEFORM_VTX *nidvp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+頂点デフォームを行なう
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+
+<dt>NDD_INST_DEFORM_VTX *nidvp;
+	<dd>頂点デフォームインスタンスの内部構造体のポインタ
+
+</dl>
+
+<dt>
+<font color=008080>
+戻り値
+</font>
+
+<dt>
+<font color=008080>
+注意
+</font >
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDEFORMVERTEXNV"></a>
+<h2>
+ndDeformVertexNv
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndDeformVertexNv
+
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+void ndDeformVertexNv(NDD_INST_DEFORM_VTXNV *nidcp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+頂点法線デフォームを行なう
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+
+<dt> NDD_INST_DEFORM_VTXNV *nidcp;
+	<dd>頂点法線デフォームインスタンスの内部構造体のポインタ
+
+</dl>
+
+<dt>
+<font color=008080>
+戻り値
+</font>
+
+<dt>
+<font color=008080>
+注意
+</font >
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDEFORMVERTEXCOLOR"></a>
+<h2>
+ndDeformVertexColor
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndDeformVertexColor
+
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+void ndDeformVertexColor(NDD_INST_DEFORM_VTXCOL *nidcp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+頂点カラーデフォームを行なう
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>NDD_INST_DEFORM_VTXCOL *nidcp;
+	<dd>頂点カラーデフォームインスタンスの内部構造体のポインタ
+
+
+</dl>
+
+<dt>
+<font color=008080>
+戻り値
+</font>
+
+<dt>
+<font color=008080>
+注意
+</font >
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDEFORMVERTEXST"></a>
+<h2>
+ndDeformVertexSt <img src="../../gif/new.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+Function name
+</font >
+<dd>
+ndDeformVertexSt
+
+<dt>
+<font color=008080>
+Syntax
+</font >
+<dd>
+void ndDeformVertexSt(NDD_INST_DEFORM_VTXST *nidcp);
+<dt>
+<font color=008080>
+Explanation
+</font >
+<dd>
+Perform vertex normal deform. 
+<dt>
+<font color=008080>
+Parameter
+</font >
+<dl>
+
+<dt> NDD_INST_DEFORM_VTXNV *nidcp;
+	<dd>Pointer of inside structure for vertex texture coordinate deform instance.  
+</dl>
+
+<dt>
+<font color=008080>
+Return value
+</font>
+
+<dt>
+<font color=008080>
+Note
+</font >
+
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDMAKECAMERAMATRIX"></a>
+<h2>
+ndMakeCameraMatrix
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>    ndMakeCameraMatrix
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>    void ndMakeCameraMatrix(float mf[4][4])
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    カメラの情報から、カメラマトリクス(LookAt)を作成します。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>    Perspective 等、PROJECTION_VIEW に関係するマトリクスではないので、注意
+    して下さい。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+<a name="NDMULTITRX"></a>
+<h2>
+ndMultiTrx
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>    ndMultiTrx
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>    void ndMultiTrx(float mf[4][4], TRX *trxp, u32 order);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    TRX 構造体を評価し、４x４のマトリクスを作成する
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    float mf[4][4];
+<dd>	作成するべきマトリクスを格納するバッファ
+<dt>    TRX *trxp;
+<dd>	マトリクスの元になるトランスフォームデータ構造体
+<dt>    u32 order;
+<dd>	回転成分の評価順。
+</dl>
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>    生成された４x４マトリクスは、インスタンスワーク内のバッファに置かれ、
+    表示の際に使用されます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+<a name="NDEVALINSTANCEONE"></a>
+<h2>
+ndEvalInstanceOne <img src="../../gif/update.gif">
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndEvalInstanceOne
+<dt>
+<font color=008080>
+構文
+</font >
+<dd>
+int ndEvalInstanceOne(NDD_INSTANCE *isp, float mf[4][4], float cmf[4][4], int forceupd);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>
+isp によって指定されたインスタンスについて、フレーム評価を行なう。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+
+<dt>NDD_INSTANCE *isp;
+	<dd>インスタンスのポインタ。
+<dt>    float mf[4][4];
+	<dd>モデルビューマトリクス。
+<dt>    float cmf[4][4];
+	<dd>インスタンスによって更新されたモデルビューマトリクス。
+<dt>    int forceupd;
+	<dd>強制的にマトリクスを生成するためのフラグ。１で強制。
+
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>int;
+<dd>	マトリクス更新フラグ。	引数の forceudp の値と、自分のマトリクスが更新された場合、１を、or した値が返る。
+
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+ mf は、基本モデルビューマトリクスとして使用されます。
+    マトリクス評価が入らなかった場合でも、cmf には、 mf が返ります。
+</dl>
+<hr size=1>
+
+
+
+
+<a name="NDEVALINSTANCE"></a>
+<h2>
+ndEvalInstance
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>    ndEvalInstance
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>    void ndEvalInstance(NDD_INSTANCE *isp, float mf[4][4], int forceupd);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+isp によって指定されたインスタンスの下にぶら下がる全てのインスタンス
+    について、フレーム評価を行なう。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    NDD_INSTANCE *isp;
+<dd>	インスタンスのポインタ。
+<dt>    float mf[4][4];
+<dd>	モデルビューマトリクス。
+<dt>    int forceupd;
+<dd>	強制的にマトリクスを生成するためのフラグ。１で強制。
+</d>
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>mfは、基本モデルビューマトリクスとして使用されます。
+<dd>    再帰する上、ローカルに６４byte のバッファを用意しているので、
+    結構スタックを消費する筈です。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+<a name="NDCLEARFB"></a>
+<h2>
+ndClearFB
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndClearFB
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+Gfx *ndClearFB(Gfx *gp, u16 fill_depth, u16 fill_col);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>Gfx *gp;
+	<dd>ディスプレイリストポインタ。
+<dt>    u16 fill_depth;
+	<dd>Ｚバッファをフィルする値
+<dt>    u16 fill_col;
+	<dd>カラー値をフィルする値
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>Gfx *gp;
+<dd>	ディスプレイリストポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDEVALLIGHT"></a>
+<h2>
+ndEvalLight
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndEvalLight
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+int ndEvalLight(float *tarpos, NDD_LIGHT *lp, RGBAQUAD *color, s8 *nv);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>float *tarpos;
+	<dd>ライトが当てられるターゲットのポジション。x,y,z の３値。
+	NULL なら、原点(0,0,0)として計算する。
+<dt>    NDD_LIGHT *lp;
+	<dd>ライト構造体へのポインタ。
+<dt>    RGBQUAD *color;
+	<dd>カラー値を格納する、RGBAQUAD構造体へのポインタ。
+<dt>    s8 *nv;
+	<dd>ライトベクトルを格納するポインタ。S0.7形式の x,y,z ３値(3 byte)。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>int;
+	<dd>ライトの評価で、ライトが無効である場合、0 が返ります。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+NDD_LIGHT 構造体には次の制限があります。
+    ・fnv で与えられる法線は正規化されていること。
+    ・flag に、NDC_LFLAG_ATTENUATION が設定されている場合、start, end に
+      有効な値を代入しておく必要がある。
+    ・NDC_LFLAG_CUTOFF は、NDC_LFLAG_HAVEPOS 時のみ有効。
+    これらは実行スピードを義性にチェック可能ですが、ゲーム用マネージャー
+    ということで、無視しています。
+      返り値に0 が返った場合、color, nv は不定です。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDRELOADLIGHTREG"></a>
+<h2>
+ndReloadLightReg
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndReloadLightReg
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+Gfx *ndReloadLightReg(Gfx *gp, NDD_LIGHT *lp, u32 newcolor, s8 *newlvec);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>Gfx *gp;
+	<dd>ディスプレイリストポインタ。
+<dt>    NDD_LIGHT *lp;
+	<dd>ライト構造体へのポインタ。
+<dt>    u32 newcolor;
+	<dd>新たに設定するカラー値。上位ビットより、0xRRGGBB00 の形式で格納
+	されていること。下位８ビットは、内部で 0x00 にして扱う。
+<dt>    s8 *newlvec;
+	<dd>新たに設定するベクトルへのポインタ。S0.7 形式の、x,y,z ３値(3 byte)
+	を見る。NULL は受け付けません。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>Gfx *gp;
+	<dd>ディスプレイリストポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+NDD_LIGHT 構造体のうち、color, power, stored_nv の３つを参照し、
+    必要部分のヒープを定義、ＲＳＰコマンドをバッファに積みます。
+    この関数は、内部使用に対し最適化されているため、ユーザーの任意にて
+    コールする場合は、内容をよく理解した上で使用して下さい。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDSETUPLIGHTSET"></a>
+<h2>
+ndSetupLightset
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndSetupLightset
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+Gfx *ndSetupLightset(Gfx *gp, float *tarpos, NDD_LIGHTSET *lightset);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+初期化済みの、lightset で渡されたライトセットを、対象になるオブジェクト
+    と共に評価し、変更のある部分に限りディスプレイリストに積む。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>Gfx *gp;
+	<dd>ディスプレイリストポインタ。
+<dt>    float *tarpos;
+	<dd>ライトが当てられるターゲットのポジション。x,y,z の３値。
+<dd>	NULL なら、原点(0,0,0)として計算する。
+   <dt> NDD_LIGHTSET *lightset;
+	<dd>ライトセット構造体へのポインタ。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>Gfx *gp;
+	<dd>ディスプレイリストポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+引数のtarposは、そのまま、ndEvalLight() に渡され評価されます。その結果、
+    NULL の場合、原点～に置き換えられて評価されます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDINITLIGHTS"></a>
+<h2>
+ndInitLights
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndInitLights
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+ int ndInitLights( NDD_LIGHTSET *lightset );
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+ＲＤＰのライト設定をリセットし、ライト数を決定し、ライト構造体毎に
+    ライト番号を割り付ける。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+
+<dt>NDD_LIGHTSET *lightset;
+	<dd>ライトセット構造体へのポインタ。
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd> int;
+	<dd>有効なライト数
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+各ライト構造体のflag の、_ENABLE ビットを参照して、必要となるライト数を
+    計上し、各々のライト番号を割り付けます。
+    この番号は、ＲＳＰで実際に評価されるライト番号ですが、ユーザーは特に
+    意識する必要はなく、ＡＰＩ関数によって再設定を行なう場合に参照、使用
+    されます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDSETUPOBJECTREGISTER"></a>
+<h2>
+ndSetupObjectRegister
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndSetupObjectRegister
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+Gfx *ndSetupObjectRegister( Gfx *gp, NDD_INST_OBJ *niop );
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+オブジェクトインスタンス構造体を参照し、再設定の指定があるレジスタを
+    再設定する。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>   Gfx *gp;
+	<dd>ディスプレイリストバッファへのポインタ。
+<dt>    NDD_INST_OBJ *niop;
+	<dd>オブジェクトインスタンス構造体へのポインタ。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    Gfx *;
+	<dd>更新後のGfx バッファポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+ndDrawObjectInstance から呼ばれます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDRAWSHAPE"></a>
+<h2>
+ndDrawShape
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndDrawShape
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+Gfx *ndDrawShape( Gfx *gp, NDR_SHAPE *shp );
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+シェープ構造体の内容に従って、Gfx 構造体を描画バッファに積む。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    Gfx *gp;
+	<dd>ディスプレイリストバッファへのポインタ。
+<dt>    NDR_SHAPE *shp;
+	<dd>参照用シェープ構造体へのポインタ。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    Gfx *;
+	<dd>更新後のGfx バッファポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+ ndDrawObjectInstance から呼ばれます。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="NDDRAWOBJECTINSTANCE"></a>
+<h2>
+ndDrawObjectInstance
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndDrawObjectInstance
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+ int ndDrawObjectInstance( NDD_INST_OBJ *niop );
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+１オブジェクトを表示する
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    Gfx *gp;
+	<dd>ディスプレイリストバッファへのポインタ。
+<dt>    NDD_INST_OBJ *niop;
+	<dd>オブジェクトインスタンス構造体へのポインタ。
+
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>    Gfx *;
+	<dd>更新後のGfx バッファポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+ndBuildInstanceGfx から呼ばれます。
+</dl>
+<hr size=1>
+
+<a name="NDBUILDINSTANCEGFXATPRIO"></a>
+<h2>
+ndBuildInstanceGfxAtPrio
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>
+ndBuildInstanceGfxAtPrio
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>
+Gfx *ndBuildInstanceGfxAtPrio(Gfx *gp, NDD_INSTANCE *isp, u16 start, u16 end);
+<dt>
+<font color=008080>
+説明
+</font>
+<dd>
+指定のインスタンスポインタ以降を対象に、特定のプライオリティの
+    インスタンスを、描画する。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    Gfx *gp;
+	<dd>ディスプレイリストポインタ。
+<dt>    NDD_INSTANCE *isp;
+	<dd>対象のインスタンスポインタ。NULLを与えると オブジェクトの
+	ルート以下全てを評価します。
+<dt>    u16 start;
+	<dd>描画対象のプライオリティ。start も描画対象として含まれます。
+<dt>    u16 end;
+	<dd>描画対象外のプライオリティ。end は描画されません。ご注意下さい。
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>   Gfx *;
+	<dd>更新された、ディスプレイリストポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+ start, end の大小関係は、start の方が高い値（優先順位高い）にして下さい。
+</dl>
+<hr size=1>
+
+
+
+
+
+
+
+
+
+<a name="NDBUILDSCENEGFX"></a>
+<h2>
+ndBuildSceneGfx
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font>
+<dd>    ndBuildSceneGfx
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>    
+Gfx *ndBuildSceneGfx(Gfx *gp, float mul[4][4]);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    カレントのシーン構造体からシーン部分のディスプレイリストを積みます。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    Gfx *gp;
+<dd>	ディスプレイリストポインタ。
+<dt> float mul[4][4];
+<dd>	カメラのマトリクス。
+</dl>
+<font color=008080>
+<dt>
+注意
+</font >
+<dd>
+カメラのマトリクス、mul は、プロジェクションマトリクスに乗算されます。
+</dl>
+<hr size=1>
+<a name="NDBUILDINSTANCEGFX"></a>
+<h2>
+ndBuildInstanceGfx
+</h2>
+<dl>
+<dt>
+<font color=008080>
+関数名
+</font >
+<dd>    ndBuildInstanceGfx
+<dt>
+<font color=008080>
+構文
+</font>
+<dd>    Gfx *ndBuildInstanceGfx(Gfx *gp, NDD_INSTANCE *isp);
+<dt>
+<font color=008080>
+説明
+</font >
+<dd>    カレントのシーン構造体からシーン部分のディスプレイリストを積みます。
+<dt>
+<font color=008080>
+パラメータ
+</font >
+<dl>
+<dt>    Gfx *gp;
+<dd>	ディスプレイリストポインタ。
+<dt>    NDD_INSTANCE *isp;
+<dd>	対象のインスタンスポインタ。NULLを与えると オブジェクトの
+	ルート以下全てを評価します。
+</dl>
+<dt>
+<font color=008080>
+戻り値
+</font>
+<dd>
+ Gfx *;
+<dd>	更新された、ディスプレイリストポインタ。
+<dt>
+<font color=008080>
+注意
+</font>
+<dd>
+内部では、オブジェクトのプライオリティ全体を与える形で、
+    ndBuildInstanceGfxAtPrio() を呼び出しています。
+</dl>
+
+<hr>
+<font size=-1>
+Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<p align="right"><a href="./index.htm#REFER">
+nd関数一覧へ
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a>
+
+</body>
+</html>

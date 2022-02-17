@@ -1,0 +1,10 @@
+Function 
+-  Defines object. 
+
+Functions 
+-  void mrnObjectInit( MrnObject *object_ptr );
+  Initializes mrnObject. 
+
+History
+  1998/10/ 9 Takamitsu Hirata 
+    Object.h, object.c :  Initial version 

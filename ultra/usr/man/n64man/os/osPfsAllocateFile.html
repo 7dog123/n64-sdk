@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../os/os.html">
+            <IMG BORDER=0 SRC="../images/mh_os.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<H2><FONT COLOR="0000A0">
+osPfsAllocateFile
+</FONT>
+</H2>
+
+<B>Syntax</B><p>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+#include &lt;ultra64.h&gt;
+
+s32 osPfsAllocateFile(OSPfs *pfs,
+   u16 company_code,
+   u32 game_code,
+   u8 *game_name,
+   u8 *ext_name,
+   int length,
+   s32 *file_no);</PRE></FONT>
+
+<B>Explanation</B><BR>
+It creates a new game note (file) in a Controller Pak.  The <FONT FACE="COURIER NEW,COURIER">company_code</FONT> (company code), <FONT FACE="COURIER NEW,COURIER">game_code</FONT> (game code), <FONT FACE="COURIER NEW,COURIER">game_name</FONT> (note name), <FONT FACE="COURIER NEW,COURIER">ext_name</FONT> (note extension), and <FONT FACE="COURIER NEW,COURIER">length</FONT> (size) arguments must be specified as the information for the game note.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">company_code</FONT> and <FONT FACE="COURIER NEW,COURIER">game_code</FONT> are specified as ASCII character strings.  
+The <FONT FACE="COURIER NEW,COURIER">game_name</FONT> and <FONT FACE="COURIER NEW,COURIER">ext_name</FONT> are specified by N64 font code.<BR>
+<BR>
+
+The size of <FONT FACE="COURIER NEW,COURIER">game_name</FONT> is <FONT FACE="COURIER NEW,COURIER">PFS_FILE_NAME_LEN(16)</FONT> bytes.  If the size is less 
+than 16 bytes, fill the rest with 0x00. Be sure to make the length 16 bytes.<BR>
+<BR>
+
+The size of <FONT FACE="COURIER NEW,COURIER">ext_name</FONT> is <FONT FACE="COURIER NEW,COURIER">PFS_FILE_EXT_LEN(4)</FONT> bytes.  However, only the 
+first byte is actually used.  For this code, use '0'-'9', *A*~*Z* 
+(0x10~0x33) of N64 font code.  The second through fourth bytes are reserved, so use 0x00.<BR>
+<BR>
+
+The size is specified by <FONT FACE="COURIER NEW,COURIER">length</FONT>, in bytes.  Because the smallest internal unit is a page (256 bytes), if length is not specified in multiples of 256, the length will be rounded up to the nearest multiple of 256.<BR>
+<BR>
+
+The newly created game note's note number (file descriptor) will be 
+returned to <FONT FACE="COURIER NEW,COURIER">file_no</FONT>.  Up to 16 game notes can be created. Therefore, <FONT FACE="COURIER NEW,COURIER">file_no</FONT> ranges from 0 to 15.<BR>
+<BR>
+
+
+The <FONT FACE="COURIER NEW,COURIER">OSPfs</FONT> structure pointed to by <FONT FACE="COURIER NEW,COURIER">pfs</FONT> is the file handle to be initialized by the 
+function <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsInitPak.html">osPfsInitPak</A></FONT>.  Please refer to <FONT FACE="COURIER NEW,COURIER">osPfsInitPak</FONT> to determine how to create this handle.<BR>
+<BR>
+
+If this function is called successfully, 0 is retruned.  If an error occurs, one of the following error codes is returned:
+<P>
+<UL><LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_NOPACK</FONT> - Some type of PIF error has occurred. Either the Controller Pak is not inserted into the specified Controller or the Controller is not properly connected.  To determine which is the case, use <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osContStartQuery.html">osContStartQuery</A></FONT> or <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osContGetQuery.html">osContGetQuery</A></FONT>.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_NEW_PACK</FONT> - A different Controller Pak has been inserted.  To use the inserted Controller Pak, initialize it by calling <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsInitPak.html">osPfsInitPak</A></FONT>.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_CONTRFAIL</FONT> - Data transfer to or from the Controller has failed.  If a transfer error occurs, up to three tries will be done internally.  Therefore, it is rather rare to see this error.  If this error 
+ has returned, it is possible that either the Controller is not connected properly, or the Controller Pak or Controller Socket is damaged.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_INCONSISTENT</FONT> - There is a problem in the file system's management area.  Usually this error does not occur because <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsChecker.html">osPfsChecker</A><BR></FONT> is called internally when you initialize the file system by calling <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsInitPak.html">osPfsInitPak</A></FONT>.  If this error is returned, either the Controller Pak is not connected properly, or the Controller Pak itself is damaged.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_INVALID</FONT> - If this error is returned, an incorrect argument was specified when this function was called, the specified game note does not exist, or the Pfs function has been called without being initialized using <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsInitPak.html">osPfsInitPak</A></FONT>.  Therefore, usually this error is not returned.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_DATA_FULL</FONT> - Although the creation of a new game note was attempted, one could not be created because there was not enough space in the Controller Pak.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_DIR_FULL</FONT> - Although the creation of a new game note was attempted, it could not be done because the maximum (16) number of 
+ game notes have been stored in the Controller Pak.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_EXIST</FONT> - Although the creation of a new game note was attempted, it could not be done because the same game note already 
+ exists in the Controller Pak.</UL>
+
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osContInit.html">osContInit</A><BR>
+<A HREF="../os/osContStartQuery.html">osContStartQuery</A><BR>
+<A HREF="../os/osContStartQuery.html">osContGetQuery</A><BR>
+<A HREF="../os/osPfsChecker.html">osPfsChecker</A><BR>
+<A HREF="../os/osPfsDeleteFile.html">osPfsDeleteFile</A><BR>
+<A HREF="../os/osPfsFileState.html">osPfsFileState</A><BR>
+<A HREF="../os/osPfsFindFile.html">osPfsFindFile</A><BR>
+<A HREF="../os/osPfsFreeBlocks.html">osPfsFreeBlocks</A><BR>
+<A HREF="../os/osPfsInitPak.html">osPfsInitPak</A><BR>
+<A HREF="../os/osPfsIsPlug.html">osPfsIsPlug</A><BR>
+<A HREF="../os/osPfsReadWriteFile.html">osPfsReadWriteFile</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

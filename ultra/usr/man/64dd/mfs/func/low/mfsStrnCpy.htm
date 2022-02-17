@@ -1,0 +1,9 @@
+Function name:mfsStrnCpy
+──────────────────────────────────────
+Format:	s32 mfsStrnCpy(u8* dest, const u8* src, s32 count)
+Arguments:	dest	Buffer for storing character string
+	src	Buffer of character string that is copied
+	count	Number of characters to copy
+Return value: dest pointer
+Function:	Copies character string 
+Description:	This function copies at most count characters from src to dest.  If count characters are too long, the excess characters are discarded.  If they are too short, NULL is added to fill dest.  If the length of src is greater than or equal to count, NULL is not added at the end of dest.

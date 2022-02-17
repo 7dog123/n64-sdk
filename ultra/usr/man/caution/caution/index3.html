@@ -1,0 +1,267 @@
+<html>
+<head>
+<title>Programming Cautions (3) Controller</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Controller</h2>
+
+The following cautions should be observed when programming a game that uses the standard Nintendo 64 Controller.
+
+<ul>
+<li><a href="#1">3-1  Re-calibration of the Control Stick (Required)</a>
+<li><a href="#2">3-2  Control Pad Operation (Required)</a>
+<li><a href="#3">3-3  Operation of Unused Buttons (Required)</a>
+<li><a href="#4">3-4  Mechanical &quot;Play&quot; in Control Stick (Recommended)</a>
+<li><a href="#5">3-5  Maximum Range of Control Stick Value (Required)</a>
+<li><a href="#6">3-6  Input Value of Control Stick (Required)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>3-1  Re-calibration of the Control Stick (Required)</h3>
+
+<b>Caution</b><br>
+For games in which the Control Stick is used, the developer must design the game program in such a way that the L Button, R Button, and Start Button will not be pressed simultaneously as a part of normal game play.
+
+<p>
+<b>Discussion</b><br>
+The standard N64 Controller has a function which calibrates the neutral position of the Control Stick by pressing the L Button, R Button and Start Button at the same time.  An accidental re-calibration of the Control Stick must be avoided during normal operation of the game.   In addition, if a user chooses to re-calibrate the Control Stick  after game play has begun, ensure that the game works as intended when game play is resumed.   For more information, refer to Developer News 1.3, Section 2:  <a href="../../developerNews/news-03-2.html">Control Stick RESET Function</a>.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="2"></a><h3>3-2  Control Pad Operation (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that the program operates as intended, even if the Up and Down or Left and Right Control Pad data are input at the same time.
+
+<p>
+<b>Discussion</b><br>
+After years of normal usage, there is a possibility that Up and Down or Left and Right Control Pad data may be input at the same time. 
+
+<p>
+Examples of methods which may be used to prevent &quot;Up and Down&quot; or &quot;Left and Right&quot; input are:
+
+<p>
+<ol>
+<li>Set a priority order for Up and Down and Left and Right inputs.
+<li>Invalidate the input.
+</ol>
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="3"></a><h3>3-3  Operation of Unused Buttons (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that the game continues to function normally even if the user pushes a button that is not used in the game.  Also ensure that the game continues to function as intended even if the user presses buttons on Controllers not being used in a  1-player game.
+
+<p>
+<b>Discussion</b><br>
+A button which is not intended to be used in game play may be pushed by the user.  In addition, an accessory may be connected to the Control Deck.  The accessory may cause unexpected data input.  Neither of these situations should impact game play.
+
+<p>
+If the developer uses a button for a debugging mode which is not used during normal game play, ensure that it has no effect  if pressed during normal game play.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="4"></a><h3>3-4  Mechanical &quot;Play&quot; in Control Stick (Recommended)</h3>
+
+<b>Caution</b><br>
+It is recommended that a method is used to prevent mechanical &quot;play&quot; in the Control Stick from generating unwanted input data.
+
+<p>
+<b>Discussion</b><br>
+There is a small amount of mechanical play in the Control Stick of every Controller.  The amount of mechanical play will vary from one Control Stick to another.  An allowance should be made to ensure that a slight movement by the Control Stick, when it has not been touched by the user, will not be considered as a valid Control Stick input.
+
+<p>
+For more information, refer to Developer News 1.3, Section 1:  <a href="../../developerNews/news-03-1.html">N64 Controller Control Stick Resolution Specifications</a>. 
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="5"></a><h3>3-5  Maximum Range of Control Stick Value (Required)</h3>
+
+<b>Caution</b><br>
+Programs must be designed to use input values that are possible using all Controllers.</P>
+
+<p>
+<b>Discussion</b><br>
+The maximum range of the Control Stick value will vary somewhat from one Controller to another.  In addition, the resolution of a specified Controller may deteriorate after it has been used for a period of time.  To accomplish the above requirement, we recommend the following values be used for Control Stick range.
+
+<p>
+<pre>
+    Horizontal direction of X axis   61
+    Vertical direction of Y axis     63
+    Diagonal direction of X axis     45
+    Diagonal direction of Y axis     47
+</pre>
+
+<p>
+The center stop width of the Control Stick is relatively unimportant for a game that treats the Control Stick data as an absolute location (such as a table tennis game), and the values for XBM, XCM, YBM, and YCM (in the illustration on the following page) can be used for the program's actual range.  However, when better resolution is required, each game must be calibrated individually, with the Controller which is being used.  In other words, the program's center stop width may require adjustment in the application.  The amount of adjustment may also vary according to the amount of usage the Controller has seen.
+
+<p>
+For example:
+A new Controller will present the following values.
+
+<p>
+<table border=1 cellspacing="3" cellpadding="3" width=90%>
+<tr>
+<td width=15%><font face="arial" size="-1">XA</td>
+<td width=60%><font face="arial" size="-1">&nbsp</td>
+<td width=25%><font face="arial" size="-1">MAX:  7 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">XBM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of XB,
+XB'</td>
+<td width=25%><font face="arial" size="-1">MIN:  70 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">XCM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of XC,
+XC', XC'', XC'''</td>
+<td width=25%><font face="arial" size="-1">MIN:  54 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">YA</td>
+<td width=60%><font face="arial" size="-1">&nbsp</td>
+<td width=25%><font face="arial" size="-1">MAX:  7 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">YBM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of YB,
+YB'</td>
+<td width=25%><font face="arial" size="-1">MIN:  74 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">YCM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of YC,
+YC', YC'', YC'''</td>
+<td width=25%><font face="arial" size="-1">MIN:  56 Counts</td>
+</tr>
+</table>
+
+<p>
+While a Controller which has been used for approximately 5 million direction changes will present these values.
+
+<p>
+<table border=1 cellspacing="3" cellpadding="3" width=90%>
+<tr>
+<td width=15%><font face="arial" size="-1">XA</td>
+<td width=60%><font face="arial" size="-1">&nbsp</td>
+<td width=25%><font face="arial" size="-1">MAX:  7 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">XBM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of
+XB, XB'</td>
+<td width=25%><font face="arial" size="-1">MIN:  68 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">XCM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of XC,
+XC', XC'', XC'''</td>
+<td width=25%><font face="arial" size="-1">MIN:  52 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">YA</td>
+<td width=60%><font face="arial" size="-1">&nbsp</td>
+<td width=25%><font face="arial" size="-1">MAX:  7 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">YBM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of
+YB, YB'</td>
+<td width=25%><font face="arial" size="-1">MIN:  70 Counts</td>
+</tr>
+<tr>
+<td width=15%><font face="arial" size="-1">YCM</td>
+<td width=60%><font face="arial" size="-1">minimum guaranteed value of
+YC, YC', YC'', YC'''</td>
+<td width=25%><font face="arial" size="-1">MIN:  54 Counts</td>
+</tr>
+</table>
+
+<p>
+Given the above values, the program's actual range can be calculated, as follows.
+
+<p>
+<pre>
+  Horizontal direction of X axis (one side) MIN = XBM - XA = 68 - 7 = 61 Counts
+  Vertical direction of Y axis (one side) MIN = YBM - YA = 70 - 7 = 63 Counts
+  Diagonal direction of X axis (one side) MIN (45&#176;) = XCM - XA = 52 - 7 = 45 Counts
+  Diagonal direction of Y axis (one side) MIN (45&#176;) = YCM - YA = 54 - 7 = 47 Counts
+</pre>
+
+<p>
+<center><IMG SRC="../gif/index3.gif" width=400></center>
+
+<p>
+Symbol Explanation:     
+
+<p>
+<pre>
+  XA   :    Maximum horizontal center stop width
+  XB   :    Minimum horizontal counts left
+  XB'  :    Minimum horizontal counts right
+  XC   :    Minimum horizontal counts with Control Stick in the 
+            up/right direction
+  XC'  :    Minimum horizontal counts with Control Stick in the 
+            up/left direction
+  XC'' :    Minimum horizontal counts with Control Stick in the 
+            down/left direction
+  XC''':    Minimum horizontal counts with Control Stick in the 
+            down/right direction
+  YA   :    Maximum vertical center stop width
+  YB   :    Minimum vertical counts up
+  YB'  :    Minimum vertical counts down
+  YC   :    Minimum vertical counts with Control Stick in the up/right 
+            direction
+  YC'  :    Minimum vertical counts with Control Stick in the up/left 
+            direction
+  YC'' :    Minimum vertical counts with Control Stick in the down/left 
+            direction
+  YC''':    Minimum vertical counts with Control Stick in the down/right 
+            direction
+</pre>
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="6"></a><h3>3-6  Input Value of Control Stick (Required)</h3>
+
+<b>Caution</b><br>
+Programs must be designed any Control Stick value between +127 and -127 will be
+accepted as a normal input.
+
+<p>
+<b>Discussion</b><br>
+For example, assume that the normal horizontal range of a specific Controller is from +68 to -68.  If the Control Stick is physically shifted to the left when it is calibrated, the horizontal range of the Control Stick may shift to +75 to -50.  Since these values are still between +127 and -127, they should be considered normal values, and the game should continue.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

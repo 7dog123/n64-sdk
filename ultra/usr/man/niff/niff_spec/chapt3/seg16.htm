@@ -1,0 +1,188 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.16 AnimList</font></h3>
+
+<hr size=3>
+<h4>1) AnimList Area</h4>
+
+<blockquote>
+The AnimList area describes the animation data in a scene. Mapping for AnimList is as follows.
+</blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="9">AnimListHeader</th>
+
+<td>u32</td>
+
+<td>anim_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_num_byte(anim_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>AnimGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>AnimGroup(anim_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>AnimList Area Mamory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 anim_list_tag</td>
+
+<td><font size=+0>Tag indicating AnimList. Set the following flag.</font>
+<pre><b><font size=+0>TAG_ANIM_LIST&nbsp;&nbsp; 0x000c0000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_list_header_size</td>
+
+<td><font size=+0>Size of AnimListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_list_size</td>
+
+<td><font size=+0>Size of AnimList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_group_num</td>
+
+<td><font size=+0>Total number of AnimGroup in AnimList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_group_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to AnimGroup</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg16-2.htm">AnimGroup&nbsp;</a></td>
+
+<td><font size=+0>Actual animation data</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg15-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg16-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+ Changes to the Error Handling Sequences
+
+
+1. Preface
+
+  This document corrects problems discovered in the error handling sequences described in Chapter 10 of the 64DD Programming Manual.
+
+   The information here refers to changes made to manuals dated from 98/07/09.  To determine the date of your manual, look at the footer on each page (note that different chapters have different dates).   
+
+   If your manual is dated 98/07/08, please subtract 3 from every page number reference in the section below.  The only difference between the manual dated 98/07/08 and the manual dated 98/07/09 is that the pages are numbered starting from the cover sheet in the latter version.
+
+ The programming manual is being revised at a rapid pace.  If your manual is dated after 98/07/09, please ignore this document and refer to the manual itself.
+
+2. Changes to the error handling sequences
+
+PAGE 10-30
+
+   There is a sequence on this page to check the operation of the real time clock when the RTC it is used in a game.  That check is no longer performed on this page, and the sequence has been moved to page 10-45, where the check is performed.  It has been moved because, if a check is performed on this page, and if the sequence is executed after a reset, then the clock will be read before execution of LeoResetClear (executed on page 10-45), and an error 43 (POWERONRESET_DEVICERESET_OCCURED) can be returned from the LeoReadRTC function. 
+
+   On page 10-45, a reset will not occur if "waiting for insertion of special disk" and the system will check to see whether a disk has been inserted.  Please wait until after this check to check the operation of the RTC.  (If the RTC is not used by the game, the check is not necessary).
+
+   In checking for the operation of the RTC, please do not premise the check on the result of the disk insertion check.  Please perform the check using the method described on page 10-30 (execute the "read the clock" sequence described on page 10-33.  If it does not terminate normally, respond depending on whether the game can continue without the clock).  
+
+
+PAGE 10-36
+
+   The contents in the upper-right box have been changed.  The change was made because patchNg980708 changed the LeoSpdlMotor function so that a DIAGNOSTIC_FAILURE error is not returned when the function is called in SLEEP or BRAKE mode.
+
+The box used to read:
+This is the error sequence used for halting the motor. The motor stops when a MEDIUM_NOT_PRESENT error occurs or when the disk is removed after a DIAGNOSTIC_FAILURE error, so this sequence treats these cases as normal terminations.
+
+With the change, the box now reads: 
+This is the error sequence used for halting the motor. The motor stops when a MEDIUM_NOT_PRESENT error occurs, so this sequence treats this case as a normal termination.
+
+
+PAGE 10-40
+
+   When a MEDIUM_NOT_PRESENT error occured, the message "please insert disk" was displayed and the system looped in a wait state.  That was changed, and now nothing is displayed and the sequence returns to the origin of the call.  Also, when EJECTED_ILLEGALLY_RESUME occurs, an error number is displayed in area 1 and a warning is displayed in area 2, and then the sequence returns to the origin of the call.
+
+   The origin of the sequence call is on page 10-45, but at the time the sequence returns from 10-40 the disk is always inserted, so it is meaningless afterward to check to see whether the disk is present.
+
+
+3. Other corrections
+
+   Strictly speaking, there were no corections to the sequences.  But there was a contradition in that on page 10-14 the error number was not supposed to be shown for a DIAGNOSTIC_FAILURE error, whereas on page 10-32 etc. the error number was shown in the sequence.  Thus, page 10-14 was corrected to "show" the number.
+
+
+4. To reinterate a precaution...
+
+   As stated on PAGE 10-25, errors numbered in the 30s are errors that should be handled by the program.  Please do not display the error numbers on the screen for these errors.
+

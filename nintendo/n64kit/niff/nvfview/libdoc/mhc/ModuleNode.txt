@@ -1,0 +1,16 @@
+Function 
+(  ModuleNode is used to connect entire Module. 
+
+Functions 
+(  void mhcModuleNodeInit( MhcModuleNode *module_node_ptr );
+
+Global Variables 
+(  MifChunkParser *gMhcModuleChunkParserList[ ];
+  Basically, the array of the parser for the NVF chunk('NHDR', 'REFR', 'MDUL', 'XTRN') which handles the 
+  Module
+
+History 
+  1998/10/ 6 Takamitsu Hirata 
+    ModuleNode.h, modulenode.c: Initial version 
+  1999/1/6 Takamitsu Hirata
+    Corresponds to change of argument in mhcReferenceInit().

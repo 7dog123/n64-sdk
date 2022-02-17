@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>NIFF 1.0 Table of Contents</title>
+
+</head>
+<body bgcolor="ffffff">
+
+<H2>NIFF 1.0 Specification</H2>
+
+<H4>Nintendo Co., Ltd.</H4>
+<A HREF="../index_frame.htm" TARGET="_top"><IMG SRC="../../gif/index.gif" ALT="NIFF Index" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0><BR>
+Back to NIFF Index</A>
+
+<hr>
+
+<h3>Table of Contents</h3>
+
+<P>1. Introduction</P>
+<UL>
+<LI><a href="./chapt1/seg1.htm" target="contents">1.1 What is NIFF?</a>
+<LI><a href="./chapt1/seg2.htm" target="contents">1.2 Features of NIFF</a>
+<LI><a href="./chapt1/seg3.htm" target="contents">1.3 NIFF Coordinate System</a>
+<LI><a href="./chapt1/seg4.htm" target="contents">1.4 3D Data Creation Flow Using NIFF</a>
+</UL>
+
+<P>2. Nodes</P>
+
+<UL>
+   <LI><a href="./chapt2/seg1.htm" target="contents">2.1 Nodes in NIFF</a>
+   <LI>2.2 Links to Nodes in NIFF
+
+   <UL>
+     <LI><a href="./chapt2/seg2-1.htm" target="contents">1) 3D Objects with 1 Shape</a>
+     <LI><a href="./chapt2/seg2-2.htm" target="contents">2) Handling of Polygons in NIFF</a>
+     <LI><a href="./chapt2/seg2-3.htm" target="contents">3) Hierarchical Structure of 3D Objects</a>
+     <LI><a href="./chapt2/seg2-4.htm" target="contents">4) Object Hierarchical Links and Animation</a>
+     <LI><a href="./chapt2/seg2-5.htm" target="contents">5) Handling of Materials in NIFF(#1)</a>
+     <LI><a href="./chapt2/seg2-6.htm" target="contents">6) Handling of Materials in NIFF(#2)</a>
+     <LI><a href="./chapt2/seg2-7.htm" target="contents">7) Handling of a Camera in NIFF</a>
+     <LI><a href="./chapt2/seg2-8.htm" target="contents">8) Handling of Collision in NIFF</a>
+   </UL>
+</UL>
+
+3. Binary Format
+
+<UL>
+   <LI><a href="./chapt3/seg1.htm" target="contents">3.1 Binary Format Overview</a>
+   <LI><a href="./chapt3/seg2.htm" target="contents">3.2 Bit Construction</a>
+   <LI><a href="./chapt3/seg3.htm" target="contents">3.3 File Header</a>
+   <LI><a href="./chapt3/seg4.htm" target="contents">3.4 SceneList</a>
+   <LI>3.5 ObjList
+   <UL>
+     <LI>  <a href="./chapt3/seg5.htm" target="contents">1) ObjList Area</a><br>
+     <LI>  <a href="./chapt3/seg5-2.htm" target="contents">2) Obj Area</a><br>
+   </UL>
+   <LI>3.6 ShapeList
+   <UL>
+     <LI><a href="./chapt3/seg6.htm" target="contents">1) ShapeList Area</a>
+     <LI><a href="./chapt3/seg6-2.htm" target="contents">2) Shape Area</a>
+   </UL>
+   <LI>3.7 VtxList
+   <UL>
+     <LI><a href="./chapt3/seg7.htm" target="contents">1) VtxList Area</a>
+     <LI><a href="./chapt3/seg7-2.htm" target="contents">2) VtxGroup Area</a>
+     <LI><a href="./chapt3/seg7-3.htm" target="contents">3) Vtx Area</a>
+   </UL>
+   <LI>3.8 ColorList
+   <UL>
+     <LI><a href="./chapt3/seg8.htm" target="contents">1) ColorList Area</a>
+     <LI><a href="./chapt3/seg8-2.htm" target="contents">2) TriColorGroup Area</a>
+     <LI><a href="./chapt3/seg8-3.htm" target="contents">3) VtxColorGroup Area</a>
+     <LI><a href="./chapt3/seg8-4.htm" target="contents">4) TriColor Area</a>
+     <LI><a href="./chapt3/seg8-5.htm" target="contents">5) VtxColor Area</a>
+   </UL>
+   <LI>3.9 VectorList
+   <UL>
+     <LI><a href="./chapt3/seg9.htm" target="contents">1) VectorList Area</a>
+     <LI><a href="./chapt3/seg9-2.htm" target="contents">2) TriNvGroup Area</a>
+     <LI><a href="./chapt3/seg9-3.htm" target="contents">3) VtxNvGroup Area</a>
+     <LI><a href="./chapt3/seg9-4.htm" target="contents">4) TriNv Area</a>
+     <LI><a href="./chapt3/seg9-5.htm" target="contents">5) VtxNv Area</a>
+   </UL>
+   <LI>3.10 StList
+   <UL>
+     <LI><a href="./chapt3/seg10.htm" target="contents">1) StList Area</a>
+     <LI><a href="./chapt3/seg10-2.htm" target="contents">2) StGroup Area</a>
+     <LI><a href="./chapt3/seg10-3.htm" target="contents">3) St Area</a>
+   </UL>
+   <LI>3.11 TriList
+   <UL>
+     <LI><a href="./chapt3/seg11.htm" target="contents">1) TriList Area</a>
+     <LI><a href="./chapt3/seg11-2.htm" target="contents">2) TriGroup Area</a>
+     <LI><a href="./chapt3/seg11-3.htm" target="contents">3) ReferenceVtxData Area</a>
+     <LI><a href="./chapt3/seg11-4.htm" target="contents">4) ReferenceTriColorData Area</a>
+     <LI><a href="./chapt3/seg11-5.htm" target="contents">5) ReferenceVtxColorData Area</a>
+     <LI><a href="./chapt3/seg11-6.htm" target="contents">6) ReferenceTriNvData Area</a>
+     <LI><a href="./chapt3/seg11-7.htm" target="contents">7) ReferenceVtxNvData Area</a>
+     <LI><a href="./chapt3/seg11-8.htm" target="contents">8) ReferenceStData Area</a>
+     <LI><a href="./chapt3/seg11-9.htm" target="contents">9) Tri Area</a>
+   </UL>
+   <LI>3.12 PartList
+   <UL>
+     <LI><a href="./chapt3/seg12.htm" target="contents">1) PartList Area</a>
+     <LI><a href="./chapt3/seg12-2.htm" target="contents">2) Part Area</a>
+   </UL>
+   <LI>3.13 MatList
+   <UL>
+     <LI><a href="./chapt3/seg13.htm" target="contents">1) MatList Area</a>
+     <LI><a href="./chapt3/seg13-2.htm" target="contents">2) Mat Area</a>
+   </UL>
+   <LI>3.14 TexList
+   <UL>
+     <LI><a href="./chapt3/seg14.htm" target="contents">1) TexList Area</a>
+     <LI><a href="./chapt3/seg14-2.htm" target="contents">2) Tex Area</a>
+     <LI><a href="./chapt3/seg14-3.htm" target="contents">3) TexDataArea</a>
+   </UL>
+   <LI>3.15 TexImgList
+   <UL>
+     <LI><a href="./chapt3/seg15.htm" target="contents">1) TexImgList Area</a>
+     <LI><a href="./chapt3/seg15-2.htm" target="contents">2) TexImg Area</a>
+   </UL>
+   <LI>3.16 AnimList
+   <UL>
+     <LI><a href="./chapt3/seg16.htm" target="contents">1) AnimList Area</a>
+     <LI><a href="./chapt3/seg16-2.htm" target="contents">2) AnimGroup Area</a>
+     <LI><a href="./chapt3/seg16-3.htm" target="contents">3) Anim Area</a>
+   </UL>
+   <LI>3.17 CollList
+   <UL>
+     <LI><a href="./chapt3/seg17.htm" target="contents">1) CollList Area</a>
+     <LI><a href="./chapt3/seg17-2.htm" target="contents">2) CollGroup Area</a>
+     <LI><a href="./chapt3/seg17-3.htm" target="contents">3) Coll Area</a>
+     <LI><a href="./chapt3/seg17-4.htm" target="contents">4) CollData Area</a>
+   </UL>
+   <LI>3.18 CamList
+   <UL>
+     <LI><a href="./chapt3/seg18.htm" target="contents">1) CamList Area</a>
+     <LI><a href="./chapt3/seg18-2.htm" target="contents">2) Cam Area</a>
+   </UL>
+   <LI>3.19 LightList
+   <UL>
+     <LI><a href="./chapt3/seg19.htm" target="contents">1) LightList Area</a>
+     <LI><a href="./chapt3/seg19-2.htm" target="contents">2) Light Area</a>
+     <LI><a href="./chapt3/seg19-3.htm" target="contents">3) DirLight Area</a>
+   </UL>
+   <LI>3.20 EnvList
+   <UL>
+     <LI><a href="./chapt3/seg20.htm" target="contents">1) EnvList Area</a>
+     <LI><a href="./chapt3/seg20-2.htm" target="contents">2) Env Area</a>
+   </UL>
+   <LI>3.21 SwitchList
+   <UL>
+     <LI><a href="./chapt3/seg21.htm" target="contents">1) SwitchList Area</a>
+     <LI><a href="./chapt3/seg21-2.htm" target="contents">2) Switch Area</a>
+   </UL>
+   <LI>3.22 NameList
+   <UL>
+     <LI><a href="./chapt3/seg22.htm" target="contents">1) NameList Area</a>
+     <LI><a href="./chapt3/seg22-2.htm" target="contents">2) Name Area</a>
+   </UL>
+</UL>
+
+<P><A HREF="chapt4/Seg1.htm" TARGET="contents">4. Precautions When Converting to NIFF Data</A></P>
+
+<UL>
+   <LI><a href="./chapt4/seg1.htm#1" target="contents">4.1 About NIFF Files</a>
+   <LI><a href="./chapt4/seg1.htm#2" target="contents">4.2 About File Headers</a>
+   <LI><a href="./chapt4/seg1.htm#3" target="contents">4.3 About SceneList</a>
+   <LI><a href="./chapt4/seg1.htm#4" target="contents">4.4 About Obj</a>
+   <LI><a href="./chapt4/seg1.htm#5" target="contents">4.5 About Shape</a>
+   <LI><a href="./chapt4/seg1.htm#6" target="contents">4.6 About Vtx</a>
+   <LI><a href="./chapt4/seg1.htm#7" target="contents">4.7 About Color</a>
+   <LI><a href="./chapt4/seg1.htm#8" target="contents">4.8 About Vector</a>
+   <LI><a href="./chapt4/seg1.htm#9" target="contents">4.9 About St</a>
+   <LI><a href="./chapt4/seg1.htm#10" target="contents">4.10 About Tri</a>
+   <LI><a href="./chapt4/seg1.htm#11" target="contents">4.11 About Part</a>
+   <LI><a href="./chapt4/seg1.htm#12" target="contents">4.12 About Mat</a>
+   <LI><a href="./chapt4/seg1.htm#13" target="contents">4.13 About Tex and TexImg</a>
+   <LI><a href="./chapt4/seg1.htm#14" target="contents">4.14 About Anim</a>
+   <LI><a href="./chapt4/seg1.htm#15" target="contents">4.15 About Coll</a>
+   <LI><a href="./chapt4/seg1.htm#16" target="contents">4.16 About Cam</a>
+   <LI><a href="./chapt4/seg1.htm#17" target="contents">4.17 About Light</a>
+</UL>
+
+<P>5. Appendices</P>
+
+<UL>
+   <LI><a href="./chapt5/seg1.htm" target="contents">5.1 Flags</a>
+   <LI><a href="./chapt5/seg2.htm" target="contents">5.2 Tags</a>
+</UL>
+
+<hr>
+
+<P><font size=-1>Copyright 1997, 1998 NINTENDO Co., Ltd. <BR>
+All rights reserved.</font></P>
+
+<P><A HREF="../index_frame.htm" TARGET="_top"><IMG SRC="../../gif/index.gif" ALT="NIFF Index" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0><BR>
+Back to NIFF Index</A></P>
+
+</body>
+</html>

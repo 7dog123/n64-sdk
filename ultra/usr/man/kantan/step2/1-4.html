@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.1.4 Messages</H1>
+
+<P>Threads send and receive messages to transfer information, to ensure synchronization, or to control thread execution and processor sharing. Messages are used to transfer control of the processor to higher priority threads. To do this, a message is sent that switches the state of  the higher priority thread to the execution state, and a message is sent that switches the state of the currently running, lower-priority thread to the ready condition. Messages are also sent to and received by threads to synchronize processes.
+
+<P>There are many ways to use messages. Their use is limited only by the imagination of the game developer.
+
+
+<H2>Typical Kinds of Messages</H2>
+
+<P>The following are just examples. Other kinds of messages may also be invented and used by the game developer.</P>
+
+<UL>
+<LI><B>Messages issued from other threads:</B><BR><BR>
+
+
+<UL>
+<LI>End
+<LI>Wait
+<LI>Start
+</UL><BR>
+
+<LI><B>Messages issued for internal thread use:</B><BR>
+<BR>
+
+<UL><LI> Prevent a function dual call
+<LI> Make reservations in preparation for the next process</UL><BR>
+
+<LI><B>Messages issued from the system event:</B><BR>
+<BR>
+
+ <UL><LI>Provide information about the state of a device (Controller, Rumble Pak, and so on)
+</UL><BR>
+
+<LI><B>Messages issued from the system event to the Scheduler thread and then reissued to the thread:</B><BR>
+<BR>
+
+<UL><LI> Handle a VI retrace (the vertical synchronous interruption)
+<LI> Manage the current state of the audio DMA buffer
+<LI> Act as a timer
+<LI> Communicate the current RSP situation</UL>
+</UL>
+
+<P>Whereas a typical C program might provide these kinds of processes during an interruption, in the N64, the N64 operating system takes care of them by sending messages.
+
+
+<H2>Methods for Sending and Receiving Messages</H2>
+
+<P>Messages are used to ensure thread synchronization and communication as shown in the following illustration:
+
+<P><IMG SRC="../images/2-1-4-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=371 HEIGHT=249 BORDER=0>
+ 
+<P>Following are the methods used to send and receive messages. How you use these methods will depend on your game application design.</P>
+
+
+<B>Sending Method</B><BR><BR>
+
+<UL>
+<LI><B>Non-blocked mode</B> - If the intended receiver has space in its message queue buffer, send the message. If there is no space, return the information of "no space in the message queue buffer," and don't send the message.<BR>
+<BR>
+
+<LI><B>Blocked mode</B> - If the intended receiver is blocked, the sending thread yields 
+the CPU to another thread and enters the "queued state" while it (the sending thread) waits for the intended receiver to remove the block.<BR>
+<BR>
+A thread might block all other messages, for example, if it is waiting for a specific message (like a vertical retrace message); once it gets the specific message, the thread will remove the block and begin to receive other messages again.</UL>
+
+<P><B>Receiving Method</B><BR>
+<BR>
+<UL>
+<LI><B>Non-blocked mode</B> - If the receiving thread is not blocked, it verifies message arrival while performing its process.  If the message queue buffer doesn't have the message, the receiving thread continues to process.<BR>
+<BR>
+
+<LI><B>Blocked mode</B> - If the receiving thread is in blocked state, it yields the CPU to another process and enters the "queued state" while it waits for the specific message it needs. When the message it needs arrives, the receiving thread removes the block, takes back the CPU if it has the priority to do so, and runs the process.
+</UL>
+
+
+<H2>Notes Regarding Sending & Receiving Messages</H2>
+
+<P>Thread execution order depends on thread priority and the message sending method. Therefore you need to be careful to handle priority differences between a sending thread and a receiving thread.
+If Thread B, executing a process, sends a message to Thread A which has a higher priority than Thread B, processing moves to Thread A, and Thread B is suspended until Thread A's process finishes. However, for this to work, Thread A must be in the "queued state" waiting for the message from Thread B so that processing can instantly move to Thread A as soon as it gets the message. The following illustration shows how this works:
+
+<P><IMG SRC="../images/2-1-4-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=345 HEIGHT=267 BORDER=0><BR><BR>
+
+<P>Also, be particularly careful when a high-priority Thread A sends a message to a lower-priority Thread B to get a result that Thread A needs to continue its process. If Thread A monopolizes the process, Thread B won't be able to run anything as the following illustration shows:
+
+<P><IMG SRC="../images/2-1-4-3.gif" ALT="Illustration" ALIGN="bottom" WIDTH=361 HEIGHT=254 BORDER=0>
+
+<P>To switch from one thread to another, always have the current thread yield the CPU by entering the "queued state" to wait for a reply. Then execution can move to another thread.
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

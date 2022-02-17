@@ -1,0 +1,518 @@
+<html>
+<title>
+SceneNode
+</title>
+
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+4. Scene Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="sceneListC">(1) SceneList Data Chunk</A>
+</h3>
+
+<blockquote>
+The following data will be added to SceneList.
+<p>
+
+<table border>
+
+<tr>
+<th rowspan="11">
+SceneHeader
+</th>
+<td>
+u32
+</td>
+<td>
+scene_header_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_cfg
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_obj_link_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_env_link_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_cam_link_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_light_link_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintnedo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+<tr>
+<th rowspan="12">
+</th>
+<td>
+u32
+</td>
+<td>
+scene_obj_link_index(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_obj_link_index(scene_obj_link_num - 1)
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_env_link_index(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_env_link_index(scene_env_link_num - 1)
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_cam_link_index(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_cam_link_index(scene_cam_link_num - 1)
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_light_link_index(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+scene_light_link_index(scene_light_link_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<th rowspan="33">
+NintendoExtensionBlock
+</th>
+<td>
+u32
+</td>
+<td>
+scene_chain_root_link_num
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_num
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_env_num
+</td>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_cam_num
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_light_num
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+scene_chain_root_link_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+scene_chain_root_link_index(scene_chain_root_link_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32 
+</td>
+<td>
+external_obj_file_name_index(external_obj_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_name_index(external_obj_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_env_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_env_file_name_index(external_env_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_env_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_env_name_index(external_env_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_cam_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_cam_file_name_index(external_cam_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_cam_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_cam_name_index(external_cam_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_light_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_light_file_name_index(external_light_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_light_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_light_name_index(external_light_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+--- other extension data ---
+</center>
+</td>
+</tr>
+
+
+
+
+<tr>
+<th rowspan="1">
+</th>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+
+</table>
+
+<P><A HREF="scene_E.htm#sceneListD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+Feature
+  Offers the input from ROM by using the EPI manager.
+
+Functions
+  Initialize 'void misRomInputEpiInit( MisRomInputEpi *rom_input_ptr )
+  MisRomInput'. 
+
+  void misRomInputEpiOpen( MisRomInputEpi *rom_input_ptr,
+			   const u32 dev_addr,
+			   const u32 size )
+  Open 'MisRomInputEpi'. Specify the first device address by 'dev_address' and its size by 'size' (a 
+  number of bytes).
+  
+
+Note:
+ Follow the format below when 'cast' from 'MisRomInputEpi *' to ' MisInput *'.
+   input_ptr = _msoUpCast( MisInput, rom_input_ptr );
+
+Revision History by
+  1999/ 1/ 5 Takamitu Hirata
+    RomInputEpi.h, rominputepi.c  (the fist issue)

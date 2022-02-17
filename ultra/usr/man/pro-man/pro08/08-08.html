@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 8</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro08/index8.7.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro09/index9.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Device Dependent System Interface</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The device-dependent system interface is actually composed of two layers of function calls: a high-level abstraction layer and a low-level, raw I/O layer. In addition to providing mutual exclusion on devices that support both DMA and IO operations, the high-level layer also uses the lower layer to initiate raw I/O operation. The reason for exposing the raw I/O layer is to allow you to construct your own custom I/O software interface. Furthermore, if the user application requires no protection for accessing devices, using the low-level layer directly is the optimal way to request I/O operation.
+<P>
+In the following sections, the functions are partitioned and described under each device/interface separately. For high-level operation, each function name starts with <font face="courier" size="-1">os&#060DeviceName&#062</font> for easy identification. For low-level operation, the function name starts with <font face="courier" size="-1">os&#060DeviceName&#062Raw</font>. 
+<P>
+Please refer to the appropriate reference (man) pages for specifics about the arguments, return values, and behavior of these functions.
+<P>
+<a name="01"></a>
+<b>Signal Processor (SP) Functions</b>
+<ul>
+<li>osSpTaskStart<br>
+This function loads a task and starts it running.
+<P>
+<li>osSpTaskYield<br>
+This function asks a task running on the SP to yield.
+<p>
+<li>osSpTaskYielded<br>
+This function checks to see if a recently completed task has yielded.</ul>
+
+<P>
+<a name="02"></a>
+<b>Display Processor (DP) Functions</b>
+<ul>
+<li>osDpGetStatus<br>
+This function returns the value of the DP status register. The include file rcp.h contains bit patterns that can be used to interpret the device status.
+<P>
+<li>osDpSetStatus<br>
+This function allows you to set various features in the DP command register. Refer to the include file rcp.h for bit patterns and their usage.
+<P>
+<li>osDpSetNextBuffer<br>
+This function sets up the proper registers to initiate a DMA transfer from RDRAM address to the DP command buffer.
+</ul>
+
+<P>
+<a name="03"></a>
+<b>Video Interface (VI) Functions</b>
+<ul>
+<li>osCreateViManager<br>
+This function creates and starts the VI manager (VIM) system thread.
+<P>
+<li>osViGetStatus<br>
+This function returns the value of the video interface status register. The include file rcp.h contains bit patterns that can be used to interpret the device status.
+<P>
+<li>osViGetCurrentLine<br>
+This function returns the current half line.
+<P>
+<li>osViGetCurrentMode<br>
+This function returns the current VI mode type.
+<P>
+<li>osViGetCurrentFramebuffer<br>
+This function returns the currently displaying frame buffer.
+<P>
+<li>osViGetNextFramebuffer<br>
+This function returns the next frame buffer to be displayed.
+<P>
+<li>osViGetCurrentField<br>
+This function returns the current field (either 0 or 1) being access by VI manager.
+<P>
+<li>osViSetMode<br>
+This function sets the VI mode to one of the possible 28 modes. The new mode takes effect at the next vertical retrace interrupt.
+<P>
+<li>osViSetEvent<br>
+This function registers a message queue with the VI manager to receive the notification of a vertical retrace interrupt.
+<P>
+<li>osViSet[X/Y]Scale<br>
+These two functions allow you to change the horizontal scale-up factor (x-scale) and vertical scale-up factor (y-scale), respectively.
+<P>
+<li>osViSetSpecialFeatures<br>
+This function enables/disables various special mode bits in the control register.
+<P>
+<li>osViSwapBuffer<br>
+This function registers the frame buffer with the VI manager to be displayed at the next vertical retrace interrupt.</ul>
+
+<P>
+<a name="04"></a>
+<b>Audio Interface (AI) Functions</b>
+<ul>
+<li>osAiGetStatus<br>
+This function simply returns the value of the audio interface status register. The include file rcp.h contains bit patterns that can be used to interpret the device status.
+<P>
+<li>osAiGetLength<br>
+This function simply returns the number of bytes remained in the audio interface DMA length register.
+<P>
+<li>osAiSetFrequency<br>
+This function configures the audio interface to support the requested frequency (in Hz). It calculates necessary values to program internal divisors and returns the closest frequency that the divisors can generate.
+<P>
+<li>osAiSetNextBuffer<br>
+This function programs the next DMA transfer based on the input length and starting buffer address.</ul>
+
+<P>
+<a name="05"></a>
+<b>Peripheral Interface (PI) Functions</b>
+<ul>
+<li>osCreatePiManager<br>
+This function creates and starts the PI manager (PIM) system thread.
+<P>
+<li>osPiGetStatus<br>
+This function simply returns the value of the hardware status register. The include file rcp.h contains bit patterns that can be used to interpret the peripheral status (that is, DMA busy and IO busy).
+<P>
+<li>osPiRawStartDma<br>
+This low-level function sets up the proper registers to initiate a DMA transfer between ROM and RDRAM.
+<P>
+<li>osPiRaw[Read/Write]Io<br>
+These two low-level functions perform an IO (32-bit) read/write from/to ROM address space, respectively.
+<P>
+<li>osPi[Read/Write]Io<br>
+These two functions perform IO (32-bit) read/write from/to ROM address space, respectively. Since they provide mutual exclusion for accessing the PI device, these routines are both blocked I/O calls.
+<P>
+<li>osPiStartDma<br>
+This function generates an asynchronous I/O request to the PI manager to initiate a DMA transfer between RDRAM and ROM address space. Upon I/O completion, PI manager notifies the requestor by returning the I/O request message to the message queue specified by the requestor.</ul>
+
+<P>
+<a name="06"></a>
+<b>Controller Functions</b>
+<ul>
+<li>osContInit<br>
+This function initializes all the game controllers and returns a bit pattern to indicate which game controllers are connected.
+<P>
+<li>osContReset<br>
+This function resets all game controllers and returns their joysticks to neutral position.
+<P>
+<li>osContStartQuery<br>
+This function issues a query command to all game controllers to obtain their status and type.
+<P>
+<li>osContGetQuery<br>
+This function returns the game controllers’ status and type.
+<P>
+<li>osContStartReadData<br>
+This function issues a read data command to all game controllers to obtain their input settings.
+<P>
+<li>osContGetReadData<br>
+This function returns the game controllers’ joystick data and button settings.</ul>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

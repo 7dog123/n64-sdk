@@ -1,0 +1,646 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 28</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro28/index28.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro29/index.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Using n_audio</font></b>
+
+<font face="arial" size="-1">
+<P>
+<a name="01"></a>
+<b>Changed Functions from the Former Audio Library</b>
+<br>
+The following changes have been made to the the former audio library, for n_audio. Please refer to the <a target="new" href="../../n64man/al/al.html"><i>N64 Function Reference Manual</i></a> (man pages), for a complete description of the n_audio functions.
+<P>
+<b>Note:</b> The n_audio library is a separate product from the N64 development environment (ultra.dev). Please be sure to install n_audio prior to using the OS.
+<P>
+<b>Table 1</b> &nbsp;n_audio Functions Renamed from the Previous Audio Library
+<br>
+<table border=1 cellspacing="2" cellpadding="2" width=80%>
+<tr>
+<th><font face="arial" size="-1">Audio Library Functions</th>
+<th><font face="arial" size="-1">n_audio Library Functions</th></tr>
+<tr>
+<td><font face="arial" size="-1">alInit()</td>
+<td><font face="arial" size="-1">n_alInit()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alClose()</td>
+<td><font face="arial" size="-1">n_alClose()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alAudioFrame()</td>
+<td><font face="arial" size="-1">n_alAudioFrame()</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqNextEvent()</td>
+<td><font face="arial" size="-1">n_alSeqNextEvent()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqNewMarker()</td>
+<td><font face="arial" size="-1">n_alSeqNewMarker()</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSeqNew()</td>
+<td><font face="arial" size="-1">n_alCSeqNew()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSeqNextEvent()</td>
+<td><font face="arial" size="-1">n_alCSeqNextEvent()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSeqNewMarker()</td>
+<td><font face="arial" size="-1">n_alCSeqNewMarker()</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpNew()</td>
+<td><font face="arial" size="-1">n_alSeqpNew()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpPlay()</td>
+<td><font face="arial" size="-1">n_alSeqpPlay()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpStop()</td>
+<td><font face="arial" size="-1">n_alSeqpStop()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpDelete()</td>
+<td><font face="arial" size="-1">n_alSeqpDelete()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpLoop()</td>
+<td><font face="arial" size="-1">n_alSeqpLoop()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSendMidi()</td>
+<td><font face="arial" size="-1">n_alSeqpSendMidi()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetSeq()</td>
+<td><font face="arial" size="-1">n_alSeqpGetSeq()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetTempo()</td>
+<td><font face="arial" size="-1">n_alSeqpGetTempo()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetVol()</td>
+<td><font face="arial" size="-1">n_alSeqpGetVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetState()</td>
+<td><font face="arial" size="-1">n_alSeqpGetState()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetSeq()</td>
+<td><font face="arial" size="-1">n_alSeqpSetSeq()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetTempo()</td>
+<td><font face="arial" size="-1">n_alSeqpSetTempo()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetVol()</td>
+<td><font face="arial" size="-1">n_alSeqpSetVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetBank()</td>
+<td><font face="arial" size="-1">n_alSeqpSetBank()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetChlVol()</td>
+<td><font face="arial" size="-1">n_alSeqpGetChlVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetChlFXMix()</td>
+<td><font face="arial" size="-1">n_alSeqpGetChlFXMix()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetChlPan()</td>
+<td><font face="arial" size="-1">n_alSeqpGetChlPan()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetChlPriority()</td>
+<td><font face="arial" size="-1">n_alSeqpGetChlPriority()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpGetChlProgram()</td>
+<td><font face="arial" size="-1">n_alSeqpGetChlProgram()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetChlVol()</td>
+<td><font face="arial" size="-1">n_alSeqpSetChlVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetChlFXMix()</td>
+<td><font face="arial" size="-1">n_alSeqpSetChlFXMix()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetChlPan()</td>
+<td><font face="arial" size="-1">n_alSeqpSetChlPan()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetChlPriority()</td>
+<td><font face="arial" size="-1">n_alSeqpSetChlPriority()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alSeqpSetChlProgram()</td>
+<td><font face="arial" size="-1">n_alSeqpSetChlProgram()</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPNew()</td>
+<td><font face="arial" size="-1">n_alCSPNew()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPPlay()</td>
+<td><font face="arial" size="-1">n_alCSPPlay()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPStop()</td>
+<td><font face="arial" size="-1">n_alCSPStop()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPDelete()</td>
+<td><font face="arial" size="-1">n_alCSPDelete()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSendMidi()</td>
+<td><font face="arial" size="-1">n_alCSPSendMidi()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetSeq()</td>
+<td><font face="arial" size="-1">n_alCSPGetSeq()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetTempo()</td>
+<td><font face="arial" size="-1">n_alCSPGetTempo()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetVol()</td>
+<td><font face="arial" size="-1">n_alCSPGetVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetState()</td>
+<td><font face="arial" size="-1">n_alCSPGetState()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetSeq()</td>
+<td><font face="arial" size="-1">n_alCSPSetSeq()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetTempo()</td>
+<td><font face="arial" size="-1">n_alCSPSetTempo()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetVol()</td>
+<td><font face="arial" size="-1">n_alCSPSetVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetBank()</td>
+<td><font face="arial" size="-1">n_alCSPSetBank()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetChlVol()</td>
+<td><font face="arial" size="-1">n_alCSPGetChlVol()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetChlFXMix()</td>
+<td><font face="arial" size="-1">n_alCSPGetChlFXMix()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetChlPan()</td>
+<td><font face="arial" size="-1">n_alCSPGetChlPan()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetChlPriority()</td>
+<td><font face="arial" size="-1">n_alCSPGetChlPriority()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPGetChlProgram()</td>
+<td><font face="arial" size="-1">n_alCSPGetChlProgram()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetChlVol()</td>
+<td><font face="arial" size="-1">n_alCSPSetChlVol()</td></tr>  <tr>
+<td><font face="arial" size="-1">alCSPSetChlFXMix()</td>
+<td><font face="arial" size="-1">n_alCSPSetChlFXMix()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetChlPan()</td>
+<td><font face="arial" size="-1">n_alCSPSetChlPan()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetChlPriority()</td>
+<td><font face="arial" size="-1">n_alCSPSetChlPriority()</td></tr>
+<tr>
+<td><font face="arial" size="-1">alCSPSetChlProgram()</td>
+<td><font face="arial" size="-1">n_alCSPSetChlProgram()</td></tr>
+</table>
+
+<P>
+In the table above, only the function names have changed . Function arguments and specifications remain the same as in the old audio library.
+<P>
+With regard to the functions listed below, (Table 2) both the function name and its argument have <u>changed</u>.
+
+
+
+
+<P>
+<b>Table 2</b> &nbsp;Functions With Name and Argument Changes
+<br>
+<table border=1 cellspacing="2" cellpadding="2" width=80%>
+<tr>
+<th><font face="arial" size="-1">Audio Library Functions</th>
+<th><font face="arial" size="-1">n_audio Library Functions</th></tr>
+<tr valign="top">
+<td><font face="arial" size="-1">alSynNew(ALSynth *, ALSynConfig *)</td>
+<td><font face="arial" size="-1">n_alSynNew(ALSynConfig *)</td></tr>
+
+<tr>
+<td><font face="arial" size="-1">alSynDelete(ALSynth *)</td>
+<td><font face="arial" size="-1">n_alSynDelete()</td>
+</tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynAddPlayer(ALSynth *, ALPlayer *)</td>
+<td><font face="arial" size="-1">n_alSynAddPlayer(ALPlayer *)</td>
+</tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynRemovePlayer(ALSynth *, ALPlayer *)</td>
+<td><font face="arial" size="-1">n_alSynRemovePlayer(ALPlayer *)</td>
+</tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynAllocVoice(ALSynth *, ALVoice *, ALVoiceConfig *)</td>
+<td><font face="arial" size="-1">n_alSynAllocVoice(N_ALVoice *, ALVoiceConfig *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynFreeVoice(ALSynth *, ALVoice *)</td>
+<td><font face="arial" size="-1">n_alSynFreeVoice(N_ALVoice *)</td>
+</tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynAllocFX(ALSynth *, s16, ALSynConfig *, ALHeap *)</td>
+<td><font face="arial" size="-1">n_alSynAllocFX(s16, ALSynConfig *, ALHeap *)</td>
+</tr>
+
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynFreeFX(ALSynth *, ALFxRef *)</td>
+<td><font face="arial" size="-1">n_alSynFreeFX(ALFxRef *)</td>
+</tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynSetVol(ALSynth *, ALVoice *, s16, ALMicroTime)</td>
+<td><font face="arial" size="-1">n_alSynSetVol(N_ALVoice *, s16, ALMicroTime)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynSetPan(ALSynth *, ALVoice *, ALPan)</td>
+<td><font face="arial" size="-1">n_alSynSetPan(N_ALVoice *, u8)</td>
+</tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynSetPitch(ALSynth *, ALVoice *, f32)</td>
+<td><font face="arial" size="-1">n_alSynSetPitch(N_ALVoice *, f32)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynSetPriority(N_ALVoice *, s16)</td>
+<td><font face="arial" size="-1">n_alSynSetPriority(N_ALVoice *, s16)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynSetFXMix(ALSynth *, ALVoice *, u8)</td>
+<td><font face="arial" size="-1">n_alSynSetFXMix(N_ALVoice *, u8)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynSetFXParam(ALSynth *, ALFxRef, s16, void *)</td>
+<td><font face="arial" size="-1">n_alSynSetFXParam(ALFxRef, s16, void *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynGetPriority(ALSynth *, ALVoice *)</td>
+<td><font face="arial" size="-1">n_alSynGetPriority(N_ALVoice *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynGetFXRef(ALSynth *, s16, s16)</td>
+<td><font face="arial" size="-1">n_alSynGetFXRef(s16, s16)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynStartVoice(ALSynth *, ALVoice *, ALWaveTable *)</td>
+<td><font face="arial" size="-1">n_alSynStartVoice(N_ALVoice *, ALWaveTable *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynStartVoiceParams(ALSynth *, ALVoice *, ALWaveTable *, f32, s16, ALPan, u8, ALMicroTime)
+</td>
+<td><font face="arial" size="-1">n_alSynStartVoiceParams(N_ALVoice *, ALWaveTable *, f32, s16, ALPan, u8, ALMicroTime)
+</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSynStopVoice(ALSynth *, ALVoice *)</td>
+<td><font face="arial" size="-1">n_alSynStopVoice(N_ALVoice *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpNew(ALSndPlayer *, ALSndpConfig *)</td>
+<td><font face="arial" size="-1">n_alSndpNew(N_ALSndPlayer *, ALSndpConfig *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpDelete(ALSndPlayer *)</td>
+<td><font face="arial" size="-1">n_alSndpDelete()</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpAllocate(ALSndPlayer *, ALSound *)</td>
+<td><font face="arial" size="-1">n_alSndpAllocate(ALSound *)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpDeallocate(ALSndPlayer *, ALSndId)</td>
+<td><font face="arial" size="-1">n_alSndpDeallocate(ALSndId)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpGetState(ALSndPlayer *)</td>
+<td><font face="arial" size="-1">n_alSndpGetState()</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpPlay(ALSndPlayer *)</td>
+<td><font face="arial" size="-1">n_alSndpPlay()</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpPlayAt(ALSndPlayer *, ALMicroTime)</td>
+<td><font face="arial" size="-1">n_alSndpPlayAt(ALMicroTime)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpStop(ALSndPlayer *)</td>
+<td><font face="arial" size="-1">n_alSndpStop()</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpSetVol(ALSndPlayer *, s16)</td>
+<td><font face="arial" size="-1">n_alSndpSetVol(s16)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpSetPan(ALSndPlayer *, ALPan)</td>
+<td><font face="arial" size="-1">n_alSndpSetPan(ALPan)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpSetPitch(ALSndPlayer *, f32)</td>
+<td><font face="arial" size="-1">n_alSndpSetPitch(f32)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpSetPriority(ALSndPlayer *, ALSndId, u8)</td>
+<td><font face="arial" size="-1">n_alSndpSetPriority(ALSndId, u8)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpSetFXMix(ALSndPlayer *, u8)</td>
+<td><font face="arial" size="-1">n_alSndpSetFXMix(u8)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpSetSound(ALSndPlayer *, ALSndId)</td>
+<td><font face="arial" size="-1">n_alSndpSetSound(ALSndId)</td></tr>
+
+<tr valign="top">
+<td><font face="arial" size="-1">alSndpGetSound(ALSndPlayer *)</td>
+<td><font face="arial" size="-1">n_alSndpGetSound()</td></tr>
+</table>
+
+<P>
+
+
+<P>
+<b>Table 3</b> &nbsp;Additional Functions
+<br>
+<table border=1 cellspacing="2" cellpadding="2" width=80%>
+<tr>
+<th><font face="arial" size="-1">Function Name</th>
+<th><font face="arial" size="-1">Function</th>
+<tr valign="top">
+<td><font face="arial" size="-1">n_alSynAddSeqPlayer(ALPlayer *)</td>
+<td><font face="arial" size="-1">Allocate sequence player in synthesis driver</td>
+<tr valign="top">
+<td><font face="arial" size="-1">n_alSynAddSndPlayer(ALPlayer *)</td><td><font face="arial" size="-1">Allocate sound player</td></tr></table>
+
+<P>
+The above functions are differentiated by the type of player that is allocated. Functionally, they are the same as alSynAddPlayer(), and n_alSynAddPlayer(). Please see the explanation for <a target="new" href="../../n64man/al/alSynAddPlayer.html">alSynAddPlayer</a> for details.
+
+<P>
+Structures in which the names have changed are shown in the following table.
+
+<P>
+<b>Table 4</b> &nbsp;Structures Which Have Been Renamed
+<br>
+<table border=1 cellspacing="2" cellpadding="2" width=80%>
+<tr>
+<th><font face="arial" size="-1">Audio Library Functions</th>
+<th><font face="arial" size="-1">n_audio Library Functions</th>
+<tr>
+<td><font face="arial" size="-1">ALVoice</td>
+<td><font face="arial" size="-1">N_ALVoice</td></tr>
+<tr>
+<td><font face="arial" size="-1">ALSynth</td>
+<td><font face="arial" size="-1">N_ALSynth</td></tr>
+<tr>
+<td><font face="arial" size="-1">ALGlobals</td>
+<td><font face="arial" size="-1">N_ALGlobals</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td><font face="arial" size="-1">ALVoiceState</td>
+<td><font face="arial" size="-1">N_ALVoiceState</td></tr>
+<tr>
+<td><font face="arial" size="-1">ALSeqPlayer</td>
+<td><font face="arial" size="-1">N_ALSeqPlayer</td></tr>
+<tr>
+<td><font face="arial" size="-1">ALCSPlayer</td>
+<td><font face="arial" size="-1">N_ALCSPlayer</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td><font face="arial" size="-1">ALSoundState</td>
+<td><font face="arial" size="-1">N_ALSoundState</td></tr>
+<tr>
+<td><font face="arial" size="-1">ALSndPlayer</td>
+<td><font face="arial" size="-1">N_ALSndPlayer</td></tr>
+<tr>
+<td><font face="arial" size="-1">ALSndpEvent</td>
+<td><font face="arial" size="-1">N_ALSndpEvent</td></tr>
+</table>
+
+<P>
+Usually the program does not handle structure members directly. Therefore, it is necessary for the programmer to be aware of the above changes in defining the variable. When handling these structure members directly, refer to the header file in the n_audio library, n_libaudio.h. 
+
+<P>
+<a name="02"></a>
+<b>Creating the Application</b>
+<br>
+When using the n_audio library, please include the following header files when recompiling applications that were originally created using the former audio library.  
+
+<p>
+<table border=0 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">n_libaudio.h </td>
+<td width=60%><font face="arial" size="-1">The header file for the n_audio library</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">n_libaudio_s_to_n.h</td>
+<td width=60%><font face="arial" size="-1">A macro group for converting the former audio library function to the n_audio library function</td></tr></table>
+
+<P>
+The header files above are usually installed in the &quot;/usr/include/PR&quot; directory.
+
+<P>
+Also, link in the following libraries:
+<p>
+<table border=0 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">libn_audio.a </td>
+<td width=60%><font face="arial" size="-1">The n_audio library</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">n_aspMain.o </td>
+<td width=60%><font face="arial" size="-1">The microcode for the n_audio library</td></tr></table>
+   
+<P>         
+The "libn_audio.a" library will be installed in the &quot;/usr/lib,&quot; directory, and the microcode, &quot;n_aspMain.o&quot; will be installed in the &quot;/usr/lib/PR&quot; directory.
+
+<P>
+Please refer to "Makefile" in the "playseq.naudio" sample program for the directory specification of the header file library, and the method of linking the library.
+
+<P>
+<b>Note:</b> If you regularly use the n_audio library, please rewrite the (former) audio library function to the n_audio library function directly; do not use the header file "n_libaudio_s_to_n.h."
+
+<P>
+<a name="03"></a>
+<b>n-audio Sample Program</b>
+<br>
+The n_audio library sample program "playseq.naudio" is similar to the sample program (playseq.c) used with the former audio library. The changes and additions needed to create the n_audio sample program are detailed below in <font color="blue">"blue"</font> type. The n-audio sample sets the number of audio data samples for a game to a multiple of 184. Making the following changes to "playseq.c," (included on the N64 Operating System CD) will result in sample code that is compatible with the n_audio library.
+
+<P>
+<pre><font face="courier" size="3" color="blue">#include "n_libaudio.h" 
+/* Include this header file for n_audio.  
+You must include it first before including "n_libaudio_s_to_n.h."
+
+#include "n_libaudio_s_to_n.h" /* Include this header file for n_audio.
+
+This file contains a series of macros for converting the former 
+audio library functions to library functions compatible 
+with n-audio.  
+If you regularly use the n_audio library, please rewrite 
+each audio library function to the n_audio library function; 
+don’t include this file.
+
+#define SAMPLES   184 */ Set the sound processing unit to 184 samples.
+#define EXTRA_SAMPLES            0  
+*/ If sound skipping is obvious, set this value 
+appropriately to adjust for the number surplus 
+audio samples.   
+</pre></font>
+
+<pre><font face="courier" size="3">
+static
+void gameproc(u8 *argv)
+{
+       .
+       .
+       .
+   s16
+           *audioOp;
+   u8
+</pre></font>
+
+<pre><font face="courier" size="3" color="blue">min_only_one = 1,  /* When replay frequency is 32 KHz, 1 frame in 
+                      every 10 is needed to adjust for the excess 
+                      audio samples.
+</pre></font>
+
+<pre><font face="courier" size="3"color="#000000">*ptr,
+       *seqPtr,
+		*midiBankPtr;
+	OSMesgQueue
+		seqMessageQ;
+			·
+			·
+			·
+	/*
+	/* Initialize DAC output rate
+	*/
+	c.outputRate = osAiSetFrequency(OUTPUT_RATE);
+	fsize = (f32) NUM_FIELDS * c.outputRate / (f32) 60;
+frameSize = (s32) fsize; /* Get the required number of audio samples
+                            per frame */
+if (frameSize &#060 fsize)
+		frameSize++; 
+</pre></font>
+
+<pre><font face="courier" size="3" color="blue">frameSize = ((frameSize / SAMPLES) +1) *SAMPLES;   
+/* Recalculate the required number of samples per frame, 
+which was just found above,to be a multiple of 184. 
+*/ minFrameSize = frameSize - SAMPLES;   /* frameSize is a multiple of
+184 and results in more than the actual required number of samples per frame. 
+Therefore excess sample data is generated for each frame. 
+Set minFrameSize to adjust this number of excess samples.
+</pre></font>
+
+<pre><font face="courier" size="3" color="#000000"> /*
+ * Audio synthesizer initialization
+ */
+c.maxVVoices = MAX_Voices;
+c.maxPVoices = MAX_VOICES;
+			·
+			·
+			·
+/*
+* Note that this must be a do-while in order for seqp’s state
+	* to get updated during the alAudioFrame processing.
+	*/
+	do {
+		frame++;
+		/*
+		 * Where the task list goes in DRAM
+		 */
+		tlistp = tlist[curBuf];
+		cmdlp = cmdList[curBuf];
+		/*
+		 * Where the audio goes in DRAM
+		 */
+		buf = curAudioBuf% 3;
+		audioOp = (s16 *) osVirtualToPhysical(audioBuffer[buf]);
+</pre></font>
+
+<pre><font face="courier" size="3" color="blue">if((sanpleLeft > (SAMPLES + EXTRA_SAMPLES)) && min_only_one)
+            /* If the number of excess samples at the time of retrace is more than 184, you make this frame the "adjustment frame" to adjust
+for the excess. In the adjustment frame, the number of samples
+equal to minFrameSize is generated. Use min_only_one to ensure
+that the adjustment frame is done only once. When sound
+break-up is severe, the number of excess samples may be zero.
+If that is the case, set EXTRA_SAMPLES to an appropriate value
+to adjust the excess sample data. Audio replay cannot be done
+properly if the value of EXTRA_SAMPLES is too large. The 
+appropriate value depends on the application. */
+{
+ audioSamples[buf] = minFrameSize;
+ min_only_one = 0;
+}
+else if(samplesLeft > (SAMPLES + EXTRA_SAMPLES))
+            /* Normal frames are processed here. In the case of this sample program, it is possible for the frame to appear consecutively
+putting in a normal frame under the conditions stated above. In
+that case, the value of samplesLeft becomes zero and the sound
+breaks up. By adding this conditional decision, this sample
+program prevents sound from breaking up. */
+{
+ audioSamples[buf] = frameSize;
+ min_only_one = 1;
+}
+</pre></font>
+
+<pre><font face="courier" size="3" color="#000000">/*
+ * Call the frame handler
+ */
+cmdlp=alAudioFrame(cmdlp,&clcount,audioOp,
+				audioSamples[buf];
+/*
+ * Build the audio task
+ */
+tlistp->t.type = M_AUDTASK;
+tlistp->t.flags = 0x0;
+tlistp->t.ucode_boot = (u64 *) rspbootTextStart;
+tlistp->t.ucode_boot_size = ((s32)rspbootTextEnd -
+				(s32)rspbootTextStart);
+</pre></font>
+
+<pre><font face="courier" size="3" color="blue">	tlistp->t.ucode = (u64 *) n_aspMainTextStart;
+	tlistp->t.ucode_data = (u64 *) n_aspMainDataStart;   /* 
+To use the N_Audio microcode, these two lines must be rewritten to n_aspMain.
+</pre></font>
+
+<pre><font face="courier" size="3" color="#000000">tlistp->t.ucode_size = 4096;
+tlistp->t.ucode_data_size = SP_UCODE_DATA_SIZE;
+	tlistp->t.data_ptr = (u64 *) cmdList[curBuf];
+	tlistp->t.data_size = (cmdlp - cmdList[curBuf])
+					* sizeof(Acmd);
+		·
+		·
+		·
+	} while (seqp->state+= AL_STOPPED);
+		·
+		·
+		·
+}
+</pre></font>
+
+<P>
+<font face="arial" size="-1">
+      
+
+
+
+<br>
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated December, 1998</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

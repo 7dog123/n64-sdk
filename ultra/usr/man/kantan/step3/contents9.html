@@ -1,0 +1,201 @@
+<HTML>
+<HEAD>
+<BASE TARGET="_top">
+<TITLE>N64 Programming Manual</title>
+<LINK HREF="../kantan.css" REL="STYLESHEET" TYPE="text/css">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var imgArray = new Array ()
+    imgArray[0] = new Image (29,10)
+    imgArray[1] = new Image (29,10)
+
+imgArray[0].src = "../images/triangle.gif"
+imgArray[1].src = "../images/trianglered.gif"
+
+var activeImg = "13"
+
+function changeArrow (i) {
+     document.images[activeImg].src = imgArray[0].src
+     document.images[i].src = imgArray[1].src
+     activeImg = i
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- N64 Logo and Manual Title -->
+
+<P CLASS=title><A HREF="../index.html"><IMG SRC="../images/n64_logo2.gif" ALIGN="bottom" BORDER=0 ALT="Home"></A>
+Introductory Manual</P>
+
+
+
+<!-- Begin Table of Contents -->
+
+
+<!-- Begin Chapter One -->
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16 BORDER=0> 1. <A HREF="../step1/index.html">N64 Architecture Overview</A></P>
+
+
+
+<!-- Begin Chapter Two -->
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" BORDER=0> 2. <A HREF="../step2/index.html">Intro to N64 Programming</A></P>
+
+
+
+<!-- Begin Chapter Three -->
+
+
+<P CLASS=tofc1><IMG SRC="../images/bookopen.gif" ALIGN="bottom" BORDER=0> 3. <A HREF="../step3/index.html">N64 3D Graphics</A></P>
+
+
+<!-- Begin Section One -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.1 <A HREF="index1.html">Basic 3D Concepts</A></P>
+
+
+<!-- Begin Section Two -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.2 <A HREF="index2.html">3D Drawing Specifications</A></P>
+
+
+<!-- Begin Section Three -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.3 <A HREF="index3.html">3D Co-ordinate Systems</A></P>
+
+
+<!-- Begin Section Four -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.4 <A HREF="index4.html">Vectors and Matrices</A></P>
+
+
+<!-- Begin Section Five -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.5 <A HREF="index5.html">Matrix Calculations</A></P>
+
+
+<!-- Begin Section Six -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.6 <A HREF="index6.html">Geomtric Transformations</A></P>
+
+
+<!-- Begin Section 7 -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.7 <A HREF="index7.html">Lighting and Colors</A></P>
+
+
+<!-- Begin Section 8 -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.8 <A HREF="index8.html">Texture Mapping</A></P>
+
+
+<!-- Begin Section 9 -->
+
+
+<P CLASS=tofc2><IMG SRC="../images/bookopen.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> 3.9 <A HREF="index9.html">N64 Graphics Functions</A></P>
+
+<!-- Begin Subsections -->
+
+<P CLASS=tofc3><IMG SRC="../images/trianglered.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.1 <A HREF="9-1.html" TARGET="main" onClick=changeArrow(13)>Display List Control</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.2 <A HREF="9-2.html" TARGET="main" onClick=changeArrow(14)>Drawing Primitives</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.3 <A HREF="9-3.html" TARGET="main" onClick=changeArrow(15)>Perspective Transformation, Clipping and Scissoring</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.4 <A HREF="9-4.html" TARGET="main" onClick=changeArrow(16)>Culling</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.5 <A HREF="9-5.html" TARGET="main" onClick=changeArrow(17)>Lighting</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.6 <A HREF="9-6.html" TARGET="main" onClick=changeArrow(18)>Specular Highlight</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.7 <A HREF="9-7.html" TARGET="main" onClick=changeArrow(19)>Reflection Mapping</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.8 <A HREF="9-8.html" TARGET="main" onClick=changeArrow(20)>Matrix Operations</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.9 <A HREF="9-9.html" TARGET="main" onClick=changeArrow(21)>RDP Setting</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.10 <A HREF="9-10.html" TARGET="main" onClick=changeArrow(22)>Textures</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.11 <A HREF="9-11.html" TARGET="main" onClick=changeArrow(23)>Using the Color Combiner</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.12 <A HREF="9-12.html" TARGET="main" onClick=changeArrow(24)>Using the Chroma Key</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.13 <A HREF="9-13.html" TARGET="main" onClick=changeArrow(25)>Using the Blender</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.14 <A HREF="9-14.html" TARGET="main" onClick=changeArrow(26)>Using Fog</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.15 <A HREF="9-15.html" TARGET="main" onClick=changeArrow(27)>Mathematical Calculation Utilities</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.16 <A HREF="9-16.html" TARGET="main" onClick=changeArrow(28)>N64 Operating System Initilization</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.17 <A HREF="9-17.html" TARGET="main" onClick=changeArrow(29)>Threads</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.18 <A HREF="9-18.html" TARGET="main" onClick=changeArrow(30)>Messages</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.19 <A HREF="9-19.html" TARGET="main" onClick=changeArrow(31)>Scheduler</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.20 <A HREF="9-20.html" TARGET="main" onClick=changeArrow(32)>Tasks</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.21 <A HREF="9-21.html" TARGET="main" onClick=changeArrow(33)>Display Processor</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.22 <A HREF="9-22.html" TARGET="main" onClick=changeArrow(34)>Controller</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.23 <A HREF="9-23.html" TARGET="main" onClick=changeArrow(35)>Controller Pak</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.24 <A HREF="9-24.html" TARGET="main" onClick=changeArrow(36)>EEPROM</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.25 <A HREF="9-25.html" TARGET="main" onClick=changeArrow(37)>AI (Audio Interface)</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.26 <A HREF="9-26.html" TARGET="main" onClick=changeArrow(38)>PI (Parallel Interface)</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.27 <A HREF="9-27.html" TARGET="main" onClick=changeArrow(39)>VI (Video Interface)</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.28 <A HREF="9-28.html" TARGET="main" onClick=changeArrow(40)>Timer</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.29 <A HREF="9-29.html" TARGET="main" onClick=changeArrow(41)>Administration of Virtual and Physical Addresses</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.30 <A HREF="9-30.html" TARGET="main" onClick=changeArrow(42)>Cache Management</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.31 <A HREF="9-31.html" TARGET="main" onClick=changeArrow(43)>Memory Region Library</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.32 <A HREF="9-32.html" TARGET="main" onClick=changeArrow(44)>Emulator Board and Host Communications</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.33 <A HREF="9-33.html" TARGET="main" onClick=changeArrow(45)>Debugging</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.34 <A HREF="9-34.html" TARGET="main" onClick=changeArrow(46)>Logging</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.35 <A HREF="9-35.html" TARGET="main" onClick=changeArrow(47)>Profiler</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.36 <A HREF="9-36.html" TARGET="main" onClick=changeArrow(48)>OS Global Variables</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.37 <A HREF="9-37.html" TARGET="main" onClick=changeArrow(49)>Manage CPU Registers and Error Handler</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10> 3.9.38 <A HREF="9-38.html" TARGET="main" onClick=changeArrow(50)>Sprite Library</A></P>
+
+
+
+<!-- Begin Chapter Four -->
+
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" BORDER=0> 4. <A HREF="../step4/index.html">What is 64DD?</A></P>
+
+
+
+<!-- Begin Appendices -->
+
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16> <A HREF="../appendices/index.html">Appendices</A></P>
+
+
+
+</BODY>
+</HTML>
+
+
+

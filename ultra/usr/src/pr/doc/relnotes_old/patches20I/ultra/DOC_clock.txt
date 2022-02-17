@@ -1,0 +1,20 @@
+
+     Regarding deletion of the Clock Rate Change function
+
+
+1. What is the Clock Rate Change function?
+
+   The Clock Rate Change function is a function for use with the old 
+version of the emulator board.  Since the old version of the emulator board has a different clock rate than the current version, it used to be necessary to specify the -C option when executing makerom, raise the flag at the header part of ROM, and change the clock rate with osInitialize.  
+
+
+2. The Current Situation
+
+   Since nearly all game developers now use development equipment with the same clock as commercial game machines, this function is no longer unnecessary.  
+
+   Moreover, use of this function can cause problems on games created for the 64DD.  The reason is because the flag for checking the clock rate change does not exist in the ROM space of disk games, and there is thus a danger of setting the wrong clock rate.  
+
+
+3. The Present Modification
+
+   With the present modification, the Clock Rate Change function has been deleted, so there is no longer any possibility of setting the wrong clock rate.  

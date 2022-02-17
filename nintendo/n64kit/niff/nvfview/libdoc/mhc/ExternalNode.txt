@@ -1,0 +1,10 @@
+Function 
+(  Externally referenced node is used to utilize node inside another module. 
+
+Macros 
+(  _mhcExternalNodeInit(external_node_ptr)
+  Initializes externally referenced node.  
+
+History 
+  1998/10/ 7 Takamitsu Hirata 
+    ExternalNode.h:  Initial version 

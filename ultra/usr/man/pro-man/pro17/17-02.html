@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 17</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro17/index17.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro17/index17.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Sampled Sound Playback</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"</a>
+<b>Representing Sound</b>
+<br>
+The Audio Library supports playback of both uncompressed and ADPCM compressed, 16-bit audio. An audio waveform is represented with the Sound object via the <font face="courier" size="-1">ALSound</font> structure. The <font face="courier" size="-1">ALSound</font> structure contains entries for the Envelope, Pan, and Volume, along with a pointer to the <font face="courier" size="-1">ALWaveTable</font> structure (which contains the audio). 
+
+<P>
+Collections of sounds can be stored in an <font face="courier" size="-1">ALBankFile structure</font>. The format of this structure is described in <a target="_top" href="../pro19/index19.1.html">Section 19, “Audio File Formats”</a>. The tools available to create Bank Files for inclusion in the ROM are described in <a target="_top" href="../pro18/index18.1.html">Section 18, “Audio Tools."</a>
+
+<P>
+<b>Note:</b> Currently, the only supported sample formats are single-channel, ADPCM compressed and 16-bit uncompressed.
+
+<P>
+<a name="02"></a>
+<b>Playing Sound</b>
+<br>
+The Sound Player is the mechanism by which the Audio Library plays back individual sounds, such as isolated sound effects. It is responsible for allocating the resources needed to play a sound and for controlling the performance of the sound data for the application.
+There are certain steps you must take for your game to play a sound. At a minimum, you must:
+<ol>
+<li>Create and initialize the basic resources described in the section Generating Audio Output.
+<P>
+<li>Instantiate the Sound Player with alSndpNew(). The Sound Player created also signs in as a client to the Synthesis Driver. 
+<P>
+<li>Copy the sound bank’s .ctl file into RAM, and initialize it with a call to alBnkfNew.
+<P>
+<li>Allocate a sound with a call to alSndpAllocate(). 
+<P>
+<li>Set the Sound Player’s target sound to reference your sound with alSndpSetSound(). 
+<P>
+<li>Play the sound with alSndpPlay(). 
+<P>
+<li>Stop the sound when you are finished with alSndpStop(). Note that if the sound is not looped, the sound player will take care of stopping the sound when it is finished playing. However, you can stop the sound at any time during playback with this call.
+</ol>
+
+<P>
+When the sound is no longer needed, the resources in the Sound Player can be freed with a call to alSndpDeallocate(). If the Sound Player itself is no longer required, it can be removed from the Synthesis Driver client list with alSndpDelete().
+
+<P>
+The Sound Player can play both looped and unlooped sounds. When playing a sound, the Sound Player steps through the Envelope states Attack, Decay, and Release. Envelope parameters are defined in the <font face="courier" size="-1">ALSound</font> structure. The duration of the sound is determined by the sum of the Attack time, Decay time, and Release time, or the length of the wave table (whichever is shorter), scaled by the pitch. 
+
+<P>
+For looped sounds, the duration is always determined by the Envelope parameters and the pitch. If the Envelope Decay time is set to -1, the sound will continue playing (that is, it will never enter the Release phase) until it is stopped by the application with a call to alSndpStop(). Envelope times are scaled by the playback pitch so that regardless of pitch, finite-length sounds play to completion. For example, by default, a sound played an octave lower plays for twice as long as it does at unity pitch. Loop points for sounds are embedded in the <font face="courier" size="-1">ALWaveTable</font> structure. (Loop points will be automatically extracted from the .aiff file when using the file conversion tools provided.)
+
+<P>
+Various parameters that affect the playback of a sound can be set before and during playback. When a sound is allocated to a Sound Player, an ID is returned that uniquely identifies that sound. Parameters for a particular sound are set by first setting the target sound with a call to alSndpSetSound(), and then making a subsequent call to set a parameter for the target sound. Available calls are detailed in Table 1, below.
+
+<P>
+<b>Note:</b> Each sound allocated to a Sound Player has a unique ID and private parameter values and play state. To play the same sound simultaneously, possibly with different parameter settings, it must be allocated multiple times to the Sound Player.
+
+<P>
+A summary of Sound Player functions is given below. Details can be found in the reference (man) pages. 
+
+ 
+
+
+<p>
+<a name="03"></a><a name="tbl17-1"></a>
+<b>Table 1</b> &nbsp;Sound Player Functions
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=35%><font face="arial" size="-1"><b>Function</td>
+<td width=65%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpNew</td>
+<td width=65%><font face="arial" size="-1">Creates a new Sound Player.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpDelete</td>
+<td width=65%><font face="arial" size="-1">Removes a Sound Player from the Synthesis Driver’s client list.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpAllocate</td>
+<td width=65%><font face="arial" size="-1">Allocate a sound to a sound player.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpDeallocate</td>
+<td width=65%><font face="arial" size="-1">Deallocate a sound from the sound player.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpSetSound</td>
+<td width=65%><font face="arial" size="-1">Sets the Sound Player’s current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpGetSound</td>
+<td width=65%><font face="arial" size="-1">Returns the Sound Player’s current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpPlay</td>
+<td width=65%><font face="arial" size="-1">Plays the Sound Player’s current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpPlayAt</td>
+<td width=65%><font face="arial" size="-1">Plays a sound at some specified time in the future.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpStop</td>
+<td width=65%><font face="arial" size="-1">Stops the current sound from playing.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpGetStates</td>
+<td width=65%><font face="arial" size="-1">Gets the current state (stopped or playing) of the current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpSetPitch</td>
+<td width=65%><font face="arial" size="-1">Sets the pitch for the current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpSetVol</td>
+<td width=65%><font face="arial" size="-1">Sets the playback volume of the current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpSetPan</td>
+<td width=65%><font face="arial" size="-1">Sets the pan position of the current sound.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpSetPriority</td>
+<td width=65%><font face="arial" size="-1">Sets the sounds priority value.</td>
+</tr>
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1">alSndpSetFXMix</td>
+<td width=65%><font face="arial" size="-1">Sets the wet/dry mix of the current sound.</td>
+</tr></table>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

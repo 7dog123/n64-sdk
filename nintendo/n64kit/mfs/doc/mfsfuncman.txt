@@ -1,0 +1,2375 @@
+MultiFileSystem Library Manual
+Copyright (C) 1998, NINTENDO Co, Ltd.	
+
+
+Version History									
+Ver0.1	1998/02/12 
+0.4	1998/04/04
+0.5	1998/05/02 
+0.6	1998/05/09
+0.64	1998/06/15 
+0.65	1998/06/17 
+1.00	1998/07/08
+1.10	1998/09/03 by K.Ohki(SLANP)
+
+[1] High-level library functions
+
+========================================================================
+Function name: mfsHInitDiskBoot
+_______________________________________________________________________
+
+Syntax:        32 mfsHInitDiskBoot(MfsFile handle,u8 handleNum,
+                     u8 *company, u8* game,u8 dest)
+
+Arguments: 	handle     	File handle structure array pointer
+		handleNum  	Number of file handle structures
+		company    	Company code
+		game       	Game code
+		dest       	Destination code
+
+Return value:  	Error
+Function:      	Initializes libraries (for disk booting)
+Description:   	
+
+This function initializes the Leo library, MFS low-level library, and MFS high-level ibrary so that the NINTENDO64 Disk Drive (64DD) can be accessed.  This function is used when the disk is used for booting.
+
+When an application handles files, it prepares the MfsFileHandle structure array in a buffer for specified file handles.  "handle" is the pointer to this buffer.  The MfsFileHandle structure pointer is declared as MfsFile.  The array size is specified by handleNum.  The number of files that the application can open at the same time is equal to the number of file handles specified here.
+
+The Nintendo-issued company code and game code (initial codes) are specified for company and game.  Besides being recorded as file attributes, these are used to restrict file access.
+
+dest, which is the destination code, is used as disk information when the RAM area is formatted.  The following values can be specified.
+	
+      MFS_DESTINATION_JAPAN  0  Japan-oriented
+      MFS_DESTINATION_US     1  US-oriented
+
+Main errors:
+MFS_ERR_NO      Normal termination 
+MFS_ERR_DEVICE  Device error
+An error occurred in LeoCreateLeoManager().
+Check the variable mfsError.  The value returned from LeoCreateLeoManager() is stored here.
+                          
+========================================================================
+Function name: mfsHInitCasBoot
+________________________________________________________________________
+
+Syntax:        s32 mfsHInitCasBoot(MfsFile handle,u8 handleNum,
+                     u8 *company, u8* game,u8 dest)
+
+Arguments::	handle     	File handle structure array pointer
+		handleNum  	Number of file handle structures
+            *company   	Company code
+            *game      	Game code
+            dest       	Destination code
+Return value:  Error
+Function:      Initializes libraries (for Game Pak booting)
+Description:   
+
+This function initializes the Leo library, MFS low-level library, and MFS high-level library so that the NINTENDO64 Disk Drive (64DD) can be accessed.  This function is used when the Game Pak is used for booting.
+
+When an application handles files, it prepares the MfsFileHandle structure array in a buffer for specified file handles.  "handle" is the pointer to this buffer.  The MfsFileHandle structure pointer is declared as MfsFile.  The array size is specified by handleNum.  The number of files that the application can open at the same time is equal to the number of file handles specified here.
+
+The Nintendo-issued company code and game code (initial codes) are specified for company and game.  Besides being recorded as file attributes, these are used to restrict file access.
+
+dest, which is the destination code, is used as disk information when the RAM area is formatted.  The following values can be specified.
+
+      MFS_DESTINATION_JAPAN  0  Japan-oriented
+      MFS_DESTINATION_US     1  US-oriented
+
+Main errors:
+MFS_ERR_NO      Normal termination
+MFS_ERR_DEVICE  Device error
+An error occurred in LeoC*CreateLeoManager().
+Check the variable mfsError.  The value returned from LeoC*CreateLeoManager() is stored here.
+
+========================================================================
+Function name: mfsHMediaCheck
+________________________________________________________________________
+
+Syntax:        s32 mfsHMediaCheck(void)
+
+Arguments:     None
+Return value:  Error
+Function:      Checks medium
+Description:   
+This function checks the status of the drive's medium.  
+It reads the DISK-ID and compares it to determine whether or not the medium has been exchanged.  
+If the medium has been exchanged, this function makes all file handles unavailable, sets the current directory to root, and returns MFS_ERR_DISKCHANGE.
+	
+Main errors:
+MFS_ERR_NO         	Normal termination
+MFS_ERR_DEVICE      	Device error
+				An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this 				variable to perform processing.
+MFS_ERR_DISKCHANGE  	Media exchanged
+				The media has been replaced by another media.
+				If a file is opened, close it and begin the 				process for opening the file again.
+MFS_ERR_NOTMFSDISK  	Not an MFS-format disk
+				The disk ID's disk use is not 1.
+MFS_ERR_VERSION     	Different version disk
+MFS_ERR_HEADER     	Header error
+				The header area is corrupted.  If it is the RAM 				area, try to repair it.
+
+========================================================================
+Function name: mfsHMediaFormat
+________________________________________________________________________
+
+Syntax:       	s32 mfsHMediaFormat(s32 drive, s32 mode, u8* name, u8attr)
+Arguments:    	drive  Name of drive to be formatted ('A' or 'B')
+               	mode   Format mode
+              	*name  Volume name
+              	attr   Volume attribute
+Return value:  	Error
+Function:      	Formats medium
+Description:   
+This function formats the medium to MFS format.  The portion of the medium that can be formatted is the RAM area on a disk for which the disk ID's RAM area use is 1.
+Also, a disk having disk type 6 cannot be formatted.
+
+The following format modes can be specified for mode.	
+	
+      MFS_FORMAT_NORMAL  0  Normal format
+      MFS_FORMAT_FORCE   1  Forced format
+
+When MFS_FORMAT_NORMAL is specified, a check is performed to determine whether or not the disk is an MFS-format disk.  If it is an MFS-format disk, the volume attribute is checked.  
+If the volume attribute indicates that the disk is protected, the disk cannot be formatted.
+When MFS_FORMAT_FORCE is specified, the disk is formatted without checking whether or not it is an MFS-format disk and checking its attribute.
+
+A volume name character string not exceeding 20 bytes is specified for name.
+
+The following volume attributes can be specified for attr.
+
+      MFS_VOLUME_ATTR_VPROTECT  0x40  Volume protected
+      MFS_VOLUME_ATTR_WPROTECT  0x80  Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+
+Main errors:
+MFS_ERR_NO          	Normal termination
+MFS_ERR_NOTMFSDISK  	Not an MFS-format disk 
+				The disk ID's disk use is not 1. 
+MFS_ERR_VERSION     	Different version MFS-format disk
+				The version is an unsupported version. 
+MFS_ERR_PROTECT    	Write protected disk
+                        The volume attribute is write protected.  No 				error occurs in the case of MFS_FORMAT_FORCE.
+MFS_ERR_REFUSE      	An attempt was made to format a non-RAM area
+
+========================================================================
+Function name: mfsHFopen
+________________________________________________________________________
+Syntax:        	s32 mfsHFopen(MfsFile* handle, u8* path, u16 mode)
+Arguments:     	*handle  Pointer for storing file handle pointer
+              	*path    File pathname
+              	mode     Mode for opening file
+Return value:	Error
+Function:      	Opens file
+Description:   
+This function opens the file specified by path and sets the file handle pointer to handle.
+
+"path" specifies the file name and its path with a character string.  The maximum length of the character string is 128 characters including the terminating NULL.
+
+The following access modes can be specified for mode.
+      MFS_OPEN_READ    0x0001  Read
+      MFS_OPEN_WRITE   0x0002  Write
+      MFS_OPEN_UPDATE  0x0000  Update
+      MFS_OPEN_APPEND  0x0010  Append
+      MFS_OPEN_CREATE  0x0020  Create
+
+MFS_OPEN_READ and MFS_OPEN_WRITE can be specified at the same time.
+When MFS_OPEN_WRITE is specified, MFS_OPEN_APPEND can be specified.
+When MFS_OPEN_APPEND is not specified, MFS_OPEN_UPDATE is assumed.
+When MFS_OPEN_UPDATE is used, the existing file contents are lost.
+When only MFS_OPEN_READ is specified, the MFS_OPEN_UPDATE and MFS_OPEN_APPEND specifications are ineffective.
+
+Main errors:
+MFS_ERR_NO        	Normal termination
+MFS_ERR_FATAL     	File cannot be opened
+                        There is no free file handle.
+MFS_ERR_NOTFOUND  	File not found
+                        The file was not found, or the directory was not 				found. 
+MFS_ERR_NAME      	File name error
+                        The pathname does not contain a file name, or 				there is no extension.	
+MFS_ERR_REFUSE    	Illegal operation
+                      	A ROM area was opened in write mode.
+
+========================================================================
+Function name: mfsHFread
+________________________________________________________________________
+Syntax:        	s32 mfsHFread(MfsFile handle, void* buf, s32 len)
+Arguments:    	handle  File handle
+               	*buf    Pointer to buffer for storing data
+              	len     Size of data to be read
+Return value: 	Size of data that was read (a negative value is an error)
+Function:      	Reads data
+Description:  	 
+This function reads data of the file specified by handle.
+
+Main errors:
+MFS_ERR_FATAL   	File open error
+                  The file is not opened.
+MFS_ERR_DEVICE  	Device error
+                  An error occurred in an internally called Leo 			function.
+			Since a Leo function error is stored in the variable 			mfsError, check this variable to perform processing.
+MFS_ERR_HEADER  	Header error
+                  The header area is corrupted. If it is the RAM area, 			try to repair it.
+	
+========================================================================
+Function name: mfsHFwrite
+________________________________________________________________________
+Syntax:        	s32 mfsHFwrite(MfsFile handle, void* buf, s32 len)
+Arguments:     	handle  File handle
+               	*buf    Pointer to buffer in which data to be written is stored
+               	len     Size of data to be written
+Return value: 	Size of data that was written (a negative value is an error)
+Function:      	Writes data
+Description:   
+This function writes data to the file specified by handle. 
+
+Main errors:
+MFS_ERR_FATAL    	File open error
+                  The file is not opened.
+MFS_ERR_DEVICE   	Device error
+			An error occurred in an internally called Leo 			function.
+			Since a Leo function error is stored in the variable 			mfsError, check this variable to perform processing.
+MFS_ERR_HEADER   	Header error
+			The header area is corrupted.  If it is the RAM area, 			try to repair it.
+MFS_ERR_PROTECT  	Write protected
+                  The medium is write protected.
+		
+========================================================================
+Function name:  mfsHFclose
+________________________________________________________________________
+Syntax:         	s32 mfsHFclose(MfsFile handle)
+Arguments:     	handle  File handle
+Return value:  	Error
+Function:       	Closes file
+Description:    
+This function closes the file specified by handle and releases the file handle.
+
+Main errors:
+MFS_ERR_NO  	Normal termination	
+
+========================================================================
+Function name: mfsHFseek
+________________________________________________________________________
+Syntax:        	s32 mfsHFseek(MfsFile handle, s32 offset, s32 fromwhere)
+Arguments:     	handle     File handle
+               	offset     Amount to move
+              	fromwhere  Origin of move
+Return value:  	Error
+Function:      	Performs head seek
+Description:   	
+This function moves the file position of the file specified by handle.
+Also, it moves the read/write head to the file position.
+The new position is located at a distance of offset bytes from the position specified by fromwhere.
+
+The following values can be specified for fromwhere.
+
+      MFS_SEEK_SET  0  Beginning of file
+      MFS_SEEK_CUR  1  Current file pointer position
+      MFS_SEEK_END  2  End of file
+	
+Main errors:
+MFS_ERR_NO      	Normal termination	
+MFS_ERR_FATAL   	File open error
+			The file is not opened.
+MFS_ERR_DEVICE  	Device error
+			An error occurred in an internally called Leo 			function.
+			Since a Leo function error is stored in the variable 			mfsError, check this variable to perform processing.
+MFS_ERR_HEADER  	Header error
+                  The header area is corrupted.  If it is the RAM area, 			try to repair it.
+
+========================================================================
+Function name: mfsHFtell
+________________________________________________________________________
+Syntax:        	s32 mfsHFtell(MfsFile handle)
+Arguments:    	handle  File handle
+Return value:  	File position (a negative value is an error)
+Function:      	Obtains file position
+Description:   
+This function obtains the file position of the file specified by handle.
+
+Main errors:
+MFS_ERR_NO     	Normal termination	
+MFS_ERR_FATAL  	File open error
+                  The file is not opened.
+
+========================================================================
+Function name: mfsHFstat
+________________________________________________________________________
+Syntax:        s32 mfsHFstat(MfsFile handle, MfsStat* stat)
+Arguments:     handle  File handle
+               stat    File information structure pointer
+Return value:  Error
+Function:      Obtains file-related information 
+Description:   This function obtains information related to the file specified by handle and returns it to the MfsStat structure specified by stat.  The MfsStat structure consists of the following members.
+
+      typedef struct st_stat{
+        u32  size;              // File size
+        LEODiskTime  time;      // Latest update date and time of file
+        u16  attribute;         // Attribute
+        u16  dirID;             // Directory ID
+        u16  upDirID;           // Directory ID of parent directory
+        u8   gameCode[4];       // Game code
+        u8   companyCode[2];    // Company code
+        u8   copyCounter;       // Copy counter
+        u8   updateCounter;    // update counter
+      } MfsStat;
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_FATAL   File open error
+                      The file is not opened.
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+      MFS_ERR_HEADER  	Header error
+                      	The header area is corrupted. If it is the RAM 				area, try to repair it.
+
+========================================================================
+Function name: mfsHFgetAttr
+________________________________________________________________________
+Syntax:        s32 mfsHFgetAttr(MfsFile handle)
+Arguments:     handle  File handle
+Return value:  Attribute (a negative value is an error)
+Function:      Obtains file attribute
+Description:   This function obtains the attribute of the file specified by handle.
+The file attribute, which is represented by u16-type bits, can have the following contents.
+
+      MFS_FILE_ATTR_DIRECTORY  0x8000  Directory
+      MFS_FILE_ATTR_FILE       0x4000  File
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+Main errors:
+      MFS_ERR_NO     Normal termination	
+      MFS_ERR_FATAL  File open error
+                     The file is not opened. 
+
+========================================================================
+Function name: mfsHFsetAttr
+________________________________________________________________________
+Syntax:        s32 mfsHFsetAttr(MfsFile handle, u16 attr)
+Arguments:     handle  File handle
+               attr    Attribute
+Return value:  Error
+Function:      Sets file attribute
+Description:   This function sets the attribute of the file specified by handle to attr.
+The following values can be specified for attr.
+
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+Main errors:
+      MFS_ERR_NO       Normal termination	
+      MFS_ERR_FATAL    File open error
+                       The file is not opened.
+      MFS_ERR_DEVICE   Device error
+                       An error occurred in an internally called Leo 				function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+      MFS_ERR_PROTECT  Write protected
+                       The volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsHFgetCopyCount
+________________________________________________________________________
+Syntax:        s32 mfsHFgetCopyCount(MfsFile handle)
+Arguments:     handle  File handle
+Return value:  Copy counter value (a negative value is an error)
+Function:      Obtains copy counter of file
+Description:   This function obtains the copy counter value of the file specified by handle.
+The copy counter value is a u8-type value that is decremented by the application.
+
+Main errors:
+      MFS_ERR_NO     Normal termination	
+      MFS_ERR_FATAL  File open error
+                     The file is not opened.
+
+========================================================================
+Function name: mfsHFsetCopyCount
+________________________________________________________________________
+Syntax:        s32 mfsHFsetCopyCount(MfsFile handle, u8 count)
+Arguments:     handle  File handle
+               count   Copy counter value
+Return value:  Error
+Function:      Sets copy counter value
+Description:   This function sets the copy counter value of the file 			specified by handle to count.
+
+Main errors:
+      MFS_ERR_NO       Normal termination	
+      MFS_ERR_FATAL    File open error
+                       The file is not opened.
+      MFS_ERR_DEVICE   Device error
+                       An error occurred in an internally called Leo 				function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.	
+      MFS_ERR_PROTECT  Write protected
+                       The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsHFgetRC
+________________________________________________________________________
+Syntax:        s32 mfsHFgetRC(MfsFile handle)
+Arguments:     handle  File handle
+Return value:  update counter value (a negative value is an error)
+Function:      Obtains update counter value of file
+Description:   This function obtains the update counter value of the file specified by handle.
+The update counter of the file is set to 0 when the file is created and is incremented whenever data is written to the file or the attribute is changed.  The maximum value is 255, and the value cannot be incremented above 255.
+The rewriting of the file by another drive can be detected by checking the update counter.
+
+Since the update counter only exists in the RAM area, the MFS_ERR_REFUSE error will occur if this function is used for a ROM area file.
+	
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_FATAL   File open error
+                      The file is not opened.
+      MFS_ERR_REFUSE  Illegal operation
+
+========================================================================
+Function name: mfsHFresetRC
+________________________________________________________________________
+Syntax:        s32 mfsHFresetRC(MfsFile handle)
+Arguments:     handle  File handle
+Return value:  Error
+Function:      Resets update counter value
+Description:   This function sets the update counter value of the file specified by handle to 0.
+The update counter of the file is set to 0 when the file is created and is incremented whenever data is written to the file or the attribute is changed.  The maximum value is 255, and the value cannot be incremented above 255.
+The rewriting of the file by another drive can be detected by checking the update counter.
+
+Since the update counter only exists in the RAM area, the MFS_ERR_REFUSE error will occur if this function is used for a ROM area file.
+	
+Main errors:
+      MFS_ERR_NO       Normal termination	
+      MFS_ERR_FATAL    File open error
+                       The file is not opened.
+      MFS_ERR_DEVICE   Device error
+                       An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+      MFS_ERR_PROTECT  Write protected
+                       The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsHRemoveFile
+________________________________________________________________________
+Syntax:        mfsHRemoveFile(const u8* path)
+Arguments:     *path  Path name
+Return value:  Error
+Function:      Deletes file
+Description:   This function deletes the file specified by path.  If the file is opened, it must be closed before it is deleted.
+	
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.
+
+========================================================================
+Function name: mfsHRenameFile
+________________________________________________________________________
+Syntax:        s32 mfsHRenameFile(const u8* oldname, const u8* newname)
+Arguments:     *oldname  File pathname to be changed
+               *newname  New file pathname
+Return value:  Error
+Function:      Renames file
+Description:   This function changes the file name specified by oldname to newname.
+When a drive name is assigned by newname, it must be the same as the drive name assigned by oldname.  
+The directories of oldname and newname need not be the same.
+If a different directory is specified, the file can be moved.
+However, if file movement and renaming are performed at the same time, the file will be moved after it is renamed.  Therefore, if the oldname directory contains the same file name as the new file name, the name cannot be changed.
+
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.
+
+========================================================================
+Function name: mfsHGetFileCopyCount
+________________________________________________________________________
+Syntax:        s32 mfsHGetFileCopyCount(const u8* path)
+Arguments:     *path  Pathname
+Return value:  Copy count (a negative value is an error)
+Function:      Obtains copy count of file
+Description:   This function obtains the copy count value of the file specified by path.
+This value is effective when bit 9 of the attribute is 1.
+Processing that references the copy count to determine whether or not the file can be copied should be performed by the application.
+
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.  
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.
+
+========================================================================
+Function name: mfsHSetFileCopyCount
+________________________________________________________________________
+Syntax:        s32 mfsHSetFileCopyCount(const u8* path, u8 count)
+Arguments:     *path  Pathname
+               count  Copy count value to be set
+Return value:  Error
+Function:      Sets copy count of file
+Description:   This function sets the copy count of the file specified by path to count.
+This value is effective when bit 9 of the attribute is 1.
+	
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found. 
+
+========================================================================
+Function name: mfsHGetAttr
+________________________________________________________________________
+Syntax:        s32 mfsHGetAttr(const u8* path)
+Arguments:     *path  Pathname
+Return value:  Attribute (a negative value is an error)
+Function:      Obtains attribute of file or directory
+Description:   This function obtains and returns the attribute of the file or directory specified by path.  The attribute, which is represented by u16-type bits, can have the following contents.
+	
+      MFS_FILE_ATTR_DIRECTORY	 0x8000  Directory
+      MFS_FILE_ATTR_FILE       0x4000  File
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found. 
+
+========================================================================
+Function name: mfsHSetAttr
+________________________________________________________________________
+Syntax:        s32 mfsHSetAttr(const u8* path, u16 attr)
+Arguments:     *path  Pathname
+               attr   Attribute
+Return value:  Error
+Function:      Sets attribute of file or directory
+Description:   This function sets the attribute of the file or directory specified by path to attr.  The following values can be specified for attr.
+
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+MFS_FILE_ATTR_ENCODE and MFS_FILE_ATTR_COPYLIMIT are ineffective for a directory.
+
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.
+
+========================================================================
+Function name: mfsHGetRC
+________________________________________________________________________
+Syntax:        s32 mfsHGetRC(const u8* path)
+Arguments:     *path  Pathname
+Return value:  Update counter value (a negative value is an error)
+Function:      Obtains update counter value of file or directory
+Description:   This function obtains and returns the update counter value of the file or directory specified by path.
+Immediately after a file or directory is created, the update counter is set to 0.
+Whenever data is written to a file or the attribute is changed, the update counter is incremented.  The maximum value is 255, and the value cannot be incremented above 255.
+The update counter of the directory one level up is incremented at the same time.
+The rewriting of a file by another drive can be detected by checking the update counter.
+	
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.
+
+========================================================================
+Function name: mfsHResetRC
+________________________________________________________________________
+Syntax:        s32 mfsHResetRC(const u8* path)
+Arguments:     *path  Pathname
+Return value:  Error (when the value is negative)
+Function:      Resets update counter value
+Description:   This function sets the update counter value of the file or directory specified by path to 0.
+Immediately after a file or directory is created, the update counter is set to 0.
+Whenever data is written to a file or the attribute is changed, the update counter is incremented.  The maximum value is 255, and the value cannot be incremented above 255.
+The update counter of the directory one level up is incremented at the same time.
+The rewriting of a file by another drive can be detected by checking the update counter.
+
+Main errors:
+      MFS_ERR_NO	      Normal termination	
+      MFS_ERR_DEVICE	Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.  
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.  
+
+========================================================================
+Function name: mfsHGetStat
+________________________________________________________________________
+Syntax:        s32 mfsHGetStat(const u8* path, MfsStat* stat)
+Arguments:     *path  Pathname
+               *stat  File information structure pointer
+Return value:  Error
+Function:      Obtains file or directory information
+Description:   This function obtains information related to the file or directory specified by path and returns it to the MfsStat structure specified by stat.  The MfsStat structure consists of the following members.
+
+      typedef struct st_stat{
+        u32  size;            // File size
+        LEODiskTime  time;    // Latest update date and time of file
+        u16  attribute;       // Attribute
+        u16  dirID;           // Directory ID
+        u16  upDirID;         // Directory ID of parent directory
+        u8   gameCode[4];     // Game code
+        u8   companyCode[2];  // Company code
+        u8   copyCounter;     // Copy counter
+        u8   updateCounter;   // Update counter
+      } MfsStat;
+
+However, the structure for a directory does not have the file size or copy counter members.
+
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing. 
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found. 
+
+========================================================================
+Function name: mfsHGetCwd
+________________________________________________________________________
+Syntax:        s32 mfsHGetCwd(u8* path, s32 bufLen)
+Arguments:     *path   Buffer for storing full pathname
+               bufLen  Buffer size
+Return value:  Error
+Function:      Obtains current directory
+Description:   This function obtains the full pathname (including drive name) of the current directory and stores it, up to a maximum size of bufLen, in path.  If the size of the full pathname (including the terminating NULL) is greater than bufLen, MFS_ERR_LENGTH is returned as an error.
+	
+Main errors:
+      MFS_ERR_NO      Normal termination
+      MFS_ERR_LENGTH  The length of the full pathname is larger than 				bufLen.  
+
+========================================================================
+Function name: mfsHChDir
+________________________________________________________________________
+Syntax:        s32 mfsHChDir(const u8* path)
+Arguments:     *path  Directory name
+Return value:  Error
+Function:      Changes current directory
+Description:   This function sets the current directory to the directory specified by path.
+The value specified by path must be an existing directory.
+Although a drive name can be included in the directory name, the drive cannot be changed.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Directory not found
+			
+========================================================================
+Function name: mfsHRmDir
+________________________________________________________________________
+Syntax:        s32 mfsHRmDir(const u8* path)
+Arguments:     *path  Directory name
+Return value:  Error
+Function:      Deletes directory
+Description:   This function deletes the directory specified by path.
+The directory specified by path must satisfy the following conditions.
+      * No files exist
+      * It is not the current working directory
+      * It is not the root directory
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Directory not found
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.  
+      MFS_ERR_PROTECT   Write protected
+                        The directory attribute is write protected, or 				the volume attribute is write protected, or the 				parent directory is write protected. 
+
+========================================================================
+Function name: mfsHMkDir
+________________________________________________________________________
+Syntax:        s32 mfsHMkDir(const u8* path, u16 attr)
+Arguments:     *path  Directory name
+               attr   Attribute
+Return value:  Error
+Function:      Creates directory
+Description:   This function creates a directory for the path name specified by path.
+
+Main errors:
+      MFS_ERR_NO       Normal termination
+      MFS_ERR_DEVICE   Device error
+                       An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT  Write protected
+                       The directory attribute is write protected, or 				the volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsHGetVolumeInfo
+________________________________________________________________________
+Syntax:        s32 mfsHGetVolumeInfo(s32 drive, MfsVolumeInfo* volumeInfo)
+Arguments:     drive        Drive name ('A', 'B', ...)
+               *volumeInfo  Buffer for storing volume information
+Return value:  Error
+Function:      Obtains volume information
+Description:   This function obtains volume information for the drive specified by drive and stores it in the MfsVolumeInfo structure buffer specified by volumeInfo.
+The MfsVolumeInfo structure consists of the following members.
+
+      typedef struct st_VolumeInfo {
+        LEODiskTime  time;                // Date volume was formatted
+        u16  updateCounter;              // update counter
+        u8   name[MFS_VOLUME_NAME_SIZE];  // Volume name
+        u8   attribute;                   // Volume attribute
+        u8   destination;                 // Destination code
+      } MfsVolumeInfo;
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Drive not found
+
+========================================================================
+Function name: mfsHGetVolumeAttr
+________________________________________________________________________
+Syntax:        s32 mfsHGetVolumeAttr(s32 drive)
+Arguments:     drive  Drive name ('A', 'B', ...)
+Return value:  Volume attribute (a negative value is an error)
+Function:      Obtains volume attribute
+Description:   This function obtains and returns the volume attribute of the drive specified by drive.
+The volume attribute, which is represented by u8-type bits, can have the following contents.
+	
+      MFS_VOLUME_ATTR_VPROTECT_WRITE  0x20  Volume write protected
+      MFS_VOLUME_ATTR_VPROTECT_READ   0x40  Volume read protected
+      MFS_VOLUME_ATTR_WPROTECT        0x80  Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+	
+Main errors:
+      MFS_ERR_NOTFOUND  Drive not found
+
+========================================================================
+Function name: mfsHSetVolumeAttr
+________________________________________________________________________
+Syntax:        s32 mfsHSetVolumeAttr(s32 drive, u8 attr)
+Arguments:     drive  Drive name ('A', 'B', ...)
+               attr   Attribute
+Return value:  Error
+Function:      Sets volume attribute
+Description:   This function sets the attribute of the drive specified by drive to attr.
+The following attributes can be specified.
+
+      MFS_VOLUME_ATTR_VPROTECT_WRITE  0x20  Volume write protected
+      MFS_VOLUME_ATTR_VPROTECT_READ   0x40  Volume read protected
+      MFS_VOLUME_ATTR_WPROTECT        0x80  Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Drive not found
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The volume attribute is write protected, or the 				medium is volume protected.
+
+========================================================================
+Function name: mfsHGetVolumeRC
+________________________________________________________________________
+Syntax:        s32 mfsHGetVolumeRC(s32 drive)
+Arguments:     drive  Drive name ('A', 'B', ...)
+Return value:  Update counter value (a negative value is an error)
+Function:      Obtains update counter of volume
+Description:   This function obtains and returns the update counter of the drive specified by drive.  Since the update counter only exists in the RAM area, the MFS_ERR_REFUSE error will occur if this function is used for the ROM area.
+
+Main errors:
+      MFS_ERR_NOTFOUND  Drive not found
+      MFS_ERR_REFUSE    Illegal operation
+
+========================================================================
+Function name: mfsHResetVolumeRC
+________________________________________________________________________
+Syntax:        s32 mfsHResetVolumeRC(s32 drive)
+Arguments:     drive  Drive name ('A', 'B', ...)
+Return value:  Error
+Function:      Resets update counter of volume
+Description:   This function resets the update counter value of the volume to 0.
+Since the update counter only exists in the RAM area, the MFS_ERR_REFUSE error will occur if this function is used for the ROM area.
+	
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Drive not found
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The volume attribute is write protected, or the 				medium is volume protected.
+      MFS_ERR_REFUSE    Illegal operation
+
+========================================================================
+Function name: mfsHFnsplit
+________________________________________________________________________
+Syntax:        s32 mfsHFnsplit(const u8* path, u8* drive, u8* dir, u8* name, u8* type)
+Arguments:     *path   Path name
+               *drive  Drive name    
+               *dir    Directory name
+               *name   File name
+               *type   Extension
+Return value:  Flag indicating component
+Function:      Splits pathname into components
+Description:   This function splits the pathname specified by path into four components (drive name, directory name, file name, and extension) and stores them in the buffers specified by drive, dir, name, and type, respectively.  If NULL is specified for a buffer, the corresponding component is only split from the pathname and is not stored.
+
+The maximum sizes of these character strings are defined as follows.
+These values includes the terminating NULL space.
+
+      MFS_MAXPATH   128  Path name
+      MFS_MAXDRIVE  3    Drive name
+      MFS_MAXDIR    100  Directory name
+      MFS_MAXFILE   21   File name
+      MFS_MAXTYPE   7    Extension
+
+mfsHFnsplit assumes that there is a sufficiently large amount of space to be able to store each non-NULL component.
+mfsHFnsplit uses the following rules to split path.
+      * drive contains a colon (such as A: or B:)
+      * dir contains the directory separator '/' at the beginning and end (such as /nintendo/64/)
+      * type contains a period before the extension (such as .text or .html)
+
+A flag indicating whether or not a component is contained in path is returned as the return value.  
+The flag has a bit configuration in which the corresponding bits are as follows:
+
+      MFS_FNSPLIT_TYPE       0x02
+      MFS_FNSPLIT_FILENAME   0x04
+      MFS_FNSPLIT_DIRECTORY  0x08
+      MFS_FNSPLIT_DRIVE      0x10
+
+mfsHFsplit performs the opposite operation to the operation performed by mfsHFnmerge.
+
+========================================================================
+Function name: mfsHFnmerge
+________________________________________________________________________
+Syntax:        void mfsHFnmerge(u8* path,const u8* drive, const u8* dir,
+					const u8* name, const u8* type)
+Arguments:     *path   Path name
+               *drive  Drive name
+               *dir    Directory name
+               *name   File name
+               *type   Extension
+Return value:  None
+Function:      Creates a pathname by combining components
+Description:   This function creates a pathname by combining the components specified by drive, dir, name, and type and stores it in path.
+When drive is NULL or empty, no drive name is added to the pathname.  If the delimiter ':' is missing, it is added to the pathname.
+When dir is NULL or empty, no directory name is added.  If the delimiter '/' is missing, it is added to the pathname.
+When name is NULL or empty, no file name is added.
+When type is NULL or empty, no extension is added.  If the leading period '.' is missing, it is added to the pathname.
+
+mfsHFmrege performs the opposite operation to the operation performed by mfsHFnsplit.
+	
+========================================================================
+Function name: mfsHGetDisk
+________________________________________________________________________
+Syntax:        s32 mfsHGetDisk(void)
+Arguments:     None
+Return value:  Current drive number
+Function:      Obtains currentdrive number
+Description:   This function obtains and returns the current drive number.
+The integer value 0 is returned for drive A and 1 is returned for drive B.
+
+========================================================================
+Function name: mfsHSetDisk
+________________________________________________________________________
+Syntax:        s32 mfsHSetDisk(s32 drive)
+Arguments:     drive  Drive number
+Return value:  Total number of drives that can be accessed
+Function:      Changes current drive
+Description:   This function changes the current drive.  For drive A, 0 is specified for the drive number, and for drive B, 1 is specified.
+
+The total number of drives that can be accessed is returned for the return value.
+
+========================================================================
+Function name: mfsHFindFirst
+________________________________________________________________________
+Syntax:        s32 mfsHFindFirst(const u8* path, MfsFfblk *ffblk, u16 attr)
+Arguments:     *path   Search target pathname
+               *ffblk  MfsFfblk structure
+               attr    Attribute of file to be found
+Return value:  Error
+Function:      Searches a directory
+Description:   This function begins a search for the file specified by path.
+path is a character string that contains the drive, directory, and file name (including extension) of the search target.  Wildcard characters (* or ?) can be included in the file name.  If a matching file is found, its information is stored in the MfsFfblk structure.  The MfsFfblk structure consists of the following members.
+
+      typedef struct st_ffblk {
+          MfsFileOperations* fileOpe;
+          MfsStat	stat;
+	    u8		name[MFS_FILE_NAME_SIZE + MFS_FILE_TYPE_SIZE];
+	    u8		path[MFS_FILE_NAME_SIZE + MFS_FILE_TYPE_SIZE];
+	    MfsDirList	dirList;
+	} MfsFfblk;
+
+File information is entered in stat among these members.
+Also, the matched file name is entered in name.  The other members are used by the library.
+
+The attribute of the file to be found is specified for attr.  The values that can be specified are the values shown below or a value obtained by taking the logical OR of these values.
+
+      MFS_FILE_ATTR_DIRECTORY  0x8000  Directory
+      MFS_FILE_ATTR_FILE       0x4000  File
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+If a matching file is found, MFS_ERR_NO is returned.
+If no file is found, MFS_ERR_SEARCHEND is returned.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Drive not found
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The volume attribute is write protected, or the 				medium is volume protected.
+
+========================================================================
+Function name: mfsHFindNext
+________________________________________________________________________
+Syntax:        s32 mfsHFindNext(MfsFfblk *ffblk)
+Arguments:     *ffblk  MfsFfblk structure
+Return value:  Error
+Function:      Continues file search
+Description:   This function continues the file search specified by mfsHFindFirst.
+The same values that were specified in mfsHFindFirst are specified for ffblk.  Information required to continue the search is contained here.
+If the file is found, the information is entered ffblk and MFS_ERR_NO is returned.
+If no file is found, MFS_ERR_SEARCHEND is returned.
+	
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Drive not found
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The volume attribute is write protected, or the 				medium is volume protected.
+
+
+
+[2] Low-level library functions
+
+(1) Initialization functions
+
+========================================================================
+Function name: mfsInit
+________________________________________________________________________
+Syntax:        s32 mfsInit(u8* companyCode, u8* gameCode, s32 dest)
+Arguments:     *companyCode  Company code
+               *gameCode     Game code
+               dest          Destination code
+Return value:  Error
+Function:      Initializes internal variables
+Description:   This function initializes the MFS library.  The destination code is specified as an argument.  The leo manager is not started.  The leo manager should be started by the application.
+
+The Nintendo-issued company code and game code (initial codes) are specified for company and game.  Besides being recorded as file attributes, these are used to restrict file access.
+
+dest, which is the destination code, is used as disk information when the RAM area is formatted.  The following values can be specified.
+
+      MFS_DESTINATION_JAPAN  0  Japan-oriented
+      MFS_DESTINATION_US     1  US-oriented
+
+Main errors:
+      MFS_ERR_NO  Normal termination
+
+========================================================================
+Function name: mfsInitDiskRom
+               mfsInitDiskRam
+               mfsInitDiskRomRam
+________________________________________________________________________
+Syntax:        s32 mfsInitDiskRom(u8* companyCode, u8* gameCode,u8 dest)
+               s32 mfsInitDiskRam(u8* companyCode, u8* gameCode,u8 dest)
+               s32 mfsInitDiskRomRam(u8* companyCode, u8* gameCode,u8 dest)
+Arguments:     *companyCode  Company code
+               *gameCode     Game code
+               dest          Destination code
+Return value:  Error
+Function:      Performs initialization for disk booting
+Description:   This function initializes the Leo manager for disk booting and then calls mfsInit to initialize the MFS library.
+
+mfsInitDiskRom calls mfsRomInit internally so that only the ROM area can be accessed.
+mfsInitDiskRam calls mfsRamInit internally so that only the RAM area can be accessed.
+mfsInitDiskRomRam calls both mfsRomInit and mfsRamInit internally so that the ROM area and RAM area can be accessed.
+
+Main errors:
+      MFS_ERR_NO      Normal termination
+      MFS_ERR_DEVICE  Device error
+
+========================================================================
+Function name: mfsRamInit
+________________________________________________________________________
+Syntax:        s32 mfsRamInit(void* buff)
+Arguments:     *buff  Buffer
+Return value:  Error
+Function:      Initializes RAM area library
+Description:   This function initializes the RAM area library so the RAM area can be accessed.
+A buffer having the size of the MfsRamHeader structure is specified for *buff.
+This buffer must be aligned at a 16-byte boundary.
+
+========================================================================
+Function name: mfsRomInit
+________________________________________________________________________
+Syntax:        s32 mfsRomInit(void* buff)
+Arguments:     *buff  Buffer
+Return value:  Error
+Function:      Initializes ROM area library
+Description:   This function initializes the ROM area library so the ROM area can be accessed.
+A buffer having the size of MAX_BLK_SIZE is specified for *buff.
+This buffer must be aligned at a 16-byte boundary.
+
+Main errors:
+      MFS_ERR_NO  Normal termination
+
+(2) Disk manipulation functions
+========================================================================
+Function name: mfsDiskIdCheck
+________________________________________________________________________
+Syntax:        s32 mfsDiskIdCheck(void)
+Arguments:     None
+Return value:  Error
+Description:   Reads and checks disk ID
+Description:   This function reads the disk ID and compares it with the previously read disk ID.
+If the disk has been exchanged, MFS_ERR_DISKCHANGE is returned.
+The disk ID that was read is stored in the global variable mfsDiskInfo structure.  Please reference this global variable is necessary.
+
+
+========================================================================
+Function name: mfsRamMediaFormat
+________________________________________________________________________
+Syntax:        s32 mfsRamMediaFormat(s32 mode)
+Arguments:     mode  Format mode
+Return value:  Error
+Function:      Formats medium
+Description:   This function formats the RAM area of the medium to MFS format.
+The RAM area can be formatted only on a medium for which the disk ID's RAM use is 1.
+The following values can be specified for mode.
+	
+      MFS_FORMAT_NORMAL  0  Normal format
+      MFS_FORMAT_FORCE   1  Forced format
+
+When MFS_FORMAT_NORMAL is specified, a check is performed to determine whether or not the disk is an MFS-format disk.  If it is an MFS-format disk, the volume attribute is checked.  
+If the volume attribute indicates that the disk is protected, the disk cannot be formatted.  
+When MFS_FORMAT_FORCE is specified, the disk is formatted without checking whether or not it is an MFS-format disk or checking its attribute.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different. 
+      MFS_ERR_VERSION     Different version MFS-format disk
+                          The version is an unsupported version. 
+      MFS_ERR_PROTECT     Write protected disk
+                          The volume attribute is write protected.  No 				  error occurs in the case of MFS_FORMAT_FORCE.
+
+========================================================================
+Function name: mfsRomMediaCheck
+               mfsRamMediaCheck
+________________________________________________________________________
+Syntax:        s32 mfsRomMediaCheck(void)
+               s32 mfsRamMediaCheck(void)
+Arguments:     None
+Return value:  Error
+Function:      Checks medium
+Description:   This function checks whether or not the medium has been formatted to MFS format.
+When the medium has been formatted to MFS format, this function loads the header area into an internal buffer so that the disk can be accessed.
+If a check has already been performed to determine whether or not the disk had been exchanged, mfsDiskldCheck should be called.   mfsDiskldCheck must also be called when an MFS_ERR_DEVICE error is returned from an MFS library function and the error is LEO_ERROR_MEDIUM_MAY_HAVE_CHANGE or LEO_ERROR_MEDIUM_NOT_PRESENT.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_DEVICE      Device error
+                          An error occurred in an internally called Leo 				  function.
+				  Since a Leo function error is stored in the 				  variable mfsError, check this variable to 				  perform processing.  
+      MFS_ERR_DISKCHANGE  Media exchanged
+                          The media has been replaced by another media.  
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different.
+      MFS_ERR_VERSION     Different version disk 
+      MFS_ERR_HEADER      Header error
+                          The header area is corrupted.  If it is the 				  RAM area, try to repair it.
+
+========================================================================
+Function name: mfsRamFlash
+________________________________________________________________________
+Syntax:        s32 mfsRamFlash(void)
+Arguments:     None
+Return value:  Error
+Function:      Writes header area
+Description:   This function writes the header area to disk when the header area had been rewritten.
+When an MFS library low-level function renames a file or directory or changes its size or attribute, a buffer held in memory is rewritten, and the data on disk is not rewritten.  This function writes multiple changes to disk at one time.
+If no change has been made to the header area, nothing is written to disk.
+This function should always be called after a series of disk manipulation functions.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_DEVICE      Device error
+                          An error occurred in an internally called Leo 				  function.
+				  Since a Leo function error is stored in the 				  variable mfsError, check this variable to 				  perform processing. 
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different.
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRamGetFreeSize
+________________________________________________________________________
+Syntax:        s32 mfsRamGetFreeSize(void)
+Arguments:     None
+Return value:  Size of free space (a negative value is an error)
+Function:      Obtains size of free space
+Description:   This function obtains the size of free space on the disk.  It calculates and returns the total block size of all unused blocks, in bytes. 
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different.
+      MFS_ERR_VERSION     Different version disk 
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRamGetFreeDirEntryNum
+________________________________________________________________________
+Syntax:        s32 mfsRamGetFreeDirEntryNum(void)
+Arguments:     None
+Return value:  Remaining number of files (directories) that can be 			recorded (a negative value is an error)
+Function:      Obtains number of files (directories) that can be recorded
+Description:   MFS has an upper limit for the number of files (directories) that can be recorded.
+This upper limit value differs as follows according to the disk type.
+
+	          +----------------+------------+
+	          | Disk type |Number of files  |
+	          +================+============+
+	          |      0         |    899     |
+	          |      1         |    814     |
+	          |      2         |    729     |
+	          |      3         |    644     |
+	          |      4         |    559     |
+	          |      5         |    474     |
+	          |      6         |     -      |
+	          +----------------+------------+
+
+This function obtains the remaining number of files (directories) that can be recorded.  Note that this number of files cannot be exceeded when recording data even if the disk has free space.
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different.
+      MFS_ERR_VERSION     Different version disk
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+	
+========================================================================
+Function name: mfsRamGetFileNum
+	       mfsRomGetFileNum
+________________________________________________________________________
+Syntax:        s32 mfsRamGetFileNum(MfsDirID dirID,u16 attr)
+               s32 mfsRomGetFileNum(MfsDirID dirID,u16 attr)
+Arguments:     dirID  Directory ID of directory
+               attr   File or directory specification (logical OR can be taken)
+      MFS_FILE_ATTR_FILE       File
+      MFS_FILE_ATTR_DIRECTORY  Directory
+
+Return value:  Number of files (a negative value is an error)
+Function:      Obtains the number of files belonging to the specified directory
+Description:   This function obtains the number of files or directory files in the directory specified by dirID.
+When MFS_ALL_FILES is specified for dirID, this function returns the total number of files or directories in the RAM or ROM area.
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different. 
+      MFS_ERR_VERSION     Different version disk 
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRomGetVolumeAttr
+               mfsRamGetVolumeAttr
+________________________________________________________________________
+Syntax:        s32 mfsRomGetVolumeAttr(void)
+               s32 mfsRamGetVolumeAttr(void)
+Arguments:     None
+Return value:  Volume attribute (a negative value is an error)
+Function:      Obtains volume attribute
+Description:   This function obtains and returns the volume attribute of the ROM or RAM area.
+The volume attribute, which is represented by u8-type bits, can have the following contents.
+
+      MFS_VOLUME_ATTR_VPROTECT_WRITE  0x20  Volume write protected
+      MFS_VOLUME_ATTR_VPROTECT_READ   0x40  Volume read protected
+      MFS_VOLUME_ATTR_WPROTECT        0x80  Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsInit*() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different. 
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRomGetVolumeName
+               mfsRamGetVolumeName
+________________________________________________________________________
+Syntax:        s32 mfsRomGetVolumeName(u8* name)
+               s32 mfsRamGetVolumeName(u8* name)
+Arguments:     *name  Buffer for obtaining name
+Return value:  Error
+Function:      Obtains volume name
+Description:   This function obtains the volume name and stores it in name.  name must be a buffer of size MFS_VOLUME_NAME_SIZE.  A volume name consists of 20 characters.
+The termination of the character string that is entered in name is NULL.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different. 
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRomGetVolumeDate
+               mfsRamGetVolumeDate
+________________________________________________________________________
+Syntax:        s32 mfsRomGetVolumeDate(LEODiskTime* time)
+               s32 mfsRamGetVolumeDate(LEODiskTime* time)
+Arguments:     *time  LEODiskTime structure buffer
+Return value:  Error
+Function:      Obtains volume date
+Description:   This function obtains the volume date and stores it in time.
+time is a LEODiskTime structure.
+The volume date is the date that the volume was normally formatted.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different. 
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRamGetVolumeRC
+________________________________________________________________________
+Syntax:        s32 mfsRamGetVolumeRC(void)
+Arguments:     None
+Return value:  Update counter value (a negative value is an error)
+Function:      Obtains update counter value
+Description:   This function obtains the update counter value.
+The update counter is incremented when file, directory, or disk information has been changed in some way.
+Therefore, it can be used, for example, as a random number seed or to check whether or not the disk contents have been changed illegally.
+The update counter is a 16-bit value.
+
+The update counter only exists in the RAM area.
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different. 
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRomGetDiskType
+               mfsRamGetDiskType
+________________________________________________________________________
+Syntax:        s32 mfsRomGetDiskType(void)
+               s32 mfsRamGetDiskType(void)
+Arguments:     None
+Return value:  Disk type (a negative value is an error)
+Function:      Obtains disk type
+Description:   This function obtains the disk type.
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different. 
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRomGetDestination
+               mfsRamGetDestination
+________________________________________________________________________
+Syntax:        s32 mfsRomGetDestination(void)
+               s32 mfsRamGetDestination(void)
+Arguments:     None
+Return value:  Destination code (a negative value is an error)
+Function:      Obtains destination code
+Description:   This function obtains the destination code.
+The destination codes are as follows.
+
+      MFS_DESTINATION_JAPAN  0  Japan-oriented
+      MFS_DESTINATION_US     1  US-oriented
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk 
+                          The disk ID's disk use is not 1, or the header 				  is different. 
+      MFS_ERR_VERSION     Different version disk 
+
+========================================================================
+Function name: mfsRamSetVolumeAttr
+________________________________________________________________________
+Syntax:        s32 mfsRamSetVolumeAttr(u8 attr)
+Arguments:     attr  Attribute
+Return value:  Error
+Function:      Sets volume attribute
+Description:   This function sets the volume attribute.
+The following attributes can be specified.
+
+      MFS_VOLUME_ATTR_VPROTECT_WRITE  0x20  Volume write protected
+      MFS_VOLUME_ATTR_VPROTECT_READ   0x40  Volume read protected
+      MFS_VOLUME_ATTR_WPROTECT        0x80  Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsInit*() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsInit*() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different. 
+      MFS_ERR_VERSION     Different version MFS-format disk
+                          The version is an unsupported version.     
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRamSetVolumeName
+________________________________________________________________________
+Syntax:        s32 mfsRamSetVolumeName(u8* name)
+Arguments:     *name  Name to be set
+Return value:  Error
+Function:      Sets volume name
+Description:   This function sets the volume name.  A volume name consists of 20 characters.
+
+Main error:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different.
+      MFS_ERR_VERSION     Different version MFS-format disk
+                          The version is an unsupported version.
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRamSetVolumeDate
+________________________________________________________________________
+Syntax:        s32 mfsRamSetVolumeDate(LEODiskTime time)
+Arguments:     time  LEODiskTime structure buffer
+Return value:  Error
+Function:      Sets volume date
+Description:   This function sets the volume date.
+It changes the volume date to the date specified by time.
+Since the volume date is set when the volume is formatted, normally this function should not be used.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different.
+      MFS_ERR_VERSION     Different version MFS-format disk
+                          The version is an unsupported version.
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRamSetDestination
+________________________________________________________________________
+Syntax:        s32 mfsRamSetDestination(u8 destination)
+Arguments:     destination  Destination code
+Return value:  Error
+Function:      Sets destination code
+Description:   This function sets the destination code.
+The following values can be set for destination.
+
+      MFS_DESTINATION_JAPAN  0  Japan-oriented
+      MFS_DESTINATION_US     1  US-oriented
+
+Since the destination code is set when the volume is formatted, normally this function should not be used.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different.	
+      MFS_ERR_VERSION     Different version MFS-format disk
+                          The version is an unsupported version. 
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRamResetVolumeRC
+________________________________________________________________________
+Syntax:        s32 mfsRamResetVolumeRC(void)
+Arguments:     None
+Return value:  Error
+Function:      Resets update counter
+Description:   This function sets the update counter value of the volume to 0.
+The update counter is incremented when file, directory, or disk information has been changed in some way.  It is also incremented when volume information has been changed.
+Therefore, it can be used, for example, as a random number seed or to check whether or not the disk contents have been changed illegally.
+
+Main errors:
+      MFS_ERR_NO          Normal termination
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header 				  is different.
+      MFS_ERR_VERSION     Different version MFS-format disk
+                          The version is an unsupported version. 
+      MFS_ERR_PROTECT     Write protected
+                          The medium is volume protected. 
+
+========================================================================
+Function name: mfsRamRepairHeader
+________________________________________________________________________
+Syntax:        s32 mfsRamRepairHeader(void)
+Arguments:     None
+Return value:  Error
+Function:      Repairs header area
+Description:   This function tries to repair the RAM area header.  File and directory information is recorded in the header area, and this information may become damaged by the insertion and removal of the disk.  In this occurs, MFS_ERR_HEADER or LEO_ERROR_UNRECOVERD_READ_ERROR due to MFS_ERR_DEVICE is issued by mfsHMediaCheck or mfsR*mMediaCheck.
+If these errors are issued, try to repair the header area by writing the copy of the header area back to the disk using this function.
+
+Main errors:
+      MFS_ERR_NO      Normal termination
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing. 
+
+
+(3) Directory functions
+
+========================================================================
+Function name: mfsRamMakeDir
+________________________________________________________________________
+Syntax:        s32 mfsRamMakeDir(MfsDirID upDirID, u8* name)
+Arguments:     upDirID  Directory ID of directory to which created directory belongs
+               *name    Directory name
+Return value:  Directory ID of created directory (a negative value is an error)
+Function:      Creates directory
+Description:   This function creates a directory in the directory specified by upDirID.
+When directory creation succeeds, the directory ID of the created directory is returned.
+The directory name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+
+Main errors:
+      MFS_ERR_NO       Normal termination
+      MFS_ERR_PROTECT  Write protected
+                       The directory attribute is write protected, or 				the volume attribute is write protected, or the 				parent directory is write protected.	
+      MFS_ERR_NAME     Directory name error
+                       The directory name contains a character code that 				cannot be used.
+
+========================================================================
+Function name: mfsRomGetDirID
+               mfsRamGetDirID
+________________________________________________________________________
+Syntax:        s32 mfsRomGetDirID(MfsDirID upDirID, u8* name)
+               s32 mfsRamGetDirID(MfsDirID upDirID, u8* name)
+Arguments:     upDirID  Directory ID of directory to which target directory belongs
+               *name    Directory name
+Return value:  Directory ID of directory  (a negative value is an error)
+Function:      Obtains directory ID
+Description:   This function obtains the directory ID of the directory that has the name specified by name and that belongs to the directory specified by upDirID.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRomGetDirName
+               mfsRamGetDirName
+________________________________________________________________________
+Syntax:        s32 mfsRomGetDirName(MfsDirID dirID, u8* name)
+               s32 mfsRamGetDirName(MfsDirID dirID, u8* name)
+Arguments:     dirID  Directory ID
+               *name  Directory name
+Return value:  Error
+Function:      Obtains directory name
+Description:   This function obtains the name of the directory specified by dirID.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRamRemoveDir
+________________________________________________________________________
+Syntax:        s32 mfsRamRemoveDir(MfsDirID dirID)
+Arguments:     dirID  Directory ID of directory to be deleted
+Return value:  Error
+Function:      Deletes directory
+Description:   This function deletes the directory specified by dirID.  To delete a directory, the following conditions must be satisfied.
+
+      (1)  The directory must be empty
+      (2)  It must not have a write-protected attribute
+      (3)  It must not be the root directory
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+      MFS_ERR_PROTECT   Write protected
+                        The directory attribute is write protected, or 				the volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamRenameDir
+________________________________________________________________________
+Syntax:        s32 mfsRamRenameDir(MfsDirID dirID, u8* name)
+Arguments:     dirID  Directory ID
+               *name  New directory name
+Return value:  Error
+Function:      Renames directory
+Description:   This function renames the directory specified by dirID.
+The directory name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found
+      MFS_ERR_PROTECT   Write protected
+                        The directory attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+      MFS_ERR_NAME      Directory name error
+                        The directory name contains a character code 				that cannot be used.
+
+
+
+(4) File manipulation functions
+
+========================================================================
+Function name: mfsRamCreateFile
+________________________________________________________________________
+Syntax:        s32 mfsRamCreateFile(MfsDirID upDirID, u8* name, u8* type)
+Arguments:     upDirID  Directory ID of directory to which created file belongs
+               *name    File name
+               *type    File type
+Return value:  Directory ID of created file (a negative value is an error)
+Function:      Creates file
+Description:   This function creates a file having the name specified by name in the directory specified by upDirID.
+Immediately after a file is created, its file size is 0 and it has no attribute.
+The file name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+The file type, which represents the type of file, can be specified by using up to five ASCII characters.
+
+Main errors:
+      MFS_ERR_NOTFOUND   Specified directory not found
+      MFS_ERR_PROTECT    Write protected
+                         The directory attribute is write protected, or 				 the volume attribute is write protected, or the 				 parent directory is write protected.
+      MFS_ERR_NAME       File name error
+                         The file name contains a character code that 				 cannot be used.
+      MFS_ERR_FILEEXIST  Specified file name already exists
+
+========================================================================
+Function name: mfsRomGetFileDirID
+               mfsRamGetFileDirID
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileDirID(MfsDirID upDirID, u8* name, u8* type)
+               s32 mfsRamGetFileDirID(MfsDirID upDirID, u8* name, u8* type)
+Arguments:     upDirID  Directory ID of directory to which target file belongs
+               *name    File name
+               *type    File type
+Return value:  Directory ID of obtained file (a negative value is an error)
+Function:      Obtains directory ID of file
+Description:   This function obtains and returns the directory ID of the file whose name is specified by name and type.  
+The file name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+The file type, which represents the type of file, can be specified by using up to five ASCII characters.
+	
+Main errors:
+      MFS_ERR_NOTFOUND  Specified directory or file not found 
+
+========================================================================
+Function name: mfsRomReadFile
+               mfsRamReadFile
+________________________________________________________________________
+Syntax:        s32 mfsRomReadFile(MfsDirID dirID, void* buf, s32 offset,u32 len)
+               s32 mfsRamReadFile(MfsDirID dirID, void* buf, s32 offset,u32 len)
+Arguments:     dirID   Directory ID of file
+               *buf    Buffer for storing data
+               offset  Read starting position
+               len     Size to be read
+Return value:  Size of data that was read (a negative value is an error)
+Function:      Reads data
+Description:   This function reads data of the file specified by dirID.
+If the address specified by buf is not at a 16-byte boundary, the speed will decrease somewhat because the data is read to an internal buffer and copied.
+If the offset or len value is greater than the file size, an error will occur.
+An error will also occur if offset+len exceeds the file size.
+
+Main errors:
+      MFS_ERR_NOTFOUND  Specified file not found 
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsRamWriteFile
+________________________________________________________________________
+Syntax:        s32 mfsRamWriteFile(MfsDirID dirID, void* buf, s32 offset,u32 len)
+Arguments:     dirID   Directory ID of file
+               *buf    Buffer in which data to be written is stored
+               offset  Write starting position
+               len     Size to be written
+Return value:  Size of data that was written (a negative value is an error)
+Function:      Writes data to file
+Description:   This function writes data to the file specified by dirID.
+If the address specified by buf is not at a 16-byte boundary, the speed will decrease somewhat because the data is written after being copied to an internal buffer.
+If the offset value is greater than the file size, an error will occur.
+
+Main errors:
+      MFS_ERR_NOTFOUND  Specified file not found	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRomSeekFile
+               mfsRamSeekFile
+________________________________________________________________________
+Syntax:        s32 mfsRomSeekFile(MfsDirID dirID, s32 offset)
+               s32 mfsRamSeekFile(MfsDirID dirID, s32 offset)
+Arguments:     dirID   Directory ID of file
+               offset  Seek position
+Return value:  Error
+Function:      Performs head seek
+Description:   This function performs a head seek from the beginning of the file specified by dirID to the offset position.
+
+Main errors:
+      MFS_ERR_NOTFOUND  Specified file not found	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsRomGetFileName
+               mfsRamGetFileName
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileName( MfsDirID dirID,u8* name, u8* type)
+	       s32 mfsRamGetFileName( MfsDirID dirID,u8* name, u8* type)
+Arguments:     dirID  Directory ID of file
+               *name  Buffer for storing file name that was obtained
+               *type  Buffer for storing file type that was obtained
+Return value:  Error
+Function:      Obtains file name
+Description:   This function obtains the file name and file type of the file specified by dirID.
+The size of the name buffer must be MFS_FILE_NAME_SIZE and the size of the type buffer must be MFS_FILE_TYPE_SIZE.
+The termination of the character string is NULL.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRamRemoveFile
+________________________________________________________________________
+Syntax:        s32 mfsRamRemoveFile(MfsDirID dirID)	
+Arguments:     dirID  Directory ID of file
+Return value:  Error
+Function:      Deletes file
+Description:   This function deletes the file specified by dirID.
+
+Main errors:
+      MFS_ERR_NOTFOUND  Specified file not found	
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamRenameFile
+________________________________________________________________________
+Syntax:        s32 mfsRamRenameFile(MfsDirID dirID, u8* name, u8* type)
+Arguments:     dirID  Directory ID of file
+               *name  File name
+               *type  File type
+Return value:  Error
+Function:      Renames file
+Description:   This function changes the name of the file specified by dirID to name and type.
+
+Main errors:
+      MFS_ERR_NOTFOUND  Specified file not found	
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRomGetFileAttr
+               mfsRamGetFileAttr
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileAttr(MfsDirID dirID)
+               s32 mfsRamGetFileAttr(MfsDirID dirID)
+Arguments:     dirID  Directory ID of file (directory)
+Return value:  Attribute of file (directory)  (a negative value is an error)
+Function:      Obtains attribute of file (directory)
+Description:   This function obtains and returns the attribute of the file or directory specified by dirID.  The attribute, which is represented by u16-type bits, can have the following contents.
+
+      MFS_FILE_ATTR_DIRECTORY  0x8000  Directory
+      MFS_FILE_ATTR_FILE       0x4000  File
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found
+
+========================================================================
+Function name: mfsRomGetFileDate
+               mfsRamGetFileDate
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileDate(MfsDirID dirID, LEODiskTime* time)
+               s32 mfsRamGetFileDate(MfsDirID dirID, LEODiskTime* time)
+Arguments:     dirID  Directory ID of file (directory)
+               *time  Date of file (directory ) (LEODiskTime structure)
+Return value:  Error
+Function:      Obtains date of file (directory)
+Description:   This function obtains the date and time of the file (directory) specified by dirID and stores them in time.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRomGetFileParentDir
+               mfsRamGetFileParentDir
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileParentDir(MfsDirID dirID)
+               s32 mfsRamGetFileParentDir(MfsDirID dirID)
+Arguments:     dirID  Directory ID of file (directory)
+Return value:  Directory ID of directory to which target belongs (a negative value is an error)
+Function:      Obtains directory ID of directory to which target belongs
+Description:   This function obtains and returns the directory ID of the directory to which the file (directory) specified by dirID belongs.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRomGetFileSize
+               mfsRamGetFileSize
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileSize(MfsDirID dirID)
+               s32 mfsRamGetFileSize(MfsDirID dirID)
+Arguments:     dirID  Directory ID of file
+Return value:  File size (a negative value is an error)
+Function:      Obtains file size
+Description:   This function obtains and returns the size of the file specified by dirID.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRamGetFileCopyCount
+________________________________________________________________________
+Syntax:        s32 mfsRamGetFileCopyCount(MfsDirID dirID)
+Arguments:     dirID  Directory ID of file (directory)
+Return value:  Copy count limit of file (directory) (a negative value is an error)
+Function:      Obtains copy count limit of file (directory)
+Description:   This function obtains the copy count limit of the file (directory) specified by dirID.
+  This value should be referenced when MFS_FILE_ATTR_COPYLIMIT is specified by the attribute of the file (directory).
+The application must perform copy count processing.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRomGetFileGameCode
+               mfsRamGetFileGameCode
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileGameCode(MfsDirID dirID, u8* companyCode, u8* gameCode)
+               s32 mfsRamGetFileGameCode(MfsDirID dirID, u8* companyCode, u8* gameCode)
+Arguments:     dirID         Directory ID of file (directory)
+               *companyCode  Buffer for storing company code
+               *gameCode     Buffer for storing game code
+Return value:  Error
+Function:      Obtains company code and game code of file (directory)
+Description:   This function obtains the company code and game code of the file (directory).
+A two-byte buffer is required for the company code and a four-byte buffer is required for the game code.
+To obtain only the company code or only the game code, specify NULL for the buffer corresponding to the code that is not to be obtained.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRamGetFileRC
+________________________________________________________________________
+Syntax:        s32 mfsRamGetFileRC(MfsDirID dirID)
+Arguments:     dirID  Directory ID of file (directory)
+Return value:  Update counter of file (directory) (a negative value is an error)
+Function:      Obtains update counter value of file (directory)
+Description:   This function obtains the update counter value of the file (directory).
+The update counter value is incremented when data is written to a file or when the file name or file attribute is changed.  For a directory, the update counter value is also incremented when a file or directory that belongs to it has been changed.  The maximum update counter value is 255, and the value cannot be incremented above 255.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+
+========================================================================
+Function name: mfsRamSetFiletAttr
+________________________________________________________________________
+Syntax:        s32 mfsRamSetFileAttr(MfsDirID dirID, u16 attr)
+Arguments:     dirID  Directory ID of file (directory)
+               attr   Attribute
+Return value:  Attribute of file (directory) (a negative value is an error)
+Function:      Sets attribute of file (directory)
+Description:   This function sets the attribute of the file or directory specified by dirID to attr.  The following values can be specified for attr.
+
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+MFS_FILE_ATTR_ENCODE and MFS_FILE_ATTR_COPYLIMIT are ineffective for a directory.
+
+Data can be read from a read-protected file when the company code and game code of the file are the same as the company code and game code set in the library.
+For file hiding, all this function does is set the bit.  The actual hiding process is performed by the application.
+A copy-limited file can be copied only the set number of times.  The application limits the copying.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamSetFileDate
+________________________________________________________________________
+Syntax:        s32 mfsRamSetFileDate(MfsDirID dirID, LEODiskTime time)
+Arguments:     dirID  Directory ID of file (directory)
+               time   Date of file (directory) (LEODiskTime structure)
+Return value:  Error
+Function:      Sets the date of the file (directory)
+Description:   This function sets the date of the file (directory) specified by dirID to time.
+Since the date of a file (directory) is set when the file (directory) is created or updated, normally this function should not be used.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamSetFileCopyCount
+________________________________________________________________________
+Syntax:        s32 mfsRamSetFileCopyCount(MfsDirID dirID, u8 count)
+Arguments:     dirID  Directory ID of file (directory)
+               count  Copy limit of file (directory)
+Return value:  Error
+Function:      Sets the copy limit for the file (directory)
+Description:   This function sets the limit for the number of copies that can be made of the file (directory) specified by dirID in "count."
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamSetFileGameCode
+________________________________________________________________________
+Syntax:        s32 mfsRamSetFileGameCode(MfsDirID dirID, u8* companyCode, u8* gameCode)
+Arguments:     dirID         Directory ID of file (directory)
+               *companyCode  Company code
+               *gameCode     Game code
+Return value:  Error
+Function:      Sets company code and game code of file (directory)
+Description:   This function sets the company code and game code of the file (directory) specified by dirID.
+The company code is a two-byte code, and the game code is a four-byte code.
+To set only the company code or only the game code, specify NULL for the buffer corresponding to the code that is not to be set.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamResetFileRC
+________________________________________________________________________
+Syntax:        s32 mfsRamResetFileRC(MfsDirID dirID)
+Arguments:     dirID  Directory ID of file (directory)
+Return value:  Error
+Function:      Resets update counter value of file (directory)
+Description:   This function sets the update counter value of the file (directory) specified by dirID to 0.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND	Specified directory not found 	
+      MFS_ERR_PROTECT	Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamSetParentDir
+________________________________________________________________________
+Syntax:        s32 mfsRamSetFileParentDir(MfsDirID upDirID, MfsDirID dirID)
+Arguments:     upDirID	Directory ID of directory for change
+               dirID	Directory ID of file
+Return value:  Error
+Function:      Changes the parent directory
+Description:   This function changes the directory to which the file specified by dirID belongs to the directory specified by upDirID.  Only the file can be changed, and not the directory.  The function moves the file.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found 
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRamResizeFile
+________________________________________________________________________
+Syntax:        s32 mfsRamResizeFile(MfsDirID dirID, s32 size)
+Arguments:     dirID  Directory ID of file
+               size   File size
+Return value:  Error
+Function:      Changes file size
+Description:   This function changes the size of the file specified by dirID.  The file is either enlarged or a portion of the file is truncated depending on the value of size and the initial size of the file.  
+When the file is enlarged, the new area data is undefined.  When the file is truncated, the data following the new end of the file is lost.
+
+Main errors:
+      MFS_ERR_NO        Normal termination
+      MFS_ERR_NOTFOUND  Specified directory not found  
+      MFS_ERR_PROTECT   Write protected
+                        The file attribute is write protected, or the 				volume attribute is write protected, or the 				parent directory is write protected.
+
+========================================================================
+Function name: mfsRomGetFileStat
+	       mfsRamGetFileStat
+________________________________________________________________________
+Syntax:        s32 mfsRomGetFileStat(MfsDirID dirID,MfsStat* stat)
+               s32 mfsRamGetFileStat(MfsDirID dirID,MfsStat* stat)
+Arguments:     dirID  Directory ID of file (directory)
+               *stat  MfsStat structure buffer for storing information
+Return value:  Error
+Function:      Obtains information
+Description:   This function obtains information about the file (directory) specified by dirID and returns it in the MfsStat structure specified by stat.  The MfsStat structure consists of the following members.
+
+      typedef struct st_stat{
+        u32  size;            //  File size
+        LEODiskTime  time;    //  Latest update date of file
+        u16  attribute;       //  Attribute
+        u16  dirID;           //  Directory ID
+        u16  upDirID;         //  Directory ID of parent directory
+        u8   gameCode[4];     //  Game code
+        u8   companyCode[2];  //  Company code
+        u8   copyCounter;     //  Copy counter
+        u8   updateCounter;   //  update counter
+      } MfsStat;
+
+However, the structure for a directory does not have the file size and copy counter members.
+
+Main errors:
+      MFS_ERR_NO        Normal termination	
+      MFS_ERR_DEVICE    Device error
+                        An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+      MFS_ERR_NOTFOUND  File not found
+                        The file was not found, or the directory was not 				found.
+
+========================================================================
+Function name: mfsRomGetDirListFirst
+               mfsRamGetDirListFirst
+________________________________________________________________________
+Syntax:        s32 mfsRomGetDirListFirst(MfsDirID upDirID, MfsDirList* dirList, u16 attr)
+               s32 mfsRamGetDirListFirst(MfsDirID upDirID, MfsDirList* dirList, u16 attr)
+Arguments:     upDirID  Directory ID of directory
+               dirList  MfsDirList structure buffer
+               attr     Attribute
+Return value:  Directory ID (a negative value is an error)
+Function:      Obtains contents of directory
+Description:   This function searches the contents of the directory specified by upDirID and returns the directory ID of a directory or file having an attribute that matches the attribute specified by attr.
+The following values can be specified for attr.
+
+      MFS_FILE_ATTR_FORBID_W   0x2000  Write protected
+      MFS_FILE_ATTR_FORBID_R   0x1000  Read protected
+      MFS_FILE_ATTR_HIDDEN     0x0800  Hidden file
+      MFS_FILE_ATTR_ENCODE     0x0400  Encoded file
+      MFS_FILE_ATTR_COPYLIMIT  0x0200  Copy limited
+
+When the return value is MFS_ERR_SEARCHEND, no directory contents were found.  
+When the return value is not an error, the next contents can be obtained by using the mfsR*mGetDirListNext function.
+
+Main errors:
+      MFS_ERR_SEARCHEND  Content not in directory 
+
+========================================================================
+Function name: mfsRomGetDirListNext
+               mfsRamGetDirListNext
+________________________________________________________________________
+Syntax:        s32 mfsRomGetDirListNext(MfsDirList* dirList)
+               s32 mfsRamGetDirListNext(MfsDirList* dirList)
+Arguments:     dirList  MfsDirList structure buffer
+Return value:  Directory ID (a negative value is an error)
+Function:      Continues to obtain directory contents
+Description:   This function continues the search of mfsR*mGetDirListFirst.
+The same values that were specified in mfsR*mGetDirListFirst are specified for dirList.
+
+Main errors:
+      MFS_ERR_SEARCHEND  Content not in directory 
+
+
+
+
+[3] Device functions
+
+========================================================================
+Function name: mfsReadWriteLBA
+________________________________________________________________________
+Syntax:        s32 mfsReadWriteLBA(u32 startLBA, u32 nLBAs, void* buf,s32 direction)
+Arguments:     startLBA   Starting block address
+               nLBAs      Number of blocks
+               *buf       Buffer
+               direction  Flag
+Return value:  Error
+Function:      Performs read/write of disk
+Description:   This function enables LeoReadWrite to be handled by using the MFS library.
+Data read/write processing is performed in units of LBAs.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsReadLBA
+________________________________________________________________________
+Syntax:        s32 mfsReadLBA(u32 startLBA, u32 nLBAs, void* buf)
+Arguments:     startLBA  Starting block address
+               nLBAs     Number of blocks
+               *buf      Buffer
+Return value:  Error
+Function:      Reads disk
+Description:   This function reads data from disk in units of LBAs.  
+This is an mfsReadWriteLBA macro.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsWriteLBA
+________________________________________________________________________
+Syntax:        s32 mfsWriteLBA(u32 startLBA, u32 nLBAs, void* buf)
+Arguments:     startLBA  Starting block address
+               nLBAs     Number of blocks
+               *buf      Buffer
+Return value:  Error
+Function:      Writes to disk
+Description:   This function writes data to disk in units of LBAs.
+This is an mfsReadWriteLBA macro.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsReadDiskID
+________________________________________________________________________
+Syntax:        s32 mfsReadDiskID(LEODiskID *diskID)
+Arguments:     diskID  LEODiskID structure buffer
+Return value:  Error
+Function:      Reads disk ID
+Description:   This function reads the disk ID and stores it in diskID.
+It enables LeoReadDiskID to be handled by using the MFS library.
+When the MFS library is used, using this function may cause a problem in checking whether or not the disk has been exchanged.  Therefore, mfsDiskIdCheck should be used.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsSpdlMotor(LEOSpdlMode mode)
+________________________________________________________________________
+Syntax:        s32 mfsSpdlMotor(LEOSpdlMode mode)
+Arguments:     mode	
+Return value:  Error
+Function:      Controls motor and head of 64DD
+Description:   This function enables LeoSpdlMotor to be handled by using the MFS library.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsTestUnit
+________________________________________________________________________
+Syntax:        s32 mfsTestUnit(LEOStatus* status)
+Arguments:     *status
+Return value:  Error
+Function:      Checks status of 64DD
+Description:   This function enables LeoTestUnitReady to be handled by using the MFS library.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsReadRtc
+________________________________________________________________________
+Syntax:        s32 mfsReadRTC(LEODiskTime* time)
+Arguments:     time  LEODiskTime structure buffer
+Return value:  Error
+Function:      Reads data and time from internal RTC
+Description:   This function reads the date and time from the internal RTC and stores them in time.
+It enables LeoReadRTC to be handled by using the MFS library.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+========================================================================
+Function name: mfsSetRtc
+________________________________________________________________________
+Syntax:        s32 mfsWrtieRTC(LEODiskTime* time)
+Arguments:     time  LEODiskTime structure buffer
+Return value:  Error
+Function:      Sets internal RTC
+Description:   This function sets the date and time of the internal RTC to the values specified by time.
+It enables LeoSetRTC to be handled by using the MFS library.
+
+Main errors:
+      MFS_ERR_NO      Normal termination	
+      MFS_ERR_DEVICE  Device error
+                      An error occurred in an internally called Leo 				function.
+				Since a Leo function error is stored in the 				variable mfsError, check this variable to 				perform processing.
+
+
+[4] Other functions
+
+========================================================================
+Function name: mfsGetGameCode
+________________________________________________________________________
+Syntax:        void mfsGetGameCode(u8* companyCode, u8* gameCode)
+Arguments:     *companyCode  Buffer for storing company code
+               *gameCode     Buffer for storing game code
+Return value:  None
+Function:      Obtains company code and game code
+Description:   This function obtains the company code and game code that are set in the MFS library.
+To obtain only the company code or only the game code, specify NULL for the buffer corresponding to the code that is not to be obtained.
+
+========================================================================
+Function name: mfsSetGameCode
+________________________________________________________________________
+Syntax:        void mfsSetGameCode(u8* companyCode, u8* gameCode)
+Arguments:     *companyCode  Company code
+               *gameCode     Game code
+Return value:  None
+Function:      Sets company code and game code
+Description:   This function sets the company code and game code that are set in the MFS library.
+To set only the company code or only the game code, specify NULL for the buffer corresponding to the code that is not to be set.
+
+========================================================================
+Function name: mfsStrCmp
+________________________________________________________________________
+Syntax:        s32 mfsStrCmp(const u8* s1, const u8* s2)
+Arguments:     s1  Character string 1
+               s2  Character string 2
+Return value:  Comparison result
+Function:      Compares two character strings
+Description:   This function compares character string s1 with character string s2.  The comparison begins with the leading characters and continues until a different character is detected or one character string ends.
+Uppercase and lowercase characters are distinguished.
+
+The meaning of the return value is as follows.
+
+      < 0 (negative value)  s1 is less than s2
+      = 0                   s1 is equal to s2
+      > 0 (positive value)  s1 is greater than s2
+	
+
+========================================================================
+Function name: mfsStrnCmp
+________________________________________________________________________
+Syntax:        s32 mfsStrnCmp(const u8* s1, const u8* s2, s32 count)
+Arguments:     s1     Character string 1
+               s2     Character string 2
+               count  Maximum number of characters to be compared
+Return value:  Comparison result
+Function:      Compares two character strings
+Description:   This function compares character string s1 with character string s2.  The comparison begins with the leading characters and continues for count characters or until a different character is detected or one character string ends.
+
+Uppercase and lowercase characters are distinguished.
+
+The meaning of the return value is as follows.
+
+      < 0 (negative value)  s1 is less than s2
+      = 0                   s1 is equal to s2
+      > 0 (positive value)  s1 is greater than s2
+
+
+========================================================================
+Function name: mfsStrCpy
+________________________________________________________________________
+Syntax:        s32 mfsStrCpy(u8* dest, const u8* src)
+Arguments:     dest  Buffer for storing characters
+               src   Buffer of characters that are copied
+Return value:  dest pointer
+Function:      Copies character string
+Description:   This function copies the character string src to dest.  Copying ends when NULL is copied.
+
+========================================================================
+Function name: mfsStrnCpy
+________________________________________________________________________
+Syntax:        s32 mfsStrnCpy(u8* dest, const u8* src, s32 count)
+Arguments:     dest   Buffer for storing character string
+               src    Buffer of character string that is copied
+               count  Number of characters to copy
+Return value:  dest pointer
+Function:      Copies character string 
+Description:   This function copies at most count characters from src to dest.  If count characters are too long, the excess characters are discarded.  If they are too short, NULL is added to fill dest.  If the length of src is greater than or equal to count, NULL is not added at the end of dest.
+
+========================================================================
+Function name: mfsStrLen
+________________________________________________________________________
+Syntax:        s32 mfsStrLen(const u8* src)
+Arguments:     src  Character string buffer
+Return value:  Number of characters
+Function:      Calculates character string length
+Description:   This function calculates and returns the length of character string src.  The terminating NULL is not counted.
+
+
+========================================================================
+Function name: mfsStrrChr
+________________________________________________________________________
+Syntax:        u8* mfsStrrChr(const u8* src, s32 c)
+Arguments:     src  Character string to be searched
+               c    Search character
+Return value:  src pointer where character c appeared last
+Function:      Finds position where character c appears last
+Description:   This function searches for the position within the character string src where the character c appears last.
+The NULL terminator is considered to be a part of the character string.
+
+A pointer indicating the position within the character string src at which the character c appears last is returned for the return value.  If the character c is not found, NULL is returned.
+
+========================================================================
+Function name: mfsStrCat
+________________________________________________________________________
+Syntax:        u8* mfsStrCat(u8* dest, const u8* src)
+Arguments:     dest  Character string
+               src   Character string
+Return value:  dest pointer
+Function:      Concatenates character strings
+Description:   This function appends character string src at the end of character string dest.
+dest must be large enough to be able to store the character string that is appended.
+	
+========================================================================
+Function name: mfsStrWCmp
+________________________________________________________________________
+Syntax:        s32 mfsStrWCmp(const u8* src1, const u8* src2)
+Arguments:     s1
+               s2
+Return value:  Comparison result
+Function:      Compares character strings (version supporting wild cards)
+Description:   This function compares character string s1 with character string s2 and returns 0 if they are the same or 1 otherwise.
+Wild card characters (* or ?) can be included in character string s1.
+Wild card characters cannot be included in character string s2.
+
+========================================================================
+Function name: mfsSetLeoBusyFunc
+________________________________________________________________________
+Syntax:        void mfsSetLeoBusyFunc(void (*func)(void))
+Arguments:     func  Callback function
+Return value:  None
+Function:      Registers PI control function (before using PI)
+Description:   This function registers a callback function that is to be called within MFS before an asynchronous Leo function is called.
+The callback function registered by this function mainly includes PI exclusive control code.
+
+
+========================================================================
+Function name: mfsSetLeoReadyFunc
+________________________________________________________________________
+Syntax:        void mfsSetLeoReadyFunc(void (*func)(void))
+Arguments:     func
+Return value:  None
+Function:      Registers PI control function (after using PI)
+Description:   This function registers a callback function that is to be called within MFS after an asynchronous Leo function is called.
+The callback function registered by this function mainly includes PI exclusive control code.
+
+
+========================================================================
+Function name: mfsSetLeoErrorFunc
+________________________________________________________________________
+Syntax:        void mfsSetLeoErrorFunc(void (*func)(s32))
+Arguments:     func
+Return value:  None
+Function:      Registers Leo function's error handling function
+Description:   This function registers a callback function that is to be called within MFS when an error occurs as a result of executing an asynchronous Leo function.
+
+
+[5] Global variables
+
+========================================================================
+Variable name: mfsError
+________________________________________________________________________
+Definition:    s32 mfsError
+Description:   This variable stores the error when a LEO function is called within the MFS library.
+When the MFS_ERR_DEVICE error is returned, check the value of this variable and perform error handling.
+
+========================================================================
+Variable name: mfsDiskInfo
+________________________________________________________________________
+Definition:    MfsDiskInfo mfsDiskInfo
+Description:   This variable is a structure for storing information related to the disk within the MFS library.
+When the disk is accessed by the MFS library, the disk information is checked first and stored in this structure.  The structure members are as follows.
+	
+      typedef struct st_MfsDiskInfo {
+        LEOCapacity  cap;       /* Disk Capacity */
+        LEODiskID    diskID;    /* Disk ID       */
+        u16          blockNum;  /* ROM Block     */
+      } MfsDiskInfo;
+
+
+
+
+

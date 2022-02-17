@@ -1,0 +1,199 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.12 PartList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(2)Part Area</font></h4>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>part_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_part_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_tri_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_index(part_tri_num - 1)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Part Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 part_tag</td>
+
+<td><font size=+0>Tag indicating Part area. Set the following flag.</font>
+<pre><b><font size=+0>TAG_PART&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00090100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_part_index</td>
+
+<td><font size=+0>Index number of this Part area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_size</td>
+
+<td><font size=+0>Size of Part area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_name_index</td>
+
+<td><font size=+0>Index number contained in NameList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_index</td>
+
+<td><font size=+0>Index number of Mat.</font>
+<p><font size=+0>When material of Shape is used directly, specify:</font>
+<pre><b><font size=+0>USE_SHAPE_MAT&nbsp;&nbsp; 0x80000000</font></b>
+
+</pre>
+&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_group_index</td>
+
+<td><font size=+0>Index number of TriGroup same as tri_group_index for
+Shape</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_tri_num</td>
+
+<td><font size=+0>Number of Tri in this part</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extensino_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extensino_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_index</td>
+
+<td><font size=+0>Index number of Tri to be referenced</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg12.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg13.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

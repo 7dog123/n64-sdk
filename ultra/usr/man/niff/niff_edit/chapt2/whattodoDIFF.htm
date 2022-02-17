@@ -1,0 +1,96 @@
+<html>
+<title>
+NIFFeditorを使ってみよう
+</title>
+<body bgcolor="e0ffff">
+
+<H5 align="right">NIFFeditor for SGI</H5>
+ <h2>3. NIFFeditorを使ってみよう<img src="../../../gif/update.gif" width="48" height="12"></h2>
+
+<a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./start.htm">
+<img src="../../../gif/previous.gif"
+border="0" width="65" height="17"></a>
+<a href="./menu.htm">
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a>
+
+<hr>
+
+<H3><FONT COLOR=#0000ff>NIFFeditor for SGIでできること</FONT></H3>
+
+NIFFeditor for SGI では次のことができます。
+<ul>
+ <li> NIFFデータを読み込んでノード間のリンクをツリー形式に表示する。<p>
+ <li> データの中身の変更<p>
+      <ul>
+       <li> <a href="mouse.htm">リンクを変更</a>
+       <li> <a href="nodes.htm">各ノードの名前の変更</a>
+       <li> <a href="nodes.htm">各ノードのデータ(フラグなど)の変更</a><p>
+      <a href="spec.htm">      →制限事項</a><p>
+      </ul><p>
+
+ <li> 変更したデータをNIFFデータとしてファイルにセーブ。<p>
+ <li> Converting NIFF data to N64 data (display list, NVF)<p>
+ <li> N64エミュレータボードまたはIS-VIEWER64を使って、N64実機でプレビュー<p>
+</ul>
+
+<h3><FONT COLOR=#0000ff>ファイルの読み込みからプレビューまで</FONT></h3>
+
+<OL><b>
+ <li> NIFFデータファイルを読み込む。</b><p>
+
+      <a href="menu.htm">メニュー</a>から[File]-[Open]でファイルを選択します。<p>
+      [OK]をクリックすると、NIFFデータが読み込まれてツリーが表示されます。<p>
+      obj_0などのラベルがついた四角いボタンがそれぞれNIFFでいうノードにあたります。
+      そのノードを結んでいる矢印がリンクです。<p>
+<!--       すでに別のデータを表示している場合は、[File]-[Open]の前に<a href="menu.htm">[File]-[New]</a>で表示を消してからファイルを読み込んで下さい。<p> -->
+      <b>
+ <li>データを見る。</b><p>
+ノードを<a href="mouse.htm">マウスの左ボタンでダブルクリック</a>すると、<a href="nodes.htm">各ノードの中身を見る</a>ことができます。
+
+<p>
+
+      ダブルクリックで出たウィンドウ(ダイアログとよぶ)上では現在の設定内容が表示されていますが、これを変更することによって設定を変えることができます。<p>
+ <b>
+ <li> データを変更する。</b><p>
+      
+       メニューから<a href="menu.htm#editmode">[Edit]－[EditMode]</a>を選んで下さい。
+EditModeのメニューにあるボタンが黄色になっていれば、データの変更が可能です。
+      <p>
+      ダイアログで変更した内容を実際のNIFFデータに反映させるには[OK]または[Apply]ボタンをクリックして下さい。[Cancel]をクリックするとデータは変更されません。
+      <p>
+      <a href="mouse.htm">リンクを変更することもできます。</a>
+      <p>
+ <b>
+ <li> データをセーブする。</b><p>
+
+      メニューから<a href="menu.htm#save">[File]-[Save]または[Save As ...]</a>でNIFFデータとしてファイルにセーブすることができます。<p>
+      [Save]の場合は読み込んだファイルに上書きされます。<br>
+      [Save As ...]の場合は別のファイルを指定することができます。<p>
+ <b>
+ <li> プレビューする。</b><p>
+
+      When <a href="menu.htm#preview">[N64tool]-[Nitendo64 preview(Emu-Board)], [Nitendo64 preview(IS)]</a> are selected from the menu, it is possible to preview with N64.  
+       <p>
+</OL>
+
+<hr>
+<font size=-1>
+Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.
+</font>
+
+<p align="right"><a href="../indexsgi.htm">
+目次へ
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./menu.htm">
+次へ
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a></p>
+
+</body>
+
+</html>

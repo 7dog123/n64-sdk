@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 27</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro26/index26.8.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro27/index27.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">EPI Manager</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Overview</b>
+<br>
+With previous osPi functions, the programmer only needed to access the Game Pak. To do this the programmer would provide the virtual address of Game Pak ROM, (not a physical address), to a function and switch the offset to a physical address within the osPi function. (For example, the first address of the Game Pak can be accessed if 0 is given to osPi*, but the actual first physical address of Game Pak is 0x1000_0000.)
+<P>
+Using the previous osPi functions,   the programmer could access the address space of Game Pak ROM, however, an Extension device located in another address space like SRAM or the ROM in the N64 Disk Drive could not be used.
+
+<P>
+<a name="02"></a>
+<b>EPI Function</b>
+<br>
+The new osEPI function (Enhanced PI) allows the programmer to indicate which device he wants to access using a handler (OSPiHandle structure). A handler is set up depending upon the characteristics of the hardware to be used.
+
+<P>
+Standard handler acquisition functions are listed below.
+
+<p>
+<b>Table 1</b> &nbsp;Standard Handler Acquisition Functions
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=50% valign="top"><font face="arial" size="-1"><b>Device Name</td>
+<td width=50%><font face="arial" size="-1"><b>Handler Acquisition Function</b></td></tr>
+<tr>
+<td width=50% valign="top"><font face="arial" size="-1">Game Pak ROM</td>
+<td width=50%><font face="arial" size="-1">osCartRomInit()</td>
+</tr>
+<tr>
+<td width=50% valign="top"><font face="arial" size="-1">N64 Disk Drive ROM</td>
+<td width=50%><font face="arial" size="-1">osDriveRomInit()</td>
+</tr>
+<tr>
+<td width=50% valign="top"><font face="arial" size="-1">N64 Disk Drive Registers</td>
+<td width=50%><font face="arial" size="-1">osLeoDiskInit()</td>
+</tr></table>
+
+<P>
+The return values of the above handler acquisition functions will be the handler for each device. For example, in the case of ROM software, the programmer can use functions such as OSPiHandle *carthandle and proceed to,
+<pre><font face="courier" size="3">carthandle=osCartRomInit(),
+</pre></font>
+
+<P>
+"carthandle", a handler for ROM software will be returned. With the use of the new function, driveromhandle, the following steps can be performed.
+<P>
+osEPi(carthandle,..); access ROM software
+<P>
+osEPi(driveromhandle,..); access N64 Disk DriveROM,
+<P>
+(Using osLeoDiskInit(), the N64 Disk Drive registers can be accessed, but in general, a user does not need to use this function. These settings are done automatically in the N64 Disk Drive device manager.)
+
+<P>
+The following two cautions must be observed when using EPI.
+
+<ol>
+<li>A different structure must be used for each handler acquisition function, so that the address of each is different from all others.
+<P>
+<li>The PI function cannot be used when the EPI function is used.
+</ol>
+
+<P>
+<a name="03"></a>
+<b>Description of Handler</b>
+<br>
+The handler contains the following information.
+<pre><font face="courier" size="3">typedef struct OSPiHandle_s {
+struct OSPiHandle_s		*next;	/* pointer to next handle in the table */
+	u8	type;	/* DEVICE_TYPE_BULK for disk */
+	u8	latency;	/* domain latency */
+	u8	pageSize;	/* domain page size */
+	u8	relDuration;	/* domain release duration */
+	u8	pulse;	/* domain pulse width */
+	u8	domain;	/* which domain */
+	u32	baseAddress;	/* Domain address */
+	u32	speed;	/* for roms only */
+/* The following are "private" elements" */
+	__OSTranxInfo	transferInfo;	/* for disk only */
+	} OSPiHandle;
+(from os.h)
+</pre></font>
+
+<P>
+Here, latency, pageSize, relDuration, and pulse are parameters that determine the access speed of the PI bus.    The user needs to set up an appropriate value for the device being used.
+
+<P>
+Domain means domain names. There are two domains (domain 1 and domain 2). Domain is an area where each speed parameter can be set. Addresses for each domain are divided into several areas and defined in rcp.h, as listed below.
+
+<pre><font face="courier" size="3">#define PI_DOM1_ADDR1           0x06000000      /* to 0x07FFFFFF */
+#define PI_DOM1_ADDR2           0x10000000      /* to 0x1FBFFFFF */
+#define PI_DOM1_ADDR3           0x1FD00000      /* to 0x7FFFFFFF */
+#define PI_DOM2_ADDR1           0x05000000      /* to 0x05FFFFFF */
+#define PI_DOM2_ADDR2           0x08000000      /* to 0x0FFFFFFF */
+</pre></font>
+
+<P>
+Even if a device exists whose speed is different within the same domain, it is possible to change the speed parameter using the EPI.
+<P>
+Device Type is used internally to distinguish the type of media used.   The current N64 environment supports values 0 through 2. Values 0 through 3 will be supported in the future with new devices.
+<pre><font face="courier" size="3">/* External device info */
+#define	DEVICE_TYPE_CART	0	/* ROM cartridge */
+#define	DEVICE_TYPE_BULK	1	/* ROM bulk */
+#define	DEVICE_TYPE_N64 Disk Drive	2	/* 64 Disk Drive */
+#define	DEVICE_TYPE_SRAM	3	/* SRAM */
+(from rcp.h)
+</pre></font>
+
+<P>
+BaseAddress is a start address for the device.   If a programmer simply provides the offset from the first address to osEPi without the starting address, the osEPI function will OR the offset and baseAddress, and the device will be accessed with the resulting value.
+
+<P>
+Speed is a parameter reserved for the future.   For the time being, there is no need to set this parameter. TransferInfo is a parameter that can be used only for the N64 Disk Drive.   There is no need to set this parameter for any device other than the N64 Disk Drive.
+
+<P>
+As it is cumbersome to set each value, the Handler acquisition function described above was produced.   As these functions provide an appropriate setting for each device, an application programmer can acquire a handler by simply calling these functions.   To access the device after calling the handler acquisition function, the programmer can use the handler which was already acquired.
+
+<P>
+The function osEPi remembers the device setting of the current Pi bus. When it is next called, it will set the Pi bus if the specified device is different. If the specified device is the same, it will process DMA.
+
+<P>
+The EPI Manager can be used like the old PI Manager using the handler that is set. For usage of each EPI function, please refer to the N64 System Reference Manual(HTML).    
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

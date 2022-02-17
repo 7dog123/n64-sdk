@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<TITLE>NIFF 1.0: Links to Nodes in NIFF</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<H2>2.2 Links to Nodes in NIFF</H2>
+
+<H3>7) Handling of a Camera in NIFF</H3>
+
+With a game application,  the camera must be handled in a much different way from the camera in a movie.  In games,  a camera is influenced by the user's input directly and indirectly, and does the animation.  And, some games require the camera to have collision detection.   NIFF makes this possible by specifying the camera position, a focal point, and a Y direction vector specified by indicating an object.  Consider the following camera:<BR>
+<BR>
+
+<I><B>Figure 15</B> -- A camera following an object</I><BR><BR>
+<IMG SRC="../img/NIFFspec-15.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+In this case, if Man_Object runs on the land and the camera follows it,  the camera is following Man_Object a little bit behind.  So, NULL_Obj0 and NULL_Obj1 are made as follows:<BR>
+<BR>
+
+<I><B>Figure 16</B> -- NULL Object following an object</I><BR><BR>
+<IMG SRC="../img/NIFFspec-16.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+And, links are made toward NULL_Obj0, NULL_Obj1, and Man_Object as follows:<BR>
+<BR>
+
+<I><B>Figure 17</B> -- Links from a camera</I><BR><BR>
+<IMG SRC="../img/NIFFspec-17.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+In this manner,  when defining an image point (camera position), a focal point, and an up direction, a parameter for changing a camera viewing is set by specifying and linking some object or NULL objects.<BR>
+<BR>
+
+If used this method,  it is possible to represent a static camera by linking to a static object, and if you want to represent a camera which follows some object, you can do so by linking to the object.<BR>
+<BR>
+  
+Also, it is possible to represent an independent camera motion by linking the motion to NULL object and linking a camera to the NULL object.<BR>
+<BR>
+
+In other words,  as for representing a camera position, a focal point, and an up direction,  it is possible by linking to some object as shown below.<BR>
+<BR>
+
+<I><B>Figure 18</B> -- Links to objects from a camera</I><BR><BR>
+<IMG SRC="../img/NIFFspec-18.gif" ALT="Illustration" BORDER=0>
+
+<HR>
+
+<A HREF="seg2-6.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg2-8.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P>Copyright 1997-1999 Nintendo Co., Ltd. All rights reserved.</P>
+
+</BODY>
+</HTML>

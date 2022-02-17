@@ -1,0 +1,506 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.16 AnimList</font></h3>
+
+<hr size=3>
+<h4>3) Anim Area</h4>
+
+<blockquote>
+
+The Anim area stores actual animation data. The format varies according to the animation type specified in the AnimGroup area. The memory maps for each type follow.
+</blockquote>
+
+<p><br>
+<hr size=1>
+<br><b>When ANIM_TYPE_STATIC or ANIM_TYPE_FULL is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>anim_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_anim_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>translate_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>translate_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>translate_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_axis_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_axis_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_axis_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_expand_flag</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>scale_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>scale_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>scale_z</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Anim Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 anim_tag</td>
+
+<td><font size=+0>Tag indicating Anim. Depending on the animation type specified, choose one of the followings.</font>
+<pre><b><font size=+0>TAG_ANIM_STATIC 0x000c0101
+TAG_ANIM_FULL&nbsp;&nbsp; 0x000c0103</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_anim_index</td>
+
+<td><font size=+0>Index number of this Anim</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_size</td>
+
+<td><font size=+0>Size of this Anim</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float translate_x</td>
+
+<td><font size=+0>Parallel translation on X axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float translate_y</td>
+
+<td><font size=+0>Parallel translation on Y axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float translate_z</td>
+
+<td><font size=+0>Parallel translation on Z axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_axis_x</td>
+
+<td><font size=+0>Rotation angle (radius) for local X axis</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_axis_y</td>
+
+<td><font size=+0>Rotation angle (radius) for local Y axis</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_axis_z</td>
+
+<td><font size=+0>Rotation angle (radius) for local Z axis</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_expand_flag</td>
+
+<td><font size=+0>Expansion flag. Set default as 0x00000000</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float scale_x</td>
+
+<td><font size=+0>Scale value on X axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float scale_y</td>
+
+<td><font size=+0>Scale value on Y axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float scale_z</td>
+
+<td><font size=+0>Scale value on Z axial direction</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When ANIM_TYPE_KEY is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>anim_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_anim_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>key</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>next_key</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>interpolation_type</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>translate_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>translate_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>translate_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_axis_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_axis_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_axis_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>rotate_expand_flag</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>scale_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>scale_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>scale_z</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Anim Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 anim_tag</td>
+
+<td><font size=+0>Indicates Anim. Set the following Tag.</font>
+<pre><b><font size=+0>TAG_ANIM_KEY&nbsp;&nbsp;&nbsp; 0x000c0104</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_anim_index</td>
+
+<td><font size=+0>Index number of this Anim</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_size</td>
+
+<td><font size=+0>Size of this Anim</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 key</td>
+
+<td><font size=+0>Current key frame value</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 next_key</td>
+
+<td><font size=+0>Next key frame value</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 interpolation_type</td>
+
+<td><font size=+0>Specifies the interpolation type from this key to the next.
+The following are current interpolation types.</font>
+
+<pre><b><font size=+0>INTERPOLATION_STATIC&nbsp;&nbsp;&nbsp; 0x00000000
+INTERPOLATION_LINEAR&nbsp;&nbsp;&nbsp; 0x00000001
+INTERPOLATION_SLOWIN&nbsp;&nbsp;&nbsp; 0x00000002
+INTERPOLATION_SLOWOUT&nbsp;&nbsp; 0x00000004
+INTERPOLATION_SLOW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000006</font></b>
+</pre>
+
+INTERPOLATION_STATIC fixes the animation data from this key frame to the next.
+
+<BR><br>INTERPOLATION_LINEAR performs a linear transition on the animation data from this key to the next.
+
+<BR><br>INTERPOLATION_SLOWIN smooths the transition of animation data to the next key frame.
+
+<BR><br>INTERPOLATION_SLOWOUT smooths the transition of animation data from this key frame.
+
+<BR><br>INTERPOLATION_SLO performs both SLOWIN and SLOWOUT.
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>float translate_x</td>
+
+<td><font size=+0>Parallel translation on X axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float translate_y</td>
+
+<td><font size=+0>Parallel translation on Y axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float translate_z</td>
+
+<td><font size=+0>Parallel translation on Z axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_axis_x</td>
+
+<td><font size=+0>Rotation angle (radius) for local X axis</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_axis_y</td>
+
+<td><font size=+0>Rotation angle (radius) for local Y axis</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_axis_z</td>
+
+<td><font size=+0>Rotation angle (radius) for local Z axis</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float rotate_expand_flag</td>
+
+<td><font size=+0>Expansion flag. Set default as 0x00000000</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float scale_x</td>
+
+<td><font size=+0>Scale value on X axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float scale_y</td>
+
+<td><font size=+0>Scale value on Y axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float scale_z</td>
+
+<td><font size=+0>Scale value on Z axial direction</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When ANIM_TYPE_BILLBOARD_OBJ is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>anim_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_anim_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>lookat_obj_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>upper_obj_index</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Anim Area Memory Map</b></CAPTION>
+
+<table BORDER>
+<tr>
+<td NOWRAP>u32 anim_tag</td>
+
+<td><font size=+0>Tag indicating Anim. Specify the following tag.</font>
+<pre><b><font size=+0>TAG_ANIM_BILLBOARD_OBJ&nbsp; 0x000c0105</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_anim_index</td>
+
+<td><font size=+0>Index number of this Anim</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_size</td>
+
+<td><font size=+0>Size of this Anim.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 lookat_obj_index</td>
+
+<td><font size=+0>Index number in ObjList. Determines the direction of the local
+Z axis.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 upper_obj_index</td>
+
+<td><font size=+0>Index number in ObjList. Determines the direction of the local
+Y axis.</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg16-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg17.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

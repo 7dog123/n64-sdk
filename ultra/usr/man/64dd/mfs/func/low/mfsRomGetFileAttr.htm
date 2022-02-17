@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileAttr</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileAttr<br>
+mfsRamGetFileAttr</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileAttr(MfsDirID dirID)
+	s32 mfsRamGetFileAttr(MfsDirID dirID)
+Arguments:	dirID	Directory ID of file (directory)
+Return value:Attribute of file (directory)  (a negative value is an error)
+Function:	Obtains attribute of file (directory)
+Description:	This function obtains and returns the attribute of the file or directory specified by dirID.  The attribute, which is represented by u16-type bits, can have the following contents.
+
+	MFS_FILE_ATTR_DIRECTORY	0x8000	Directory
+	MFS_FILE_ATTR_FILE	0x4000	File
+	MFS_FILE_ATTR_FORBID_W	0x2000	Write protected
+	MFS_FILE_ATTR_FORBID_R	0x1000	Read protected
+	MFS_FILE_ATTR_HIDDEN	0x0800	Hidden file
+	MFS_FILE_ATTR_ENCODE	0x0400	Encoded file
+	MFS_FILE_ATTR_COPYLIMIT	0x0200	Copy limited
+
+Main errors:
+	MFS_ERR_NO		Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found</pre>
+
+<hr>
+</body>
+</html>

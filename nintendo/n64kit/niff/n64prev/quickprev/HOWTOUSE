@@ -1,0 +1,32 @@
+To use quick preview			    98.8.24  NINTENDO Co.,Ltd
+						     MONEGI CORPORATION
+
+Do following step.
+
+step 1. load previewr
+step 2. convert NIFF data to model data for quick preview.
+step 3. load converted model data.
+
+For expample, to use IS-VIEWER.
+
+step 1. nload -n -v quickprev.n64
+step 2. niff2gfx -b niffprev.nif model.bin
+step 3. nload -n -v -s0x200000 model.bin
+
+"quickprev.n64" is the previewer included in this directory.
+"niffprev.nif" is a NIFF data.
+"model.bin" is a converted data.
+
+Also, to use N64 emulator board with SGI-Indy.
+
+step 1. gload -s quickprev.n64
+step 2. niff2gfx -b niffprev.nif model.bin
+step 3. gload -s -o0x200000 model.bin
+
+[Attention]
+  To use quick preview, it is necessary to get a new version of nload 
+that does not need "makemask" program.
+
+
+
+

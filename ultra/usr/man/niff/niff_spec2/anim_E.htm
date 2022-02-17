@@ -1,0 +1,1366 @@
+<html>
+<title>
+AnimNode
+</title>
+</head>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+12. Anim Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="animGroupD">(1) AnimGroup Description (English)</A>
+</h3>
+
+<blockquote>
+<table border>
+
+<tr>
+<td nowrap>
+u32 use_animation_channel
+</td>
+<td>
+When every channel has data, this is used instead of Anim, which was used by NIFF 1.0. The following are the channels that are ready for use:
+<pre>
+<b>
+NIFF2_ANIM_CHANNEL_NO_USE                        0x00000000
+NIFF2_ANIM_CHANNEL_ROTATE_AXIS                   0x00000001
+NIFF2_ANIM_CHANNEL_ROTATE_X                      0x00000002
+NIFF2_ANIM_CHANNEL_ROTATE_Y                      0x00000004
+NIFF2_ANIM_CHANNEL_ROTATE_Z                      0x00000008
+NIFF2_ANIM_CHANNEL_ORIENTATION_XY                0x00000010
+NIFF2_ANIM_CHANNEL_TRANSLATION                   0x00000020
+NIFF2_ANIM_CHANNEL_UNIQUE_SCALE                  0x00000040
+NIFF2_ANIM_CHANNEL_CLASSICAL_SCALE               0x00000080
+NIFF2_ANIM_CHANNEL_ORIENTATION_CONSTRAINT        0x00000100
+NIFF2_ANIM_CHANNEL_DIRECTION_CONSTRAINT          0x00000200
+NIFF2_ANIM_CHANNEL_UPVECTOR_CONSTRAINT           0x00000400
+NIFF2_ANIM_CHANNEL_PREFERRED_AXIS_CONSTRAINT     0x00000800
+NIFF2_ANIM_CHANNEL_POSITION_CONSTRAINT           0x00001000
+NIFF2_ANIM_CHANNEL_UNIQUE_SCALE_CONSTRAINT       0x00002000
+NIFF2_ANIM_CHANNEL_CLASSICAL_SCALE_CONSTRAINT    0x00004000
+</b>
+</pre>
+If the former Anim is used, please set ANIM_CHANNEL_NO_USE.<p>
+NIFF2_ANIM_CHANNEL_ROTATE_AXIS is the animation channel for spinning around the rotation axis.<p>
+NIFF2_ANIM_CHANNEL_ROTATE_X is the animation channel specifying the angle of rotation around the X axis.<p>
+NIFF2_ANIM_CHANNEL_ROTATE_Y is the animation channel specifying the angle of rotation around the Y axis.<p>
+NIFF2_ANIM_CHANNEL_ROTATE_Z is the animation channel specifying the angle of rotation around the Z axis.<p>
+NIFF2_ANIM_CHANNEL_ORIENTATION_XY is the animation channel specifying the rotation orientation, in which case the X axis and Y axis are specified. If the X axis and the Y axis are not vertical to each other, please adjust the Y axis to create the N64 software<p>
+NIFF2_ANIM_CHANNEL_TRANSLATION is the animation channel specifying the translating value.<p>
+NIFF2_ANIM_CHANNEL_UNIQUE_SCALE is the animation channel specifying the unique scale used by Unique.<p>
+NIFF2_ANIM_CHANNEL_CLASSICAL_SCALE is the animation channel specifying the scale used by normal CG tools.<p>
+NIFF2_ANIM_CHANNEL_ORIENTATION_CONSTRAINT is the animation channel that constrains the orientation value for the specified object.<p>
+NIFF2_ANIM_CHANNEL_DIRECTION_CONSTRAINT is the animation channel that constrains the object specifying the X axis.<p>
+NIFF2_ANIM_CHANNEL_UPVECTOR_CONSTRAINT is the animation channel that constrains the object specifying the Y axis.<p>
+NIFF2_ANIM_CHANNEL_PREFERRED_AXIS_CONSTRAINT is the animation channel that constrains the object specifying the Z axis.<p>
+NIFF2_ANIM_CHANNEL_POSITION_CONSTRAINT is the animation channel that constrains the object specifying translating.<p>
+NIFF2_ANIM_CHANNEL_UNIQUE_SCALE_CONSTRAINT is the animation channel that constrains the object specifying unique scale.<p>
+NIFF2_ANIM_CHANNEL_CLASSICAL_SCALE_CONSTRAINT is the animation channel that constrains the object specifying classical scale.<p>
+If multiple animation channels are used simultaneously, please describe each with bitOR.  However, there are some impossible combinations as shown below:<p>
+RotateAxis, (RotateX, RotateY, RotateZ), OrientationXY cannot be used simultaneously.  However, RotateX, RotateY and RotateZ can be used in combination.<p>
+UniqueScale and ClassicalScale cannot be used simultaneously.<p>
+OrientationConstraint cannot be used simultaneously with RotateAxis, RotateY, RotateZ, or OrientationXY.<p>
+UpVectorConstraint cannot be used simultaneously with RotateAxis, RotateX, RotateZ, or OrientationXY.<p>
+PreferredAxisConstraint cannot be used simultaneously with RotateAxis, RotateX, RotateY, or OrientationXY.<p>
+Direction Constraint cannot be used simultaneously with RotateAxis, RotateX, RotateY, or OrientationXY.<p>
+PositionConstraint and Translation cannot be used simultaneously.<p>
+UniqueScaleConstraint cannot be used simultaneously with UniqueScale, ClassicalScale, or ClassicalScaleConstraint.<p>
+ClassicalScaleConstraint cannot be used simultaneously with UniqueScale, ClassicalScale, or UniqueScaleConstraint.<p>
+
+Plural constraints that are of the same kind cannot be used simultaneously for translating, rotating or scaling. 
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 rotate_axis_num
+</td>
+<td>
+Specifies the total number of RotateAxis. When the RotateAxis channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 rotate_x_num
+</td>
+<td>
+Specifies the total number of RotateX. When the RotateX channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 rotate_y_num
+</td>
+<td>
+Specifies the total number of RotateY. When the RotateY channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 rotate_z_num
+</td>
+<td>
+Specifies the total number of RotateZ. When the RotateZ channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 orientation_xy_num
+</td>
+<td>
+Specifies the total number of OrientationXY. When the OrientationXY channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 translation_num
+</td>
+<td>
+Specifies the total number of Translation. When the Translation channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 unique_scale_num
+</td>
+<td>
+Specifies the total number of UniqueScale. When the UniqueScale channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 classical_scale_num
+</td>
+<td>
+Specifies the total number of ClassicalScale. When the ClassicalScale channel is not used, please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_orientation_constraint_node
+</td>
+<td>
+The following tags specify the type of the node that performs Orientation Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When Orientation Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 orientation_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs Orientation Constraint.<p>
+When Orientation Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_direction_constraint_node
+</td>
+<td>
+The following tags specify the type of node that performs Direction Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When Direction Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 direction_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs Direction Constraint.<p>
+If Direction Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 kind_of_upvector_constraint_node
+</td>
+<td>
+The following tags specify the type of node that performs Upvector Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When not using Upvector Constraint, or if there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 upvector_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs UpVector Constraint.<p>
+When not using Upvector Constraint, or if there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 kind_of_preferred_axis_constraint_node
+</td>
+<td>
+The following tags specify the type of node that performs Preferred Axis Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When Preferred Axis Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 preferred_axis_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs Preferred Axis Constraint.<p>
+When Preferred Axis Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_position_constraint_node
+</td>
+<td>
+The following tags specify the type of node that performs Position Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When Position Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 position_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs Position Constraint.<p>
+When Position Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_unique_scale_constraint_node
+</td>
+<td>
+The following tags specifies the type of node that performs Unique Scale Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When Unique Scale Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+
+<tr>
+<td nowrap>
+u32 unique_scale_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs Unique Scale Constraint.<p>
+When Unique Scale Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 kind_of_classical_scale_constraint_node
+</td>
+<td>
+The following tags specify the type of node that performs Classical Scale Constraint.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+When Classical Scale Constraint is not used, or there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+
+<tr>
+<td nowrap>
+u32 classical_scale_constraint_node
+</td>
+<td>
+Specifies the index number of the node that performs Classical Scale Constraint.<p>
+When Classical Scale Constraint is not used, or if there are any external file references, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_orientation_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Orientation Constraint is referenced as an external file, that file name is specified by the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_orientation_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Orientation Constraint is referenced as an external file, that Obj name is specified by the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_direction_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Direction Constraint is referenced as an external file, that file name is specified by the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_direction_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Direction Constraint is referenced as an external file, that Obj name is specified by the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 external_upvector_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Upvector Constraint is referenced as an external file, that file name is specified by the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_upvector_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Upvector Constraint is referenced as an external file, that Obj name is specified by the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_preferred_axis_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Preferred Axis Constraint is referenced as an external file, that file name is specified by the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_preferred_axis_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Preferred Axis Constraint is referenced as an external file, that Obj name is specified by  the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_position_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Position Constraint is referenced as an external file, that file name is specified by the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_position_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Position Constraint is referenced as an external file, that Obj name is specified by  the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_unique_scale_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Unique Scale Constraint is referenced as an external file, that file name is specified by the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_unique_scale_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Unique Scale Constraint is referenced as an external file, that Obj name is specified by  the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_classical_scale_constraint_file_name_index 
+</td>
+<td>
+If the Obj that performs Classical Scale Constraint is referenced as an external file, that file name is specified by  the ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_classical_scale_constraint_obj_name_index
+</td>
+<td>
+If the Obj that performs Classical Scale Constraint is referenced as an external file, that Obj name is specified by  the ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+RotateAxis
+</td>
+<td>
+This is the RotateAxis area.  This channel specifies rotation by specifying the axis of rotation.   When rotate_axis_num = 0, this area is not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+RotateX
+</td>
+<td>
+This is the channel that specifies rotation around the X axis.  When rotate_x_num = 0, this area is not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+RotateY
+</td>
+<td>
+This is the channel that specifies rotation around the Y axis.  When rotate_y_num = 0, this area is not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+RotateZ
+</td>
+<td>
+This is the channel that specifies rotation around the Z axis.  When rotate_z_num = 0, this area is not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+OrientationXZ
+</td>
+<td>
+The channel is used when rotation is specified by orientation. In the case of orientation_xy_num=0, this area is not used.
+</tr>
+
+<tr>
+<td nowrap>
+Translation
+</td>
+<td>
+This is the area that specifies translating.  When translation_num = 0, this are is not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+UniqueScale
+</td>
+<td>
+This is the area that specifies UniqueScale.  When unique_scale_num = 0, this area is not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+ClassicalScale
+</td>
+<td>
+This is the area that specifies ClassicalScale scaling used by normal CG tools.  When classical_scale_num = 0, this area is not used.
+</td>
+</tr>
+
+
+
+
+
+</table>
+
+<P><A HREF="anim_C.htm#animGroupC">See Data Chunk</A></P>
+<P><A HREF="appendix/unique_scale_E.htm">See Appendix 3: Unique Scale</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+
+
+</blockquote>
+
+<h3>
+<A NAME="rotateAxisD">(2) RotateAxis Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL expresses full frame animation.  Please specify data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE performs trilinear interpolation from this key to the next key using the Hermite function
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float axis_x
+</td>
+<td>
+Specifies the X component of the direction vector of the normalized rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float axis_y
+</td>
+<td>
+Specifies the Y component of the direction vector of the normalized rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float axis_z
+</td>
+<td>
+Specifies the Z component of the direction vector of the normalized rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float rotation_angle
+</td>
+<td>
+Uses radians to describe the angle around the rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_axis_x
+</td>
+<td>
+Specifies the X component of the connection vector for Hermite interpolation concerning the direction vector of the rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_axis_y
+</td>
+<td>
+Specifies the Y component of the connection vector for Hermite interpolation concerning the direction vector of the rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_axis_z
+</td>
+<td>
+Specifies the Z component of the connection vector for Hermite interpolation concerning the direction vector of the rotation axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_rotation_angle
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the angle around the rotation axis.
+</td>
+</tr>
+</table>
+
+<P><A HREF="anim_C.htm#rotateAxisC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+
+
+<h3>
+<A NAME="rotateXD">(3) RotateX Description (English)</A>
+</h3>
+
+<blockquote>
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags  have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float rotate_angle
+</td>
+<td>
+Uses radians to specify the rotation angle around the X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_rotate_angle
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the rotation angle around the X axis.
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="anim_C.htm#rotateXC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+<h3>
+<A NAME="rotateYD">(4) RotateY Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains data from this key to next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key.  
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float rotate_angle
+</td>
+<td>
+Uses radians to describe the rotation angle around the Y axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_rotate_angle
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the rotation angle around the Y axis.
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="anim_C.htm#rotateYC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+<h3>
+<A NAME="rotateZD">(5) RotateZ Description (English)</A>
+</h3>
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key. 
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float rotate_angle
+</td>
+<td>
+Uses radians to describe the rotation angle around the Z axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_rotate_angle
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the rotation angle around the Z axis.
+</td>
+</tr>
+
+
+</table>
+
+<P><A HREF="anim_C.htm#rotateZC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+<h3>
+<A NAME="orientationXyD">(6) OrientationXY Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key.  
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float x_axis_x
+</td>
+<td>
+Specifies the X component of the normalized X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float x_axis_y
+</td>
+<td>
+Specifies the Y component of the normalized X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float x_axis_z
+</td>
+<td>
+Specifies the Z component of the normalized X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float y_axis_x
+</td>
+<td>
+Specifies the X component of the normalized Y axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float y_axis_y
+</td>
+<td>
+Specifies the Y component of the normalized Y axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float y_axis_z
+</td>
+<td>
+Specifies the Z component of the normalized Y axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_x_axis_x
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the X component of the X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_x_axis_y
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the Y component of the X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_x_axis_z
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the Z component of the X axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_y_axis_x
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the X component of the Y axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_y_axis_y
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the Y component of the Y axis.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_y_axis_z
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the Z component of the Y axis.
+</td>
+</tr>
+
+
+
+
+
+</table>
+<P><A HREF="anim_C.htm#orientationXyC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+<h3>
+<A NAME="translationD">(7) Translation Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains the data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify the data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float translate_x
+</td>
+<td>
+Specifies the X component of the translation.
+</td>
+</tr>
+<tr>
+<td nowrap>
+float translate_y
+</td>
+<td>
+Specifies the Y component of the translation.
+</td>
+</tr>
+<tr>
+<td nowrap>
+float translate_z
+</td>
+<td>
+Specifies the Z component of the translation.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_translate_x
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the X component of the translation.
+</td>
+</tr>
+<tr>
+<td nowrap>
+float differential_translate_y
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the Y component of the translation.
+</td>
+</tr>
+<tr>
+<td nowrap>
+float differential_translate_z
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the Z component of the translation.
+</td>
+</tr>
+
+
+
+
+</table>
+<P><A HREF="anim_C.htm#translationC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+
+<h3>
+<A NAME="uniqueScaleD">(8) UniqueScale Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains the data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify the data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float scale_x
+</td>
+<td>
+Specifies the scale value in the X axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float scale_y
+</td>
+<td>
+Specifies the scale value in the Y axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float scale_z
+</td>
+<td>
+Specifies the scale value in the Z axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_scale_x
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the scale value in the X axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_scale_y
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the scale value in the Y axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_scale_z
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the scale value in the Z axis direction.
+</td>
+</tr>
+
+
+
+
+</table>
+<P><A HREF="anim_C.htm#uniqueScaleC">See Data Chunk</A></P>
+<P><A HREF="appendix/unique_scale_E.htm">See Appendix 3: Unique Scale</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+</blockquote>
+
+<h3>
+<A NAME="classicalScaleD">(9) ClassicalScale Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>
+Specifies the interpolation type from this key to the next key.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_FULL&#9;&#9;0x00000001
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+NIFF2_INTERPOLATION_TYPE_HERMITE&#9;0x00000003
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains the data from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_FULL specifies full frame animation.  Please specify the data for all keys.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.  In this case, all acceleration data is ignored.<p>
+NIFF2_INTERPOLATION_TYPE_HERMITE uses the Hermite function to perform 3D interpolation from this key to the next key.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Specifies the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float scale_x
+</td>
+<td>
+Specifies the scale value in the X axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float scale_y
+</td>
+<td>
+Specifies the scale value in the Y axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float scale_z
+</td>
+<td>
+Specifies the scale value in the Z axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_scale_x
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the scale value in the X axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_scale_y
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the scale value in the Y axis direction.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float differential_scale_z
+</td>
+<td>
+Specifies the connection vector for Hermite interpolation concerning the scale value in the Z axis direction.
+</td>
+</tr>
+</table>
+<P><A HREF="anim_C.htm#classicalScaleC">See Data Chunk</A></P>
+<P><A HREF="appendix/hermite_E.htm">See Appendix 6: Hermite Interpolation</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+</blockquote>
+
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

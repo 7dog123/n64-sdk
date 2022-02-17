@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><b><img src="../nusystem2.gif" width="176"
+height="30"></b></font><font  FACE="ARIAL" size="4"><b>Function</b></font></p>
+
+<HR>
+<FONT face="arial">
+<Pre>
+<font color="#0000A0" size="6"><b>nuScResetClientMesgType</b></FONT>
+</Pre>
+
+<HR>
+
+<FONT face="arial" size="-1">
+<b>Syntax</b>
+<Pre><font face="courier" size="3">void nuScResetClientMesgType(NUScClient* c, NUScMsg msgType)
+</Pre></font>
+
+<P>
+<b>Arguments</b>
+<ul>
+<li>*c is the pointer to client structure
+<P>
+<li>msgType is the type of message to be re-registered (use OR for both) 
+<br>NU_SC_RETRACE_MSG =  Retrace
+<br>NU_SC_PRENMI_MSG  =  PRENMI
+</ul>
+
+<P>
+<b>Return Value</b>
+<br>
+None
+
+<P>
+<b>Explanation</b>
+<br>
+Resets a message sent to a client registered in the scheduler.
+
+
+<P>
+Resets the type of message sent to a client which was registered in the scheduler with the nuScAddClient() function. 
+The scheduler sends the message to the message queue of the registered clients when an event occurs. 
+</P>
+
+<P>
+When NU_SC_PRENMI_MSG is specified as the type of message registered, a PRE NMI message will not be sent upon reset, even if a PRE NMI event has already occurred.  Please be careful when resetting PRE NMI messages. <BR>
+</P>
+
+<P>
+Use the nuScRemoveClient function to remove client registrations. 
+</P>
+
+<HR>
+
+<P><b>Revision History</b>
+<br>
+1/23/1999 Added text regarding PRE NMI.
+</P>
+
+<HR>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,319 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.14 TexList</font></h3>
+
+<hr size=3>
+<h4>2) Tex Area</h4>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="13">TexHeader</th>
+
+<td>u32</td>
+
+<td>tex_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_tex_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_wrap_s</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_wrap_t</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_anim</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_data_area_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_anim_frame_late</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>TexDataArea</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Tex Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tex_tag</td>
+
+<td><font size=+0>Tag indicating Tex area. Set the following flag.</font>
+<pre><b><font size=+0>TAG_TEX 0x000b0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_tex_index</td>
+
+<td><font size=+0>Index number of this Tex area.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_header_size</td>
+
+<td><font size=+0>Number of bytes of this TexHeader area.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_size</td>
+
+<td><font size=+0>Number of bytes of this Tex area.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_name_index</td>
+
+<td><font size=+0>Index number in NameList that describes Tex name.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_TYPE">u32 tex_type</a></td>
+
+<td>Specifies the texture type. Currently, the following formats are defined:&nbsp;</font>
+<pre><b><font size=+0>TEX_FORM_I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+TEX_FORM_IA&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001
+TEX_FORM_CI&nbsp;&nbsp;&nbsp;&nbsp; 0x00000002
+TEX_FORM_YUV&nbsp;&nbsp;&nbsp; 0x00000003
+TEX_FORM_RGB&nbsp;&nbsp;&nbsp; 0x00000004
+TEX_FORM_RGBA&nbsp;&nbsp; 0x00000005
+TEX_DEPTH_4&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+TEX_DEPTH_8&nbsp;&nbsp;&nbsp;&nbsp; 0x00000100
+TEX_DEPTH_16&nbsp;&nbsp;&nbsp; 0x00000200
+TEX_DEPTH_32&nbsp;&nbsp;&nbsp; 0x00000400</font></b>
+
+</pre>
+<font size=+0>The above flags use TEX_FORM_* and TEX_DEPTH_* in pairs of one of each.&nbsp;</font>
+<br><font size=+0>For example, in the case of an 8bit color index texture, a flag
+will be set as follows:</font>
+<pre><b><font size=+0>TEX_FORM_CI | TEX_FORM_8</font></b>
+
+</pre>
+<font size=+0>However, when converting to Nintendo 64 data, only the following
+combinations can be used.&nbsp;</font>
+<BR><br><font size=+0>In the case of TEX_FORM_I, only TEX_DEPTH_4 or TEX_DEPTH_8
+can be used.</font>
+<BR><br><font size=+0>In the case of TEX_FORM_IA, only TEX_DEPTH_4, TEX_DEPTH_8,
+or TEX_DEPTH_16 can be used.</font>
+<BR><br><font size=+0>In the case of TEX_FORM_CI, only TEX_DEPTH_4 or TEX_DEPTH_8
+can be used.</font>
+<BR><br><font size=+0>In the case of TEX_FORM_YUV, only TEX_DEPTH_16 can be used.</font>
+<BR><br><font size=+0>In the case of TEX_FORM_RGB or TEX_FORM_RGBA, only TEX_DEPTH_16
+or TEX_DEPTH_32 can be used.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_WRAP_S">u32 tex_wrap_s</a></td>
+
+<td><font size=+0>Specifies S direction wrapping of texture. Set one of
+the following flags.</font>
+<pre><b><font size=+0>TEX_WRAP_S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+TEX_CLAMP_S&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001
+TEX_MIRROR_S&nbsp;&nbsp;&nbsp; 0x00000002</font></b>
+
+</pre>
+<font size=+0>Only one of these flags can be set at a time.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_WRAP_T">u32 tex_wrap_t</a></td>
+
+<td><font size=+0>Specifies T direction wrapping of texture. Set one of
+the following flags.&nbsp;</font>
+<pre><b><font size=+0>TEX_WRAP_T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+TEX_CLAMP_T&nbsp;&nbsp;&nbsp;&nbsp; 0x00000100
+TEX_MIRROR_T&nbsp;&nbsp;&nbsp; 0x00000200</font></b>
+
+</pre>
+Only one of these flags can be set at a time.</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_ANIM">u32 tex_anim</a></td>
+
+<td><font size=+0>Sets texture animation. The following flags are currently defined.</font>
+<pre><b><font size=+0>TEX_ANIM_OFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+TEX_ANIM_FLIPBOOK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001
+TEX_ANIM_FLIPBOOK_KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000002
+TEX_ANIM_SCROLL_OFFSET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000010
+TEX_ANIM_SCROLL_OFFSET_KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000020
+TEX_ANIM_SCROLL_SCALE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000100
+TEX_ANIM_SCROLL_SCALE_KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000200</font></b>
+
+</pre>
+<font size=+0>TEX_ANIM_OFF turns texture animation off.</font>
+<BR><br><font size=+0>TEX_ANIM_FLIPBOOK performs animation by switching textures
+like a texture animation.</font>
+
+<BR><br><font size=+0>TEX_ANIM_FLIPBOOK_KEY performs animation by switching
+textures using key frame switching timing.</font>
+
+<BR><br><font size=+0>TEX_ANIM_SCROLL_OFFSET scrolls the offset coordinates
+when part of a large texture image is extracted and the texture is used.&nbsp;</font>
+
+<BR><br><font size=+0>TEX_ANIM_SCROLL_OFFSET_KEY scrolls the offset coordinates
+using key frame animation when part of a large texture image is extracted and the
+texture is used.&nbsp;</font>
+
+<BR><br><font size=+0>TEX_ANIM_SCROLL_SCALE performs animation for the extracted
+portion size when part of a large texture image is extracted and the texture
+is used.&nbsp;</font>
+
+<BR><br><font size=+0>TEX_ANIM_SCROLL_SCALE_KEY performs animation for the
+extracted portion size by specifying the size of the portion that is extracted
+every key frame when part of a large texture image is extracted and the texture
+is used.&nbsp;</font>
+
+<BR><br><font size=+0>It is possible to specify each type of texture animation at the
+same time. However, it is not possiblt to specify full frame animation
+and key frame animation at the same time when using the same type of animation,
+such as TEX_ANIM_FLIPBOOK and TEX_ANIM_FLIPBOOK_KEY.&nbsp;</font>
+
+<BR><br><font size=+0>When using a number of texture animation types, be sure to
+set only one texture animation flag to be used by bitOR. All others will not be processed.</font>
+
+<BR><br><font size=+0>Set the TEX_ANIM_OFF flag only when no texture animation
+is to be performed.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_data_area_size</td>
+
+<td><font size=+0>Size of TexDataArea.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_anim_frame_late</td>
+
+<td><font size=+0>Describes the frame rate of texture animation.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg14-3.htm">TexDataArea</a></td>
+
+<td><font size=+0>Specifies how the image is extracted from the TexImgList that stores the actual texture image. Index numbers in TexImgList
+are also described in this area. Note that the manner of setting this flag differs depending on the specified texture animation type.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table>
+</center>
+
+<HR>
+
+<A HREF="seg14.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg14-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

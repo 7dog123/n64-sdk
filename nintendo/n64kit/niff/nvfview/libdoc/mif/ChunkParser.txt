@@ -1,0 +1,20 @@
+Function 
+(  Analyzes IFF chunk. 
+
+Functions 
+(  void mifChunkParserInit( MifChunkParser *,
+			   const MifMagic,
+			   MifChunkParserReadFunc )
+  Initializes MifChunkParser. 
+
+Macros 
+(  _mifChunkParserRead( chunk_parser_ptr, input_ptr, size, option)
+  Loads a chunk. 
+
+(  _mifMagicDefine(a, b, c, d)
+  Defines chunk magic. 
+
+
+History 
+  1998/10/06  Junji Takae
+    ChunkParser.h, chunkparser.c:  Initial version 

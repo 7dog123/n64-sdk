@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>1.2.6 PI (Parallel Interface) Resources</H1>
+
+<P>The PI is the 16-bit parallel bus connection the N64 Game Pak or the N64 Disk Drive. The average transfer rate for the Game Pak is about 5 megabytes per second. (The peak performance is about 50 megabytes per second.) The PI uses DMA transfer to transfer information from the Game Pak or N64 Disk Drive to RDRAM.</P>
+
+
+<H2>Devices Connected to the PI</H2>
+
+<P>The PI is the DMA engine that connects the N64 Game Pak and/or the N64 Disk Drive with RDRAM. The average transfer rate for the Game Pak is 5 megabytes per second. The maximum transfer rate for the N64 Disk Drive is 1 megabyte per second.</P>
+
+<P>As you know, the actual game application is stored in the ROM of the N64 Game Pak or on the disk for the N64 Disk Drive. When you use the N64 emulator board you use the RAM (called virtual ROM or RAMROM) of the developmental board.  The communication between the host machine and the developmental board is provided through the RAM device on the developmental board.</P>
+
+<IMG SRC="../images/1-2-6-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=225 HEIGHT=192 BORDER=0><IMG SRC="../images/1-2-6-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=171 HEIGHT=117 BORDER=0>
+
+
+<H2>N64 Game Pak Specification</H2>
+
+<P>The N64 Game Pak can include up to:</P>
+
+<UL>
+<LI>Mask ROM of 32 megabytes (256 megabits)
+<LI>EEPROM of 4K bits or 16K bits
+<LI>SRAM (battery backup) of 256K bits
+</UL>
+
+<H2>N64 Disk Drive</H2>
+
+
+<H3>Features</H3>
+
+<UL>
+<LI>Large capacity magnetic disk for changing Character and Data.
+<LI>Built-in RTC with backup battery for real-time applications.
+<LI>Doubled RDRAM with the addition of the required Memory Pak which adds another 4 megabytes by 9 bits to N64 main memory.
+</UL>
+
+
+<H3>N64 Disk Specification</H3>
+
+<UL>
+<LI>Capacity of each disk is about 64.45 megabytes
+<LI>Writable capacity (the RAM part) is 38.44 megabytes
+<LI>Non-writable capacity (the ROM part) is from 26.01 megabytes to 64.45 megabytes
+</UL>
+
+<P>Store the data that users do not rewrite, such as the game program or the character data, in the ROM part.  Store the saved data in the RAM part. An identification number (ID) is written on the Disk to identify each individual Disk when it is shipped from the factory. This ID is used when the Disk must be changed such as with multiple Disk game programs.</P>
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.8 ColorList</h3>
+
+<hr size=3>
+<h4>4) TriColor Area</h4>
+
+<BLOCKQUOTE>The TriColor area stores one polygon color. The area is mapped as follows.</BLOCKQUOTE>
+
+<center><TABLE BORDER=1 CELLPADDING=3>
+<tr>
+<td>float</td>
+
+<td>red_component</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>green_component</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>blue_component</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>alpha_component</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<b>TriColor Area Memory Map</b>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>float red_component</td>
+
+<td><font size=+0>Red component of polygon color</font>
+<br><font size=+0>0 &lt;= red_component &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float green_component</td>
+
+<td><font size=+0>Green component of polygon color</font>
+<br><font size=+0>0 &lt;= green_component &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float blue_component</td>
+
+<td><font size=+0>Blue component of polygon color</font>
+<br><font size=+0>0 &lt;= blue_component &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float alpha_component</td>
+
+<td><font size=+0>Alpha component of polygon color</font>
+<br><font size=+0>0 &lt;= alpha_component &lt;= 1.0</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg8-3.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg8-5.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

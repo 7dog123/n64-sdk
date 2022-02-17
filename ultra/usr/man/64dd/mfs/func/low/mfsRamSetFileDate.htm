@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetFileDate</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetFileDate</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetFileDate(MfsDirID dirID, LEODiskTime time)
+Arguments:	dirID	Directory ID of file (directory)
+	time	Date of file (directory) (LEODiskTime structure)
+Return value:Error
+Function:	Sets the date of the file (directory)
+Description:	This function sets the date of the file (directory) specified by dirID to time.
+Since the date of a file (directory) is set when the file (directory) is created or updated, normally this function should not be used.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found 
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

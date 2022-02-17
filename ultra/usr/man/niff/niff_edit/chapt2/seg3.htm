@@ -1,0 +1,140 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+&nbsp;
+<br>
+<hr size=3>
+<h1>
+Chapter 2 NIFFeditor for SGI</h1>
+
+<hr size=3>
+<h3>
+(4) Mouse Operation</h3>
+
+<blockquote>Place the [Edit]-[Edit Mode] command in the ON status to
+modify data using the mouse. If this is OFF, the changes will not be reflected
+in the data.
+<br>&nbsp;
+<li>
+<b>Left button</b></li>
+
+<br>&nbsp;
+<p>&nbsp;
+<blockquote>
+<h3>
+<font color="#0000A0"><font size=+0>Select link</font></font></h3>
+<font color="#000000">When you click on a link with the left mouse button,
+the link will turn red indicating that it has been selected. You can then
+delete the selected link by choosing Delete Link from the Edit menu.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Display node dialog box</font></font></h3>
+<font color="#000000">When you double-click the left mouse button on a
+node, the dialog box corresponding to that node will be displayed. You
+can edit the name or flags of that node in this dialog box. It is possible
+to display a dialog box for all of the currently displayed nodes.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Select area</font></font></h3>
+<font color="#000000">When you drag the mouse while pressing the left mouse
+button, a rectangle will be displayed, which enables you to select the
+entire area surrounded by the rectangle. The selected nodes can be collectively
+moved, or commands can be simultaneously executed for them from a pop-up
+menu.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Select all nodes from that point down</font></font></h3>
+<font color="#000000">When you click the left mouse button on a node while
+holding down the <b>Shift</b> key, all nodes subsequent to that node (inclusive)
+can be selected. The selected nodes can be collectively moved, or commands
+can be simultaneously executed for them from a pop-up menu.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Select additional links, nodes</font></font></h3>
+<font color="#000000">When you click the left mouse button on a node while
+holding down the <b>Ctrl</b> key, you can select nodes in addition to the
+one currently selected. The selected nodes can be collectively moved, or
+commands can be simultaneously executed for them from a pop-up menu.</font>
+<p><font color="#000000">When you click the left mouse button on a link
+while holding down the Ctrl key, you can select links in addition to the
+one currently selected. However, even if multiple links are selected, no
+more than one link can be manipulated at a time.</font>
+<br>&nbsp;
+<br>&nbsp;</blockquote>
+
+<li>
+<b>Middle button</b></li>
+
+<blockquote>
+<h3>
+<font color="#0000A0"><font size=+0>Move link (paste)</font></font></h3>
+<font color="#000000">You can paste a link by dragging the link with the
+center mouse button. The mouse pointer will become a (P) or a (C) depending
+on the location at which the center button was pressed. For links, when
+the pointer is a (P), the parent node is changed; if it is a (C), the child
+node is changed. (The link arrow indicates parent -> child.)</font>
+<p><font color="#000000">If a link is moved while pressing the center button
+(dragged), and then the center button is released on the node where you
+want to paste, that node will become a parent/child according to the (P)/(C)
+display. In the current version, this applies to the pasting of only some
+of the links (see the <a href="../NIFFed/NIFFedChap2-8.html">Limitations</a>
+section). A warning will appear if you attempt to move a link that cannot
+be pasted.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Move node</font></font></h3>
+<font color="#000000">Nodes can be moved by dragging them with the middle
+mouse button. If multiple nodes are selected, those nodes can be moved
+simultaneously.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Create new link</font></font></h3>
+<font color="#000000">A new link can be created by dragging with the middle
+mouse button depressed while holding down the <b>Shift</b> key.</font>
+<p><font color="#000000">To create a link, click the middle button on the
+node that you want to be the parent while holding down the <b>Shift</b>
+key. Then while still holding down the buttons, drag to the node that you
+want to be the child and release the buttons.</font>
+<p><font color="#000000">Links cannot be created where there is a restriction
+in the NIFF specification. In addition, a duplicate link cannot be created
+where a link already exists.</font>
+<p><font color="#000000">Links can be created between scene-obj, obj-obj,
+obj-shape, obj-mat, obj-anim, shape-mat, part-mat, and mat-texture.</font>
+<h3>
+<font color="#0000A0"><font size=+0>Move window</font></font></h3>
+<font color="#000000">When the size of the window displaying node attributes
+exceeds screen size, the window can be moved by dragging it with the middle
+mouse button on the frame of the window.</font>
+<br><font color="#000000"></font>&nbsp;</blockquote>
+
+<li>
+<b>Right button</b></li>
+
+<blockquote>
+<h5>
+<font color="#000099"><font size=+0>When you click the right button on
+a node</font></font></h5>
+<font color="#000000">[Hide Node]</font>
+<p><font color="#000000">That node will not be displayed. When the link
+to a hidden node has disappeared, a left parenthesis "(" character will
+be displayed on the right edge of the node that actually has the child.</font>
+<p><font color="#000000">[Collapse Subgraph]</font>
+<br><font color="#000000">The entire tree below that node will be hidden.
+A left parenthesis "(" character will be displayed as above.</font>
+<p><font color="#000000">[Show Immediate Children]</font>
+<br><font color="#000000">All child nodes immediately below that node are
+displayed.</font>
+<h5>
+<font color="#000099"><font size=+0>When you click at a location other
+than a node</font></font></h5>
+<font color="#000000">[Hide]</font>
+<br><font color="#000000">This hides the selected node.</font>
+<p><font color="#000000">[Collapse]</font>
+<br><font color="#000000">This hides all nodes below the selected node.</font>
+<p><font color="#000000">[Expand]</font>
+<br><font color="#000000">This displays the child nodes immediately below
+the selected node.</font>
+<br>
+<br></blockqutoe></blockquote>
+<a href="seg4.htm">NEXT</a></blockquote>
+
+</body>
+</html>

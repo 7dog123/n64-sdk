@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.7.2 Lighting</H1>
+
+<P>For our eyes to be able to see an object, the object must be either emitting light or reflecting light. On a computer, it is difficult to represent in real time the situation where an object itself is emitting light, so this discussion will focus on showing you how to represent reflected light.
+
+<P>To represent reflected light, you need to know the position, direction, and intensity for the light coming from the light source as well for two other types of light -- ambient light and diffuse light.
+
+
+<H2>Ambient Light</H2>
+
+<P>Ambient light is the surrounding atmospheric light. For example, the part of an object that is on the opposite side from a light source is usually not black. That's because it is lit up slightly by ambient (atmospheric) light. Ambient light occurs because surrounding objects produce irregular reflections. Ambient light has no direction, so if you give a color to ambient light, that light is reflected on everything in the scene.</P>
+
+<P><IMG SRC="../images/3-7-2-1.jpg" ALIGN="bottom" WIDTH=403 HEIGHT=211 BORDER=0>
+
+
+<H2>Diffuse Light</H2>
+
+<P>Diffuse light is light that has been scattered through reflection or refraction. For example, transmitting a light through a translucent material diffuses the light. Diffuse lights take on the color of the translucent material that scattered the light.</P>
+
+<P><IMG SRC="../images/3-7-2-2.gif" ALIGN="bottom" WIDTH=288 HEIGHT=147 BORDER=0>
+
+<P>To implement lighting, you simply set the position, direction, and intensity of the source light, and also specify appropriate ambient and diffuse lights.
+
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

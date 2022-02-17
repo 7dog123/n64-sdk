@@ -1,0 +1,19 @@
+Function 
+(  Provides minimum functions for managing characters. 
+
+Functions
+(  void mgiCharacterInit( MgiCharacter *char_ptr,
+			 MgiJobCallback callback,
+			 void *user_data )
+  Initializes character. 
+  At the time of initialization, MgiControl still cannot be used. 
+
+(  void mgiCharacterActivate( MgiCharacter *char_ptr )
+  Makes it so that MgiControl can be used. 
+
+(  void mgiCharacterInactivate( MgiCharacter *char_ptr );
+  Makes it so that MgiControl cannot be used. 
+
+History 
+  1998/12/18 Takamitsu Hirata 
+    Character.h, character.c:  Initial version 

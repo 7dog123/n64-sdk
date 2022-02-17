@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<TITLE>NIFF 1.0: Links to Nodes in NIFF</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<H2>2.2 Links to Nodes in NIFF</H2>
+
+<H3>5) Handling of Materials in NIFF (#1)</H3>
+
+In NIFF, material nodes are made so that they can be linked from object nodes, shape nodes, and part nodes.  In addition, if several materials are liked in hierarchical links, the material at the bottom level is given priority.  If a material is not set at the bottom level, the parent material attributes take over.   In addition, the settings in a material node are set so that a primitive color is not used, either the vertex color or the triangle color is enabled.  Vertex colors and triangle colors are set with Color nodes.<BR>
+<BR>
+
+For instance, consider the links as illustrated below.<BR>
+<BR>
+
+<I><B>Figure 14</B> -- Example of using material nodes in hierarchical links</I><BR><BR>
+<IMG SRC="../img/NIFFspec-14.gif" ALT="Illustration" BORDER=0>
+<BR>
+<BR>
+
+In NIFF data, the material attributes take over at the bottom level.  Consequently, in the above figure, the attributes of Mat_0 are assigned to the Part_0 node on the Shape_0 node. The attributes of Mat_1 are assigned to the Part_1 node on the Shape_0 node, and the attributes of Mat_2 are assigned to the Shape_1 node.  However, regarding color, if the various nodes are set up so that a primitive color is not used, the color in the respective color node will be used.<BR>
+<BR>
+
+When performing lighting, apex color data cannot be used in Nintendo 64.  Consequently, even in NIFF data, without using the apex color as it is, combine triangles with the same color value as parts and use the color value of the material node for them.
+
+<HR>
+
+<A HREF="seg2-4.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg2-6.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P>Copyright 1997-1999 Nintendo Co., Ltd. All rights reserved.</P>
+
+</BODY>
+</HTML>

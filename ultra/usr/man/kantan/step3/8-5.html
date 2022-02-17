@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.8.5 Mixing Process (Translucence)</H1>
+
+<P>In N64, it is possible to display translucency.  We call the effect of seeing through to the rear of a scene, as through a jelly or cellophane, the mixing (blending or translucent) process.</P>
+
+<P><IMG SRC="../images/3-8-5-1.gif" ALIGN="bottom" WIDTH=425 HEIGHT=277 BORDER=0>
+
+<P>There are many methods you can use to implement the mixing process. Here are two that are representative:</P>
+
+<UL>
+<LI>Use the alpha value of the texture.
+<LI>When drawing the surface, draw by multiplying the mixed coefficient.
+</UL>
+
+
+<H2>Blending by Using the Alpha Value</H2>
+
+<P>By using this method when you create the mapping data, you can prepare the RGBA data to specify the alpha value for each texel.  The alpha value shows the level of translucency -- more transparent or more opaque.  For example, if the alpha value is 3.0, that means blend 30% for the already drawn pixel data when you draw the mapping data.  The advantage of this method is that you can implement right down to the sprite (used in former games) because it sets the alpha value for each pixel.
+
+
+<H2>Blending by Using the Mixed Coefficient</H2>
+
+<P>This method multiplies the mixed coefficient when you draw a surface. It blends without applying the alpha value in the mapping data, so it sets the level of transparency for the entire object. It therefore cannot be used to specify the transparency in units of texel.
+
+<P>When you provide the blend, you need to be careful of the drawing order of the translucent surfaces. Be sure to draw the opaque surfaces first, and then draw the translucent surfaces from the rear forward.
+
+<P>Basically, the translucent surfaces are implemented by providing the translucent process to the picture that has already been drawn. Therefore, if you draw a translucent surfaces before drawing an opaque surfaces, the effect looks unnatural because there are no already drawn objects to be blended.
+
+<P>Also, if you start to draw the translucent surfaces from the front, the effect looks unnatural because the rear translucent surfaces are drawn on top of the front translucent surfaces. However, as a practical matter, this "unnatural look" is not very conspicuous, so it is not a very serious problem if you must draw from the front to the back.
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

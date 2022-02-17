@@ -1,0 +1,63 @@
+
+        Changes to Disk ID and Mater Data Creation Tools 
+
+                                             Nintendo Development Dept. No. 3
+							Kiyoyuki Watanabe 
+
+1. Changes to Disk ID
+
+	* The disk application Disk ID has been divided into a disk application
+ 	and a RAM area application.  The formats of the respective data are as 
+	follows.  This table corresponds to the table printed on the first 
+	page of "Chapter 6  Disk ID" in the "NINTENDO 64 Programming Manual." 
+
+ | Offset    | Description           | Data Format | Details 
+ |------------------------------------------------------------------------
+ |   +6      | RAM Area Application  | Binary      | 0: General use
+ |           |                       |             | 1: Nintendo Recommended 	File System
+ |   +7      | Disk Application      | BCD         | 0: Game disk 
+ |------------------------------------------------------------------------
+
+	With this change, the Disk ID structure LEODiskID has been changed as 
+	follows. 
+
+        typedef struct
+        {
+          u8            gameName[4];
+          u8            gameVersion;
+          u8            diskNumber;
+          u8            ramUsage;
+          u8            diskUsage;
+          LEOSerialNum  serialNumber;
+          u8            company[2];
+          u8            freeArea[6];
+        } LEODiskID;
+
+
+2. Changes to the Master Data Creation Tool n64mdisk
+        	
+	The following changes have been added to the master data creation tool 
+	n64mdisk. 
+
+	* RAM USE has been added to the master creation config file in order to
+ 	specify the RAM area application. 
+
+                * RAM USE 
+		Specifies disk application (2 hexadecimal digits or less).  0 
+		indicates general use, 1 indicates that a Nintendo recomended 
+		file system is being used. 
+
+                        (Example)  RAM USE 0x0
+
+                * DISK USE 
+		Specifies disk application (2 decimal digits or less).  Specify 		0 for normal game disks. 
+
+                        (Example)  DISK USE 0
+
+	* The error which would occur when there was a blank line in a cfg file 
+	has been corrected. 
+
+	* The error which would set the free area to 0 when there was no line 
+	feed code at the end of a file has been corrected. 
+
+	* The version has been changed to 1.06. 

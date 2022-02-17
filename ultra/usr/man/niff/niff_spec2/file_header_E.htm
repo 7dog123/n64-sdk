@@ -1,0 +1,134 @@
+<html>
+
+<title>
+File Header Description (English)
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+3. File Header
+
+</h2>
+<hr size=3>
+<h3>
+<A NAME="fileHeaderD">(1) File Header Description (English)</A>
+</h3>
+<blockquote>
+Described below are the fields added in NIFF 2.0 to the NintendoExtensionBlock of the FileHeader.  The size of each List added to the NIFF file is described in byte size.  The Lists are added to the NIFF file in the order in which the fields are added to the FileHeader.<p>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 version
+</td>
+<td>
+Specifies the NIFF file version.<p>
+<pre>
+<b>
+31          24 23          16 15          8 7          0
+[ maker code  |  tool code   |    0x02     |    0x00   ]
+</b>
+</pre>
+Be sure to specify the data in the NintendoExtensionBlock that is added for NIFF 2.0. <p>
+Even with a version for which tools are still being developed, be sure to first output an empty data structure using a dummy.  
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_list_num_byte
+</td>
+<td>
+Specifies the CiImgList byte size.
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 color_palette_list_num_byte
+</td>
+<td>
+Specifies the ColorPaletteList byte size.
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 envelope_list_num_byte
+</td>
+<td>
+Specifies the EnvelopeList byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_list_num_byte
+</td>
+<td>
+Specifies the ClusterList byte size.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 weight_list_num_byte
+</td>
+<td>
+Specifies the WeightList byte size.
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 chain_root_list_num_byte
+</td>
+<td>
+Specifies the ChainRootList byte size.
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 joint_list_num_byte
+</td>
+<td>
+Specifies the JointList byte size.
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 effector_list_num_byte
+</td>
+<td>
+Specifies the EffectorList byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_name_list_num_byte
+</td>
+<td>
+Specifies the ExternalNameList byte size.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="file_header_C.htm#fileHeaderC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body bgcolor="ffffff">
+</html>

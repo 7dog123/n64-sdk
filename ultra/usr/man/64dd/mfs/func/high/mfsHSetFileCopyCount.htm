@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHSetFileCopyCount</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHSetFileCopyCount</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHSetFileCopyCount(const u8*
+path, u8 count)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>*path Pathname
+count Copy count value to be set</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Sets copy count of file</p>
+
+<p><strong>Description:</strong> This function sets the copy count of the file specified by path to count.
+This value is effective when bit 9 of the attribute is 1.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT Write protected
+		The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+MFS_ERR_NOTFOUND File not found
+		The file was not found, or the directory was not found. </pre>
+
+<hr>
+</body>
+</html>

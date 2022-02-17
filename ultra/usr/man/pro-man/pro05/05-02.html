@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 5</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro05/index5.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro05/index5.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Model to Render Space Database Conversion</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This section outlines issues you may face when converting from a modeling database to a rendering database.
+<P>
+<a name="01"></a>
+<b>Existing Convertors</b>
+<br>
+Both NinGen and Alias software packages have database convertors to convert to the Nintendo 64 format (Graphics Binary Interface).
+<P>
+<a name="02"></a>
+<b>Custom Convertors</b>
+You may want to write your own database convertors because you want to manage a certain resources or attributes in a different way, tailored to your game. Silicon Graphics provides a sample convertor, <i>flt2c</i>(1P), from the MultiGen flt file format to the Nintendo 64 format. In addition, Silicon Graphics provides a converter from the SGI IRIX image format to the Nintendo 64 texture memory format, <i>rgb2c</i>(1P). These sample convertors are not complete, nor are they designed to be totally efficient; they are just meant to be a template to help you understand what a convertor is and what it needs to do.
+<P>
+<a name="03"></a>
+<b>Conversion Considerations</b>
+<br>
+There are many efficiency considerations to keep in mind when you are writing a database convertor. Here are a few:
+<ul>
+<li>Redundant hierarchical transformations should be eliminated. Transformations should be used for articulated parts or instancing, not for preserving modeling hierarchy.
+<P>
+<li>Since the geometry transformation subsystem has a vertex cache, block loading 16 vertices to render as many triangles as possible has better performance.
+<P>
+<li>On-chip texture memory is not large (4 KB). If you are stamping trees in your scene, you should render in texture order. Keep in mind that texture order may require a z-buffer, which requires additional dram bandwidth. You may need to experiment to find the best trade-off for your game.
+<P>
+<li>The display pipeline has many attribute states. You may want to determine which sets are global and local to an object. Learn how to manage these attributes to best fit the kind of game you are creating.</ul>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

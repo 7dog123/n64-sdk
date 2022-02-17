@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+<hr>
+<font face="arial">
+<pre><font color="#0000A0" size="6"><strong>nuPiReadSram</strong> (Macro)</pre></font> 
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuPiReadSram(u32 addr, void* buf_ptr, u32 size)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>addr	is the SRAM address
+<P>
+<li>buf_ptr	is the pointer to the buffer
+<P>
+<li>size	is the transfer size</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Reads data from SRAM
+
+
+<p>Uses the PI to DMA transfer data from SRAM to the buffer location in RDRAM.
+   The transfer origin ROM address must be 2-byte aligned.
+   The pointer to the transfer destination buffer must be 8-byte aligned.
+   This function is a macro for the nuPiReadWriteSram function.</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="nuPiInitSram.htm">nuPiInitSram</a>
+<br><a href="nuPiReadWriteSram.htm">nuPiReadWriteSram</a>
+<br><a href="nuPiWriteSram.htm">nuPiWriteSram</a>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

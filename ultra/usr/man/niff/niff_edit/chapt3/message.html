@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>Messages</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>Messages</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="目次へ" border="0"></a>
+<a href="option.html"><img src="images/previous.gif" alt="前ページへ" border="0"></a>
+<a href="faq.html"><img src="images/next.gif" alt="次ページへ" border="0"></a>
+
+<hr>
+
+<p>NIFF Editor generates two kinds of messages: <a href="#warning">Warning messages</a> and <a href="#error">Error messages</a>.</p>
+<p>Warning messages offer the user the chance to either proceed or terminate some process.  When a warning is generated during the execution of NIFF Editor, a message box like the one below is displayed on the screen.  Click Yes to execute the task explained in the message and continue  processing, or click No to terminate without executing the task.</p>
+
+<div align="center">
+<img src="images/warning.gif" alt="警告">
+</div>
+
+<p>An error message is generated when execution of a process cannot proceed.  The cause of the error must be found and resolved.  Refer to the explanations below for the reasons for each error message that is displayed, and take the appropriate actions to resolve the problem.</p>
+
+<div align="center">
+<img src="images/error.gif" alt="エラー">
+</div>
+  
+<h3><a name="warning">Warning messages</a></h3>
+
+<p>Here we explain the warning messages output by NIFF Editor.</p>
+<dl>
+<!--
+<dt><font color="brown"><strong>Wrong Name area size.  Recalculate?</strong></font>
+<dd><p>This message is generated when the size stored in the Name area's "name size" differs from the value calculated from the NIFF file data.  If you click "Yes" the correct Name area size will be calculated from the NIFF file data and placed in "name size" so the system can continue to read the NIFF file.  If you click "No" the read process will be terminated.<br>
+Since this warning message is generated when the Name area data in the NIFF file you want to open is wrong, the only way to really solve the problem is to make corrections to the application that output the NIFF file.</p>
+-->
+
+</font><dt><font color="maroon"><strong>Cannot find linked node.  Continue reading?</strong></font>
+<dd><p>The node in question was not found in the link index.  NIFF Editor asks whether to change that index value to the unlinked state and continue reading.  Click Yes to unlink and continue reading, or click No to terminate the read.</p>
+</dl>
+
+<h3><a name="error">Error messages</a></h3>
+
+<p>Here we explain the error messages output by NIFF Editor.</p>
+
+<dl>
+<dt><font color="red"><strong>Cannot open this version of NIFF file</strong></font>
+<dd><p>The NIFF file you tried to open is not NIFF version 1.0.  Please check the version of the NIFF file you tried to read.<br>
+The current version of NIFF Editor can only read NIFF version 1.0 NIFF files.</p>
+
+<dt><font color="red"><strong>Wrong tag in area ???</strong></font>
+<dd><p>When NIFF Editor reads a NIFF file it checks the tae of every node.  This error is generated when a tag is different from the expected tag.  Check to see whether the NIFF file is corrupted.<br>
+The name of the node where the error occurred is substituted for ???</p>
+
+<dt><font color="red"><strong>Wrong size in area ???</strong></font>
+<dd><p>When NIFF Editor reads a NIFF file it checks the size of every node.  This error is generated when a size is different from the expected size.  Check to see whether the NIFF file is corrupted.<br>
+The name of the node where the error occurred is substituted for ???</p>
+
+<dt><font color="red"><strong>Wrong light type in Light area</strong></font>
+<dd><p>A non-prescribed value for the Light area light type was discovered during reading of the NIFF file.  Check that it is the correct NIFF file.</p>
+
+<dt><font color="red"><strong>Wrong shape animation type in TriGroup area</strong></font>
+<dd><p>A non-prescribed value for the TriGroup area animation type was discovered during reading of the NIFF file.  Check that it is the correct NIFF file. </p>
+
+<dt><font color="red"><strong>Wrong texture animation in Tex area</strong></font>
+<dd><p>A non-prescribed value for the Tex area texture animation was discovered during reading of the NIFF file.  Check that it is the correct NIFF file.</p>
+
+<dt><font color="red"><strong>Wrong animation type in AnimGroup area</strong></font>
+<dd><p>A non-prescribed value for the AnimGroup area animation type was discovered during reading of the NIFF file.  Check that it is the correct NIFF file.</p>
+
+<dt><font color="red"><strong>Wrong collision type in Coll area</strong></font>
+<dd><p>A non-prescribed value for the Coll area collision type was discovered during reading of the NIFF file.  Check that it is the correct NIFF file.</p>
+
+<dt><font color="red"><strong>Cannot find Convert batch file</strong></font>
+<dd><p>This error is generated when NIFF Editor cannot find the batch file executed at conversion time.  Check the "<a href="option.html#convert">Convert</a>" tab in the Options dialog from the Tools menu to verify the "Name of batch file which executes conversion" and also check to make sure that the file exists. <br>
+This error will also be generated if the N64 Previewer is not installed, so also check whether N64 Previewer is installed correctly.</p>
+
+<dt><font color="red"><strong>Cannot output temporary file for conversion</strong></font>
+<dd><p>This error is generated when NIFF Editor cannot output the temporary file used at conversion time.  Check the "<a href="option.html#convert">Convert</a>" tab in the Options dialog from the Tools menu to verify the "Name of temporary NIFF file output by NIFF Editor when converting" and also check whether there is enough free space in that directory.</p>
+
+<dt><font color="red"><strong>Cannot find Preview batch file</strong></font>
+<dd><p>This error is generated when NIFF Editor cannot find the batch file executed at Preview time.  Check the "<a href="option.html#preview">Preview</a>" tab in the Options dialog from the Tools menu to verify the "Name of batch file which executes preview" and also check to make sure that the file exists. <br>
+This error will also be generated if the N64 Previewer is not installed, so also check whether N64 Previewer is installed correctly.</p>
+
+<dt><font color="red"><strong>Cannot output temporary file for preview</strong></font>
+<dd><p>This error is generated when NIFF Editor cannot output the temporary file used at preview time.  Check the "<a href="option.html#preview">Preview</a>" tab in the Options dialog from the Tools menu to verify the "Name of temporary NIFF file output by NIFF Editor when previewing" and also check whether there is enough free space in that directory.</p>
+
+<dt><font color="red"><strong>Cannot find Quick Preview batch file</strong></font>
+<dd><p>This error is generated when NIFF Editor cannot find the batch file executed at Quick Preview time.  Check the "<a href="option.html#quickpreview">Quick preview</a>" tab in the Options dialog from the Tools menu to verify the "Name of batch file which executes quick preview" and also check to make sure that the file exists. <br>
+This error will also be generated if the N64 Previewer is not installed, so also check whether N64 Previewer is installed correctly.</p>
+
+<dt><font color="red"><strong>Cannot output temporary file for quick preview</strong></font>
+<dd><p>This error is generated when NIFF Editor cannot output the temporary file used at quick preview time.  Check the "<a href="option.html#quickpreview">Quick preview</a>" tab in the Options dialog from the Tools menu to verify the "Name of temporary NIFF file output by NIFF Editor when quick previewing" and also check whether there is enough free space in that directory.</p>
+
+<dt><font color="red"><strong>Illegal character used in node name</strong></font>
+<dd><p>The characters that can be used for node names are the ASCII characters "!" (0x21) to "~" (0x7e). This error message is displayed if spaces or Japanese characters (kanji, hiragana or katakana) are used in the node name.  When this error is generated, please specify a node name using only legal characters.<BR></p>
+
+<dt><font color="red"><strong>Primitive color out of range 0 ~ 1.0</strong></font>
+<dd><p>Only values from 0 to 1.0 can be specified for the primitive color components of the material.  Check the "<a href="matproperty.html#primitive">Primitive color</a>" tab in the Material node properties dialog to make sure correct values have been entered.</p>
+
+<dt><font color="red"><strong>Fog position out of range 0 ~ 1000</strong></font>
+<dd><p>Only values from 0 to 1000 can be specified for the fog starting point and fog saturation point.  Check the "<a href="envproperty.html#fog">Fog</a>" tab in the Environment node properties dialog to make sure correct values have been entered.</p>
+
+<dt><font color="red"><strong>Help cannot be displayed.  Either the Help file does not exist or the browser has not been properly installed</strong></font>
+<dd><p>This error message is displayed if help cannot be displayed when the user selects "<a href="menu.html#help">Topic search</a>" from the Help menu or clicks the Help button in a node property dialog window.<br>
+The Help file should be in the help sub-directory below the directory where NIFF Editor is stored.  An error is generated if this Help file cannot be found.  The file might have been accidently deleted, or there may have been some failure during NIFF Editor setup.  Please perform the NIFF Editor <a href="setup.html">Setup</a> procedure again.<br>
+Also, because the Help file is in HTML format, it must be viewed using a browser.  Thus, this error message can also arise if a browser has not been installed or if the browser cannot handle the HTML files.  The following browsers are recommended for use with NIFF Editor: Microsoft Corporation's Internet Explorer version 3.0 or later, Netscape Communications Corporation's Netscape Navigator 3.0 or later, or Netscape Communicator 4.0 or later.</p>
+</dl>
+
+<hr>
+
+</body>
+</html>

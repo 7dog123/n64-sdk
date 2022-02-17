@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.10 StList</h3>
+
+<hr size=3>
+<h4>1) StList Area</h4>
+
+<blockquote>
+The StList area describes the s,t coordinate of a texture. The StList area is mapped as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="9">StListHeader</th>
+
+<td>u32</td>
+
+<td>st_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_size(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_size(st_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>StGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>StGroup(st_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+
+<CAPTION ALIGN="top"><B>StList Area Memory Map</B></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 st_list_tag</td>
+
+<td><font size=+0>Tag indicating StList area.</font>
+<pre><b><font size=+0>TAG_ST_LIST&nbsp;&nbsp;&nbsp;&nbsp; 0x00070000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_list_header_size</td>
+
+<td><font size=+0>Size of StListHeader area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_list_size</td>
+
+<td><font size=+0>Size of StList area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_num</td>
+
+<td><font size=+0>Total number of StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_size</td>
+
+<td><font size=+0>Size of each StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg10-2.htm">StGroup</a></td>
+
+<td><font size=+0>'S' and 'T' value per 1 shape.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block.</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg9-5.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg10-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

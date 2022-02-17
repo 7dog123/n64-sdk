@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gsp/gsp.html">
+            <IMG BORDER=0 SRC="../images/mh_gsp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+gSPObjRenderMode [macro]
+</FONT>
+</H2>
+
+<P>Changes the object rendering mode in the RSP.
+
+<P><B>Syntax</B>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A HREF="../../header/gs2dex.htm">gs2dex.h</A> */
+gSPObjRenderMode(Gfx *gdl, u32 mode)
+gsSPObjRenderMode(u32 mode)</PRE></FONT>
+
+<P><B>Arguments</B>
+<ul>
+<li>gdl is the pointer to the graphics display list.
+<P>
+<li>mode is the object rendering mode:
+  <br>G_OBJRM_NOTXCLAMP (Do not perform clamping)
+  <br>G_OBJRM_BILERP  (Correct when bilinear interpolation is performed)
+  <br>G_OBJRM_SHRINKSIZE_1 (Trim 0.5 texel off drawn image)
+  <br>G_OBJRM_SHRINKSIZE_2 (Trim 1.0 texel off drawn image)
+  <br>G_OBJRM_WIDEN (Enlarge drawn image by 3/8 texel)
+</ul>
+
+
+<P><B>Explanation</B>
+<br>
+Changes the object rendering mode in the RSP. Normally, the object rendering mode is set according to the screen mode.  The RDP has various rendering modes for drawing sprites or backgrounds (BG).  For information about these object rendering modes, refer to the Readme file of the latest version of the S2DEX microcode.
+</P>
+
+<P>
+Multiple modes can be specified for <B>mode</B> with a bit sum of the following flags.  However, note that G_OBJRM_SHRINKSIZE_1 and G_OBJRM_SHRINKSIZE2 cannot be specified at the same time.</P>
+
+<DL>
+  <DT><B>G_OBJRM_NOTXCLAMP</B>
+    <DL>
+      <DT>Specifies that no clamping be performed in the RSP.  When a texture is fixed to a sprite, the following relationships hold for the texture size (<B>imageW</B>, <B>imageH</B>), scale values (<B>scaleW</B>, <B>scaleH</B>) and sprite size (<B>objW</B>, <B>objH</B>)
+      <DD>
+      <DD>objW = imageW / scaleW;
+      <DD>objH = imageH / scaleH;
+      <DD>
+      <DT>When the texture is fixed to the sprite, the region of the texture from texture coordinates (0, 0) to (<B>imageW</B>-1, <B>imageH</B>-1) is drawn on the sprite.  However, due to calculation errors, a little texture outside of this range may be displayed at the periphery of the sprite.  To prevent this, the RSP performs clamping outside of the range where the texture is to be drawn.  For information about clamping, see Section 13 "Texture Mapping" in the N64 Programming Manual.
+    </DL>
+</DL>
+<DL>
+  <DT><B>G_OBJRM_BILERP</B>
+  <DD>Corrects for the 0.5 slippage of the texture that occurs when bilinear interpolation is performed.  When clamping is turned on, the RSP uses the bilinear interpolation feature and supports subpixel-unit movements of the internal images.  This enables a sprite to be moved in 1/4-pixel units.
+</DL>
+<DL>
+  <DT><B>G_OBJRM_SHRINKSIZE_1</B>
+  <DD>Draws texture image for which the perimeter has been pared down by 0.5 texel.  When a number of bilinearly interpolated sprites are to be aligned and handled as one large bilinearly interpolated sprite, the continuity of the image at the boundaries becomes a problem.  To ensure image continuity, you must overlap the textures of the individual sprites by one line each.  This makes the 0.5 texel at the periphery (the <FONT COLOR="#00FFFF">colored </FONT> portion in the figure below) unnecessary because the neighboring sprite takes care of this part.  Although each texture image is reduced in size by 0.5 texel, the upper-left screen coordinate does not change, and the drawing result will be as shown in the figure below.
+</DL>
+<IMG SRC="gSPObjRenderMode00.gif" ALIGN="bottom" WIDTH=431 HEIGHT=340 BORDER=0>
+<DL>
+  <DT><B>G_OBJRM_SHRINKSIZE_2</B>
+  <DD>This mode works the same as G_OBJRM_SHRINKSIZE_1, but doubles the scale of image reduction (pares 1 texel around the periphery).  It is used when the texels of adjacent sprites are overlapped by two lines each to maintain continuity when subpixel processing is performed.
+</DL>
+<DL>
+  <DT><B>G_OBJRM_WIDEN</B>
+  <DD>Enlarges the drawn image by 3/8 pixel in the positive S and T directions.  This mode is used to prevent blank space from opening up at the seams when a large rotating object is displayed from texture memory (TMEM) by combining sprites.  This mode is effective when combining and drawing opaque sprites.  It is unnecessary for translucent sprites because the seams are filled by processing by the blender (BL).
+</DL>
+</P>
+
+
+<P><B>Cautions</B>
+<br>
+When drawing sprites, use the following RDP rendering modes:</P>
+
+<DL>
+  <DT>When antialiasing is off:
+  <DT><P>&lt;Opaque sprites&gt;
+  <DD>G_RM_SPRITE
+  <DD>G_RM_SPRITE2
+  <DT>&lt;Translucent sprites&gt;
+  <DD>G_RM_XLU_SPRITE
+  <DD>G_RM_XLU_SPRITE2
+</DL>
+<DL>
+  <DT>When antialiasing is on:
+  <DT><P>&lt;Opaque sprites&gt;
+  <DD>G_RM_AA_SPRITE/G_RM_RA_SPRITE
+  <DD>G_RM_AA_SPRITE2/G_RM_RA_SPRITE2
+  <DT>&lt;Translucent sprites&gt;
+  <DD>G_RM_AA_XLU_SPRITE
+  <DD>G_RM_AA_XLU_SPRITE2
+</DL>
+
+<P>
+When two sprites overlap, the edge of the bottom sprite may affect the edge of the top sprite.  Since this cannot be avoided, use G_RM_XLU_SPRITE if this bothers you.
+</P>
+
+
+
+<P><B>See Also</B>
+<br>
+<A HREF="../gdp/gDPSetRenderMode.html"><FONT FACE="Courier,Courier New">gDPSetRenderMode</FONT></A>
+</P>
+
+
+
+<P><B>Revision History</B>
+<br>
+2/1/1999 Completely rewritten
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998-1999<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,370 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.3 File Header</h3>
+
+<hr size=3>
+
+<center>
+<table BORDER>
+<tr>
+<td>u32</td>
+
+<td>version</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>file_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>header_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>file_header_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>env_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>light_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>obj_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>color_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vector_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_img_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>name_list_num_byte</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table>
+</center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><B>File Header</B></CAPTION>
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 version</td>
+
+<td>Enter the version number.
+<br>Refer to <A HREF="../chapt4/Seg1.htm#2">Section 4.2, About File Headers</A>, for details.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 file_size</td>
+
+<td>Size (number of bytes) of file</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg2.htm#HEADER_TAG">u32 header_tag</a></td>
+
+<td>File Header Tag
+<pre><b>TAG_HEADER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000</b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 file_header_num_byte</td>
+
+<td>Size of file header</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_list_num_byte</td>
+
+<td NOWRAP>Size of SceneList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 env_list_num_byte</td>
+
+<td>Size of EnvList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_list_num_byte</td>
+
+<td>Size of CamList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 light_list_num_byte</td>
+
+<td>Size of LightList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 obj_list_num_byte</td>
+
+<td>Size of ObjList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_list_num_byte</td>
+
+<td>Size of ShapeList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_list_num_byte</td>
+
+<td>Size of VtxList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 color_list_num_byte</td>
+
+<td>Size of ColorList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_list_num_byte</td>
+
+<td>Size of StList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_list_num_byte</td>
+
+<td>Size of TriList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_list_num_byte</td>
+
+<td>Size of PartList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_list_num_byte</td>
+
+<td>Size of MatList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_list_num_byte</td>
+
+<td>Size of TexList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_img_list_num_byte</td>
+
+<td>Size of TexImgList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_list_num_byte</td>
+
+<td>Size of AnimList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_list_num_byte</td>
+
+<td>Size of CollList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_list_num_byte</td>
+
+<td>Size of SwitchList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 name_list_num_byte</td>
+
+<td>Size of NameList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td>If extension data is created on the Nintendo 64 side, the data is stored
+in NintendoExtensionBlock.
+<br>When extension data is not used, set the default flag as follows:
+<pre><b>NINTENDO_EXT_BLOCK_NONE 0x00000000</b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td>If extension data is created on the user side, the data is stored in
+UserExtensionBlock.
+<br>When extension data is not used, set the default flag as follows:
+<pre><b>USER_EXT_BLOCK_NONE&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000</b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td>If extension data is created on the Nintendo 64 side, the data is stored
+in this NintendoExtensionBlock.</td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td>If extension data is created on the user side, the data is stored in
+this UserExtensionBlock.</td>
+</tr>
+</table>
+</center>
+
+<HR>
+
+<A HREF="seg2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg4.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

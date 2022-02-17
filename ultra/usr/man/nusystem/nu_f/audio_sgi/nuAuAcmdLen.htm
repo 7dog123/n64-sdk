@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<body bgcolor="#FFFFFF">
+<Pre>
+<FONT face="arial" size="4" color="#408080"><STRONG><IMG src="../nusystem2.gif" height="30" width="176"> Global Variables</STRONG></FONT>
+</Pre>
+
+<HR>
+<font face="arial">
+<Pre>
+<FONT size="6" color="#408080"><STRONG>nuAuAcmdLen</STRONG></FONT>
+</Pre>
+
+<HR>
+<font face="arial" size="-1">
+<STRONG>Syntax</STRONG><br>
+<font face="courier" size="3"><pre>u32 nuAuAcmdLen
+</Pre></font>
+
+
+
+<STRONG>Explanation</STRONG>
+<br>
+Size of the audio command list buffer.
+
+
+<P>
+This is the size of the audio command buffer handed over to the audio microcode.  A buffer for the number of commands indicated by this value will be reserved from the audio heap.  The default value is NU_AU_CLIST_LEN, and is defined as 0x800.<BR>
+</P>
+
+<P>
+Change the value of this variable if the audio command list buffer is not large enough, or when optimizing the memory. 
+</P>
+
+<P>
+When this variable is changed, set the value before calling the following functions:
+<P><A href="nuAuInit.htm">nuAuInit</A>
+<br><A href="nuAuInit.htm">nuAuInitEx</A>
+<br><A href="nuAuMgrInit.htm">nuAuMgrInit</A>
+<br><A href="nuAuMgrInit.htm">nuAuMgrInitEx</A> 
+
+
+<HR>
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

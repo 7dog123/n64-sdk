@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Data</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.5 ObjList</h3>
+
+<hr size=3>
+
+<h4>1) ObjList Area</h4>
+
+<blockquote>
+The ObjList includes all the objects in a scene. Each object is mapped as shown below.
+</blockquote>
+
+<center>
+<table BORDER >
+<tr>
+<th ROWSPAN="9">ObjListHeader</th>
+
+<td>u32</td>
+
+<td>obj_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>obj_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>obj_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>obj_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintenedo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>obj_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>obj_num_byte(obj_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>obj(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>obj(obj_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table>
+</center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>ObjList Memory Map</b></CAPTION>
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 obj_list_tag</td>
+
+<td><font size=+0>Tag indicating ObjList. Set the following tag.</font>
+<pre><b><font size=+0>TAG_OBJ_LIST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00020000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 obj_list_header_size</td>
+
+<td><font size=+0>Size of ObjListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 obj_list_size</td>
+
+<td><font size=+0>Size of ObjList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 obj_num</td>
+
+<td><font size=+0>Number of objects used in scene. These objects are outputted
+into ObjList.</font>
+<p><font size=+0>If obj_num is OBJ_NUM, number of obj_address and obj area
+equal to that of OBJ_NUM.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 obj_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to the index.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg5-2.htm">Obj</a></td>
+
+<td><font size=+0>Stores object related information</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table>
+</center>
+
+<HR>
+
+<A HREF="seg4.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg5-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+
+</body>
+</html>

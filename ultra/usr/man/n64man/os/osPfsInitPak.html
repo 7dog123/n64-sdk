@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../os/os.html">
+            <IMG BORDER=0 SRC="../images/mh_os.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<H2><FONT COLOR="0000A0">
+osPfsInitPak
+</FONT>
+</H2>
+
+<B>Syntax</B><p>
+<FONT FACE="COURIER NEW,COURIER">#include &lt;ultra64.h&gt;<BR>
+s32 osPfsInitPak(OSMesgQueue *mq, OSPfs *pfs, int controller_no);</FONT>
+
+<BR><BR><B>Explanation</B><BR>
+Initializes the OSPfs structure <B>pfs</B>, which is the file handle used to operate the Controller Pak. This function should be called first when a Controller Pak is used for the first time, a new Controller Pak is inserted, or to access different Controller Paks inserted in multiple controllers.  However, because configuration must be performed to use SI, <a href="osContInit.html">osContInit</a> should be called once at the start, before osPfsInitPak is called.<BR>
+<BR>
+
+When controlling a file system, a Controller Pak function uses the <FONT FACE="COURIER NEW,COURIER">OSPfs</FONT> structure pointed to by the <FONT FACE="COURIER NEW,COURIER">pfs</FONT> argument as a file handle to gain access. This function (<FONT FACE="COURIER NEW,COURIER">osPfsInitPak</FONT>) initializes 
+that <FONT FACE="COURIER NEW,COURIER">OSPfs</FONT> structure.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">controller_no</FONT> argument specifies the Controller number (0~3) into which the Controller Pak is inserted.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">mq</FONT> argument is the initialized message queue linked to <FONT FACE="COURIER NEW,COURIER">OS_EVENT_SI</FONT>. Please refer to <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osSetEventMesg.html">osSetEventMesg</A></FONT> for creation 
+of this link. Because <B>mq</B> is used by the function as an internal message queue, it is not necessary for the application to use <B>mq</B> for purposes such as queuing function-termination messages.
+
+<P>
+osPfsInitPak performs the following kinds of processing internally.  First it checks the disk ID area.  If it recognizes the ID, it calls the function <a href="osPfsChecker.html">osPfsChecker</a>.  This enables recovery to be performed automatically if the file managment area (FAT area) is destroyed. 
+</P>
+<P>
+Although the previous Pfs initialization function, <I>osPfsInit</I>, performed automatic recovery if the ID area was completely destroyed, osPfsInitPak does not perform automatic restoration. (osPfsInitPak confirms ID integrity internally by checksum comparison.  If the checksums do not agree, the ID is evaluated as corrupt.)  ID recover requires a separate call to function <a href="osPfsRepairId.html">osPfsRepairId</a>.  Normally when initializing the Controller Pak, the function osPfsInitPak should be used rather than <I>osPfsInit</I>.  In addition, be sure to integrate <a href="osPfsRepairId.html">osPfsRepairId</a> into the program so that it can be called. 
+
+This is necessary because certain addresses could become indeterminate 
+due to a poor connection at the connector or for other reasons.  
+If you use <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsInit.html">osPfsInit</A></FONT>, the function could go to the wrong address, although it was supposed to check the ID.  Looking at the data at the wrong address, the function could determine that it is not an ID.  In this case, the old 
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsInit.html">osPfsInit</A></FONT> function assigns a new ID automatically and it could write the new ID 
+to the wrong address.  As a result, the content of the Controller Pak may 
+be destroyed. 
+<P>
+Therefore, always use the following procedure when initializing a Controller Pak.
+
+<BR><BR><B>Procedure for Initializing a Controller Pak</B><BR>
+
+To initialize a Controller Pak, always call <FONT FACE="COURIER NEW,COURIER">osPfsInitPak</B>. If 0 is returned, the call is successful. 
+
+<P>
+If <FONT FACE="COURIER NEW,COURIER">PFS_ERR_ID_FATAL</FONT> is returned as the error code, one of the following problems may exist:
+
+<UL><LI>The Controller Pak's ID area is destroyed.
+<LI>The Controller Pak is not connected properly.
+<LI>The Controller Pak ID cannot be read due to a dirty connector.
+<LI>The Controller's joy bus or Controller Pak is damaged.</UL>
+
+In this case, you must display the message, "The Controller or Controller Pak may not be inserted properly, the content may have been destroyed, or it may be damaged." Then prompt the user to choose between "connect again" or "repair it - the  content of the Controller Pak may be destroyed." <BR>
+<BR>
+
+If the user chooses "connect again," call the <FONT FACE="COURIER NEW,COURIER">osPfsInitPak</FONT> function again. If the user chooses "repair," call the <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPfsRepairId.html">osPfsRepairId</A></FONT> function, and then call <FONT FACE="COURIER NEW,COURIER">osPfsInitPak</FONT> again.
+
+<BR><BR><B>Possible Error Conditions</B><BR>
+
+When an error occurs, one of the following error conditions is returned:
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_NOPACK</FONT> - Some type of PIF error has occurred. Either the Controller Pak is not inserted into the specified Controller or the Controller is not properly connected.  To determine which is the case, use <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osContStartQuery.html">osContStartQuery</A></FONT> or <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osContStartQuery.html">osContGetQuery</A></FONT> function.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_NEW_PACK</FONT> - A different Controller Pak has been inserted.  To use the inserted Controller Pak, initialize it by calling this function (<FONT FACE="COURIER NEW,COURIER">osPfsInitPak</FONT>) again.
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_CONTRFAIL</FONT> - Data transfer to or from the Controller has failed.  If a transfer error occurs, up to three tries will be done internally, so this error rarely occurs.  If it does occur, it is possible that either the Controller is not connected properly, or the Controller Pak or Controller Socket is damaged.
+
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_ID_FATAL</FONT> - An attempt was made to initialize the file system, but the ID area was corrupt. Either the Controller Pak data were corrupted or the controller itself is malfunctioning or not properly connected. When this error is returned, the user should first be asked whether the Controller Pak should be initialized (assign a new ID) or to check the Controller Pak connection.  If the user responds that the Controller Pak should be initialized, the function <a href="osPfsRepairId.html">osPfsRepairId</a> should be called. 
+
+<LI><FONT FACE="COURIER NEW,COURIER">PFS_ERR_DEVICE</FONT> - A peripheral device other than a Controller Pak (eg, Rumble Pak, 64GB Pak) has been inserted in the controller.  Whether a Controller Pak has been inserted is determined by whether the device has RAM.  This error is issued if there is no RAM present. </UL>
+
+
+<P>
+<B>Example</B>
+<PRE><FONT FACE="COURIER NEW,COURIER" SIZE=3>void
+mainproc(void) {
+  int            i;
+  OSMesgQueue    intMesgQueue;
+  OSMesg         intMesgBuf[1];
+  OSContStatus   contstat[MAXCONTROLLERS];
+  OSPfs          pfs[MAXCONTROLLERS];
+  u8             contpat;
+  
+  osCreateMesgQueue(&amp;intMesgQueue, intMesgBuf, 1);
+  osSetEventMesg(OS_EVENT_SI, &amp;intMesgQueue, NULL);
+  osContInit(&amp;intMessageQ, &amp;contpat, contstat);
+  
+  for (i = 0  ; i &lt; MAXCONTROLLERS ; i ++) {
+    if ((contpat &gt;&gt; i) &amp; 1) {
+      if ((contstat[i].type &amp; CONT_TYPE_MASK) == CONT_TYPE_NORMAL) {
+         do {
+           ret = <B>osPfsInitPak</B>(&amp;intMessageQ, &amp;pfs[i], i);
+
+           switch(ret) {
+           case 0:
+             osSyncPrintf(&quot;Controller Pak is inserted into PORT %d\n&quot;, i);
+             break;
+           case PFS_ERR_NOPACK:
+             osSyncPrintf(&quot;Controller Pak is not inserted into PORT %d\n&quot;, i);
+             osSyncPrintf(&quot;Insert Controller Pak\n&quot;);
+             break;
+           case PFS_ERR_NEW_PACK:
+             osSyncPrintf(&quot;Controller Pak for PORT %d was replaced\n&quot;, i);
+             osSyncPrintf(&quot;This Controoler Pak will be used.\n&quot;);
+             break;
+           case PFS_ERR_CONTRFAIL:
+             osSyncPrintf(&quot;Abnormality is found in connection of Controller Pak for PORT %d\n&quot;, i);
+             osSyncPrintf(&quot;Check if Controller is inserted properly\n&quot;);
+             break;
+           case PFS_ERR_DEVICE:
+             osSyncPrintf(&quot;It cannot be saved in Controller Pak for PORT %d\n&quot;, i);
+             osSyncPrintf(&quot;Check if Controller Pakis inserted properly\n&quot;);
+             break;
+           case PFS_ERR_ID_FATAL:
+             osSyncPrintf(&quot;Abnormality is found in Controller Pak for PORT %d\n&quot;, i);
+             osSyncPrintf(&quot;   A button..try to recover\n&quot;);
+             osSyncPrintf(&quot;Other buttons, re-insert\n&quot;);
+            if (AskQuestion(i) == A_BUTTON) {
+               osPfsRepairId(&amp;pfs[i]);
+             }
+             break;
+           }
+           WaitForPushingAnyButton(i);
+         } while (ret != 0) ;
+      } else {
+          osSyncPrintf(&quot;PORT %d is not a normal Controller\n&quot;, i);
+      }
+    } else {
+      osSyncPrintf(&quot;Controller is not inserted into PORT %d\n&quot;, i);
+    }
+  }
+}
+</font></PRE>
+
+<P>
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER">
+<A HREF="../os/osPfsRepairId.html">osPfsRepairId</A><BR>
+<A HREF="../os/osContInit.html">osContInit</A><BR>
+<A HREF="../os/osPfsAllocateFile.html">osPfsAllocateFile</A><BR>
+<A HREF="../os/osPfsChecker.html">osPfsChecker</A><BR>
+<A HREF="../os/osPfsDeleteFile.html">osPfsDeleteFile</A><BR>
+<A HREF="../os/osPfsFileState.html">osPfsFileState</A><BR>
+<A HREF="../os/osPfsFindFile.html">osPfsFindFile</A><BR>
+<A HREF="../os/osPfsFreeBlocks.html">osPfsFreeBlocks</A><BR>
+<A HREF="../os/osPfsIsPlug.html">osPfsIsPlug</A><BR>
+<A HREF="../os/osPfsReadWriteFile.html">osPfsReadWriteFile</A><BR>
+<A HREF="../os/osPfsSetLabel.html">osPfsSetLabel</A></FONT>
+<P>
+<b>Revision History</b>
+<br>
+2/1/1999 Revised entirely
+<P>
+<br>
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

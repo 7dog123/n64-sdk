@@ -1,0 +1,87 @@
+TPF_DIR	=	c:\nintendo\n64kit\texedit\AnimeViewer\monitor\data\
+TMF_DIR	=	$(TPF_DIR)
+TLF_DIR	=	$(TPF_DIR)
+PICT_NUM	=	71
+PICT.0	=	Picture0,tex1.tmf,pal.tlf,0
+PICT.1	=	Picture1,tex2.tmf,pal.tlf,0
+PICT.2	=	Picture2,tex3.tmf,pal.tlf,0
+PICT.3	=	Picture3,tex4.tmf,pal.tlf,0
+PICT.4	=	Picture4,tex5.tmf,pal.tlf,0
+PICT.5	=	Picture5,tex6.tmf,pal.tlf,0
+PICT.6	=	Picture6,tex7.tmf,pal.tlf,0
+
+#ê≥ñ 
+PICT.7	=	cam0,cam0_0.tmf,pal.tlf,0
+PICT.8	=	cam1,cam1_0.tmf,pal.tlf,0
+PICT.9	=	cam2,cam2_0.tmf,pal.tlf,0
+PICT.10	=	cam3,cam3_0.tmf,pal.tlf,0
+PICT.11	=	cam4,cam4_0.tmf,pal.tlf,0
+PICT.12	=	cam5,cam5_0.tmf,pal.tlf,0
+PICT.13	=	cam6,cam6_0.tmf,pal.tlf,0
+PICT.14	=	cam7,cam7_0.tmf,pal.tlf,0
+#ÇøÇÂÇ¡Ç∆è„Ç©ÇÁ
+PICT.15	=	cam01,cam0_1.tmf,pal.tlf,0
+PICT.16	=	cam11,cam1_1.tmf,pal.tlf,0
+PICT.17	=	cam21,cam2_1.tmf,pal.tlf,0
+PICT.18	=	cam31,cam3_1.tmf,pal.tlf,0
+PICT.19	=	cam41,cam4_1.tmf,pal.tlf,0
+PICT.20	=	cam51,cam5_1.tmf,pal.tlf,0
+PICT.21	=	cam61,cam6_1.tmf,pal.tlf,0
+PICT.22	=	cam71,cam7_1.tmf,pal.tlf,0
+#è„Ç©ÇÁ
+PICT.23	=	cam02,cam0_2.tmf,pal.tlf,0
+PICT.24	=	cam12,cam1_2.tmf,pal.tlf,0
+PICT.25	=	cam22,cam2_2.tmf,pal.tlf,0
+PICT.26	=	cam32,cam3_2.tmf,pal.tlf,0
+PICT.27	=	cam42,cam4_2.tmf,pal.tlf,0
+PICT.28	=	cam52,cam5_2.tmf,pal.tlf,0
+PICT.29	=	cam62,cam6_2.tmf,pal.tlf,0
+PICT.30	=	cam72,cam7_2.tmf,pal.tlf,0
+#å„ÇÎè„Ç©ÇÁ
+PICT.31	=	cam03,cam0_3.tmf,pal.tlf,0
+PICT.32	=	cam13,cam1_3.tmf,pal.tlf,0
+PICT.33	=	cam23,cam2_3.tmf,pal.tlf,0
+PICT.34	=	cam33,cam3_3.tmf,pal.tlf,0
+PICT.35	=	cam43,cam4_3.tmf,pal.tlf,0
+PICT.36	=	cam53,cam5_3.tmf,pal.tlf,0
+PICT.37	=	cam63,cam6_3.tmf,pal.tlf,0
+PICT.38	=	cam73,cam7_3.tmf,pal.tlf,0
+
+#å„ÇÎ
+PICT.39	=	cam04,cam0_4.tmf,pal.tlf,0
+PICT.40	=	cam14,cam1_4.tmf,pal.tlf,0
+PICT.41	=	cam24,cam2_4.tmf,pal.tlf,0
+PICT.42	=	cam34,cam3_4.tmf,pal.tlf,0
+PICT.43	=	cam44,cam4_4.tmf,pal.tlf,0
+PICT.44	=	cam54,cam5_4.tmf,pal.tlf,0
+PICT.45	=	cam64,cam6_4.tmf,pal.tlf,0
+PICT.46	=	cam74,cam7_4.tmf,pal.tlf,0
+
+#å„ÇÎ
+PICT.47	=	cam05,cam0_5.tmf,pal.tlf,0
+PICT.48	=	cam15,cam1_5.tmf,pal.tlf,0
+PICT.49	=	cam25,cam2_5.tmf,pal.tlf,0
+PICT.50	=	cam35,cam3_5.tmf,pal.tlf,0
+PICT.51	=	cam45,cam4_5.tmf,pal.tlf,0
+PICT.52	=	cam55,cam5_5.tmf,pal.tlf,0
+PICT.53	=	cam65,cam6_5.tmf,pal.tlf,0
+PICT.54	=	cam75,cam7_5.tmf,pal.tlf,0
+
+#
+PICT.55	=	cam06,cam0_6.tmf,pal.tlf,0
+PICT.56	=	cam16,cam1_6.tmf,pal.tlf,0
+PICT.57	=	cam26,cam2_6.tmf,pal.tlf,0
+PICT.58	=	cam36,cam3_6.tmf,pal.tlf,0
+PICT.59	=	cam46,cam4_6.tmf,pal.tlf,0
+PICT.60 =	cam56,cam5_6.tmf,pal.tlf,0
+PICT.61	=	cam66,cam6_6.tmf,pal.tlf,0
+PICT.62	=	cam76,cam7_6.tmf,pal.tlf,0
+
+PICT.63	=	cam07,cam0_7.tmf,pal.tlf,0
+PICT.64	=	cam17,cam1_7.tmf,pal.tlf,0
+PICT.65 =	cam27,cam2_7.tmf,pal.tlf,0
+PICT.66	=	cam37,cam3_7.tmf,pal.tlf,0
+PICT.67	=	cam47,cam4_7.tmf,pal.tlf,0
+PICT.68	=	cam57,cam5_7.tmf,pal.tlf,0
+PICT.69	=	cam67,cam6_7.tmf,pal.tlf,0
+PICT.70	=	cam77,cam7_7.tmf,pal.tlf,0

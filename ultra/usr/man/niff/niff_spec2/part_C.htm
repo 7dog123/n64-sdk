@@ -1,0 +1,152 @@
+<html>
+<title>
+PartNode
+</title>
+<body bgcolor="ffffff">
+
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+8. Part Node
+</h2>
+<hr size=3>
+<h3>
+<A NAME="partNodeC">(1) Part Node Data Chunk</A>
+</h3>
+<blockquote>
+<p>
+
+<table border width="300">
+<tr>
+<td>
+u32
+</td>
+<td >
+part_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_part_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+part_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+part_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_index
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+tri_group_index
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+part_tri_num
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+tri_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+tri_index(part_tri_num - 1)
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+</table>
+
+<P><A HREF="part_E.htm#partNodeD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 16</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro16/index16.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro16/index16.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Tricks and Techniques</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Sparse Sprites</b>
+<br>
+The buf in a bitmap entry may be NULL, indicating that nothing should be drawn. This area will be 100% transparent.
+
+<P>
+<a name="02"></a>
+<b>Early-Ending Sprites</b>
+<br>
+Setting the width of a bitmap entry to zero (0) signals an early exit to drawing the sprite’s bitmaps.
+
+<P>
+<a name="03"></a>
+<b>Variable Size Bitmaps</b>
+<br>
+Each bitmap can have a different drawn “width” and the corresponding texture can have a different width_img. To vary the vertical size of a sprite, set the actual_height field. If this is bigger than the sprite’s bmHeightReal, then this actual_height is used for loading TMEM.
+
+<P>
+<a name="04"></a>
+<b>Explosions</b>
+<br>
+Each sprite can specify the spacing between tiles in pixels by setting the explx and exply fields. The default value is zero (0). This spacing is not affected by the scaling of the sprite.
+
+<P>
+<a name="05"></a>
+<b>Bitmap Re-use</b>
+<br>
+If the buf of the current bitmap matches the buf of the previous bitmap (not counting NULL bufs) in this sprite, then TMEM will not be re-loaded. This very simple form of texture caching is used in the font example.
+
+<P>
+<a name="06"></a>
+<b>Sprite Re-use</b>
+<br>
+Each sprite has an associated display list and an associated next_dl pointer. When spDraw is called, new display list entries are added to the area pointed at by next_dl. This doesn’t have to correspond to the pre-allocated display list allocated for the sprite; it could point somewhere else. 
+<P>
+This allows a sprite to get drawn multiple times, each with a different setting of some parameters (position, scale, color, solid/textured, and so on). Sufficient display list area must be allocated for this to operate correctly.
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

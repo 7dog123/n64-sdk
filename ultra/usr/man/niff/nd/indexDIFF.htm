@@ -1,0 +1,1137 @@
+<html>
+<title>
+描画用オブジェクトマネージャnd解説
+</title>
+<body bgcolor=#fefef8>
+<h1>
+描画用オブジェクトマネージャnd解説
+</h1>
+<hr size=3>
+<br>
+<h2>
+ndとは？
+</h2>
+<blockquote>
+　ndとはNINTENDO64 Display Managerの略で、NINTENDO64上で稼働する"描画用"
+オブジェクトマネージャです。
+　NIFFデータをNINTENDO64上でプレビューする場合、niff2gfxコンバータを使用
+してn64prev(n64kit/niff/n64prev/ディレクトリ)に出力し、そこでmakeするこ
+とによってromイメージを作成し、エミュレータボードやIS-VIEWER64にロードし
+てプレビューすることが出来ます。<p>
+　それは実際にはniff2gfxによってNINTENDO64上で実際に描画できるような画像
+データベースに一旦出力し、それを描画用オブジェクトマネージャに処理させる
+ことで正確な描画を行っているわけです。その描画用オブジェクトマネージャを
+ここでは「nd」と呼んでいます。
+　このndのソースファイルはn64prevディレクトリに格納されています。
+各ユーザーでそれを
+さらにチューンナップすることにより、NIFFを使用したグラフィクス開発環境を
+より強力に、よりゲームに適したものにすることが出来ます。また、ゲームを強
+く意識して作成していますので、これを応用することにより実際のゲームを作成
+することも可能です。<p>
+　では、このndに関してご説明することにしましょう。
+</blockquote>
+<hr size=3>
+<h2>
+ndのデータ処理フロー
+</h2>
+<blockquote>
+　niff2gfxはNIFFファイルをディスプレイリスト等のGBIデータ(NINTENDO64上で
+は主にRSP、RDPで処理します。)と、シーン、オブジェクト、アニメーション、カメ
+ラなどのNDR(ND Resource)構造体(NINTENDO64上では主にCPUで処理します。)にコン
+バートします。<p>
+　GBIデータの詳細についてはプログラミングマニュアル等を参照してください。
+<p>
+　NDR構造体はインスタンスデータを作成するためのリソースデータベースです。
+実際にnd内部で処理されるのはNDD_INSTANCE(ND Dinamic Instance)構造体です
+が、これを生成する際にオブジェクトの場合はNDR_OBJ構造体、アニメーション
+ならNDR_ANIM構造体を元にインスタンスのリンクを登録していきます。
+<p>
+<img src="./prog_flow.gif">
+<p>
+　毎フレーム処理として、ndに対するシーン、オブジェクト、カメラ、アニメー
+ションのそれぞれのNDR構造体を用いインスタンスデータの登録を行い、それをndEvalInstance()
+で処理することでアニメーション再生等を正確に行います。さらに、
+ndBulidSceneGfx()、ndBuildObjectGfxでシーンやオブジェクトが正確に描画さ
+れるようにディスプレイリストを構築し、RSPに渡しています。<p>
+</blockquote>
+<hr size=3>
+<h2>
+データ構造体
+</h2>
+<blockquote>
+　ndで使用するデータ構造体には下記の物があります。
+<hr size=1>
+<b>
+アニメーション構造体
+</b>
+<blockquote>
+<pre>
+<b>
+enum{
+  /* NDR_ANIM_CHANNEL.kind */
+  NDC_ANIMKIND_TRS_X  = 0x00,
+  NDC_ANIMKIND_TRS_Y  = 0x01,
+  NDC_ANIMKIND_TRS_Z  = 0x02,
+  NDC_ANIMKIND_ROT_X  = 0x03,
+  NDC_ANIMKIND_ROT_Y  = 0x04,
+  NDC_ANIMKIND_ROT_Z  = 0x05,
+  NDC_ANIMKIND_SCL_X  = 0x06,
+  NDC_ANIMKIND_SCL_Y  = 0x07,
+  NDC_ANIMKIND_SCL_Z  = 0x08
+};
+
+typedef struct {
+  u16 kind;
+  s16 start;
+  s16 end;
+  s16 nkey;
+  s16 *key;
+  float *value;
+} NDR_ANIM_CHANNEL;
+
+typedef struct {
+  NDR_ANIM_CHANNEL *chlist;
+  u16 nch;
+  u16 total;
+} NDR_ANIM;
+</b>
+</pre>
+　NDR_ANIM構造体はオブジェクトにアタッチされているアニメーションの構造体です。NDR_ANIM_CHANNEL構造体は１チャンネルあたりのアニメーションデータを格納します。TRX9チャンネルの内、NDR_ANIM構造体に必要なチャンネル数分のNDR_ANIM_CHANNEL構造体を取り込むことにより、必要最小限のデータ処理を行うことが出来ます。
+<p>
+ NIFFファイル上ではアニメーションはすべてのチャンネルに対してのデータを持つことになりますが、niff2gfx上で必要なチャンネル分だけを抽出し、NDR_ANIMに登録するようになっています。
+</blockquote>
+<hr size=1>
+<b>
+Shape structure <img src="../../gif/update.gif" width="48" height="12">
+</b>
+<blockquote>
+<pre>
+<b>
+typedef struct{
+  s16 *key;
+  s16 *tblno;
+  u16 nkey;
+  u16 nelem;
+} NDR_DEFORM;
+
+typedef struct{
+  Gfx *gfx;
+  Vtx *vtx;
+  u16 nvtx;
+  u16 vtxsegno;
+
+  /* using texture segment */
+  u8 *img;
+  u16 *tlut;
+  u16 imgsegno, tlutsegno;
+
+  /* shape deform data link */
+  s16 *shaperef;
+  NDR_DEFORM *vtx_deform;
+  NDR_DEFORM *vtxcol_deform;
+  NDR_DEFORM *vtxnv_deform;
+  NDR_DEFORM *vtxst_deform;
+
+} NDR_SHAPE;
+</b>
+</pre>
+　NDR_SHAPE構造体はShapeアニメーション(デフォメーション)を実現するために
+追加されたシェープデータ管理用の構造体です。シェープデータにアニメーショ
+ンが含まれている場合はNDR_DEFORMタイプのリソース情報を各頂点のアニメーショ
+ンデータとしてリンクすることで実現しています。
+　A new function for the texture coordinate animation was added to this version.</blockquote>
+<hr size=1>
+<b>
+オブジェクト構造体 <img src="../../gif/update.gif" width="48" height="12">
+</b>
+<blockquote>
+<pre>
+<b>
+enum{
+  /* object types */
+  NDC_TYPE_NULL = 0x01,
+  NDC_TYPE_3D = 0x02,
+  NDC_TYPE_BILLBOARD = 0x03,
+
+  /* ColorCombine Mode */
+  NDC_CC_COMBINED = 0x00,
+  NDC_CC_TEX0 = 0x01,
+  NDC_CC_TEX1 = 0x02,
+  NDC_CC_PRIMITIVE = 0x03,
+  NDC_CC_SHADE = 0x04,
+  NDC_CC_ENV = 0x05,
+  NDC_CC_KEY_CENTER = 0x10,
+  NDC_CC_KEY_SCALE = 0x11,
+  NDC_CC_COMBINED_ALPHA = 0x06,
+  NDC_CC_TEX0_ALPHA = 0x07,
+  NDC_CC_TEX1_ALPHA = 0x08,
+  NDC_CC_PRIMITIVE_ALPHA = 0x09,
+  NDC_CC_SHADE_ALPHA = 0x0a,
+  NDC_CC_ENV_ALPHA = 0x0b,
+  NDC_CC_LOD = 0x0c,
+  NDC_CC_PRIM_LOD = 0x0d,
+  NDC_CC_NOISE = 0x12,
+  NDC_CC_K4 = 0x14,
+  NDC_CC_K5 = 0x15,
+  NDC_CC_1 = 0x0e,
+  NDC_CC_0 = 0x0f,
+
+  /* Render Mode(complexed) */
+  NDC_RM_AA_EN                     = 0x80000000,
+  NDC_RM_Z_CMP                     = 0x40000000,
+  NDC_RM_Z_UPD                     = 0x20000000,
+  NDC_RM_IM_RD                     = 0x10000000,
+  NDC_RM_CVG_DST                   = 0x0c000000,
+    NDC_RM_CVG_DST_CLAMP           = 0x00000000,
+    NDC_RM_CVG_DST_WRAP            = 0x04000000,
+    NDC_RM_CVG_DST_FULL            = 0x08000000,
+    NDC_RM_CVG_DST_SAVE            = 0x0c000000,
+  NDC_RM_CLR_ON_CVG                = 0x02000000,
+  NDC_RM_CVG_X_ALPHA               = 0x01000000,
+  NDC_RM_ALPHA_CVG_SEL             = 0x00800000,
+  NDC_RM_FORCE_BL                  = 0x00400000,
+  NDC_RM_ZMODE                     = 0x00300000,
+    NDC_RM_ZMODE_OPA               = 0x00000000,
+    NDC_RM_ZMODE_INTER             = 0x00100000,
+    NDC_RM_ZMODE_XLU               = 0x00200000,
+    NDC_RM_ZMODE_DEC               = 0x00300000,
+  NDC_RM_ALPHA_COMPARE             = 0x000c0000,
+    NDC_RM_ALPHA_COMPARE_NONE      = 0x00000000,
+    NDC_RM_ALPHA_COMPARE_THRESHOLD = 0x00040000,
+    NDC_RM_ALPHA_COMPARE_DITHER    = 0x00080000,
+  NDC_RM_DITHER_ALPHA              = 0x00030000,
+    NDC_RM_DITHER_ALPHA_PATTERN    = 0x00000000,
+    NDC_RM_DITHER_ALPHA_NOPATTERN  = 0x00010000,
+    NDC_RM_DITHER_ALPHA_NOISE      = 0x00020000,
+    NDC_RM_DITHER_ALPHA_DISABLE    = 0x00030000,
+  NDC_RM_BLENDER_MUX0              = 0x0000ff00,
+  NDC_RM_BLENDER_MUX1              = 0x000000ff,
+
+  /* NDR_OBJ.regflag(bit assign) */
+  NDC_REGF_2CYC        = 0x4000
+};
+
+typedef struct{
+  float tx, ty, tz;
+  float rx, ry, rz;
+  float sx, sy, sz;
+} TRX;
+
+typedef struct ndr_objTag{
+
+  /* object propaties */
+  u16 type, gid;
+  u32 prio;
+  TRX trx;
+
+  /* resourse index */
+  s16 shape;
+
+  /* RSP, RDP status register setting */
+  u16 regflag;
+  u32 geommode;
+  u32 rdmode;
+  u32 primcol;
+  u8 cc1[8], cc2[8];
+
+  /* geometric animation setting */
+  s16 geom_anim;
+  u16 loop;
+  u16 framerate;
+  u32 order;
+
+  /* children links */
+  s16 bb_obj[2];
+  u16 nchild;
+  s16 *child;
+
+} NDR_OBJ;
+</b>
+</pre>
+　NDR_OBJ構造体はオブジェクトインスタンスを生成するためのデータベースで
+す。シェープデータを記述するGfx及びアニメーションを記述するNDR_ANIMへの
+リンク、子オブジェクトへのリンク等を持っています。<p>
+　また、本バージョンからNIFF上で直接NINTENDO64のカラーコンバイナモードや
+レンダーモードの設定を行えるように各定数を変更しています。<p>
+　さらにシェープアニメーションのセッティング用のデータも追加されました。
+</blockquote>
+<hr size=1>
+<b>
+シーン構造体 <img src="../../gif/update.gif" width="48" height="12">
+</b>
+<blockquote>
+<pre>
+<b>
+typedef struct{
+  TRX trx;
+  u16 objno;
+} NDR_SCN_INST_OBJ;
+
+typedef struct{
+  int type;
+  u32 color;
+  float x, y, z;
+  float a1,a2;
+} NDR_SCN_LIGHT;
+
+typedef struct{
+  struct{
+    u16 near, far;
+    u8 r,g,b,a;
+  }fog;
+  struct{
+    u32 mode;
+    float fovy, aspect, scale;
+    u16 top, bottom, left, right, near, far;
+    u16 eye_inst, upper_inst, lookat_inst;
+  }cam;
+  struct{
+    u32 amb_color;
+    int nlight;
+    NDR_SCN_LIGHT *light;
+  }light;
+  u16 fill_col, fill_depth;
+  NDR_SCN_INST_OBJ *entryobj;
+  u16 nentobj;
+} NDR_SCENE;
+
+typedef struct{
+  NDR_SCENE *scene;
+  float convert_scale;
+
+  NDR_OBJ **obj;
+  NDR_SHAPE **shape;
+  NDR_ANIM **anim;
+  s16 **rawvtx;
+  u32 **rawvtxcol;
+  s8 **rawvtxnv;
+  s8 **rawvtxst;
+
+  u16 nobj;
+  u16 nshape;
+  u16 nanim;
+  u16 nrawvtx;
+  u16 nrawvtxcol;
+  u16 nrawvtxnv;
+  u16 nrawvtxst;
+} NDR_RESINFO;
+
+</b>
+</pre>
+　NDR_SCENE構造体はフォグやカメラ設定などのシーン設定に関連するデータを
+格納しています。また、シーンにつながるルートオブジェクトの為の
+NDR_SCN_INST_OBJ構造体へのポインタを持っています。<p>
+　A new function for texture coordinate animation was added to this version.   
+</blockquote>
+<hr size=1>
+<b>
+ダイナミックインスタンス構造体 <img src="../../gif/update.gif" width="48" height="12">
+</b>
+<blockquote>
+<pre>
+<b>
+enum{
+    NDC_ITYPE_NULL = 0,
+    NDC_ITYPE_ROOT = 1,
+    NDC_ITYPE_OBJECT = 2,
+    NDC_ITYPE_ANIMTK = 3,
+    NDC_ITYPE_ANIM = 4,
+    NDC_ITYPE_DYNVTX = 5,
+    NDC_ITYPE_DEFORM_VTX = 6,
+    NDC_ITYPE_DEFORM_VTXCOL = 7,
+    NDC_ITYPE_DEFORM_VTXNV = 8,
+    NDC_ITYPE_DEFORM_VTXST = 9,
+
+    NDC_IPRIO_SYSTEM_BOTTOM = 0x0000,
+    NDC_IPRIO_OBJEND = 0x2000,
+    NDC_IPRIO_OBJ = 0x3000,
+    NDC_IPRIO_OBJROOT = 0x3fff,
+    NDC_IPRIO_ANIM = 0x4000,
+    NDC_IPRIO_ANIMTK = 0x5000,		/* time keeper */
+    NDC_IPRIO_ANIMROOT = 0x5fff,
+    NDC_IPRIO_DYNVTX = 0x6000,
+    NDC_IPRIO_DEFORM = 0x6100,
+    NDC_IPRIO_ROOT = 0x7fff,
+    NDC_IPRIO_SYSTEM_TOP = 0xffff,
+
+    NDC_IFLAG_MTX_READY = 0x4000,
+    NDC_IFLAG_ZONBIE = 0x8000,
+
+    NDC_ROTORDER_XYZ = 0x00010203,
+    NDC_ROTORDER_ZYX = 0x00030201,
+    NDC_ROTORDER_YXZ = 0x00020103,
+    NDC_ROTORDER_ZXY = 0x00030102,
+    NDC_ROTORDERMASK = 0x00ffffff,
+
+    /* NDD_INST_OBJ.flag 用 */
+    NDC_OFLAG_ENABLE        = 0x80000000,
+    NDC_OFLAG_VISIBLE       = 0x40000000,
+    NDC_OFLAG_RENDERMODE    = 0x20000000,
+    NDC_OFLAG_ALPHACOMPARE  = 0x10000000,
+    NDC_OFLAG_ALPHADITHER   = 0x08000000,
+    NDC_OFLAG_CYCLETYPE     = 0x04000000,
+    NDC_OFLAG_CCMODE        = 0x02000000,
+    NDC_OFLAG_GEOMMODE      = 0x01000000,
+    NDC_OFLAG_PRIMCOLOR     = 0x00800000,
+    NDC_OFLAG_ENVCOLOR      = 0x00400000,
+    NDC_OFLAG_FOGCOLOR      = 0x00200000,
+    NDC_OFLAG_BLEANDCOLOR   = 0x00100000,
+    NDC_OFLAG_MATRIX        = 0x00080000,
+    NDC_OFLAG_ALLREG        = 0x3ff80000,	/* combined flags */
+
+    NDC_OFLAG_PAUSE_ANIM    = 0x00040000,
+    NDC_OFLAG_PAUSE_DEFORM  = 0x00020000,
+
+    NDC_OFLAG_BILLBOARD     = 0x00008000,
+    NDC_OFLAG_2CYC          = NDC_REGF_2CYC
+};
+
+typedef struct{
+    u8 r,g,b,a;
+} RGBAQUAD;
+
+struct ndd_instanceTag;
+
+typedef struct{
+    TRX trx;
+} NDD_INST_NULL;
+
+typedef struct{
+    /* geometry propaty */
+    float modelview[4][4];		/* 表示部分が使う */
+    TRX trx;
+    u32 flag;
+    u32 order;
+    struct ndd_instanceTag *bb_obj[2];
+
+    /* display propaty */
+    NDR_SHAPE *shape;
+    Gfx *combine_gfx;
+    Gfx combinemode;
+    u32 geommode;
+    u32 rdmode;
+    u8 cc1[8], cc2[8];
+    u32 primcol, envcol, fogcol, blcol;
+    u8 prim_m, prim_l;
+} NDD_INST_OBJ;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;
+    float time;
+    float timescale;
+    s16 start;
+    s16 end;
+    struct ndd_instanceTag *animinst[10];
+    u16 naniminst;
+    s16 loop;
+} NDD_INST_ANIMTK;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;
+    float time;
+    u16 dummy_padding;
+    u16 kind;
+    s16 start;
+    s16 end;
+    s16 nowkeypos;
+    s16 nkey;
+    s16 *key;
+    float *value;
+} NDD_INST_ANIM;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;	/* link at NDD_INST_OBJ type */
+    Vtx *tarvtx[2];		/* destination data table(double buffer) */
+    NDR_SHAPE *dyn_shape;	/* dynamic shape struct */
+    NDR_SHAPE *src_shape;	/* old shape struct(backup) */
+    struct ndd_instanceTag *dfminst[4];
+} NDD_INST_DYNAMICVTX;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;	/* link at NDD_INST_DYNAMICVTX type */
+    s32 *modify_vtx;	/* high-16bit:Vertex low-16bit:fragment */
+    s32 *delta;		/* high-16bit:Vertex low-16bit:fragment */
+    s16 downcounter;		/* if zero then next key */
+    s16 nowkey;
+
+    /* copy of source NDR_DEFORM */ 
+    s16 *key;
+    s16 **rawvtx;	/* opened table list in local allocate memory */
+    u16 nkey;
+    u16 nelem;
+} NDD_INST_DEFORM_VTX;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;	/* link at NDD_INST_DYNAMICVTX type */
+    s16 *modify_vtxcol;	/* high-8bit:color low-8bit:fragment */
+    s16 *delta;		/* high-8bit:color low-8bit:fragment */
+    s16 downcounter;		/* if zero then next key */
+    s16 nowkey;
+
+    /* copy of source NDR_DEFORM */ 
+    s16 *key;
+    u32 **rawvtxcol;	/* opened table list local allocate memory */
+    u16 nkey;
+    u16 nelem;
+} NDD_INST_DEFORM_VTXCOL;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;	/* link at NDD_INST_DYNAMIC type */
+    s16 *modify_vtxnv;	/* high-8bit:color low-8bit:fragment */
+    s16 *delta;		/* high-8bit:color low-8bit:fragment */
+    s16 downcounter;		/* if zero then next key */
+    s16 nowkey;
+
+    /* copy of source NDR_DEFORM */ 
+    s16 *key;
+    s8 **rawvtxnv;	/* opened table list local allocate memory */
+    u16 nkey;
+    u16 nelem;
+} NDD_INST_DEFORM_VTXNV;
+
+typedef struct{
+    struct ndd_instanceTag *tarinst;	/* link at NDD_INST_DYNAMIC type */
+    s32 *modify_vtxst;	/* high-8bit:color low-8bit:fragment */
+    s32 *delta;		/* high-8bit:color low-8bit:fragment */
+    s16 downcounter;		/* if zero then next key */
+    s16 nowkey;
+
+    /* copy of source NDR_DEFORM */ 
+    s16 *key;
+    s16 **rawvtxst;	/* opened table list local allocate memory */
+    u16 nkey;
+    u16 nelem;
+} NDD_INST_DEFORM_VTXST;
+
+enum{
+    NDC_ICB_EVAL = 0,
+    NDC_ICB_DIE = 1
+};
+
+typedef void (*NDD_INST_CALLBACK)(struct ndd_instanceTag *isp, int type);
+
+typedef struct ndd_instanceTag{
+    struct ndd_instanceTag *next;
+    struct ndd_instanceTag *back;
+    struct ndd_instanceTag *parent;
+    struct ndd_instanceTag *bros;
+    struct ndd_instanceTag *child;
+    NDD_INST_CALLBACK instCB;	/* callback */
+    s16 type;			/* NDC_ITYPE_* */
+    u16 prio;			/* NDC_IPRIO_* */
+    u16 flag;			/* NDC_IFLAG_* */
+    u16 nchild;
+
+    u32 gid;
+    union{
+	NDD_INST_NULL null;
+	NDD_INST_OBJ obj;
+	NDD_INST_ANIM anim;
+	NDD_INST_ANIMTK animtk;
+	NDD_INST_DYNAMICVTX dynvtx;
+	NDD_INST_DEFORM_VTX dfm_vtx;
+	NDD_INST_DEFORM_VTXCOL dfm_vtxcol;
+	NDD_INST_DEFORM_VTXNV dfm_vtxnv;
+	NDD_INST_DEFORM_VTXST dfm_vtxst;
+    }u;
+} NDD_INSTANCE;
+
+enum{
+    /* NDD_LIGHTSET.flag 用 */
+    NDC_LFLAG_ENABLE = 0x8000,		/* ndInitLight() 時のみ評価される */
+    NDC_LFLAG_ALREADY_SETS = 0x4000,	/* レジスタ設定済み（マネージャ用） */
+    NDC_LFLAG_HAVEPOS = 0x0001,		/* ポジションを持つ */
+    NDC_LFLAG_ATTENUATION = 0x0002,	/* start, end による減衰評価 */
+    NDC_LFLAG_CUTOFF = 0x0004		/* cutoff の有効無効 */
+};
+
+typedef struct {
+    u16 flag;
+    u16 lnum;			/* レジスタに転送されるライト番号 */
+    u32 stored_color;		/* レジスタに転送されるカラー値 */
+    s8 stored_nv[3];		/* レジスタに転送される法線値 */
+    RGBAQUAD color;		/* RGB のみ有効 */
+    float fnv[3];		/* 対象から光源へのベクトル（正規化済） */
+    float fpos[3];		/* ワールド座標系での位置 */
+    float start, end;
+    float cutoff;		/* ライトの放射角（ラジアン） */
+} NDD_LIGHT;
+
+#define NUM_LIGHTSET_LIGHTS 7
+
+typedef struct {
+    NDD_LIGHT light[NUM_LIGHTSET_LIGHTS];
+    RGBAQUAD ambient;
+    u16 numlights;		/* マネージャ使用 */
+} NDD_LIGHTSET;
+
+typedef struct{
+    NDD_INSTANCE *root;
+    int objno;
+} NDD_OBJ_INFO;
+
+typedef struct {
+    u16 top, bottom, left, right;
+    NDD_OBJ_INFO cam[3];
+    int enacam;
+    u16 fill_col, fill_depth;
+    struct{
+	int enable;
+	u16 near, far;
+	RGBAQUAD color;
+    } fog;
+    struct{
+	u32 mode;
+	float fovy, aspect;
+	u16 top, bottom, left, right, near, far;
+	float scale;
+    } camera;
+    struct{
+	float right[3];
+	float upper[3];
+    }reflect;
+    NDD_LIGHTSET lightset;
+    int nobj;
+    NDD_OBJ_INFO *obj;
+    float start_anim, end_anim;
+    float anim_time;
+    float framerate;
+} NDD_SCENE;
+
+typedef struct {
+    u16 ofs;
+    u16 count;
+} NDD_RESOFFSET;
+
+enum {
+    NDC_RES_USED_OBJ       = 0x0001,
+    NDC_RES_USED_SHAPE     = 0x0002,
+    NDC_RES_USED_ANIM      = 0x0004,
+    NDC_RES_USED_RAWVTX    = 0x0008,
+    NDC_RES_USED_RAWVTXCOL = 0x0010,
+    NDC_RES_USED_RAWVTXNV  = 0x0020,
+    NDC_RES_USED_RAWVTXST  = 0x0040,
+    NDC_RES_USED_ALL       = 0x007f
+};
+
+typedef struct {
+    u16 usemask;
+    NDR_RESINFO *resinfo;
+    NDD_RESOFFSET obj;
+    NDD_RESOFFSET shape;
+    NDD_RESOFFSET anim;
+    NDD_RESOFFSET rawvtx;
+    NDD_RESOFFSET rawvtxcol;
+    NDD_RESOFFSET rawvtxnv;
+    NDD_RESOFFSET rawvtxst;
+} NDD_RESINFO;
+</b>
+</pre>
+　NDD_INSTANCEはnd内でのインスタンス処理を行うために使用する構造体です。NULL、オブジェクト、アニメーション、タイムキーパーインス
+タンスデータや、シーンの階層リンクを実現するための構造体になっています。
+<p>
+　シーンやオブジェクト構造体をこのNDD_INSTANCEに登録し、ndEvalInstance()
+関数をコールすることにより、シーンからの階層構造を評価することが出来ます。
+<p>
+　A new structure for texture coordinate animation,  NDD_INST_DEFORM_VTXST, was added to this version.   
+</blockquote>
+<hr size=3>
+<h2>
+<a name="REFER"></a>
+nd function reference
+</h2>
+<blockquote>
+　ここでは簡単にndの関数リファレンスを記述します。詳細に関してはn64prev
+ディレクトリ内のそれぞれのソースコードを参照してください。
+</blockqutoe>
+<p>
+<table border>
+<th colspan=2 bgcolor=#ffff80>
+関数リファレンス
+</th>
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDGENINSTANCE">ndGenInstace</a>
+</td>
+<td>
+インスタンス構造体を作成して、リンクをつなぐ
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDCHANGEPRIORITY">ndChangePriority</a>
+</td>
+<td>
+インスタンス一つのプライオリティを変更します
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDCHANGEPARENT">ndChangeParent</a>
+</td>
+<td>
+インスタンスの親を変更します。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDELETEINSTANCEGID">ndDeleteInstanceGID</a>
+</td>
+<td>
+type と gid と mask によって指定された、パラメータに一致するインスタンスを削除します。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDINIT">ndInit</a>
+</td>
+<td>
+モジュールの初期化
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+ndEntryAnimation
+</td>
+<td>
+<font color=ff0000>削除されました。</font>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYANIMATIONRAW">ndEntryAnimationRaw</a>
+</td>
+<td>
+アニメーション参照テーブルからタイムキーパーインスタンスを一つとチャンネル数分のアニメーションインスタンスを作成する。
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYOBJECT">ndEntryObject</a>
+</td>
+<td>
+オブジェクト参照テーブルからインスタンスを作成する。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYOBJECTRAW">ndEntryObjectRaw</a>
+</td>
+<td>
+オブジェクト参照テーブルからインスタンスを一つ作成する。リンクは辿らず、アニメーションインスタンスも生成しない。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDATTACHANIMATION">ndAttachAnimation</a>
+</td>
+<td>
+オブジェクト参照テーブルのアニメーションリンクを参照し、既存のオブジェクトインスタンスにアニメーションをアタッチする。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYDEFORMVTX">
+ndEntryDeformVtx
+</a>
+</td>
+<td>
+頂点デフォームインスタンスをエントリーする
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYDEFORMVTXCOL">
+ndEntryDeformVtxcol
+</a>
+</td>
+<td>
+頂点カラーデフォームインスタンスをエントリーする
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYDEFORMVTXNV">
+    ndEntryDeformVtxnv
+</a>
+</td>
+<td>
+頂点法線デフォームインスタンスをエントリーする
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYDEFORMVTXST">
+ndEntryDeformVtxst
+</a><img src="../../gif/new.gif">
+</td>
+<td>
+Make an entry of vertex texture coordinate deform instance.    
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDENTRYDEFORMSHAPE">
+ndEntryDeformShape
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+オブジェクトインスタンスの参照するシェープを乗っとり、変調した頂点情報
+    にすり替えます。
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDATTACHDEFORM">
+ndAttachDeform
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+階層化されているオブジェクトインスタンスについて、デフォームが用意されて
+    いる場合、エントリーする。
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDSETUPSCENE">ndSetupScene</a>
+</td>
+<td>
+シーンの参照テーブルからシーンを構築する。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDSETUPSCREEN">
+ndSetScreen
+</a>
+</td>
+<td>
+スクリーン表示領域の画面幅と高さを設定する。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDRESINIT">
+ndResInit
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+リソースモジュールの初期化
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDRESENTRY">
+ndResEntry
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+指定リソースをグローバルリソースリストに追加する。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDRESRELEASE">
+ndResRelease
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+指定リソースをグローバルリストから切り離します。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDELETEINSTANCE">ndDeleteInstance</a>
+</td>
+<td>
+インスタンスの削除
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDGETINSTANCETRXPOINTER">ndGetInstanceTRXPointer</a>
+</td>
+<td>
+インスタンスのポインタからトランスフォームバッファのポインタを返す
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDSETUPIDENTTRX">ndSetupIdentTRX</a>
+</td>
+<td>
+単位行列を返す
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDPROGRESSANIMTIME">
+ndProgressAnimTime
+</a>
+</td>
+<td>
+タイムキーパーの時間進行処理
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDSETANIMCHANNEL">
+ndSetAnimChannel
+</a>
+</td>
+<td>
+キーフレームアニメーションチャンネル処理
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDRELOADDYNAMICVERTEX">
+ndReloadDynamicVertex
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+各種デフォームインスタンスの変調テーブルを参照し、Vtx を組み立てる。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDEFORMVERTEX">
+ndDeformVertex
+</a>
+</td>
+<td>
+頂点デフォームを行なう
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDEFORMVERTEXNV">
+ndDeformVertexNv
+</a>
+</td>
+<td>
+頂点法線デフォームを行なう
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDEFORMVERTEXCOLOR">
+ndDeformVertexColor
+</a>
+</td>
+<td> 
+頂点カラーデフォームを行なう
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDEFORMVERTEXST">
+ndDeformVertexSt
+</a><img src="../../gif/new.gif">
+</td>
+<td> 
+Deform vertex texture coordinate. </td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDMAKECAMERAMATRIX">ndMakeCameraMatrix</a>
+</td>
+<td>
+カメラのLookAtマトリクス作成
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDMULTITRX">ndMultiTrx</a>
+</td>
+<td>
+TRX構造体から4x4マトリクスを作成する
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDEVALINSTANCEONE">
+ndEvalInstanceOne
+</a><img src="../../gif/update.gif">
+</td>
+<td>
+isp によって指定されたインスタンスについて、フレーム評価を行なう。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDEVALINSTANCE">ndEvalInstance</a>
+</td>
+<td>
+isp によって指定されたインスタンスについて、フレーム評価を行なう。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDCLEARFB">
+ndClearFB
+</a>
+</td>
+<td>
+フレームバッファのクリア
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDEVALLIGHT">
+ndEvalLight
+</a>
+</td>
+<td>
+初期化済みのライト構造体と、対象のオブジェクトの位置情報から
+    ライト情報を更新して、カラー値とライトベクトルを返す。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDRELOADLIGHTREG">
+ndReloadLightReg
+</a>
+</td>
+<td>
+ライト構造体に関連付けて、ライト情報を更新します。
+    ndSetupLightset関数より呼ばれます。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDSETUPLIGHTSET">
+ndSetupLightset
+</a>
+</td>
+<td>
+初期化済みの、lightset で渡されたライトセットを、対象になるオブジェクト
+    と共に評価し、変更のある部分に限りディスプレイリストに積む。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDINITLIGHTS">
+ndInitLights
+</a>
+</td>
+<td>
+ＲＳＰのライト設定をリセットし、ライト数を決定し、ライト構造体毎に
+    ライト番号を割り付ける。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDSETUPOBJECTREGISTER">
+ndSetupObjectRegister
+</a>
+</td>
+<td>
+オブジェクトインスタンス構造体を参照し、再設定の指定があるレジスタを
+    再設定する。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDRAWSHAPE">
+ndDrawShape
+</a>
+</td>
+<td>
+シェープ構造体の内容に従って、Gfx 構造体を描画バッファに積む。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDDRAWOBJECTINSTANCE">
+ndDrawObjectInstance
+</a>
+</td>
+<td>
+１オブジェクトを表示する
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDBUILDINSTANCEGFXATPRIO">
+ndBuildInstanceGfxAtPrio
+</a>
+</td>
+<td>
+指定のインスタンスポインタ以降を対象に、特定のプライオリティの
+    インスタンスを、描画する。
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDBUILDSCENEGFX">ndBuildSceneGfx</a>
+</td>
+<td>
+シーン構造体からシーン部のディスプレイリストを構築する
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="./refer.htm#NDBUILDINSTANCEGFX">ndBuildInstanceGfx</a>
+</td>
+<td>
+オブジェクトインスタンスからオブジェクトディスプレイリストを生成する
+</td>
+</tr>
+</table>
+<hr>
+<font size=-1>
+Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<p align="right"><a href="../index.htm">
+目次へ
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a>
+
+</body>
+</html>

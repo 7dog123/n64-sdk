@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gsp/gsp.html">
+            <IMG BORDER=0 SRC="../images/mh_gsp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+gSPModifyVertex [macro]
+</FONT>
+</H2>
+
+<P>Modifies a vertex after it has been loaded in the RSP.
+
+<P><B>Syntax</B>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A HREF="../../header/gbi.htm">gbi.h</A> */
+gSPModifyVertex(Gfx *gdl, u32 vtx, u32 where, u32 val)
+gsSPModifyVertex(u32 vtx, u32 where, u32 val)</PRE></FONT>
+
+<P><B>Arguments</B>
+<ul>
+<li>gdl is the pointer to the graphics display list
+<P>
+<li>vtx specifies which RSP vertex to modify
+<P>
+<P><TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3">
+        <TR>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">
+                F3DEX<BR>
+                F3DEX.NoN<BR>
+                F3DLX<BR>
+                F3DLX.NoN<BR>
+                L3DEX</TD>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">0~31</TD>
+        </TR>
+        <TR>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">F3DLX.Rej</TD>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">0~63</TD>
+        </TR>
+        <TR>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">F3DLP.Rej</TD>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">0~79</TD>
+        </TABLE>
+
+<P>
+For the F3DEX2 microcode group (F3DEX2, F3DLX2, F3DLP2, and L3DEX2), the values are as follows:</P>
+<P><TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3">
+        <TR>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">
+        F3DEX2<BR>F3DEX2.NoN<BR>F3DLX2<BR>F3DLX2.NoN<BR>L3DEX2</TD>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">0~31</TD>
+        </TR>
+        <TR>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">F3DEX2.Rej<BR>F3DLX2.Rej</TD>
+        <TD NOWRAP ALIGN="left" VALIGN="middle"><font face="arial" size="-1">0~63</TD>
+        </TR>
+        </TABLE>
+<P>
+<li>where specifies which part of vertex data to modify
+  <br>G_MWO_POINT_RGBA (Color)
+  <br>G_MWO_POINT_ST (Texture coordinate s, t values)
+  <br>G_MWO_POINT_XYSCREEN (Screen coordinate x, y values)
+  <br>G_MWO_POINT_ZSCREEN (Screen coordinate z value)
+<P>
+<li>val is the new value (32-bit integer) for the data part specified by <B>where</B>
+</UL>
+
+<P>
+<B>Explanation</B>
+<br>
+Modifies part of the vertex data after the data has been sent to the RSP by <A HREF="gSPVertex.html"><FONT FACE="Courier,Courier New">gSPVertex</FONT></A>.  The new value that is to be assigned to the part described by <B>where</B> is specified as follows in <B>val</B>:
+<DL><DL>
+        <DT><B>Color (G_MWO_POINT_RGBA):</B>
+        <DD>R, G, B and alpha (4 bytes each) from high-order byte to low-order byte.
+        <DD>
+        <DT><B>Texture coordinate s, t values (G_MWO_POINT_ST):</B>
+        <DD>High-order 16 bits are the s coordinate value.  Low-order 16 bits are the t coordinate value (s10.5).
+        <DD>
+        <DT><B>Screen coordinate x, y values (G_MWO_POINT_XYSCREEN):</B>
+        <DD>High-order 16 bits are the x coordinate value.  Low-order 16 bits are the y coordinate value (s13.2).
+        <DD>* The upper-left corner of the screen is (0,0).  Positive x values increase to the right, and positive y values increase downward.
+        <DD>
+        <DT><B>Screen coordinate z value (G_MWO_POINT_ZSCREEN):</B>
+        <DD>All 32 bits are the z-coordinate value (16.6, 0x00000000~0x03ff0000)
+</DL></DL>
+</P>
+<P>
+This macro is effective for use on a vertex that is shared by two or more triangles but has different properties depending on the triangle.  For example, consider a vertex that is shared by two adjacent triangles, one of which is smooth-shaded from red to yellow, and the other which is smooth-shaded from green to cyan.  In this case, you would first use <A HREF="gSPVertex.html"><FONT FACE="Courier,Courier New">gSPVertex</FONT></A> to draw a triangle in which the vertex that is shared by both triangles is red and the other two vertices are yellow.  Next, you could use this macro to change the color of the shared vertex to green for drawing the second triangle. The main use of this macro is to modify the texture coordinate of the shared vertex used by the first texture so it can be used by the second texture.
+</P>
+
+
+<P><B>Notes</B>
+<br>
+This is an advanced command.  Be sure that you understand how vertices work in the RSP microcode before using this macro (see <A HREF="gSPVertex.html"><FONT FACE="Courier,Courier New">gSPVertex</FONT></A>).
+</P>
+<P>
+Since lighting is not performed after this macro is run, modifying the vertex color with  G_MWO_POINT_RGBA actually modifies the output color, and not the normal value.
+</P>
+<P>
+The s, t coordinates specified by this macro are not scaled by the texture scale value set by <A HREF="gSPTexture.html"><FONT FACE="Courier,Courier New">gSPTexture</FONT></A>.  These coordinates must be pre-scaled before they are transferred.  For example, to use 1/2 (0x8000) as the texture scale, use a value that is one half of the value used by <A HREF="gSPVertex.html"><FONT FACE="Courier,Courier New">gSPVertex</FONT></A>.
+</P>
+
+
+<P><B>Cautions</B>
+<br>
+This macro is faster than reloading a new vertex because no transformation or lighting is performed when it is used.
+</P>
+
+<P><B>Example</B>
+<br>
+When two triangles having different textures and texture coordinates share a vertex, specify the following code:
+</P>
+
+<PRE><FONT FACE="Courier,Courier New" size="3">/* Load vertices with gSPVertex */
+gSPVertex(...);
+/* Load texture of triangle 1 */
+gDPLoadTextureBlock(...);
+/* Draw triangle 1 using vertex #3 */
+gSP1Triangle(glistp++, 1, 2, 3, 0);
+/* Change the value of vertex #3 to S=3.10 and T=2.5 */
+<B>gSPModifyVertex</B>(glistp++, 3, G_MWO_POINT_ST, 0x00600050);
+/* Load the texture of triangle 2 */
+gDPLoadTextureBlock(...);
+/* Draw triangle 2 using vertex #3 */
+gSP1Triangle(glistp++, 1, 2, 3, 0);</FONT>
+</PRE>
+
+
+<P><B>See Also</B>
+<br>
+<A HREF="gSP1Triangle.html"><FONT FACE="Courier,Courier New">gSP1Triangle</FONT></A><BR>
+<A HREF="gSPTexture.html"><FONT FACE="Courier,Courier New">gSPTexture</FONT></A><BR>
+<A HREF="gSPVertex.html"><FONT FACE="Courier,Courier New">gSPVertex</FONT></A>
+</P>
+
+
+<P><B>Revision History</B>
+<br>
+2/1/1999 Completely rewritten
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998-1999<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,53 @@
+# common.sgi
+#  Common definition for make on SGI.
+#  Copyright (C) 1998, NINTENDO Co,Ltd, MONEGI CORPORATION.
+
+# Set MODULE and SRCS 
+
+include $(ROOT)/usr/include/make/PRdefs
+
+TARGET		=	../lib$(MODULE).a
+DEBUGTARGET	=	../lib$(MODULE)_d.a
+
+RM		=	rm -f
+CP		=	cp
+RMTREE		=	rm -rf
+CPTREE		=	xcopy
+
+N64KITDIR	=	/usr/local/n64kit
+GLIBDIR		=	../..
+LIB		=	$(ROOT)/usr/lib
+LPR		=	$(LIB)/PR
+INC		=	$(ROOT)/usr/include
+
+DEBUG		=	-O
+CCFLAGS		=	$(DEBUG) -MDupdate Makedepend -fullwarn -wlint,-f -woff 813,819,826,827,852 -non_shared -G 0 -Wab,-r4300_mul
+CCDEFS		=	-D_WIN32 -D_LANGUAGE_C -D_MIPS_SZLONG=32 -D_MIPS_SZINT=32 -DF3DEX_GBI_2 -D__ISV__
+INCDIRS		=	-I../include -I$(INC)/PR -I$(INC) -I$(GLIBDIR)/include
+OBJS		=	$(SRCS:.c=.o)
+
+.SUFFIXES: .a .c .o
+
+.c.o:
+	$(CC) -c $(CCFLAGS) $(INCDIRS) $(CCDEFS) $<
+
+default: $(TARGET)
+
+debug:
+	$(MAKE) -f Makefile.sgi TARGET=$(DEBUGTARGET) DEBUG="-g -D__DEBUG__=100" default
+
+$(TARGET): $(OBJS)
+	$(AR) $(ARFLAGS) $(TARGET) $(OBJS)
+	$(CP) $(TARGET) $(GLIBDIR)/lib
+
+clean_debug:
+	-$(RM) $(DEBUGTARGET)
+	-$(RM) *.o
+
+clean_default:
+	-$(RM) $(TARGET)
+	-$(RM) *.o
+
+clean:
+	-$(RM) $(TARGET) $(DEBUGTARGET)
+	-$(RM) *.o

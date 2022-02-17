@@ -1,0 +1,28 @@
+NIFF Sample Model Data "DRAGON(dragon.niff)"
+
+* Software:
+N-World (Modeling and Animation)
+Photoshop (Texture)
+
+* The number of polygons: 412 
+
+* About the Materials:
+
+Wings and headcrest : CI texture (4bit) / reflection map
+Body                : CI texture (4bit) + the top color
+Tip of the wing     : IA texture (8bit) + the top color
+The pre-shade is applied to the entire body
+
+* About the light:
+
+Only applied to the reflected part
+
+* About the animation:
+
+N-DYNAMICS / Created by the Animate Pose to Pose
+
+Editor's Comments: 
+The wing consists of two textures with different RenderTypes. The tip of the wing 
+can not be identified with NiffEditor because the scale texture and the gradation 
+are drawn through the Alfa channel with PhotoShop. The shadow on the belly is 
+colored the same as the top color.

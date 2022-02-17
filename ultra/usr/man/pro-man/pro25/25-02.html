@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 25</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro25/index25.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro25/index25.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">RSP to RDP Command Passing</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+All types of RSP microcode generate commands for the RDP. The method used to pass the commands from the RSP to the RDP determines the suffix used to name the microcode object. In the “regular” method the commands are written to a buffer in dmem, which can hold up to six RDP commands. If the buffer fills, the next time the RSP tries to write a command it will stall until there is space in the buffer. Microcode versions that use this type of command passing have no special suffix, just a <font face="courier" size="-1">.o</font> appended to their name. 
+
+<P>
+Alternatively, the RSP can write all the commands to a larger fifo buffer in RDRAM. This helps to prevent the RSP from stalling when the RDP gets bound by processing large triangles. Microcode that uses this method has the <font face="courier" size="-1">.fifo.o</font> suffix appended to its name.
+
+<P>
+When using the fifo version of a microcode, the application must pass a pointer to a buffer to be used as the fifo buffer, in the task output_buff field. A pointer to the byte directly after the fifo buffer should be stored in the output_buff_size field (this step only applies to FIFO microcodes).
+
+<P>
+The microcode also provides another option for the RSP to write all of the RSP commands to an RDRAM buffer. In this case the application must start the RDP task separately with a call to <font face="courier" size="-1">osDpSetNextBuffer( )</font>. (This form of command passing is very useful for debugging in conjunction with the tool dlprint which can print display lists in a human readable form.) Microcode designed to use this method has the <font face="courier" size="-1">.dram.o</font>  suffix appended to its name.
+
+<P>
+Tasks using the .dram microcode need a pointer to a buffer in the output_buff field of the task structure, and a size in the output_buff_size. Because RSP commands usually expand when converted into RDP commands, this buffer needs to be larger than the size of the RSP display list.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

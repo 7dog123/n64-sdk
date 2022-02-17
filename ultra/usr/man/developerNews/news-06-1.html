@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Developers News 1.6</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>PAL Version Game and Development Environment</h2>
+
+The N64 OS receives information from the PIF when the Control Deck is booted 
+and determines whether the N64 Control Deck is NTSC or PAL.  The information 
+is stored as osTvType.  According to this variable, the VI Manager sets the 
+default screen mode and variable osViClock.
+
+<p>
+When calling <a target=top href="../n64man/os/osAiSetFrequency.html">osAiSetFrequency()</a> and setting the audio output frequency, the 
+function sets the audio DAC rate according to osViClock.  In other words, if 
+the osViClock variable has not been set using the following procedure, the 
+audio output frequency will not be set correctly.  (We are going to upgrade 
+the OS so that <a target=top href="../n64man/os/osCreateViManager.html">osCreateViManager()</a> and osAiSetFrequency() can be called in any order.)
+
+<p>
+<pre>
+        <a target=top href="../n64man/os/osInitialize.html">osInitialize()</a>;
+                 .
+                 .
+        <a target=top href="../n64man/os/osCreateViManager.html">osCreateViManager</a>(priority);
+                 .
+                 .
+        <a target=top href="../n64man/os/osAiSetFrequency.html">osAiSetFrequency</a>(frequency);
+                 .
+                 .
+</pre>
+<p>
+
+Because the PIF that is mounted on the N64 Emulator Board only exists in the 
+NTSC version, it is always set for NTSC.  This also applies to the Emulator 
+Board that is modified for the PAL version (by replacing the crystal). Therefore, when a game is made for the PAL version, it works 
+well in the N64 (PAL) Control Deck, but on the N64 (PAL) Emulator Board, the music is not as intended.   To avoid this problem, please set the variable 
+osTvType to OS_TV_PAL, as follows.
+
+<p>
+<pre>
+        osTvType = OS_TV_PAL;                   /* os.h.  */
+
+        <a target=top href="../n64man/os/osInitialize.html">osInitialize()</a>;
+
+        <a target=top href="../n64man/os/osCreateViManager.html">osCreateViManager</a>(priority);
+                     .
+                     .
+        <a target=top href="../n64man/os/osAiSetFrequency.html">osAiSetFrequency</a>(frequency);
+                     .
+                     .
+</pre>
+<p>
+
+Version 2.0E and older versions of the N64 OS have a system anomaly which 
+forces the TV type to NTSC.  (On both the Emulator Board and the Control 
+Deck.)   A software patch "Patch1118" was released by NOA to all developers 
+with version 2.0E software, in order that they may work around this anomaly.  
+Patch1118 must be used with all 2.0E and older version software.
+
+<p>
+Please use the following procedure when osAiSetFrequency() must be called 
+before calling osCreateViManager().
+
+<p>
+<pre>
+        extern int osViClock;
+
+        osTvType = OS_TV_PAL;
+        osViClock = VI_PAL_CLOCK;
+
+        <a target=top href="../n64man/os/osInitialize.html">osInitialize()</a>;
+                 .
+                 .
+        <a target=top href="../n64man/os/osAiSetFrequency.html">osAiSetFrequency</a>(frequency);
+                 .
+                 .
+        <a target=top href="../n64man/os/osCreateViManager.html">osCreateViManager</a>(priority);
+                 .
+                 .
+</pre>
+
+
+<p align="right">
+<a href="news-06.html"><IMG src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

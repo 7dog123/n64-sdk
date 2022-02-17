@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 18</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro18/index18.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro18/index18.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">The ADPCM Tools: tabldesign, vadpcm_enc, vadpcm_dec</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The ic tool requires wavetables to be compressed in ADPCM format before they are included in a sound bank. ADPCM compression is accomplished using the tabledesign, vadpcm_enc, and vadpcm_dec tools. These tools are described below.
+<P>
+<b>Note:</b> The format described is used only as an interchange format between the compression tools and the instrument compiler. It is not used to store compressed sound data on the ROM.
+
+<P>
+<a name="01"></a>
+<b>tabledesign</b>
+<br>
+tabledesign reads an AIFC or AIFF sound file and produces a codebook (written to standard output), which is used by the ADPCM encoder. The codebook is a table of prediction coefficients which the coder selects from to optimize sound quality. The procedure used to design the codebooks is based on an adaptive clustering algorithm.
+
+<P>
+<b>Invoking tabledesign</b>
+<pre><font face="courier" size="3">
+	tabledesign [-s book_size] [-f frame_size] 
+		[-i refine_iter] aifcfile
+</pre></font>
+<P>
+Command-line options are described in the following table.
+
+<br>
+<p>
+<b>Table 1</b> &nbsp;tabledesign Command Line Options
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Command Line Option</td>
+<td width=60%><font face="arial" size="-1"><b>Function</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-s &#060value&#062</td>
+<td width=60%><font face="arial" size="-1">Value is the base 2 log of the number of entries in the table. Currently up to 8 entries are supported, so the value can range from 0 to 3. The default value for this parameter is 2, giving 4 entries. This seems to be adequate for most sounds.</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-f &#060value&#062</td>
+<td width=60%><font face="arial" size="-1">Value is the size of the frames (in samples) used to estimate predictors.  Since the ADPCM encoder operates on frames of 16 samples, this number should be a multiple of 16. The default value is 16. The main benefit of increasing the frame size is that design time is reduced.</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-i &#060value&#062</td>
+<td width=60%><font face="arial" size="-1">Value is the number of iterations used in the refinement step of the clustering algorithm. The default value is 2. Increasing this parameter increases design time, with some possible improvement in quality. The default is adequate for most sounds.</td>
+</tr></table>
+
+<P>
+<a name="02"></a>
+<b>vadpcm_enc</b>
+<br>
+vadpcm_enc encodes AIFC or AIFF sound files and produces a compressed binary file, which is used by ic to prepare banks of sounds. The encoding algorithm is based on a switched ADPCM algorithm which uses a codebook to define a table of prediction coefficients. Coefficients from the table are selected adaptively during encoding to give the best sound quality.  The Nintendo 64 compressed sound format currently supports a single loop point, which should be defined in the input file’s Instrument Chunk.  The codebook and loop-point definitions are 
+embedded in the final output file.
+
+<P>
+<b>Invoking vadpcm_enc</b>
+<br>
+The vadpcm_enc tool is invoked as follows:
+<pre><font face="courier" size="3">
+	vadpcm_enc -c codebook [-t] [-l minLoopLength]
+		aifcFile codedFile
+</pre></font>
+
+<br>
+<p>
+<b>Table 2</b> &nbsp;vadpcm_enc Command Line Options
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Command Line Option</td>
+<td width=60%><font face="arial" size="-1"><b>Function</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-c &#060filename&#062</td>
+<td width=60%><font face="arial" size="-1">Define a file that contains the prediction coefficient codebook constructed by tabledesign(1).</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-t</td>
+<td width=60%><font face="arial" size="-1">Truncate the encoded file after the loop end point. The portion of the sound after the loop end-point is never used in audio playback.</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-l &#060value&#062</td>
+<td width=60%><font face="arial" size="-1">Set the minimum loop length in the encoded file (see Note below).</td>
+</tr></table>
+	
+<P>
+<b>Note:</b> The efficiency of wavetable synthesis is dependent on the length of loops. Longer loop lengths can be synthesized more efficiently. A minimum loop length can be set in the ADPCM encoder. The currently defined default minimum loop length is 800 samples. This default length can be changed (see above), with the absolute minimum being 16 samples. Loops shorter than the minimum loop length are repeated until the total loop length is larger than the minimum length. If possible loops should be longer than a single audio frame which is equal to the (SampleRate)/(FrameRate).
+
+<P>
+<a name="03"></a>
+<b>vadpcm_dec</b>
+<br>
+vadpcm_dec decodes a sound file that has been encoded in the Nintendo 64 ADPCM format using vadpcm_enc, and writes it to standard output as raw mono 16-bit samples.
+
+<P>
+<b>Invoking vadpcm_dec</b>
+<br>
+The vadpcm_dec tool is invoked as follows:
+<pre><font face="courier" size="3">	vadpcm_dec [-l] codedfile
+</pre></font>
+
+<P>
+<br>
+<p>
+<b>Table 3</b> &nbsp;vadpcm_dec Command Line Options
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Command Line Option</td>
+<td width=60%><font face="arial" size="-1"><b>Function</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-l</td>
+<td width=60%><font face="arial" size="-1">If the sound has a loop, play the loop repeatedly until a key is pressed on the standard input. 
+</td></tr></table>
+
+	
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

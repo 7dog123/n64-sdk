@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamRenameDir</title>
+</head>
+
+<body>
+
+<h1>mfsRamRenameDir</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamRenameDir(MfsDirID dirID, u8* name)
+Arguments:	dirID		Directory ID
+	*name		New directory name
+Return value:Error
+Function:	Renames directory
+Description:	This function renames the directory specified by dirID.
+The directory name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found	
+	MFS_ERR_PROTECT	Write protected
+			he directory attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+	MFS_ERR_NAME	Directory name error
+			The directory name contains a character code that cannot be used.</pre>
+</body>
+</html>

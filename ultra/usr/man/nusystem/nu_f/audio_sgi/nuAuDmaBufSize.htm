@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<body bgcolor="#FFFFFF">
+<Pre>
+<FONT face="arial" size="4" color="#408080"><STRONG><IMG src="../nusystem2.gif" height="30" width="176"> Global Variables</STRONG></FONT>
+</Pre>
+
+<HR>
+<font face="arial">
+<Pre>
+<FONT size="6" color="#408080"><STRONG>nuAuDmaBufSize
+nuAuDmaBufNum</STRONG></FONT>
+</Pre>
+
+<HR>
+<font face="arial" size="-1">
+<STRONG>Syntax</STRONG><br>
+<font face="courier" size="3"><Pre>
+s16 nuAuDmaBufSize
+s16 nuAuDmaBufNum
+</Pre></font>
+
+<P>
+<STRONG>Explanation</STRONG>
+<br>
+Size and number of audio PI-DMA buffers.
+
+<P>
+The number of DMA buffers specified by nuAuDmaBufNum of the size specified by nuAuDmaBufSize are reserved from the audio heap by the nuAuDmaNew function. 
+</P>
+
+<P>
+These DMA buffers are used when transferring waveform data requested from the synthesizer driver. <BR>
+These are also used as waveform data caches which hold data for several frames (the default is one frame). 
+</P>
+
+<P>
+As a default, nuAuDmaBufSize and nuAdDmaBufNum are defined as NU_AU_DMA_BUFFER_SIZE and NU_AU_DMA_BUFFER_NUM, which are 1024 bytes and 64, respectively. 
+</P>
+
+<P>
+When audio cannot be played back well with these values, set these variables to suitable values. 
+</P>
+
+<P>
+When these variables are changed, set the values before calling the following functions:
+<P>
+<A href="nuAuInit.htm">nuAuInit</A>
+<br><A href="nuAuInit.htm">nuAuInitEx</A>
+<br><A href="nuAuMgrInit.htm">nuAuMgrInit</A>
+<br><A href="nuAuMgrInit.htm">nuAuMgrInitEx</A>
+</P>
+
+<HR>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

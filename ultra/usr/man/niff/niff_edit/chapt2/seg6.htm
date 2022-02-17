@@ -1,0 +1,60 @@
+<html>
+<body bgcolor="ffffff">
+<br>
+<hr size=3>
+<br>
+<h1>Chapter 2　NIFFeditor for SGI</h1>
+<br>
+<hr size=3>
+<br>
+<h3>(7) convert_options Files</h3>
+<p>
+<blockuqote>
+　The NIFF editor for SGI can call up the niff2gfx command from a menu. This is a cnverter for converting NIFF data into N64 graphics data. THe niff2gfx command has a variety of switches for conversion purposes. Setting these switches will allow the output of graphics data under the required settings. (For details, see the chapter on niff2gfx.)<p>
+　With NIFF editor, these niff2gfx option switches can be set by overwriting the converter_options file. The .niffcnvops file in the home directory is the file for such settings.<p>
+　These can be set using the [Convert to N64 DL]->[Set Options and Go] menu, but it can also be edited by simply using a text editor. This file is loaded when NIFF editor starts.<p>
+<center>
+<table border>
+<tr nowrap>
+<td>
+<b>　Contents of convert_options File　</b>
+</td>
+</tr>
+<tr>
+<td>
+<blockquote>
+<b>
+../usr_data<br>
+default.c<br>
+-header default.h<br>
+-label default<br>
+-scale<br>
+-niffinfo<br>
+-nocomdef<br>
+-regmask<br>
+-vtxshare<br>
+-vtxcache<br>
+-strictflat<br>
+</b>
+</blockquote>
+<td>
+</tr>
+</table>
+</center>
+<p>
+This list shows the contents of the text file for this file.<p>
+The first line indicates the directory from which the file will be output. This must be specified.<p>
+The second line specifies the file name that will output the DL. This also must be specified.<p>
+The option flags(-****) must be added to the third line and those that follow. The sequence is optional. The option flags are not required, but if they are not inserted, niff2gfx is executed without any options. Consequently, those options that are required by niff2gfx must be noted. For a description of options required by niff2gfx.<p>
+For detail about the option, please refer to the chapter on niff2gfx.
+
+
+</blockquote>
+</body>
+</html>
+
+
+
+
+
+

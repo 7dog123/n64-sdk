@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>1.2.4 RDRAM (N64 Main Memory)</H1>
+
+<P>RDRAM is the N64 main memory. It provides a total of 4 megabytes by 9 bits of memory in two chips of 2 megabytes each.  The CPU and the RCP processing chips share all available RDRAM as shown in the following illustration:</P>
+
+<IMG SRC="../images/1-2-4-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=409 HEIGHT=600 BORDER=0><BR><BR><BR>
+
+
+<H2>Features of RDRAM</H2>
+
+<UL>
+<LI>It provides 4 megabytes by 9 bits of space. (The 9th bit is used for anti-aliasing and Z-buffering.)
+<LI>It consists of several banks in units of 1 megabyte by 9 bits. Each bank has separate active page registers.
+<LI>The system clock operates at 250 MHz.
+<LI>It can provide high-speed data transfer of 500 megabytes per second to read or write consecutive data per the RamBUS standard. (Note, however, that this high speed is not attainable for random access.)
+<LI>The transfer speed is about 200 times that of Super NES.
+<LI>It can be used simultaneously by the CPU, RSP, RDP, and the RCP I/O interfaces.
+</UL>
+
+
+<H2>RDRAM Block Definition</H2>
+
+<P>As a game developer, you can map RDRAM as appropriate for each game application. Usually the following buffers and areas are specified in RDRAM:</P>
+
+<UL>
+<LI>Audio buffer
+<LI>Frame buffer
+<LI>Z-buffer
+<LI>Vertex buffer
+<LI>Texture buffer
+<LI>Audio command list buffer
+<LI>Display list buffer
+<LI>Program area
+<LI>Other data areas
+</UL>
+
+<IMG SRC="../images/1-2-4-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=133 HEIGHT=162 BORDER=0><BR>
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

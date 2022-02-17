@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.1.5 Events</H1>
+
+<P>The exception handler built into the N64 operating system decodes interrupts and other exceptions and maps them to system events. If the system event is one that may be handled by the game itself, a message is sent to an associated event mailbox and the game application is notified. In this way, the game designer can provide an interrupt handler to deal with the exception as required by the game requirements.
+
+<P>Once the cause of an interrupt (or other exception) has been determined, the N64 operating system maps it to one of the following 17 events defined for the N64 system:</P>
+
+<UL>
+<LI>SW1 - System software interrupt 1 asserted
+<LI>SW2 - System software interrupt 2 asserted
+<LI>CART - Peripherial has generated an interrupt
+<LI>COUNTER - Internal counter reached terminal count
+<LI>SP - RCP (reality co-processor) SP (signal processor) interrupt; Task Done/Task Yield
+<LI>SI - RCP SI (serial interface) interrupt; controller input available
+<LI>AI - RCP AI (audio interface) interrupt; audio buffer swap
+<LI>VI - RCP VI (video interface) interrupt; vertical retrace
+<LI>PI - RCP PI (parallel interface) interrupt; ROM to RAM DMA done
+<LI>DP - RCP DP (display processor) interrupt; RDP processing done
+<LI>PRE-NMI - An NMI (nonmaskable interrupt) has been requested and will occur in 0.5 seconds
+<LI>CPU_BREAK - R4300i CPU has hit a breakpoint
+<LI>SP_BREAK - RCP SP (signal processor) interrupt; RCP has hit a breakpoint
+<LI>FAULT - R4300i CPU has faulted
+<LI>THREAD_STATUS - Thread was created or destroyed
+<LI>PROF_REQ
+<LI>PROF_ACK
+</UL>
+
+<P>Threads, messages, and events work together to form the core of the N64 operating system. N64 applications run under a small, multi-threaded operating system. Often a thread needs to wait for an exception such as an interrupt. Exceptions are trapped by the operating system and turned into events. Threads may register to receive notification of system events by requesting that the operating system send them a message whenever a system event occurs.
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

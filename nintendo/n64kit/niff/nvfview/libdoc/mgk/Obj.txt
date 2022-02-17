@@ -1,0 +1,66 @@
+Function
+  Minimum functionalities needed to manage objects are provided.
+
+Functions
+  void mgiObjInit( MgiObj *char_ptr, const u32 module_index );
+  Initializes a object.
+  An object is associated with the module specified by module_index.
+
+  int mgkObjLoad( MgkObj *obj_ptr,
+		  const u32 rom_start_addr,
+		  const u32 rom_end_addr )
+  Loads an object.
+
+  void mgkObjUnload( MgkObj *obj_ptr )
+  Destroys the object that has been loaded.
+
+  void mgkObjCreateCamera( MgkObj *obj_ptr,
+				const float fov_y,
+				const float aspect_ratio,
+				const float clip_near,
+				const float clip_far )
+  Generates camera object. Camera itself is considered an object.
+
+  void mgkObjSetAnim( MgkObj *obj_ptr, const s32 anim_index )
+  Sets animation to an object
+
+  void mgkObjPlayAnim( MgkObj *obj_ptr,
+		       const float start,
+		       const float end,
+		       const float pitch,
+		       const int loop )
+  Starts to play an animation.
+
+  void mgkObjMove( MgkObj *obj_ptr,
+		   const float x, const float y, const float z )
+  Moves an object horizontally.
+
+  void mgkObjRotate( MgkObj *obj_ptr, const int mode,
+		     const float x, const float y, const float z )
+  Rotates an object
+  Choose modes from the following
+    MGK_OBJ_ROT_XYZ
+    MGK_OBJ_ROT_XZY
+    MGK_OBJ_ROT_YZX
+    MGK_OBJ_ROT_YXZ
+    MGK_OBJ_ROT_ZXY
+    MGK_OBJ_ROT_ZYX
+
+  void mgkObjLookAt( MgkObj *obj_ptr,
+		     const float x, const float y, const float z,
+		     const float x_at, const float y_at, const float z_at,
+		     const float x_up, const float y_up, const float z_up )
+  
+
+  Negative direction on z axis of an object shoud points to x_at, y_at, z_at.
+  In this case, the coordinate of the object moves to x, y, and z, and
+  positive direction on y axis should point to x_up, y_up, z_up.
+
+  void mgkObjScale( MgkObj *obj_ptr,
+			 const float x, const float y, const float z )
+  Gives scale to an object
+
+
+History
+  1999/02/26 Takamitsu Hirata
+    Obj.h, obj.c: Initial version

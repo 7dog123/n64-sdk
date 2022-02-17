@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 26</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro26/index26.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro26/index26.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Rumble Pak</font></b>
+
+<P>
+<a name="01">
+<font face="arial" size="-1" color="#000000">
+<b>What is the Rumble Pak?</b>
+<br>
+The Rumble Pak is a peripheral device that, when connected to the Controller , can send vibrations to the game player.  This chapter provides  a description of the Rumble Pak.
+
+<P>
+The Rumble Pak offers only two levels of control:  motor on and motor off.  Three types of processing are necessary to control the Rumble Pak motor: “Rumble Pak Initialization,”  “Start Rumble Pak,” and “Stop Rumble Pak.”  These three Rumble Pak functions are described in this chapter.
+
+<P>
+<a name="02"></a>
+<b>Basic Use of the Rumble Pak</b>
+
+<P>
+<a name="02.1"></a>
+<b>Make Initial Settings to Use the SI Device</b>
+<br>
+The first thing you need to do is make the initial settings to use the SI device, then check whether a pak-type SI device is connected to the Controller. To do this, call the osContInit function to perform the initial settings, then call the <a target="main" href="../pro26/26-01.html#06.2">osContStartQuery, and osContGetQuery</a> functions to check for a pak-type device.
+
+<P>
+<a name="02.2"></a>
+<b>Initialize the Rumble Pak</b>
+<br>
+When the Controller is confirmed to be properly connected, the Rumble Pak inserted into that Controller must be initialized.  The function for initializing the Rumble Pak is <a target="main" href="../pro26/26-04.html#04.1">osMotorInit.</a>  At this time, the function’s return value must be checked to determine whether the Rumble Pak is properly inserted.  When the error code is 0, the Rumble Pak is properly inserted.  When the error code is <font face="courier" size="-1">PFS_ERR_NOPACK</font>, nothing is inserted into the Controller.  When it is <font face="courier" size="-1">PFS_ERR_DEVICE</font>, a device other than the Rumble Pak is inserted into the Controller.  The return of another error code indicates that the Controller or Rumble Pak connection is bad or, in the absence of such a problem, that the Controller or Rumble Pak is damaged.
+
+<P>
+<a name="02.3"></a>
+<b>Starting and Stopping the Rumble Pak Motor</b>
+<br>
+To start the Rumble Pak motor, the function <a target="main" href="../pro26/26-04.html#04.2">osMotorStart</a> is called.  If the return value is 0, the motor was successfully started, and there are no problems.  If the return value is not 0, the motor cannot be started for reasons such as an error in communication with PIF.  In this case, please issue the call <font face="courier" size="-1">osMotorStart</font>, again.
+
+<P>
+To stop a running Rumble Pak , call the function <font face="courier" size="-1">osMotorStop</font>.  The return values for this function are the same as those for <font face="courier" size="-1">osMotorStart</font>. 
+
+<P>
+<a name="03"></a>
+<b>The Sample Program</b>
+<br>
+A sample program for checking the operation of the Rumble Pak is available in /usr/src/PR/demos/motortest.  This program is operated as follows:
+
+<ul>
+<li>Press the A Button of the Controller to turn the motor ON. 
+<P>
+<li>To turn the motor OFF press the B Button of the Controller.
+<P>
+<li>With the Z Button depressed, the strength of the vibration changes in response to the degree that the Control Stick  is pushed, in any direction. 
+</ul> 
+<P>
+<b>Note:</b> There is no support for removal and insertion of the Rumble Pak during operation. Once the Rumble Pak is removed, the motor will not start again if the pak is reinserted and the A button is pressed, and the error message will not be displayed.
+
+<P>
+<a name="04"></a>
+<b>Rumble Pak Function Specifications</b>
+<br>
+Following is an explanation of the library functions used to handle the Rumble Pak in an N64 program. These functions include:
+<ul>
+<li>osMotorInit
+<br>
+Initializing the Rumble Pak
+<P>
+<li>osMotorStart
+<br>Starting the Rumble Pak
+<P>
+<li>osMotorStop
+<br>
+Stopping the Rumble Pak
+</ul>
+
+<P>
+<a name="04.1"></a><BR>
+<b>Function Name - osMotorInit</b>
+<p>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+s32 osMotorInit(OSMesgQueue *siMessageQ, OSPfs *pfs, int channel);
+</pre></font>
+
+<P> 
+The osMotorInit function initializes the Rumble Pak motor. When the Rumble Pak is used, this must be the first function called. However, because of synchronous initialization at a low level of the OS, you must call <a target="main" href="../pro26/26-01.html#06.1">osContInit</a> before calling this function (osMotorInit).
+<P>
+If an error occurs, the error codes returned by this function are:
+<P> 
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified Controller.
+<P>
+<b>PFS_ERR_DEVICE</b>
+<br>A device other than the Rumble Pak has been inserted into the Controller. 
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>A failure in the transmission of data to the Controller is indicated. Either the Controller is improperly connected, or the Rumble Pak or Controller connector is damaged.
+
+
+
+<P>
+<a name="04.2"></a>
+<br>
+<b>Function Name - osMotorStart, osMotorStop</b>
+<p>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+s32 osMotorStart(OSPfs *pfs);
+
+s32 osMotorStop(OSPfs *pfs);
+</pre></font>
+
+<P> 
+The osMotorStart and osMotorStop functions start and stop the Rumble Pak. 
+<P>
+The osMotorStart function starts the Rumble Pak motor. Its argument is the OSPfs structure pointed to by pfs. Internally, it simply sends data to the Rumble Pak. For increased processing speed, it does not perform processes such as Rumble Pak status checking. Consequently, when the Rumble Pak is removed and reinserted, the motor cannot be operated without again calling osMotorInit. Of course, osMotorStart also uses the serial interface (SI) and performs message waiting internally,
+which you should consider when calling it. 
+<P>
+If the error code PFS_ERR_CONTRFAIL is returned, communication has failed, and the motor cannot be operated. Although the chance of a transmission error is small, this error code must be checked to confirm whether the motor is actually operating.
+<P>
+The osMotorStop function stops the motor. Its argument is the OSPfs structure pointed to by pfs. Internally, it performs the same processing as osMotorStart. 
+
+<p>
+<a name="05"></a>
+<b>Notes Regarding the Rumble Pak Functions</b>
+<br>
+To produce a suitable vibration strength, the application program must repeatedly turn the Rumble Pak ON and OFF in appropriate cycles. For a specific example, please refer to the sample program provided in the Nintendo 64 Software Library.
+
+<P>
+If the Rumble Pak is removed and re-inserted by the user during a game, <a target="main" href="../pro26/26-04.html#04.1">osMotorInit</a> must be called again, before the Rumble Pak motor can be started.  However, frequent calls to osMotorInit may cause a decline in the performance of the Rumble Pak.  Therefore, to encourage caution on the part of the user, please include a note in the Instruction Booklet or display a warning on the screen such as: &quot;Please do not remove the Rumble Pak during a game.&quot;
+
+<P>
+If data from the Controller is not being read properly, determine if the Rumble Pak function is called between <a target="main" href="../pro26/26-02.html#04.1">osContStartReadData and osContGetReadData.</a> When another thread is accessing SI, calls to Rumble Pak functions can result in strange behavior. If Rumble Pak functions are used with Controller read, some type of exclusion processing is required.
+
+
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

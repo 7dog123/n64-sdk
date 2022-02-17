@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamMakeDir</title>
+</head>
+
+<body>
+
+<h1>mfsRamMakeDir</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamMakeDir(MfsDirID upDirID, u8* name)
+Arguments:	upDirID		Directory ID of directory to which created directory belongs
+	*name		Directory name
+Return value:Directory ID of created directory (a negative value is an error)
+Function:	Creates directory
+Description:	This function creates a directory in the directory specified by upDirID.
+When directory creation succeeds, the directory ID of the created directory is returned.
+The directory name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_PROTECT	Write protected
+			The directory attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+	MFS_ERR_NAME	Directory name error
+			The directory name contains a character code that cannot be used.</pre>
+</body>
+</html>

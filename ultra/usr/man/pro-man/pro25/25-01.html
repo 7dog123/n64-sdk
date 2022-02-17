@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 25</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro25/index25.01a.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro25/index25.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Graphics  Microcode - F3DEX/L3DEX Series</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Graphics are rendered in Nintendo 64 games by creating a graphics display list, and passing this display list to the RSP. In order for the RSP to process this display list, the application, using system calls, loads graphics microcode. This section discusses the different microcode object files available to applications.
+<P>
+There are 5 basic versions of the graphics microcode, and each basic version has up to 3 subtypes. The basic versions are known as <font face="courier" size="-1">gspFast3D, gspF3DNoN, gspLine3D, gspTurbo3D, </font> and <font face="courier" size="-1">gspSprite2D</font>. Each basic version has a different set of graphics rendering features. Each subtype has the same set of graphics features, but varies according to how the RSP passes commands to the RDP. The three subtypes are <font face="courier" size="-1">regular, .dram</font> and <font face="courier" size="-1">.fifo</font>. The object files for the microcode are labeled, &#060basicType&#062.<font face="courier" size="-1">o</font>, &#060basicType&#062.<font face="courier" size="-1">dram.o</font>, and &#060basicType&#062.<font face="courier" size="-1">fifo.o</font>.
+
+<P>
+In addition, there are seven versions of <font face="courier" size="-1">gspFast3D, gspF3DNoN</font>, and <font face="courier" size="-1">gspLine3D</font> that have been specially modified to .fifo subtypes to improve performance. These modified versions are <font face="courier" size="-1">gspF3DEX, gspF3DEX.NoN, gspF3DLX, gspF3DLX.NoN, gspF3DLX.Rej, gspF3DLP.Rej</font>, and <font face="courier" size="-1">gspL3DEX</font>.
+
+<p>
+<a name="01"></a>
+<b>gspFast3D</b>
+<br>
+<font face="courier" size="-1">gspFast3D</font> microcode is the most full-featured of the microcode types. It is also the microcode used in the majority of the demo applications. gspFast3D supports 3D triangles, 3D clipping, z-buffering, near and far clipping, lighting, mip-mapped textures, perspective textures, fog, and matrix stack operations. It does not support the GBI command, gSPLine3D.
+
+<P>
+<a name="02"></a>
+<b>gspF3DNoN</b>
+<br>
+<font face="courier" size="-1">gspF3DNoN</font> microcode is similar to gspFast3D microcode, except it does not handle near plane clipping in the same manner. When using <font face="courier" size="-1">gspFast3D</font> microcode, objects between the eye and the near plane are clipped. When using <font face="courier" size="-1">gspF3DNoN</font> microcode, objects between the eye and the near plane are not clipped. However, the area between the eye and the near clipping plane does not implement zbuffering. This means that objects that fall into this area must be rendered in order from far to near.
+
+<P>
+<a name="03"></a>
+<b>gspLine3D</b>
+<br>
+<font face="courier" size="-1">gspLine3D</font> microcode contains many of the features contained in <font face="courier" size="-1">gspFast3D</font>, except that instead of rendering triangles, it draws 3D lines. This is useful for producing wireframe effects. If a <font face="courier" size="-1">gSP1Triangle</font> command is encountered it will render the three edges of the triangle, but not the center portion of the triangle.
+
+<P>
+<a name="04"></A>
+<b>gspTurbo3D</b>
+<br>
+<font face="courier" size="-1">gspTurbo3D</font> microcode is a reduced-feature, reduced-precision, microcode that delivers significantly faster performance. The features not supported by <font face="courier" size="-1">gspTurbo3D</font> are: Clipping, lighting, perspective-corrected textures, and matrix stack operations. The quality of the anti-aliasing also suffers, due to the lack of precision used by <font face="courier" size="-1">gspTurbo3D</font>. This loss of precision can also manifest itself as various visual artifacts, depending on the content. <font face="courier" size="-1">gspTurbo3D</font> uses a different format for the display list. 
+
+<P>
+<a name="05"></a>
+<b>gspSprite2D</b>
+<br>
+<font face="courier" size="-1">gspSprite2D</font> microcode is optimized for rendering 2D sprite images. Sprites are implemented as textured screen rectangles. <font face="courier" size="-1">gspSprite2D</font> does not support 3D lines, 3D triangles, vertex operations, matrix operations, lighting, or fog. All of the DP commands such as blender modes, and color combiner modes are supported. Zbuffering can be used to arrange the order of the sprites from front to back.
+
+<P>
+<a name="06"></a>
+<b>gspF3DEX (Fast3D Series Improved Version)</b>
+<br>
+The F3DEX series is a tuned version of the previous Fast3D and Line3D microcode. The new version uses <font face="courier" size="-1">.fifo</font> exclusively as the method by which commands are passed from the RSP to the RDP. In addition, the vertex cache size is increased, and the matrix stack is increased from 10 levels to 18 levels. The seven microcode versions in this series are listed below. Among them are several versions designed to improve performance by restricting function.
+
+<ol>
+<font face="courier" size="-1">
+
+<li>gspF3DEX.fifo.o
+<P>
+<li>gspF3DEX.NoN.fifo.o
+<P>
+<li>gspF3DLX.fifo.o
+<P>
+<li>gspF3DLX.NoN.fifo.o
+<P>
+<li>gspF3DLX.Rej.fifo.o
+<P>
+<li>gspF3DLP.Rej.fifo.o
+<P>
+<li>gspL3DEX.fifo.o
+</ol>
+</font>
+<P>
+
+<br>
+<ul>
+<li><u>F3DEX</u>
+<br>F3DEX is the extended version of Fast3D microcode. The vertex cache size is increased to 32, and g*SP2Triangles, a GBI command for displaying two triangles at once, is supported. The GBI command  G*SP1Quadrangle (which displayed rectangles) that was supported in F3DEX version 1.21 and earlier, is no longer suported. (Emulation is supported in 2Tri).
+<P>
+<li><u>F3DLX</u>
+<br>With F3DLX, the subpixel calculation in the F3DEX microcode is simplified. This microcode retains compatibility with F3DEX and GBI, and improves processing capacity of the RSP. This is done by reducing the precision in calculating each polygon’s vertex. The extended functionality unique to F3DLX enables the DL command to turn the clipping process On or Off.
+<P>
+<li><u>F3DLX.Rej</u>
+<br>This version substitues rejection processing for clipping. Teh vertex cache size is 64 and the g*SP2Triangles commands are supported. Optimization can be achieved assuming the 2Tri operation will be performed. The triangle can not be fully rendered when one of the vertexes occurs outside the defined reject area. Therefore, it is not appropriate for rendering large triangles. Perspective texture correction is implemented.
+<P>
+<li><u>F3DLP.Rej</u>
+<br>F3DLP.Rej has similar functionality to F3DLX.Rej, however perspective texture correction is not implemented. Therefore, the processing speed in RSP is far more faster. The vertex cache is 80.
+<P>
+<li><u>L3DEX</u>
+<br>L3DEX is Line3D microcode that can handle 32 vertexes. It is equivalent to Line3D in Fast3D. A polygon rendered by F3DEX can be displayed in a wireframe.
+</ul>
+
+
+
+
+<P>
+<br>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

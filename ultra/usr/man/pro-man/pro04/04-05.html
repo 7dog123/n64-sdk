@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 4</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro04/index4.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro04/index4.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Graphics Interface</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Nintendo 64 uses a display list hierarchy to describe what to render. 3D geometry transformation and rasterization are accelerated by RSP and RDP respectively. There is no immediate mode rendering.  The R4300 CPU generates the display list in memory, then the RCP fetches the display list and renders the graphics.
+<P>
+<a name="01"></a>
+<b>Graphics Binary Interface</b>
+<br>
+Nintendo 64 renders graphics using a display list interface called "graphics binary interface" (GBI). The CPU assembles the GBI structure in RDRAM for the RSP/RDP to render. The RSP must first be downloaded with graphics microcode to perform geometry transformation. The RDP performs polygon rasterization. 
+
+<P>
+RSP and RDP state machines are described in detail in <a target="_top" href="../pro11/index11.1.html"> Section 11,  “RSP Graphics Programming”</a> and <a target="_top" href="../pro12/index12.1.html">Section 12,  “RDP Programming.”</a>
+<P>
+<b>Figure 4.5.1</B> &nbsp;Graphics Pipeline
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro04/gif/f04-03.gif"></tr></td></table>
+
+<P>
+<a name="02"></a>
+<b>GBI Geometry and Attribute Hierarchy</b>
+<br>
+The GBI structure describes a hierarchy of geometry and its attributes. This tree is traversed depth first and the graphics pipeline attributes are sequentially modified during traversal. Both geometry (RSP) and raster (RDP) attributes are contained in a GBI structure.
+
+<P>
+<b>Figure 4.5.2</B> &nbsp;Graphics Binary Interface (GBI) of an Airplane
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro04/gif/f04-04.gif"></tr></td></table>
+
+<P>
+<a name="03"></a>
+<b>GBI Feature Set</b>
+<br>
+The graphics binary interface (GBI) contains many 3D graphics features. An algorithmic description of many of these features can be found in the <i>"OpenGL Programmer’s Guide."</i> Table 4-1 below, lists the basic features of the GBI pipeline.
+<P>
+<b>Table 1</b> &nbsp;GBI Feature Set
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Processor</td>
+<td width=60%><font face="arial" size="-1"><b>Functionality</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1"><font face="arial" size="-1">CPU</td>
+<td width=60%><font face="arial" size="-1">GBI Assembly</td>
+</tr>
+<tr rowspan="5" valign="top">
+<td width=40%><font face="arial" size="-1"><font face="arial" size="-1">RSP</td>
+<td width=60%><font face="arial" size="-1">matrix stack operations<br>
+3D transformations<br>
+frustrum clipping and back-face rejection<br>
+lighting and reflection mapping<br>
+polygon and line rasterization
+<tr rowspan="5" valign="top">
+<td width=40%><font face="arial" size="-1"><font face="arial" size="-1">RDP</td>
+<td width=60%><font face="arial" size="-1">polygon rasterization<br>
+texturing/filtering<br>
+blending<br>
+z-buffering<br>
+antialiasing
+</td></tr>
+</table>
+
+
+<P>
+<a name="04"></a>
+<b>RSP Geometry Microcode</b>
+<br>
+There are three different versions of RSP geometry microcode: gspFast3D, gspLine3D, and gspTurbo3D. The gspFast3D microcode is the optimized, full-featured 3D polygonal geometry  microcode.  The gspLine3D is the optimized, full-featured 3D line geometry  microcode, and the gspTurbo3D is the optimized, reduced-featured 3D polygonal geometry microcode. Each of these microcode types come in two versions.   One version of the microcode has the RSP output the rasterization and attribute commands directly to the RDP. The other version outputs RDP commands to DRAM.  Writing the RDP commands to DRAM could be used to overlap graphics and audio.  For example, you could use the RSP for audio processing while the RDP is processing commands stored in DRAM.  Storing the RDP commands in DRAM may also be useful for debugging.
+
+
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

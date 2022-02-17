@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 20</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro20/index20.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro20/index20.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Dealing with Constraints and Allocating Resources</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+When you use the Nintendo 64 system, there are several choices that you must make. Most of these choices center around how to use the fewest system resources, while still maintaining a sufficient level of quality. Unconstrained by limits on available resources, the Nintendo 64 system is capable of audio rivaling top-of-the-line samplers.
+
+<P>
+Most of the limits in the software system are easily changed. However, in most cases a great deal of time can be saved if the programmer, game designer, and musician all agree beforehand what these values are going to be set to.
+
+<P>
+
+The limits on resources will fall into several categories:
+<ul>
+<li>determining hardware playback rate
+<P>
+<li>limits of voices and processing time
+<P>
+<li>division of sounds and music into banks
+<P>
+<li>limits of ROM space
+</ul>
+
+<P>
+<a name="01"></a>
+<b>Determining Hardware Playback Rate</b>
+<br>
+The principle decision to make about software is deciding what playback rate the hardware should be set to. Typically, rates from 22050 Hz to 44100 Hz are chosen. Higher rates require the software to produce more samples, and consequently take more processing time. Although there are no hard rules to follow, values of 44100 Hz are ideal, but values of 32000 Hz and 22050 Hz do not produce a substantial loss of audio quality. Values below 22050 Hz quickly begin to degrade the quality of the audio. 
+<P>
+Also of considerable importance is the fact that samples sound better if the output rate is as close as possible to their sample rate. If all the samples in the game are sampled at 22050 Hz, the output quality will be best with a playback rate of 22050 Hz. If there is uncertainty in the planning process, it is better to start with a higher rate, and resample down later, than to start with a lower rate and resample up later.
+
+<P>
+<a name="02"></a>
+<b>Limits of Voices and Processing Time</b>
+<br>
+The factor limiting the number of voices available for playback is the amount of time the audio will have for processing. Obviously, the more voices, the more processing time needed, and the higher the audio playback rate, the more time needed. As a rough guideline, it is estimated that 1% of RSP time is needed for each voice, when playing at 44.1k. So, if the audio is given 20% of RSP processing time, then fifteen to twenty voices will be possible. However, if the audio is given 40% of processing time, then 30 to 40 voices will be possible. Remember that a lower output playback rate reduces processing time, thus increasing the number of voices available for playback.
+
+<P>
+<a name="03"></a>
+<b>Division of Sounds and Music Into Banks</b>
+<br>
+There are no formal rules specifying how the sounds and music will be organized. However, in most cases it is best to organize the sound effect samples into a bank (or banks) separate from the music samples. 
+<P>
+There are two ways that the sequences may be stored in the game. They may be stored as separate sequences, or they may be compiled into a .sbk file. The music samples and MIDI files should be organized so that each sequence (or, if used, each bank of MIDI files) has a corresponding bank of music samples. If samples are shared by different MIDI files, they should be stored in the same bank. If the sequences do not share the same sample bank, duplicates of the samples will be produced in the different bank files.
+
+<P>
+<a name="04"></a>
+<b>Limits of ROM</b>
+<br>
+The amount of space available for audio is strictly up to the game developer.
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

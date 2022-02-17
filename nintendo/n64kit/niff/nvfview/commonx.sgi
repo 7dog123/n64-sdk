@@ -1,0 +1,49 @@
+# common.sgi
+#  Common definition for gmake on win32
+#  Copyright (C) 1998, NINTENDO Co,Ltd, MONEGI CORPORATION.
+
+# Set TARGET and SRCS
+
+GBI		 =		F3DEX_GBI_2
+
+N64KITDIR	=	/usr/local/n64kit
+NUSYSINCDIR	=	../../../include
+GLIBDIR		=	../../..
+LIB		=	$(ROOT)/usr/lib
+LPR		=	$(LIB)/PR
+INC		=	$(ROOT)/usr/include
+CC		=	cc
+LD		=	ld
+RM		=	rm
+CP              =       cp
+RMTREE		=	rm -rf
+AR		=	ar
+ARFLAGS		=	cr
+RANLIB          =       ranlib
+MAKEROM		=	makerom
+DEBUG		=	-O
+CCFLAGS =	-fullwarn -wlint,-f -woff 813,819,826,827,852 -non_shared -G 0
+CCDEFS		=	-D_WIN32 -D_LANGUAGE_C -D_MIPS_SZLONG=32 -D_MIPS_SZINT=32 -D__ISV__ -D$(GBI)
+
+INCDIRS		=	-I../../include -I$(INC)/PR -I$(INC) -I$(GLIBDIR)/include
+LDFLAGS =	$(MKDEPOPT) -nostdlib -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) -L$(GLIBDIR)/lib -lmgi -lmsn_d -lmhc_d -lmrn -lmif -lmis -lmvm -lmso -lnusys_d -lultra_rom
+OBJS		=	$(SRCS:.c=.o)
+CODESEGMENT	=	codesegment.o
+OUT		=	$(TARGET:.N64=.out)
+
+.SUFFIXES: .a .c .o .N64 .out
+
+.c.o:
+	$(CC) -c $(CCFLAGS) $(INCDIRS) $(CCDEFS) $<
+
+default: $(TARGET)
+
+$(TARGET): $(CODESEGMENT)
+	$(MAKEROM) -D$(GBI) -s 9 -r $(TARGET) -I$(NUSYSINCDIR) spec
+
+$(CODESEGMENT):	$(OBJS)
+	$(LD) -o $(CODESEGMENT) -r $(OBJS) $(LDFLAGS)
+
+clean:
+	-$(RM) $(TARGET) $(DEBUGTARGET) $(OUT)
+	-$(RM) *.o

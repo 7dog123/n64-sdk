@@ -1,0 +1,108 @@
+/*
+ * spec
+ */
+#include <nusys.h>
+#include "params.h"
+
+beginseg
+	name	"code"
+	flags	BOOT OBJECT
+	entry	nuBoot
+	address	NU_SPEC_BOOT_ADDR
+	stack	NU_SPEC_BOOT_STACK
+	include CODESEGMENT
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspL3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.Rej.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspS2DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/n_aspMain.o"
+endseg
+
+#if defined(BIN_DATA1) && defined(PTR_DATA1) && defined (WBK_DATA1)
+beginseg name "bin1" flags RAW include BIN_DATA1 endseg
+beginseg name "ptr1" flags RAW include PTR_DATA1 endseg
+beginseg name "wbk1" flags RAW include WBK_DATA1 endseg
+#endif
+#if defined(BIN_DATA2) && defined(PTR_DATA2) && defined (WBK_DATA2)
+beginseg name "bin2" flags RAW include BIN_DATA2 endseg
+beginseg name "ptr2" flags RAW include PTR_DATA2 endseg
+beginseg name "wbk2" flags RAW include WBK_DATA2 endseg
+#endif
+#if defined(BIN_DATA3) && defined(PTR_DATA3) && defined (WBK_DATA3)
+beginseg name "bin3" flags RAW include BIN_DATA3 endseg
+beginseg name "ptr3" flags RAW include PTR_DATA3 endseg
+beginseg name "wbk3" flags RAW include WBK_DATA3 endseg
+#endif
+#if defined(BIN_DATA4) && defined(PTR_DATA4) && defined (WBK_DATA4)
+beginseg name "bin4" flags RAW include BIN_DATA4 endseg
+beginseg name "ptr4" flags RAW include PTR_DATA4 endseg
+beginseg name "wbk4" flags RAW include WBK_DATA4 endseg
+#endif
+#if defined(BIN_DATA5) && defined(PTR_DATA5) && defined (WBK_DATA5)
+beginseg name "bin5" flags RAW include BIN_DATA5 endseg
+beginseg name "ptr5" flags RAW include PTR_DATA5 endseg
+beginseg name "wbk5" flags RAW include WBK_DATA5 endseg
+#endif
+#if defined(BIN_DATA6) && defined(PTR_DATA6) && defined (WBK_DATA6)
+beginseg name "bin6" flags RAW include BIN_DATA6 endseg
+beginseg name "ptr6" flags RAW include PTR_DATA6 endseg
+beginseg name "wbk6" flags RAW include WBK_DATA6 endseg
+#endif
+#if defined(BIN_DATA7) && defined(PTR_DATA7) && defined (WBK_DATA7)
+beginseg name "bin7" flags RAW include BIN_DATA7 endseg
+beginseg name "ptr7" flags RAW include PTR_DATA7 endseg
+beginseg name "wbk7" flags RAW include WBK_DATA7 endseg
+#endif
+#if defined(BIN_DATA8) && defined(PTR_DATA8) && defined (WBK_DATA8)
+beginseg name "bin8" flags RAW include BIN_DATA8 endseg
+beginseg name "ptr8" flags RAW include PTR_DATA8 endseg
+beginseg name "wbk8" flags RAW include WBK_DATA8 endseg
+#endif
+#if defined(BIN_DATA9) && defined(PTR_DATA9) && defined (WBK_DATA9)
+beginseg name "bin9" flags RAW include BIN_DATA9 endseg
+beginseg name "ptr9" flags RAW include PTR_DATA9 endseg
+beginseg name "wbk9" flags RAW include WBK_DATA9 endseg
+#endif
+#if defined(BIN_DATA10) && defined(PTR_DATA10) && defined (WBK_DATA10)
+beginseg name "bin10" flags RAW include BIN_DATA10 endseg
+beginseg name "ptr10" flags RAW include PTR_DATA10 endseg
+beginseg name "wbk10" flags RAW include WBK_DATA10 endseg
+#endif
+
+beginwave
+	name	APPNAME
+	include "code"
+#if defined(BIN_DATA1) && defined(PTR_DATA1) && defined (WBK_DATA1)
+	include "bin1" include "ptr1" include "wbk1"
+#endif
+#if defined(BIN_DATA2) && defined(PTR_DATA2) && defined (WBK_DATA2)
+	include "bin2" include "ptr2" include "wbk2"
+#endif
+#if defined(BIN_DATA3) && defined(PTR_DATA3) && defined (WBK_DATA3)
+	include "bin3" include "ptr3" include "wbk3"
+#endif
+#if defined(BIN_DATA4) && defined(PTR_DATA4) && defined (WBK_DATA4)
+	include "bin4" include "ptr4" include "wbk4"
+#endif
+#if defined(BIN_DATA5) && defined(PTR_DATA5) && defined (WBK_DATA5)
+	include "bin5" include "ptr5" include "wbk5"
+#endif
+#if defined(BIN_DATA6) && defined(PTR_DATA6) && defined (WBK_DATA6)
+	include "bin6" include "ptr6" include "wbk6"
+#endif
+#if defined(BIN_DATA7) && defined(PTR_DATA7) && defined (WBK_DATA7)
+	include "bin7" include "ptr7" include "wbk7"
+#endif
+#if defined(BIN_DATA8) && defined(PTR_DATA8) && defined (WBK_DATA8)
+	include "bin8" include "ptr8" include "wbk8"
+#endif
+#if defined(BIN_DATA9) && defined(PTR_DATA9) && defined (WBK_DATA9)
+	include "bin9" include "ptr9" include "wbk9"
+#endif
+#if defined(BIN_DATA10) && defined(PTR_DATA10) && defined (WBK_DATA10)
+	include "bin10" include "ptr10" include "wbk10"
+#endif
+endwave

@@ -1,0 +1,394 @@
+<html>
+<head>
+<title>Developers News 1.2</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr>
+<p align="center">
+<font size="6"><strong><IMG src="gif/devnews.gif" height="44" width="453">1.2</strong></font>
+</p>
+
+<p align="left">
+<b> Nintendo 64 Developers Newsletters will be published periodically,
+as needed.  These feature software and hardware system anomalies, which
+have been discovered, and their solutions and/or work-arounds.  Development
+tips will also be included.</b>
+</b>
+</p>
+
+<hr>
+
+<a name="top"></a><h2>Contents</h2>
+<ul>
+<li><a href="#tip1">Bug: Back-to-Back Floating Point Multiplies May Give Incorrect Results (R4300 Bug)</a>
+<li><a href="#tip2">Bug: RCP Audio Interface Occasionally DMAs From Bad Address</a>
+<li><a href="#tip3">Bug: Sprintf Not Included In libultra_rom Library</a>
+<li><a href="#tip4">Tip: Setting Fog Values</a>
+<li><a href="#tip5">Tip: Disassembling Code With "gdis"</a>
+<li><a href="#tip6">Tip: Handling Console RESET</a>
+<li><a href="#tip7">FYI: FIFO UCODE Not Supported on HW 1.0</a>
+</ul>
+
+<hr>
+
+<a name="tip1"></a><h3>Bug: Back-to-Back Floating Point Multiplies May Give Incorrect Results (R4300 Bug)</h3>
+
+Description:
+
+<p>
+The following back-to-back multiply code sequence in the processor pipeline 
+has the potential of producing an incorrect result in the second 
+multiply:
+
+<p>
+<pre>
+    mul.[s,d] fd,fs,ft
+    mul.[s,d] fd,fs,ft  or  [D]MULT[U] rs,rt
+</pre>
+
+<p>
+The error happens only when the first multiply is single- or double-precision 
+floating-point operation and when one or both of its source operands are:
+
+<blockquote>
+Signalling Not-a-Number (sNaN), 0 (Zero), or infinity (Inf).
+</blockquote>
+
+The second multiply instruction may produce an incorrect result depending 
+on the operands of the 1st multiply and the operands of the and multiply.  
+The second multiply can be a multiply of any data type: floating-point or 
+integer, single- or double-precision, signed or unsigned integer.
+
+<p>
+This code sequence can occur in the pipeline in two ways:
+
+<ol>
+<li>The multiplies are back-to-back in the source code.
+<li>The first multiply is in a branch delay slot and the second multiply is 
+the target instruction of the branch.
+</ol>
+
+Software Workaround:
+
+<p>
+When an instruction of any kind (e.g. NOP) is executed between the two 
+multiply instructions, the problem will not occur.
+
+<p>
+Release 2.0C includes a patch (patchSG0001118) to the C compiler and 
+Assembler which reorders multiply code to avoid this bug. You must use the 
+compiler option described in the patch release notes, which are located 
+in
+
+<blockquote>
+patch1118/relnotes/patchSG0001118/ch1.z</FONT>
+</blockquote>
+
+If you use a different compiler or code in assembly language, you need to 
+work around the problem as noted above.
+
+<p>
+Release 2.0C also includes a "checker" program called by makerom to ensure 
+that programs are compiled with the proper compiler options to avoid this bug.
+
+<p>
+Affected Versions:
+
+<p>
+This problem happens on versions 1.x, 2.0 and 2.1 of the CPU.
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="tip2"></a><h3>Bug: RCP Audio Interface Occasionally DMAs From Bad Address</h3>
+
+As mentioned in the 2.0C release notes, a bug in the RCP has been discovered 
+that causes audio data to be DMAed from the incorrect memory location under 
+certain circumstances.  It manifests itself in the application code as 
+follows:
+
+<p>
+For consecutive calls to osAiSetNextBuffer(void *vaddr, u32 nbytes)
+
+<ul>
+<li>let vaddr1 be the vaddr parameter for the first call
+<li>let nbytes1 be the nbytes parameter for the first call
+<li>let vaddr2 be the vaddr parameter for the second call
+<li>let X be the memory address where the audio data for the second call 
+is actually read.
+</ul>
+
+<pre>
+if ( ( (vaddr1 + nbytes1) &amp; 0x00003fff ) == 0x00002000 ) {
+    X = vaddr2 + 0x00002000; // incorrect address
+} else {
+    X = vaddr2;              // correct address
+}
+</pre>
+
+<p>
+Depending on the data at vaddr2 + 0x2000, this may cause clicking in 
+the audio.
+
+<p>
+To assure that the correct address is always read, you can either make 
+sure that ((vaddr + nbytes) &amp; 0x00003fff) != 0x00002000 by moving the 
+buffers, or you can also simply subtract 0x2000 from vaddr2 when vaddr1 + 
+nbytes1 evaluates to the error condition. The second solution will be 
+implemented in the next release (2.0D).
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="tip3"></a><h3>Bug: Sprintf Not Included In libultra_rom Library</h3>
+
+The libultra version intended for building final roms, libultra_rom.a, 
+does not include the sprintf() fuction. This will be fixed in the next 
+release.  In the meantime, if you need the final rom version of libultra to 
+burn roms for the launch, contact Developer Support at support@noa.com.
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="tip4"></a><h3>Tip: Setting Fog Values</h3>
+
+The documentation concerning fog (specifically the gsSPFogPosition macros) 
+is inaccurate.  The <a target=top href="../n64man/gsp/gSPFogPosition.html">gsSPFogPosition()</a> macro takes 2 parameters: min and max.  
+The min parameter specifies where the fog will begin and max specifies where 
+the fog will become fully saturated.  Both the min and max parameters range 
+from 0 (indicating "AT THE NEAR PLANE") to 1000 (indicating "AT THE FAR 
+PLANE").
+
+<p>
+Generally the mac parameter will always be set to 1000 so that objects AT 
+the far plane (which are about to dissappear from view, or which have just 
+popped into view) are completely fogged out (using such a setting will keep 
+objects from visually "popping" on and off near the far clipping plane).  
+The min parameter can be set anywhere from 0 to almost 1000.  The problem 
+with the documentation is that it indicates that the number is linear with 
+the Z position where the fog will begin in Z.  Actually this number is 
+linear with the SCREENSPACE Z but not with the object space Z.  The 
+screenspace Z is an inverse function of the object space Z (Zscreen = 
+k/Zobject) and is "bunched up" at the far plane.  Therefore a min value of 
+500 will actually begin the fog very close to the near plane.  A min value 
+of 700 or more will push fog farther from the near plane so it does not 
+obscure so much geometry.  The solution is to just use bigger numbers for 
+min.  I find that values of 950 or higher sometimes give me the effect I 
+want.
+<br>-Acorn
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="tip5"></a><h3>Tip: Disassembling Code With "<a target=top href="../n64man/tools/gdis.html">gdis</a>"</h3>
+
+The new "gdis" disassembler is a powerful debugging aide that can help you 
+turn a cryptic crash dump (i.e the text that is printed in your <a target=top href="../n64man/tools/gload.html">gload</a> window 
+when your program takes an exception) into useful debugging information.
+
+<p>
+For example, you can disassemble the section named "code" (as specified in 
+the spec file) in the "chrome" example application executable as follows:
+
+<p>
+<pre>
+% <a target=top href="../n64man/tools/gdis.html">gdis</a> -S -t .code.text letters
+</pre>
+
+<p>
+Here is a portion of the output ...
+
+<p>
+<pre>
+[ 144] 0x80200050:   27 bd ff 90     addiu    sp,sp,-112
+[ 144] 0x80200054:   af bf 00 1c     sw       ra,28(sp)
+  145:   int i, *pr;
+  146:   char *ap;
+  147:   u32 *argp;
+  148:   u32 argbuf[16];
+  149:
+  150:   /* notice that you can't call <a target=top href="../n64man/tools/rmonPrintf.html">rmonPrintf()</a> until you set
+  151:    * up the rmon thread.
+  152:    */
+  153:
+  154:   <a target=top href="../n64man/os/osInitialize.html">osInitialize()</a>;
+[ 154] 0x80200058:    0c 08 04 c4    jal      osInitialize
+[ 154] 0x8020005c:    00 00 00 00    nop
+  155:
+  156:   argp = (u32 *)RAMROM_APP_WRITE_ADDR;
+[ 156] 0x80200060:    3c 0e 00 ff    lui      t6,0xff
+[ 156] 0x80200064:    35 ce b0 00    ori      t6,t6,0xb000
+[ 156] 0x80200068:    af ae 00 60    sw       t6,96(sp)
+  157:   for (i=0; i&lt;sizeof(argbuf)/4; i++, argp++) {
+[ 157] 0x8020006c:    af a0 00 6c    sw       zero,108(sp)
+  158:   <a target=top href="../n64man/os/osPiRawReadIo.html">osPiRawReadIo</a>((u32)argp, &amp;argbuf[i]); /* Assume no DMA */
+[ 158] 0x80200070:    8f af 00 6c    lw       t7,108(sp)
+[ 158] 0x80200074:    8f a4 00 60    lw       a0,96(sp)
+[ 158] 0x80200078:    27 b9 00 20    addiu    t9,sp,32
+[ 158] 0x8020007c:    00 0f c0 80    sll      t8,t7,2
+[ 158] 0x80200080:    0c 08 05 4c    jal      osPiRawReadIo
+[ 158] 0x80200084:    03 19 28 21    addu     a1,t8,t9
+[ 157] 0x80200088:    8f a8 00 6c    lw       t0,108(sp)
+[ 157] 0x8020008c:    8f aa 00 60    lw       t2,96(sp)
+[ 157] 0x80200090:    25 09 00 01    addiu    t1,t0,1
+[ 157] 0x80200094:    2d 21 00 10    sltiu    at,t1,16
+[ 157] 0x80200098:    25 4b 00 04    addiu    t3,t2,4
+[ 157] 0x8020009c:    af ab 00 60    sw       t3,96(sp)
+[ 157] 0x802000a0:    14 20 ff f3    bne      at,zero,0x80200070
+[ 157] 0x802000a4:    af a9 00 6c    sw       t1,108(sp)
+  159:     }
+
+...
+</pre>
+
+<p>
+Notice that the C source is interleaved with the disassembled code, and 
+that the PC is given in the second column.
+
+<p>
+When your program crashes, you can look up the error PC listed in the crash 
+dump (it is identified as "epc") to determine where the program crashed and 
+find the corresponding line in the source/disassembly listing.
+
+<p>
+Note: The usage of "gdis" is different from the older "newdis".
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="tip6"></a><h3>Tip: Handling Console RESET</h3>
+
+When the console RESET switch is pushed, the hardware generates a HW2 
+interrupt to the R4300 CPU. The interrupt is serviced by the OS event handler 
+which sends a message of type OS_EVENT_PRENMI to the message queue associated 
+with that event.
+
+<p>
+The HW2 interrupt will be followed in 0.5 seconds by a non-maskable 
+interrupt (NMI) to the R4300 CPU (unless the RESET switch is pushed and 
+held for more than 0.5 seconds, in which case the NMI will occur when the 
+switch is released).
+
+<p>
+After the NMI occurs, the hardware is reinitialized, and
+
+<ul>
+<li>the first Meg of the game in ROM is copied into the first megabyte of 
+RAM after the boot address
+<li>the BSS for the boot segment is cleared
+<li>the boot procedure is called
+</ul>
+
+Note: There are some minor differences between power on reset and NMI reset. 
+After power on reset, the caches are invalidated.  After NMI reset, the 
+caches are flushed and then invalidated. Also, the power on reset configures 
+the RAM, while NMI reset leaves the RAMs alone.  After NMI reset, the 
+contents of memory, except for the 1 Meg that is copied in, are the same as 
+before the NMI occured. The global variable, osResetType, is set to 0 on 
+a power up reset and to 1 on a NMI.
+
+<p>
+If your game does not use the scheduler, it should set up to respond to the 
+OS_EVENT_PRENMI event by associating a message queue with the event early 
+in the game code. This is accomplished as follows:
+
+<p>
+<pre>
+<a target=top href="../n64man/os/osSetEventMesg.html">osSetEventMesg</a>(OS_EVENT_PRENMI, &lt;some_message_queue>)
+</pre>
+
+<p>
+If your game does use the scheduler, it needs only to test for a message of 
+type PRE_NMI_MSG on its client message queue. The scheduler performs the 
+event initialization, and forwards the OS_EVENT_PRENMI message to the client 
+message queue as soon as it is received.
+
+<p>
+When the game receives the OS_EVENT_PRENMI message it should do the 
+following:
+
+<ul>
+<li>Stop issuing GFX tasks to prevent the RDP from potentially hanging
+<li>Stop issuing audio tasks to prevent audio "pops"
+<li>Stop issuing ROM (PI) DMAs
+</ul>
+
+To test this, you can generate an NMI on development board by running 
+the following program ON THE INDY. This is equivalent to pushing the RESET 
+switch on the Ultra 64 machine.
+
+<p>
+<pre>
+/*
+ * Program to simulate pressing and releasing the RESET switch on the
+ * Ultra 64.
+ *
+ * Copy this code to resetu64.c and type "make resetu64"
+ *
+ */
+#include &lt;unistd.h>
+#include &lt;fcntl.h>
+#include &lt;stdio.h>
+#include &lt;sys/mman.h>
+#include &lt;sys/u64gio.h>
+#include &lt;PR/R4300.h>
+
+#define GIOBUS_BASE 0x1f400000
+#define GIOBUS_SIZE 0x200000          /* 2 MB */
+
+main()
+{
+    int mmemFd;
+    unsigned char *mapbase;
+    struct u64_board *pBoard;
+
+    if ((mmemFd = open("/dev/mmem", 2)) &lt; 0) {
+        perror("open of /dev/mmem failed");
+        return(1);
+    }
+
+    if ((mapbase = (unsigned char *)mmap(0, GIOBUS_SIZE, PROT_READ|PROT_WRITE,
+      (MAP_PRIVATE), mmemFd, 
+      PHYS_TO_K1(GIOBUS_BASE))) == (unsigned char *)-1) {
+        perror("mmap");
+        return(1);
+    }
+
+    pBoard = (struct u64_board *)(mapbase);
+    pBoard->reset_control = _U64_RESET_CONTROL_NMI;
+    sginap(10);
+    pBoard->reset_control = 0;
+}
+</pre>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="tip7"></a><h3>FYI: FIFO UCODE Not Supported on HW 1.0</h3>
+
+The FIFO ucode is not supported on HW 1.0.  There is not enough available 
+instruction space.
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

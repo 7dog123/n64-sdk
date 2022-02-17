@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamResizeFile</title>
+</head>
+
+<body>
+
+<h1>mfsRamResizeFile</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamResizeFile(MfsDirID dirID, s32 size)
+Arguments:	dirID		Directory ID of file
+	size		File size
+Return value:Error
+Function:	Changes file size
+Description:	This function changes the size of the file specified by dirID.  The file is either enlarged or a portion of the file is truncated depending on the value of size and the initial size of the file.  
+When the file is enlarged, the new area data is undefined.  When the file is truncated, the data following the new end of the file is lost.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND Specified directory not found
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

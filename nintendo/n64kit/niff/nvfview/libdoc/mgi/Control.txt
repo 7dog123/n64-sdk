@@ -1,0 +1,54 @@
+Function 
+(  Controls scene hierarchy nodes. 
+
+Functions 
+(  void mgiControlInit( MgiControl *control_ptr )
+  Initializes MgiControl. 
+
+(  void mgiControlBind( MgiControl *control_ptr,
+		       MgiCharacter *char_ptr )
+  Links MgiControl to a node. 
+
+(  u32 mgiControlGetULong( const MgiControl *control_ptr )
+  Gets integer value without sign from field of node. 
+
+(  s32 mgiControlGetSLong( const MgiControl *control_ptr )
+  Gets integer value with sign from field of node. 
+
+(  float mgiControlGetFloat( const MgiControl *control_ptr )
+  Gets floating point value from field of node. 
+
+(  void mgiControlGetULongs( const MgiControl *control_ptr, u32 *array )
+  Gets array of integer values without signs from field of node and puts it into array. 
+
+(  void mgiControlGetSLongs( const MgiControl *control_ptr, s32 *array )
+  Gets array of integer values with signs from field of node and puts it into array. 
+
+(  void mgiControlGetFloats( const MgiControl *control_ptr, float *array )
+  Gets array of floating point values from field of node and puts it into array. 
+
+(  void mgiControlSetULong( MgiControl *control_ptr, const u32 value )
+  Sets integer value without sign to field of node. 
+
+(  void mgiControlSetSLong( MgiControl *control_ptr, const s32 value )
+  Sets integer value with sign to field of node. 
+
+(  void mgiControlSetFloat( MgiControl *control_ptr, const float value )
+  Sets floating point value to field of node. 
+
+(  void mgiControlSetULongs( MgiControl *control_ptr, const u32 *array )
+  Sets array of integer values without signs to field of node. 
+
+(  void mgiControlSetSLongs( MgiControl *control_ptr, const s32 *array )
+  Sets array of integer values with signs to field of node. 
+
+(  void mgiControlSetFloats( MgiControl *control_ptr, const float *array )
+  Sets array of floating point values to field of node. 
+
+Macros 
+(  _mgiControlUnbind(control_ptr)
+  Separates MgiControl from node. 
+
+History 
+  1998/10/29 Takamitsu Hirata 
+    Control.h, control.c: Initial versions

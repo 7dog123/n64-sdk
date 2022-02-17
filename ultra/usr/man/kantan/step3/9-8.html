@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.9.8 Matrix Operations</H1>
+
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guAlign</SPAN> - Calculate vector alignment for the modeling matrix.<BR>
+<SPAN ID=mono>guAlignF</SPAN> - Calculate vector alignment for the modeling matrix.<BR>
+<SPAN ID=mono>guLookAtStereo</SPAN> - Calculate the lookat view matrix for the stereo graphics display.<BR>
+<SPAN ID=mono>guLookAtStereoF</SPAN> - Calculate lookat view matrix for the stereo graphics display.<BR>
+<SPAN ID=mono>guMtxCatF</SPAN> - Concatenate two 4x4 floating-point matrices using multiplication.<BR>
+<SPAN ID=mono>guMtxCatL</SPAN> - Concatenate two 4x4 fixed-point matrices using multiplication.<BR>
+<SPAN ID=mono>guMtxF2L</SPAN> - Convert the 4x4 floating-point matrix to the fixed-point matrix.<BR>
+<SPAN ID=mono>guMtxIdent</SPAN> - Create the 4x4 fixed-point identity matrix.<BR>
+<SPAN ID=mono>guMtxIdentF</SPAN> - Create the 4x4 floating-point matrix.<BR>
+<SPAN ID=mono>guMtxL2F</SPAN> - Create the 4x4 fixed-point matrix to the floating-point matrix.<BR>
+<SPAN ID=mono>guMtxXFMF</SPAN> - Provide the point coordinate transformation using the 4x4 floating-point matrix.<BR>
+<SPAN ID=mono>guMtxXFML</SPAN> - Provide the point coordinate transformation using the 4x4 fixed-point matrix.<BR>
+<SPAN ID=mono>guNormalize</SPAN> - Normalize the vector.<BR>
+<SPAN ID=mono>guPosition</SPAN>  - Calculate the modeling matrix.<BR>
+<SPAN ID=mono>guPositionF</SPAN> - Calculate the modeling matrix.<BR>
+<SPAN ID=mono>guRotate, guRotateRPY, guRotateRPYF</SPAN>, and <SPAN ID=mono>guRotateF</SPAN> - Rotate the modeling matrix.<BR>
+<SPAN ID=mono>guScale</SPAN> - Calculate the scaling matrix.<BR>
+<SPAN ID=mono>guScaleF</SPAN> - Calculate the scaling modeling matrix.<BR>
+<SPAN ID=mono>guTranslate</SPAN> - Calculate the conversion modeling matrix.<BR>
+<SPAN ID=mono>guTranslateF</SPAN> - Calculate the conversion modeling matrix.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPMatrix</SPAN> - Load the matrix, concatenate, and push the stack.<BR>
+<SPAN ID=mono>gSPPopMatrix</SPAN> - Pop the matrix stack.<BR>
+<SPAN ID=mono>gSPForceMatrix</SPAN> - Load the new MP matrix.<BR>
+<SPAN ID=mono>gSPInsertMatrix</SPAN> - Update the matrix element without using multiplication.
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

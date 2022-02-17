@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><strong><img src="../../gif/nusystem2.gif" width="176"
+height="30"> </strong><font size="5"><strong>Tutorial</strong></font></p>
+
+<hr>
+
+<h2>2 - NuSystem Overview</h2>
+
+<p>NuSystem is a system library designed to make N64OS easier to use.  It hides the initialization part of N64OS and connotes event message processes and the minimal necessary threads.  It also provides a useful controller manager to handle the Controller and Controller Pak, and a useful audio manager to play back audio.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h3><a name="1">2.1 NuSystem Components (Ver. 1.0)</a></h3>
+
+<p>NuSystem is made up of the following components:</p>
+
+<ol>
+    <li>Initiator</li>
+    <li>Scheduler</li>
+    <li>Graphics Manager</li>
+    <li>Audio Manager</li>
+    <li>Controller Manager</li>
+</ol>
+
+<p>The audio manager and controller manager can be created as application-independent managers without changing the NuSystem source code.</p>
+
+<p>Below we give a simple explanation of each component.  For details, please refer to INSIDE NuSystem.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h4><a name="1.1">2.1.1 Initiator</a></h4>
+
+<p>The initiator performs the minimal initializations and settings needed to run the N64 system, including initializing N64OS and NuSystem, and activating the scheduler.</p>
+
+<p>This means the startup section of the game program does not need to contain the tedious and bothersome code for initializing and setting the N64OS system.  Of course, parameters can still be reset from the application.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h4><a name="1.2">2.1.2 Scheduler</a></h4>
+
+<p>The NuSystem scheduler schedules the retrace event and PRE-NMI event handlers.  In NuSystem, a retrace event process normally can be registered as a callback function from the game application, so there is really no need to be aware of the scheduler.  However, scheduler functions have been provided so that retrace events can also be processed on the game application side.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h4><a name="1.3">2.1.3 Graphics Manager</a></h4>
+
+<p>The graphics manager performs the necessary graphics initializations, registers and executes the retrace event handlers, and executes the graphics tasks.</p>
+
+<p>The flow of a graphics process starts with the game application registering a retrace event function as a callback function in the graphics manager. A display list is then created with the callback function, and passed to the graphics manager.  After that, the graphics manager executes an RSP task, the display list is processed, and the screen is drawn.  In short, a game application can draw a screen just by creating a display list.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h4><a name="1.4">2.1.4 Audio Manager</a></h4>
+
+<p>The audio manager performs the necessary audio initializations and plays back music data and sound effects data.  The only thing the game application needs to do is register the music data and sound effect data.  In order to playback music or sound effects, if the music data number or sound effect number is specified it will be played.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h4><a name="1.5">2.1.5 Controller Manager</a></h4>
+
+<p>The controller manager reads data from the N64 Controller, read/writes data to the Controller Pak, and controls the Rumble Pak.
+	The controller manager automatically reads the Controller data at the time of a retrace.  It is also possible to read this data from the game application with arbitrary timing.
+</p>
+
+<p>The Controller Pak is accessed via the controller manager.  At this time, the controller manager performs a device check and takes exclusive control.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h3><a name="2">2.2 Customizing</a></h3>
+
+<p>NuSystem comes supplied with the source code.  This can be freely customized to add to inadequate NuSystem functions, and to improve or change libraries to better fit the game application.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

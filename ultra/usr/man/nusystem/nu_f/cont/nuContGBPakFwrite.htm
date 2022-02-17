@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="5"><strong>nuContGBPakFwrite</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContGBPakFwrite(NUContPakFile* handle, u16 address, u8*
+buffer, u16 size)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>handle	GB Pak control structure (shared with Controller Pak structure)
+address	The Game Boy Game Pak address
+buffer	Data buffer
+size	Byte size</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Writes data to a high-performance Game Boy Game Pak</strong></p>
+
+<p>Writes "size" bytes of data from the "buffer" to the specified "address" in the Game Boy Game Pak.</p>
+
+<p>This function can write data even when the Game Boy Game Pak's CPU address and the write size are not multiples of 32.
+   After the data is written, it checks the status.
+   Furthermore, it checks the address, and if access is to a RAM area in MBC1,2,3 it enables access and then writes the data.  After access it write-protects the area.</p>
+
+<p>If not a multiple of 32, then 32 bytes of data are read into the buffer, and after changing the data in the buffer, the buffer contents are written to the Game Boy Game Pak.
+   It also internally checks the connector and turns the power ON.</p>
+
+<p>Since power for the Game Boy Game Pak is not turned on as part of the function before writing, please perform reading or writing after turning power ON and checking the Game Boy Game Pak ID.  Also, this function does not turn the power off, so if you are not going to perform a read/write operation after this function, please turn the power OFF with the nuContGBPakPower function.</p>
+
+<p>Since this function uses osGbpakCheckConnector() it only supports game paks with MBC 1,2,3 or which do not use a memory controller.</p>
+
+<p><strong>Errors:</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td>PFS_ERR_NOPACK</td>
+        <td>Nothing is inserted in the specified Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_DEVICE</td>
+        <td>Some device other than a GB Pak is inserted in the Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_CONTRFAIL</td>
+        <td>Data transfer with Controller has failed.  Either the Controller is not connected properly, or there may be some problem with the GB Pak or the Controller connector.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NO_GBCART</td>
+        <td>Game Boy Game Pak is not inserted in the GB Pak.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NEW_GBCART</td>
+        <td>Game Boy Game Pak has been removed and reinserted.</td>
+    </tr>
+</table>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

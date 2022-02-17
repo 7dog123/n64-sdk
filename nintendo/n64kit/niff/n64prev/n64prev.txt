@@ -1,0 +1,378 @@
+#=======================================================================#
+#		NIFF to Gfx Converter					#
+#		n64prev.MANUAL						#
+#									#
+#		Copyright (C) 1997, 1998, NINTENDO Co,Ltd.		#
+#		Copyright (C) 1998, MONEGI CORPORATION.			#
+#									#
+#-----------------------------------------------------------------------# 
+
+Tue Jun 30 11:10:33 JST 1998
+******************************************************************************
+
+		    Viewer Source Program Manual
+
+			  Version 1.3 Edition
+
+******************************************************************************
+
+			+ + + + Table of Contents + + + +
+
+	 1. Viewer program specification
+
+		Purpose
+		Implementation
+
+	 2. How to operate the viewer
+
+		Common operation
+		Track ball
+		Helicopter cruise
+
+
+	 3. Object display driver
+
+		Outline
+		Specification
+
+	 4. To those who modify the program 
+
+		Memory manager
+		Gfx related routine
+		Object display driver
+
+==============================================================================
+		   1. Viewer program specification
+==============================================================================
+
+Purpose
+----
+ -This preview is designed to realize the display of output data of NIFF data converter, 
+  'niff2gfx'  just sufficiently.   
+ -Since N64 is a game machine, the previewer is very much cognizant of game production, 
+  and it is applicable to each game software without much effort.    
+
+Implementation
+----
+ -The previewer uses NuSYSTEM, and is designed having a display driver as basis,  
+  which draws from NIFF data an output file which consists of N64 display list 
+  and a structure for reference.   
+ -A source file is roughly divided into following blocks.  
+
+	a. Starting portion, main  
+		main.c
+
+	b. Service routine (including an interface with NuSYSTEM)
+		pack.h
+		pub.h
+		malloc.c, malloc.h
+		gfx.c, gfx.h
+		expad.c, expad.h
+		exgu.c, exgu.h
+
+	c. Display manager
+		nd.h
+		ndres.c
+		ndman.c
+		ndeval.c
+		nddisp.c
+
+	d. Key operation (2types)
+		tbmove.c, tbmove.h
+		trckball.c, trckball.h
+		cruise.c, cruise.h
+
+	e. Sample model data
+		premodel.c
+		n64.c
+
+	f. Menu
+		mode.h, mode.c
+		menu.h, menu.c
+		menudef.h
+		cameramenu.c
+		lightmenu.c
+		bgcolormenu.c
+		objectmenu.c
+		rootmenu.c
+		fogmenu.c
+		animmenu.c
+		controlmenu.c
+		videomenu.c
+
+==============================================================================
+		   2. How to operate the viewer
+==============================================================================
+
+Common operation
+----------------
+       -Menu is operated using Control Pad key and START button.  
+       -Animation is played back by A button.
+       -Animation is played in reverse by B button.  
+
+Following two methods are adopted as an operation method.
+
+1. Track ball
+-----------------
+    Assuming that a display object is projected in a virtual track ball, rotate 
+an object just like rotating a track ball and it can be viewed from all directions.  
+    
+       -Track ball operation is being emulated using Control Stick + Z button.  
+	When Z button is pressed down, a ball is being touched, and if Control Stick 
+        is operated, a model will rotate.   
+       -If while Control Stick is pushed down, Z button is released, a model continues 
+        to rotate.  
+       -The distance between a camera and a model can be made farther or nearer by pressing 
+        R button and moving Control Stick up and down. 
+       -The four buttons of C button unit are used to move X & Y of the model in parallel.   
+        Please be careful as they move acceleratively.  
+       -While R button is pressed, by using the four buttons of C button, slight 
+        adjustment of display location can be made.   
+       -While L button is pressed, by pressing down Control Stick, adjustment of scaling 
+        of X & Y can be made.     
+       -While L + R buttons are pressed, by pressing down Control Stick, adjustment 
+        of scaling of Z can be made.  
+
+
+2. Helicopter cruise
+-----------------------
+    Assuming a camera is a virtual helicopter,  it will move around the surroundings of 
+an object.   
+
+       -Assuming the Control Stick as a control lever, it will control directions.  
+	By pressing down horizontally, the direction of XZ plane will be changed. 
+        The slant of the camera will have a slight impact.  
+       -By the amount of pressing down vertically, the camera direction will be shifted 
+        in the range from the zenith to right beneath.   
+       -By L button and R button, it will move forward to the camera or backward 
+        respectively.   
+       -By pressing upper and lower buttons of the control pad, the gear ratio of 
+        movement will be changed. With the upper button, the shift will be up, 
+        and with the lower button, the shift will be down.  Total of 6 speeds are 
+        available, and it will start with the third speed. 
+ 
+By C buttons unit, it will rise and fall vertically, and move from side to side toward 
+the camera direction.
+
+How to operate the two patterns described above cab be switched by a menu.   
+
+How to operate a menu
+---------------------
+In the initial state, a menu is not displayed.  
+When START button is pressed, a menu will be displayed.    
+The current item is displayed in red.  Other items are displayed in white.  
+       -Shift an item using the upper and lower buttons of control pad. 
+       -For an item that sets a numerical value, decrease using the left of 
+        the Control Pad, and increase using the right of the Control Pad.  
+       -Select an item by the START button.  
+
+The first menu has the following:
+    OBJECT
+    CAMERA
+    CONTROL
+    LIGHT
+    FOG
+    BG COLOR
+    ANIMATION
+    VIDEO
+    EXIT
+	If the EXIT item is selected, the menu will be erased. 
+
+[OBJECT menu]
+  If the OBJECT item is selected, the OBJECT menu will be displayed.  
+  The OBJECT menu has the following:  
+    SCENE/NINTENDO
+	An item that SCENE or NINTENDO will be switched to a toggle.  
+	In case of SCENE, a scene will be displayed. In case of NINTENDO, N64 logo will 
+        be displayed.  
+    RESET
+	Resets the object state. The SCENE object is selected, and the position, 
+        the direction, or scale of the object will return to the initial state.    
+    EXIT
+	Erases the OBJECT menu. 
+
+[CAMERA menu]
+    CONTROL/SCENE
+	An item that CONTROL or SCENE will be switched to a toggle.  
+	In case of SCENE, use a camera of the scene (if possible), and in case of 
+        CONTROL, use a camera that can be operated by a controller.   
+    RESET
+	Resets the state of the camera. The CONTROL camera is selected, and the position, 
+        the direction, or the scale of the camera will return to the initial state.  
+    EXIT
+	Erases the CAMERA menu.   
+
+[CONTROL menu]
+    CAMERA
+	Moves the camera using the controller.  
+    OBJECT
+	Moves an object using the controller.  
+    LIGHT1
+	Moves Light 1 using the controller.  
+    LIGHT2
+	Moves Light 2 using the controller.
+    LIGHT3
+	Moves Light 3 using the controller.
+    LIGHT4
+	Moves Light 4 using the controller.
+    LIGHT5
+	Moves Light 5 using the controller.
+    LIGHT6
+	Moves Light 6 using the controller. 
+    LIGHT7
+	Moves Light 7 using the controller.
+    TRACKBALL/CRUISE
+	Switches the controller mode.
+    EXIT
+	Erases CONTROL menu.
+
+[LIGHT menu]
+    DEFAULT/SCENE
+	By DEFAULT, use a light n64prev has set. 
+	Since the light setting of the scene is used for SCENE, Lights 1 ~ 7 are invalid.     
+    AMBIENT
+	Sets the ambient light. 
+
+    LIGHT1 COLOR
+	Sets the color of Light 1. 
+    LIGHT2 COLOR
+	Sets the color of Light 2.   
+    LIGHT3 COLOR
+	Sets the color of Light 3.
+    LIGHT4 COLOR
+	Sets the color of Light 4. 
+    LIGHT5 COLOR
+	Sets the color of Light 5.
+    LIGHT6 COLOR
+	Sets the color of Light 6.
+    LIGHT7 COLOR
+	Sets the color of Light 7.
+    RESET
+	Resets colors and direction of all the lights to the initial settings.  
+    EXIT
+	Erases the LIGHT menu.  
+
+[FOG menu]
+    OFF/ON
+	Switches ON/OFF of Fog.   
+    R, G, B, A
+	Specifies a color of Fog.    
+    NEAR, FAR
+	Specifies the distance Fog will be formed.
+    RESET
+	Resets the Fog parameter to the initial setting.  
+    EXIT
+	Erases the FOG menu.   
+
+[BG COLOR menu]
+    R, G, B
+	Specifies background colors.  
+    RESET
+	Resets background color to the initial setting. 
+    EXIT
+	Erases the BG COLOR menu.  
+
+
+[ANIMATION menu]
+    TOGGLE/STEP
+	Determines actions of the A button and the B button. 
+	In the TOGGLE mode, switches animation playback/stop by a button.  
+	In the STEP mode, advances the animation by 1 frame, or restores it by a button.  
+    EXIT
+	Erases the BG COLOR menu. 
+
+[VIDEO menu]
+    GAMMA OFF/ON
+	Determines ON/OFF of Gamma control.   
+    GAMMA DITHER OFF/ON
+	Determines ON/OFF of Gamma dither.  
+    DIVOT OFF/ON
+	Determines ON/OFF of Divot.  
+    DITHER FILTER OFF/ON
+	Determines ON/OFF of Dither filter. 
+
+    EXIT
+	Erases the VIDEO menu.  
+
+
+==============================================================================
+		   3. Object display driver
+==============================================================================
+
+Outline
+----
+ -An object display driver is a 3D object manager that has two links : a hierarchical 
+  structure link which operates model data created by niff2gfx, and a bi-directional link.  
+ -It consists of processing units called 'instance'.  To create and delete, separate 
+  functions are provided.  However,  internal control structures are same, and handle 
+  an object and animation in the same manner.   
+  (Note: Currently, a service function to perform a link operation for 'instance' is 
+   not provided.)
+  To execute animation or calculate the displayed coordinate systems, a hierarchical 
+structure link is used, and to draw,  trace a bi-directional link that is based on 
+the displayed priority, and draw in the order of surface types. And, displaying models 
+without conflict is realized.   
+  
+
+Spec
+----
+ -Memory resource is  secured and released through a general memory manager included 
+  in the source program for the most part.  
+  In case of games that require creating/deleting objects or animation frequently, if   
+  managing the resource is set beforehand by fixed length using arrangement etc., 
+  the performance of memory management can be improved.   
+ -Since ndEntryObject() receives NDR_OBJ structure that is based on object data and 
+  creates 'instance', the creating condition is fixed.    
+ -ndEntryAnimation() cannot be defined by NDR_ANIM alone, that is based on animation 
+  data, but at the same time, delivers some instance numbers together which are already 
+  created, and execute the animation toward the delivered instance.
+ -In ndEvalInstance(),  NDC_ITYPE_OBJECT has a flag of whether or not the matrix is 
+  updated for each object.  If not necessary, Mtx buffer will not be created.  And then 
+  due to frame overrun etc, if it is known that the process to create Gfx will be canceled 
+  because there is no Gfx buffer, the processing time to be consumed to calculate Mtx, 
+  which will never used, can be reduced by omitting the calculation of Mtx. 
+ -With the current version, bindings of the animation timekeeper instance and the 
+  animation instance & the object instance are weak, therefore the ending process when 
+  deleting an object instance which activates animation cannot be done.  These need to be 
+  controlled by the application.  
+ -'Instance' has a call back pointer.  In case of ndEvalInstance() and ndDeleteInstance(), 
+  a call back is called.    Please note that any function that could change a link of 
+  'instance'  such as ndDeleteINstance(), ndEntry*Instance() cannot be called in this 
+  call back routine.   
+ -Deform is implemented by 4 instances : vertex deform, vertex normal deform, vertex 
+  color deform, and active vertex.  Please operate the specified deform only in accordance 
+  with user's needs. 
+ -When operating a deform, large quantity of heap memory is reserved by malloc.  Please 
+  implement it with room for heap memory.    
+ -ndres.c controls resources, however, it only controls minimum resource. Hence, it is 
+  recommended to create more optimized one for the actual game application separately.  
+   
+
+
+==============================================================================
+		    4. To those who modify the program
+==============================================================================
+
+Memory manager
+----------------
+ -Memory manager requires many devices.  Particularly with games, there is not much time 
+  to reserve/release resources, so, sometimes it may be necessary to design a program so 
+  as not to use a memory manager itself.     
+ -There is room for reconsideration on concept of arena memory.  If designed efficiently, 
+  a memory manager that is fast enough, disposable, and matching with variable-length 
+  memory cab be made.  
+
+Gfx related routine
+------------------
+ -As a return value of gfxBegin(),  Gfx * is acquired.  However, the memory this pointer 
+  indicates is one-sided writing only for memory from CPU, and is accessed by 8 byte units, 
+  hence the total processing time could be shorter if used after being converted to 
+  a pointer of non-cache area. 
+    
+
+Object display driver
+--------------------------------------
+ -The current object manager can be changed to a multi task manager that can be placed in 
+  a core of a game if extended well.  At that time, please be careful with managing links 
+  when a buffer being analyzed (or before/after of it) will be released.  
+  

@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.8 ColorList</h3>
+
+<hr size=3>
+<h4>1) ColorList Area</h4>
+
+<blockquote>
+ColorList stores triangle color and vertex color data. All color data is described in the list below.
+</blockquote>
+
+<center>
+<table BORDER>
+<tr>
+<th ROWSPAN="13">ColorListHeader</th>
+
+<td>u32</td>
+
+<td>color_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>color_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>color_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_color_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_size(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_size(tri_color_group_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_color_group_size(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_color_group_size(vtx_color_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="8"></th>
+
+<td COLSPAN="2">
+<center>TriColorGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>TriColorgroup(tri_color_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>VtxColorGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>VtxColorGroup(vtx_color_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensinoBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>ColorList Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 color_list_tag</td>
+
+<td><font size=+0>Tag indicating ColorList. Set the following Tag.</font>
+<pre><b><font size=+0>TAG_COLOR_LIST&nbsp; 0x00050000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 color_list_header_size</td>
+
+<td><font size=+0>Size of ColorListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 color_list_size</td>
+
+<td><font size=+0>Size of ColorList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_group_num</td>
+
+<td><font size=+0>Total number of TriColorGroup contained in ColorList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_color_group_num</td>
+
+<td><font size=+0>Total number of VtxColorGroup contained in ColorList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_group_size&nbsp;</td>
+
+<td><font size=+0>Size corresponding toTriColorGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_color_group_size</td>
+
+<td><font size=+0>Size corresponding toVtxColorGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg8-2.htm">TriColorGroup</a></td>
+
+<td><font size=+0>TriColorGroup area for TriColor used in one shape.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg8-3.htm">VtxColorGroup</a></td>
+
+<td><font size=+0>VtxColorGroup area for VtxColor used in one shape.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg7-3.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg8-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

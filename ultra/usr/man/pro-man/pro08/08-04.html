@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 8</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro08/index8.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro08/index8.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Mutual Exclusion</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+On most systems, some devices such as disks and printers are shared resources. The I/O subsystem must ensure that only one process can use a device at any one time, thus excluding other requesting processes and forcing them to wait. 
+<P>
+In the Nintendo 64 environment, each device can process only one I/O transaction at any given time. For example, if there is a DMA transfer in progress between ROM and RDRAM, you cannot issue an I/O read from a different ROM location. If such a read is issued, the current DMA transaction will probably fail. Therefore, protection (or mutual exclusion) should be provided for devices that support both DMA operation and I/O read/write.
+<P>
+In this system, mutual exclusion is not implemented as a general scheme for all devices, but rather as a specific scheme for each identified shared device.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

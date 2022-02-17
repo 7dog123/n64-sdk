@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamRemoveFile</title>
+</head>
+
+<body>
+
+<h1>mfsRamRemoveFile</h1>
+
+<hr>
+
+<pre>Format:s32 mfsRamRemoveFile(MfsDirID dirID)	
+Arguments:	dirID	Directory ID of file
+Return value:Error
+Function:	Deletes file
+Description:	This function deletes the file specified by dirID.
+
+Main errors:
+	MFS_ERR_NOTFOUND Specified file not found	
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

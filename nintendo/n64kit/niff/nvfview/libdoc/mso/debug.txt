@@ -1,0 +1,24 @@
+Function 
+-  Macros and functions for debugging
+
+Functions 
+-  msoPrintfInit( const u32 mode )
+  Initialize so that msoPrintf( ) can be used. 
+   When mode == MSO_DEBUG_ISV, IS VIEWER N64 mode is used. 
+   When mode == MSO_DEBUG_OS, osSyncPrintf() mode is used. 
+
+Macros
+-  _msoPrintfInit( )
+  When the macro __ISV__ is set, msoPrintfInit( MSO_DEBUG_ISV ) is called, and when it is not,  
+  msoPrintfInit( MSO_DEBUG_OS ) is called. 
+
+-  CDEBUG( level, cmd )
+  Executes cmd when the value of the macro __DEBUG__ is greater than "level". 
+
+-  CASSERT( level, ex )
+  If the value of the macro __DEBUG__ is "level" and the conditional expression "ex" is true, display is in the 
+  format "ASSERT filename:line ex". 
+
+History
+  1998/10/21 Takamitsu Hirata 
+    debug.h :  Initial version 

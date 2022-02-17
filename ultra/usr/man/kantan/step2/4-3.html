@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.4.3 Using Microcode</H1>
+
+
+<H2>Types of Microcode</H2>
+
+<P>Currently, N64 has two types of microcode, graphics microcode and audio microcode.
+
+
+<H2>Graphics Microcode</H2>
+
+<P>The commands used in the graphics microcode are called GBI (graphics binary interface) commands. Each GBI command uses 64 bits. Following are some general notes about improvements that Nintendo has made to the graphics microcode:
+
+<H3>gspF3DEX Series of Microcode</H3>
+
+<UL>
+<LI>gspF3DEX.fifo.o (with near clip) and gspF3DEX.NoN.fifo.o (without near clip) both have an increased vertex cache of 32 based on the Fast 3D microcode and have packaged the 2Triangles command. Also, the number of links in the display list has increased from 10 to 18.<BR>
+<BR>
+
+<LI>gspF3DLX.fifo.o (with near clip) and gspF3DLX.NoN.fifo.o (without near clip) both have improved performance. This was accomplished by simplifying the sub-pixel calculation on F3DEX, so sometimes the texture has little creases. The GBI in F3DLX is compatible with F3DEX.  Also, F3DLX has an additional feature in that it can turn clipping on or off. When clipping is off, performance improves a little.<BR>
+<BR>
+
+<LI>gspF3DLX.Rej.fifo.o (with texture correction) and gspF3DLP.Rej.fifo.o (without texture correction) both omit the usual microcode clipping process and use the "reject" process instead.
+The reject process simply means that the microcode draws only triangles whose three vertices are within a fixed area inside the screen. If one of the vertices lies outside the screen, the entire triangle is rejected (not drawn). In the F3DLX.Rej and F3DLP.Rej microcode, the processing rate for the 2Triangles command has been significantly improved by adopting this reject process.  Therefore, you should use the <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSP2Triangles.html" TARGET="new">gSP2Triangles</A></FONT> function as often as possible when creating the display list.<BR>
+<BR>
+
+Note that the F3DLP.Rej microcode is slightly faster than the F3DLX.Rej microcode. However, this faster speed applies only to the RSP process. There is no effect on the RDP process. Therefore, the RDP process may not follow the RSP process in which case, you may need to change the render mode to the RA mode (<FONT FACE="COURIER NEW,COURIER">G_RM_RA_ZB_OPA_SURF</FONT>).<BR>
+<BR>
+
+Also note that this microcode does not support <FONT FACE="COURIER NEW,COURIER">G_CULL_BOTH</FONT> or <FONT FACE="COURIER NEW,COURIER">G_CULL_FRONT</FONT>.<BR>
+<BR>
+
+<LI>gspL3DEX.fifo.o is a modified version of the Line3D microcode adapted to a vertex cache size of 32. It is the same as gspLine3D and displays polygons (such as 1Triangle and 2Triangles) rendered by F3DEX series of microcode to be displayed using wireframe.<BR>
+<BR>
+
+<LI><B>GBI Compatibility</B><BR>
+On the binary level, there is no compatibility between the GBI of the gspF3DEX series of microcode and the GBI of the usual Fast3D microcode. However, the gspF3DEX series has been designed so that the differences are absorbed by <B><FONT FACE="COURIER NEW,COURIER">gbi.h</FONT></B>. Even if both types of microcode are in the same display list, a compile option can distribute each command to its proper GBI. Specifically, you can ensure that the GBI corresponding to the gspF3DEX microcode is output by defining the <FONT FACE="COURIER NEW,COURIER">F3DEX_GBI</FONT> keyword before including the <B><FONT FACE="COURIER NEW,COURIER">gbi.h</FONT></B> file.<BR>
+<BR>
+
+After Release 0.96, all microcode of F3DEX, F3DLX, F3DLX.Rej, and F3DLP.Rej became compatible at the GBI binary level, so each display list was able to use it.  However, because of the reject process, operations are slightly different even under the same command; as a result, you need to be careful that the same screen is not always drawn even when in the same display list.<BR>
+<BR>
+
+<LI><B>Microcode of the Fast3D series</B><BR>
+Although microcode of the Fast3D series are used in many samples, they are really obsolete now that the new and improved F3DEX series is out. You should use the improved F3DEX series for your  actual game making.
+</UL>
+
+<H3>Sprite Microcode</H3>
+
+<UL>
+<LI>S2DEX is the microcode that makes it possible to use sprites in N64 development. This microcode makes it possible for you to manage drawn objects using the separate concepts of the sprite and the BG. This makes it easy for you to get used to the usual sprite game development methods.<BR>
+<BR>
+
+<LI><B>Microcode of the Sprite2D Series</B><BR>
+Although microcode of the Sprite2D series is used in many samples, you should use the S2DEX microcode in actual game development. The S2DEX microcode is an improved version of the Sprite2D microcode.
+</UL>
+
+<H3>JPEG Microcode</H3>
+
+<P>The N64_JPEG library has two types of microcode, one for encoding and one for decoding.</P>
+
+<UL>
+<LI>njpgespMain.o provides YUV conversion, culling, DCT, quantization, and a zigzag scan for RGBA image data. The output is entropy encodable data.
+
+<LI>njpgdspMain.o provides a reverse zigzag scan, reverse quantization, and reverse DCT for entropy decoded data. The output is YUV format data.
+</UL>
+
+
+<H2>Audio Microcode</H2>
+
+<P>The audio microcode is made up of ABI (audio binary interface) commands. These ABI commands are strung together to form the audio command list. Each ABI command uses 64 bits.</P>
+
+<UL>
+<LI>aspMain is the audio microcode, which is used only for waveform synthesis. This microcode makes the RSP operate as a waveform synthesis processor. The audio microcode processes each game application task and synthesizes the 16-bit sample data of an L/R stereo.
+
+<LI>n_aspMain is the audio microcode for n_audio, which is an enhanced version of the original N64 audio library. This microcode helps speed up the audio process.
+</UL>
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamRepairHeader</title>
+</head>
+
+<body>
+
+<h1>mfsRamRepairHeader</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamRepairHeader(void)
+Arguments:	None
+Return value:Error
+Function:	Repairs header area
+Description:	This function tries to repair the RAM area header.  File and directory information is recorded in the header area, and this information may become damaged by the insertion and removal of the disk.  If this occurs, MFS_ERR_HEADER or LEO_ERROR_UNRECOVERD_READ_ERROR due to MFS_ERR_DEVICE is issued by mfsHMediaCheck or mfsR*mMediaCheck.
+If these errors are issued, try to repair the header area by writing the copy of the header area back to the disk using this function.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.</pre>
+</body>
+</html>

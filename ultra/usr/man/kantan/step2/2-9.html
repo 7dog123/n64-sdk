@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.2.9 Use of Model View Matrix Stack</H1>
+
+<P>When you place an object in the 3D world coordinate system, you may find it convenient to keep the relative object-to-object placement information. For example, consider the following illustration and steps:
+
+<P><IMG SRC="../images/2-2-9-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=265 HEIGHT=220 BORDER=0>
+
+<OL>
+<LI>Place the car in the world coordinate system and store the information about the car's direction of movement in the model view matrix.
+<LI>Register the car body in the display list.
+<LI>Push the current model view matrix to the stack and calculate a new wheel position based on the information about the car's direction and speed.
+<LI>Register the new wheel position in the display list
+<LI>Return the model view matrix
+<LI>Repeat steps 3 through 5 for each of the other three wheels
+</OL>
+
+<P>Also, if you often display the same objects, leave the calculation to the RCP, so that you can  allocate the CPU processing time to other processes. This makes for more efficient and faster construction of the display list.
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

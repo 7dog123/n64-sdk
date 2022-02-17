@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 10</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro10/index10.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro10/index10.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Using Multiple Waves</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The previous example linked both overlays into a single, fully relocated binary. This binary is used for two purposes. First, the text and data sections are extracted from this binary and packed on the ROM. Second, this binary can be given to the Nintendo 64 debugger, <i>gvd(1P)</i>. 
+Although the specification file will create an operationally correct ROM image, the binary will confuse the debugger. This is because multiple symbols will map to the same address, and <i>gvd</i>  may err when it tries to find the correct source line for a given program counter value, for example.
+<P>
+This problem can be circumvented by creating multiple binaries, or waves, each with a distinct symbol table. The following specification file excerpt illustrates this:
+<pre><font face="courier" size=3>beginwave
+       name “plain_wave”
+       include “kernel”
+       include “plain”
+endwave
+
+beginwave
+       name “texture_wave”
+       include “kernel”
+       include “texture”
+endwave
+</pre></font>
+
+<P>
+Using this technique, procedure and variable names from the <i>plain</i> segment are kept distinct from those of the <i>texture</i> segment. The “Switch Executable” menu entry from the <i>gvd</i>  “Admin” menu can be used to select the symbol to use while debugging.
+<P>
+There is one significant caveat when using multiple waves. The contents of each segment must be identical in each of the waves the segment is included in. For example, the <i>kernel</i>  segment above is included in both <i>plain_wave</i>  and <i>texture_wave,</i>  so its relocated image must be identical in both. The usual consequence of this rule is that the segment procedure entry point in both of the overlay segments must be at the same location. This requirement can be easily met by ensuring that the segment procedure is always the first procedure of the first relocatable that comprises the overlay segment. Then the calling segment code can always jump to the beginning address of the overlay segment(s) and execute valid code there.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

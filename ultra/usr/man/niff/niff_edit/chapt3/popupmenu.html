@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>Pop-Up Menu</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>Pop-Up Menu</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="目次へ" border="0"></a>
+<a href="menu.html"><img src="images/previous.gif" alt="前ページへ" border="0"></a>
+<a href="toolbar.html"><img src="images/next.gif" alt="次ページへ" border="0"></a>
+
+<hr>
+
+<p>The following pop-up menu is displayed when you click the right mouse button inside the NIFF Editor window:</p>
+
+<img src="images/popupmenu.gif" alt="ポップアップメニュー">
+
+<p>The following commands are available in the pop-up menu:</p>
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr>
+<td valign="top" nowrap width=30%>Cut</td>
+<td>Cut the node and copy it to the clipboard.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Copy</td>
+<td>Copy the node to the clipboard.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Paste</td>
+<td>Paste the node that has been copied to the clipboard.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Delete</td>
+<td>Delete the selected node.  At this time, the node's links are deleted, and then if other nodes do not link to it, the node itself is deleted.  After that, the node's child nodes are also deleted, providing no nodes other than the parent node link to them.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Change node name</td>
+<td>Change the name of the node in the window.<br>
+To change the node name, edit the node name that is displayed in the dialog window.  If you want to set a new node name for a node that is not linked to the Name area, simply delete "Unknown" and input the desired name.  Conversely, if you want to delete a node name, simply delete the name that is displayed.<br>
+The characters that can be used for node names are the ASCII characters "!" (0x21) to "~" (0x7e).  Note that the name cannot contain a space nor any Japanese characters.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>[<a href="property.html">Properties</a>]</td>
+<td>Display the dialog window to view node names and flag information.</td>
+</tr>
+</table>
+
+<hr>
+
+</body>
+</html>

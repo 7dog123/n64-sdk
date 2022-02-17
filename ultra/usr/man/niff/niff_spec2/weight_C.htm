@@ -1,0 +1,333 @@
+<html>
+<title>
+WeightNode
+</title>
+
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+17. Weight Node
+
+</h2>
+
+<hr size="3">
+
+<h3>
+<A NAME="weightListC">(1) WeightList Data Chunk</A>
+</h3>
+
+<blockquote>
+The following data will be added to WeightNode.
+<p>
+
+<table border bgcolor="ffc0c0">
+
+<tr>
+<th rowspan="9">
+WeightListHeader
+</th>
+<td>
+u32
+</td>
+<td>
+weight_list_tag
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_list_header_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_list_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_group_num
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_group_num_byte(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_group_num_byte(weight_group_num - 1)
+</td>
+</tr>
+
+<tr>
+<th rowspan="5">
+</th>
+<td colspan="2">
+<center>
+WeightGroup(0)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+WeightGroup(weight_group_num - 1)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+</table>
+
+<P><A HREF="weight_E.htm#weightListD">See Description</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="weightGroupC">(2) WeightGroup Data Chunk</A>
+</h3>
+
+<blockquote>
+
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<table border bgcolor="ffc0c0"
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/09/30
+..>
+
+<table border width="300" bgcolor="ffc0c0">
+
+<!..
+-- ADD END --
+..>
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<th rowspan="8"
+WeightGroupHeader
+</th
+
+-- DELETE END --
+..>
+
+<td>
+u32
+</td>
+<td>
+weight_group_tag
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+this_weight_group_index
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td
+u32
+</td
+<td
+weight_group_header_size
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_group_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_group_name_index
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+weight_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<th rowspan="5"
+
+</th
+
+-- DELETE END --
+..>
+
+<td>
+float
+</td>
+<td>
+weight(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+weight(weight_num - 1)
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="weight_E.htm#weightGroupD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

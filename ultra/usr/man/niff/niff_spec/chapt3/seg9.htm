@@ -1,0 +1,244 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.9 VectorList</h3>
+
+<hr size=3>
+<h4>1) VectorList Area</h4>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="13">VectorListHeader</th>
+
+<td>u32</td>
+
+<td>vector_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vector_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vector_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_nv_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_size(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_size(tri_nv_group_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_nv_group_size(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_nv_group_size(vtx_nv_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="8"></th>
+
+<td COLSPAN="2">
+<center>TriNvGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>TriNvGroup(tri_nv_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>VtxNvGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>VtxNvGroup(vtx_nv_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>VectorList Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 vector_list_tag</td>
+
+<td><font size=+0>Tag indicating VectorList. Set the following tag.</font>
+<pre><b><font size=+0>TAG_VECTOR_LIST 0x00060000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vector_list_header_size</td>
+
+<td><font size=+0>Size of VectorListHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vector_list_size</td>
+
+<td><font size=+0>Size of VectorList.</font></td>
+</tr>
+
+<tr>
+<td>u32 tri_nv_group_num</td>
+
+<td><font size=+0>Total number of TriNvGroup</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_nv_group_num</td>
+
+<td><font size=+0>Total number of VtxNvGroup</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_group_size</td>
+
+<td><font size=+0>Size of each TriNvGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_nv_group_size</td>
+
+<td><font size=+0>Size of each VtxNvGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg9-2.htm">TriNvGroup</a></td>
+
+<td><font size=+0>Normal vector of polygon.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg9-3.htm">VtxNvGroup</a></td>
+
+<td><font size=+0>Normal vector of vertex.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg8-5.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg9-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

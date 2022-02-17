@@ -1,0 +1,12 @@
+Function 
+(  Job to be executed for each frame. 
+
+Functions 
+(  void mgiJobInit( MgiJob *job_ptr,
+		   MgiJobCallback callback,
+		   void *user_data )
+  Initializes job. 
+
+History 
+  1998/10/29 Takamitsu Hirata 
+    Job.h, job.c:  Initial version 

@@ -1,0 +1,372 @@
+<html>
+<title>
+TexNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+10. Tex Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="texNodeC">(1) Tex Node Data Chunk</A>
+</h3>
+<blockquote>
+The following data will be added to TexNode.
+<p>
+
+<table border>
+<tr>
+<th rowspan="13">
+TexHeader
+</th>
+<td>
+u32
+</td>
+<td>
+tex_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_tex_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_wrap_s
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_wrap_t
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_anim
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_data_area_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_anim_frame_rate
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<th rowspan="1">
+
+<td colspan="2">
+<center>
+TexDataArea
+</center>
+</td>
+</th>
+</tr>
+<tr bgcolor="ffc0c0">
+<th rowspan="24">
+NintendoExtensionBlock
+</th>
+<td>
+u32
+</td>
+<td>
+tex_filter
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+use_perspective_correction
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+mipmap_level
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+use_color_palette
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_img_num
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+color_palette_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+color_palette_index(tex_tile_img_num - 1)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+tlut_palette_number(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+tlut_palette_number(tex_tile_img_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_img_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_img_file_name_index(external_tex_img_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_img_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_img_name_index(external_tex_img_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_color_palette_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_color_palette_file_name_index(external_tex_img_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_color_palette_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_color_palette_name_index(external_tex_img_num - 1)
+</td>
+</tr>
+
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+--- other extension data ---
+</center>
+</td>
+</tr>
+
+<tr>
+<th rowspan="1">
+
+</th>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+</table>
+
+<P><A HREF="tex_E.htm#texNodeD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

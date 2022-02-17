@@ -1,0 +1,133 @@
+Function
+-  Defines calculations pertaining to matrices
+
+Types 
+-  MvmMatrix22f
+  2x2 matrix
+
+-  MvmMatrix33f
+  3x3 matrix
+
+-  MvmMatrix44f
+  4x4 matrix
+
+Macros
+-  _mvmMatrix22fCopy( dest, src )
+  Copies MvmMatrix22f from src to dest. 
+
+-  _mvmMatrix33fCopy( dest, src )
+  Copies MvmMatrix33f from src to dest. 
+
+-  _mvmMatrix44fCopy( dest, src )
+  Copies MvmMatrix44f from src to dest. 
+
+-  _mvmMatrix22fAdd( dest, a, b )
+  Stores a+b in dest. 
+
+-  _mvmMatrix33fAdd( dest, src )
+  Stores a+b in dest. 
+
+-  _mvmMatrix44fAdd( dest, src )
+  Stores a+b in dest. 
+
+-  _mvmMatrix22fSub( dest, a, b )
+  Stores a-b in dest. 
+
+-  _mvmMatrix33fSub( dest, src )
+  Stores a-b in dest. 
+
+-  _mvmMatrix44fSub( dest, src )
+  Stores a-b in dest. 
+
+-  _mvmMatrix22fProduct( dest, a, b )
+  Stores ab in dest. 
+
+-  _mvmMatrix33fProduct( dest, src )
+  Stores ab in dest. 
+
+-  _mvmMatrix44fProduct( dest, src )
+  Stores ab in dest. 
+
+-  _mvmMatrix22fScale( dest, scale, matrix )
+  Stores the product of scale and matrix in dest. 
+
+-  mvmMatrix33fScale( dest, scale, matrix )
+  Stores the product of scale and matrix in dest. 
+
+-  mvmMatrix44fScale( dest, scale, matrix )
+  Stores the product of scale and matrix in dest. 
+
+Functions 
+-  mvmMatrix22fCopy( dest, src )
+  Copies MvmMatrix22f from src to dest. 
+
+-  mvmMatrix33fCopy( dest, src )
+  Copies MvmMatrix33f from src to dest. 
+
+-  mvmMatrix44fCopy( dest, src )
+  Copies MvmMatrix44f from src to dest. 
+
+-  mvmMatrix22fAdd( dest, a, b )
+  Stores a+b in dest. 
+
+-  mvmMatrix33fAdd( dest, src )
+  Stores a+b in dest. 
+
+-  mvmMatrix44fAdd( dest, src )
+  Stores a+b in dest. 
+
+-  mvmMatrix22fSub( dest, a, b )
+  Stores a-b in dest. 
+
+-  mvmMatrix33fSub( dest, src )
+  Stores a-b in dest. 
+
+-  mvmMatrix44fSub( dest, src )
+   Stores a-b in dest. 
+
+-  mvmMatrix22fProduct( dest, a, b )
+  Stores ab in dest. 
+
+-  mvmMatrix33fProduct( dest, a, b )
+  Stores ab in dest. 
+
+-  mvmMatrix44fProduct( dest, a, b )
+  Stores ab in dest. 
+
+-  mvmMatrix22fScale( MvmMatrix22f dest, const float scale[ 2 ],
+					const MvmMatrix22f matrix )
+  Stores the product of scale and matrix in dest. 
+
+-  mvmMatrix33fScale( MvmMatrix33f dest, const float scale[ 3 ],
+					const MvmMatrix33f matrix )
+  Stores the product of scale and matrix in dest. 
+
+-  mvmMatrix44fScale( MvmMatrix44f dest, const float scale[ 4 ],
+					const MvmMatrix44f matrix )
+  Stores the product of scale and matrix in dest. 
+
+-  mvmMatrix33fRotateX( MvmMatrix33f dest, const float angle,
+					  const MvmMatrix33f matrix )
+  Stores the value when the matrix is rotated by angle (value is radian) around the X axis in dest. 
+
+-  mvmMatrix33fRotateY( MvmMatrix33f dest, const float angle,
+					  const MvmMatrix33f matrix )
+  Stores the value when the matrix is rotated by angle (value is radian) around the Y axis in dest. 
+ 
+-  mvmMatrix33fRotateZ( MvmMatrix33f dest, const float angle,
+					  const MvmMatrix33f matrix )
+  Stores the value when the matrix is rotated by angle (value is radian) around the Z axis in dest. 
+
+-  mvmMatrix33fRotation( MvmMatrix33f dest, const float angle,
+					   const float axis[ 3 ] )
+  Stores the value when the matrix is rotated by angle (value is radian) around "axis" in dest. 
+
+-  mvmMatrix33fOrientation( MvmMatrix33f dest, const float ex[ 3 ],
+					      const float ey[ 3 ] )
+  Stores the rotation matrix in which ex is the X axis and ey is the Y axis in dest. 
+
+History
+  1998/ 8/26 Takamitsu Hirata 
+    Matrix.h, matrix.c :  Initial version 
+  1998/11/11 Takamitsu Hirata 
+    Added *Scale, *Rotate?, *Rotation, *Orientation. 

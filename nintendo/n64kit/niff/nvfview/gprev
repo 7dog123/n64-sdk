@@ -1,0 +1,12 @@
+#!/bin/sh
+NIFFDIR=${NIFFDIR:=/usr/local/n64kit/niff}
+if [ $# = 0 ]; then
+  model=$NIFFDIR/nvfview/model.niff
+else
+  model=$1
+fi
+cd $NIFFDIR/nvfview
+./niff2nvf $model model.nvf
+./nvf2bin scene.nvf model.nvf nvfview.bin
+gload -s nvfview.N64
+gload -s -o 0x200000 nvfview.bin

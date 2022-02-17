@@ -1,0 +1,533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gsp/gsp.html">
+            <IMG BORDER=0 SRC="../images/mh_gsp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0"><H2>gSPBgRectCopy</H2></FONT>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A HREF="../../header/gs2dex.htm">gs2dex.h</A> */
+gSPBgRectCopy(Gfx *gdl, uObjBg *bg)
+gsSPBgRectCopy(uObjBg *bg)</PRE></FONT>
+
+<B>Arguments</B>
+<ul>
+  <li>gdl is the display list pointer.
+<P>
+  <li>bg is the pointer to the BG drawing data structure.
+</ul>
+
+<P>
+<B>Explanation</B>
+<br>
+This macro is the dedicated BG image drawing macro for use in copy mode.  It has the following special features and limitations:
+
+<ul>
+<li>Images cannot be enlarged or reduced.
+<li>Scrolling is possible in a closed area, looping up/down or left/right.
+<li>Textures can be inverted horizontally (vertical flipping is not possible).
+<li>Drawing is performed only in copy mode.
+<li>Texture interpolation display and subpixel movement are not possible.
+<li>Anti-aliasing is not possible.
+<li>Texture data is sequentially loaded from DRAM into texture memory (TMEM) and drawn by the macro.
+</ul>
+
+<P>
+The greatest advantage of this macro is that it offers the fastest drawing speed, since it assumes that drawing is being performed in copy mode.  Accordingly, in order to use this macro the cycle type must be copy mode.  For information about modes, see <a target="new" href="../../kantan/step2/2-7.html">Section 2.2.7,  "Drawing Cycle Modes"</a> in the N64 Kantan Manual.  For information about setting the cycle type, see <A HREF="../gdp/gDPSetCycleType.html">gDPSetCycleType</A>.  If you want to enlarge or reduce an image, use <A HREF="gSPBgRect1Cyc.html">gSPBgRect1Cyc</A>.  For additional details, please see <a target="new" href="../../pro-man/pro25/25-05.html#04.1">Section 25.5.4.1, "BG Drawing GBIs"</a> in N64 Online Programming Manual.
+
+<P>
+<b>Note</b>
+<br>
+It is allowable for the BG image to be larger than the transfer frame. However, operation cannot be guaranteed if the transfer frame is larger than the BG image.  Make sure that the transfer frame is not larger than the BG image.
+</P>
+<P>
+The right and left ends of the BG image are connected in the y-direction with a one-step shift.  That is, the pixel to the right of the right-edge pixel (imageW-1, n) of the BG image becomes (imageW,  n+1).  This is necessary  to boost RDRAM access efficiency when loading a texture.  For information about the uObjBg structure, see the Comment section below.
+</P>
+<P>
+Also note that operation is not currently guaranteed for G_IM_FMT_YUV (YUV format).
+
+<P>
+<b>Comment</b>
+<P>
+The uObjBg structure is shown below:
+</P>
+<PRE><font face="courier" size="2">typedef struct {
+  u16 imageX;     /* x-coordinate of upper-left position of texture (u10.5) */ 
+  u16 imageW;     /* Texture width (8-byte alignment, u10.2) */
+  s16 frameX;     /* x-coordinate of upper-left position of 
+                  transfer destination frame (s10.2) */
+  u16 frameW;     /* Transfer destination frame width (u10.2) */
+
+  u16 imageY;     /* y-coordinate of upper-left position of 
+                  texture (u10.5) */ 
+  u16 imageH;     /* Texture height (u10.2) */
+  s16 frameY;     /* y-coordinate of upper-left position of 
+                  transfer destination frame (s10.2) */
+  u16 frameH;     /* Transfer destination frame height (u10.2) */
+
+  u64 *imagePtr;  /* Address of texture source in DRAM*/
+  u16 imageLoad;  /* Method for loading the BG image texture
+                     G_BGLT_LOADBLOCK (use LoadBlock)
+                     G_BGLT_LOADTILE (use LoadTile) */
+  u8  imageFmt;   /*Texel format
+                     G_IM_FMT_RGBA (RGBA format)
+                     G_IM_FMT_YUV (YUV format)
+                     G_IM_FMT_CI (CI format)
+                     G_IM_FMT_IA (IA format)
+                     G_IM_FMT_I (I format)  */
+  u8  imageSiz;   /* Texel size
+                     G_IM_SIZ_4b (4 bits/texel)
+                     G_IM_SIZ_8b (8 bits/texel)
+                     G_IM_SIZ_16b (16 bits/texel)
+                     G_IM_SIZ_32b (32 bits/texel) */
+  u16 imagePal;   /* Position of palette for 4-bit color 
+                     index texture (4-bit precision, 0~15) */
+  u16 imageFlip;  /* Image inversion on/off (horizontal direction only)
+                     0 (normal display (no inversion))
+                     G_BG_FLAG_FLIPS (horizontal inversion of 
+                     texture image) */
+
+/* The following is set in the initialization routine guS2DInitBg */
+  u16 tmemW;      /* TMEM width for one frame line (word size)
+  u16 tmemH;      /* TMEM height for a single load (quadruple 
+                     value, s13.2)
+  u16 tmemLoadSH; /* SH value
+  u16 tmemLoadTH; /* TH value or Stride value
+  u16 tmemSizeW;  /* imagePtr skip value for one image line
+  u16 tmemSize;   /* imagePtr skip value for a single load  */
+} uObjBg_t;       /* 40 bytes */
+
+typedef union {
+  uObjBg_t      b;
+  uObjScaleBg_t s;
+  long long int force_structure_alignment;
+} uObjBg;
+</font></PRE>
+
+<P>
+The BG function in the S2DEX microcode transfers data from the BG image buffer to the actual rectangular area in the frame buffer (see the figure below).  You can scroll by using <B>imageX</B>, <B>imageY</B> to specify which position in the BG image buffer corresponds to the upper-left corner of the rectangular area in the frame buffer at the time (the transfer frame).  <B>imageX</B>, <B>imageY</B> can be specified in u10.5 format, but note that the values are rounded to integer values due to copy mode restrictions.
+
+<P>
+<left><IMG SRC="../images/gSPBgRectCopy00.gif"></CENTER>
+
+<P>
+The size of the BG image is set by <B>imageW</B>, <B>imageH</B>. The  starting address (address of the upper-left corner) is specified by <B>imagePtr</B>.  In other words, the BG image can be regarded as texture data that starts at address <B>imagePtr</B> and is <B>imageW</B> wide and <B>imageH</B> tall.
+</P>
+<P>
+The size of the transfer frame is specified by <B>frameW</B>, <B>frameH</B>, and the position on the screen of the upper-left corner of the transfer frame is specified by <B>frameX</B>, <B>frameY</B>.  These latter two values (frameX, frameY) can take negative numbers.  If the transfer frame protrudes from the scissor box specified by g*DPSetScissor, the microcode will clip the protruding portion.
+
+<P>
+<b>Concerning the <B>imageW</B> element:</b>
+<P>The value of <B>imageW</B> must be aligned to 8 bytes.  Because the actual <B>imageW</B> value used is in u10.2 format, the value that is actually assigned is quadruple this value (see the table below).
+<P>
+
+<table border="1" cellpadding="3">
+<tr><td  NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><b>imageSiz</b>  value
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+<B>imageW</B> restriction
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_4b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+Multiple of 64
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_8b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+Multiple of 32
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_16b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+Multiple of 16
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_32b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+Multiple of 8
+</TD></TR></TABLE>
+
+<P>
+In order to scroll horizontally, the <B>imageW</B> value must be greater than <B>frameW</B>.  The values in the table below take the u10.2 format into account.  When G_IM_SIZ_16b is used, the <B>imageW</B> value must be 4 pixels larger.
+
+<P>
+<TABLE BORDER="1" CELLPADDING="3">
+<TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+<B>imageSiz</B> value
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+<B>imageW</B> value
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_4b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+frameW+64 &lt;= imageW
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_8b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+frameW+32 &lt;= imageW
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_16b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+frameW+16 &lt;= imageW
+</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+G_IM_SIZ_32b
+</TD><TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">
+frameW+ 8 &lt;= imageW
+</TD></TR></TABLE>
+ 
+<P>
+<font face="arial" size="-1" color="#000000">
+<b>Concerning the imageFmt element:</b>
+<ul>
+<li>G_IM_FMT_RGBA</B>
+<br>Each texel comprises four elements of information: RGB (red, green, blue) and alpha (opacity).
+<P>
+<li>G_IM_FMT_YUV
+<br>
+Each texel comprises a Y (intensity) component and a UV (color difference) component.
+<P>
+<li>G_IM_FMT_CI
+<br>Each texel is comprised of index information specifying palette data.
+<P>
+<li>G_IM_FMT_IA
+<br>Each texel is comprised of I (intensity) information and alpha information.
+<P>
+<li>G_IM_FMT_I
+<br>Each texel is a texture with only I information.  Since this is extremely compact, it is useful when only a few colors are being used.
+</ul>
+  
+<P>
+The texture format and size of a BG image are specified by assigning G_IM_FMT_* and G_IM_SIZ_* to <B>imageFmt</B> and <B>imageSiz</B>, respectively.  The texture image format can be selected from among eight types.  Please refer to the following table for valid combinations of format and size, and select the most suitable format for the texture compression method and type.  To use a 4-bit color index texture, specify a texture lookup table (TLUT) number in <B>imagePal</B>.
+
+<P>
+<TABLE BORDER="1" CELLPADDING="3">
+<TR>
+<TD COLSPAN=2 ROWSPAN=2></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle" COLSPAN=4><font face="arial" size="-1"><B>G_IM_SIZ_</B> (size) </TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>4b</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>8b</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>16b</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>32b</B></TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle" ROWSPAN=5><font face="arial" size="-1"><B>G_IM_FMT_<BR></B> (format) </TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>RGBA</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><br></TD><TD NOWRAP ALIGN="center" VALIGN="middle"><br></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (5/5/5/1)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (8/8/8/8)</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>YUV</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><br> </TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><br> </TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><BR></TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>CI</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><br></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><BR></TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>IA</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (3/1)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (4/4)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (8/8)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><br></TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>I</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><br></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"> <BR> </TD>
+</TR></TABLE>
+
+<P>
+<b>Concerning the <B>imageLoad</B> element:></b>
+<P>The are two ways to load texture for a BG image.  One involves the use of LoadBlock (G_BGLT_LOADBLOCK) and the other uses LoadTile (G_BGLT_LOADTILE).  With the gSPBgRectCopy macro, either of these two methods can be selected for the application at hand using <B>imageLoad</B>.
+<P>
+Although LoadBlock achieves the maximum performance under certain conditions, it may not be usable, or the processing overhead may become excessively large when those conditions are not satisfied.  On the other hand, LoadTile always performs suitably.  Therefore, you should switch between these two options, using LoadBlock under conditions in which it operates effectively, and using LoadTile at all other times.
+<P>  
+There are restrictions on the BG image widths usable with LoadBlock.  The <B>imageW</B> values that can be processed when <B>imageSiz</B> is 16 bits are shown below:
+
+<P>
+<pre><font face="courier" size="2">
+  4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 64, 
+ 72, 76, 100, 108, 128, 144, 152, 164, 200, 216, 
+228, 256, 304, 328, 432, 456, 512, 684, 820, 912</pre></font>
+
+<P>
+The <B>imageW</B> values usable when <B>imageSiz</B> is 8 bits is similar to the above sequence, with every term doubled.  Similarly, when <B>imageSiz</B> is 4 bits, the <B>imageW</B> values will be the sequence obtained by quadrupling each term, and when <B>imageSiz</B> is 32 bits, they will be the sequence obtained by halving each term.  (See <a target="new" href="../../pro-man/pro13/index13.0a.html">Section 13, Appendix A "LoadBlock Line Limits"</a> in the N64 Programming Manual.) When the BG image width cannot be processed by LoadBlock, only LoadTile can be used.
+
+<P>
+To draw one line of the transfer frame, LoadBlock reads the entire line of the corresponding BG image.  For a normal scrolling BG surface, a slightly larger BG image must be prepared for the BG update area. Therefore, <B>imageW</B> must be larger than <B>frameW</B>.  For this reason, extra data is loaded.  In contrast, LoadTile only loads the required amount of data.
+  
+<P>
+Since LoadBlock is processed faster than LoadTile, when the difference is several pixels, it is better to use LoadBlock. However, when <B>imageW</B> is significantly larger than <B>frameW</B>, the processing for loading the extra data becomes a major overhead, and it is better to use LoadTile.
+  
+<P>
+For example, assume that a BG surface that covers the entire screen (320x240) is defined.  Since the transfer frame is the entire screen, <B>frameW</B> = 320 pixels.  If 8 pixels are prepared as the BG update area, then <B>imageW</B> = 328 pixels.  In this case, since there is only a slight difference between <B>frameW</B> and <B>imageW</B>, you would use LoadBlock with 328 pixels.
+
+
+<P>
+<b>See also</b>
+<br>
+<A HREF="gSPBgRect1Cyc.html">gSPBgRect1Cyc</A>
+
+<P>
+<b>Revision History</b>
+<br>
+2/1/1999 Completely rewritten.
+</P>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

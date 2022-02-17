@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 12</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro12/index12.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro12/index12.8.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">BL: Blender</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The BL takes the combined pixels and blends them against the framebuffer pixels. Transparency is accomplished by blending against the framebuffer color pixels. Polygon edge antialiasing is performed, in part, by the BL using conditional color blending based on depth range. The BL can also perform fog operations in two-cycle mode.
+
+<P>
+<b>Figure 12.7.1</B> &nbsp;Blender State and Input/Output
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-13.gif"></tr></td></table>
+<P>
+
+<a name="01"></a>
+<b>Surface Types</b>
+<br>
+The BL can perform different conditional color-blending and z-buffer updating. Therefore, it can handle semantically different surface and line types. Figure 12.7.2 illustrates these types.
+
+<P>
+<b>Figure 12.7.2</B> &nbsp;Surface Types
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-14.gif"></tr></td></table>
+<P>
+
+<a name="02"></a>
+<b>Antialiasing Modes</b>
+<br>
+The most important feature of the BL is its participation in antialiasing. Basically, the BL conditionally blends or writes pixels into the framebuffer based on depth range. Then the video display logic applies a spatial filter to account for surrounding background colors to produce antialiased silhouette edges.
+<P>
+The antialiasing scheme properly antialiases most pixels; only a small set of corner cases have errors and are negligible. This algorithm requires ordered rendering sorted by surface or line types. Here is the rendering order and surface/line types for z-buffer antialiasing mode:
+<ul>
+<li>All opaque surfaces are rendered.
+<P>
+<li>All opaque decal surfaces are rendered.
+<P>
+<li>All opaque interpenetrating surfaces are rendered.
+<P>
+<li>All of the translucent surface and lines are rendered last. These can be rendered in any order. However, the proper depth order gives proper transparency.</ul>
+<P>
+
+<b>Note:</b> There is an additional optimization discussed later; if z-buffered surfaces in the scene are rendered in approximately front-to-backorder, the fill rate is improved because the z-buffer test is a read only (no write) for obscured pixels.
+<P>
+Besides the antialiased z-buffer rendering mode, the other three combinations also exist: antialiased/not z-buffered, z-buffered/not antialiased, not z-buffer/not antialiased.
+
+<P>
+<a name="02tbl24"></A>
+<b>Table 1</b> &nbsp;One-Cycle Mode gsDPSetRenderMode(mode1, mode2)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode1</td>
+<td width=60%><font face="arial" size="-1">G_RM_FOG_SHADE_A<br>
+G_RM_FOG_PRIM_A<br>
+G_RM_PASS<br>
+or one of the primitive rendering modes,<br>
+e.g. G_RM_AA_ZB_OPA_SURF</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode2</td>
+<td width=60%><font face="arial" size="-1">e.g. G_RM_AA_ZB_OPA_SURF2</td></tr></table>
+
+<P>
+<b>Note:</b> Even if you are only in one-cycle mode, mode2 should be programmed. Mode2 value is always mode1 appended with “2”.
+
+
+<P>
+<b>Table 2</b> &nbsp;Two-Cycle Mode gsDPSetRenderMode(mode1, mode2)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode1	</td>
+<td width=60%><font face="arial" size="-1">G_RM_FOG_SHADE_A<br>
+G_RM_FOG_PRIM_A<br>
+G_RM_PASS</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode2</td>
+<td width=60%><font face="arial" size="-1">same as one cycle mode mode2 values</td></tr></table>
+
+<P>
+<b>Note:</b> When setting the cycle type to G_CYC_FILL or G_CYC_COPY, make sure to use the command <i>g*DPSetRenderMode(G_RM_NOOP, G_RM_NOOP2)</i>, to guarantee that the blender is in a safe state.
+
+<P>
+<a name="03"></a>
+<b>BL Internal Color Registers</b>
+<br>
+BL has two internal color registers, fog and blend color. These values are programmable and can be used for geometry with fog or constant transparency.
+
+<P>
+<b>Table 3</b> &nbsp;gsDPSetFogColor(r, g, b, a) gsDPSetBlendColor(r, g, b, a)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">r, g, b, a</td>
+<td width=60%><font face="arial" size="-1">color</td>
+</tr></table>
+
+<P>
+<a name="04"</a>
+<b>Alpha Compare</b>
+<br>
+BL can compare the incoming pixel alpha with a programmable alpha source to conditionally update the framebuffer. This has traditionally allowed nice tree-outlined billboards and other complex, outlined, billboard objects. Besides thresholding against a value, the BL can also compare against a dithered value to give randomized particle effect.
+
+<P>
+<b>Table 4</b> &nbsp;ggsDPSetAlphaCompare(mode)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode</td>
+<td width=60%><font face="arial" size="-1">G_AC_NONE<br>
+G_AC_THRESHOLD<br>
+G_AC_DITHER</td>
+</tr></table>
+
+
+<P>
+<b>Note:</b> When using mode G_AC_THRESHOLD, alpha is thresholded against blend color alpha.
+<P>
+<b>Note:</b> Another way to do billboard cutouts which often provides better antialiasing is ti turn Alpha Compare off (G_AC_NONE) and instead use one of the TEX_EDGE render modes, such as G_RM_AA_ZB_TEX_EDGE.
+
+<P>
+<a name="05"></a>
+<b>Using Fog</b>
+<br>
+The blender performs the fog operation. Fog is described fully in <a target="_top" href="../pro11/index11.8.html">Section 11.8, “Vertex Fog State”</a>. Fog is performed by the RSP and the RDP in cooperation. The RSP takes the z value and places it in the alpha channel of each pixel. The RDP then uses this alpha channel to blend the color from the color combiner with the fog color. The larger the Z value (the farther the pixel is from the viewers eye) the closer the pixel’s color gets to the fog color. The RSP part of this operation is enabled with the gSPSetGeometryMode:
+<P>
+<pre><font face="courier" size="3">gsSPSetGeometryMode(G_FOG),</pre></font>
+<P>
+and can be adjusted with gsSPFogPosition:
+<P>
+<pre><font face="courier" size="3">gsSPFogPosition(FOG_MIN, FOG_MAX),</pre></font>
+
+<P>
+The RDP part of fogging is enabled by telling the blender how to use Alpha. Fog can be used in one cycle mode for non-antialiased opaque surfaces only:<P>
+<pre><font face="courier" size="3">/* 1cycle mode */
+gsDPSetCycleType(G_CYC_1CYCLE),
+/* blend fog in ZB mode (non-AA OPA_SURF modes only) */
+gsDPSetRenderMode(G_RM_FOG_SHADE_A,G_RM_ZB_OPA_SURF2),
+/* set the fog color */
+gsDPSetFogColor(RED,GREEN,BLUE, ALPHA),
+/* setup the RSP */
+gsSPFogPosition(FOG_MIN, FOG_MAX)
+gsSPSetGeometryMode(G_FOG),</pre></font>
+
+<P>
+It can be used for other surface types (or with antialiasing) in 2 cycle mode:
+<pre><font face="courier" size="3">/* 2 cycle mode */
+gsDPSetCycleType(G_CYC_2CYCLE),
+/* blend fog. Use any standard render mode for cycle 2 */
+gsDPSetRenderMode(G_RM_FOG_SHADE_A,G_RM_AA_ZB_OPA_SURF2),
+/* set the fog color */
+gsDPSetFogColor(RED,GREEN,BLUE, ALPHA),
+/* setup the RSP */
+gsSPFogPosition(FOG_MIN, FOG_MAX)
+gsSPSetGeometryMode(G_FOG),</pre></font>
+<P>
+
+As an alternative to G_RM_FOG_SHADE_A (for the first cycle of gsDPSetRenderMode) you can use G_RM_FOG_PRIM_A which will use the alpha value in PrimColor to set the fog value. If you use this mode, then the RSP’s part of fog is unneccessary and the gsSPFogPosition and gsSPSetGeometryMode macros are not necessary. Instead set the fog value per primitive with the gsDPSetPrimColor macro:
+<P>
+<pre><font face="courier" size="3">gsDPSetPrimColor(0,0,0,0,0, FOG_VALUE),</pre></font>
+<P>
+where the FOG_VALUE is 0 for no fog and 0xff for full-fog.
+
+<P>
+<b>Note:</b> Objects with FOG can still be transparent. The alpha value used to modulate fog comes from the triangle renderer. The alpha value that comes from the color combiner is independent of that renderer fog alpha. For example the color combiner can be set to use the alpha value from a texture map, and fog will still work with the alpha value from the renderer. You cannot, however, use vertex alpha with fog. The per alpha supplied in the vertices will be ignored and if the color combiner selects a SHADE alpha, it will get the fog alpha value instead (not what was intended).
+
+<P>
+<a name="06"></a>
+<b>Depth Source</b>
+<br>
+The depth value used in the depth buffer compare is generally taken from the Z value of the pixel, determined by interpolating the z values at the 3 vertices of the triangle containing the pixel. However it is sometimes desireable to set the Z value which will be used for an entire primitive. This is actually neccessary when rendering Z-buffered rectangles (gDPFillRect and gSPTextureRect) since these primitives do not have a Z value associated with them. To use a single Z value for an entire primitive the Z value is placed in the PrimDepth register and the Z source Select is set to get Z from the PrimDepth register:
+
+<P>
+<pre><font face="courier" size="3">gsDPSetDepthSource(G_ZS_PRIM),
+gsDPSetPrimDepth(z, dz),</pre></font>
+
+<P>
+The value to use for z is the screen Z position of the object you are rendering. This is a value ranging from 0x0000 to 0x7fff, where 0x0000 usually corresponds to the near clipping plane and 0x7fff usually corresponds to the far clipping plane. To synchronize Z for PrimDepth with a Z for a triangle it is important to understand how the triangle’s Z gets computed. The modeling coordinate vertex is multiplied by the modelview and projection matrices resulting in a 4 componant homogeneous coordinate (x,y,z,w). The screen Z value is computed by the RSP as 
+
+<P>
+<pre><font face="courier" size="3">screenZ = 32*((z/w)*Viewport.vscale[2] + Viewport.vtrans[2])</pre></font>
+<P>
+
+<b>Note:</b> Viewport.vscale and Viewport.vtrans[2] are usually both G_MAXZ/2 = 0x1ff, which makes the formula: screenZ=(z/w)*0x3fe0 + 0x3fe0. Since (z/w) ranges from -1.0 to +1.0 the result will range from 0x0 to 0x7fc0.
+
+<P>
+<b>Note:</b> For microcode progrmmers: The 32* part of this equation is done in the setup microcode. The other parts of this equation are done in the vertex processing microcode.
+
+<P>
+So if you want to position a rectangle at a specific modeling coordinate position, run the modeling ccordinate of the position through the modelview and projection matrix, and then comput its screenZ value based upon the formula above. This is the value to use for z in the gsDPSetPrimDepth command.
+
+<P>
+The dz value should be set to 0. This value is used for antialiasing and objects drawn in decal render mode and must always be a power of 2 (0, 1, 2, 4, 8, ... 0x4000). If you are using decal mode and part of the decalled object is not being rendered correctly, try setting this to powers of 2. Otherwise use 0.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

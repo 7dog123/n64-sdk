@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContRmbStart</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContRmbStart(u32 contNo, u16 freq, u16 frame)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>contNo	Controller number
+freq	Frequency (1-256)
+	1 -> 1 pulse per 256 frames.  256 -> continuous movement.	
+frame	Duration of vibration (number of frames)</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Starts vibration of the Rumble Pak</strong></p>
+
+<p>"freq" specifies the duration that the motor is ON.  If freq = 1, the motor is ON one time every 256 frames.  If freq = 128, the motor is ON once every 2 frames.  If freq = 256, the motor is ON continuously.  The larger the value of freq, the bigger the vibration.
+</p>
+
+<p>"frame" specifies in units of frames the amount of the time that the Rumble Pak will be on.
+</p>
+
+<p>Before this function can be called the nuContRmbCheck function must check whether a Rumble Pak is inserted.
+</p>
+
+<p>If the nuContRmbForceStop function has been activated, the Rumble Pak will not vibrate even if this function is called.
+</p>
+
+<hr>
+
+<pre>Reference:	<a href="nuContRmbCheck.htm">nuContRmbCheck</a>,<a
+href="nuContRmbForceStop.htm">nuContRmbForceStop</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

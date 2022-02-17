@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.7.4 Shading</H1>
+
+<P>Shading is adding shadow to an object by calculating the materials and lighting. N64 implements flat shading and smooth shading (Gouraud shading).
+
+
+<H2>Flat Shading</H2>
+
+<P>In flat shading each surface is shaded uniformly by using the same color as illustrated here:</P>
+
+<P><IMG SRC="../images/3-7-4-1.gif" ALIGN="bottom" WIDTH=408 HEIGHT=141 BORDER=0>
+
+<P>This shading technique calculates the normal vector and the light source of a surface, and applies uniform color to the surface. As a result, objects will appear blocky (like computer graphics).</P>
+ 
+<P><IMG SRC="../images/3-7-4-2.gif" ALIGN="bottom" WIDTH=378 HEIGHT=176 BORDER=0>
+
+<P>Use the following N64 functions to apply flat shading:</P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSPSetGeometryMode.html" TARGET="new">gSPSetGeometryMode</A></FONT> function with the <FONT FACE="COURIER NEW,COURIER">G_SHADE</FONT> parameter
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSPClearGeometryMode.html" TARGET="new">gSPClearGeometryMode</A></FONT> function with the <FONT FACE="COURIER NEW,COURIER">G_SHADE</FONT> parameter
+</UL>
+
+
+<H2>Smooth Shading</H2>
+
+<P>The smooth shading technique smooths out the shading to make it appear more realistic. Note that smooth shading affects the inside shading only; it has no effect on the outline of the object, as you can see in this illustration:</P>
+
+<P><IMG SRC="../images/3-7-4-3.gif" ALIGN="bottom" WIDTH=418 HEIGHT=287 BORDER=0>
+
+<P>There are many different techniques that you could use to implement smooth shading. One of the most popular is Gouraud shading.  Gouraud shading, named for its developer, gives a normal vector to each vertex of the surface; in other words, it calculates both the light source and the normal vector for each vertex. In this way, it interpolates calculated light for each vertex to make the shading appear smooth as illustrated here:</P>
+
+<P><IMG SRC="../images/3-7-4-4.gif" ALIGN="bottom" WIDTH=392 HEIGHT=209 BORDER=0>
+
+<P>By providing shading, you can put colors that are reflected from surrounding objects on your shaded object.
+
+<P>Use the following N64 functions to apply smooth shading:</P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSPSetGeometryMode.html" TARGET="new">gSPSetGeometryMode</A></FONT> function with the <FONT FACE="COURIER NEW,COURIER">G_SHADING_SMOOTH</FONT> parameter.
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSPClearGeometryMode.html" TARGET="new">gSPClearGeometryMode</A></FONT> function with the <FONT FACE="COURIER NEW,COURIER">G_SHADING_SMOOTH</FONT> parameter.
+</UL>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

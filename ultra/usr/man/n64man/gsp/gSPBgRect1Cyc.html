@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gsp/gsp.html">
+            <IMG BORDER=0 SRC="../images/mh_gsp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0"><H2>gSPBgRect1Cyc</H2></FONT>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A HREF="../../header/gs2dex.htm">gs2dex.h</A> */
+gSPBgRect1Cyc(Gfx *gdl, uObjBg *bg)
+gsSPBgRect1Cyc(uObjBg *bg)</PRE></FONT>
+
+<B>Arguments</B>
+<ul>
+  <li>gdl is the display list pointer.
+<P>
+  <li>bg is the pointer to the BG drawing data structure.
+</ul>
+
+<P>
+<B>Explanation</B>
+<br>
+This macro is the dedicated BG image drawing macro for use in 1-cycle mode.  It has the following special features and limitations:
+
+<ul>
+<li>Images can be enlarged and reduced.
+<li>Scrolling is possible in a closed area, looping up/down or left/right.
+<li>Textures can be inverted horizontally (vertical flipping is not possible). 
+<li>Drawing is performed in 1-cycle mode.
+<li>Texture interpolation display is possible
+<li>Subpixel movement is possible only in the horizontal direction.
+<li>Anti-aliasing is <u>not</u> possible.
+<li>Texture data is sequentially loaded from DRAM into texture memory (TMEM) and drawn by the macro.
+</ul>
+
+<P>
+This macro cannot be used in copy mode.  For information about modes, see <a target="new" href="../../kantan/step2/2-7.html">Section 2.2.7 "Drawing Cycle Modes"</a> in the N64 Kantan Manual.  For information about setting the cycle type, see <A HREF="../gdp/gDPSetCycleType.html">gDPSetCycleType</A>.  If there is no need to scale a drawing (enlarge/reduce), or if you want to use copy mode, then BG image rendering can be processed faster using g*SPBgRectCopy.
+
+<P>
+<b>Note</b>
+<br>
+This macro supports bilinear interpolation display of images.  When bilinear interpolation display is used, texels appear less jagged and the image looks smoother when it is enlarged, compared to normal point sampling display.  This effect is less apparent when the image is reduced.
+</P>
+<P>
+The RDP's drawing performance declines when bilinear interpolation is used.  The fewer the number of image lines that can be loaded into TMEM at one time, the greater the extent of this decline in performance.  For example, when a 640x480 image is reduced by half for drawing in a 320x240 frame, the amount of overhead from bilinear interpolation is far greater than when a 320x240 image is drawn with no scaling. In addition, the RDP's drawing performance drops significantly compared to when point sampling is used.  Considering the diminished effect obtained with bilinear interpolation when the image is reduced, you may want to switch to point sampling display.
+</P>
+<P>
+This macro automatically divides an image into a number of subplanes for drawing.  However, if this division process is done carelessly, unnatural wrinkles may emerge in the drawing result.  Such wrinkles will be particularly apparent during scrolling.  To prevent wrinkles, use the "imageYorig" of uObjScaleBg_t and perform operations like those shown below (this value is the y-coordinate of the origin for scaling, but it is also the division origin of the subplane).  The  Comment section below shows the uObjScaleBg_t structure.
+
+<DL>
+  <DT>* At the time of initialization:
+  <DD>Assign the value of imageY to imageYorig
+<P>
+  <DT>* When the value of scaleH has changed:
+  <DD>Assign the value of imageY to imageYorig
+</P><P>
+  <DT>* When imageX, imageY have been wrapped: 
+  <DD>Perform the same kind of process on imageYorig as on imageY
+</P><P>
+  <DT>* When only imageY is changed (change without wrapping)
+  <DD>Do not change imageYorig
+</P>
+</DL>
+</P>
+<P>
+Based on the above operations, the process for dx,dy scrolling of an image would be as follows:
+</P>
+<P>
+<PRE><font face="courier" size="3">/*Add scroll values */
+bg-&gt;s.imageX += dx;
+bg-&gt;s.imageY += dy;
+/* Screen edge wrapping */
+if (bg-&gt;s.imageX &lt; 0) {
+  bg-&gt;s.imageX     += bg-&gt;s.imageW;
+  bg-&gt;s.imageY     -= 32;
+  bg-&gt;s.imageYorig -= 32;
+}
+if (bg-&gt;s.imageX &gt;= bg-&gt;s.imageW) {
+  bg-&gt;s.imageX     -= bg-&gt;s.imageW;
+  bg-&gt;s.imageY     += 32;
+  bg-&gt;s.imageYorig += 32;
+}
+if (bg-&gt;s.imageY &lt; 0) {
+  bg-&gt;s.imageY     += bg-&gt;s.imageH;
+  bg-&gt;s.imageYorig += bg-&gt;s.imageH;
+}
+if (bg-&gt;s.imageY &gt;= bg-&gt;s.imageH) {
+  bg-&gt;s.imageY     -= bg-&gt;s.imageH;
+  bg-&gt;s.imageYorig -= bg-&gt;s.imageH;
+</font></PRE>
+
+
+<P>
+Also note that operation is not currently guaranteed for G_IM_FMT_YUV (YUV format).
+
+
+<P>
+<b>Comment</b>
+<br>
+The uObjScaleBg structure is shown below:
+</P>
+<P>
+<PRE><font face="courier" size="3">typedef	struct	{
+  u16 imageX;     /* x-coordinate of upper-left 
+                  position of texture (u10.5) */ 
+  u16 imageW;     /* Texture width (8-byte alignment, u10.2) */
+  s16 frameX;     /* x-coordinate of upper-left 
+                  position of transfer destination frame (s10.2) */
+  u16 frameW;     /* Transfer destination frame width (u10.2) */
+
+  u16 imageY;     /* y-coordinate of upper-left position of 
+                  texture (u10.5) */ 
+  u16 imageH;     /* Texture height (u10.2) */
+  s16 frameY;     /* y-coordinate of upper-left position of transfer 
+                  destination  frame (s10.2) */
+  u16 frameH;     /* Transfer destination frame height (u10.2) */
+
+  u64 *imagePtr;  /* Address of texture source in DRAM*/
+  u16 imageLoad;  /* Method for loading the BG image texture
+                     G_BGLT_LOADBLOCK (use LoadBlock)
+                     G_BGLT_LOADTILE (use LoadTile) */
+  u8  imageFmt;   /*Texel format
+                     G_IM_FMT_RGBA (RGBA format)
+                     G_IM_FMT_YUV (YUV format)
+                     G_IM_FMT_CI (CI format)
+                     G_IM_FMT_IA (IA format)
+                     G_IM_FMT_I (I format)  */
+  u8  imageSiz;   /* Texel size
+                     G_IM_SIZ_4b (4 bits/texel)
+                     G_IM_SIZ_8b (8 bits/texel)
+                     G_IM_SIZ_16b (16 bits/texel)
+                     G_IM_SIZ_32b (32 bits/texel) */
+  u16 imagePal;   /* Position of palette for 4-bit color 
+                  index texture (4-bit precision, 0~15) */
+  u16 imageFlip;  /* Image inversion on/off (horizontal 
+                     direction only)
+                     0 (normal display (no inversion))
+                     G_BG_FLAG_FLIPS (horizontal inversion of texture image) */
+
+  u16 scaleW;      /* x-direction scale value (u5.10) */
+  u16 scaleH;      /* y-direction scale value (u5.10) */
+  s32 imageYorig;  /* image drawing origin (s20.5)*/
+  
+  u8  padding[4];  /* Padding */
+  
+} uObjScaleBg_t;   /* 40 bytes */
+
+typedef union {
+  uObjBg_t       b;
+  uObjScaleBg_t  s;
+  long long int  force_structure_alignment;
+} uObjBg;
+</font></PRE>
+
+
+<P>
+<b>Concerning the scaleW, scaleH, and imageYorig elements:</b>
+<br>BG image scaling is controlled by the scaleW, and scaleH members of the uObjScaleBg_t structure.  The scaling process centers around (imageX, imageY) of the BG image.  The image is drawn to the (frameX, frameY) position in the frame buffer, just as when no scaling is performed.  However, during a horizontal flip, the BG image is drawn to the (frameX+frameW-1, frameY) position in the frame buffer.
+
+<P>
+When the image is enlarged, the image is clamped by the frame size.  Conversely, when the image is reduced, the frame is sometimes clamped by the image size.  This frame clamp can be a little big or a little small, due to errors in calculation.  If you want to strictly specify the size, you will need to calculate frameW, frameH with the CPU.  For details, see the S2DEX sample program.
+
+<P>
+<b>Concerning the imagePtr element:</b>
+<P>
+You cannot specify any position in the first 4096 bytes of RDRAM for imagePtr.  These are the physical addresses from<P> 0x00000000  to 0x00000fff.  
+<P>
+A segment-converted  imagePtr  cannot reside within this range.
+</P>
+
+
+<P>
+To learn more about the other elements, please refer to the <a href="gSPBgRectCopy.html">gSPBgRectCopy</a> macro.
+<P>
+This macro is built into S2DEX Release 1.00 and later versions.  However, the same processes can be emulated using <A HREF="../gu/guS2DEmuGBgRect1Cyc.html">guS2DEmuGBgRect1Cyc</A>, which was added from S2DEX Release 0.75 and which works by assembling <A HREF="gSPTextureRectangle.html">gSPTextureRectangle</A> together with a number of other macros.  This can be used to draw BG images that can be scaled.  For details, see <a target="new" href="../../pro-man/pro25/25-05.html#05">Section 25.5 "Emulation Functions"</a> of the N64 Online Programming Manual.  For information about the uObjScaleBg_t structure, see <a target="new" href="../../pro-man/pro25/25-05.html#04.1">Section 25.5.4.1, "BG Drawing GBIs"</a> in the same manual.
+
+<P>
+<b>See Also</b>
+<br>
+<A HREF="gSPBgRectCopy.html">gSPBgRectCopy</A>
+
+<P>
+<b>Revision History</b>
+<br>
+2/1/1999 Completely rewritten.
+</P>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

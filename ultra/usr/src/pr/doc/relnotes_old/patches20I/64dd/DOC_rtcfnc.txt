@@ -1,0 +1,23 @@
+Changes to LeoSetRTC and LeoReadRTC functions
+
+				Nintendo Development Dept. 3								Takayoshi Hashida
+
+1.  Changes to the LeoSetRTC function 
+
+It is now possible to change first two digits representing the century part of the year. 
+
+However, changes are limited to the years 1996 ~ 2095. Specifying any other year will result in the following error message: LEO_ERROR_ILLEGAL_TIMER_VALUE(36)
+
+Previously, LEOSetRTC could be called without setting the yearhi member of the LEODiskTime structure, (the function's second argument). With this new change to the specifications, LEOSetRTC cannot be called unless yearhi has been set.
+
+
+2. Changes to the LeoReadRTC function 
+
+Until now, nothing was returned to the yearhi member in the command block of the function's first argument. With the new change, a value is returned to yearhi according to the value in yearlo, as shown below                
+
+If yearlo is 96  ~  99           yearhi becomes 19
+If yearlo is 00  ~  95           yearhi becomes 20
+
+This evaluation is made with software, and is based on the yearlo value read from the real time clock (which stores the lower two digits of the year date). 
+
+

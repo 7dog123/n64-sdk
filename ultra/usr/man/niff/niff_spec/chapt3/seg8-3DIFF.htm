@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-8. ColorList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(3)VtxColorGroupエリア</font></h4>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="5">VtxColorGroupHeader</th>
+
+<td>u32</td>
+
+<td>vtx_color_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_vtx_color_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_color_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_color_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_colro_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>VtxColor(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>VtxColor(vtx_color_num - 1)</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　VtxColorGroupエリアメモリマップ</font></b></center>
+
+<center><table BORDER >
+<tr>
+<td NOWRAP>u32 vtx_color_group_tag</td>
+
+<td><font size=+0>Tag indicating VtxColorGroup. Set the following Tag.</font>
+<pre>
+<b><font size=+0>TAG_VTX_COLOR_GROUP&nbsp;&nbsp;&nbsp;&nbsp; 0x00050200</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_vtx_color_group_index</td>
+
+<td><font size=+0>Index number of this VtxColorGroup in ColorList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_color_group_header_size</td>
+
+<td><font size=+0>Size of this VtxColorGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_color_group_size</td>
+
+<td><font size=+0>Size of this VtxColorGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_color_num</td>
+
+<td><font size=+0>Total number of this VtxColor in VtxColorGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg8-5.htm">VtxColor</a></td>
+
+<td><font size=+0>Area for storing color data&nbsp; (one vertex)</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg8-4.htm">次へ</a></font><a href="seg8-4.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

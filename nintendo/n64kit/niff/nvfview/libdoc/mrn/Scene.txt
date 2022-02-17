@@ -1,0 +1,24 @@
+Function 
+-  Defines scene. 
+
+Functions 
+-  void mrnSceneInit( MrnScene *scene_ptr, const u32 frame_resource_size )
+  Initializes mrnScene. 
+  - frame_resource_size sets the capacity of the frame resource for a scene.  The frame resource is the 
+    temporary storage area used for rendering each frame, and is destroyed when the frame is rendered.  
+    For instance, it is for storing Mtx or dynamic Vtx. 
+
+-  void mrnSceneDestroy( MrnScene *scene_ptr )
+  Destroys mrnScene. 
+
+-  Gfx *mrnSceneBuildGfx( MrnScene *scene_ptr, Gfx *gfx_ptr )
+  Evaluates all objects and generates a gfx. 
+
+-  void *mrnSceneAllocFrameResource( MrnScene *scene_ptr,
+				    const u32 size,
+				    const u32 alignment )
+  Allocates memory from the frame resource. 
+
+History
+  1998/10/ 9 Takamitsu Hirata 
+    Scene.h, scene.c :  Initial version 

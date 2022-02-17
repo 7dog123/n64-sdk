@@ -1,0 +1,423 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.14 TexList</font></h3>
+
+<hr size=3>
+<h4>3) TexDataArea</h4>
+
+<hr size=1>
+<br><b>When TEX_ANIM_OFF is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>tex_img_width</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_img_height</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_width</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_height</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_offset_x</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_offset_y</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_img_index</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>TexDataArea Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tex_img_width</td>
+
+<td><font size=+0>Width of texture image data.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_img_height</td>
+
+<td><font size=+0>Height of texture image data.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_width</td>
+
+<td><font size=+0>Width of texture image data to be used.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_height</td>
+
+<td><font size=+0>Height of texture image data to be used.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_offset_x</td>
+
+<td><font size=+0>Texture offset X coordinate of upper left texture tile.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_offset_y</td>
+
+<td><font size=+0>Texture offset Y coordinate of upper left texture tile.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_img_index</td>
+
+<td><font size=+0>Index number of texture image data contained in TexImgList.</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When texture animation is performed</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>tex_img_width</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_img_height</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_scale_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_img_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_scale_key(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_scale_key(tex_tile_scale_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_width(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_width(tex_tile_scale_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_height(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_height(tex_tile_scale_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_key(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_key(tex_tile_offset_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_x(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_x(tex_tile_offset_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_y(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_offset_y(tex_tile_offset_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_img_key(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_img_key(tex_tile_img_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_img_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_tile_img_index(tex_tile_img_num - 1)</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>TexDataArea Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tex_img_width</td>
+
+<td><font size=+0>Width of texture image data to be used.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_img_height</td>
+
+<td><font size=+0>Height of texture image data to be used.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_TILE_SCALE_NUM">u32 tex_tile_scale_num</a></td>
+
+<td><font size=+0>When TEX_ANIM_SCROLL_SCALE or TEX_ANIM_SCROLL_SCALE_KEY
+is specified, 'scaling animation' of the texture data is performed.&nbsp;</font>
+
+<BR><br><font size=+0>When texture scaling animation is not performed, set
+the following flag.</font>
+<pre><b><font size=+0>TEX_TILE_SCALE_NONE&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001</font></b>
+
+</pre>
+<font size=+0>When key frame animation is performed, specify the number of the key.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_TILE_OFFSET_NUM">u32 tex_tile_offset_num</a></td>
+
+<td><font size=+0>When TEX_ANIM_SCROLL_OFFSET or TEX_ANIM_SCROLL_OFFSET_KEY
+is specified, 'scrolling animation' of the texture data is performed.&nbsp;</font>
+
+<BR><br><font size=+0>When texture scrolling animation is not performed, set the following flag.</font>
+<pre><b><font size=+0>TEX_TILE_OFFSET_NONE&nbsp;&nbsp;&nbsp; 0x00000001</font></b>
+
+</pre>
+<font size=+0>When performing key frame animation, specify the number of the key.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TEX_TILE_IMG_NUM">u32 tex_tile_img_num</a></td>
+
+<td><font size=+0>When TEX_ANIM_FLIPBOOK or TEX_ANIM_FLIPBOOK_KEY is specified,
+it executes 'flip book animation' by switching the texture image.</font>
+
+<BR><br><font size=+0>When flip book animation is not executed, set the following
+flag.</font>
+<pre><b><font size=+0>TEX_FLIPBOOK_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001</font></b>
+
+</pre>
+<font size=+0>When key frame animation is not performed, specify the number of the key.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_scale_key</td>
+
+<td>Specifies the number of the key frame in a sequence when TEX_ANIM_SCROLL_SCALE_KEY is specified. Otherwise, the flag is ignored.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_width</td>
+
+<td><font size=+0>Specifies the width of the texture tile data.</font>
+
+<BR><br><font size=+0>If tex_tile_scale_num = TEX_TILE_SCALE_NONE, specify tex_tile_width(0) to use this area as static data storage.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_height</td>
+
+<td><font size=+0>Specifies the height of the texture tile data.</font>
+
+<BR><br><font size=+0>If tex_tile_scale_num = TEX_TILE_SCALE_NONE, specify
+tex_tile_height(0) to use this area as static data storage.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_offset_key</td>
+
+<td><font size=+0>Specifies the number of the key frame in a sequence when TEX_ANIM_SCROLL_OFFSET_KEY is specified. Otherwise, this flag is ignorned.
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_offset_x</td>
+
+<td><font size=+0>Texture offset X coordinate of the upper left tile.</font>
+
+<BR><br><font size=+0>If tex_tile_offset_num = TEX_TILE_OFFSET_NONE, specify
+tex_tile_offset_x(0) to use this area as static data storage.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_offset_y</td>
+
+<td><font size=+0>Texture offset Y coordinate of the upper left tile.</font>
+
+<BR><br><font size=+0>If tex_tile_offset_num = TEX_TILE_OFFSET_NONE, specify
+tex_tile_offset_y(0) to use this area as static data storage.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_img_key</td>
+
+<td><font size=+0>Specifies the number of the key frame in a sequence when TEX_ANIM_FLIPBOOK_KEY is specified. Otherwise,
+this flag is ignored.
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_tile_img_index</td>
+
+<td><font size=+0>Index number of texture image data in TexImgList.</font>
+
+<BR><br><font size=+0>If tex_tile_img_num = TEX_FLIPBOOK_NONE, specify tex_tile_img_index(0)
+to use this area as static data storage.</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg14-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg15.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+
+</body>
+</html>

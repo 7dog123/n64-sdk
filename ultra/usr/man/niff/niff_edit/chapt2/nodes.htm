@@ -1,0 +1,454 @@
+<html>
+<TITLE>NIFFeditor 2.0 for SGI</TITLE>
+<body bgcolor="ffffff">
+
+<H3>NIFFeditor for SGI</H3>
+<h2>7. Node Settings  <img src="../../../gif/update.gif" width="48" height="12"></h2>
+
+<P><a href="../indexsgi.htm"><img src="../../../gif/index.gif" border="0" width="65" height="17"></a>
+<a href="./button.htm"><img src="../../../gif/previous.gif" border="0" width="65" height="17"></a>
+<a href="./spec.htm"><img src="../../../gif/next.gif" border="0" width="65" height="17"></a></P>
+
+The node setting dialog box for the SGI can be started by clicking on the respective node. The nodes that can be set via the dialog box are: Scene, Obj, LOD, Shape, Mat, Texture, Env, Cam, Light, Part, ChainRoot, Joint and Effector. The method of entering settings for each node is described below.
+
+<H3><A NAME="SCENE">Scene Node</A></H3>
+The flags within the NIFF Scene node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 7:</B> Scene Node Settings Dialog Box</I><BR>
+<BR>
+<IMG SRC="NIFFeditSGI_scene.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+The Scene name is displayed in this box. It can be edited.<BR>
+<BR>
+
+<B>SCENE_CFG_VIDEO</B><BR>
+This sets the video mode flag of the scene_cfg data in the SceneList. Use the switch to set one of three modes, NTSC, PAL or MPAL.<BR>
+<BR>
+
+<B>GAMMA</B><BR>
+This sets the flag for gamma correction of the scene_cfg data in the SceneList.<BR>
+<BR>
+
+<B>DITHER</B><BR>
+This sets the flag for dithering the scene_cfg data in the SceneList.<BR>
+<BR>
+
+<B>DIVOT</B><BR>
+This sets the flag for divoting the scene_cfg data in the SceneList.
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="OBJ">Obj Node</A></H3>
+The flags in the NIFF Obj node can be set using this dialog box as illustrated below.<BR>
+<BR>
+
+<I><B>Figure 8:</B> Obj Node Settings Dialog Box</I><BR><BR>
+<IMG SRC="objdialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+The Obj name is displayed in this box.  This can be edited.<BR>
+<BR>
+
+<B>ACTIVE Switch</B><BR>
+When turned ON, this sets the obj_state flag in the NIFF Obj to ACTIVE.<BR>
+<BR>
+
+<B>type</B><BR>
+This sets the obj_type data in the NIFF Obj. This can be selected from among NULL object, 3D object, and BILLBOARD object.<BR>
+<BR>
+
+<B>group</B><BR>
+This sets the obj_group data in the NIFF Obj. When the NONE switch is turned ON, the setting is  OBJ_GROUP_NONE. When the NONE switch is turned OFF, the group ID number among the group IDs on the right side becomes enabled.<BR>
+<BR>
+
+<B>priority</B><BR>
+This sets the obj_pri data in the NIFF Obj. When the NONE switch is turned ON, the setting is OBJ_PRI_NONE. When the NONE switch is turned OFF, the priority is the one shown in the selection box on the right.<BR>
+<BR>
+
+<B>render_priority</B><BR>
+This sets the obj_render_pri data in the NIFF Obj. If [NIFF-&gt;] is selected, the NIFF render mode selection switch on the right can be used to select any of OPA_SURF, OPA_INTER, OPA_DECAL, TEX_EDGE, XLU_SURF, XLU_INTER, XLU_INTER, or XLU_DECAL.<BR>
+<BR>
+
+If [N64-&gt;] is selected, the render mode setting is described in render_type0 and render_type1, below the render_priority switch. At present, render_pri can only be set to the  [NIFF-&gt;] setting.<BR>
+<BR>
+
+<B>render_cycle_type</B><BR>
+This sets the obj_render_cycle_type data in the NIFF Obj. Select either 1cycle or 2cycle.<BR>
+<BR>
+
+<B>for Fog</B><BR>
+NIFF 2.0 has added for Fog settings equivalent to render_priority, render_type0, render_type1, and render_cycle_type. The settings are: obj_render_cycle_type_for_fog, obj_render_pri_for_fog, obj_render_type0_for_fog, and obj_render_type1_for_fog. The settings work in the same way as the Ojb render settings described above and are displayed only when NIFF 2.0 data is loaded.<BR><BR>
+
+<B>Have Link_Billboard</B><BR>
+This sets the have_link_billboard flag in the NIFF Obj.<BR>
+<BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="LOD">LOD Node</A></H3>
+Flags can be set inside the NIFF LOD node using the following dialog box:<P>
+
+<I><B>Figure 9:</B> LOD Node Settings Dialog Box</I><BR><BR>
+<img src="lod.gif"><P>
+
+<b>number of LOD level</b><br>
+The number of lOD levels<P>
+
+<b>upper is near, lower is far</b><br>
+Sets the linked obj in order, starting from the closest.<p>
+
+If closer than the distance specified in "distance,," then LOD is set to display the Obj number in the current version of NIFFeditor, then number of LODlevels cannot be changed.<P>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="SHAPE">Shape Node</A></H3>
+The flag in the NIFF shape node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 10:</B> Shape Node Settings Dialog Box</I><BR><BR>
+<IMG SRC="shapedialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+The shape name is displayed in this box. This can be edited.<BR>
+<BR>
+
+<B>ALIAS</B><BR>
+This sets the type of anti-aliasing for the shape_type flag in the NIFF Shape node. Select one from among ANTI (anti-aliasing), REDUCED (simple anti-aliasing), and NONE (no anti-aliasing).<BR>
+<BR>
+
+<B>Z-Buffer</B><BR>
+When this switch is turned ON, the shape_type Z-Buffer in the NIFF Shape node becomes enabled.<BR>
+<BR>
+
+<B>Culling</B><BR>
+This performs culling control of the shape_type in the NIFF Shape node. Turn FRONT to ON, for front face culling, or turn BACK to ON for back face culling. Turn both ON to cull both faces. Turn both OFF for no culling.<BR>
+<BR>
+
+<B>Use Vtx Alpha when using Fog</B><BR>
+When this switch is turned on, the shape_type Use Vtx Alpah becomes enabled when using Fog.<BR><BR>
+
+<B>link to ...</B><BR>
+Displays the contents of kind_of_node_for_geomtry and shape_tri_link. This was added to support NIFF 2.0.<BR><BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="MAT">Mat Node</A></H3>
+This sets the flags in the NIFF Mat nodes. The dialog box is illustrated below.<BR>
+<BR>
+
+<I><B>Figure 11:</B> Mat Node Settings Dialog box</I><BR><BR>
+<IMG SRC="matdialog.gif" ALT="Mat Dialog Box" ALIGN="bottom">
+<BR>
+
+<B>Name</B><BR>
+The mat name is displayed in this box. This can be edited.<BR>
+<BR>
+
+<B>shade_type</B><BR>
+This sets the mat_shade_type data in the NIFF Mat. The switches for performing lighting settings, shade settings, and environment settings are lined up from left to right. 
+From the lighting settings, select one from among GLOBAL (global light), LOCAL (local light), and NONE (no light).<BR>
+<BR>
+
+From the shade settings, select one from between FLAT (flat shading) and SMOOTH (smooth shading).
+From the environment map settings, select one from among USE_REFLECT (reflection mapping), USE_HILIGHT (highlight mapping), and NONE (no environment mapping).<BR>
+<BR>
+
+<B>ambient</B><BR>
+This defines the ambient_red, ambient_green, ambient_blue and ambient_alpha data in the NIFF mat. Indicate each selection in the range of 0 to 1. Displayed only when NIFF 2.0 data is loaded.<BR><BR>
+
+<B>emmission</B><BR>
+This defines the emission_red, emission_green, emission_blue and emission_alpha in the NIFF mat. Indicate each selection in the range of 0 to 1. Displayed only when NIFF 2.0 data is loaded.<BR><BR>
+
+<B>diffuse</B><BR>
+This defines the diffuse_red, diffuse_green, diffuse_blue and diffuse_alpha in the NIFF mat. Indicate each selection in the range of 0 to 1. Displayed only when NIFF 2.0 data is loaded.<BR><BR>
+
+<B>mat_type</B><BR>
+This sets the mat_type in the NIFF Mat. First select the mat type setting method, either NIFF or N64. After changing this switch, the user must currently close the dialog box by clicking [OK] once. Then, click the node again to re-open the dialog box. Otherwise, the display updates. This problem will be corrected in a future revision.<BR>
+<BR>
+
+If NIFF has been selected, the display is in dedicated NIFF color setting mode. In this case, you can choose whether or not to select anything for the various colors:  color_type0, color_type1, alpha_type0, and alpha_type1.  Multiple colors can also be selected at the same time. However, when these are converted to a display list, the way they are selected is determined by the converter.<BR>
+<BR>
+
+If [N64] has been selected, the colors are selected according to the color combiner selection method of the N64.<BR>
+<BR>
+
+<B>mat_type_for_fog</B><BR>
+This sets the forFog mat type in the NIFF mat. Choices are: mat_color_type_0_for_fog, mat_color_type_1_for_fog, mat_alpha_type_0_for_fog and mat_alpha_type_1_for_fog. Displayed only when NIFF 2.0 is loaded.<BR><BR>
+
+<B>prim_color</B><BR>
+This defines the prim_red, prim_green, prim_blue, and prim_alpha data in the NIFF Mat. Indicate each color selection in the range of 0 to 1.<BR>
+<BR>
+
+<B>prim_color_fog</B><BR>
+This defines the prim_red_for_fog, prim_green_for_fog, prim_blue_for_fog and prim_alpha_for_fog in the NIFF mat. Indicate each selection in the range of 0 to 1. Displayed only when NIFF 2.0 data is loaded.<BR><BR>
+
+<B>usr_flag*</B><BR>
+This describes the usr_flag data in NIFF Mat.<BR>
+<BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="TEX">Tex Node</A></H3>
+This sets the flags in the NIFF Tex nodes. The dialog box is illustrated below.<BR>
+<BR>
+
+<I><B>Figure 12:</B> Tex Node Settings Dialog box</I><BR>
+<BR>
+<IMG SRC="NIFFeditSGI_tex.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+This box displays the Texture name. This can be edited.<BR>
+<BR>
+
+<B>Form</B><BR>
+This is used to select the texture format. One format is selected from among I, IA, CI, YUV, RGB, and RGBA. This is reflected in the tex_type data in the NIFF Tex node.<BR>
+<BR>
+
+<B>Depth</B><BR>
+This is used to select the number of bits per texture pixel. Select one from among 4bit, 8bit, 16bit, and 32bit. This is reflected in the tex_type data in the NIFF Tex node.<BR>
+<BR>
+
+<B>Wrap_s, Wrap_t</B><BR>
+The wrap, clamp, and mirror of the texture can be set. This is reflected in the tex_wrap_s data and the tex_wrap_t data in the NIFF Tex node.<BR>
+<BR>
+
+<B>Texture Filter</B><BR>
+This defines the tex_filter data in the NIFF Text node. Displayed only when NIFF 2.0 data is loaded. Please see the <A HREF="../../niff_spec2/index.htm" TARGET="index">NIFF 2.0 Specification</A> for details.<BR><BR>
+
+<B>Perspective Correction</B><BR>
+This defines the usr_perpective_correction data in the NIFF Tex node. Displayed only when NIFF 2.0 data is loaded. Please see the <A HREF="../../niff_spec2/index.htm" TARGET="index">NIFF 2.0 Specification</A> for details.<BR><BR>
+
+<B>mipmap Level</B><BR>
+This displays the mipmap_level data in the NIFF Tex node. It cannot be edited. Displayed only when NIFF 2.0 data is loaded. Please see the <A HREF="../../niff_spec2/index.htm" TARGET="index">NIFF 2.0 Specification</A> for details.<BR><BR>
+
+<B>No/Use Color Palette</B><BR>
+This displays the usr_color_palette data in the NIFF Tex mode. It cannot be edited. Displayed only when NIFF 2.0 data is loaded. Please see the <A HREF="../../niff_spec2/index.htm" TARGET="index">NIFF 2.0 Specification</A> for details.<BR><BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="ENV">Env Node</A></H3>
+The flags in a NIFF Env node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 13:</B> Env node dialog box</I><BR>
+<BR>
+<IMG SRC="envdialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+This box displays the Env name.  It can be edited.<BR>
+<BR>
+
+<B>fog</B><BR>
+Set the fog flag in NIFF Env.  When USE FOG is set to ON, this flag becomes ENV_FOG_USE, enabling all subsequent fog-related data.<BR>
+<BR>
+
+<B>fog color</B><BR>
+Set the fog color flag in NIFF Env.  Enter the hexadecimal value so that the flag equals 0xRRGGBBAA.<BR>
+<BR>
+
+<B>fog near</B><BR>
+Set the fog near flag in NIFF Env.  Enter an integer in the range of 0 to 1000.<BR>
+<BR>
+
+<B>fog far</B><BR>
+Set the fog far flag in NIFF Env.  Enter an integer in the range of 0 to 1000.<BR>
+<BR>
+
+<B>Fill frame buffer with color</B><BR>
+Set the fill color in NIFF Env.  When Fill Frame is ON, the values entered in the boxes on the right are enabled.  Enter the hexadecimal value so that the flag equals 0x00RRGGBB.<BR>
+<BR>
+
+<B>Fill frame buffer with color</B><BR>
+Set the fill depth in NIFF Env.  When Fill Z-buffer is ON, the values entered in the boxes on the right are enabled.  Enter the hexadecimal value so that the flag equals 0x00RRGGBB.<BR>
+<BR>
+
+<B>BG color</B><BR>
+Set the bg sprite img in NIFF Env.  When USE Texture is ON, the values entered in the boxes on the right are enabled.  Enter Tex index number from the TexList.<BR>
+<BR>
+
+<B>BG depth</B><BR>
+Set the bg sprite depth in NIFF Env.  When USE Texture is ON, the values entered in the boxes on the right are enabled.  Enter Tex index number from the TexList.<BR>
+<BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="CAM">Cam Node</A></H3>
+The flags in a NIFF Cam node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 14:</B> Cam node setting dialog box</I><BR>
+<BR>
+<IMG SRC="camdialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+This box displays the Cam name. It can be edited.<BR>
+<BR>
+
+<B>CAMERA TYPE</B><BR>
+Set the camera type flag in NIFF Cam.<BR>
+<BR>
+
+<B>clipping plane</B><BR>
+Set the clipping planes.<BR>
+<BR>
+
+<B>near</B><BR>
+This is the near clipping plane. This is reflected in cam near clip in NIFF Cam.<BR>
+<BR>
+
+<B>far</B><BR>
+This is the far clipping plane. This is reflected in cam far clip in NIFF Cam.<BR>
+<BR>
+
+<B>right</B><BR>
+This is the right clipping plane. This is reflected in cam right clip in NIFF Cam.<BR>
+<BR>
+
+<B>left</B><BR>
+This is the left clipping plane. This is reflected in cam left clip in NIFF Cam.<BR>
+<BR>
+
+<B>top</B><BR>
+This is the top clipping plane. This is reflected in cam top clip in NIFF Cam.<BR>
+<BR>
+
+<B>bottom</B><BR>
+This is the bottom clipping plane. This is reflected in cam bottom clip in NIFF Cam.<BR>
+<BR>
+
+<B>fovy</B><BR>
+This is the fovy value. This is reflected in cam fovy in NIFF Cam.<BR>
+<BR>
+
+<B>aspect</B><BR>
+This is the aspect value. This is reflected in cam aspect in NIFF Cam.<BR>
+<BR>
+
+<B>scale</B><BR>
+This is the scale value. This is reflected in cam scale in NIFF Cam.<BR>
+<BR>
+
+<B>lookat</B><BR>
+This is the index number of the Obj that is the point viewed by the camera. This is reflected in cam lookat obj.<BR>
+<BR>
+
+<B>eye</B><BR>
+This is the index number of the Obj that is the viewpoint of the camera. This is reflected in cam eye obj.<BR>
+<BR>
+
+<B>up</B><BR>
+This is the index number of the Obj that is the point above the camera. This is reflected in cam up obj.<BR>
+<BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="LIGHT">Light Node</A></H3>
+The flags in a NIFF Light node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 15:</B> Light node setting dialog box</I><BR>
+<BR>
+<IMG SRC="lightdialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+This box displays the Light name.  It can be edited.<BR>
+<BR>
+
+<B>ambient light </B><BR>
+Describe the ambient r, ambient g, and ambient b data for NIFF Light.<BR>
+<BR>
+
+<B>number of dir/pos lights</B><BR>
+This is a display of the dir light num flag for NIFF Light. This setting cannot be changed.<BR>
+<BR>
+
+<B>light type</B><BR>
+This is a display of the light type flag for NIFF Light. This setting cannot be changed.<BR>
+<BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="PART">Part Node</A></H3>
+The flags in a NIFF Part node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 16:</B> Part node setting dialog box</I><BR>
+<BR>
+<IMG SRC="partdialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+This box displays the Part name. It can be edited.<BR>
+<BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="ANIM">Anim Node</A></H3>
+The flags in a NIFF Anim node can be set using the dialog box illustrated below.<BR>
+<BR>
+
+<I><B>Figure 17:</B> Anim node setting dialog box</I><BR>
+<BR>
+<IMG SRC="animdialog.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+<B>Name</B><BR>
+This box displays the Anim name. It can be edited.<BR>
+<BR>
+
+<B>animation type</B><BR>
+This is a display of the anim type flag for NIFF Anim. This setting cannot be changed.<BR>
+<BR>
+
+<B>frame rate</B><BR>
+This is a display of the frame rate flag for NIFF Anim. This setting cannot be changed.<BR>
+<BR>
+
+<B>number of loop times of animation</B><BR>
+This is the anim loop flag for NIFF Anim.  When Endless is OFF, the loop number at the right is enabled and reflected in anim_loop.<BR><BR>
+
+<B>use animation channel</B><BR>
+Displayes the use_animation_channel data for the NIFF Anim node. It cannot be edited. Please see the <A HREF="../../niff_spec2/index.htm" TARGET="index">NIFF 2.0 Specification</A> for details.<BR><BR>
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<H3><A NAME="CHAINROOT">ChainRoot Node</A></H3>
+
+The ChainRoot dialog box sets the ChainRoot node <B>Name</B>. Added in NIFF 2.0.
+
+<H3><A NAME="JOINT">Joint Node</A></H3>
+
+The Joint Node dialog box sets the <B>Name</B> and <B>joint_type</B> of the ChainRoot node. Added in NIFF 2.0.
+
+<H3><A NAME="EFFECTOR">Effector Node</A></H3>
+
+The Effector dialog box sets the Effector node <B>Name</B>. Added in NIFF 2.0.
+
+<P><A HREF="../indexsgi.htm#NODES">Back to Node Settings Index</A></P>
+
+<hr>
+
+<P><a href="../indexsgi.htm"><img src="../../../gif/index.gif" border="0" width="65" height="17"></a>
+<a href="./button.htm"><img src="../../../gif/previous.gif" border="0" width="65" height="17"></a>
+<a href="./spec.htm"><img src="../../../gif/next.gif" border="0" width="65" height="17"></a></P>
+
+<font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION All rights
+reserved.
+</font>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+  <TD COLSPAN=1 WIDTH=25>
+     <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=175>
+     <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+  <TD COLSPAN=1 WIDTH=10>
+     <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=25>
+     <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=375>
+     <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+  <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+  <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+  <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+     <TR VALIGN="bottom" ALIGN="center" >
+   <TD>
+   <A HREF="../misc/home.html">
+  <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+   <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+   <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+   </FONT>
+   </TD>
+     </TR>
+  </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+  <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+  <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+  <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+  <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+  <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+     <TR VALIGN="top" ALIGN="center" >
+   <TD>
+   <A HREF="../misc/home.html">
+   <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+   </TD>
+     </TR>
+  </TABLE>
+
+
+  <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+     <TR VALIGN="top" ALIGN="left" >
+   <TD>
+   <A HREF="../ucode/ucode.html">
+   <IMG BORDER=0 SRC="../images/mh_ucode.gif"></A>
+   </TD>
+     </TR>
+  </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0"><H2>gspFast3D Microcode<BR>
+gspF3DNoN Microcode</H2></FONT>
+
+This microcode comprises the following six object files:
+
+<UL><LI>gspFast3D.o<BR>
+<LI>gspFast3D.dram.o<BR>
+<LI>gspFast3D.fifo.o<BR><BR>
+
+<LI>gspF3DNoN.o<BR>
+<LI>gspF3DNoN.dram.o<BR>
+<LI>gspF3DNoN.fifo.o<BR></UL>
+
+This is the optimized, high-quality, full-featured 3D polygonal geometry RSP microcode. It supports 3D clipping, lighting, texture coordination generation, fog, 
+and matrix stack.<BR>
+<BR>
+
+
+<B>gspFast3D</B><BR><BR>
+
+The gspFast3D microcode is the most full-featured of the microcode types. It is also the microcode used in the majority of the demo applications. gspFast3D supports 3D triangles, 3D clipping, Z-Buffering, near and far clipping, lighting, MIP-mapped textures, perspective textures, fog, and matrix stack operations. It does not support the GBI macro, <FONT FACE="COURIER NEW,COURIER">gSPLine3D</FONT>.<BR>
+<BR>
+
+
+<B>gspF3DNoN</B><BR><BR>
+
+The gspF3DNoN microcode is similar to gspFast3D microcode except it does not handle near plane clipping in the same manner. When using gspFast3D microcode, objects between the eye and the near plane are clipped. When using gspF3DNoN microcode, objects between the eye and the near plane are not clipped. However, the area between the eye and the near clipping plane does not implement Z-Buffering. This means that objects that fall into this area must be rendered in order from far to near.<BR>
+<BR>
+
+<B>DRAM Version</B><BR><BR>
+ The DRAM version of the microcode directs the output (RDP display list) 
+ to the RDP through a memory buffer (DRAM) that is larger than the buffer 
+ used in gspFast3D microcode.<BR>
+<BR>
+
+ The gspFast3D, gspFast3D.dram, and gspFast3D.fifo versions of the 
+ microcode are equivalent to the gspF3DNoN, gspF3DNoN.dram, and 
+ gspF3DNoN.fifo versions (respectively), with the difference that 
+ near clipping is performed at the Near Clipping plane in the former 
+ 3 versions, and performed at the eyepoint in the latter 3 versions. <BR>
+<BR>
+
+ All computations are performed with as much precision as is practical, 
+ in order to create the highest quality images.<BR>
+<BR>
+
+
+<B>Unsupported GBI Macros</B><BR><BR>
+
+ All gSPLine3D macros are complied as no-ops, so they have no effect.<BR>
+<BR>
+
+<B>Performance</B><BR>
+<BR>
+ In order from the fastest to the slowest, the following types of 
+ triangles can be generated by this microcode:
+
+<UL><LI>	Filled Flat Shaded (must set primitive color in DP appropriately)
+<LI>	Gouraud Shaded
+<LI>	Gouraud Shaded, Z-buffered
+<LI>	Gouraud Shaded, Textured
+<LI>	Gouraud Shaded, Textured, Z-buffered</UL>
+
+ Triangle attribute computation is heavily vectorized, so generation 
+ of Gouraud shading attributes is essentially free, if you are generating 
+ any other attributes.<BR>
+<BR>
+
+ Vertex transformations and lighting calculations are heavily vectorized, 
+ so it is best to operate on as many vertices as possible. Even 
+ number-sized loads are more efficient because vertices are processed 
+ in groups of two.<BR>
+<BR>
+
+
+ When doing lighting, and any vertices are clipped, clipping and 
+ lighting are implemented as ucode overlays, using a most recently 
+ used algorithm. Lighting happens at vertex load time and 
+ clipping happens at triangle draw time, so this division of microcode is 
+ acceptable. However, a display list that loads only a few vertices 
+ at a time and then draws a small number of triangles, would not amortize 
+ the microcode swapping overhead very effectively.<BR>
+<BR>
+
+
+ The RCP is designed to draw high quality textured primitives. 
+ Where possible, use texture-mapping to achieve visual 
+ complexity rather than additional geometry.<BR>
+<BR>
+
+
+<B>Notes on Different Versions</B><BR><BR>
+
+ There are some differences when calling the DRAM and fifo versions of 
+ this microcode.<BR>
+<BR>
+
+ <B>gspFast3D:</B>
+ The flags field of any task followed by this task should 
+ have <FONT FACE="COURIER NEW,COURIER">OS_TASK_DP_WAIT</FONT> set. If more than one task using this 
+ microcode is called in the same frame, then only the last 
+ task should contain a <FONT FACE="COURIER NEW,COURIER">gSPFullSync</FONT> in its display list. 
+ This microcode takes care of sending all output to the RDP. 
+ When using this microcode, it is not necessary to specify 
+ <FONT FACE="COURIER NEW,COURIER">output_buff</FONT> or an <FONT FACE="COURIER NEW,COURIER">output_buff_size</FONT>. (These fields of task 
+ header can be set to 0.)<BR>
+<BR>
+
+ <B>gspFast3D.dram:</B>
+ Tasks using this microcode need to set the <FONT FACE="COURIER NEW,COURIER">OS_TASK_DP_WAIT</FONT> 
+ flag only if they follow a task using gspFast3D or 
+ gspFast3D.fifo. This microcode sends its data to a buffer 
+ in DRAM and not to the RDP. The CPU must then cause the buffer 
+ to be sent to the RDP. The buffer is pointed to by output_buff 
+ in the task header. This must point to a buffer which is 
+ at least as big as the maximum RDP display list that can 
+ be generated by the task. Remember that when geometry gets 
+ clipped RDP lists will expand, so leave extra room. If the 
+ buffer is not large enough to store the entire RDP display 
+ list, other memory areas will be overwritten. After the RSP 
+ finishes its process, the buffer can be sent to the RSP using 
+ the <FONT FACE="COURIER NEW,COURIER">osDpSetNextBuffer</FONT> command. The length of data in the buffer,
+ which is needed for <FONT FACE="COURIER NEW,COURIER">osDpSetNextBuffer</FONT>, is written at an 
+ address specified by <FONT FACE="COURIER NEW,COURIER">rdp_output_len</FONT> in the task header. 
+ While the display list is being sent to the RDP, the RSP can 
+ execute other DRAM microcode, whose <FONT FACE="COURIER NEW,COURIER">output_buff</FONT> is different, 
+ or audio tasks. When <FONT FACE="COURIER NEW,COURIER">gDPFullSync</FONT> is not included in the display 
+ list to be sent to the RDP, other RDP display lists can be 
+ sent (from the RSP task to other buffers) using other 
+ <FONT FACE="COURIER NEW,COURIER">osDpSetNextBuffer</FONT> commands. However, when gDPFullSync is 
+ included in the display list, neither send other RDP display 
+ lists using <FONT FACE="COURIER NEW,COURIER">osDpSetNextBuffer</FONT> nor start gspFast3D or gspFast3D.fifo 
+ tasks until completing the display list.<BR>
+<BR>
+
+
+ <B>gspFast3D.fifo:</B>
+ A task that uses this microcode and is followed by a 
+ gspFast3D task or a <FONT FACE="COURIER NEW,COURIER">osDpSetNextBuffer</FONT> command needs to set 
+ the <FONT FACE="COURIER NEW,COURIER">OS_TASK_DP_WAIT</FONT> flag. This microcode watches transmission 
+ of the display list to the RDP. A buffer specified by output_buf 
+ in the task header is used.  The buffer must be cache aligned.  
+ <FONT FACE="COURIER NEW,COURIER">Output_buff_size</FONT> must be the pointer for byte followed by last 
+ byte of the buffer.  The larger the buffer is, the more practical 
+ the interface between the RSP and the RDP. When there are 
+ multiple tasks in parallel which use fifo microcode, only the 
+ last task in a frame must include <FONT FACE="COURIER NEW,COURIER">gDPFullSync</FONT>. There are multiple 
+ tasks continuously which use fifo microcode, all tasks must 
+ use the <FONT FACE="COURIER NEW,COURIER">output_buff</FONT> buffer. (Each task can use a different 
+ buffer, however, it is more efficient to use one large buffer 
+ for all tasks.)<BR>
+<BR>
+
+<B>Note for Near Clipping</B><BR><BR>
+
+ Near Clipping removes geometry either behind the viewer or between the 
+ viewer and the Near Clipping plane. In actual circumstances, an object 
+ never disappears when getting closer to the viewpoint, so it should 
+ not happen in a N64 program. One way to achieve this is to locate the 
+ near plane very close to the viewpoint. (By calling <FONT FACE="COURIER NEW,COURIER">guPerspective</FONT>, 
+ make the near value small.) However, it does not always work because 
+ the smaller ratio of near/far makes the accuracy of Z and texture 
+ mapping worse. Another way to accomplish this is to use a gspF3DNoN 
+ microcode (or its DRAM or fifo version) which does Near Clipping. 
+ An object behind the viewer is clipped and an object far from the near 
+ plane is visible. However, an object between the near plane and the 
+ viewer is also visible. In this way, the near value can be increased 
+ without geometry disappearing between the viewpoint and the near plane.<BR>
+<BR>
+
+ Z buffering never functions in the area between the viewpoint and the 
+ near plane. As a result, objects between the near plane and viewer never 
+ hide each other. For example, in an asteroid type game, when an asteroid 
+ approaches the view point closer than the near plane, the asteroid is 
+ drawn correctly. (objects far from the near plane are hidden.) However, 
+ when two asteroids approach closer than the near plane, they cannot be 
+ hidden correctly.<BR>
+<BR>
+
+
+<B>Default RDP State</B><BR><BR>
+
+ Whenever a graphic task is first started, some of the RDP states are 
+ initialized to their default states. The rest of the states keep their 
+ previous values. After restarting from yield, RDP states are restored 
+ with states set at yield. The following are RDP default settings:
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>	gsDPSetAlphaCompare(G_AC_NONE)
+<LI>	gsDPSetDepthSource(G_ZS_PIXEL)
+<LI>	gsDPSetRenderMode(RM_NOOP, RM_NOOP2)
+<LI>	gsDPSetAlphaDither(G_AD_DISABLE)
+<LI>	gsDPSetColorDither(G_CD_DISABLE)
+<LI>	gsDPSetCombineKey(G_CK_NONE)
+<LI>	gsDPSetTextureConvert(G_TC_FILT)
+<LI>	gsDPSetTextureFilter(G_TF_POINT)
+<LI>	gsDPSetTextureLUT(G_TT_NONE)
+<LI>	gsDPSetTextureLOD(G_TL_NONE)
+<LI>	gsDPSetTextureDetail(G_TD_CLAMP)
+<LI>	gsDPSetTexturePersp(G_TP_PERSP)
+<LI>	gsDPSetCycleType(G_CYC_1CYCLE)
+<LI>	gsDPPipelineMode(G_PM_NPRIMITIVE)	</UL></FONT>	
+
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspLine3D.html">gspLine3D</A><BR>
+<A HREF="../ucode/gspTurbo3D.html">gspTurbo3D</A><BR>
+<A HREF="../os/osSpTaskStart.html">osSpTaskStart</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+  <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+     <TR VALIGN="top" ALIGN="center" WIDTH=312>
+   
+  
+   <TD COLSPAN=1 WIDTH=52>
+  <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+     </TR>
+     <TR VALIGN="top" ALIGN="center">
+   
+  
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../al/al.html">
+  <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../gdp/gdp.html">
+  <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../gdsp/gdsp.html">
+  <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../gsp/gsp.html">
+  <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../gt/gt.html">
+  <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../gu/gu.html">
+  <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+     </TR>
+     <TR VALIGN="top" ALIGN="right">
+   
+  
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../math/math.html">
+  <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../nusys/nusys.html">
+  <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../os/os.html">
+  <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../sp/sp.html">
+  <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../uh/uh.html">
+  <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+   <TD COLSPAN=1 WIDTH=52>
+  <A HREF="../64dd/64dd.html">
+  <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  </TABLE>
+
+  <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+     <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+   <TD><BR><BR>
+   <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+   </TD>
+     </TR>
+     <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+   <TD>
+   <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+   <BR>
+  <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+  Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+  Last updated March 1998
+   </B>
+   </FONT>
+   </TD>
+     </TR>
+  </TABLE>
+  </FONT>
+  </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetDiskType</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetDiskType<br>
+mfsRamGetDiskType</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetDiskType(void)
+	s32 mfsRamGetDiskType(void)
+Arguments:	None
+Return value:Disk type (a negative value is an error)
+Function:	Obtains disk type
+Description:	This function obtains the disk type.
+
+Main errors:
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different. 
+	MFS_ERR_VERSION	Different version disk </pre>
+</body>
+</html>

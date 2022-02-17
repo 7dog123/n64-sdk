@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<BASE TARGET="main">
+<TITLE>N64 Programming Manual</title>
+<LINK HREF="../kantan.css" REL="STYLESHEET" TYPE="text/css">
+
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var imgArray = new Array ()
+    imgArray[0] = new Image (29,10)
+    imgArray[1] = new Image (29,10)
+
+imgArray[0].src = "../images/triangle.gif"
+imgArray[1].src = "../images/trianglered.gif"
+
+var activeImg = "4"
+
+function changeArrow (i) {
+     document.images[activeImg].src = imgArray[0].src
+     document.images[i].src = imgArray[1].src
+     activeImg = i
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<!-- N64 Logo and Manual Title -->
+
+<P CLASS=title><A HREF="../index.html" TARGET="_top"><IMG SRC="../images/n64_logo2.gif" ALIGN="bottom" BORDER=0 ALT="Home"></A>
+Introductory Manual</P>
+
+
+
+<!-- Begin Table of Contents -->
+
+<!-- Begin Chapter One -->
+
+<P CLASS=tofc1><IMG SRC="../images/bookopen.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16 BORDER=0> 1. <A HREF="index.html" TARGET="_top">N64 Architecture Overview</A></P>
+
+
+<!-- Begin Section One -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16 BORDER=0> 1.1 <A HREF="index1.html" TARGET="_top">Introduction to the N64</A></P>
+
+
+<!-- Begin Section 2 -->
+
+<P CLASS=tofc2><IMG SRC="../images/bookopen.gif" ALIGN="bottom" WIDTH=16 HEIGHT=16 BORDER=0> 1.2 <A HREF="index2.html" TARGET="_top">N64 Hardware Architecture</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/trianglered.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.1 <A HREF="2-1.html" onClick=changeArrow(4)>Overview of N64 Resources</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.2 <A HREF="2-2.html" onClick=changeArrow(5)>CPU (Central Processing Unit)</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.3 <A HREF="2-3.html" onClick=changeArrow(6)>RCP (Reality Co-Processor)</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.4 <A HREF="2-4.html" onClick=changeArrow(7)>RDRAM (n64 Main Memory)</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.5 <A HREF="2-5.html" onClick=changeArrow(8)>SI (Serial Interface) Resources</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.6 <A HREF="2-6.html" onClick=changeArrow(9)>PI (Parallel Interface) Resources</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.7 <A HREF="2-7.html" onClick=changeArrow(10)>N64 Physical Memory Map</A></P>
+
+<P CLASS=tofc3><IMG SRC="../images/triangle.gif" ALIGN="bottom" WIDTH=29 HEIGHT=10 BORDER=0> 1.2.8 <A HREF="2-8.html" onClick=changeArrow(11)>Graphics and Audio Scheduling</A></P>
+
+
+
+<!-- Begin Chapter Two -->
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" BORDER=0> 2. <A HREF="../step2/index.html" TARGET="_top">Intro to N64 Programming</A></P>
+
+
+
+<!-- Begin Chapter Three -->
+
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" BORDER=0> 3. <A HREF="../step3/index.html" TARGET="_top">N64 3D Graphics</A></P>
+
+
+
+<!-- Begin Chapter Four -->
+
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" BORDER=0> 4. <A HREF="../step4/index.html" TARGET="_top">What is 64DD?</A></P>
+
+
+
+<!-- Begin Appendices -->
+
+
+<P CLASS=tofc1><IMG SRC="../images/bookclosed.gif" ALIGN="bottom" BORDER=0> <A HREF="../appendices/index.html" TARGET="_top">Appendices</A></P>
+
+
+
+</BODY>
+</HTML>
+
+
+

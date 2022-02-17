@@ -1,0 +1,21 @@
+Function
+* The Sequencer offers an animation sequence control.
+  Details on the sequencer will be described using the MhcSeqInst Structure.
+
+Function
+* void mhcSequencerInit( MhcSequencer *seq_ptr,
+			 float *index_ptr, float *time_ptr,
+			 void *user_data )
+  Initialize Sequencer
+
+* void mhcSequencerExecute( MhcSequencer *seq_ptr, MhcSeqInst *inst_ptr )
+  Specify execution instruction.
+  At this point the Sequencer stops the instruction currently being executed, 
+  calls on_stop, and executes the new instruction.
+
+* void mhcSequencerProgress( MhcSequencer *seq_ptr, const float step )
+  Using step advance the sequence by time shown only.
+
+History
+  1999/ 5/15 Takamitsu Hirata
+    Sequencer.h, sequencer.c: First edition

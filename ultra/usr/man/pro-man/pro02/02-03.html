@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 2</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro02/index2.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro02/index2.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<b><font face="arial" color="#29296b">Audio</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Alignment Issues</b>
+<br>
+The audio system shares several data structures between the 4300 and the RCP. In order to avoid alignment problems, any  buffer used by both the 4300 and the RCP should be allocated using the alHeapAlloc() routine. This will generate buffers with 16 byte alignment, avoiding all alignment issues as well as cache tearing issues.
+
+<P>
+<a name="02"></a>
+<b>Size and Number of Buffers</b>
+<br>
+A  common error is to run out of buffers, particularly DMA buffers. Because the number of buffers needed is largely dependent on the music and sound effects used, it is not possible to provide guidelines. As music and sound effect complexity increases, the number of buffers needed will increase.
+
+<P>
+<a name="03"></a>
+<b>Audio Pops and Clicks</b>
+<br>
+To avoid audio pops and clicks, all samples should start with at least one value of zero. Upon receiving a pre-nmi message it is important that the audio fade to zero output, or on subsequent bootup, there is a potential for a pop. If audio does not run at a high enough priority, the audio may not be generated before the previous buffer has completed. If this occurs there will be a period where no samples are played. This will usually generate a clear pop.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

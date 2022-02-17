@@ -1,0 +1,40 @@
+Function 
+(  Reference sets the reference between the fields of a node. 
+
+Functions 
+(  void mhcReferenceInit( MhcReference *reference_ptr 
+			const u16 type,
+			const u16 size)
+  Initializes Reference. 
+
+(  void mhcReferenceBind( MhcReference *reference_ptr,
+			 MhcModule *module_ptr,
+			 MhcScene *scene_ptr )
+  Links Reference to a scene. 
+
+Macros 
+(  _mhcReferenceIsResolved(reference_ptr)
+  Checks whether reference is resolved. 
+
+(  _mhcReferenceIsActive(reference_ptr)
+  Checks whether reference is possible.  
+
+(  _mhcReferenceActivate(reference_ptr)
+  Makes reference possible. 
+
+(  _mhcReferenceInactivate(reference_ptr)
+  Makes reference impossible. 
+
+(  _mhcReferenceBeginEval(reference_ptr)
+  Makes preparations for reference. 
+
+(  _mhcReferenceResolve(reference_ptr, scene_ptr)
+  Makes solution for reference.
+History 
+  1998/10/ 7 Takamitsu Hirata 
+    Reference.h, reference.c:  Initial version 
+
+  1999/1/6  Takamitsu Hirata
+    Change mhcReferenceResolve() to macro.
+    Added argument type and size to mhcReferenceInit().
+    Optimized to refer to 3 dimention vector.

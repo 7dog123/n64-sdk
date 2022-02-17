@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.15 TexImgList</font></h3>
+
+<hr size=3>
+<h4>2) TexImg Area</h4>
+
+<blockquote>
+The TexImg area stores one texture image. The mapping for the TexImg area is as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="6">TexImgHeader</th>
+
+<td>u32</td>
+
+<td>tex_img_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_tex_img_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_img_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_img_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>TexImgData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>TexImg Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tex_img_tag</td>
+
+<td><font size=+0>Tag indicating TexImg.</font>
+<pre><b><font size=+0>TAG_TEX_IMG&nbsp;&nbsp;&nbsp;&nbsp; 0x00120100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_tex_img_index</td>
+
+<td><font size=+0>Index number of this TexImg</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_img_header_size</td>
+
+<td><font size=+0>Size of TexImgHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_img_size</td>
+
+<td><font size=+0>Size of this TexImg</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>TexImgData</td>
+
+<td><font size=+0>Stores the actual texture image. Starting from the lower left, the texture image can be red as R-G-B-A (8 bit).</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg15.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg16.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

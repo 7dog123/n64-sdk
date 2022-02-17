@@ -1,0 +1,182 @@
+
+08/04/99  OS2.0K RELEASE NOTES
+==============================
+
+Summary:
+-----
+        This release of NINTENDO64 OS2.0K contains corrections of several bugs that were discovered since the previous release, and the addition new features and upgrades to the
+OS. 
+
+        See /usr/src/PR/README.txt for the detailed structure of OS2.0K.
+	See /usr/src/PR/demos/README_DEMOS.txt for descriptions of the various software demos.
+	It is also recommended that you delete or backup all of x before installing the new release. This will allow you to avoid mixing the old directories in with the newly installed directories, making them difficult to tell from one another
+
+        The README files in several of the sample program directories under /usr/src/PR/demos/README_DEMOS.txt and /usr/src/PR/demos/ say to execute "gload", but this is the method for running programs in the Indy + development board development environment. Developers using the PARTNER development environment, the Monegi Smart Pack development environment or the IS development environment should run programs according to the methods listed in the corresponding manuals.
+
+
+New Features:
+-----------
+
+    OS
+
+        The osInitialize function has been made into a macro and removed from the model-dependent area of the development equipment when the debug library is being used.
+        Whether you are using PARTNER-N64, Monegi Smart Pack-A, IS-Viewer for debugger, or an Emulation board, after initializing with osInitialize(), the debug display can be used
+by calling osSyncPrintf or, when the debug-version library is being used, osError.
+        The development equipment being used is automatically identified during orientalize, and if you do not want to utilize this feature, you can create a program that forcibly calls
+the initialization routine for that development equipment by defining its respective constant, i.e., PTN64, MSP64, ISV64, or EMU64 (in the order described above).
+        When linking to a release library, define the FINALROM constant and execute make. This will create a program that only initializes the NINTENDO64, without performing the
+model-depenedent initialization. 
+        See the definition of os_host.h for operation details. 
+        Since software which is compatible with the latest version of orientalize is needed when used with IS-VIEWER64 and IS-VIEWER64 for Debugger, this can be downloaded from http://intsys.co.jp/tool/isv/. 
+
+        A thread profiler API has been added that measures the execution time for each thread.
+
+New Sample Programs:
+-------------------------
+
+    spritemonkeyEX
+      
+      This is a sample using the S2DEX2 sprite microcode.
+      Since 32-bit textures will not be displayed normally when used under the current S2DEX2 microcode specifications, they can be displayed using the guS2DEmuBgRect1Cyc() emulation function for the corresponding mode.
+
+    threadmonkey
+
+      This is a sample showing how to use the API thread profiler.
+      The body of the program is exactly the same as blockmonkey, but the block.c portion has been rewritten with an added function for outputting the profile results as a debugprintout. 
+
+Revised Sample Programs::
+-----------------------------
+
+    Sample Programs in General
+
+      When the environment variable NOMAKEMASK is defined, Makefile is altered so that makemask is not executed when make FINAL=.
+      Several variable names and function names have been changed for source-sharing with CodeWarrior. Specific buffer alignment specifications also have been added.
+
+    gbpak
+
+      This program has been changed so that it waits for a Controller Read End message before executing the next processing.
+
+    playseq.naudio
+
+      The MAX_VOICES definition value has been changed from 24 to 32. 
+
+Changed Features::
+---------------
+
+    mgu (high-speed versions of gu functions)
+
+       Programs have been optimized with respect to gu-type functions which are utilized with relatively high frequency, replacing them with functions that are executed at higherspeeds.
+
+    osInitialize()
+
+       This has been made into a macro, and has been modified so that processing related to debugger model dependency is performed more strictly.
+
+    gbi.h
+
+       Bugs with the gsSPLoadGeometryMode and gsDPSetConvert macros have been corrected. This has also bee corrected so that a gcc warning is not issued when {} are missing for Gfx.
+
+    os_convert.h
+
+       This has been corrected so that the OS_K0_TO_PHYSICAL macro operates properly when CodeWarrior is used.
+
+    os_debug.h
+
+        API definition was added for the thread profiler
+
+    os_host.h
+
+       This has been made to correspond with the new orientalize() macro and the subdivision of the debugger model-dependent parts. 
+
+    os_internal_reg.h
+
+       Added definitions for __osGetWatchLo and __osSetWatchLo.
+
+    os_thread.h
+
+       Added structure definitions, etc. for the tread profiler. 
+
+    rcp.h
+
+       Changed 8-14 for DEVICE_TYPE to reserve. 
+
+Corrected Bugs:
+-----------------
+
+    OS
+
+    osGbpakReadWrite()
+
+     
+Corrected bug in which invalid values were returned when a 0 was given to size. 
+    osGBpakReadId()
+
+     Corrected bug in which registration data in ROM would not be properly read. 
+    guS2DEmuBgRect1Cyc()
+
+     Corrected bug in which 32-bit textures were not properly handled.
+
+    osSetTimer()
+
+     Changed so that the timer would be reset to a minimum of 10us because the counter would overflow before the register was set when the timer was activated for short periods of time. 
+
+    assert()
+
+     Changed so that it could be used even when libgultra.a was being used.
+
+Expanded Features: 
+---------------
+
+      AUDIO
+
+      GRAPHICS
+
+      OS
+
+      64DD
+
+
+Sample Programs No Longer Supported: 
+---------------------------------------
+
+      The following sample programs have been moved to the /PR/demos_old/ directory. 
+
+        nnsample1
+        nnsample2
+
+
+Features No Longer Supported: 
+-------------------------
+
+Precautions:
+-------
+
+
+Document:
+-------------
+
+----------------------------------------------------------------------
+Warning
+----------------------------------------------------------------------
+
+Graphics:
+---------------
+
+Audio:
+-----------
+
+OS:
+---
+
+Demo:
+-----
+
+Tools:
+-------
+
+Debugger:
+---------
+
+----------------------------------------------------------------------
+Appendix A
+----------------------------------------------------------------------
+

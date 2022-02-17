@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuGfxInit</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuGfxInit(void)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<br>
+None
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Initialize and start the graphics thread and the graphics task	manager.	The following initialization 
+and setup is performed by the nuGfxInit	function.
+</p>
+
+<p><b>Start the graphics thread</b>
+<br>
+Create and start the thread which synchronizes with retrace and executes the call back function.	The 
+call back function of retrace is registered by the	nuGfxFuncSet function. And this thread is synchronized 
+with the	PRE NMI event and execute the call back function.</p>
+
+<p>Register the	call back function of the PRE NMI with the nuGfxPreNMIFuncSet	function.
+
+
+<p><b>Registration of the frame buffer, the Z-Buffer and the graphics microcode</b><BR>
+Set addresses of the frame buffer and Z-Buffer in the graphics	task manager.  Also the graphics microcode is registered.  The
+	default settings are registered in 0x8038F800 of the RDRAM,	320 x 240 16 bit, 320x240 from 0x80000400 for the Z-Buffer, and	the 
+F3D system, L3DEX and S2DEX for the microcode.</p>
+
+<p>The frame buffer can be reset using the nuGfxSetCfb function.	The Z-Buffer can be reset using the nuGfxSetZBuffer function.
+	The graphics microcode can be registered again using the	nuGfxSetUcode function.
+</p>
+
+<p><b>Registration of the call back function which is executed when completing the graphics task.</b>
+
+<br>When NU_GFX_SWAPBUFFER is specified as an argument, if the	nuGfxTaskStart function is executed, the nuGfxSwapCfb function	
+is registered as the function which is called when completing	the task.</p>
+
+<p>Registration can be done using the nuGfxSwapCfbFuncSet function	when registering the application's own process.</p>
+
+<p><b>Initialization of the RDP</b>
+<br>
+Initial setting of the RDP is performed by starting the graphics task	since the value of RDP is not fixed.</p>
+
+<p>The nuGfxTaskStart function can be used after calling this	function.</p>
+
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="nuGfxFuncSet.htm">nuGfxFuncSet</a>
+<br><a href="nuGfxSetCfb.htm">nuGfxSetCfb</a>
+<br><a href="nuGfxSetZBuffer.htm">nuGfxSetZBuffer</a>
+<br><a href="nuGfxSetUcode.htm">nuGfxSetUcode</a>
+<br><a href="nuGfxSwapCfb.htm">nuGfxSwapCfb</a>
+<br><a href="nuGfxSwapCfbFuncSet.htm">nuGfxSwapCfbFuncSet</a>
+
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

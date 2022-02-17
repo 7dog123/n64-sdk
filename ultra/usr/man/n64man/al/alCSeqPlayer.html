@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE="-2" COLOR=#29296B FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT> 
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../al/al.html">
+            <IMG BORDER=0 SRC="../images/mh_audio.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<FONT COLOR="0000A0"><H2>alCSeqPlayer</H2></FONT>
+
+<B>Syntax</B>
+<FONT FACE="COURIER NEW,COURIER" size="3"><pre>#include &lt;libaudio.h&gt;
+
+void    alCSPNew(ALCSPlayer *seqp, ALSeqpConfig *config);
+
+void    alCSPDelete(ALCSPlayer *seqp);
+
+void    alCSPSetSeq(ALCSPlayer *seqp, ALCSeq *seq);
+
+ALCSeq  *alCSPGetSeq(ALCSPlayer *seqp);
+
+void    alCSPSetBank(ALCSPlayer *seqp, ALBank *b);
+
+s32     alCSPGetState(ALCSPlayer *seqp);
+
+void    alCSPPlay(ALCSPlayer *seqp);
+
+void    alCSPStop(ALCSPlayer *seqp);
+
+void    alCSPSetBank(ALCSPlayer *seqp, ALBank *b);
+
+void    alCSPSetTempo(ALCSPlayer *seqp, s32 tempo);
+
+s32     alCSPGetTempo(ALCSPlayer *seqp);
+
+s16     alCSPGetVol(ALCSPlayer *seqp);
+
+void    alCSPSetVol(ALCSPlayer *seqp, s16 vol);
+
+void    alCSPSetChlProgram(ALCSPlayer *seqp, u8 chan, u8 prog);
+
+s32     alCSPGetChlProgram(ALCSPlayer *seqp, u8 chan);
+
+void    alCSPSetChlFXMix(ALCSPlayer *seqp, u8 chan, u8 fxmix);
+
+u8      alCSPGetChlFXMix(ALCSPlayer *seqp, u8 chan);
+
+void    alCSPSetChlPan(ALCSPlayer *seqp, u8 chan, ALPan pan);
+
+ALPan   alCSPGetChlPan(ALCSPlayer *seqp, u8 chan);
+
+void    alCSPSetChlVol(ALCSPlayer *seqp, u8 chan, u8 vol);
+
+u8      alCSPGetChlVol(ALCSPlayer *seqp, u8 chan);
+
+void    alCSPSetChlPriority(ALCSPlayer *seqp, u8 chan, u8 priority);
+
+u8      alCSPGetChlPriority(ALCSPlayer *seqp, u8 chan);
+
+void    alCSPSendMidi(ALCSPlayer *seqp, long ticks, u8 status, u8 
+byte1, u8 byte2);</FONT></pre>
+
+<P>
+<B>Explanation</B><BR>
+The Nintendo 64 Audio Library supports the playback of MIDI sequences using
+either the Type 0 MIDI Sequence Player (function names that begin with alSeqp)
+or the Compressed MIDI Sequence Player (function names that begin with alCSP).<BR>
+<BR>
+
+This page details the Compressed MIDI Sequence Player. For details about
+the Type 0 MIDI Sequence Player, see the <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alSeqPlayer.html">alSeqPlayer</A></FONT> page.<BR>
+<BR>
+
+The principle differences between the two MIDI players are the handling of
+loops, and the compression of data. Details are discussed in the Audio Library and Audio Formats sections of the <I>Nintendo
+64 Programming Manual.</I><BR>
+<BR>
+
+The sequence player handles the playback of the sequence, but the actual
+sequence data is handled by a Sequence (see <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSeq.html">alCSeq</A></FONT>).<BR>
+<BR>
+
+To use a Compressed Sequence Player, you must first initialize an
+ALCSPlayer structure to represent it. This is accomplished by calling the
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPNew.html">alCSPNew</A></FONT> function.<BR>
+<BR>
+
+After initializing the ALCSPlayer structure, you must set the bank and
+the sequence by calling <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetBank.html">alCSPSetBank</A></FONT> and <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetSeq.html">alCSPSetSeq</A></FONT> respectively.<BR>
+<BR>
+
+To start the sequence player, call <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPPlay.html">alCSPPlay</A></FONT>. To stop the sequence player, 
+call <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPStop.html">alCSPStop</A></FONT>. The sequence player can only have one target sequence at 
+a time. You must stop a sequence before setting and playing a new sequence. 
+You should not attempt to switch banks while a sequence is playing. 
+You can use <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetSeq.html">alCSPGetSeq</A></FONT> to determine if the sequence player is fully 
+stopped. When you call <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPStop.html">alCSPStop</A></FONT>, all processing of the sequence will 
+stop and all notes will be turned off.<BR>
+<BR>
+
+When a sequence is stopped, it will not rewind; it continues to point
+to its current location. This allows you to restart a sequence from where
+it was stopped by calling <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPPlay.html">alCSPPlay</A></FONT>. Sustained notes that were cut
+off by a call to <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPStop.html">alCSPStop</A></FONT> are not restarted, only new notes are
+processed.<BR>
+<BR>
+
+If you want to rewind the sequence or relocate to another point in the
+sequence, you can create an ALCSeqMarker at the desired location by calling
+the <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSeqNewMarker.html">alCSeqNewMarker</A></FONT> function. Then call <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSeqSetLoc.html">alCSeqSetLoc</A></FONT> to rewind or
+relocate the sequence.  Note that these calls do not affect the channel
+playback state, so you must ensure that the channel
+arguments (such as program, volume, pan, and so on) are set to appropriate values
+for the given sequence location.<BR>
+<BR>
+
+Channel arguments can be set by calling their individual functions or by sending
+the appropriate midi data using the <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSendMidi.html">alCSPSendMidi</A></FONT> function. Music can be created in
+real time and played back by calling the <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSendMidi.html">alCSPSendMidi</A></FONT><BR> function.<BR>
+<BR>
+
+The compressed MIDI sequence player does not support loops created by application
+programming interface (API) calls. However, the Type 0 MIDI sequence player does. To loop music using the
+compressed MIDI sequence player, you must ensure that the sequences have loop points
+embedded in them. To learn how to embed loop points, see the Audio Library section of
+the <I>Nintendo 64 Programming Manual.</I>
+
+<BR><BR><B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSeq.html">alCSeq</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPNew.html">alCSPNew</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPDelete.html">alCSPDelete</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetSeq.html">alCSPSetSeq</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetSeq.html">alCSPGetSeq</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPPlay.html">alCSPPlay</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPStop.html">alCSPStop</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetBank.html">alCSPSetBank</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetTempo.html">alCSPSetTempo</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetTempo.html">alCSPGetTempo</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetVol.html">alCSPGetVol</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetVol.html">alCSPSetVol</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetChlProgram.html">alCSPSetChlProgram</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetChlProgram.html">alCSPGetChlProgram</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetChlFXMix.html">alCSPSetChlFXMix</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetChlFXMix.html">alCSPGetChlFXMix</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetChlPan.html">alCSPSetChlPan</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetChlPan.html">alCSPGetChlPan</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetChlVol.html">alCSPSetChlVol</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetChlVol.html">alCSPGetChlVol</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSetChlPriority.html">alCSPSetChlPriority</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPGetChlPriority.html">alCSPGetChlPriority</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alCSPSendMidi.html">alCSPSendMidi</A></FONT><BR>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last Updated April, 1999
+            </B>
+            </FONT> 
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT> 
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+
+

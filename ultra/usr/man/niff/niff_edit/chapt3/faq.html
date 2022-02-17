@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>FAQ</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>FAQ</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="目次へ" border="0"></a>
+<a href="message.html"><img src="images/previous.gif" alt="前ページへ" border="0"></a>
+<a href="support.html"><img src="images/next.gif" alt="次ページへ" border="0"></a>
+
+<hr>
+
+<p>Below is a FAQ concerning the use of NIFF Editor.</p>
+
+<dl>
+<dt><a name="faq1"><font color="red"><strong>How do I update to the latest version of NIFF Editor?</strong></font></a>
+<dd><p>NIFF Editor support is available from the <a href="https://ntsc.nintendo.co.jp" target="_blank">NTSC-ONLINE</a> home page.  Here you can find answers to NIFF Editor questions and download the latest software version.</p>
+
+<dt><a name="faq2"><font color="red"><strong>I updated NIFF Editor but nothing seems to have changed...</strong></font></a>
+<dd><p>After the NINTENDO<sup>64</sup> Developer's Kit has been installed, the first time you update NIFF Editor you need to manually go in and delete all files and sub-directories from the directory shown below:</p>
+
+<ul>
+<li>c:\nintendo\n64kit\niff\bin\niffedit    (this is the default location)
+</ul>
+
+<p>In addition, if you are using the Update setup program and the only component that is already installed is NIFF Editor, then you must first go in and delete NIFF Editor using Add/Remove Programs in the Control Panel.</p>
+
+<dt><a name="faq3"><font color="red"><strong>How do I change the home page address displayed in Online Support in the Help menu?</strong></font></a>
+<dd><p>The Online Support home page address is set with the following Registry key:</p>
+
+<ul>
+<li>HKEY_CURRENT_USER\Software\Intelligent Systems\NIFF Editor\Settings\OnlineAddress
+</ul>
+
+<p>By changing this key, the user can specify any address they want.  Before doing this, please backup the existing Registry and take special care, since in the worst-case scenario the changes can lead to faulty operation of NIFF Editor and even Windows itself.</p>
+
+<dt><a name="faq4"><font color="red"><strong>I can't preview when I select Quick Preview from the Tools menu.</strong></font></a>
+<dd><p>When Quick Preview is selected, NIFF Editor executes the quickprev.bat file.  This batch file describes a process for IS-VIEWER64 to load the NIFF file without first performing makemask.  This works because version 1.03p and later of nload.exe contains a function to perform makemask, obviating the need to perform makemask ahead of time.  Thus, if you are using an earlier version of nlaod.exe, you will not be able to preview the file because it will be loaded into IS-VIEWER64 without performing makemask.</p>
+<p>If you have a version of nload.exe earlier than version 1.03p, add the makemask process to the quickprev.bat file, or download the latest version of nload.exe from Intelligent Systems'  <a href="http://www.intsys.co.jp/tool/isv/">IS-VIEWER64 home page</a> (<a href="http://www.intsys.co.jp/tool/isv/">http://www.intsys.co.jp/tool/isv/</a>).</p>
+
+</dl>
+
+<hr>
+
+</body>
+</html>

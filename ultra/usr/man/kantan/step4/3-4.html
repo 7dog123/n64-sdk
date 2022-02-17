@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>4.3.4 Debugging With the Development-Use 64DD</H1>
+
+
+<H2>Booting From the Disk</H2>
+
+<P>When a game is comprised only of disks, the IPL written in DDROM is used for booting the game from the disk. This is called a disk boot.
+
+<P>When debugging with the N64 Control Deck, the special development-use IPL (file name <SPAN ID=mono>ipl4rom</SPAN>) is written to the flash cassette for use. When the program is developed with Partner-N64, <SPAN ID=mono>resetdd</SPAN> is executed in the Partner-N64 command window in order to transfer the development-use IPL into emulation ROM.</P>
+
+<P><IMG SRC="../images/4-3-4-1.gif" ALIGN="bottom" WIDTH=539 HEIGHT=276>
+
+
+<H2>Booting From the Game Pak</H2>
+
+<P>If, on the other hand, the game is comprised of disks and a Game Pak, the ROM cartridge is booted first because it has priority. After that, data is read from the disk and possibly also written to the disk as the game progresses and the occasion demands. For a Game Pak boot, the application program is used instead of the special development-use IPL.
+
+<P>When debugging with the N64 Control Deck, the part of the game that is on the Game Pak is written to the flash cassette. When the program is developed with Partner-N64, the Game Pak part of the game is transferred to Partner-N64's emulation ROM and then executed.</P>
+
+<P><IMG SRC="../images/4-3-4-2.gif" ALIGN="bottom" WIDTH=539 HEIGHT=285>
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

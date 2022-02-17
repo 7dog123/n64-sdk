@@ -1,0 +1,63 @@
+# common.win
+#  Common definition for gmake on win32
+#  Copyright (C) 1998, NINTENDO Co,Ltd, MONEGI CORPORATION.
+
+# Set MODULE and SRCS
+
+TARGET		=	lib$(MODULE).a
+DEBUGTARGET	=	lib$(MODULE)_d.a
+
+N64KITDIR	=	c:\nintendo\n64kit
+GLIBDIR		=	..\..
+LIB		=	$(ROOT)/usr/lib
+LPR		=	$(LIB)/PR
+INC		=	$(ROOT)/usr/include
+CC		=	gcc
+LD		=	ld
+MAKE		=	make -fMakefile.win
+ifeq	($(OS),Windows_NT)
+RM		=	del
+CP              =       copy
+RMTREE		=	del /S /Q
+else
+RM		=	deltree /Y
+CP              =       copy
+RMTREE		=	deltree /Y
+endif
+CPTREE		=	xcopy /S
+AR		=	ar
+ARFLAGS		=	cr
+RANLIB          =       ranlib
+MAKEROM		=	mild
+DEBUG		=	-O
+CCFLAGS		=	$(DEBUG) $(MOPTDEF) -Wstrict-prototypes -Wimplicit -Wreturn-type -Wunused -G 0
+CCDEFS		=	-D_WIN32 -D_LANGUAGE_C -D_MIPS_SZLONG=32 -D_MIPS_SZINT=32 -DF3DEX_GBI_2 -D__ISV__
+INCDIRS		=	-I../include -I$(INC)/PR -I$(INC) -I$(GLIBDIR)/include
+OBJS		=	$(SRCS:.c=.o)
+
+.SUFFIXES: .a .c .o
+
+.c.o:
+	$(CC) -c $(CCFLAGS) $(INCDIRS) $(CCDEFS) $<
+
+default: $(TARGET)
+
+debug:
+	$(MAKE) TARGET=$(DEBUGTARGET) DEBUG=-g' '-D__DEBUG__=100 default
+
+$(TARGET): $(OBJS)
+	$(AR) $(ARFLAGS) $(TARGET) $(OBJS)
+	$(RANLIB) $(TARGET)
+	-@$(CP) $(TARGET) $(GLIBDIR)\lib
+
+clean_debug:
+	-$(RM) $(DEBUGTARGET)
+	-$(RM) *.o
+
+clean_default:
+	-$(RM) $(TARGET)
+	-$(RM) *.o
+
+clean:
+	-$(RM) $(TARGET) $(DEBUGTARGET)
+	-$(RM) *.o

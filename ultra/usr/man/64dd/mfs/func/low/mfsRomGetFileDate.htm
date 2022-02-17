@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileDate</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileDate<br>
+mfsRamGetFileDate</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileDate(MfsDirID dirID, LEODiskTime* time)
+	s32 mfsRamGetFileDate(MfsDirID dirID, LEODiskTime* time)
+Arguments:	dirID	Directory ID of file (directory)
+	*time	Date of file (directory ) (LEODiskTime structure)
+Return value:Error
+Function:	Obtains date of file (directory)
+Description:	This function obtains the date and time of the file (directory) specified by dirID and stores them in time.
+
+Main errors:
+	MFS_ERR_NO		Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

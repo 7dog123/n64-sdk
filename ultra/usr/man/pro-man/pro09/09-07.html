@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 9</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro09/index9.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro09/index9.8.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Mixing CPU and SP Addresses</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+It is permissible to link segments given a CPU virtual address with those given a SP segment address.  It may appear counter-intuitive and error-prone to link relocatables of entirely incompatible address spaces.  As it turns out, the benefits outweigh the potential risks, because it allows the application code to address SP display list data symbolically.
+<P>
+For example, suppose a segment is composed of the following display list data:
+<p>
+<pre><font face="courier" size="3">
+static Vp vp = {
+	    SCREEN_WD*2, SCREEN_HT*2, G_MAXZ/2, 0,	/* scale */
+	    SCREEN_WD*2, SCREEN_HT*2, G_MAXZ/2, 0,	/* translate */
+};
+
+Gfx rspinit_dl[] = {
+    gsSPViewport(&vp),
+    gsSPClearGeometryMode(0xffffffff),
+    gsSPSetGeometryMode(G_SHADE | G_SHADING_SMOOTH),
+    gsSPEndDisplayList(),
+};
+</pre></font>
+<p>
+
+The beginning of the display list rspinit_dl is embedded somewhere in the segment. Rather than computing its offset into the segment, the display list is simply provided symbolically: 
+<P>
+<pre><font face="courier" size="3">
+gSPDisplayList(glistp++, rspinit_dl);</pre></font>
+<P>
+The compiler and linker do the work of computing the address of <font face="courier" size="-1">rspinit_dl</font> within the segment. Thus, if the relative location of the display list <font face="courier" size="-1">rspinit_dl</font> changes, the code will still remain valid (and more readable). Note that the CPU does not reference any of the data in this display list; the CPU just passes a reference to the display list data to the SP.
+
+<P>
+A more complicated example involves using the mixed symbol table to work with memory regions created by the CPU and read by the SP.  In this case, a single SP segment refers to two different underlying DRAM regions.  This technique can be useful when static display lists need to refer to dynamic data that is double buffered. The actual DRAM location currently being pointed to is swapped by setting the appropriate SP segment register.
+<P>
+The actual memory for the dynamic data can be declared and created within a KSEG0 code segment as follows:
+<P><pre><font face="courier" size="3">
+typedef struct {
+  Mtx project	ion;
+	   Mtx modeling;
+	    Gfx glist[2048];
+	} Dynamic_t;
+
+	Dynamic_t dynamicBuffer[2];
+	Dynamic_t *dynamicPointer = &dynamicBuffer[0];
+</pre></font>
+<P>
+The segment contents can then be modified by the CPU directly:
+<P>
+<pre><font face="courier" size="3">
+	guOrtho(&dynamicp->projection,
+				-SCREEN_WD/2.0, SCREEN_WD/2.0,
+				SCREEN_HT/2.0, SCREEN_HT/2.0, 1, 10, 1.0);
+	guRotate(&dynamicp->modeling, theta, 0.0, 0.0, 1.0);
+</pre></font>
+
+<P>
+<br>
+The SP view of the dynamic segment is created by creating a relocatable with the following parallel definition and assigned to, for example, segment register 4 in the ROM specification file:
+
+<P>
+<pre><font face="courier" size="3">Dynamic_t rspdynamic;</pre></font>
+<P>
+
+Since the relocatable contains only uninitialized data (bss), no actual bits on the ROM are used. But more importantly, the symbol rspdynamic is made available to other objects. Its value is the segment address of the dynamic segment.
+
+<P>
+The SP segment register 4 is then mapped to the actual memory for the dynamic segment with the following command:
+
+<pre><font face="courier" size="3">gSegment(glistp++, 4, osVirtualToPhysical(dynamicp);</pre></font>
+<P>
+
+Then the SP addresses of the dynamic structure can be used, even from static display lists, to build display lists that reference components of the dynamic section:
+<pre><font face="courier" size="3">gsSPMatrix(&dynamic.projection,
+		  G_MTX_PROJECTION|G_MTX_LOAD|G_MTX_NOPUSH);
+
+	gsSPMatrix(&dynamic.modeling,
+		  G_MTX_MODELVIEW|G_MTX_LOAD|G_MTX_NOPUSH);
+</pre></font>
+
+<P>
+
+As with the previous example, using the compiler and linker to generate addresses allows the data structures to be modified, reordered, and so on, without changes to unaffected areas of the application. 
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

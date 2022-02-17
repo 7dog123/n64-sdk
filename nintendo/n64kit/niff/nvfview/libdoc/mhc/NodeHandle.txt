@@ -1,0 +1,22 @@
+Function 
+(  NodeHandle holds both the pointer and the index to a node. 
+
+Functions 
+(  void mhcNodeHandleBind( MhcNodeHandle *handle_ptr,
+			  MhcModule *module_ptr,
+			  MhcScene *scene_ptr )
+  Sets a value in pointer based on index. 
+
+Macros 
+(  _mhcNodeHandleInit(handle_ptr)
+  Initializes NodeHandle. 
+
+(  _mhcNodeHandleSetIndex(handle_ptr,idx)
+  Specifies index for NodeHandle. 
+
+(  _mhcNodeHandleIsExternal(handle_ptr)
+  Checks whether node indicated by NodeHandle is an external node. 
+
+History 
+  1998/10/ 7 Takamitsu Hirata 
+    Node.h, node.c:   Initial version 

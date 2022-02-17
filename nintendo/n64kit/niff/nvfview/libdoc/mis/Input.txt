@@ -1,0 +1,107 @@
+Function 
+(  Provides basic input stream functions. 
+
+Macros 
+(  _misInputGet(input_ptr)
+  Gets 1 byte from misInput.  Returns a negative value if the get fails. 
+
+(  _misInputClose(input_ptr)
+  Closes misInput. 
+
+(  _misInputDestroy(input_ptr)
+  Destroys misInput. 
+
+(  _misInputSetStatus(input_ptr,status_bit)
+  Sets the status flag for misInput.  Used in the misInput derivative class. 
+
+(  _misInputClearStatus(input_ptr,status_bit)
+  Cancels the status flag for misInput.  Used in the misInput derivative class. 
+
+(  _misInputIsOpened(input_ptr)
+  Returns a value other than 0 [zero] if misInput is open. 
+
+(  _misInputIsEof(input_ptr)
+  Returns a value other than 0 [zero] when misInput has reached EOF (End Of File). 
+
+(  _misInputIsFailure(input_ptr)
+  Returns a value other than 0 [zero] when misInput will not function for reasons other than EOF. 
+
+(  _misInputGetErrorStatus(input_ptr)
+  Returns an error status bit.  Currently, there are MIS_INPUT_STATUS_EOF_BIT and 
+  MIS_INPUT_STATUS_FAILURE_BIT. 
+
+Functions 
+(  void misInputInit( MisInput *input_ptr )
+  Initializes misInput.
+
+(  u32 misInputRead( MisInput *input_ptr, const u32 byte_count,
+		    void *buffer_ptr )
+  Reads only the number of bytes specified by byte_count from misInput to buffer_ptr.  If an error occurs
+  during this operation, the read stops at that point.  The number of bytes actually read will be returned. 
+
+(  s8 misInputGetSChar( MisInput *input_ptr )
+  Reads 1 byte from misInput and returns it as s8.  If an error occurs during this operation, the read stops 
+  at that point and the return value is unspecified. 
+
+(  u8 misInputGetUChar( MisInput *input_ptr )
+  Reads 1 byte from misInput and returns it as u8.  If an error occurs during this operation, the read stops 
+  at that point and the return value is unspecified. 
+
+(  s16 misInputGetSShort( MisInput *input_ptr )
+  Reads 2 bytes from misInput and returns it as s16.  If an error occurs during this operation, the read 
+  stops at that point and the return value is unspecified. 
+
+(  u16 misInputGetUShort( MisInput *input_ptr )
+  Reads 2 bytes from misInput and returns it as u16.  If an error occurs during this operation, the read 
+  stops at that point and the return value is unspecified. 
+
+(  s32 misInputGetSLong( MisInput *input_ptr )
+  Reads 4 bytes from misInput and returns it as s32.  If an error occurs during this operation, the read 
+  stops at that point and the return value is unspecified. 
+
+(  u32 misInputGetULong( MisInput *input_ptr )
+  Reads 4 bytes from misInput and returns it as u32.  If an error occurs during this operation, the read 
+  stops at that point and the return value is unspecified. 
+
+(  float misInputGetFloat( MisInput *input_ptr )
+  Reads 4 bytes from misInput and returns it as float.  If an error occurs during this operation, the read 
+  stops at that point and the return value is unspecified. 
+
+
+Macros
+(  _misInputGet( MisInput *input_ptr )
+  Gets and returns 1 byte from misInput.  If an error occurs, MIS_INPUT_GET_ERROR (this value will 
+  always be negative) is returned. 
+
+(  _misInputClose( MisInput *input_ptr )
+  Closes an open misInput.  If successful, a 0 [zero] is returned, if it fails, a value other than 0 [zero] is 
+  returned. 
+
+(  _misInputDestroy( MisInput *input_ptr )
+  Destroys misInput.  This can also be used on the objects of a class derived from misInput. 
+
+(  _misInputSetStatus( MisInput *input_ptr, int status )
+  Sets the status of misInput.  This must not be used by normal applications. 
+
+(  _misInputClearStatus( MisInput *input_ptr, int status )
+  Clears the status of misInput.  This must not be used by normal applications. 
+
+(  _misInputIsOpened( MisInput *input_ptr )
+  Returns a value other than 0 [zero] if misInput is open. 
+
+(  _misInputIsEof( MisInput *input_ptr )
+  Returns a value other than 0 [zero] if misInput has reached EOF. 
+
+(  _misInputIsFailure( MisInput *input_ptr )
+  Returns a value other than 0 [zero] if an error other than EOF has occurred with misInput. 
+
+History 
+  1998/ 9/25 Takamitsu Hirata 
+    Input.h, input.c :  Initial version 
+  1998/ 9/29 Takamitsu Hirata 
+  (  Discarded misGetShort( ), misGetLong( ) and replaced them with misGet[SU]Char( )
+    misGet[SU]Short( ), misGet[SU]Long( ).
+  (  Changed so that get, close, and destroy can also be set with misInputInit( ). 
+  1998/10/ 7 Takamitsu Hirata 
+  (  Added macro groups misGetErrorStatus( ), _misInputSetStatus( ), _misInputClearStatus( ), 
+     _misInputIsOpened( ), _misInputIsEof( ), _misInputIsFailure( ) for status processing. 

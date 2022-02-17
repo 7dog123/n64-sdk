@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="5"><strong>nuContPakFileFwrite</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContPakFileFwrite(NUContPakFile *file, s32 offset, s32
+size, u8* buf)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>*file	Controller Pak structure
+offset	Offset position
+size	Size of write
+*buf	Buffer where data to be written is stored</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p>Writes game data to the Controller Pak game note</p>
+
+<p>The "size" bytes of data in "buf" are written to the game note specified by "file" starting from the "offset" position.  Neither offset nor size needs to be a multiple of 32.  When these values are not multiples of 32, the function makes the adjustment internally for the write process.</p>
+
+<p><strong>Errors:</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td>PFS_ERR_NOPACK</td>
+        <td>Nothing is inserted in the specified Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NEW_PACK</td>
+        <td>The Controller Pak may have been changed.  Please perform the Open process again.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_INCONSISTENT</td>
+        <td>There is an inconsistency in the file system management area.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_CONTRFAIL</td>
+        <td>Data transfer with Controller has failed.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_INVALID</td>
+        <td>Invalid parameter or the game note does not exist.</td>
+    </tr>
+</table>
+
+<hr>
+
+<pre>Reference: <a href="nuContPakFileFread.htm">nuContPakFileFread</a>, <a href="nuContPakFileReadWrite.htm">nuContPakFileReadWrite</a>, <a
+href="nuContPakFileRead.htm">nuContPakFileRead</a>,<BR>
+           <a href="nuContPakFileWrite.htm">nuContPakFileWrite</a></pre>
+
+<p><a href="index.htm"><img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+</body>
+</html>

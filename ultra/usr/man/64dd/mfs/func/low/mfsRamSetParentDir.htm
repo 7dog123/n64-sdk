@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetParentDir</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetParentDir</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetFileParentDir(MfsDirID upDirID, MfsDirID dirID)
+Arguments:	upDirID		Directory ID of directory for change
+	dirID		Directory ID of file
+Return value:Error
+Function:	Changes the parent directory
+Description:	This function changes the directory to which the file specified by dirID belongs to the directory specified by upDirID.  Only the file can be changed, and not the directory.  The function moves the file.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

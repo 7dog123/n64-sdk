@@ -1,0 +1,689 @@
+<html>
+<title>
+MatNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+9. Mat Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="matNodeC">(1) Mat Mode Data Chunk</A>
+</h3>
+<blockquote>
+The following data will be added to Mat Node. 
+<p>
+
+<table border>
+<tr>
+<th rowspan="29"> 
+
+</th>
+<td>
+u32
+</td>
+<td>
+mat_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_mat_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_shade_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_color_type0
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_color_type1
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_alpha_type0
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+mat_alpha_type1
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+prim_red
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+prim_green
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+prim_blue
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+prim_alpha
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag0
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag1
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag2
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag3
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag4
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag5
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag6
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_flag7
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+local_light_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_index(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+tex_index(tex_num - 1)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<th rowspan="39">
+NintendoExtensionBlock
+</th>
+
+
+<td>
+float
+</td>
+<td>
+ambient_red
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+ambient_green
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+ambient_blue
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+ambient_alpha
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+emission_red
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+emission_green
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+emission_blue
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+emission_alpha
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+diffuse_red
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+diffuse_green
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+diffuse_blue
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+diffuse_alpha
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+mat_type_for_fog
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+mat_color_type0_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+mat_color_type1_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+mat_alpha_type0_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+mat_alpha_type1_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+prim_red_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+prim_green_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+prim_blue_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+float
+</td>
+<td>
+prim_alpha_for_fog
+</td>
+</tr>
+
+
+
+
+<tr bgcolor="ffc0c0"> 
+<td>
+u32
+</td>
+<td>
+external_local_light_file_name_index
+</td>
+</tr>
+
+
+
+<tr bgcolor="ffc0c0"> 
+<td>
+u32
+</td>
+<td>
+external_local_light_name_index
+</td>
+</tr>
+
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_num
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td >
+u32
+</td>
+<td>
+prim_color_anim_num
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+prim_color_anim_num_for_fog
+</td>
+</tr>
+
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_file_name_index(external_name_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_tex_name_index(external_tex_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+PrimColorAnim(0)
+</center>
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+PrimColorAnim(prim_color_anim_num - 1)
+</center>
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+PrimColorAnimForFog(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+PrimColorAnimForFog(prim_color_anim_num_for_fog - 1)
+</center>
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+--- other extension data ---
+</center>
+</td>
+</tr>
+
+<tr>
+<th rowspan="1">
+</th>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+</table>
+
+<P><A HREF="mat_E.htm#matNodeD">See Description</A></P>
+
+</blockquote>
+
+<h3>
+(2) <A NAME="primColorC">PrimColorAnim, PrimColorAnimForFog Data Chunk</A>
+</h3>
+
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+
+<tr>
+<td>
+float
+</td>
+<td>
+prim_color_anim_red
+</td>
+</tr>
+
+<tr>
+<td>
+float
+</td>
+<td>
+prim_color_anim_green
+</td>
+</tr>
+
+<tr>
+<td>
+float
+</td>
+<td>
+prim_color_anim_blue
+</td>
+</tr>
+
+<tr>
+<td>
+float
+</td>
+<td>
+prim_color_anim_alpha
+</td>
+</tr>
+
+
+</table>
+
+<P><A HREF="mat_E.htm#primColorD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="5"><strong>nuContGBPakRegWrite</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContGBPakRegWrite(NUContPakFile* handle, u16 addr, u8
+data)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>handle	GB Pak control structure (shared with Controller Pak structure)
+addr	CPU address of Game Boy Game Pak
+data	Data value to write</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Writes to the Memory Controller register</strong></p>
+
+<p>Writes the "data" value to the memory bank controller register (MBC1, MBC2, MBC3) specified by "addr."
+   One byte is sufficient when writing to the memory bank controller register, but due to hardware restrictions with the GB Pak, data is written 32 bytes at a time.  This function writes 0 for the first 31 bytes and writes the "data" value at the end.  Please be careful, because the "data" value is written to an address that is 31 bytes larger than the address specified by "addr."</p>
+
+<p>nusys.h has the following variable definitions.</p>
+
+<pre>Register 0    NU_CONT_GBPAK_MBC_REG0_ADDR  	0x0000<br>
+Register 1    NU_CONT_GBPAK_MBC_REG1_ADDR  	0x2100<br>
+Register 2    NU_CONT_GBPAK_MBC_REG2_ADDR  	0x4000<br>
+Register 3    NU_CONT_GBPAK_MBC_REG3_ADDR  	0x6000</pre>
+
+<p>This function is for MBC1, MBC2, and MBC3.  If using other memory controllers, please refer to this function.</p>
+
+<p><strong>Errors:</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td>PFS_ERR_NOPACK</td>
+        <td>Nothing is inserted in the specified Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_DEVICE</td>
+        <td>Some device other than a GB Pak is inserted in the Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_CONTRFAIL</td>
+        <td>Data transfer with Controller has failed.  Either the Controller is not connected properly, or there may be some problem with the GB Pak or the Controller connector.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NO_GBCART</td>
+        <td>Game Boy Game Pak is not inserted in the GB Pak.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NEW_GBCART</td>
+        <td>Game Boy Game Pak has been removed and reinserted.</td>
+    </tr>
+</table>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

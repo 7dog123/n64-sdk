@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><b><img src="../nusystem2.gif" width="176"
+height="30"></b></font><font  FACE="ARIAL" size="4"><b>Function</b></font></p>
+
+<hr>
+<font face="arial">
+<pre><font color="#0000A0" size="6"><b>nuScGetGfxMQ</b></font></pre>
+
+<hr>
+<P>
+<font face="arial" size="-1">
+<b>Syntax</b><br>
+<font face="courier" size="3"><pre>OSMesgQueue* nuScGetGfxMQ(void)</pre></font>
+
+
+<P>
+<b>Arguments</b>
+<br>
+None
+
+<P>
+<b>Return Value</b>
+<br>
+The pointer for message queue of the graphics task thread.
+
+<P>
+<b>Explanation</b>
+<br>
+Pointer for message queue of the graphics task thread.
+
+<p>
+When a graphics task message is sent to the obtained message queue	the graphics task thread executes 
+the graphics task.  Normally,	since the graphics task is started by the	nuGfxTaskStart
+function, it is not necessary to call this function from the	application directly.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a href="nuScCreateScheduler.htm">nuScCreateScheduler</a>
+<br>
+<a href="../graphics/nuGfxTaskStart.htm">nuGfxTaskStart</a></pre>
+
+<p>
+<a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"><font FACE="ARIAL" size="4">Function</strong></font>
+
+<hr>
+<font face="arial">
+<pre><font color="#0000A0" size="6"><strong>nuPiReadWriteSram</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuPiReadWriteSram(u32 addr, void* buf_ptr, u32 size, s32
+flag)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>addr	is the SRAM address
+<p>
+<li>buf_ptr	is the pointer to the buffer
+<P>
+<li>size	is the transfer size
+<P>
+<li>flag	is the flag
+</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Reads/writes SRAM data
+
+<p>Uses the PI to read/write data in SRAM.
+   If "flag" is OS_READ, data is read from SRAM into RDRAM.  If it is OS_WRITE, data is written from RDRAM into SRAM.
+   The SRAM address must be a multiple of 2.  The buffer pointer must be a multiple of 8.
+   To use this function, the SRAM access handle must already be initialized by nuPiInitSram().</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a href="nuPiInitSram.htm">nuPiInitSram</a>
+<br><a href="nuPiReadSram.htm">nuPiReadSram</a>
+<br><a href="nuPiWriteSram.htm">nuPiWriteSram</a>
+
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

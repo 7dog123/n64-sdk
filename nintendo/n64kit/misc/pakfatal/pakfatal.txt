@@ -1,0 +1,55 @@
+//==================================================================//
+//								    //
+//	Program for damaging the Controller Pak's management area   //
+//								    //
+//		Copyright (C) 1998,1999 NINTENDO Co.,Ltd.	    //
+//			1998/09/14 By K.Ohki(SLANP)		    //
+//			1999/04/21 By Yutaka Murakami		    //
+//==================================================================//
+
+
+[1] About the program
+
+This program fills the contents of the Controller Pak (and at least, the 
+management area) with 0xff.  Please use this program for Controller Pak repair 
+checks.
+
+[2] How to use the program
+
+Since pakfatal is a ROM file, with the Indy emulator board you would load using:
+
+       %gload pakfatal.n64
+
+while with the Partner-N64 you would load with a lp command:
+        
+       >lp pakfatal
+
+
+Once this is loaded, execute the program after inserting the Controller Pak whose 
+management area you want to over-write into Controller 1.  Press the A Button.
+
+
+[3] Screen display
+
+      Status: OK
+              A normal Controller Pak is inserted in Controller 1.
+              By pushing the A Button you can fill the memory region with 0xff.
+
+      Status: NO PAK
+              Nothing is inserted into Controller 1            
+
+      Status: BROKEN or OTHER DEVICE
+              Either a Controller Pak with a damaged memory region or some
+              other device (Rumble Pak, etc) is inserted in Controller 1.
+
+      Done: ???[%]
+            Indicates the percentage of the Controller Pak filled with 0xff.
+            This is reset when a normal Controller Pak is inserted.
+
+
+[4] Other items
+
+Please do not use a Controller Pak that contains important data.  
+
+Please use this program only for Controller Pak debugging.
+

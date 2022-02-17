@@ -1,0 +1,17 @@
+Function name:mfsReadWriteLBA
+──────────────────────────────────────
+Format:	s32 mfsReadWriteLBA(u32 startLBA, u32 nLBAs, void* buf,s32 direction)
+Arguments:	startLBA	Starting block address
+	nLBAs		Number of blocks
+	*buf		Buffer
+	direction	Flag
+Return value:Error
+Function:	Performs read/write of disk
+Description:his function enables LeoReadWrite to be handled by using the MFS library.
+Data read/write processing is performed in units of LBAs.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.

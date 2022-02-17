@@ -1,0 +1,22 @@
+Function 
+-  Defines a group. 
+  Groups determine the order in which rendering is performed.  For instance, objects affiliated with
+  Group[0] will be rendered before objects affiliated with Group[31].  This function can be applied to the 
+  processing of decal objects and transparent bodies. 
+
+Functions -  void mrnGroupInit( MrnFog *fog )
+  Initializes mrnGroup. 
+
+-  Gfx *mrnGroupClearView( MrnGroup *group_ptr,
+			  MrnContext *context_ptr,
+			  Gfx *gfx_ptr )
+ Clears the mrnView set in the mrnGroup. 
+
+-  Gfx *mrnGroupDrawObjects( MrnGroup *group_ptr,
+			    MrnContext *context_ptr,
+			    Gfx *gfx_ptr )
+  Displays all of the objects affiliated with an mrnGroup sorted by texture image. 
+
+History
+  1998/10/28 Takamitsu Hirata 
+    Group.h, group.c :  Initial version 

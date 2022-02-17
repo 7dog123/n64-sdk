@@ -1,0 +1,599 @@
+<html>
+<body bgcolor="ffffff">
+
+<H5 align="right">NIFFeditor for SGI</H5>
+<h2>7.  各ノードの設定
+ <img src="../../../gif/update.gif" width="48" height="12"></h2>
+
+<a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./button.htm">
+<img src="../../../gif/previous.gif"
+border="0" width="65" height="17"></a>
+<a href="./spec.htm">
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a>
+
+<hr><!------------------------------------------------->
+<p>
+
+<dd>NIFFeditor for SGIでは各ノードをダブルクリックすることで、ノード設定用のダイアログを起動できます。現在ダイアログを起動できるノードは
+<a href=#SCENE>Scene</a>、
+<a href=#OBJ  >Obj  </a>、
+<a href=#LOD  >LOD  </a>、
+<a href=#SHAPE>Shape</a>、
+<a href=#MAT  >Mat  </a>、
+<a href=#TEX  >Texture</a>、
+<a href=#ENV  >Env  </a>、
+<a href=#CAM  >Cam  </a>、
+<a href=#LIGHT>Light</a>、
+<a href=#PART >Part </a>、
+<a href=#ANIM >Anim </a>、
+<a href=#CHAINROOT >ChainRoot </a>、
+<a href=#JOINT >Joint </a>、
+<a href=#EFFECTOR >Effector </a>
+です。以下にそれぞれの設定方法を記述します。
+<p>
+<dd>設定した内容を有効にするには、予め<a href="menu.htm#editmode">[Edit]-[EditMode]</a>でEditModeをONにしておいてください。
+<p>
+<hr NOSHADE>
+<p>
+<b>
+<a name="SCENE">
+<li>Sceneノード<p>
+</b>
+<blockquote>
+　NIFFのSceneノード内のフラグを設定できます。ダイアログは下記のようになっています。<p>
+<center>
+<img src="./NIFFeditSGI_scene.gif"><p>
+図　Sceneノード設定ダイアログ
+</center>
+<p>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Scene名を表示します。編集することができます。<p>
+ <dt> <b>SCENE_CFG_VIDEO</b>
+ <dd> SceneList中のの<a href="../../niff_spec/chapt3/seg4.htm">scene_cfg</a>
+データのビデオモードに関するフラグを設定します。<br>
+NTSC、PAL、MPALの３種類のうちから１つをスイッチを用いて設定します。<p>
+ <dt> <b>GAMMA</b>
+ <dd> SceneList中の
+<a href="../../niff_spec/chapt3/seg4.htm">scene_cfg</a>
+データのガンマ補正に関するフラグを設定します。<p>
+ <dt> <b>DITHER</b>
+ <dd> SceneList中の<a href="../../niff_spec/chapt3/seg4.htm">scene_cfg</a>
+データのディザに関するフラグをセットします。<p>
+ <dt> <b>DIVOT</b>
+ <dd> SceneList中の
+<a href="../../niff_spec/chapt3/seg4.htm">scene_cfg</a>
+データのディボットに関するフラグをセットします。<p>
+</dl>
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Obj node ----------------------------------------- ..>
+<b> 
+<a name="OBJ">
+<li>Objノード<p>
+</b>
+<blockquote>
+　NIFFのObjノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p>
+<center>
+<img src="./objdialog.gif"><p>
+図　Objノード設定用ダイアログ
+<p>
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Obj名を表示します。編集することができます。<p>
+ <dt> <b>ACTIVEスイッチ</b>
+ <dd> ONで、NIFFのObj中の
+<a href="../../niff_spec/chapt3/seg5-2.htm">obj_state</a>
+フラグをACTIVEにセットします。<p>
+ <dt> <b>type</b>
+ <dd> NIFFのObj中の
+<a href="../../niff_spec/chapt3/seg5-2.htm">obj_type</a>
+データを設定します。NULLオブジェクト、3Dオブジェクト、BILLBOARDオブジェクトから選択します。<p>
+ <dt> <b>group</b>
+ <dd> NIFFのObj中の
+<a href="../../niff_spec/chapt3/seg5-2.htm">obj_group</a>
+データを設定します。NONEスイッチをONにすると、OBJ_GROUP_NONEとなり、NONEスイッチをOFFにすると右側のgroup ID#内のグループIDが有効になります。<p>
+ <dt> <b>priority</b>
+ <dd> NIFFのObj中の<a href="../../niff_spec/chapt3/seg5-2.htm">obj_pri</a>
+データを設定します。NONEスイッチをONにすると、OBJ_PRI_NONEとなり、NONEスイッチをOFFにすると、右側のsetボックス内で優先順位を設定できます。<p>
+ <dt> <b>render_priority</b>
+ <dd> NIFFのObj中の
+<a href="../../niff_spec/chapt3/seg5-2.htm">obj_render_pri</a>
+データを設定します。
+[NIFF->]を選択した場合、右側のNIFF用レンダーモード設定スイッチで、OPA_SURF、OPA_INTER、OPA_DECAL、TEX_EDGE、XLU_SURF、XLU_INTER、XLU_DECALのいずれかを選択します。<p>
+[N64->]選択した場合は、下のrender_type0、render_type1内にレンダーモード設定を記述します。render_priは現在は[NIFF->]時と同じ設定しかできません。<p>
+ <dt> <b>render_cycle_type</b>
+ <dd> NIFFのObj中の
+<a href="../../niff_spec/chapt3/seg5-2.htm">obj_render_cycle_type</a>
+データを設定します。1cycle、2cycleのどちらかを選択してください。<p>
+
+ <dt> <b>for Fog</b>
+ <dd> render_priority, render_type0, render_type1, and render_cycle_type in this column are data that was added by NIFF2.0,  obj_render_cycle_type_for_fog,
+      obj_render_pri_for_fog, obj_render_type0_for_fog, and
+      obj_render_type1_for_fog respectively.   The setting is same as the above mentioned render*.  It is displayed only in case of NIFF2.0 data.  <p>
+
+ <dt> <b>Have Link_Billboard</b>
+ <dd> NIFFのObj中の
+<a href="../../niff_spec/chapt3/seg5-2.htm">have_link_billboard</a>
+フラグをセットします。<p>
+</dl>
+
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ LOD node ----------------------------------------- ..>
+<b> 
+<a name="LOD">
+<li>LODノード<p>
+</b>
+<blockquote>
+　NIFFのLODノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p>
+<center>
+<img src="./lod.gif"><p>
+図　LODノード設定用ダイアログ
+</center>
+<p>
+<dl>
+ <dt> <b>number of LOD level</b>
+ <dd> LODレベルの数です。<p>
+ <dt> <b>upper is near,lower is far.</b>
+ <dd> 距離の近い方から順にリンクされるObjを設定します。<p>
+　　　distance&lt; に書かれている距離より近い場合、
+      then display obj_ にかかれているObjを表示するようにLODが設定されています。現在のNIFFeditorではこの距離とObj番号の変更が可能になっていますが、LODレベルの数を変更することはできません。
+</dl>
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Shape node ----------------------------------------- ..>
+<b>
+<a name="SHAPE">
+<li>Shapeノード<p>
+</b>
+<blockquote>
+　NIFFのShapeノード内のフラグを設定できます。ダイアログは下記のようになっています。 
+<p>
+<center>
+<img src="./shapedialog.gif"><p>
+図　Shapeノード設定用ダイアログ
+</center>
+<p>
+<b>Name<p></b>
+Shape名を表示します。編集することができます。
+<p>
+<b>ALIAS<p></b>
+　NIFFのShapeノード中の
+<a href="../../niff_spec/chapt3/seg6-2.htm">
+shape_type</a>
+フラグのアンチエイリアスタイプを指定します。ANTI(アンチエイリアス)、REDUCED(簡易アンチエイリアス)、NONE(アンチエイリアス無し)の中から１つを選んでください。
+<p>
+<b>Z-Buffer</b><p>
+
+　このスイッチをONにすると、NIFFのShapeノード中
+<a href="../../niff_spec/chapt3/seg6-2.htm">
+shape_type
+</a>
+のZ-Bufferが有効になります。
+<p>
+
+<b>Culling</b><p>
+
+　NIFFのShapeノード中の
+<a href="../../niff_spec/chapt3/seg6-2.htm">
+shape_type
+</a>
+でのカリングコントロールを行います。FRONTだけをONにするとフロントフェイスカリング、BACKだけをONにするとバックフェイスカリング、両方ONにすると両面カリング、両方OFFの場合はカリングをしません。
+<p>
+
+<b>Use Vtx Alpha when using Fog</b>
+<p>
+&nbsp;&nbsp;
+Change <a href="../../niff_spec2/shape_J.htm">
+SHAPE_TYPE_USE_VTX_ALPHA_FOR_FOG flag of shape type to ON.   </a>
+ This is the data added by NIFF2.0.   
+</p>
+
+<b>link to ...</b><p>
+Display the contents of kind_of_node_for_geometry and shape_tri_link.   This is the data expanded by NIFF2.0.  It cannot be changed.  
+
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Mat node ----------------------------------------- ..>
+<b>
+<a name="MAT">
+<li>Matノード<p>
+</b>
+<blockquote>
+　NIFFのMatノード内のフラグを設定できます。ダイアログは下記のようになっています。 <p>
+<center>
+<img src="./matdialog.gif">
+<p>
+図 Matノード設定用ダイアログ<p>
+</center>
+<b>
+Name<p>
+</b>
+<blockquote>
+　Mat名を表示します。編集することができます。
+</blockquote>
+<p>
+<b>
+shade_type<p>
+</b>
+<blockquote>
+　NIFFのMat中の
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+mat_shade_type
+</a>
+データを設定します。左からライティング設定、シェーディング設定、環境マップ設定を行うスイッチが並んでいます。<p>
+　ライティング設定では、GLOBAL(グローバルライト)、LOCAL(ローカルライト)、NONE(ライト無し)の３タイプのうちから１つを選ぶことができます。<p>
+　シェーディング設定では、FLAT(フラットシェーディング)、SMOOTH(スムースシェーディング)の２タイプのうちから１つを選ぶことができます。<p>
+　環境マップ設定ではUSE_REFLECT(リフレクションマッピング)、USE_HILIGHT(ハイライトマッピング)、NONE(環境マッピング無し)の３タイプのうちから１つを選ぶことができます。
+</blockquote>
+<p>
+<dl>
+ <dt><b>ambient</b>
+ <dd> It is displayed in case of NIFF2.0 data.    <p>
+     It means ambient_red, ambient_green, ambient_blue, 
+     and ambient_alpha that were added by NIFF2.0.  Please describe it in the same manner as prim_color.   
+</dl>
+<dl>
+ <dt><b>emission</b>
+ <dd> It is displayed in case of NIFF2.0 data.  <p>
+     It means emission_red, emission_green, emission_blue, and 
+     emission_alpha that were added by NIFF2.0.  Please describe it in the same manner as prim_color.    
+</dl>
+<dl>
+ <dt><b>diffuse</b>
+ <dd> It is displayaed in case of NIFF2.0 data.     <p>
+     It means diffuse_red, diffuse_green, diffuse_blue, and 
+     diffuse_alpha that were added by NIFF2.0.  Please describe it in the same manner as prim_color.    
+</dl>
+
+<b>
+mat_type<p>
+</b>
+<blockquote>
+　NIFFのMat中の
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+mat_type
+</a>
+を設定します。まず、mat_typeをNIFF、N64のどちらの設定方法にするかを選択します。現在は操作上の問題が残っており、このスイッチを変更した場合は一度[OK]でこのダイアログを閉じ、もう一度ノードをクリックしてダイアログをオープンしないと設定用の表示が切り替わりません。<p>
+　[NIFF]を選択している場合はNIFF専用のカラー設定方式になります。この場合、color_type0、color_type1、alpha_type0、alpha_type1のそれぞれのカラーに何を選択するかは任意で行えます。また、複数を同時に選択することも可能です。ただし、これらがディスプレイリストコンバート時にどのように選択されるかは、コンバータに任されています。<p>
+　[N64]を選択している場合は、NINTENDO64のカラーコンバイナの選択方法に合わせてカラーを選択することになります。
+</blockquote>
+<dl>
+ <dt><b>for Fog</b>
+ <dd> In case of NIFF2.0 data, two mat_type's are displayed.  The lower forFog is mat_color_type_0_for_fog, mat_color_type_1_for_fog, mat_alpha_type0_for_fog,  and mat_alpha_type1_for_fog that were added by NIFF2.0. 
+</dl>
+<p>
+<b>
+prim_color<p>
+</b>
+<blockquote>
+　NIFFのMat中の
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+prim_red、prim_green、prim_blue、prim_alpha
+</a>
+データを記述します。それぞれのカラーデータを0～1の範囲で記述してください。
+</blockquote>
+<p>
+
+<dl>
+ <dt><b>prim_color_fog</b>
+ <dd> It is displayed in case of NIFF2.0 data.   It means prim_red_for_fog, prim_green_for_fog, prim_red_for_fog, and prim_alpha_for_fog that were added by NIFF2.0.  Please describe it in the same manner as prim_color.   
+</dl>
+
+<p>
+<b>
+usr_flag*<p>
+</b>
+<blockquote>
+　NIFFのMat中の
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+usr_flag
+</a>
+データを記述します。
+</blockquote>
+<p>
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Texture node ----------------------------------------- ..>
+<b>
+<a name="TEX">
+<li>Texノード<p>
+</b>
+<blockquote>
+　NIFFのTexノード内のフラグを設定できます。ダイアログは下記のようになっています。 <p>
+<center>
+<img src="./NIFFeditSGI_tex.gif">
+<p>
+図　Texノード設定用ダイアログ<p>
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Tex名を表示します。編集することができます。<p>
+
+ <dt> <b>Form</b>
+ <dd> テクスチャのフォーマットを選択します。I、IA、CI、YUV、RGB、RGBAの中から１つを選択します。NIFFのTexノード中の
+<a href="../../niff_spec/chapt3/seg14-2.htm">
+tex_type
+</a>
+データに反映されます。<p>
+ <dt> <b>Depth</b>
+ <dd> テクスチャの１ピクセルあたりのbit数を選択します。4bit、8bit、16bit、32bitのうちから一つを選択します。NIFFのTexノード中の
+<a href="../../niff_spec/chapt3/seg14-2.htm">
+tex_type
+</a>
+データに反映されます。<p>
+ <dt> <b>Wrap_s、Wrap_t</b>
+ <dd> テクスチャのラップ、クランプ、ミラーを設定します。NIFFのTexノード中の
+<a href="../../niff_spec/chapt3/seg14-2.htm">
+tex_wrap_s、tex_wrap_t
+</a>
+データに反映されます。<p>
+ <dt> In case of NIFF2.0 data, the following is displayed.   Please refer to NIFF2.0 specifications for the contents.   
+ <dd> <p>
+ <dt> <b>Texture Filter</b>
+ <dd> tex_filter <p>
+ <dt> <b>Perspective Correctrion</b>
+ <dd> usr_perspective_correctrion <p>
+ <dt> <b>mipmap level</b>
+ <dd> mipmap_level.  Cannot be edited.  <p>
+ <dt> <b>No/Use Color Palette</b>
+ <dd> Display according to usr_color_palette. It cannot be edited. <p>
+</dl>
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+
+<!..------ Env node ----------------------------------------- ..>
+<a name="ENV"><li><b>Envノード</b><p></a>
+<blockquote>
+NIFFのEnvノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p><center>
+<img src="./envdialog.gif"><p>
+図　Envノード設定用ダイアログ
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Env名を表示します。編集することができます。<p>
+ <dt> <b>fog</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">fog</a>フラグを設定します。
+USE FOGをONにすると、ENV_FOG_USEとなり、以下のfog関連データが有効になります。<p>
+ <dt> <b>fog color</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">fog_color</a>を設定します。
+0xRRGGBBAAとなるように16進数で入力して下さい。<p>
+ <dt> <b>fog near</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">fog_near</a>を設定します。0から1000の範囲の整数で入力して下さい。<p>
+ <dt> <b>fog far</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">fog_far</a>を設定します。0から1000の範囲の整数で入力して下さい。<p>
+ <dt> <b>Fill frame buffer with color</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">fill_color</a>を設定します。
+Fill FrameをONにすると、右側のボックスで入力した値が有効になります。
+0x00RRGGBBとなるように16進数で入力して下さい。<p>
+ <dt> <b>Fill frame buffer with color</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">fill_depth</a>を設定します。
+Fill Z-bufferをONにすると、右側のボックスで入力した値が有効になります。
+0x00RRGGBBとなるように16進数で入力して下さい。<p>
+ <dt> <b>BG color</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">bg_sprite_img</a>を設定します。
+USE TextureをONにすると、右側のボックスで入力した値が有効になります。
+TexList中のTexのインデックス番号を入力して下さい。<p>
+ <dt> <b>BG depth</b>
+ <dd> NIFFのEnv中の
+<a href="../../niff_spec/chapt3/seg20-2.htm">bg_sprite_depth</a>を設定します。
+USE TextureをONにすると、右側のボックスで入力した値が有効になります。
+TexList中のTexのインデックス番号を入力して下さい。<p>
+</dl>
+
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Cam node ----------------------------------------- ..>
+<a name="CAM"><li><b>Camノード</b><p></a>
+<blockquote>
+NIFFのCamノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p><center>
+<img src="./camdialog.gif"><p>
+図　Camノード設定用ダイアログ
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Cam名を表示します。編集することができます。<p>
+ <dt> <b>CAMERA TYPE</b>
+ <dd> NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_type</a>フラグを設定します。<p>
+ <dt> <b>clipping plain</b>
+ <dd> クリッピングプレーンを設定します。<p>
+      <dl>
+       <dt> <b>near</b>
+       <dd> nearクリッピングプレーンです。NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_near_clip</a>に反映されます。<p>
+       <dt> <b>far</b>
+       <dd> farクリッピングプレーンです。NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_far_clip</a>に反映されます。<p>
+       <dt> <b>right</b>
+       <dd> rightクリッピングプレーンです。NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_right_clip</a>に反映されます。<p>
+       <dt> <b>left</b>
+       <dd> leftクリッピングプレーンです。NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_left_clip</a>に反映されます。<p>
+       <dt> <b>top</b>
+       <dd> topクリッピングプレーンです。NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_top_clip</a>に反映されます。<p>
+       <dt> <b>bottom</b>
+       <dd> topクリッピングプレーンです。NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_bottom_clip</a>に反映されます。<p>
+      </dl>
+ <dt> <b>fovy</b>
+ <dd> fovy値です。
+NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_fovy</a>に反映されます.<p>
+ <dt> <b>aspect</b>
+ <dd>  aspect値です。
+NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_aspect</a>に反映されます.<p>
+ <dt> <b>scale</b>
+ <dd>  scale値です。
+NIFFのCam中の
+<a href="../../niff_spec/chapt3/seg18-2.htm">cam_scale</a>に反映されます.<p>
+ <dt> <b>lookat</b>
+ <dd> カメラの注視点となるObjのインデックス番号です。
+<a href="../../niff_spec/chapt3/seg18-2.htm">
+cam_lookat_obj
+</a>に反映されます.<p>
+ <dt> <b>eye</b>
+ <dd> カメラの視点となるObjのインデックス番号です。
+<a href="../../niff_spec/chapt3/seg18-2.htm">
+cam_eye_obj 
+</a>に反映されます.<p>
+ <dt> <b>up</b>
+ <dd> カメラの上方向のObjのインデックス番号です。
+<a href="../../niff_spec/chapt3/seg18-2.htm">
+cam_up_obj 
+</a>に反映されます.<p>
+</dl>
+
+</blockquote>
+
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Light node ----------------------------------------- ..>
+<a name="LIGHT"><li><b>Lightノード</b><p></a>
+<blockquote>
+NIFFのLightノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p><center>
+<img src="./lightdialog.gif"><p>
+図　Lightノード設定用ダイアログ
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Light名を表示します。編集することができます。<p>
+ <dt> <b>ambient light</b>
+ <dd> NIFFのLight中の
+<a href="../../niff_spec/chapt3/seg19-2.htm">ambient_r、ambient_g、ambient_b</a>データを記述します。<p>
+ <dt> <b>number of dir/pos lights </b>
+ <dd> NIFFのLight中の<a href="../../niff_spec/chapt3/seg19-2.htm">dir_light_num</a>です。設定変更はできません。<p>
+ <dt> <b>light type</b>
+ <dd>  NIFFのLight中の<a href="../../niff_spec/chapt3/seg19-2.htm">light_type</a>です。設定変更はできません。<p>
+</dl>
+
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Part node ----------------------------------------- ..>
+<a name="PART"><li><b>Partノード</b><p></a>
+<blockquote>
+NIFFのPartノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p><center>
+<img src="./partdialog.gif"><p>
+図　Partノード設定用ダイアログ
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Part名を表示します。編集することができます。<p>
+</dl>
+
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"border="0" width="65" height="17"></a>
+<hr NOSHADE>
+<p>
+<!..------ Anim node ----------------------------------------- ..>
+<a name="ANIM"><li><b>Animノード</b><p></a>
+<blockquote>
+NIFFのAnimノード内のフラグを設定できます。ダイアログは下記のようになっています。
+<p><center>
+<img src="./animdialog.gif"><p>
+図　Animノード設定用ダイアログ
+</center>
+<dl>
+ <dt> <b>Name</b>
+ <dd> Anim名を表示します。編集することができます。<p>
+ <dt> <b>animation type</b>
+ <dd> NIFFのAnim内の
+<a href="../../niff_spec/chapt3/seg16-2.htm">anim_type</a>です。設定変更はできません。<p>
+ <dt> <b>frame rate</b>
+ <dd> NIFFのAnim内の
+<a href="../../niff_spec/chapt3/seg16-2.htm">frame_rate</a>です。設定変更はできません。<p>
+ <dt> <b>number of loop times of animation</b>
+ <dd> NIFFのAnim内の
+<a href="../../niff_spec/chapt3/seg16-2.htm">anim_loop</a>です。EndlessをOFFに
+      すると、右側のloop numberが有効になり、anim_loopに反映されます。<p>
+ <dt> <b>NIFF2</b>
+ <dd> In case of NIFF2.0 data, the contents of use_animation_channel among the data expanted here by 2.0 are displayed.  It cannot be edited.   Refer to NIFF2.0 specification for the details.  
+</dl>
+</blockquote>
+<p align="right"><a href="../indexsgi.htm">
+<!-- <img src="../../../gif/index.gif"border="0" width="65" height="17"></a> -->
+<img src="../../../gif/index.gif"border="0"></a>
+<hr NOSHADE><p>
+
+<!--　ChainRoot node -------------------------------------------- -->
+<p>The following are newly added nodes for NIFF2.0.   
+<img src="../../../gif/new.gif"><p>
+<a name="CHAINROOT"><li><b>ChainRoot node</b></a><p>
+
+A name is displayed.  Can be edited.  <p>
+
+<a name="JOINT"><li><b>Joint node</b></a><p>
+
+A name and joint_type are displayed. Can be edited.  <p>
+
+<a name="EFFECTOR"><li><b>Effector node</b></a><p>
+
+A name is displayed.  Can be edited.   <p>
+
+<!--.------ End of node ----------------------------------------- -->
+<hr>
+<font size=-1>
+Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights
+reserved.
+</font>
+<p align="right"><a href="../indexsgi.htm">
+目次へ<img src="../../../gif/index.gif"border="0">
+</a>
+<a href="./spec.htm">次へ
+<img src="../../../gif/next.gif"border="0"></a></p>
+
+</body>
+</html>
+
+
+
+

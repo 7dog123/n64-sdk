@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetDirName</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetDirName<br>
+mfsRamGetDirName</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetDirName(MfsDirID dirID, u8* name)
+	s32 mfsRamGetDirName(MfsDirID dirID, u8* name)
+Arguments:	dirID		Directory ID
+	*name		Directory name
+Return value:Error
+Function:	Obtains directory name
+Description:	This function obtains the name of the directory specified by dirID.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 12</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.10.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro12/index12.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Overview</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The Reality Display Processor (RDP) rasterizes triangles and rectangles, and produces high-quality, Silicon Graphics style pixels that are textured, antialiased, and z-buffered. 
+<p>
+The RDP has four main configurations where all the individual blocks work together to generate pixels. These main configurations are called “cycle types,” because they indicate how many pixels are generated per cycle. Keep in mind that these peak numbers are typically realized on large rectangle primitives. Triangles have variable short and long spans and these numbers degrade rapidly. The following table lists the RDP’s performance.
+<P>
+<b>Table 1</b> &nbsp;Cycle Types
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Type</td>
+<td width=70%><font face="arial" size="-1"><b>Performance</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">FILL	</td>
+<td width=70%><font face="arial" size="-1">4 16 bit pixels/cycle
+<br>2 32 bit pixels/cycle</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">COPY</td>
+<td width=70%><font face="arial" size="-1">4 pixels/cycle</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">1CYCLE	</td>
+<td width=70%><font face="arial" size="-1">1 pixel/cycle</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">2CYCLE</td>
+<td width=70%><font face="arial" size="-1">1 pixel/2 cycles</td>
+</tr></table>
+<P>
+<b>Note:</b> These are theoretical peak performances. In reality, due to the memory latency and buffering overhead, actual performance numbers are lower.
+
+
+<P>
+<a name="01"></a>
+<b>RDP Pipeline Blocks</b>
+<br>
+
+The RSP performs 3D geometric transformations while the RDP pipeline rasterizes the polygon. The RDP consist of several pipeline subblocks. There are six major logical RDP blocks: the RS, TX, TF, CC, BL, and MI. The connections between these blocks can be reconfigured to the four cycle types listed in Table 12-1, to perform different rasterization operations.
+<P>
+<b>Table 2</b> &nbsp;Basic Operations of RDP Subblocks
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Block</td>
+<td width=70%><font face="arial" size="-1"><b>Functionality</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">RS</td>
+<td width=70%><font face="arial" size="-1">The <B>R</b>a<b>S</b>terizer generates pixel coordinates and their attributes’ slopes. Pixel coordinates consist of X and Y. Attributes consist of R, G, B, A, Z, S/W, T/W, 1/W, L, pixel coverage.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TX</td>
+<td width=70%><font face="arial" size="-1">The <b>T</b>e<b>X</b>turizing unit contains texture memory and samples the texture, based on which texel represents the pixel being processed in the pipeline.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TF</td>
+<td width=70%><font face="arial" size="-1">The <b>T</b>exture <b>F</b>ilter performs a 4-to-1 bilinear filter of 4 texel samples to produce a single bilinear filtered texel.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">CC</td>
+<td width=70%><font face="arial" size="-1">The <b>C</b>olor <b>C</b>ombiner performs general blending of color sources by linearly interpolating between two colors with a coefficient. For example, it may take the filtered texel samples and the shading color (RGBA) and combine them together.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">BL</td>
+<td width=70%><font face="arial" size="-1">The <b>BL</b>ender blends the pipeline-processed pixels with the pixels in the framebuffer. The blender can do transparencies and also sophisticated antialiasing operations.</td></tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">MI</td>
+<td width=70%><font face="arial" size="-1">The <b>M</b>emory <b>I</b>nterface performs the actual read/modify/write cycles to and from the framebuffer.</td>
+</tr>
+</table>
+
+<P>
+<b>Note:</b> The six RDP blocks (RS, TX, TF, CC, BL, and MI) are purely logical blocks. For example, the hardware implementation of RS consist of several blocks. However, for programming, each can be treated as a single logical block.
+
+
+<P>
+<a name="02"><a>
+<b>One-Cycle-per-Pixel Mode</b>
+<br>
+The pipeline configuration illustrated in Figure 12.1.1 shows how the RDP blocks are connected in one-cycle-per-pixel mode.
+
+<P>
+<b>Figure 12.1.1</B> &nbsp;One-Cycle Mode RDP Pipeline Configuration
+<p>
+<table border=0 align="center">
+<tr><td><img border=0 align="center" src="../pro12/gif/f12-01.gif"></tr></td></table>
+<P>
+
+<P>
+<b>Table 3</b> &nbsp;RDP Pipeline Block Functionality in One-Cycle Mode
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Block</td>
+<td width=70%><font face="arial" size="-1"><b>Functionality</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">RS</td>
+<td width=70%><font face="arial" size="-1">Generates pixel and its attribute covered by the interior of the primitive.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TX</td>
+<td width=70%><font face="arial" size="-1">Generates 4 texels nearest to this pixel in a texture map.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TF</td>
+<td width=70%><font face="arial" size="-1">Bilinear filters 4 texels into 1 texel,<br>
+or performs step 1 of YUV-to-RGB conversion.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">CC</td>
+<td width=70%><font face="arial" size="-1">Combines various colors into a single color,<br>
+or performs step 2 of YUV-to-RGB conversion.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">BL</td>
+<td width=70%><font face="arial" size="-1">Blends the pixel with framebuffer memory pixel,<br>
+or fogs the pixel for writing to framebuffer.</td></tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">MI</td>
+<td width=70%><font face="arial" size="-1">Fetches and writes pixels from and to the framebuffer memory.</td>
+</tr>
+</table>
+<P>
+
+One-cycle mode fills a fairly high-quality pixel. You can generate pixels that are perspectively corrected, bilinear filtered, modulate/decal textured, transparent, and z-buffered, at one-cycle-per-pixel peak bandwidth.<P>
+
+<b>Note:</b> Reaching peak bandwidth is difficult. The framebuffer memory is organized in row order. In small triangles, it is rare to have long horizontal runs of pixels on a single scanline. In these cases, the pipeline is often stalled, pending memory access for read or write cycles.
+<P>
+
+<a name="03"></a>
+<b>Two-Cycles-per-Pixel Mode</b>
+<br>
+The RDP blocks can be reconfigured into a two-cycle-per-pixel pipeline structure for additional functionality. Figure 12.1.2 shows the RDP pipeline in 2-cycle mode where one pixel is generated every 2 clocks.
+<P>
+<b>Figure 12.1.2</B> &nbsp;Two Cycle Mode RDP Pipeline Configuration
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-02.gif"></tr></td></table>
+<P>
+
+<P>
+<b>Table 4</b> &nbsp;RDP Pipeline Block Functionality for Two-Cycle Mode
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Block</td>
+<td width=70%><font face="arial" size="-1"><b>Functionality</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">RS</td>
+<td width=70%><font face="arial" size="-1">Generates a pixel and its attribute covered by the interior of the primitive.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TX0</td>
+<td width=70%><font face="arial" size="-1">Generates 4 texels nearest to this pixel in a texture map. This can be level X of a mipmap.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TX1</td>
+<td width=70%><font face="arial" size="-1">Generates 4 texels nearest to this pixel in a texture map. This can be level X+1 of a mipmap.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TF0</td>
+<td width=70%><font face="arial" size="-1">Bilinear; filters 4 texels into 1 texel. </td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">TF1</td>
+<td width=70%><font face="arial" size="-1">Bilinear; filters 4 texels into 1 texel,<br>
+or step 1 of YUV-to-RGB conversion.</td></tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">CC0</td>
+<td width=70%><font face="arial" size="-1">Combines various colors into a single color,<br>
+OR linear interpolates the 2 bilinear filtered texels from 2 adjacent levels of a mipmap,<br>
+OR performs step 2 of YUV-to-RGB conversion.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">CC1	</td>
+<td width=70%><font face="arial" size="-1">Combines various colors into a single color,<br>
+OR chroma keying.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">BL0</td>
+<td width=70%><font face="arial" size="-1">Combines fog color with resultant CC1 color.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">BL1</td>
+<td width=70%><font face="arial" size="-1">Blends the pipeline pixels with framebuffer memory pixels.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">MI0</td>
+<td width=70%><font face="arial" size="-1">Read/modify/write color memory.</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">MI1</td>
+<td width=70%><font face="arial" size="-1">Read/modify/write Z memory.</td>
+</tr>
+</table>
+<P>
+Two-cycles-per-pixel mode contains more features than one-cycle- per-pixel mode. In addition to all of the features of one-cycle mode, two-cycle mode can also do mipmapping and fog.
+<P>
+
+<b>Note:</b> MI0 and MI1 represent two cycles of the MI that access color and z framebuffer cycles, respectively. This is only a logical representation. The MI does not need to run two cycles to perform color and z-buffer access. One cycle per pixel mode can also perform color and z-buffer accesses. The reason for this representation is to show that two MI access cycles are balanced in the two-cycle mode. In one-cycle mode, the pipeline is often stalled at MI, waiting for the framebuffer when accessing both color and z.
+<P>
+These RDP blocks are very flexible and can be configured to do many things. Table 12-4 outlines the typical usage of these blocks for a powerful rasterization pipeline. Study the following sections to understand what attribute state is programmable within each RDP block to master the raster subsystem.
+<P>
+
+<a name="04"></a>
+<b>Fill Mode</b>
+<br>
+For high-performance framebuffer clearing, the RDP has a fill mode, which can fill 64 bits per clock. A programmable RDP color attribute is written into the framebuffer during each 64-bit write cycle. The RDP arithmetic pipeline is largely unused, because the computation can not keep up with the pixel fill rate. The fill mode is most commonly used for clearing color and z-buffers.
+<P>
+<b>Note:</b> In fill mode, use the render mode g*DPSetRenderMode(G_RM_NOOP, G_RM_NOOP2) to put the blender into a safe state. Attempting to read Z when in fill mode can cause the RDP pipeline to hang.
+<P>
+
+<a name="05"></a>
+<b>Copy Mode</b>
+<br>
+For high-performance image-to-image copies, RDP also supports a copy mode that can copy 64 bits or 4 pixels per clock. The RDP texture memory in the TX is just a buffer capable of holding up to 4 KB worth of image pixels. You can load bitmaps into this buffer as well as writing back out to the framebuffer. The is a common bit blit operation that many 2D graphics hardware systems support. Once again, the RDP arithmetic pipeline is largely unused in copy mode.
+One important operation that does work in copy mode is alpha compare. This allows RDP to blit an image into the framebuffer and conditionally remove image pixels with alpha = 0. Usually, images with alpha = 0 represent transparency. Please see <a target="main" href="../pro15/15-05.html#04">Section 15.5.4, “Alpha Compare Calculation”</a> for additional information.
+<P>
+In copy mode, use the render mode g*DPSetRenderMode(G_RM_NOOP, G_RM_NOOP2) to put the blender into a safe state.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

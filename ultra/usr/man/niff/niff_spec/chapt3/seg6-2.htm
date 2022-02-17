@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.6 ShapeList</h3>
+
+<hr size=3>
+<h4>2) Shape Area</h4>
+
+<blockquote>
+The Shape area describes data regarding a shape. Mapping for this area is as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>shape_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_shape_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_tri_link</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_mat_link</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_part_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_part_link(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_part_link(shape_part_num - 1)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table>
+</center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Shape Area Memory Map</b></CAPTION>
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 shape_tag</td>
+
+<td><font size=+0>Tag indicating Shape. Set the following flag.</font>
+<pre><b><font size=+0>TAG_SHAPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00030100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_shape_index</td>
+
+<td><font size=+0>Index number of this Shape</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_size</td>
+
+<td><font size=+0>Size of this Shape</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_name_index</td>
+
+<td><font size=+0>Index number of shape name in NameList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#SHAPE_TYPE">u32 shape_type</a></td>
+
+<td><font size=+0>Type of Shape. Currently, the following flags are defined.</font>
+<pre><b><font size=+0>SHAPE_TYPE_CLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+SHAPE_TYPE_AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001
+SHAPE_TYPE_RA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000002
+SHAPE_TYPE_ZB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000004
+SHAPE_TYPE_CULL_BACK&nbsp;&nbsp;&nbsp; 0x00000010
+SHAPE_TYPE_CULL_FRONT&nbsp;&nbsp; 0x00000020
+SHAPE_TYPE_CULL_BOTH&nbsp;&nbsp;&nbsp; 0x00000030</font></b>
+
+</pre>
+<font size=+0>SHAPE_TYPE_CLEAR clears Shape type.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_AA performs anti-alias process.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_RA performs reduced alias process.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_ZB performs z-buffer process.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_CULL_BACK performs back-face culling.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_CULL_FRONT performs front-face culling.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_CULL_BOTH performs culling.</font>
+<p><font size=+0>&nbsp;SHAPE_TYPE_AA and SHAPE_TYPE_RA cannot be specified
+both at the same time. Also, when specifying SHAPE_TYPE_CULL_*, only one
+of the above (BACK, FRONT and BOTH) can be specified.</font>
+<p><font size=+0>When shape data is put through the anti-alias, z buffer
+and back-face culling processes, set flag as below.</font>
+<br>&nbsp;
+<br>&nbsp;
+<pre><b><font size=+0>SHAPE_TYPE_AA | SHAPE_TYPE_ZB | SHAPE_TYPE_CULL_BACK</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_tri_link</td>
+
+<td><font size=+0>Index number of TriGroup in TriList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#SHAPE_MAT_LINK">u32 shape_mat_link</a></td>
+
+<td><font size=+0>Index number of MatList</font>
+<p><font size=+0>&nbsp;If Mat is not linked, set the following flag.</font>
+<pre><b><font size=+0>SHAPE_MAT_LINK&nbsp; 0xffffffff</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#SHAPE_PART_NUM">u32 shape_part_num</a></td>
+
+<td><font size=+0>Number of Parts contained in Shape</font>
+<p><font size=+0>&nbsp;Set the following flag if the Part node is not linked.</font>
+<pre><b><font size=+0>SHAPE_NOPART&nbsp;&nbsp;&nbsp; 0x00000000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_part_link</td>
+
+<td><font size=+0>Index number of PartList</font>
+<p><font size=+0>&nbsp;If shape_part_num = SHAPE_NOPART, this field is
+ignored.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table>
+</center>
+
+<HR>
+
+<A HREF="seg6.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg7.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+
+</body>
+</html>

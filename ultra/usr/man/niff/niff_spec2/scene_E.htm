@@ -1,0 +1,195 @@
+<html>
+<title>
+SceneNode
+</title>
+
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+4. Scene Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="sceneListD">(1) SceneList Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 scene_chain_root_link_num
+</td>
+<td>
+Specifies the number of ChainRoot nodes directly linked from the scene.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_obj_num
+</td>
+<td>
+Specifies the number of externally referenced Obj nodes.
+</td>
+</tr>
+
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_env_num
+</td>
+<td>
+Specifies the number of externally referenced Env nodes.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_cam_num
+</td>
+<td>
+Specifies the number of externally referenced Cam nodes.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_light_num
+</td>
+<td>
+Specifies the number of externally referenced Light nodes.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 scene_chain_root_link_index
+</td>
+<td>
+Specifies the index number for the ChainRoot nodes directly linked from the scene.<p>
+scene_chain_root_link_num = 0
+<p>
+In this case, there is no data.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 external_obj_file_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to specify the name of a file stored in the externally referenced Obj node.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This field is not used when external_obj_num = 0
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_obj_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the externally referenced Obj node name.<p>
+This field is not used when external_obj_num = 0
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_env_file_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to specify the name of a file stored in the externally referenced Env node.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This field is not used when external_env_num = 0
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_env_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the externally referenced Env node name.<p>
+This field is not used when external_env_num = 0
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_cam_file_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to specify the name of a file stored in the externally referenced Cam node.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This field is not used when external_cam_num = 0
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_cam_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the externally referenced Cam node name.<p>
+This field is not used when external_cam_num = 0
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_light_file_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to specify the name of a file stored in the externally referenced Light node.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This field is not used when external_light_num = 0
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_light_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the externally referenced Light node name.<p>
+This field is not used when external_light_num = 0
+</td>
+</tr>
+</table>
+
+<P><A HREF="scene_C.htm#sceneListC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

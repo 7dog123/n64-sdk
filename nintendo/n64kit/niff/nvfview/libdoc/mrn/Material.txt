@@ -1,0 +1,24 @@
+Function 
+-  Defines material. 
+
+Functions 
+-  void mrnMaterialInit( MrnMaterial *material_ptr );
+  Initializes mrnMaterial. 
+
+-  Gfx *mrnMaterialDrawObjects( MrnMaterial *material_ptr,
+			       MrnContext *context_ptr,
+			       Gfx *gfx_ptr );
+  Renders objects using the material. 
+
+-  Gfx *mrnMaterialGenerateGfx( MrnMaterial *material_ptr,
+			       MrnContext *context_ptr,
+			       Gfx *gfx_ptr );
+  Generates a gfx that sets up the material. 
+
+History 
+  1998/11/20 Takamitsu Hirata 
+    Material.h, material.c : Initial version 
+  1999/01/22 Takamitsu Hirata
+    Support point light source
+  1999/02/09 Takamitsu Hirata
+    Fixed the bug of point light source

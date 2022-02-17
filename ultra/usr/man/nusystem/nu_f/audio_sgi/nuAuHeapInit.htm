@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder V3.0.5  for Windows">
+<TITLE>nuAuInit</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<FONT size="6"><STRONG><IMG src="../nusystem2.gif" height="30" width="176"> Functions</STRONG></FONT>
+</P>
+<HR>
+<P>
+<B><FONT size="6"><STRONG>nuAuInit</STRONG><BR>
+nuAuInitEx</FONT></B>
+</P>
+<HR>
+<P>
+<FONT size="4"><STRONG>Syntax: </STRONG></FONT>
+</P>
+<PRE>
+s32 nuAu(void)
+s32 nuAuInitEx(void)
+</PRE>
+<P>
+<FONT size="4"><STRONG>Arguments: </STRONG></FONT>
+</P>
+<PRE>
+None
+</PRE>
+<P>
+<FONT size="4"><STRONG>Return Value: </STRONG></FONT>
+</P>
+<PRE>
+Heap size consumed
+</PRE>
+<P>
+<FONT size="4"><STRONG>Description: </STRONG></FONT>
+</P>
+<P>
+This initializes the audio manager and starts two sequence players and one sound player.  It also registers the default function which is called when a PRENMI event has occurred. 
+</P>
+<P>
+The least significant part of the frame buffer is set to 320 Kbytes as the audio heap.  For two sequence players, 32 Kbytes each are assigned from this heap. 
+</P>
+<P>
+If you wish to change the audio heap size or to change the sequence data storage buffer size, rather than use nuAuInit, rather refer tot he nuAuInit source and initialize the audio yourself. 
+</P>
+<P>
+The nuAuInit function calls the nuAuMgrInit function and starts the audio manager.  This audio manager plays back audio using retrace events.  This is the method which has been used in the past. 
+</P>
+<P>
+The nuAuInitEx function calls the nuAuMgrInitEx function.  This audio manager plays back audio using retrace events and AI events.  This is the newly added audio manager.  Since AI-DMA control can be reliably and efficiently accomplished when this audio manager is used, the AI buffer is empty and noise is unlikely to occur.  In addition, two audio data buffers is sufficient. 
+</P>
+<P>
+The difference between these two audio managers, besides the above, is the timing with which audio tasks are executed. <BR>
+In the case of the conventional audio manager, audio tasks are executed immediately after a retrace event. <BR>
+However, when AI events are used, audio tasks are executed when the AI-DMA register becomes empty. <BR>
+In addition, due to restrictions on the smallest processing unit in the audio microcode, audio data cannot be created accurately in one-frame pieces. <BR>
+Consequently, since the audio task execution timing changes for each frame, care is required as this may affect graphics tasks. </P>
+<HR>
+<PRE>
+See also:  <A href="nuAuMgrInit.htm">nuAuMgrInit</A>,<A href="nuAuMgrInit.htm">nuAuMgrInitEx</A>,<A href="nuAuSeqPlayerInit.htm">nuAuSeqPlayerInit</A>,<A href="nuAuSndPlayerInit.htm">nuAuSndPlayerInit</A>,<A href="nuAuPreNMIFuncSet.htm">nuAuPreNMIFuncSet</A>
+</PRE>
+<P>
+- Change History
+</P>
+<P>
+1999/1/26  Added text regarding the nuAuInitEx function. 
+</P>
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

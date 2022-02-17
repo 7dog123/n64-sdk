@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileSize</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileSize<br>
+mfsRamGetFileSize</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileSize(MfsDirID dirID)
+	s32 mfsRamGetFileSize(MfsDirID dirID)
+Arguments:	dirID	Directory ID of file
+Return value:File size (a negative value is an error)
+Function:	Obtains file size
+Description:	This function obtains and returns the size of the file specified by dirID.
+
+Main errors:
+	MFS_ERR_NO		Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 8</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro08/index8.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro08/index8.8.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Device Manager</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Depending on the user application, a device in the Nintendo 64 environment may be shared between two or more threads. Furthermore, if you want to utilize both DMA and IO operations on a device, you must ensure that these two operations cannot overlap. For each device that requires protection, you can use the concept of a device manager to implement mutual exclusion.
+<P>
+The Device Manager (DM) is simply a thread that runs at a high priority. The main purpose of this manager is to process all DMA requests to and from a device (that is, ROM devices), thus guaranteeing safe and orderly usage of the device. Upon start-up, the manager registers an event, its event message queue, and a message with the system. The manager is then blocked listening on its input command queue for request messages. The manager simply reads from the front of the queue and processes one request of a time. 
+<P>
+After calling the corresponding low-level device routine to initiate the I/O operation, the manager then blocks on listening on the input event queue, waiting for the event sent from the exception handler, signaling I/O completion. Once awakened, the manager then notifies the calling thread (I/O requester) by simply sending the request message to a pre-registered message queue. The manager, then returns to listen on the input command queue for new requests. 
+<P>
+The reason for alternating the listening between these two queues (command and event queues) is that there can be only one outstanding I/O transaction at any given time. Figure 8-3 summarizes the interaction between various I/O components to service an I/O request on a shared device. 
+<P>
+
+<P>
+<b>Figure 8.7.1</B> &nbsp;Interactions Between I/O Components and a Shared Device
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro08/gif/f08-03.gif"></tr></td></table>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

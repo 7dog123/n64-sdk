@@ -1,0 +1,65 @@
+#!smake -k
+#=======================================================================#
+#		Mirror_House						#
+#		Makefile						#
+#									#
+#		Copyright (C) 1997,1998, NINTENDO Co,Ltd.		#
+#									#
+#-----------------------------------------------------------------------#
+
+include $(ROOT)/usr/include/make/PRdefs
+
+# The directory which has include files and library of NuSYSTEM
+#
+N64KITDIR    = /usr/local/n64kit
+NUSYSINCDIR  = $(N64KITDIR)/nusys/include
+NUSYSLIBDIR  = $(N64KITDIR)/nusys/lib
+NUSTDINCDIR  = $(N64KITDIR)/nustd/include
+NUSTDLIBDIR  = $(N64KITDIR)/nustd/lib
+LIBDIR       = ./Lib
+USR_INC      = ./Include
+#SUBDIRS      = Mirror_House_980713/Nd Mirror_House_980713/Resource_Char Mirror_House_980713/Resource_Bg Mirror_House_980713
+SUBDIRS      = Mirror_House_980713/Nd Mirror_House_980713/Resource_Char Mirror_House_980713/Resource_Bg
+
+default:
+	for i in $(SUBDIRS) ;\
+	do \
+		(cd $$i ; echo "make" "in $(CURRENT_DIR)/$$i..."; \
+		make -f Makefile.sgi; make -f Makefile.sgi install) ; \
+	done
+
+	cd Mirror_House_980713/Data ; \
+	make -f Makefile.sgi ; \
+
+	cd Mirror_House_980713 ; \
+	make -f Makefile.sgi.64s ; \
+
+clean:
+	for i in $(SUBDIRS) ;\
+	do \
+		(cd $$i ; echo "make" "in $(CURRENT_DIR)/$$i..."; \
+		make -f Makefile.sgi clean) ; \
+	done
+
+	cd Mirror_House_980713/Data ; \
+	echo "make" "in $(CURRENT_DIR)/Mirror_House_980713/Data..."; \
+	make -f Makefile.sgi clean; \
+
+	cd Mirror_House_980713/Lib ; \
+	echo "make" "in $(CURRENT_DIR)/Mirror_House_980713/Lib..."; \
+	rm -rf *.a ; \
+
+	cd Mirror_House_980713 ; \
+	echo "make" "in $(CURRENT_DIR)/Mirror_House_980713..."; \
+	make -f Makefile.sgi.64s clean ; \
+
+
+$(CODESEGMENT):	$(CODEOBJECTS)
+	$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+rom $(APP):	spec.64s $(OBJECTS) $(MAKEROM)
+	$(MAKEROM) -o -r rom -I$(NUSYSINCDIR) spec.64s
+#	$(MAKEROM) -o -s 9 -r rom -I$(NUSYSINCDIR) spec
+	makemask rom
+
+

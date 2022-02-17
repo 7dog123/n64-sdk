@@ -1,0 +1,303 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+   <title>niff2gfxコンバータ変更履歴&lt;/h1>
+</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+4.変更履歴</h2>
+
+<table WIDTH="100%" >
+<tr BGCOLOR="#808080">
+<th ALIGN=LEFT NOWRAP><font color="#FFFFFF">バージョン</font></th>
+
+<th ALIGN=LEFT NOWRAP><font color="#FFFFFF">日付</font></th>
+
+<th ALIGN=LEFT NOWRAP><font color="#FFFFFF">内容</font></th>
+</tr>
+
+<tr VALIGN=TOP>
+<td>1.3.7</td>
+
+<td>1999/1/11</td>
+
+<td>
+<ul>
+<li>
+When attempting to perform the color reduction with ＣＩ format, the program
+is now capable of handling even if a value of 0 is assigned in the alpha
+value.</li>
+
+<li>
+In any 'obj' category, 'obj_group' can be valid.</li>
+
+<li>
+When modifying a default light setting with ver. 1.3.0, the difference
+between 'index' and 'light' are now handled properly.</li>
+
+<li>
+The drawing priority sequence is now fully corresponding to that of Pre-Viewer
+and Quick Pre-Viewer.</li>
+
+<li>
+Previously, in '-nullanim', without having 'anim' link in 'obj', the program
+was shut down. This problem is fixed.</li>
+
+<li>
+MAT_CC_NIFF_NONE is now handled properly with NIFF CC mode.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.6</td>
+
+<td VALIGN=TOP>1998/12/21</td>
+
+<td>
+<ul>
+<li>
+Corresponded to ST (texture coordinates） Shape Animation.&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.5</td>
+
+<td VALIGN=TOP>1998/10/19</td>
+
+<td>
+<ul>
+<li>
+Iテクスチャに対応&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.4</td>
+
+<td VALIGN=TOP>1998/10/9</td>
+
+<td>
+<ul>
+<li>
+頂点削減部の不具合を修正。&nbsp;</li>
+
+<li>
+出力頂点数の削減処理に、ライティングなしで スムーズシェーディングの場合に削減する処理を追加。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.3</td>
+
+<td VALIGN=TOP>1998/9/30</td>
+
+<td>主な変更点&nbsp;
+<ul>
+<li>
+カメラアニメーション対応&nbsp;</li>
+
+<li>
+SGI/WIN版で出力結果に差が出ないように修正&nbsp;</li>
+
+<ul>
+<li>
+クイックソートの見直し&nbsp;</li>
+
+<li>
+頂点座標の計算の見直し&nbsp;</li>
+</ul>
+
+<li>
+ST値がおかしくなることがある不具合の修正&nbsp;</li>
+
+<li>
+-outmask でシーンをマスクしたときは NDR_RESINFO に scene への ポインタを出力しないようにする&nbsp;</li>
+
+<li>
+-strictflat プションをつけても反射マッピングかつ フラットシェーディングで
+ShapeAnimation しないのを修正&nbsp;</li>
+
+<li>
+<a href="index.htm#NULLANIM">-nullanim</a> オプション追加。&nbsp;</li>
+
+<li>
+頂点キャッシュの利用を一部変更。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.2</td>
+
+<td VALIGN=TOP>1998/8/25</td>
+
+<td>主な変更点&nbsp;
+<ul>
+<li>
+<a href="../n64prev/quickprev.htm">クイックプレビュー</a>対応&nbsp;</li>
+
+<li>
+CIフォーマットテクスチャのカラーリダクション機能追加&nbsp;</li>
+
+<li>
+出力頂点(Vtx)数の削減&nbsp;</li>
+
+<li>
+アニメーションデータの最適化(データ削減)&nbsp;</li>
+
+<li>
+shapeを持たない3Dオブジェクトがあるデータでもコンバートできるよう にした。&nbsp;</li>
+
+<li>
+メッセージの出力をWindows版では標準出力になるように変更。&nbsp;</li>
+
+<li>
+staticで出力されていないデータがあったのでstaticになるように変更。&nbsp;</li>
+
+<li>
+NDR_OBJ の geomode をマクロ文字列で出力するように変更。 F3DEX2でマクロの値が変更されたため。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.1</td>
+
+<td VALIGN=TOP>1998/7/22</td>
+
+<td>
+<ul>
+<li>
+shapeノード数がmatノード数より多い場合にコンバートエラーになる 不具合を修正。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.3.0</td>
+
+<td VALIGN=TOP>1998/7/15</td>
+
+<td>主な変更点&nbsp;
+<ul>
+<li>
+IAテクスチャ(4,8,16bit)に対応した。&nbsp;</li>
+
+<li>
+ディレクショナルライトが1つも設定されていない場合は、 必ずデフォルトの並行光源が設定されていたのを、
+アンビエントが完全に黒のときだけ設定するように変更。&nbsp;</li>
+
+<li>
+shapeが多いときgSPSetGeometryMode がされたりされなかったりす る不具合を修正。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.2.6</td>
+
+<td VALIGN=TOP>1998/3/23</td>
+
+<td>・BBS、NTSC-ONLINEに登録&nbsp;
+<p>主な変更点&nbsp;
+<ul>
+<li>
+-vtxseg, -imgseg, -clutseg のオプションを追加。&nbsp;</li>
+
+<li>
+-strictcidx オプションを追加.&nbsp;</li>
+
+<li>
+ヘッダに出力していたコンバートスケールは、オブジェクトのトランスレーション値と、アニメーションのトランスレーション値に反映したため、出力しないように変更した。&nbsp;</li>
+
+<li>
+NDR_OBJ に含んでいたGfx, Vtx を、NDR_SHAPE構造体を新設し、その中に格納して出力するようにした。また、シェープアニメーションの情報も、NDR_SHAPE
+に含み、NDR_SHAPE ヘッダに出力していたセグメント番号も、含まれるようにした。&nbsp;</li>
+
+<li>
+出力されるデータクラスが大きく変更になった為、スイッチ outmask のビットアサインを変更した。&nbsp;</li>
+
+<li>
+シンボル名問題を解消するため、NDR_RESINFO 構造体を新設し、１ファイルにつき、１つ出力することにした。&nbsp;</li>
+
+<li>
+NDR_RESINFO があるので、コンバート時のシンボルは、NDR_RESINFO のみ、外部宣言にした。&nbsp;</li>
+
+<li>
+4bit CI と、32bit RGBA テクスチャに対応した。&nbsp;</li>
+
+<li>
+NDR_OBJ 構造体に NIFF の obj_group を渡すように拡張。&nbsp;</li>
+
+<li>
+ポリゴンの出力に、 gSP2Triangles を極力使うようにした。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1.1.0</td>
+
+<td VALIGN=TOP>1997/12/24</td>
+
+<td>・デベロッパーズキットリリース第２弾&nbsp;
+<p>主な変更点&nbsp;
+<ul>
+<li>
+オプションを追加。-noalignpad, -outobj, -outmask, -nogeomclr, -preview,
+-rotorder, @fname&nbsp;</li>
+
+<li>
+マテリアルの評価方法を修正。&nbsp;</li>
+
+<li>
+Objエリアのobj_render_priにOBJ_RENDER_NIFF_TEX_EDGEを指定するとおかしくなることがある不具合の修正。&nbsp;</li>
+
+<li>
+Shapeエリアのshape_typeが正しく反映されないことがある不具合の修正。&nbsp;</li>
+
+<li>
+TMEMに収まらないテクスチャを張るときに分割がよくないことがあったのを修正。&nbsp;</li>
+
+<li>
+マテリアル違いのオブジェクトのGBI部分を共用できるようにした。&nbsp;</li>
+
+<li>
+mat_color_type*, mat_alpha_type*のTEX1フラグを全面的にみるように変更。&nbsp;</li>
+
+<li>
+mat_color_type*, mat_alpha_type*の値がMAT_CC_NIFF_NONEであったであった時の処理を追加。&nbsp;</li>
+
+<li>
+XYZ, YZX回転以外の回転手法の評価順がおかしかったのを修正した。&nbsp;</li>
+
+<li>
+Vtx, Gfx, Bitmap, CLUT それぞれをセグメントアドレスに配置するように 変更した。&nbsp;</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>1.00</td>
+
+<td>1997/10/9</td>
+
+<td>・最初のデベロッパーズキットでのリリース</td>
+</tr>
+</table>
+
+<hr><font size=-1>Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI
+CORPORATION All rights reserved.</font><!--------------------------------------------------------->
+<div align=right><a href="index.htm#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a href="../index.htm">目次に戻る</a>
+</body>
+</html>

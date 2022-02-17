@@ -1,0 +1,789 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>Appendix B. 64DD MFS Functions</H1>
+
+<P>This appendix provides descriptions of 64DD Multi File System (MFS) Library functions.</P>
+
+
+<H2>High-Level Library Functions</H2>
+
+<P>The ROM and RAM areas can be assigned virtual drives, and file and directory names can be specified by their full pathnames. Relative paths can also be used, and these can be back-traced.</P>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsHInitDiskBoot</TD>
+<TD VALIGN="TOP">Initialize library (for disk boot)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHInitCasBoot</TD>
+<TD VALIGN="TOP">Initialize library (for cartridge boot)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHMediaCheck</TD>
+<TD VALIGN="TOP">Check media status of drive</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHMediaFormat</TD>
+<TD VALIGN="TOP">Format media in MFS format</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFopen</TD>
+<TD VALIGN="TOP">Open file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFread</TD>
+<TD VALIGN="TOP">Read data</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFwrite</TD>
+<TD VALIGN="TOP">Write data</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFclose</TD>
+<TD VALIGN="TOP">Close file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFseek</TD>
+<TD VALIGN="TOP">Seek head</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFtell</TD>
+<TD VALIGN="TOP">Get file location</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFstat</TD>
+<TD VALIGN="TOP">Get information about file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFgetAttr</TD>
+<TD VALIGN="TOP">Get file attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFsetAttr</TD>
+<TD VALIGN="TOP">Set file attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFgetCopyCount</TD>
+<TD VALIGN="TOP">Get file copy counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFsetCopyCount</TD>
+<TD VALIGN="TOP">Set copy counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFgetRC</TD>
+<TD VALIGN="TOP">Get file refresh counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFresetRC</TD>
+<TD VALIGN="TOP">Reset refresh counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHRemoveFile</TD>
+<TD VALIGN="TOP">Delete file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHRenameFile</TD>
+<TD VALIGN="TOP">Rename file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetFileCopyCount</TD>
+<TD VALIGN="TOP">Get file copy count</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHSetFileCopyCount</TD>
+<TD VALIGN="TOP">Set file copy count</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetAttr</TD>
+<TD VALIGN="TOP">Get file (directory) attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHSetAttr</TD>
+<TD VALIGN="TOP">Set file (directory) attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetRC</TD>
+<TD VALIGN="TOP">Get file (directory) refresh counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHResetRC</TD>
+<TD VALIGN="TOP">Reset refresh counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetStat</TD>
+<TD VALIGN="TOP">Get file or directory information</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetCwd</TD>
+<TD VALIGN="TOP">Get current directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHChDir</TD>
+<TD VALIGN="TOP">Change current directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHRmDir</TD>
+<TD VALIGN="TOP">Remove directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHMkDir</TD>
+<TD VALIGN="TOP">Make directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetVolumeInfo</TD>
+<TD VALIGN="TOP">Get volume information</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetVolumeAttr</TD>
+<TD VALIGN="TOP">Get volume attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHSetVolumeAttr</TD>
+<TD VALIGN="TOP">Set volume attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetVolumeRC</TD>
+<TD VALIGN="TOP">Get volume refresh counter</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHResetVolumeRC</TD>
+<TD VALIGN="TOP">Reset volume refresh counter</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFnsplit</TD>
+<TD VALIGN="TOP">Split structural element in path name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFnmerge</TD>
+<TD VALIGN="TOP">Merge elements to create path name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHGetDisk</TD>
+<TD VALIGN="TOP">Get current drive number</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHSetDisk</TD>
+<TD VALIGN="TOP">Change current drive</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFindFirst</TD>
+<TD VALIGN="TOP">Find directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsHFindNext</TD>
+<TD VALIGN="TOP">Find next file</TD>
+</TR>
+
+</TABLE>
+
+
+<H2>Low-Level Library Functions</H2>
+
+<P>There is a group of functions for the ROM area and a group of functions for the RAM area. Since writing to the ROM area is disabled, there are no write-related functions in the ROM area group.</P>
+
+<H3>Initialization Functions</H3>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsInit</TD>
+<TD VALIGN="TOP">Initialize internal variables</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsInitDiskRom</TD>
+<TD VALIGN="TOP">Initialize for disk operation </TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsInitDiskRam</TD>
+<TD VALIGN="TOP">Initialize for disk operation</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsInitDiskRomRam</TD>
+<TD VALIGN="TOP">Initialize for disk operation</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamInit</TD>
+<TD VALIGN="TOP">Initialize RAM area library</TD>
+</TR>
+
+<TR><TD VALIGN="TOP">mfsRomInit</TD>
+<TD VALIGN="TOP">Initialize ROM area library</TD>
+</TR>
+
+</TABLE>
+
+<H3>Disk Operation Functions</H3>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsDiskIdCheck</TD>
+<TD VALIGN="TOP">Read and check disk ID</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamMediaFormat</TD>
+<TD VALIGN="TOP">Format media</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomMediaCheck</TD>
+<TD VALIGN="TOP">Media check</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamMediaCheck</TD>
+<TD VALIGN="TOP">Media check</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamFlash</TD>
+<TD VALIGN="TOP">Write header area</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFreeSize</TD>
+<TD VALIGN="TOP">Get free space</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFreeDirEntryNum</TD>
+<TD VALIGN="TOP">Get number of files (directories) which can be registered</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileNum</TD>
+<TD VALIGN="TOP">Get number of files associated with specified directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileNum</TD>
+<TD VALIGN="TOP">Get number of files associated with specified directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetVolumeAttr</TD>
+<TD VALIGN="TOP">Get volume attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetVolumeAttr</TD>
+<TD VALIGN="TOP">Get volume attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetVolumeName</TD>
+<TD VALIGN="TOP">Get volume name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetVolumeName</TD>
+<TD VALIGN="TOP">Get volume name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetVolumeDate</TD>
+<TD VALIGN="TOP">Get volume date</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetVolumeDate</TD>
+<TD VALIGN="TOP">Get volume date</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetVolumeRC</TD>
+<TD VALIGN="TOP">Get refresh counter value</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetDiskType</TD>
+<TD VALIGN="TOP">Get disk type</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetDiskType</TD>
+<TD VALIGN="TOP">Get disk type</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetDestination</TD>
+<TD VALIGN="TOP">Get destination code</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetDestination</TD>
+<TD VALIGN="TOP">Get destination code</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetVolumeAttr</TD>
+<TD VALIGN="TOP">Set volume attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetVolumeName</TD>
+<TD VALIGN="TOP">Set volume name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetVolumeDate</TD>
+<TD VALIGN="TOP">Set volume date</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetDestination</TD>
+<TD VALIGN="TOP">Set destination code</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamResetVolumeRC</TD>
+<TD VALIGN="TOP">Reset refresh counter</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamRepairHeader</TD>
+<TD VALIGN="TOP">Repair header area</TD>
+</TR>
+
+</TABLE>
+
+<H3>Directory Functions</H3>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsRamMakeDir</TD>
+<TD VALIGN="TOP">Make directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetDirID</TD>
+<TD VALIGN="TOP">Get directory ID</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetDirID</TD>
+<TD VALIGN="TOP">Get directory ID</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetDirName</TD>
+<TD VALIGN="TOP">Get directory name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetDirName</TD>
+<TD VALIGN="TOP">Get directory name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamRemoveDir</TD>
+<TD VALIGN="TOP">Remove directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamRenameDir</TD>
+<TD VALIGN="TOP">Rename directory</TD>
+</TR>
+
+</TABLE>
+
+<H3>File Operation Functions</H3>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsRamCreateFile</TD>
+<TD VALIGN="TOP">Create file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileDirID</TD>
+<TD VALIGN="TOP">Get directory ID of file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileDirID</TD>
+<TD VALIGN="TOP">Get directory ID of file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomReadFile</TD>
+<TD VALIGN="TOP">Read data</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamReadFile</TD>
+<TD VALIGN="TOP">Read data</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamWriteFile</TD>
+<TD VALIGN="TOP">Write data to file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomSeekFile</TD>
+<TD VALIGN="TOP">Seek head</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSeekFile</TD>
+<TD VALIGN="TOP">Seek head</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileName</TD>
+<TD VALIGN="TOP">Get file name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileName</TD>
+<TD VALIGN="TOP">Get file name</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamRemoveFile</TD>
+<TD VALIGN="TOP">Delete file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamRenameFile</TD>
+<TD VALIGN="TOP">Rename file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileAttr</TD>
+<TD VALIGN="TOP">Get file (directory) attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileAttr</TD>
+<TD VALIGN="TOP">Get file (directory) attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileDate</TD>
+<TD VALIGN="TOP">Get file (directory) date</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileDate</TD>
+<TD VALIGN="TOP">Get file (directory) date</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileParentDir</TD>
+<TD VALIGN="TOP">Get directory ID of parent directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileParentDir</TD>
+<TD VALIGN="TOP">Get directory ID of parent directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileSize</TD>
+<TD VALIGN="TOP">Get file size</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileSize</TD>
+<TD VALIGN="TOP">Get file size</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileCopyCount</TD>
+<TD VALIGN="TOP">Get file (directory) copy limit count</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileGameCode</TD>
+<TD VALIGN="TOP">Get company code, game code of file (directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileGameCode</TD>
+<TD VALIGN="TOP">Get company code, game code of file (directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileRC</TD>
+<TD VALIGN="TOP">Get refresh counter value of file (directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetFiletAttr</TD>
+<TD VALIGN="TOP">Set file (directory) attributes</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetFileDate</TD>
+<TD VALIGN="TOP">Set file (directory) date</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetFileCopyCount</TD>
+<TD VALIGN="TOP">Set file (directory) copy limit number</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetFileGameCode</TD>
+<TD VALIGN="TOP">Set company code, game code of file (directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamResetFileRC</TD>
+<TD VALIGN="TOP">Reset refresh counter value of file (directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamSetFileParentDir</TD>
+<TD VALIGN="TOP">Change parent directory</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamResizeFile</TD>
+<TD VALIGN="TOP">Resize file</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetFileStat</TD>
+<TD VALIGN="TOP">Get information</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetFileStat</TD>
+<TD VALIGN="TOP">Get information</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetDirListFirst</TD>
+<TD VALIGN="TOP">Get directory contents (list directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetDirListFirst</TD>
+<TD VALIGN="TOP">Get directory contents (list directory)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRomGetDirListNext</TD>
+<TD VALIGN="TOP">Continue to get directory contents (next page of directory list)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsRamGetDirListNext</TD>
+<TD VALIGN="TOP">Continue to get directory contents (next page of directory list)</TD>
+</TR>
+
+</TABLE>
+
+
+<H2>Device Functions</H2>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsReadWriteLBA</TD>
+<TD VALIGN="TOP">Read/write from to disk</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsReadLBA</TD>
+<TD VALIGN="TOP">Read disk</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsWriteLBA</TD>
+<TD VALIGN="TOP">Write to disk</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsReadDiskID</TD>
+<TD VALIGN="TOP">Read disk ID</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsSpdlMotor</TD>
+<TD VALIGN="TOP">Control 64DD head and motor</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsTestUnit</TD>
+<TD VALIGN="TOP">Check status of 64DD</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsReadRtc</TD>
+<TD VALIGN="TOP">Read date and time from internal RTC</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsSetRtc</TD>
+<TD VALIGN="TOP">Set internal RTC</TD>
+</TR>
+
+</TABLE>
+
+
+<H2>Other Functions</H2>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsGetGameCode</TD>
+<TD VALIGN="TOP"><P>Get company code, game code</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsSetGameCode</TD>
+<TD VALIGN="TOP">Set company code, game code</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrCmp</TD>
+<TD VALIGN="TOP">Compare text strings</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrnCmp</TD>
+<TD VALIGN="TOP">Compare text strings</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrCpy</TD>
+<TD VALIGN="TOP">Copy text string</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrnCpy</TD>
+<TD VALIGN="TOP">Copy text string</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrLen</TD>
+<TD VALIGN="TOP">Calculate length of text string</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrrChr</TD>
+<TD VALIGN="TOP">Find location of last appearance of character c</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrCat</TD>
+<TD VALIGN="TOP">Connect text string</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsStrWCmp</TD>
+<TD VALIGN="TOP">Compare text string (wild card version)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsSetLeoBusyFunc</TD>
+<TD VALIGN="TOP">Register PI control function (before using PI)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsSetLeoReadyFunc</TD>
+<TD VALIGN="TOP">Register PI control function (after using PI)</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsSetLeoErrorFunc</TD>
+<TD VALIGN="TOP">Register error processing function for Leo function</TD>
+</TR>
+
+</TABLE>
+
+
+<H2>Global Variables</H2>
+
+<TABLE BORDER=1 CELLPADDING=5 WIDTH=90%>
+
+<TR>
+<TD VALIGN="TOP">mfsError</TD>
+<TD VALIGN="TOP">Stores errors when LEO function is called inside MFS library</TD>
+</TR>
+
+<TR>
+<TD VALIGN="TOP">mfsDiskInfo</TD>
+<TD VALIGN="TOP">Structure for storing information regarding disk inside MFS library</TD>
+</TR>
+
+</TABLE>
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

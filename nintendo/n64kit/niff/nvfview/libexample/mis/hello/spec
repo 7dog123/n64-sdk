@@ -1,0 +1,30 @@
+/*
+	ROM spec file
+
+	Main memory map
+
+  	0x80000000  exception vectors, ...
+  	0x80000400  codesegment
+*/
+
+beginseg
+	name	"code"
+	flags	BOOT OBJECT
+	entry 	boot
+	address 0x80000400
+        stack   main_stack + 65536
+	include "codesegment.o"
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+endseg
+
+beginseg
+	name	"hello"
+	flags	RAW
+	include	"hello.txt"
+endseg
+
+beginwave
+	name	"hello"
+	include	"code"
+	include	"hello"
+endwave

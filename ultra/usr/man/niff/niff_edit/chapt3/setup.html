@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>Setup</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>Setup</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="Index" border="0"></a>
+<a href="environment.html"><img src="images/previous.gif" alt="Previous page" border="0"></a>
+<a href="execute.html"><img src="images/next.gif" alt="Next page" border="0"></a>
+
+<hr>
+
+<p>Here we describe how to install and update NIFF Editor.</p>
+
+<h3><a name="convkit">N64 Previewer</a></h3>
+
+<p>N64 Previewer must be set up in order to convert NIFF files into display lists and to use the Preview and Quick Preview functions on NINTENDO<sup>64</sup>.  N64 Previewer contains niff2gfx.exe for converting NIFF files into display lists, along with source files for the Previewer and n64 files for Quick Preview.</p>
+<p>To install N64 Previewer, please execute the N64 Previewer setup program in one of the following ways:</p>
+
+<ul>
+<li>Activate Explorer, open the directory containing N64 Previewer and double-click on SETUP.EXE
+<li>Activate the MS-DOS prompt (Windows 95/98) or the command prompt (Windows NT), change the current directory to the directory containing the setup program, then input "setup"
+<li>Select the "Run" command from the Start button to open the Run dialog box.  Enter the filename, including the directory path.
+</ul>
+
+<p>Use any of these methods to open the setup program, then follow the instructions in the program to install N64 Previewer.</p>
+
+<h3><a name="install">Install</a></h3>
+
+<p>To setup NIFF Editor in your computer, execute the setup program as described below:</p>
+
+<ul>
+<li>First, use one of these methods to execute the setup program SETUP.EXE
+<ul>
+<li>Activate Explorer, open the directory containing NIFF Editor and double-click on SETUP.EXE
+<li>Activate the MS-DOS prompt (Windows 95/98) or the command prompt (Windows NT), change the current directory to the directory containing the setup program, then input "setup"
+<li>Select the "Run" command from the Start button to open the Run dialog box.  Enter the filename, including the directory path.
+</ul>
+<li>Using any of these methods will start the NIFF Editor setup program.  Prompts will ask for the user name, install directory etc.  Follow the messages and install NIFF Editor.
+</ul>
+
+<p>If installation has been completed successfully, then the environment has been prepared to use NIFF Editor, and you can refer to the next section on <a href="execute.html">Starting and Quitting</a> and actually start up NIFF Editor.</p>
+
+<h3><a name="uninstall">Uninstall</a></h3>
+
+<p>If deleting NIFF Checker, make sure to follow the sequence described below, using "Add/Remove Programs" from the Control Panel.</p>
+
+<ul>
+<li>Click the Start button and select Control Panel in the Settings command to open the Control Panel.
+<li>Double-click on "Add/Remove Programs" in the Control Panel to display the "Add/Remove Programs Properties" dialog.  Click on "NIFF Editor" in the list in the Install/Uninstall tab and then click the Add/Remove button.
+<li>
+</ul>
+
+<p>Following this procedure will delete NIFF Editor.</p>
+
+
+<h3><a name="update">Version Upgrades</a></h3>
+
+<p>To upgrade the version of NIFF Editor, follow the above-described <a href="#uninstall">uninstall</a> procedure to delete the existing version of NIFF Editor, then follow the above-described <a href="#install">install</a> procedure to install the program again.  If you upgrade the version without first deleting the existing version, then NIFF Editor itself will not be upgraded.</p>
+
+<h3><a name="tool">Convert & Preview</a></h3>
+
+<p>When you select "Convert" or "Preview" from the Tools menu, NIFF Editor will output a NIFF file and execute either the MIFFCON.BAT batch file to just convert, or the NIFFPREV.BAT batch file to convert as well as perform make and makemask.  In order to run Convert or Preview, the following items must be set up in advance to match the existing user environment.</p>
+
+<ul>
+<li><p>Install exeGCC and set the environment to activate exeGCC.  Normally, the directory in which exeGCC is installed is specified in the "root" environment variable in the SETUP.BAT contained in exeGCC.  For details about installing and setting environment variables, please see the exeGCC manual.</p>
+<li><p>Change MAKEFILE.WIN in the Previewer directory (C:\NINTENDO\N64KIT\NIFF\N64PREV) to match the environment of the installed exeGCC.  Open MAKEFILE.WIN using Notepad or an editor and look at the part at the start of the file specifying the path for exeGCC and Include files.
+
+<font color=blown>
+<pre>N64GCC_PATH = c:\ultra\gcc\mipse
+N64GCC_BIN = $(N64GCC_PATH)\bin
+N64GCC_INC = c:\ultra\usr\include
+CC = $(N64GCC_BIN)\gcc
+AS = $(N64GCC_BIN)\as
+LD = $(N64GCC_BIN)\ld</pre>
+</font>
+
+Please change this part so that it matches the environment of the installed exeGCC.  As long as there are no problems, no other parts need to be changed.</p>
+<li><p>When a NIFF file is converted into a display list, NIFF Editor calls NIFFCON.BAT and the settings in this batch file are carried out.  Open NIFFCON.BAT with Notepad or an editor and you will see the following settings:
+<font color=blown>
+<pre>@echo off
+set root=c:\ultra
+set gccdir=%ROOT%\gcc
+path %gccdir%\mipse\bin;%root%\sbin;%path%
+set gccsw=-mips3 -mgp32 -mfp32 -D_LANGUAGE_C -D_ULTRA64 -D__EXTENSIONS__
+set n64align=on
+niff2gfx -header model.h niffconv.nif model.c
+if errorlevel 1 goto error
+goto done
+:error
+pause
+:done
+echo on</pre>
+</font>
+
+The six lines from the start set the environment for exeGCC.  If these lines are already included in the AUTOEXEC.BAT file, please delete them here or REM them out.<br>
+The 7th line calls NIFF2GFX.EXE and converts the NIFF file into a display list.  NIFF Editor outputs the currently read NIFF file to a temporary file called NIFFCONV.NIF.  Because of this, please do not change the name of the NIFF file sent to NIFF2GFX.EXE.  The names of other output files and the options can be freely changed, however.  For details about NIFF2GFX.EXE please see the NIFF2GFX user's manual.</p>
+<li><p>As the last step, set the NIFFPREV.BAT file called from NIFF Editor when a NIFF file is to be previewed.  Open NIFFPREV.BAT with Notepad or an editor and you will see the following settings:
+
+<font color=blown>
+<pre>@echo off
+set root=c:\ultra
+set gccdir=%ROOT%\gcc
+path %gccdir%\mipse\bin;%root%\sbin;%path%
+set gccsw=-mips3 -mgp32 -mfp32 -D_LANGUAGE_C -D_ULTRA64 -D__EXTENSIONS__
+set n64align=on
+niff2gfx -header model.h niffprev.nif model.c
+if errorlevel 1 goto error
+make -f makefile.win
+if errorlevel 1 goto error
+makemask nuprev.n64
+if errorlevel 1 goto error
+"C:\Program Files\Intelligent Systems\IS-VIEWER64\PROGRAM\nload" -n -v -s0x200000 "quickprev\clean.bin"
+if errorlevel 1 goto error
+"C:\Program Files\Intelligent Systems\IS-VIEWER64\PROGRAM\nload" -n -v nuprev.n64
+if errorlevel 1 goto error
+goto done
+:error
+pause
+:done
+echo on</pre>
+</font>
+
+This is nearly the same as the NIFFCONV.BAT used for conversion, except that the NIFF file output by NIFF Editor is different, and there is make and makemask.<br>
+The six lines from the start set the environment for exeGCC.  If these lines are already included in the AUTOEXEC.BAT file, please delete them here or REM them out.<br>
+The 7th line calls NIFF2GFX.EXE and converts the NIFF file into a display list.  NIFF Editor outputs the currently read NIFF file to a temporary file called NIFFPREV.NIF.  Because of this, please do not change the name of the NIFF file sent to NIFF2GFX.EXE.  The names of other output files and the options can be freely changed, however.  For details about NIFF2GFX.EXE please see the NIFF2GFX user's manual.<br>
+Line 9 performs make, and line 11 performs makemask.  These lines normally do not need to be changed.</p>
+</ul>
+
+<h3><a name="quickpreview">Quick Preview</a></h3>
+
+<p>Quick Preview is performed by executing the quickprev.bat file included in the N64 Previewer.  Please setup this file following the steps shown below so that the file will execute correctly. </p>
+
+<ul>
+<li><p>The default quickprev.bat file is described as follows:
+
+<font color=blown>
+<pre>@echo off
+"C:\Program Files\Intelligent Systems\IS-VIEWER64\PROGRAM\nload" -n -v quickprev.n64
+if errorlevel 1 goto error
+..\niff2gfx -b quickprev.nif model.bin
+if errorlevel 1 goto error
+"C:\Program Files\Intelligent Systems\IS-VIEWER64\PROGRAM\nload" -n -v -s0x200000 model.bin
+if errorlevel 1 goto error
+goto done
+:error
+pause
+:done
+echo on</pre>
+</font>
+
+In line 2, nload.exe reads the Previewer's quickprev.n64 file into IS-VIEWER64.  In line 4, niff2gfx.exe converts quickprev.nif, which is the temporary file output by NIFF Editor, into a binary file.  In line 6, this converted file is read by nload.exe into IS-VIEWER64.</p>
+<li><p>makemask is not executed in quickprev.bat, because version 1.03p of nload.exe in IS-VIEWER64 incorporates a function to automatically perform makemask with a file is read, and because it is not needed in environments outside of NIFF Editor and N64 Previewer.  If you have an earlier version of nload.exe please download the latest version from Intelligent Systems' <a href="http://www.intsys.co.jp/tool/isv/">IS-VIEWER64 Home Page</a> (<a href="http://www.intsys.co.jp/tool/isv/">http://www.intsys.co.jp/tool/isv/</a>).</p>
+<li><p>You may use an earlier version of nload.exe by adding makemask to the quickprev.bat file. </p>
+
+<font color=blown>
+<pre>set root=c:\ultra
+set gccdir=%ROOT%\gcc
+path %gccdir%\mipse\bin
+makemask quickprev.n64</pre>
+</font>
+
+<li><p>As the last step, specify the name of the temporary NIFF file that NIFF Editor will output for quick preview, as well as the path for quickprev.bat.  These can be set from the "<a href="option.html#quickprev">Quick Preview</a>" tab in Options from the Tools menu.</p>
+</ul>
+
+<hr>
+
+</body>
+</html>

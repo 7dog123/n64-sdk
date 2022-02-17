@@ -1,0 +1,49 @@
+NVF Loading Method 
+ STEP1 Load NVF to the MhcModule. 
+ STEP2 Make the loaded MhcModule active. 
+ STEP3 If all MhcModules have been loaded, bind the MhcScene. 
+ (However, STEP2~STEP3 MUST NOT be executed in parallel with scene evaluation.) 
+
+  Example: 
+    int LoadScene( MhcScene *scene_ptr,
+		   MisInput *input_ptr,
+		   MifFileParser *parser_ptr )
+    {
+	mhcModuleLoad( /* Load module 1*/, parser_ptr, input_ptr );
+	mhcModuleLoad( /* Load module 2 */, parser_ptr, input_ptr );
+	   ....
+
+	/* From here on must not be executed in parallel with scene evaluation */
+	mhcModuleActivate( /* Loaded module 1 */ );
+	mhcModuleActivate( /* Loaded module 2 */ );
+	   ....
+
+	mhcSceneBind( scene_ptr );
+    }
+
+  The entire scene does not necessarily have to be loaded at once.  However, once loading has been 
+  completed, it is absolutely necessary to call mhcSceneBind() before executing scene evaluation. 
+
+NVF Unloading Method 
+ STEP1 Make the loaded MhcModule inactive. 
+ STEP2 Unload NVF to the MhcModule. 
+ STEP3 If all MhcModules have been loaded, bind the MhcScene.
+ (However, STEP1~STEP3 MUST NOT be executed in parallel with scene evaluation.) 
+
+  Example: 
+    int UnloadScene( MhcScene *scene_ptr )
+    {
+	mhcModuleInactivate( /* Loaded module 1 */ );
+	mhcModuleInactivate( /* Loaded module 2 */ );
+	   ....
+
+	mhcModuleUnload( /* Loaded module 1 */ );
+	mhcModuleUnload( /* Loaded module 1 */ );
+	   ....
+
+	mhcSceneBind( scene_ptr );
+    }
+
+  The entire scene does not necessarily have to be unloaded at once.  However, once unloading has been 
+  completed, it is absolutely necessary to call mhcSceneBind() before executing scene evaluation. 
+

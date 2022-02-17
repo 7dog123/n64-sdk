@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.7.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Clipping and Culling</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+3D clipping is automatically enabled all the time.  There are two modes which can be adjusted for performance and appearance: ClipRatio and NearClipping. Please see <a target="main" href="../pro12/12-03.html#01">Section 12.3.1, “Scissoring.”</a>
+<P>
+3D clipping is expensive and should be avoided. Methods employed by the host application which can reduce the amount of geometry that gets clipped are a good idea. Crude visibility determination algorithms, geometric level-of-detail, and careful scene construction can help improve clipping performance dramatically.
+<P>
+The clipping algorithm is sensitive to large numbers and overflows.  Refer to the Note on Coordinate Systems and Big Numbers in the  Matrix State section for notes on how to avoid clipping problems.
+<P>
+
+<a name="01"></a>
+<b>Clip Ratio</b>
+<br>
+The Clip Ratio feature helps the application to clip less.
+Generally (when ClipRatio is set to FRUSTRATIO_1) the RSP clips to the clipping frustrum which is defined by the projection and viewing matrices (often created using guPerspective and guLookAt respectively).  This is the area which is mapped by the gSPViewport command and usually corresponds to the entire frame buffer.  Objects outside this area are scissored by the RDP, so clipping them is not neccessary.  
+<P>
+The ClipRatio command can set the area which is clipped between 1 and 6 times the size of the viewing frustrum.  Polygons which are completely on the screen are drawn without clipping.  Polygons which are partially onscreen but completely within the enlarged frustrum are drawn without clipping (the extra portions are scissored away).  Polygons which are entirely offscreen are trivially rejected (whether they are inside or outsid the frustrum).  The only polygons which are clipped are the large polygons which stretch all the way from onscreen to outside the enlarged clipping boundary. There is some overhead for drawing sections of polygons which are then scissored away, but it is much smaller than the time to draw actual onscreen pixels and is usually faster than clipping.  
+<P>
+Different values of ClipRatio can be tried to obtain the best performance.  High values of ClipRatio are suspected to  be associated with “texture shuffle” bugs, so if you see the texture shuffling you could try lower values of ClipRatio.
+<P>
+To set the ClipRatio so that the clipping frustrum is 3x the size of the screen:
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    gsSPClipRatio(FRUSTRATIO_3),
+<P>
+You can use values of FRUSTRATIO_1, FRUSTRATIO_2, ..., FRUSTRATIO_6
+<P>
+
+<a name="02"></a>
+<b>Near Clipping and gspF3DNoN microcode</b><BR>
+3D clipping causes geometry which is outside of a 3D box called the “clipping Frustrum” to be clipped away (ie not rendered).  The left, right, top and bottom of this clipping frustrum box correspond to the left, right, top, and bottom of the screen.  
+<P>
+However the side facing towards the viewer and the side facing away from the viewer do not correspond to physical parts of the screen.  The “far plane” is the side of the box farthest from the viewer.  Objects which are farther away than this plane are not rendered.  Likewise the “near plane” is the side of the box closest to the viewer.  
+<P>
+Objects which are closer to the viewer than this plane are not rendered.  The near and far clipping planes can cause visual problems.  Objects which get too far away will suddenly dissappear as the cross the far clipping plane.  Also, objects which get too close to the viewer will suddenly dissappear as the cross the near clipping plane.  
+<P>
+There is a solution to these problems.   The near plane problem can be partially solved by using the gspF3DNoN microcode (which is an acronym for Fast 3D No Near clipping).  The gspF3DNoN microcode will not clip objects between the viewer and the near clipping plane (objects which would have been clipped away by the gspFast3D microcode).  However, Z buffering will not work correctly in this area.  Objects between the viewer and the near plane will hide objects which are behind the near plane, but objects between the viewer and the near plane will not correcly hide other objects between the viewer and the near plane.  For this reason it is important for the application to ensure that only one object at a time comes closer to the viewer than the near plane.
+<P>
+There is a solution to the far plane problem too.  Objects which get farther away from the viewer than the far plane visually “pop” out of view, and objects approaching the viewer “pop” into view.  The Fog effect can be used to make objects gradually fade into a distant fog, or slowly appear through a distant fog, instead of popping into and out of view.  Please see <a target="_top" href="../pro11/index11.8.html">Section 11.8, "Vertex Fog State"</a> for details.
+<P>
+
+<a name="03"></a>
+<b>Back-Face Polygon Culling</b>
+<br>
+The geometry engine of the RSP implements a flexible polygon culling algorithm; either the front-facing, the back-facing, neither, or both types of polygons can be culled before rasterization.
+<P>
+This offers the programmer the most database flexibility. Geometry can be ordered in any direction or re-used with different culling flags in order to achieve effects such as interior surfaces, 2-sided polygons, etc.
+<P>
+<P>
+<b>Table 1</b> &nbsp; gsSPSetGeometryMode(unsigned int n)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="65%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">n</td>
+<td width=70%><font face="arial" size="-1">G_CULL_FRONT<br>
+G_CULL_BACK<br>
+G_CULL_BOTH
+</td></tr></table>
+<P>
+<br>
+<b>Table 2</b> &nbsp;gsSPClearGeometryMode(unsigned int n)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="65%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">n</td>
+<td width=70%><font face="arial" size="-1">G_CULL_FRONT<br>
+G_CULL_BACK<br>
+G_CULL_BOTH</td></tr></table>
+
+
+<P>
+<a name="04"></a>
+<b>Volume Culling</b>
+<br>
+The RCP can perform volume culling.  The volume of an object is described to the RCP and the RCP only draws the object if the described volume is entirely or partially onscreen.  If the volume is entirely offscreen then the display list is quickly skipped.
+<P>
+The volume of an object is described with a number of vertices surrounding the object.  The vertices may be part of the object or not.  They can be 4 vertices describing a pyramidal volume, 8 points describing a cube, or any other convex shape.  These vertices should be sent to the RCP using a gSPVertex command just like regular vertices (note: you may want to turn lighting and fog off when these vertices are sent for better performance).  Then the gsSPCullDisplayList command is sent.  If the volume is entirely off the screen then the command acts like gsSPEndDisplayList and the rest of the display list is skipped.  Otherwise the command acts as a NOOP and the display list processing continues.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<html>
+<title>
+
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+9. MatNode
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="matNodeD">(1) MatNode Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+float ambient_red<br>
+float ambient_green<br>
+float ambient_blue<br>
+float ambient_alpha
+</td>
+<td>
+ambient color<p>
+0 &lt;= ambient_* &lt;= 1<p>
+
+If the user will not be setting the values, please set 1.0 as the default for all values.
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float emission_red<br>
+float emission_green<br>
+float emission_blue<br>
+float emission_alpha
+</td>
+<td>
+emission color<p>
+0 &lt;= emission_* &lt;= 1
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float diffuse_red<br>
+float diffuse_green<br>
+float diffuse_blue<br>
+float diffuse_alpha
+</td>
+<td>
+diffuse color<p>
+0 &lt;= diffuse_* &lt;= 1<p>
+
+If the user will not be setting the values, please set 1.0 as the default for all values.
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_local_light_file_name_index
+</td>
+<td>When local light references an external file, that file name is specified by an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+If an external file is not referenced, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_local_light_name_index
+</td>
+<td>When local light references an external file, the file name is specified by an ExternalNameList index number.
+<p>
+If an external file is not referenced, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_tex_num
+</td>
+<td>
+Specify the total number of Tex that are external file references.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 prim_color_anim_num
+</td>
+<td>Specify the total number of PrimColorAnim if animating primitive colors.  If not, please set prim_color_animation_num = 0x0.  Also note that, if animation is being done, the default prim_red, prim_green, prim_blue, and prim_alpha are not used.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_tex_file_name_index
+</td>
+<td>
+When Tex references an external file, the file name is specified by an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This field is not specified when an external file is not referenced (external_tex_num = 0).
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_tex_name_index
+</td>
+<td>
+When Tex references an external file, the file name is specified by an ExternalNameList index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+PrimColorAnim
+</td>
+<td>This is the area that describes the primitive color for each key.  The area is not used when prim_color_anim_num = 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+*_for_fog
+</td>
+<td>
+
+*_for_fog data in a Mat node indicates the attributes to be handled in scenes that use fog. The contents of the data are similar to those of data without _for_fog attached.
+
+
+</td>
+</tr>
+
+</table>
+
+</center>
+
+<P><A HREF="mat_C.htm#matNodeC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+<A NAME="primColorD">(2) PrimColorAnim, PrimColorAnimForFog Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 interpolation_type
+</td>
+<td>Describes the interpolation type from this key to the next.  The following flags are defined:
+
+<pre>
+<b>
+NIFF2_INTERPOLATION_TYPE_CONST&#9;&#9;0x00000000
+NIFF2_INTERPOLATION_TYPE_LINEAR&#9;&#9;0x00000002
+</b>
+</pre>
+NIFF2_INTERPOLATION_TYPE_CONST retains the data from this key to the next key.
+NIFF2_INTERPOLATION_TYPE_LINEAR performs linear interpolation from this key to the next key.<p>
+
+Please set the same value for each interpolation_type inside every
+PrimColorAnim and PrimColorAnimForFog.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 key
+</td>
+<td>
+Describes the Key value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float prim_color_anim_red<br>
+float prim_color_anim_green<br>
+float prim_color_anim_blue<br>
+float prim_color_anim_alpha
+</td>
+<td>
+primitive color<p>
+0 &lt;= prim_color_anim_* &lt;= 1
+</td>
+</tr>
+
+</table>
+</center>
+
+<P><A HREF="mat_C.htm#primColorC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

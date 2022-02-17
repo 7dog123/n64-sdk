@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 17</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro17/index17.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro17/index17.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Sequenced Sound Playback</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+You will be concerned with three issues when using sequenced sound on the Nintendo 64:
+<ul>
+<li>representing the sequence data
+<P>
+<li>representing the instruments or sounds that make up the sequence
+<P>
+<li>controlling the sequence playback
+</ul>
+
+<P>
+<a name="01"></a>
+<b>Representing the Sequence</b>
+<br>
+The Audio Library supports two different sequence players. The first sequence player uses Type 0 MIDI sequences. Sequences are represented at runtime with the <font face="courier" size="-1">ALSeq</font>  structure. This structure encapsulates sequence data that conforms to the Standard MIDI Files 1.0 specification for Type 0 MIDI files. The Type 0 MIDI file format contains a time-ordered MIDI message that specifies music events. It is described in detail in the “Standard MIDI Files 1.0” specification published by the MIDI manufacturers association.
+
+<P>
+The second sequence player uses a compressed format of sequence data unique to the Nintendo 64. This format is detailed in Audio Formats chapter. Sequences are represented at runtime with the ALCSeq structure. Besides differences in the format of the data, the compressed MIDI sequence player handles loops in a different fashion and does not support markers. 
+
+<P>
+To use a Type 0 MIDI sequence in your game, you must first initialize an <font face="courier" size="-1">ALSeq</font>  structure with alSeqNew(). To use the compressed MIDI sequence player, you first initialize an <font face="courier" size="-1">ALCSeq</font>  structure with alCSeqNew(). After initializing the ALSeq structure, you can perform sequence operations. 
+
+<P>
+The alSeqNextEvent() call returns the MIDI event at a specified location in the sequence. The alSeqNewMarker() call creates a sequence position marker that can be used in conjunction with the Type 0 Sequence Player to set playback time and loop points. The convenience functions alSeqTicksToSec() and alSeqSecToTicks() convert between seconds and MIDI clock ticks.
+
+<P>
+<b>Note:</b> Normally, you won’t call alSeqNextEvent() directly, because it is called by the Sequence Player during sequence playback.
+The sequence calls are described in detail in the reference (man) pages. Brief descriptions are given in the following table.
+
+
+
+
+<P>
+<a name="tbl17-2"></a>
+<b>Table 1</b> &nbsp;Sequence Functions
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1"><b>Type 0 MIDI Sequence Player Function</td>
+<td width=35% valign="top"><font face="arial" size="-1"><b>Compressed MIDI Sequence Player Function</td>
+<td width=40% valign="top"><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqNew</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqNew</td>
+<td width=50%><font face="arial" size="-1">Initializes the sequence control structure.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqNew</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqNextEvent</td>
+<td width=50%><font face="arial" size="-1">Returns the next MIDI event from the sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqNewMarker</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqNewMarker</td>
+<td width=50%><font face="arial" size="-1">Initializes a marker for a given event time.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqGetLoc</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqGetLoc</td>
+<td width=50%><font face="arial" size="-1">Sets a marker to the sequence’s current location.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqSetLoc</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqSetLoc</td>
+<td width=50%><font face="arial" size="-1">Sets the sequence to the location specified by the marker.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqTicksToSec</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqTicksToSec</td>
+<td width=50%><font face="arial" size="-1">Converts a time value from MIDI clock ticks to microseconds.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqSecToTicks</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSeqSecToTicks</td>
+<td width=50%><font face="arial" size="-1">Converts a time value from microseconds to MIDI clock ticks.</td>
+</tr>
+</table>
+
+		
+		
+<P>
+<a name="02"></a>
+<b>Representing Instruments</b>
+<br>
+Instruments are represented at runtime by the <font face="courier" size="-1">ALBankFile</font> structure. This structure describes the instruments that sound in response to an event in the sequence. Bank Files are composed of Banks; which are composed of Instruments; which themselves are composed of groups of Sounds, KeyMaps, Envelopes, and gain and pan information. The Bank File format is described in detail <a target="_top" href="../pro19/index19.1.html">Section 19.1, "Bank Files."</a>
+
+<P>
+To use a Bank File in your game, you must first create a runtime structure to represent it. This is accomplished with the alBnkfNew() function as described in the following table. Both sequence players use the same function call for this operation.
+
+
+<P>
+<a name="tbl17-3"></a>
+<b>Table 2</b> &nbsp;Bank Functions
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1"><b>Type 0 MIDI Sequence Player Function</td>
+<td width=35% valign="top"><font face="arial" size="-1"><b>Compressed MIDI Sequence Player Function</td>
+<td width=40% valign="top"><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alBnkfNew</td>
+<td width=25% valign="top"><font face="arial" size="-1">alBnkfNew</td>
+<td width=50%><font face="arial" size="-1">Initializes a collection of banks for use with a Sequence Player.</td>
+</tr></table>
+	
+<P>
+<a name="03"></a>
+<b>Playing Sequences</b>
+<br>
+The Sequence Player is the mechanism by which the Nintendo 64 Audio Library plays back MIDI sequence files. It is responsible for allocating the hardware and software resources needed to play a sequence and for controlling the performance of the sequence data for the application.
+
+<P>
+<b>Note:</b> A Sequence Player can play only one sequence at a time.
+
+<P>
+There are certain steps you must take for your game to play a music sequence. The minimum steps needed to use the Type 0 MIDI sequence player are listed below. Using the compressed MIDI sequence player is identical, only you use the calls specific to the compressed MIDI sequence player.
+
+<ol>
+<li>Create and initialize the basic resources described in the section 
+Generating Audio Output.
+<P>
+<li>Initialize the sequence by using alSeqNew(). 
+<P>
+<li>Copy the bank file’s .ctl file into RAM, and initialize the bank by using alBnkfNew().
+<P>
+<li>Initialize the sequence player by using alSeqpNew(). 
+<P>
+<li>Set the sequence player’s bank by using alSeqpSetBank().
+<P>
+<li>Set the sequence player’s target sequence by using alSeqpSetSeq(). 
+<P>
+<li>Play the sequence by using alSeqpPlay(). 
+<P>
+<li>Stop the sequence when you are finished with it, by using alSeqpStop(). 
+<P>
+<li>If the sequence player is no longer needed it can be removed from the Synthesis Driver’s client list by using alSeqpDelete().
+</ol>
+
+<P>
+
+
+<P>
+<a name="tbl17-4"></a>
+<b>Table 3</b> &nbsp;Sequence Player Functions
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=35% valign="top"><font face="arial" size="-1"><b>Type 0 MIDI Sequence Player Function</td>
+<td width=35% valign="top"><font face="arial" size="-1"><b>Compressed MIDI Sequence Player Function</td>
+<td width=40% valign="top"><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpNew</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPNew</td>
+<td width=50%><font face="arial" size="-1">Initializes a Sequence Player.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpDelete</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPDelete</td>
+<td width=50%><font face="arial" size="-1">Removes a Sequence Player from the Synthesis Driver’s client list.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetState</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetState</td>
+<td width=50%><font face="arial" size="-1">Returns the current state of the Sequence Player.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetBank</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetBank</td>
+<td width=50%><font face="arial" size="-1">Assigns a bank of instruments to the sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetSequence</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetSequence</td>
+<td width=50%><font face="arial" size="-1">Gets a reference to the sequence that is currently bound to the Sequence Player.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetSequence</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetSequence</td>
+<td width=50%><font face="arial" size="-1">Makes the specified sequence the target sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpPlay</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPPlay</td>
+<td width=50%><font face="arial" size="-1">Starts the target sequence playing.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpStop</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPStop</td>
+<td width=50%><font face="arial" size="-1">Stops the target sequence if it is playing.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetTempo</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetTempo</td>
+<td width=50%><font face="arial" size="-1">Returns the current playback tempo for the target sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetTempo</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetTempo</td>
+<td width=50%><font face="arial" size="-1">Sets the current playback tempo of the target sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetVol</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetVol</td>
+<td width=50%><font face="arial" size="-1">Returns the overall volume for the sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetVol</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetVol</td>
+<td width=50%><font face="arial" size="-1">Sets the overall volume for the sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetChlPan</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetChlPan</td>
+<td width=50%><font face="arial" size="-1">Gets the pan on the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetChlPan</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetChlPan</td>
+<td width=50%><font face="arial" size="-1">Sets the pan for the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetChlVol</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetChlVol</td>
+<td width=50%><font face="arial" size="-1">Gets the volume for the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetChlVol</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetChlVol</td>
+<td width=50%><font face="arial" size="-1">Sets the volume for the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetChlProgram</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetChlProgram</td>
+<td width=50%><font face="arial" size="-1">Returns the program assigned to the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetChlProgram</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetChlProgram</td>
+<td width=50%><font face="arial" size="-1">Assigns the given program to the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetChlFXMix</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetChlFXMix</td>
+<td width=50%><font face="arial" size="-1">Gets the wet/dry FX mix on the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetChlFXMix</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetChlFXMix</td>
+<td width=50%><font face="arial" size="-1">Sets the wet/dry FX mix on the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpGetChlPriority</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPGetChlPriority</td>
+<td width=50%><font face="arial" size="-1">Gets the priority value for the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSetChlPriority</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSetChlPriority</td>
+<td width=50%><font face="arial" size="-1">Sets the priority value for the specified MIDI channel.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpLoop</td>
+<td width=25% valign="top"><font face="arial" size="-1">(Not Supported)</td>
+<td width=50%><font face="arial" size="-1">Sets the loop points for the target sequence.</td>
+</tr>
+<tr>
+<td width=25% valign="top"><font face="arial" size="-1">alSeqpSendMidi</td>
+<td width=25% valign="top"><font face="arial" size="-1">alCSPSendMidi</td>
+<td width=50%><font face="arial" size="-1">Sends the specified MIDI message to the sequence player.</td></tr></table>
+			
+<p>		
+<a name="04"></a>		
+<b>Loops in Sequence Players</b>
+<br>
+The way in which loops are handled in the sequence players is different. When using the Type 0 MIDI sequence player, the programmer must create a marker at the loop start point, and a marker at the loop end point. Then the sequence can be looped between these two markers using alSeqpLoop(). Using the compressed MIDI sequence player, loops are constructed by the musician, in the tracks of the sequence by inserting controllers. (This is discussed in <a target="_top" href="../pro18/index18.1.html">Section 18, "Audio Tools”</a>). This method allows different loops for different tracks, and allows for nesting of loops. 
+
+<P>
+<a name="05"></a>
+<b>Controllers in Sequence Players</b>
+<br>
+The realtime controllers that the Sequence Player responds to are (control numbers in parenthesis): pan (10), volume (7), priority (16), sustain (64), and reverb amount (91). Note that because only one effects bus is supported, reverb amount is used to control effect amount no matter what the effect is.
+<P>
+The compact sequence player also uses controllers 102, 103, 104, and 105 for creating loops. Details of this are discussed in <a target="_top" href="../pro18/index18.1.html">Section 18, "Audio Tools”</a>.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

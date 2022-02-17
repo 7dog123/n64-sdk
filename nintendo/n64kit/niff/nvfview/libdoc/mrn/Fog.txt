@@ -1,0 +1,13 @@
+Function 
+-  Defines fog. 
+
+Functions 
+-  void mrnFogInit( MrnFog *fog )
+  Initializes mrnFog. 
+
+-  Gfx *mrnFogGenerateGfx( MrnFog *fog_ptr, Gfx *gfx_ptr );
+  Generates a gfx of the mrnFog settings. 
+
+History 
+  1998/ 9/22  Takamitsu Hirata 
+    Fog.h, fog.c :  Initial version 

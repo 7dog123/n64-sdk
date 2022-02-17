@@ -1,0 +1,779 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../tools/tools.html">
+            <IMG BORDER=0 SRC="../images/mh_tools.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0">
+<H2>ie</H2>
+</FONT>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" size="3"><pre>ie [-b &lt;.inst file&gt;] [-c &lt;.cnfg file&gt;] [-v]</FONT></pre>
+
+<P><B>Explanation</B><BR>
+It is the instrument editor for Nintendo 64 audio.<BR>
+<BR>
+
+The following information describes the initial release of this tool. Because it is an
+initial release, there are known problems and bugs, so
+use it with caution. Please refer to the known bug list at the end of this article to help you 
+prevent any loss of work.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool has three primary uses:
+<UL>
+<LI>It allows real-time editing and auditioning of bank components contained in <B>.inst</B> files.
+<LI>It allows real-time editing and auditioning of effects.
+<LI>It allows external MIDI devices to play back MIDI on the Nintendo 64 and
+profiles the system and Audio Library resources that are being used.
+</UL>
+<B>Command Line Options</B><BR>
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-b &lt;.inst file&gt;</B></FONT> Specifies the <B>.inst</B> file to be edited.  
+If this option is not used, the editor opens with a new <B>.inst</B> file.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-c &lt;.cnfg file&gt;</B></FONT> Specifies a <B>.cnfg</B> file. A <B>.cnfg</B> file contains
+configuration information that is used to configure 
+the Nintendo 64's Audio Library resources (such as the output rate, virtual voices, and so on).  It also can contain a description of an effect that 
+will be loaded into the editor for editing and 
+into the Nintendo 64 for auditioning.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-v</B></FONT> Turns on verbose mode. This is mainly used for
+debugging.
+</UL>
+
+<B>Editor</B><BR>
+The editor portion of the <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool is a simple application for editing
+<B>.inst</B> files as well as effects.  A Nintendo 64 development board does not
+have to be present to open and edit files.  However, you will not be able
+to audition your changes without the Nintendo 64, so editing certain
+parameters, such as effects parameters, becomes difficult.
+
+<BR>
+<BR>
+<B>Bank Editing</B><BR>
+The <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool can read, write, and edit <B>.inst</B> files. The <B>.inst</B> files contain a
+description of a Nintendo 64 bank that can be compiled into an actual
+Nintendo 64 bank file by using the <FONT FACE="COURIER NEW,COURIER">ic</FONT> tool (the instrument compiler).  The <B>.inst</B>
+bank description is made up of several components such as instruments,
+sounds, envelopes, and so on.  Each of these bank components, or assets, have
+one or more parameters associated with it.  Bank assets also reference
+each other in a sort of parent-child relationship.  For example, bank
+assets reference instrument assets, so instruments are children of a bank
+parent.  Similarly, instrument assets reference sound assets so sounds
+are children of an instrument. Furthermore, if a child asset is never
+referenced by another asset, it is called an orphan.  So if an envelope
+asset is never used by a sound asset, the envelope is an orphan and can
+be deleted from the <B>.inst</B> file without affecting the bank.
+
+<BR>
+<BR>
+<B>Viewing Assets</B><BR>
+The editor displays all these bank assets and supports viewing and
+editing the parent-child relationships within a bank.  The editor's view
+contains several folders for each type of bank asset.  Each folder
+contains a list of all the assets of the given type.  For example, to
+view a bank's instruments, simply select the instrument's folder tab to
+open up the instrument folder.  The folder contains a list of all the
+names of the instruments as well as columns for each of an instrument's
+parameters, such as volume, pan, priority, and bend range.  Each asset
+     also contains an icon column which helps identify the type of asset.
+
+<BR>
+<BR>
+<B>Editing Assets</B><BR>
+To edit the value of an asset's parameters, simply click the
+corresponding column to activate the default editing for the parameter.
+Names are always text edited.  Numbers can be scrolled up or down to
+increase or decrease their value. References to other child assets are
+edited with pop-up menus.  However, all assets can be text edited by
+clicking on them with the <B>Alt</B> key held down.  This pops up a text edit
+field that can be moved around from field to field by using the arrow keys
+and the <B>Alt</B> key.  (If you don't hold the <B>Alt</B> key down, the arrow keys move the cursor
+within the text field.)  Values won't be accepted if the value is out of
+range or is illegal.  Press the <B>Esc</B> key to cancel any text editing.  Note
+that some fields (such as a wavetable's sample rate) cannot be edited; they only display information. Icon fields are used for a variety of purposes
+such as asset selection, asset audition, and others.  Integer fields can
+be double-clicked to set the value to a preset default value.
+
+<BR>
+<BR>
+<B>Viewing and Editing Children</B><BR>
+Some of the assets contain a # column.  This column displays the number
+of children that the asset has.  If the asset has one or more children,
+double-clicking the # column opens up the parent and display its
+children. Because the children have different parameters than the parent,
+only the common fields such as the name field are displayed for children.
+Double-clicking the # column again closes the asset.  The # field
+can be edited by clicking the field.  This brings up a pop-up menu
+showing a list of assets that are currently not children of the selected
+asset.  Choosing one of these assets adds it to parent's list of
+children. Double-clicking the icon of a child automatically
+opens up the children's folder so you can edit their parameters.  For
+example, double-clicking an instrument's sound opens up the sound
+folder for editing.  Likewise, double-clicking a sound's envelope 
+opens up the envelope folder for editing.
+
+<BR>
+<BR>
+<B>Auditioning Assets</B><BR>
+Before you can audition assets, the current bank being edited must be
+"valid" and must be "online" on the Nintendo 64.  For a description of
+what it means for a bank to be valid and online, see the "Nintendo 64 MIDI Playback" section of this article. When a bank is online, bank assets can be auditioned by
+clicking their icon.  Pressing the button down sends a <I>MIDI note on</I>
+event.  Releasing the button sends a <I>MIDI note off</I> event. This makes it
+easy to audition the sustain portion of a sound.  Currently, auditioning
+instrument assets always plays a C4 note.  Auditioning sounds,
+keymaps, envelopes, and wavetables plays the asset's parent
+instrument at the sound's key base.  Note that if the keymaps for an
+instrument's sounds are not specified and ordered properly, an auditioned
+asset may not get mapped to the correct sound.  This is a potential
+source of confusion when auditioning non-instrument assets.
+
+<BR>
+<BR>
+<B>The File Menu</B><BR>
+The File menu contains commands for opening, closing, and saving <B>.inst</B>
+files.  The Open command on the File menu brings up a dialog for selecting an <B>.inst</B> file
+to edit.  Only one <B>.inst</B> file can be open at a time so choosing Open from the File menu when another <B>.inst</B> file is currently open will close the open file
+before opening a new one. The Close command removes all bank assets
+and allows a new file to be edited.  The Save and Save As commands
+write the file to disk.
+
+<BR>
+<BR>
+<B>The Edit Menu</B><BR>
+The Edit menu commands are currently not supported.
+
+<BR>
+<BR>
+<B>The Asset Menu</B><BR>
+The Asset menu contains commands for inserting and deleting assets.
+The Insert command creates a new asset and places it at the
+end of the list.  The asset automatically has default parameter
+values.  To insert an asset in the middle of the list, select the asset
+located where you want the new asset to appear, and then choose the Insert command from the Asset menu. The selected asset will appear below the newly created one. To delete assets, select one or more assets, and then choose the Delete command from the Asset menu.<BR>
+<BR>
+
+A short cut for creating an asset and adding it to a parent is provided by
+the Insert Child command.  This command inserts a new child asset
+to the selected parent.  The Remove Child command removes the selected
+child(ren) from the parent, but does <B>not</B> delete them.  Choose the
+Delete command to remove and delete them.  Finally, use the Import
+command to import other <B>.inst</B> files as well as <B>.aiff-c</B> files.
+This is currently the only way to create wavetable assets.
+
+<BR>
+<BR>
+<B>The Select Menu</B><BR>
+The Select menu contains useful commands for selecting certain types of
+assets.  The Select Parents command selects all the parents of the
+currently selected asset. This command works only if exactly one asset
+is selected.  For example, if a keyman is selected, the Select Parents
+command selects all the sound assets that use the given keyman and
+will automatically display the sound folder.  The Select Orphans
+commands selects all the folder's assets that do not have any
+parents.  This is useful for determining which assets aren't being used
+anywhere -- so they can be deleted.
+
+<BR>
+<BR>
+<B>Effects</B><BR>
+The <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool supports creating, editing, and auditioning effects on the Nintendo
+64.  Effects are tightly coupled to the N64 Audio Library, so they
+appear for editing only if an N64 development system is present.
+Otherwise, only bank components can be edited.  If an N64 development
+system is present, the <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool automatically creates five built-in effects for auditioning and editing.  These effects are small room, big room, chorus, flange, and echo. To add to the built-in effects, you can create custom effects from scratch.
+
+<BR>
+<BR>
+<B>Effects Viewing</B><BR>
+Similar to banks, effects are made up of two components, the effect asset
+and the effect section asset.  Simple effects may contain only one or two
+sections, while more complicated effects may contain eight or more
+sections. Similar to banks, effects are parents to effect section
+children. As a result, effects can be viewed just like bank assets can
+be viewed.  All effects parameter values are displayed in their raw data
+format (the kind that the N64 wants them in) except for the delay fields
+(length, input, and output).  The delay parameters are displayed in
+msecs. They must be converted to samples and aligned to an 8 sample
+boundary before being used to configure a game.  (The <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool does this
+automatically.)
+
+<BR>
+<BR>
+<B>Effects Editing</B><BR>
+Effects and effects sections can be edited. Their
+parameter values can be editing either by scrolling or by text editing.
+New effect assets can be inserted and unwanted effect assets can be
+deleted.  However, there are some special considerations for editing
+effects:
+<UL>
+<LI>The delay parameters (length, input, output) are displayed and
+editing in msecs. The N64 requires that these values occur at 8 sample
+boundaries and that the length be greater than input/output delays by 160
+samples. The <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool automatically enforces the 8 sample boundary rule when it loads the effect on the N64, however it does not enforce the 160 sample rule.  Be careful when editing input/output delays so that it does not approach within 160 samples of the delay line's length.  (See the <I>Nintendo 64 Programming Manual</I> for a discussion of why this 160 sample restriction
+exists.) Keep the following in mind:
+
+<LI>When an effect is "online" (that is, it is loaded into the N64), the
+effect's length parameter cannot be edited.  In addition, you cannot
+insert or delete sections to an online effect.To make these
+changes to an online effect, you must "offline" the effect first.
+
+<LI>Effect sections can have only one parent.  Once it is being used
+by a parent effect, it will not be available for other effects to use it.
+
+<LI>To use chorus or the low pass filter, you must make sure that
+the respective parameters are non-zero before loading the effect. The
+Audio Library will not allocate the required memory to implement chorus
+or the low pass filter if the parameters are initially zero. (This saves
+unneeded memory.)
+</UL>
+
+<B>Effects Auditioning</B><BR>
+Initially, no effects are loaded onto the N64. To load an
+effect and make it online, double-click the desired effect's icon.  To
+offline the effect, double-click it again or double-click another effect.
+When an effect is placed online, the N64 must be fully reconfigured because
+the Audio Library must be initialized with an effect.  This may take a
+few seconds because it must reload the entire bank to the N64.  Once the
+effect is online, its icon should appear in red to indicate that it is
+online.  From now on, auditioning bank assets will be played through the
+effect.  Note that the wet/dry amount can be controlled for each MIDI
+channel by sending an FX1 control message to the channel.
+
+<BR>
+<BR>
+<B>Effects Saving and Restoring</B><BR>
+Currently, effect assets can not be saved to disk.  This is because there
+is no standard <B>.fx</B> file like there is a standard <B>.inst</B> file for bank assets. However, effects can be restored from disk with a configuration (<B>.cnfg</B>)
+file. (See the section on the N64 Menu for a description of the
+configuration file.)  The Audio Library treats effects as part the
+configuration data, so you can edit the configuration file to include a
+custom effect.  An effect is indicated with the keyword <FONT FACE="COURIER NEW,COURIER">REVERB_PARAMS</FONT> and is followed by a bracketed {...} set of parameters describing the
+effect and its sections.  (Delay values are in msecs.)  For an example of
+an effect definition, see the following file, which defines a custom effect:
+<BR>
+<BR>
+<B>/$ROOT/usr/src/PR/assets/banks/ie.cnfg</B>
+<BR>
+<BR>
+<B>Nintendo 64</B><BR>
+When <FONT FACE="COURIER NEW,COURIER">ie</FONT> is launched, it automatically looks for an N64 development board
+and if it finds one, it will boot it up with MIDI playback code and
+profiling code.  If it can't find the N64 board or if it fails to boot it
+up, it will report an error and ie will not be able to audition any
+instruments or edit effects.  In addition, ie will also boot up the <FONT FACE="COURIER NEW,COURIER">gload</FONT>
+tool to act as a print server for any error or debugging messages.
+This is useful for catching when an audio library resource has been
+exceeded. If another <FONT FACE="COURIER NEW,COURIER">gload</FONT> is running at the time <FONT FACE="COURIER NEW,COURIER">ie</FONT> is launched,
+<FONT FACE="COURIER NEW,COURIER">ie</FONT> will fail to run.
+
+<BR>
+<BR>
+<B>Nintendo 64 Configuration</B><BR>
+The Nintendo 64 Audio Library is configured using default configuration
+information.  This default configuration can be edited either by using
+the configuration dialog or by specifying a configuration file on the
+command line when the tool is run.  For information on how to use the
+configuration dialog see the section on the Nintendo 64 Menu.  To
+configure the tool using a configuration file, simply specify the file on
+the command line. The configuration file should contain reserved words
+that specify the values of certain configuration parameters, such as
+output rate or the number of available virtual voices.  For an example of
+a <B>.cnfg</B> file and its reserved words, see this file:
+<BR>
+<BR>
+<B>/$ROOT/usr/src/PR/assets/banks/ie.cnfg.</B>
+
+<BR>
+<BR>
+<B>Nintendo 64 MIDI Playback</B><BR>
+Once it is up and running, the Nintendo 64 waits for incoming MIDI
+messages. MIDI messages can be sent from an external MIDI device or from
+the <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool itself.  In order for the Nintendo 64 code to respond to the
+MIDI messages, it needs to have a valid bank downloaded to it by <FONT FACE="COURIER NEW,COURIER">ie</FONT>. When
+<FONT FACE="COURIER NEW,COURIER">ie</FONT> is launched with a new file, there is no bank in the editor and the
+Nintendo 64 will be offline, which means it does not have a bank
+installed.  The profiling screen on the Nintendo 64 monitor indicates the
+state of the bank at the top of the screen. As soon as ie has a valid
+bank in the editor, it will download the bank data and the Nintendo 64
+will then be online and it will be able to respond to MIDI events.  As
+the bank is edited, it continually checks to see whether the bank is
+still valid and as soon as the bank fails to be valid, it will take the
+bank offline.  The reason for this is simply that the Audio Library
+requires complete and correct bank data in order to work properly.  A
+bank is determined to be valid if all of the following conditions are met:
+
+<UL><LI>A bank asset exists
+<LI>The bank contains at least one instrument
+<LI>The bank's instruments contain at least one sound
+<LI>The bank's sounds must all have keymaps, envelopes, and wavetables</UL>
+
+When a bank is online, bank assets can be auditioned from the editor by
+clicking their icon.  MIDI messages can also be sent from external
+devices.  To use external devices, a MIDI interface must be properly
+attached to one of the host computer's serial ports and it must be
+properly configured by the <FONT FACE="COURIER NEW,COURIER">startmidi</FONT> tool.
+
+<BR>
+<BR>
+<B>Nintendo 64 Profiling</B><BR>
+The Nintendo 64 screen displays current readings for various system
+resources.  These readings are useful to monitor when playing back a
+sequence targeted for the Nintendo 64 from an external MIDI sequencer.
+The readings will measure how much of each resource is used in order to
+play back the sequence.  The profiler keeps track of the following
+resources:
+<UL>
+<LI>cmds: the number of audio commands used to synthesize a frame of
+samples. It displays both the current and the maximum values.
+
+<LI>syn upds: the number of parameter update blocks used by the
+synthesis driver to store changes in control parameters.  
+The number of available update blocks is specified during 
+the Audio Library configuration. It displays both the current 
+and the maximum values.
+
+<LI>seq evts: the number of event message blocks used by the sequence
+player.  The number of available message blocks is specified 
+during the Audio Library configuration.  It displays both 
+the current and the maximum values.
+
+<LI>DMAs: the number of DMA requests made during an audio frame. It displays both the current and the maximum values.
+
+<LI>DMA bufs: the number of DMA buffers needed during an audio frame.
+The number of available DMA buffers is specified during 
+the Audio Library configuration.  It displays both the current 
+and the maximum values.
+
+<LI>vcs: this profiles virtual voice usage during playback. Each
+pixel represents one used virtual voice.  The number of 
+available virtual voices is specified during the Audio 
+Library configuration. The maximum number of virtual voices 
+used is displayed in the corner of the voice graph.
+
+<LI>RSP: this graph profiles the percentage of a frame period used to
+execute the audio synthesis microcode on the RSP.
+
+<LI>CPU: this profiles the percentage of a frame period used during the call to <FONT FACE="COURIER NEW,COURIER"><A HREF="../al/alAudioFrame.html">alAudioFrame</A></FONT>.
+
+<LI>L/R: this profiles the peak output levels of the final output
+samples that are sent to the audio DACs.  The scale is in dBs with
+the top of the meter at 0 dB and then decreasing in 3 dB increments
+per LED.  Signal levels above -3 dB are indicated by a yellow
+caution LED. Signal presence is indicated by the bottom LED being
+turned on (that is, any non-zero sample will turn on the bottom LED).
+Signal clipping is indicated by a red LED that appears above the
+meter.  Note that the clip detector does not detect true clipping,
+rather it detects when a sample magnitude value of 0x7fff appears.
+This could be a legitimate value from a normalized sound or it could
+be a limited value caused by overflow.
+</UL>
+Be aware that the resource demands for audio synthesis varies on a frame
+by frame basis.  This is because it must share the processing resources
+with the other parts of the system.  This means that the profile values
+will vary each time a given sequence is played.  Therefore, the readings
+should be used as an approximation, not as an accurate measurement of
+resource usage.  Also note that the CPU measurements can be affected by
+any debugging messages produced by the audio library.  Also the N64 code
+was not optimized by <FONT FACE="COURIER NEW,COURIER">gcord</FONT> and so is not displaying best case
+performance.
+
+<BR>
+<BR>
+<B>The Nintendo 64 Menu</B><BR>
+If the N64 development board is available, an N64 menu will appear in the
+editor.  This menu provides control over some of the N64 functionality.
+<UL>
+<LI>The "Clear Profile Values" item resets the MIDI player and causes all the maximum values to be reset to zero.
+<LI>The "Configure Hardware" menu brings up a dialog which can be used to set some of the Audio Library configuration parameters. A description of the various configuration parameters is listed below.  After setting the configuration parameters, press the okay or apply button to make the changes take affect. Reconfiguration may take a few seconds as any open bank file must be fully reloaded to the N64. Configurations can be saved and reloaded at a later time using the "Save Configuration..."  and "Load Configuration..." commands. These commands ask you to name the configuration file you want to save or load before proceeding.
+<LI>The "Reset Hardware" command resets the entire N64 hardware forcing the N64 code to be reloaded and the audio reconfigured.  Use this command to try to recover the N64 if it crashes for any reason.
+</UL>
+<HR>
+Following is a description of each of the configuration parameters:
+
+<H4>Audio Frame Preferences</H4>
+<B>output rate:</B>
+the requested sampling rate of the audio interface in Hz.
+
+<BR>
+<BR>
+<B>samples per frame:</B>
+the requested number of samples to be synthesized per
+audio frame.  For maximum efficiency use a value that is a 
+multiple of 160 samples (for example, 640).  A larger number means 
+a slower frame rate while a smaller number means a faster 
+frame rate. This number, along with the output rate can be 
+used to simulate a game running at 60 Hz or 30 Hz.
+For example, at an output rate of 44100 Hz, setting this 
+value to be 735 will produce an frame rate of 60 Hz.
+
+<BR>
+<BR>
+<B>max commands per frame:</B>
+the maximum number of ABI commands that can be executed per 
+audio frame. This directly corresponds to the size of the 
+audio command list buffer that stores the ABI commands.
+
+<H4>Audio DMA Preferences</H4>
+   <I>Note that audio sample DMA is implemented by the game 
+application, so the following configuration parameters may not 
+be applicable to your game.  Keep this in mind when setting 
+these parameters.</I>
+
+<BR>
+<BR>
+<B>DMA buffers:</B>
+the number of available buffers for performing DMA requests.
+
+<BR>
+<BR>
+<B>DMA buffer size:</B>
+the size of each DMA buffer.  Smaller buffer sizes usually 
+require more DMA requests while larger buffer sizes usually
+require fewer DMA requests.
+
+<BR>
+<BR>
+<B>max DMA requests:</B>
+the maximum number of DMA requests that can be made.
+This value directly affects the size of the DMA message 
+queue set up by the N64 code.
+
+<BR>
+<BR>
+<B># frames to hold DMA buffers:</B>
+the number of frames that must elapse before the N64 code 
+will free a DMA buffer for reuse.  While the buffer is 
+being held, its samples remain available for other requests 
+that may ask for the same samples. In some cases, the same 
+samples may be used over and over again so holding them in 
+memory is faster than performing a DMA from ROM.
+
+<H4>Synthesizer Preferences</H4>
+<B>max virtual voices:</B>
+the maximum number of virtual voices available to both the 
+synthesis driver and the MIDI player.
+
+<BR>
+<BR>
+<B>max physical voices:</B>
+the maximum number of physical voices available.  If
+this is less than virtual voices then voice stealing is enabled.
+
+<BR>
+<BR>
+<B>max control updates:</B>
+the maximum number of control updates each physical
+voice is able to store.  Control updates store data such as 
+volume changes, pitch changes, and so on.  This value directly affects 
+the memory allocated for control data.
+
+<H4>MIDI Player Preferences</H4>
+<B>max channels:</B>
+the maximum number of channels available for MIDI messages.
+Normal MIDI systems support 16 channels.  This affects how much 
+memory is allocated to store channel information.
+
+<BR>
+<BR>
+<B>max events:</B>
+the maximum number of event updates that the synthesizer is
+able to store.  Event updates store sequence data such as start 
+commands, MIDI commands, and so on.  This value directly affects the 
+memory allocated for event data.
+<HR>
+
+<H4>Bugs</H4>
+The following is list of the currently known bugs or problems.
+<UL>
+<LI>If the Nintendo 64 crashes for any reason and the <FONT FACE="COURIER NEW,COURIER">ie</FONT> tool
+  tries to communicate with it, the system will hang waiting for a reply.  The
+  only way to recover from this is to kill the tool.  If you see that
+  the Nintendo 64 has crashed (the processor bars on the Nintendo 64
+  monitor have stopped moving), try the "Reset Hardware" command
+  from the N64 menu.  If this fails, save your work immediately and
+  relaunch the tool to reestablish communication.
+
+<LI>When you're editing files with many assets, the pop-up menus may get too
+  big to display all the assets.  To work around this problem, hold the <B>Alt</B> key
+ down and click the asset to text edit instead of using the pop-up menu edit.
+
+<LI>Each time an asset is created, either by opening, importing, or
+  inserting assets, memory on the Nintendo 64 is used up that cannot
+  be released. To avoid running out of memory (which is difficult to
+     do), use the Close command to remove all assets from the editor and
+     from the Nintendo 64 memory space.
+
+<LI>When naming assets, use only letters, numbers, and an underscore.
+  Periods or other symbols are not recognized by <FONT FACE="COURIER NEW,COURIER">ic</FONT> so they are not
+  recognized by <FONT FACE="COURIER NEW,COURIER">ie</FONT> either.
+
+<LI>When importing assets, <FONT FACE="COURIER NEW,COURIER">ie</FONT> recognizes sound files only by the
+  file extension which can either be <B>.aiff</B> or <B>.aifc</B>.  Any other extension causes the file to be opened as an <B>.inst</B> file.  Be sure your
+  sound files have proper extensions.
+
+<LI>Keymaps are not sorted before being downloaded to a bank. This may
+  cause seemingly improper sound mapping when auditioning.  It is up
+  to the user to ensure that an instrument's keymaps are sorted
+     properly for auditioning.  Note, that <FONT FACE="COURIER NEW,COURIER">ic</FONT> will properly sort the keymaps (unless overridden with the <FONT FACE="COURIER NEW,COURIER">-n</FONT> option) so it is not necessary
+  to have them sorted for compiling banks.
+
+<LI>Sometimes the column widths do not get adjusted properly to fit in
+  the field's value.  Try editing the field, or for a temporary fix,
+  edit the column edges by clicking the middle button on the edge
+  while holding the <B>Shift</B> key down.
+
+<LI>If two or more instruments share the same sound asset and the
+  instruments are opened so that the same sound appears more than once
+  in the display, the editor may be confused over which sound instance
+  should be operated on.  Be careful when the same sound is being
+  shared.
+
+<LI>When <FONT FACE="COURIER NEW,COURIER">ie</FONT> is initially launched with a new file, a harmless warning
+  from XbaeMatrix (the list item) may appear.
+</UL>
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../tools/ic.html">ic</A></FONT><BR>
+<I>startmidi</I>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+            <BR>
+               <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

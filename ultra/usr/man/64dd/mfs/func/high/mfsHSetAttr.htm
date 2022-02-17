@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHSetAttr</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHSetAttr</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHSetAttr(const u8* path, u16
+attr)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Pathname<br>
+attr Attribute</p>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Sets attribute of file or directory</p>
+
+<p><strong>Description:</strong> This function sets the attribute of the file or directory specified by path to attr.  The following values can be specified for attr.</p>
+
+<pre>MFS_FILE_ATTR_FORBID_W	0x2000	Write protected
+MFS_FILE_ATTR_FORBID_R	0x1000	Read protected
+MFS_FILE_ATTR_HIDDEN	0x0800	Hidden file
+MFS_FILE_ATTR_ENCODE	0x0400	Encoded file
+MFS_FILE_ATTR_COPYLIMIT 0x0200	Copy limited</pre>
+
+<p>MFS_FILE_ATTR_ENCODE and MFS_FILE_ATTR_COPYLIMIT are ineffective for a directory.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination 
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT	Write protected
+		The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+MFS_ERR_NOTFOUND File not found
+		The file was not found, or the directory was not found.</pre>
+
+<hr>
+</body>
+</html>

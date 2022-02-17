@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</heaI#
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.9.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro12/index12.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Controlling the RDP State</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The RSP performs two functions to support programming the RDP: <i>segmented address fix-up</i> and handling <i>setothermode</i>.
+<P>
+<b>Segmented Address Fix-up</b>
+<br>Since the RDP is a physical address machine, the RSP must translate the segmented addresses present in the display list into physical addresses for the RDP. It does so by filtering out any RDP command with an address (the ‘set image’ commands) and patching the address before passing it to the RDP.
+<P>
+The RDP <i>setothermode</i> register is a collection of state bits, affecting many different functions of the RDP. In order to simplify programming the RDP state, the RSP caches the SETOTHERMODE command, and presents a simpler “set/clear” interface through the display list. Please see <a target="_top" href="../pro12/index12.1.html">Section 12, “RDP Programming”</a> for information about the macros.
+<P>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

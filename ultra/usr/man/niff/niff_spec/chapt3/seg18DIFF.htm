@@ -1,0 +1,188 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-18. CamList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(1)CamListエリア</font></h4>
+
+<blockquote><font size=+0>　Camリストはカメラノードに関するデータを記述するリストです。マッピングは以下のようになっています。</font></blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="9">CamListHeader</th>
+
+<td>u32</td>
+
+<td>cam_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_num_byte(cam_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>Cam(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Cam(cam_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintedoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　CamListエリアメモリマップ</font></b></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 cam_list_tag</td>
+
+<td><font size=+0>Tag indicating CamList</font>
+<pre>
+<b><font size=+0>TAG_CAM_LIST&nbsp;&nbsp;&nbsp; 0x000e0000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowarp>u32 cam_list_header_size</td>
+
+<td><font size=+0>Size of CamListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_list_size</td>
+
+<td><font size=+0>Size of CamList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_num</td>
+
+<td><font size=+0>Total number of Cam in CamList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>任天堂拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>ユーザー拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 u32 cam_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to Cam</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg18-2.htm">Cam</a></td>
+
+<td><font size=+0>Actual camera data</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>任天堂拡張ブロック</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>ユーザー拡張ブロック</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg18-2.htm">次へ</a></font><a href="seg18-2.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

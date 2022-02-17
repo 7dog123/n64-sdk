@@ -1,0 +1,75 @@
+/*
+	ROM spec file
+
+	Main memory map
+
+  	0x80000000  exception vectors, ...
+  	0x80000400  zbuffer (size 320*240*2)
+  	0x80025c00  codesegment
+	      :  
+  	0x8038F800  cfb 16b 3buffer (size 320*240*2*3)
+*/
+
+#include <nusys.h>
+#include "hvqm.h"
+
+/* Use all graphics microcode */
+beginseg
+	name	"code"
+	flags	BOOT OBJECT
+	entry 	nuBoot
+	address NU_SPEC_BOOT_ADDR
+        stack   NU_SPEC_BOOT_STACK
+	include "codesegment.o"
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspL3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspS2DEX2.fifo.o"
+#if HVQM_CFB_FORMAT == 1
+	include "../libhvqm2/rspcode/hvqm2sp1.o"/* HVQM2 microcode */
+/*	include "$(ROOT)/usr/lib/PR/hvqm2sp1.o"	/* HVQM2 microcode */
+#else /* HVQM_CFB_FORMAT */
+	include "../libhvqm2/rspcode/hvqm2sp2.o"/* HVQM2 microcode */
+/*	include "$(ROOT)/usr/lib/PR/hvqm2sp2.o"	/* HVQM2 microcode */
+#endif /* HVQM_CFB_FORMAT */
+endseg
+
+beginseg
+	name	"hvqmdata"
+	flags	RAW
+	include "../sample/sample.hvqm"
+endseg
+
+beginseg
+	name	"hvqmvideobuf"
+	flags	OBJECT
+	address 0x80180000	/* 16byte alignment */
+	include "hvqmvideobuf.o"
+endseg
+
+beginseg
+	name	"hvqmaudiobuf"
+	flags	OBJECT
+	address 0x80200000	/* 16byte alignment */
+	include "hvqmaudiobuf.o"
+endseg
+
+beginseg
+	name	"hvqwork"
+	flags	OBJECT
+	address 0x80300000
+	include "hvqmwork.o"
+endseg
+
+
+beginwave
+	name	"nuhvqm"
+ 	include  "hvqmdata"
+ 	include	"hvqmvideobuf"
+ 	include	"hvqmaudiobuf"
+ 	include	"hvqwork"
+	include	"code"
+endwave

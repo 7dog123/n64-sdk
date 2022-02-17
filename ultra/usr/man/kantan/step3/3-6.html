@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.3.6 Device Coordinate System</H1>
+
+<P>The device coordinate system is the coordinate system used to fit an image into the physical size of the frame buffer by using the pixel addresses in the frame buffer.  Generally, the physical size of the N64 frame buffer is 320 by 240. The upper-left corner of the screen is (0,0) and the bottom-right is (319.75, 239.75).</P>
+
+<P>A Z value factor is also included. The deepest (farthest away) value is expressed as 65532 (0xfffc) and the closest value is expressed as 0. The Z buffer uses a macro that sets the initial value of the Z factor by using the macro-arguments <FONT FACE="COURIER NEW,COURIER">G_MAXFBZ</FONT> and <FONT FACE="COURIER NEW,COURIER">GPACK_ZDZ</FONT>. The macro converts an image currently in the normal screen coordinate system into the actual physical screen pixels so that it can be shown on the TV screen as shown here:</P>
+
+<P><IMG SRC="../images/3-3-6-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=359 HEIGHT=221 BORDER=0>
+
+<P>Coordinates in the device coordinate system are expressed as <I>(x<SUB>d</SUB>,y<SUB>d</SUB>,z<SUB>d</SUB>)</I>.
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

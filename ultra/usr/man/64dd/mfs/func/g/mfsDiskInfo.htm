@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsDiskInfo</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p>Global variable</p>
+
+<h1>mfsDiskInfo</h1>
+
+<hr>
+
+<p><strong>Definition</strong></p>
+
+<dl>
+    <dd>MfsDiskInfo mfsDiskInfo</dd>
+</dl>
+
+<p><strong>Description</strong></p>
+
+<p>This variable is a structure for storing information related to the disk within the MFS library.
+When the disk is accessed by the MFS library, the disk information is checked first and stored in this structure.  The structure members are as follows.</p>
+
+<pre>	typedef struct st_MfsDiskInfo {
+	    LEOCapacity	cap;		/* Disk Capacity*/
+	    LEODiskID	diskID;		/* Disk ID	*/
+	    u16		blockNum;	/* ROM Block 	*/
+	} MfsDiskInfo;</pre>
+
+<hr>
+</body>
+</html>

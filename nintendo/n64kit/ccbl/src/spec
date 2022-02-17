@@ -1,0 +1,135 @@
+/*
+ * [CCBL]
+ *
+ * spec
+ *
+ * Copyright (C) 1998, NINTENDO Co,Ltd.
+ * Copyright (C) 1998, MONEGI CORPORATION.
+ *
+ */
+#include "common_include.h"
+#include "mysys.h"
+
+beginseg
+	name "code"
+	flags BOOT OBJECT
+	entry myBoot
+	address NU_SPEC_BOOT_ADDR
+        stack   NU_SPEC_BOOT_STACK
+	include "codesegment.o"
+	include	"$(ROOT)/usr/lib/PR/rspboot.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspL3DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLP.Rej.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo_d.o"
+endseg
+
+beginseg
+        name "heap"
+        flags OBJECT
+        after "code"
+        include "heap.o"
+endseg
+
+beginseg
+        name "models"
+      	flags OBJECT
+	after "heap"
+        include "modelsegment.o"
+endseg
+
+beginseg
+        name "letters"
+      	flags RAW
+	after "models"
+        include "letters.bin"
+endseg
+
+
+beginseg
+        name "tetra"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "tetra.o"
+endseg
+
+beginseg
+        name "cube"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "cube.o"
+endseg
+
+beginseg
+        name "sphere"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "sphere.o"
+endseg
+
+beginseg
+        name "xy_yz"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "xy_yz.o"
+endseg
+
+beginseg
+        name "grid"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "grid.o"
+endseg
+
+beginseg
+        name "tri"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "tri.o"
+endseg
+
+beginseg
+        name "text"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "text.o"
+endseg
+
+beginseg
+        name "mizo"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "mizo.o"
+endseg
+
+beginseg
+        name "torus2"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "torus2.o"
+endseg
+
+beginwave
+	name    APPNAME
+	include	"code"
+        include "heap"
+        include "models"
+	include "letters"
+	include "tetra"
+	include "cube"
+	include "sphere"
+	include "xy_yz"
+	include "grid"
+	include "tri"
+	include "text"
+	include "mizo"
+	include "torus2"
+endwave
+
+/*======== End of spec ========*/
+

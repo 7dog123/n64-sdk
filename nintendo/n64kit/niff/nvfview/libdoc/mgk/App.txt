@@ -1,0 +1,68 @@
+Function
+  Basic functionality of the application program
+
+Functions
+  void mgkAppInit( const u32 frame_latency,
+                   const u32 gfx_length,
+                   const u32 frame_resource_size,
+                   const u32 instance_queue_size,
+		   const u32 transform_buffer_size,
+		   const u32 max_objs,
+		   MgkObj *obj_array,
+                   void *user_data )
+  Initializes the application.
+  - frame_latency is decided, depending upon Nusystem
+    When Double buffer, frame_latency = 2
+    When Triple buffer, frame_latency = 3
+  - gfx_length is the size of gfx buffer, and the actual volume of gfx buffer is
+    frame_latency * gfx_length * sizeof( Gfx )
+  - frame_resource_size sets the capacity of frame resource in scene
+    Frame resource is a temporary storage area for rendering each frame, which will
+    be destroyed everytime frame rendering completes. It is good for Mtx or dynamic
+    Vtx.
+  - instance_queue_size sets maximum number of queue needed for hierarchy evaluation 
+  - max_obj sets maximum number of objects that the application uses
+  - transform_buffer_size sets maximum size of buffer needed for coordinate conversion
+    for hierarchy evaluation
+
+  void mgkAppInitGroups( void )
+  Initialized redering groups
+
+  Void mgkAppEvalAll( void )
+  Evaluates the hierarchy structure
+
+  Gfx *mgkAppDraw( void )
+  Generates Gfx
+
+Global variables
+  gMgkApp
+  The application instance. Pointer to MgkApp has not been added to
+  the arguments of mgpApp*( ) because every function has an access to
+  this global variable.
+
+Macro
+  _mgkAppGetHierarchy( )
+  Returns pointer to hierarchy of Scene
+
+  _mgkAppGetScene( )
+  Returns pointer to Scene
+
+  _mgkAppGetScreen( )
+  Returns pointer to Screen
+
+  _mgkAppBeginFrame( )
+  Declares beginning of a frame.
+  Evaluating hierarchy and generating Gfx are performed between
+  BeginFrame() and EndFrame(). Conversely, switching screen modes
+  must not be done between those two functions.
+
+  _mgkAppEndFrame( )
+  Declares end of a frame.
+
+  _mgkAppGetFrameCount( )
+  Returns frame count
+
+
+History
+  1999/02/25 Takamitsu Hirata
+    App.h, app.c: Initial version

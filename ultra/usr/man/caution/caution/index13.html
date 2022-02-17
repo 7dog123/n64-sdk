@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Programming Cautions (13) Game Pak</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>13-1  Game Pak (Required)</h2>
+<ul>
+<li><a href="#1">ROM and RAM Access</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>13-1  ROM and RAM Access (Required)</h3>
+
+<b>Caution</b><br>
+Access to ROM and RAM must be restricted to areas that are originally mapped (physical addresses 0x10000000, to ROM capacity and 0x08000000 to RAM capacity).
+
+<p>
+<b>Discussion</b><br>
+If an area other than those mentioned above is read, the value received is not constant.  Sometimes the image of the ROM will be received, but this is not always the case with mass-produced boards.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

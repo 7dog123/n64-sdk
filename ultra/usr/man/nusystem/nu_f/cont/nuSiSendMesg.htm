@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<HR>
+
+<Pre>
+<FONT size="6"><STRONG>nuSiSendMesg</STRONG></FONT>
+</Pre>
+
+<HR>
+
+<Pre>
+<STRONG>Syntax: </STRONG>
+</Pre>
+
+<Pre>
+s32 nuSiSendMesg(NUScMsg mesg, void* dataPtr)
+</Pre>
+
+<Pre>
+<STRONG>Arguments: </STRONG>
+</Pre>
+
+<PRE>
+mesg    Message No. to be sent to the SI manager
+dataPtr Pointer indicating the buffer position to be handed to 
+        or returned from the callback function<BR>
+</PRE>
+
+<Pre>
+<STRONG>Return Value: </STRONG>
+</Pre>
+
+<Pre>
+Error
+</Pre>
+
+<Pre>
+<STRONG>Description: </STRONG>
+</Pre>
+
+<P>
+<FONT color="#FF0000">Sends a message to the SI manager (synchronous) </FONT>
+</P>
+<P>
+Sends a message to the SI manager to perform SI operations.  The SI manager calls the device manager callback function corresponding to mesg.  The callback function receives the necessary value from dataPtr and, after performing the SI operation, stores a value, if necessary, in the position indicated in dataPtr.  Errors are the return values of the SI-related OS functions called within each callback function. </P>
+
+<P>
+This function also waits for the completion of the SI operation. 
+</P>
+
+<P>
+Use this function when creating independent SI device managers. 
+</P>
+
+<HR>
+
+<P>
+Reference:  <A href="nuSiSendMesgNW.htm">nuSiSendMesgNW</A>
+</P>
+
+<P>
+<A href="index.htm"><IMG src="../../../gif/index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.19 LightList</h3>
+
+<hr size=3>
+<h4>2) Light Area</h4>
+
+<blockquote>
+The Light area stores the actual light data. The Light area is mapped as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="12">LightHeader</th>
+
+<td>u32</td>
+
+<td>light_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_light_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>light_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>light_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>light_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>light_type</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>ambient_r</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>ambient_g</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>ambient_b</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>dir_light_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>DirLight(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>DirLight(dir_light_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Light Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 light_tag</td>
+
+<td><font size=+0>Tag indicating Light. Set the following tag.</font>
+<pre><b><font size=+0>TAG_LIGHT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x000f0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_light_index</td>
+
+<td><font size=+0>Index number of this Light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 light_header_size</td>
+
+<td><font size=+0>Size of this LightHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 light_size</td>
+
+<td><font size=+0>Size of this Light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 light_name_index</td>
+
+<td><font size=+0>Index number of Light name in NameList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#LIGHT_TYPE">u32 light_type</a></td>
+
+<td><font size=+0>Specifies the type of light. Currently, the following types are
+defined.</font>
+
+<pre><b><font size=+0>LIGHT_TYPE_DIRECTION&nbsp;&nbsp;&nbsp; 0X00000000
+LIGHT_TYPE_POSITION&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001</font></b>
+</pre>
+
+<font size=+0>LIGHT_TYPE_DIRECTION: Specifies a directional light.&nbsp;</font>
+
+<BR><br><font size=+0>LIGHT_TYPE_POSITION: Specifies a positional light.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float ambient_r</td>
+
+<td><font size=+0>Red component of ambient color</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float ambient_g</td>
+
+<td><font size=+0>Green component of ambient color</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float ambient_b</td>
+
+<td><font size=+0>Red component of ambient color</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 dir_light_num</td>
+
+<td><font size=+0>Number of DirLight</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg19-3.htm">DirLight</a></td>
+
+<td><font color="#000000">The DirLight area describes data related to one
+type of directional light.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg19.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg19-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

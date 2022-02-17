@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 24</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro24/index24.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro24/index24.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Geometry Tuning (gspFast3D - Precise Microcode)</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The standard gspFast3D microcode contains very precise subpixel x,y calculations for antialiasing and precise s,t calculations for large screen area textures. This precision is required for terrain or background polygons that are large.
+<P>
+This microcode is full featured, including lighting, clipping, texture coordinate generation (reflection mapping).
+
+<P>
+<a name="01"></a>
+<b>Vertex Grouping</b>
+<br>
+The geometry microcode has a local vertex cache. Loading a block of vertexes can amortize the cost of per vertex calculations (transformation, lighting, texture coordinate computation).
+<P>
+Careful organization of the database can minimize these calculations. 
+In general, it is best to load the vertex cache with as many vertices as possible, then draw all the geometry which uses those vertices.
+
+<P>
+<a name="02"></a>
+<b>Pre Lighting</b>
+<br>
+For non-dynamic lighting effects, lighting computations can be calculated at model time, then rendered with simple Gouraud shading.
+
+<P>
+<a name="03"></a>
+<b>Clipping and Lighting</b>
+<br>
+This microcode does not have enough instruction space to hold lighting and clipping code. It swaps them in from the dram using a least recently used algorithm. Since lighting occurs during vertex load and clipping occurs during polygon drawing, there are natural blocks of work following each ucode load. Loading just a few vertices and then drawing a small number of triangles will cause this microcode loading to “thrash”.
+<P>
+<b>Note:</b> We have not seen performance degradation due to this swap in any games. Game developers did not realize that this was happening until we told them. Large block DMA transfers (such as microcode loads) are very efficient.
+
+<P>
+<a name="04"></a>
+<b>Kinds of Polygons</b>
+<br>
+The cost of geometric processing in the RSP is listed below in the order of decreasing performance.
+<ul>
+<li>Flat Shade (using <i>gDPSetPrimColor (3P)</i> to select the color)
+<P>
+<li>Gouraud Shade
+<P>
+<li>Gouraud Shade + Z- buffer
+<P>
+<li>Gouraud Shade + Texture
+<P>
+<li>Gouraud Shade + Z-buffer + Texturing
+</ul>
+
+<P>
+<a name="05"></a>
+<b>Textures Instead of Geometry</b>
+<br>
+When possible, use textures to represent complex geometry. The RCP is designed to draw high-quality textured primitives. Achieving complexity by using additional geometry will always be slower than using textures.
+<P>
+<a name="06"></a>
+<b>Geometric Level of Detail</b>
+<br>
+When objects get far away or have rapid animation, you can render it with less detail without noticeable loss of detail.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

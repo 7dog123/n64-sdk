@@ -1,0 +1,62 @@
+#!smake -k
+#-----------------------------------------------------------------------#
+#		Makefile						#
+#									#
+#	Copyright (C) 1999, NINTENDO Co,Ltd., MONEGI CORPORATION.	#
+#									#
+#-----------------------------------------------------------------------#
+
+include $(ROOT)/usr/include/make/PRdefs
+
+# Direcotry header files and lib files for NuSYSTEM reside
+#
+N64KITDIR    = /usr/local/n64kit
+NUSYSINCDIR  = ../../../include
+NUSYSLIBDIR  = ../../../lib
+GLIBINCDIR  = ../../../include
+GLIBDIR  = ../../../lib
+
+# GBI settings. When F3DEX2, use F3DEX_GBI_2.
+GBI =		F3DEX_GBI_2
+
+APP =		chars
+
+OPTIMIZER =	-g
+
+TARGETS =	rom
+
+CODEFILES   =	main.c
+
+CODEOBJECTS =	$(CODEFILES:.c=.o) $(NUSYSLIBDIR)/nusys.o
+
+CODESEGMENT =	codesegment.o
+
+OBJECTS =	$(CODESEGMENT)
+
+LCDEFS =	-D$(GBI)
+
+LCINCS =	-I. -I/usr/include -I/usr/include/PR -I$(NUSYSINCDIR) -I$(GLIBINCDIR)
+LCOPTS =	-fullwarn -wlint,-f -woff 813,819,826,827,852 -non_shared -G 0
+#LDFLAGS =	$(MKDEPOPT) -nostdlib -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) -lnusys_d -lultra_d
+
+LDFLAGS =	$(MKDEPOPT) -nostdlib -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) -L$(GLIBDIR) -lmgk -lmgi -lmsn_d -lmhc_d -lmrn -lmif -lmis -lmvm -lmso -lnusys -lultra_rom
+
+LDIRT  =	$(APP)
+
+DEPENDFILE =    dependfile
+
+default:	$(TARGETS)
+
+include $(COMMONRULES)
+
+$(CODESEGMENT):	$(CODEOBJECTS)
+	$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+rom:	spec $(OBJECTS) $(MAKEROM)
+	$(MAKEROM) -D$(GBI) -s 9 -r rom -I$(NUSYSINCDIR) spec
+	makemask rom
+
+#	$(MAKEROM) -D$(GBI) -r rom -I$(NUSYSINCDIR) -m spec | rammap.perl
+#	@gnm -B $(APP) | rommap.perl
+
+# DO NOT DELETE

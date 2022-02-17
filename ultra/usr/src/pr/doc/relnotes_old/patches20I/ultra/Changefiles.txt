@@ -1,0 +1,743 @@
+98/10/21
+        (Changed)
+        /usr/lib/libultra.a: cartrominit.o
+        /usr/lib/libultra.a: contpfs.o
+        /usr/lib/libultra.a: contramread.o
+        /usr/lib/libultra.a: csplayer.o
+        /usr/lib/libultra.a: devmgr.o
+        /usr/lib/libultra.a: drvrNew.o
+        /usr/lib/libultra.a: dumpturbo.o
+        /usr/lib/libultra.a: env.o
+        /usr/lib/libultra.a: epirawdma.o
+        /usr/lib/libultra.a: epirawread.o
+        /usr/lib/libultra.a: epirawwrite.o
+        /usr/lib/libultra.a: epiread.o
+        /usr/lib/libultra.a: epiwrite.o
+        /usr/lib/libultra.a: exceptasm.o
+        /usr/lib/libultra.a: gbpakcheckconnector.o
+        /usr/lib/libultra.a: gbpakgetstatus.o
+        /usr/lib/libultra.a: gbpakinit.o
+        /usr/lib/libultra.a: getmemsize.o
+        /usr/lib/libultra.a: initialize.o
+        /usr/lib/libultra.a: interrupt.o
+        /usr/lib/libultra.a: pfsfilestate.o
+        /usr/lib/libultra.a: pfsinitpak.o
+        /usr/lib/libultra.a: pfsnumfiles.o
+        /usr/lib/libultra.a: pfsreadwritefile.o
+        /usr/lib/libultra.a: pfssearchfile.o
+        /usr/lib/libultra.a: pimgr.o
+        /usr/lib/libultra.a: pirawdma.o
+        /usr/lib/libultra.a: pirawread.o
+        /usr/lib/libultra.a: pirawwrite.o
+        /usr/lib/libultra.a: piread.o
+        /usr/lib/libultra.a: piwrite.o
+        /usr/lib/libultra.a: reverb.o
+        /usr/lib/libultra.a: save.o
+        /usr/lib/libultra.a: seqpdelete.o
+        /usr/lib/libultra.a: seqplayer.o
+        /usr/lib/libultra.a: seteventmesg.o
+        /usr/lib/libultra.a: sirawread.o
+        /usr/lib/libultra.a: sirawwrite.o
+        /usr/lib/libultra.a: sndplayer.o
+        /usr/lib/libultra.a: sprawdma.o
+        /usr/lib/libultra.a: sprawread.o
+        /usr/lib/libultra.a: sprawwrite.o
+        /usr/lib/libultra.a: synsetfxmix.o
+        /usr/lib/libultra.a: synstartvoiceparam.o
+        /usr/lib/libultra.a: synthesizer.o
+        /usr/lib/libultra_d.a: cartrominit.o
+        /usr/lib/libultra_d.a: contpfs.o
+        /usr/lib/libultra_d.a: contramread.o
+        /usr/lib/libultra_d.a: csplayer.o
+        /usr/lib/libultra_d.a: devmgr.o
+        /usr/lib/libultra_d.a: drvrNew.o
+        /usr/lib/libultra_d.a: dumpturbo.o
+        /usr/lib/libultra_d.a: env.o
+        /usr/lib/libultra_d.a: epirawdma.o
+        /usr/lib/libultra_d.a: epirawread.o
+        /usr/lib/libultra_d.a: epirawwrite.o
+        /usr/lib/libultra_d.a: epiread.o
+        /usr/lib/libultra_d.a: epiwrite.o
+        /usr/lib/libultra_d.a: exceptasm.o
+        /usr/lib/libultra_d.a: gbpakcheckconnector.o
+        /usr/lib/libultra_d.a: gbpakgetstatus.o
+        /usr/lib/libultra_d.a: gbpakinit.o
+        /usr/lib/libultra_d.a: getmemsize.o
+        /usr/lib/libultra_d.a: initialize.o
+        /usr/lib/libultra_d.a: interrupt.o
+        /usr/lib/libultra_d.a: pfsfilestate.o
+        /usr/lib/libultra_d.a: pfsinitpak.o
+        /usr/lib/libultra_d.a: pfsnumfiles.o
+        /usr/lib/libultra_d.a: pfsreadwritefile.o
+        /usr/lib/libultra_d.a: pfssearchfile.o
+        /usr/lib/libultra_d.a: pimgr.o
+        /usr/lib/libultra_d.a: pirawdma.o
+        /usr/lib/libultra_d.a: pirawread.o
+        /usr/lib/libultra_d.a: pirawwrite.o
+        /usr/lib/libultra_d.a: piread.o
+        /usr/lib/libultra_d.a: piwrite.o
+        /usr/lib/libultra_d.a: reverb.o
+        /usr/lib/libultra_d.a: save.o
+        /usr/lib/libultra_d.a: seqpdelete.o
+        /usr/lib/libultra_d.a: seqplayer.o
+        /usr/lib/libultra_d.a: seteventmesg.o
+        /usr/lib/libultra_d.a: sirawread.o
+        /usr/lib/libultra_d.a: sirawwrite.o
+        /usr/lib/libultra_d.a: sndplayer.o
+        /usr/lib/libultra_d.a: sprawdma.o
+        /usr/lib/libultra_d.a: sprawread.o
+        /usr/lib/libultra_d.a: sprawwrite.o
+        /usr/lib/libultra_d.a: synsetfxmix.o
+        /usr/lib/libultra_d.a: synstartvoiceparam.o
+        /usr/lib/libultra_d.a: synthesizer.o
+        /usr/lib/libultra_rom.a: cartrominit.o
+        /usr/lib/libultra_rom.a: contpfs.o
+        /usr/lib/libultra_rom.a: contramread.o
+        /usr/lib/libultra_rom.a: csplayer.o
+        /usr/lib/libultra_rom.a: devmgr.o
+        /usr/lib/libultra_rom.a: drvrNew.o
+        /usr/lib/libultra_rom.a: env.o
+        /usr/lib/libultra_rom.a: epirawdma.o
+        /usr/lib/libultra_rom.a: epirawread.o
+        /usr/lib/libultra_rom.a: epirawwrite.o
+        /usr/lib/libultra_rom.a: epiread.o
+        /usr/lib/libultra_rom.a: epiwrite.o
+        /usr/lib/libultra_rom.a: exceptasm.o
+        /usr/lib/libultra_rom.a: gbpakcheckconnector.o
+        /usr/lib/libultra_rom.a: gbpakgetstatus.o
+        /usr/lib/libultra_rom.a: gbpakinit.o
+        /usr/lib/libultra_rom.a: getmemsize.o
+        /usr/lib/libultra_rom.a: initialize.o
+        /usr/lib/libultra_rom.a: interrupt.o
+        /usr/lib/libultra_rom.a: pfsfilestate.o
+        /usr/lib/libultra_rom.a: pfsinitpak.o
+        /usr/lib/libultra_rom.a: pfsnumfiles.o
+        /usr/lib/libultra_rom.a: pfsreadwritefile.o
+        /usr/lib/libultra_rom.a: pfssearchfile.o
+        /usr/lib/libultra_rom.a: pimgr.o
+        /usr/lib/libultra_rom.a: pirawdma.o
+        /usr/lib/libultra_rom.a: pirawread.o
+        /usr/lib/libultra_rom.a: pirawwrite.o
+        /usr/lib/libultra_rom.a: piread.o
+        /usr/lib/libultra_rom.a: piwrite.o
+        /usr/lib/libultra_rom.a: reverb.o
+        /usr/lib/libultra_rom.a: save.o
+        /usr/lib/libultra_rom.a: seqpdelete.o
+        /usr/lib/libultra_rom.a: seqplayer.o
+        /usr/lib/libultra_rom.a: seteventmesg.o
+        /usr/lib/libultra_rom.a: sirawread.o
+        /usr/lib/libultra_rom.a: sirawwrite.o
+        /usr/lib/libultra_rom.a: sndplayer.o
+        /usr/lib/libultra_rom.a: sprawdma.o
+        /usr/lib/libultra_rom.a: sprawread.o
+        /usr/lib/libultra_rom.a: sprawwrite.o
+        /usr/lib/libultra_rom.a: synsetfxmix.o
+        /usr/lib/libultra_rom.a: synstartvoiceparam.o
+        /usr/lib/libultra_rom.a: synthesizer.o
+        /usr/include/PR/os.h
+        /usr/lib/PR/gspF3DEX2.NoN.fifo.o
+        /usr/lib/PR/gspF3DEX2.NoN.xbus.o
+        /usr/lib/PR/gspF3DEX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DEX2.Rej.xbus.o
+        /usr/lib/PR/gspF3DEX2.fifo.o
+        /usr/lib/PR/gspF3DEX2.xbus.o
+        /usr/lib/PR/gspF3DLX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DLX2.Rej.xbus.o
+        /usr/lib/PR/gspL3DEX2.fifo.o
+        /usr/lib/PR/gspL3DEX2.xbus.o
+        /usr/lib/PR/gspS2DEX2.fifo.o
+        /usr/lib/PR/gspS2DEX2.xbus.o
+        /usr/sbin/makerom
+        /usr/sbin/vadpcm_enc
+        /usr/src/PR/demos/README_DEMOS.jp
+        /usr/src/PR/demos/autofill/Makefile
+        /usr/src/PR/demos/autofill/fill.c
+        /usr/src/PR/demos/blockmonkey/Makefile
+        /usr/src/PR/demos/blockmonkey/block.c
+        /usr/src/PR/demos/bumpmap/Makefile
+        /usr/src/PR/demos/bumpmap/bumpmap.c
+        /usr/src/PR/demos/chrome/Makefile
+        /usr/src/PR/demos/chrome/letters.c
+        /usr/src/PR/demos/ci8fb/Makefile
+        /usr/src/PR/demos/ci8fb/fill.c
+        /usr/src/PR/demos/cptest/main.c++
+        /usr/src/PR/demos/detail/Makefile
+        /usr/src/PR/demos/detail/main.c
+        /usr/src/PR/demos/detail/matrix.c
+        /usr/src/PR/demos/eeptest/Makefile
+        /usr/src/PR/demos/eeptest/eeptest.c
+        /usr/src/PR/demos/fault/fault.c
+        /usr/src/PR/demos/fogworld/Makefile
+        /usr/src/PR/demos/fogworld/boot.c
+        /usr/src/PR/demos/fogworld/font.c
+        /usr/src/PR/demos/fogworld/game.c
+        /usr/src/PR/demos/gbpak/Makefile
+        /usr/src/PR/demos/ginv/ginv.c
+        /usr/src/PR/demos/ground/Makefile
+        /usr/src/PR/demos/ground/boot.c
+        /usr/src/PR/demos/ground/font.c
+        /usr/src/PR/demos/ground/game.c
+        /usr/src/PR/demos/gs2dex/Makefile
+        /usr/src/PR/demos/gs2dex/action.c
+        /usr/src/PR/demos/gs2dex/action.h
+        /usr/src/PR/demos/gs2dex/main.c
+        /usr/src/PR/demos/gs2dex/system.h
+        /usr/src/PR/demos/gs2dex/uc_assert.c
+        /usr/src/PR/demos/gtdemo/Makefile
+        /usr/src/PR/demos/gtdemo/controller.c
+        /usr/src/PR/demos/gtdemo/gtdemo.c
+        /usr/src/PR/demos/hostio/game.c
+        /usr/src/PR/demos/lights/Makefile
+        /usr/src/PR/demos/lights/controller.c
+        /usr/src/PR/demos/lights/teapot.c
+        /usr/src/PR/demos/mipmap/Makefile
+        /usr/src/PR/demos/mipmap/boot.c
+        /usr/src/PR/demos/mipmap/font.c
+        /usr/src/PR/demos/mipmap/game.c
+        /usr/src/PR/demos/morphcube/Makefile
+        /usr/src/PR/demos/morphcube/makeverts.c
+        /usr/src/PR/demos/morphcube/morph.c
+        /usr/src/PR/demos/morphcube/morphdemo.c
+        /usr/src/PR/demos/morphfaces/Makefile
+        /usr/src/PR/demos/morphfaces/morph.c
+        /usr/src/PR/demos/morphfaces/morphfaces.c
+        /usr/src/PR/demos/motortest/Makefile
+        /usr/src/PR/demos/motortest/motortest.c
+        /usr/src/PR/demos/nnsample1/Makefile
+        /usr/src/PR/demos/nnsample1/README.ASCII
+        /usr/src/PR/demos/nnsample1/README.TXT
+        /usr/src/PR/demos/nnsample1/audio.c
+        /usr/src/PR/demos/nnsample1/audio.h
+        /usr/src/PR/demos/nnsample1/boot.c
+        /usr/src/PR/demos/nnsample1/def.h
+        /usr/src/PR/demos/nnsample2/Makefile
+        /usr/src/PR/demos/nnsample2/README.ASCII
+        /usr/src/PR/demos/nnsample2/README.TXT
+        /usr/src/PR/demos/nnsample2/audio.c
+        /usr/src/PR/demos/nnsample2/audio.h
+        /usr/src/PR/demos/nnsample2/boot.c
+        /usr/src/PR/demos/nnsample2/def.h
+        /usr/src/PR/demos/nosPak/lib/Makefile_eng
+        /usr/src/PR/demos/nosPak/lib/Makefile_jpn
+        /usr/src/PR/demos/nosPak/lib/pakmenu.h
+        /usr/src/PR/demos/nosPak/lib/pakmenu.s
+        /usr/src/PR/demos/nosPak/test/Makefile
+        /usr/src/PR/demos/nosPak/test/onetri.c
+        /usr/src/PR/demos/onetri-fpal/Makefile
+        /usr/src/PR/demos/onetri-fpal/onetri.c
+        /usr/src/PR/demos/onetri/Makefile
+        /usr/src/PR/demos/onetri/onetri.c
+        /usr/src/PR/demos/overlay/Makefile
+        /usr/src/PR/demos/overlay/overlay.c
+        /usr/src/PR/demos/pfs/Makefile
+        /usr/src/PR/demos/pfs/main.c
+        /usr/src/PR/demos/pfs/nu64sys.c
+        /usr/src/PR/demos/playseq/Makefile
+        /usr/src/PR/demos/playseq/playseq.c
+        /usr/src/PR/demos/playseq/playseq.h
+        /usr/src/PR/demos/polyline/Makefile
+        /usr/src/PR/demos/polyline/lines.c
+        /usr/src/PR/demos/print/print.c
+        /usr/src/PR/demos/simple/Makefile
+        /usr/src/PR/demos/simple/audio.c
+        /usr/src/PR/demos/simple/audiomgr.c
+        /usr/src/PR/demos/simple/controller.c
+        /usr/src/PR/demos/simple/misc.c
+        /usr/src/PR/demos/simple/misc.h
+        /usr/src/PR/demos/simple/simple.c
+        /usr/src/PR/demos/simple/simple.h
+        /usr/src/PR/demos/simple/simple/locdefs
+        /usr/src/PR/demos/simple/simple_d/locdefs
+        /usr/src/PR/demos/simple/simple_rom/locdefs
+        /usr/src/PR/demos/soundmonkey/Makefile
+        /usr/src/PR/demos/soundmonkey/soundmonkey.c
+        /usr/src/PR/demos/spgame/Makefile
+        /usr/src/PR/demos/spgame/font.c
+        /usr/src/PR/demos/spgame/main.c
+        /usr/src/PR/demos/spgame/spgame.c
+        /usr/src/PR/demos/spritemonkey/Makefile
+        /usr/src/PR/demos/spritemonkey/controller.c
+        /usr/src/PR/demos/spritemonkey/sprite.c
+        /usr/src/PR/demos/spritemonkey/sprite.h
+        /usr/src/PR/demos/sramtest/Makefile
+        /usr/src/PR/demos/terrain/Makefile
+        /usr/src/PR/demos/terrain/boot.c
+        /usr/src/PR/demos/terrain/font.c
+        /usr/src/PR/demos/terrain/game.c
+        /usr/src/PR/demos/texlight/Makefile
+        /usr/src/PR/demos/texlight/boot.c
+        /usr/src/PR/demos/texlight/font.c
+        /usr/src/PR/demos/texlight/game.c
+        /usr/src/PR/demos/tile_rect2d/Makefile
+        /usr/src/PR/demos/tile_rect2d/main.c
+        /usr/src/PR/demos/tile_rect2d/tile_rectangle.c
+        /usr/src/PR/demos/tile_rect3d/Makefile
+        /usr/src/PR/demos/tile_rect3d/main.c
+        /usr/src/PR/demos/tile_rect3d/tile_rectangle.c
+        /usr/src/PR/demos/topgun/Makefile
+        /usr/src/PR/demos/topgun/topgun.c
+        /usr/src/PR/demos/tron/Makefile
+        /usr/src/PR/demos/tron/tron.c
+        /usr/src/PR/demos/turbomonkey/Makefile
+        /usr/src/PR/demos/turbomonkey/block.c
+        /usr/src/PR/demos/voice/Makefile
+        /usr/src/PR/demos/voice/main.c
+        /usr/src/PR/demos/voice/siproc.c
+        /usr/src/PR/doc/gfxucode.F3DEX2/README.jp
+        /usr/src/PR/libsrc/conv/readtex.c
+        /usr/src/PR/libsrc/libultra/audio/csplayer.c
+        /usr/src/PR/libsrc/libultra/audio/drvrNew.c
+        /usr/src/PR/libsrc/libultra/audio/env.c
+        /usr/src/PR/libsrc/libultra/audio/reverb.c
+        /usr/src/PR/libsrc/libultra/audio/save.c
+        /usr/src/PR/libsrc/libultra/audio/seqpdelete.c
+        /usr/src/PR/libsrc/libultra/audio/seqplayer.c
+        /usr/src/PR/libsrc/libultra/audio/sndplayer.c
+        /usr/src/PR/libsrc/libultra/audio/synsetfxmix.c
+        /usr/src/PR/libsrc/libultra/audio/synstartvoiceparam.c
+        /usr/src/PR/libsrc/libultra/audio/synthInternals.h
+        /usr/src/PR/libsrc/libultra/audio/synthesizer.c
+        /usr/src/PR/libsrc/libultra/gt/dumpturbo.c
+        (New)
+        /usr/lib/libultra_rom.a: dumpturbo.o
+        /usr/src/PR/libsrc/conv/Makefile
+
+98/08/28
+        (Changed)
+        /usr/lib/libultra.a: visetspecial.o
+        /usr/lib/libultra_d.a: visetspecial.o
+        /usr/lib/libultra_rom.a: visetspecial.o
+        /usr/src/PR/demos/README_DEMOS.jp
+        /usr/src/PR/demos/voice/Makefile
+        /usr/src/PR/demos/voice/graph.c
+        /usr/src/PR/demos/voice/kfont.c
+        /usr/src/PR/demos/voice/main.c
+        /usr/src/PR/demos/voice/mes.c
+        /usr/src/PR/demos/voice/mes.h
+        /usr/src/PR/demos/voice/nu64sys.h
+        /usr/src/PR/demos/voice/siproc.c
+        (New)
+        /usr/src/PR/demos/voice/README.jp
+
+98/08/10
+        (Changed)
+        /usr/lib/libultra.a: cartrominit.o
+        /usr/lib/libultra.a: epirawdma.o
+        /usr/lib/libultra.a: epirawread.o
+        /usr/lib/libultra.a: epirawwrite.o
+        /usr/lib/libultra.a: initialize.o
+        /usr/lib/libultra.a: pimgr.o
+        /usr/lib/libultra_d.a: cartrominit.o
+        /usr/lib/libultra_d.a: epirawdma.o
+        /usr/lib/libultra_d.a: epirawread.o
+        /usr/lib/libultra_d.a: epirawwrite.o
+        /usr/lib/libultra_d.a: initialize.o
+        /usr/lib/libultra_d.a: pimgr.o
+        /usr/lib/libultra_rom.a: cartrominit.o
+        /usr/lib/libultra_rom.a: epirawdma.o
+        /usr/lib/libultra_rom.a: epirawread.o
+        /usr/lib/libultra_rom.a: epirawwrite.o
+        /usr/lib/libultra_rom.a: initialize.o
+        /usr/lib/libultra_rom.a: pimgr.o
+        /usr/include/PR/os.h
+        /usr/include/PR/rcp.h
+        /usr/src/PR/demos/README_DEMOS.jp
+        /usr/src/PR/demos/gbpak/gbpaksramreadwrite.c
+        /usr/src/PR/demos/gbpak/siproc.c
+        (New)
+        /usr/lib/libultra.a: contchannelreset.o
+        /usr/lib/libultra.a: voicecheckresult.o
+        /usr/lib/libultra.a: voicecheckword.o
+        /usr/lib/libultra.a: voicecleardictionary.o
+        /usr/lib/libultra.a: voicecontread2.o
+        /usr/lib/libultra.a: voicecontread36.o
+        /usr/lib/libultra.a: voicecontrolgain.o
+        /usr/lib/libultra.a: voicecontwrite20.o
+        /usr/lib/libultra.a: voicecontwrite4.o
+        /usr/lib/libultra.a: voicecountsyllables.o
+        /usr/lib/libultra.a: voicecrc.o
+        /usr/lib/libultra.a: voicegetreaddata.o
+        /usr/lib/libultra.a: voicegetstatus.o
+        /usr/lib/libultra.a: voiceinit.o
+        /usr/lib/libultra.a: voicemaskdictionary.o
+        /usr/lib/libultra.a: voicesetadconverter.o
+        /usr/lib/libultra.a: voicesetword.o
+        /usr/lib/libultra.a: voicestartreaddata.o
+        /usr/lib/libultra.a: voicestopreaddata.o
+        /usr/lib/libultra_d.a: contchannelreset.o
+        /usr/lib/libultra_d.a: voicecheckresult.o
+        /usr/lib/libultra_d.a: voicecheckword.o
+        /usr/lib/libultra_d.a: voicecleardictionary.o
+        /usr/lib/libultra_d.a: voicecontread2.o
+        /usr/lib/libultra_d.a: voicecontread36.o
+        /usr/lib/libultra_d.a: voicecontrolgain.o
+        /usr/lib/libultra_d.a: voicecontwrite20.o
+        /usr/lib/libultra_d.a: voicecontwrite4.o
+        /usr/lib/libultra_d.a: voicecountsyllables.o
+        /usr/lib/libultra_d.a: voicecrc.o
+        /usr/lib/libultra_d.a: voicegetreaddata.o
+        /usr/lib/libultra_d.a: voicegetstatus.o
+        /usr/lib/libultra_d.a: voiceinit.o
+        /usr/lib/libultra_d.a: voicemaskdictionary.o
+        /usr/lib/libultra_d.a: voicesetadconverter.o
+        /usr/lib/libultra_d.a: voicesetword.o
+        /usr/lib/libultra_d.a: voicestartreaddata.o
+        /usr/lib/libultra_d.a: voicestopreaddata.o
+        /usr/lib/libultra_rom.a: contchannelreset.o
+        /usr/lib/libultra_rom.a: voicecheckresult.o
+        /usr/lib/libultra_rom.a: voicecheckword.o
+        /usr/lib/libultra_rom.a: voicecleardictionary.o
+        /usr/lib/libultra_rom.a: voicecontread2.o
+        /usr/lib/libultra_rom.a: voicecontread36.o
+        /usr/lib/libultra_rom.a: voicecontrolgain.o
+        /usr/lib/libultra_rom.a: voicecontwrite20.o
+        /usr/lib/libultra_rom.a: voicecontwrite4.o
+        /usr/lib/libultra_rom.a: voicecountsyllables.o
+        /usr/lib/libultra_rom.a: voicecrc.o
+        /usr/lib/libultra_rom.a: voicegetreaddata.o
+        /usr/lib/libultra_rom.a: voicegetstatus.o
+        /usr/lib/libultra_rom.a: voiceinit.o
+        /usr/lib/libultra_rom.a: voicemaskdictionary.o
+        /usr/lib/libultra_rom.a: voicesetadconverter.o
+        /usr/lib/libultra_rom.a: voicesetword.o
+        /usr/lib/libultra_rom.a: voicestartreaddata.o
+        /usr/lib/libultra_rom.a: voicestopreaddata.o
+        /usr/src/PR/demos/voice/Makefile
+        /usr/src/PR/demos/voice/action.c
+        /usr/src/PR/demos/voice/action.h
+        /usr/src/PR/demos/voice/asci.c
+        /usr/src/PR/demos/voice/cfb.c
+        /usr/src/PR/demos/voice/graph.c
+        /usr/src/PR/demos/voice/graph.h
+        /usr/src/PR/demos/voice/kfont.c
+        /usr/src/PR/demos/voice/main.c
+        /usr/src/PR/demos/voice/mes.c
+        /usr/src/PR/demos/voice/mes.h
+        /usr/src/PR/demos/voice/message.c
+        /usr/src/PR/demos/voice/nu64sys.c
+        /usr/src/PR/demos/voice/nu64sys.h
+        /usr/src/PR/demos/voice/siproc.c
+        /usr/src/PR/demos/voice/siproc.h
+        /usr/src/PR/demos/voice/spec
+        /usr/src/PR/demos/voice/thread.h
+
+98/07/08
+        (Changed)
+        /usr/lib/libultra.a: aisetfreq.o
+        /usr/lib/libultra.a: exceptasm.o
+        /usr/lib/libultra.a: initialize.o
+        /usr/lib/libultra.a: sethwinterrupt.o
+        /usr/lib/libultra_d.a: aisetfreq.o
+        /usr/lib/libultra_d.a: exceptasm.o
+        /usr/lib/libultra_d.a: initialize.o
+        /usr/lib/libultra_d.a: sethwinterrupt.o
+        /usr/lib/libultra_rom.a: aisetfreq.o
+        /usr/lib/libultra_rom.a: exceptasm.o
+        /usr/lib/libultra_rom.a: initialize.o
+        /usr/lib/libultra_rom.a: sethwinterrupt.o
+        /usr/include/PR/os_internal.h
+        /usr/lib/PR/gspF3DEX2.NoN.fifo.o
+        /usr/lib/PR/gspF3DEX2.NoN.xbus.o
+        /usr/lib/PR/gspF3DEX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DEX2.Rej.xbus.o
+        /usr/lib/PR/gspF3DEX2.fifo.o
+        /usr/lib/PR/gspF3DEX2.xbus.o
+        /usr/lib/PR/gspF3DLX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DLX2.Rej.xbus.o
+        /usr/lib/PR/gspL3DEX2.fifo.o
+        /usr/lib/PR/gspL3DEX2.xbus.o
+        /usr/lib/PR/gspS2DEX2.fifo.o
+        /usr/lib/PR/gspS2DEX2.xbus.o
+        /usr/sbin/makerom
+        /usr/src/PR/demos/README_DEMOS.jp
+        /usr/src/PR/doc/gfxucode.F3DEX2/README.jp
+        (New)
+        /usr/lib/libultra.a: gethwinterrupt.o
+        /usr/lib/libultra_d.a: gethwinterrupt.o
+        /usr/lib/libultra_rom.a: gethwinterrupt.o
+
+98/06/10
+        (Changed)
+        /usr/lib/libultra.a: contramread.o
+        /usr/lib/libultra.a: contramwrite.o
+        /usr/lib/libultra.a: pfsgetstatus.o
+        /usr/lib/libultra_d.a: contramread.o
+        /usr/lib/libultra_d.a: contramwrite.o
+        /usr/lib/libultra_d.a: pfsgetstatus.o
+        /usr/lib/libultra_rom.a: contramread.o
+        /usr/lib/libultra_rom.a: contramwrite.o
+        /usr/lib/libultra_rom.a: pfsgetstatus.o
+        /usr/include/PR/gbi.h
+        /usr/include/PR/gs2dex.h
+        /usr/include/PR/gt.h
+        /usr/include/PR/os.h
+        /usr/include/PR/sp.h
+        /usr/lib/PR/gspF3DEX2.NoN.fifo.o
+        /usr/lib/PR/gspF3DEX2.NoN.xbus.o
+        /usr/lib/PR/gspF3DEX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DEX2.Rej.xbus.o
+        /usr/lib/PR/gspF3DEX2.fifo.o
+        /usr/lib/PR/gspF3DEX2.xbus.o
+        /usr/lib/PR/gspF3DLX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DLX2.Rej.xbus.o
+        /usr/lib/PR/gspL3DEX2.fifo.o
+        /usr/lib/PR/gspL3DEX2.xbus.o
+        /usr/lib/PR/gspS2DEX2.fifo.o
+        /usr/lib/PR/gspS2DEX2.xbus.o
+        /usr/src/PR/demos/README_DEMOS.jp
+        /usr/src/PR/doc/gfxucode.F3DEX2/README.jp
+        /usr/src/PR/libsrc/libultra/sp/Makefile
+        (New)
+        /usr/lib/libultra.a: afterprenmi.o
+        /usr/lib/libultra.a: gbpakcheckconnector.o
+        /usr/lib/libultra.a: gbpakgetbank.o
+        /usr/lib/libultra.a: gbpakgetstatus.o
+        /usr/lib/libultra.a: gbpakinit.o
+        /usr/lib/libultra.a: gbpakpower.o
+        /usr/lib/libultra.a: gbpakreadid.o
+        /usr/lib/libultra.a: gbpakreadwrite.o
+        /usr/lib/libultra.a: gbpaksetbank.o
+        /usr/lib/libultra.a: spriteEX.o
+        /usr/lib/libultra.a: spriteEX2.o
+        /usr/lib/libultra_d.a: afterprenmi.o
+        /usr/lib/libultra_d.a: gbpakcheckconnector.o
+        /usr/lib/libultra_d.a: gbpakgetbank.o
+        /usr/lib/libultra_d.a: gbpakgetstatus.o
+        /usr/lib/libultra_d.a: gbpakinit.o
+        /usr/lib/libultra_d.a: gbpakpower.o
+        /usr/lib/libultra_d.a: gbpakreadid.o
+        /usr/lib/libultra_d.a: gbpakreadwrite.o
+        /usr/lib/libultra_d.a: gbpaksetbank.o
+        /usr/lib/libultra_d.a: spriteEX.o
+        /usr/lib/libultra_d.a: spriteEX2.o
+        /usr/lib/libultra_rom.a: afterprenmi.o
+        /usr/lib/libultra_rom.a: gbpakcheckconnector.o
+        /usr/lib/libultra_rom.a: gbpakgetbank.o
+        /usr/lib/libultra_rom.a: gbpakgetstatus.o
+        /usr/lib/libultra_rom.a: gbpakinit.o
+        /usr/lib/libultra_rom.a: gbpakpower.o
+        /usr/lib/libultra_rom.a: gbpakreadid.o
+        /usr/lib/libultra_rom.a: gbpakreadwrite.o
+        /usr/lib/libultra_rom.a: gbpaksetbank.o
+        /usr/lib/libultra_rom.a: spriteEX.o
+        /usr/lib/libultra_rom.a: spriteEX2.o
+        /usr/src/PR/demos/gbpak/Makefile
+        /usr/src/PR/demos/gbpak/asci.c
+        /usr/src/PR/demos/gbpak/cfb.c
+        /usr/src/PR/demos/gbpak/gbpaksramreadwrite.c
+        /usr/src/PR/demos/gbpak/graph.c
+        /usr/src/PR/demos/gbpak/graph.h
+        /usr/src/PR/demos/gbpak/kfont.c
+        /usr/src/PR/demos/gbpak/main.c
+        /usr/src/PR/demos/gbpak/main.h
+        /usr/src/PR/demos/gbpak/mes.c
+        /usr/src/PR/demos/gbpak/mes.h
+        /usr/src/PR/demos/gbpak/nu64sys.c
+        /usr/src/PR/demos/gbpak/nu64sys.h
+        /usr/src/PR/demos/gbpak/printkanji.c
+        /usr/src/PR/demos/gbpak/putkanji.c
+        /usr/src/PR/demos/gbpak/siproc.c
+        /usr/src/PR/demos/gbpak/siproc.h
+        /usr/src/PR/demos/gbpak/spec
+        /usr/src/PR/demos/gbpak/thread.h
+        /usr/src/PR/libsrc/libultra/sp/spriteEX.c
+        /usr/src/PR/libsrc/libultra/sp/spriteEX2.c
+
+98/04/23
+        (Changed)
+        /usr/lib/libultra.a: leodiskinit.o
+        /usr/lib/libultra.a: leointerrupt.o
+        /usr/lib/libultra.a: pimgr.o
+        /usr/lib/libultra.a: us2dex.o
+        /usr/lib/libultra.a: us2dex_emu.o
+        /usr/lib/libultra_d.a: leodiskinit.o
+        /usr/lib/libultra_d.a: leointerrupt.o
+        /usr/lib/libultra_d.a: pimgr.o
+        /usr/lib/libultra_d.a: us2dex.o
+        /usr/lib/libultra_d.a: us2dex_emu.o
+        /usr/lib/libultra_rom.a: leodiskinit.o
+        /usr/lib/libultra_rom.a: leointerrupt.o
+        /usr/lib/libultra_rom.a: pimgr.o
+        /usr/lib/libultra_rom.a: us2dex.o
+        /usr/lib/libultra_rom.a: us2dex_emu.o
+        /usr/include/PR/gbi.h
+        /usr/include/PR/gs2dex.h
+        /usr/include/PR/sptask.h
+        /usr/include/PR/ucode.h
+        /usr/lib/PR/gspS2DEX.fifo.o
+        /usr/lib/PR/gspS2DEX.fifo_d.o
+        /usr/src/PR/doc/gfxucode.S2DEX/README.jp
+        /usr/src/PR/libsrc/libultra/gu/Makefile
+        /usr/src/PR/libsrc/libultra/gu/us2dex.c
+        /usr/src/PR/libsrc/libultra/gu/us2dex_emu.c
+        (New)
+        /usr/lib/libultra.a: us2dex2_emu.o
+        /usr/lib/libultra_d.a: us2dex2_emu.o
+        /usr/lib/libultra_rom.a: us2dex2_emu.o
+        /usr/lib/PR/gspF3DEX2.NoN.fifo.o
+        /usr/lib/PR/gspF3DEX2.NoN.xbus.o
+        /usr/lib/PR/gspF3DEX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DEX2.Rej.xbus.o
+        /usr/lib/PR/gspF3DEX2.fifo.o
+        /usr/lib/PR/gspF3DEX2.xbus.o
+        /usr/lib/PR/gspF3DLX2.Rej.fifo.o
+        /usr/lib/PR/gspF3DLX2.Rej.xbus.o
+        /usr/lib/PR/gspL3DEX2.fifo.o
+        /usr/lib/PR/gspL3DEX2.xbus.o
+        /usr/lib/PR/gspS2DEX2.fifo.o
+        /usr/lib/PR/gspS2DEX2.xbus.o
+        /usr/src/PR/doc/gfxucode.F3DEX2/README.jp
+        /usr/src/PR/libsrc/libultra/gu/us2dex2_emu.c
+
+98/03/05
+        (Changed)
+        /usr/lib/libultra.a: conteepprobe.o
+        /usr/lib/libultra.a: conteepread.o
+        /usr/lib/libultra.a: conteepwrite.o
+        /usr/lib/libultra.a: contpfs.o
+        /usr/lib/libultra.a: contramread.o
+        /usr/lib/libultra.a: contramwrite.o
+        /usr/lib/libultra.a: contreaddata.o
+        /usr/lib/libultra.a: crc.o
+        /usr/lib/libultra.a: motor.o
+        /usr/lib/libultra.a: pfsallocatefile.o
+        /usr/lib/libultra.a: pfschecker.o
+        /usr/lib/libultra.a: pfsdeletefile.o
+        /usr/lib/libultra.a: pfsfilestate.o
+        /usr/lib/libultra.a: pfsfreeblocks.o
+        /usr/lib/libultra.a: pfsgetstatus.o
+        /usr/lib/libultra.a: pfsinitpak.o
+        /usr/lib/libultra.a: pfsnumfiles.o
+        /usr/lib/libultra.a: pfsreadwritefile.o
+        /usr/lib/libultra.a: pfsreformat.o
+        /usr/lib/libultra.a: pfsrepairid.o
+        /usr/lib/libultra.a: pfssearchfile.o
+        /usr/lib/libultra.a: pfssetlabel.o
+        /usr/lib/libultra.a: sirawdma.o
+        /usr/lib/libultra.a: vimgr.o
+        /usr/lib/libultra.a: viswapcontext.o
+        /usr/lib/libultra.a: vitbl.o
+        /usr/lib/libultra_d.a: conteepprobe.o
+        /usr/lib/libultra_d.a: conteepread.o
+        /usr/lib/libultra_d.a: conteepwrite.o
+        /usr/lib/libultra_d.a: contpfs.o
+        /usr/lib/libultra_d.a: contramread.o
+        /usr/lib/libultra_d.a: contramwrite.o
+        /usr/lib/libultra_d.a: contreaddata.o
+        /usr/lib/libultra_d.a: crc.o
+        /usr/lib/libultra_d.a: motor.o
+        /usr/lib/libultra_d.a: pfsallocatefile.o
+        /usr/lib/libultra_d.a: pfschecker.o
+        /usr/lib/libultra_d.a: pfsdeletefile.o
+        /usr/lib/libultra_d.a: pfsfilestate.o
+        /usr/lib/libultra_d.a: pfsfreeblocks.o
+        /usr/lib/libultra_d.a: pfsgetstatus.o
+        /usr/lib/libultra_d.a: pfsinitpak.o
+        /usr/lib/libultra_d.a: pfsnumfiles.o
+        /usr/lib/libultra_d.a: pfsreadwritefile.o
+        /usr/lib/libultra_d.a: pfsreformat.o
+        /usr/lib/libultra_d.a: pfsrepairid.o
+        /usr/lib/libultra_d.a: pfssearchfile.o
+        /usr/lib/libultra_d.a: pfssetlabel.o
+        /usr/lib/libultra_d.a: sirawdma.o
+        /usr/lib/libultra_d.a: vimgr.o
+        /usr/lib/libultra_d.a: viswapcontext.o
+        /usr/lib/libultra_d.a: vitbl.o
+        /usr/lib/libultra_rom.a: conteepprobe.o
+        /usr/lib/libultra_rom.a: conteepread.o
+        /usr/lib/libultra_rom.a: conteepwrite.o
+        /usr/lib/libultra_rom.a: contpfs.o
+        /usr/lib/libultra_rom.a: contramread.o
+        /usr/lib/libultra_rom.a: contramwrite.o
+        /usr/lib/libultra_rom.a: contreaddata.o
+        /usr/lib/libultra_rom.a: crc.o
+        /usr/lib/libultra_rom.a: motor.o
+        /usr/lib/libultra_rom.a: pfsallocatefile.o
+        /usr/lib/libultra_rom.a: pfschecker.o
+        /usr/lib/libultra_rom.a: pfsdeletefile.o
+        /usr/lib/libultra_rom.a: pfsfilestate.o
+        /usr/lib/libultra_rom.a: pfsfreeblocks.o
+        /usr/lib/libultra_rom.a: pfsgetstatus.o
+        /usr/lib/libultra_rom.a: pfsinitpak.o
+        /usr/lib/libultra_rom.a: pfsnumfiles.o
+        /usr/lib/libultra_rom.a: pfsreadwritefile.o
+        /usr/lib/libultra_rom.a: pfsreformat.o
+        /usr/lib/libultra_rom.a: pfsrepairid.o
+        /usr/lib/libultra_rom.a: pfssearchfile.o
+        /usr/lib/libultra_rom.a: pfssetlabel.o
+        /usr/lib/libultra_rom.a: sirawdma.o
+        /usr/lib/libultra_rom.a: vimgr.o
+        /usr/lib/libultra_rom.a: viswapcontext.o
+        /usr/lib/libultra_rom.a: vitbl.o
+        /usr/include/PR/os.h
+        /usr/include/PR/ultraerror.h
+        /usr/lib/PR/error.fmt
+        /usr/lib/libultrahost.a
+        /usr/src/PR/README.jp
+        /usr/src/PR/demos/README_DEMOS.jp
+        /usr/src/PR/demos/nosPak/src/Makefile
+        /usr/src/PR/demos/nosPak/src/pakmenu.c
+        (New)
+        /usr/lib/libultra.a: pfsselectbank.o
+        /usr/lib/libultra.a: viextendvstart.o
+        /usr/lib/libultra.a: vimodefpalhaf1.o
+        /usr/lib/libultra.a: vimodefpalhan1.o
+        /usr/lib/libultra.a: vimodefpalhpf1.o
+        /usr/lib/libultra.a: vimodefpalhpf2.o
+        /usr/lib/libultra.a: vimodefpalhpn1.o
+        /usr/lib/libultra.a: vimodefpalhpn2.o
+        /usr/lib/libultra.a: vimodefpallaf1.o
+        /usr/lib/libultra.a: vimodefpallaf2.o
+        /usr/lib/libultra.a: vimodefpallan1.o
+        /usr/lib/libultra.a: vimodefpallan2.o
+        /usr/lib/libultra.a: vimodefpallpf1.o
+        /usr/lib/libultra.a: vimodefpallpf2.o
+        /usr/lib/libultra.a: vimodefpallpn1.o
+        /usr/lib/libultra.a: vimodefpallpn2.o
+        /usr/lib/libultra_d.a: pfsselectbank.o
+        /usr/lib/libultra_d.a: viextendvstart.o
+        /usr/lib/libultra_d.a: vimodefpalhaf1.o
+        /usr/lib/libultra_d.a: vimodefpalhan1.o
+        /usr/lib/libultra_d.a: vimodefpalhpf1.o
+        /usr/lib/libultra_d.a: vimodefpalhpf2.o
+        /usr/lib/libultra_d.a: vimodefpalhpn1.o
+        /usr/lib/libultra_d.a: vimodefpalhpn2.o
+        /usr/lib/libultra_d.a: vimodefpallaf1.o
+        /usr/lib/libultra_d.a: vimodefpallaf2.o
+        /usr/lib/libultra_d.a: vimodefpallan1.o
+        /usr/lib/libultra_d.a: vimodefpallan2.o
+        /usr/lib/libultra_d.a: vimodefpallpf1.o
+        /usr/lib/libultra_d.a: vimodefpallpf2.o
+        /usr/lib/libultra_d.a: vimodefpallpn1.o
+        /usr/lib/libultra_d.a: vimodefpallpn2.o
+        /usr/lib/libultra_rom.a: pfsselectbank.o
+        /usr/lib/libultra_rom.a: viextendvstart.o
+        /usr/lib/libultra_rom.a: vimodefpalhaf1.o
+        /usr/lib/libultra_rom.a: vimodefpalhan1.o
+        /usr/lib/libultra_rom.a: vimodefpalhpf1.o
+        /usr/lib/libultra_rom.a: vimodefpalhpf2.o
+        /usr/lib/libultra_rom.a: vimodefpalhpn1.o
+        /usr/lib/libultra_rom.a: vimodefpalhpn2.o
+        /usr/lib/libultra_rom.a: vimodefpallaf1.o
+        /usr/lib/libultra_rom.a: vimodefpallaf2.o
+        /usr/lib/libultra_rom.a: vimodefpallan1.o
+        /usr/lib/libultra_rom.a: vimodefpallan2.o
+        /usr/lib/libultra_rom.a: vimodefpallpf1.o
+        /usr/lib/libultra_rom.a: vimodefpallpf2.o
+        /usr/lib/libultra_rom.a: vimodefpallpn1.o
+        /usr/lib/libultra_rom.a: vimodefpallpn2.o
+        /usr/src/PR/demos/nosPak/src/Makefile_eng
+        /usr/src/PR/demos/nosPak/src/Makefile_jpn
+        /usr/src/PR/demos/nosPak/src/fontbmp.h
+        /usr/src/PR/demos/onetri-fpal/Makefile
+        /usr/src/PR/demos/onetri-fpal/brick.h
+        /usr/src/PR/demos/onetri-fpal/cfb.c
+        /usr/src/PR/demos/onetri-fpal/dram_stack.c
+        /usr/src/PR/demos/onetri-fpal/onetri.c
+        /usr/src/PR/demos/onetri-fpal/onetri.h
+        /usr/src/PR/demos/onetri-fpal/rdp_output.c
+        /usr/src/PR/demos/onetri-fpal/rdp_output_len.c
+        /usr/src/PR/demos/onetri-fpal/rsp_cfb.c
+        /usr/src/PR/demos/onetri-fpal/spec
+        /usr/src/PR/demos/onetri-fpal/static.c
+

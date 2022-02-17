@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<TITLE>NIFF 1.0: Links to Nodes in NIFF</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<H2>2.2 Links to Nodes in NIFF</H2>
+
+<H3>3) Hierarchical Structure of 3D Objects</H3>
+
+The objects in 3D games have a hierarchical structure, in many cases .  For instance, consider the example illustrated below.<BR>
+<BR>
+
+<I><B>Figure 9</B> -- Object with hierarchical structure</I><BR><BR>
+<IMG SRC="../img/NIFFspec-9.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+This example is an object comprised from 11 objects (hypothetically named Man_Object).  As an example, if the Man_Hip object in the above figure is the top level object, the links between the objects would be as shown below.<BR>
+<BR>
+
+<I><B>Figure 10</B> -- Hierarchical links in an object</I><BR><BR>
+<IMG SRC="../img/NIFFspec-10.gif" ALT="Illustration" BORDER=0><BR>
+<BR>
+
+In the case of the above figure, the origin of this Man_Object would be matched to the local coordinate system of the Man_Hip object.  However, since Man_Object would normally have its own local coordinate system, and it could be imagined that Man_Hip would be animated in that coordinate system, Man_Object is defined as a NULL object and is linked as shown below.<BR>
+<BR>
+
+<I><B>Figure 11</B> -- Hierarchical links utilizing a NULL object at the top level</I><BR><BR>
+<IMG SRC="../img/NIFFspec-11.gif" ALT="Illustration" BORDER=0>
+
+<HR>
+
+<A HREF="seg2-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg2-4.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P>Copyright 1997-1999 Nintendo Co., Ltd. All rights reserved.</P>
+
+</BODY>
+</HTML>

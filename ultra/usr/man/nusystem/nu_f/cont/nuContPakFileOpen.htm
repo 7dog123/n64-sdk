@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="5"><strong>nuContPakFileOpen</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContPakFileOpen(NUContPakFile *file, u8* noteName, u8*
+extName,<br>
+u32 mode, s32 size)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>file		Controller Pak file structure
+*noteName	Game note name (16 bytes N64 font code)
+*extName	Note extension (1 byte N64 font code)
+mode		Specifies whether to create a new game note if no game note exists.
+	    	NU_CONT_PAK_CREATE	Create game note if no note exists
+	    	NU_CONT_PAK_NOCREATE	Do not create game note
+size		The size for game note when the mode is NU_CONT_PAK_CREATE</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Opens a Controller Pak game note</strong></p>
+
+<p>Makes preparations so the Controller Pak can access the game note. "file" is the Controller Pak structure of the device opened with the nuContPakOpen function. If a device is not opened, PFS_ERR_NOPACK is returned to file.error. The company code and game code must be registered with the nuContPakCodeSet function before this function is called.</p>
+
+<p>"noteName" is 16 bytes of N64 font code giving the name of the game note.  If the note name is not a full 16 bytes, assign 0x00 to the unused area.</p>
+
+<p>"extName" specifies an extension for use of multiple notes.  The size is 4 bytes, but only 1 byte is usable, and it is normally 0x00.  Additional notes get assigned 0x1A~0x33 (N64 font code 'A'~'Z').</p>
+
+<p>When NU_CONT_PAK_CREATE is specified for "mode" then a game note of the specified "size" will be created if no game note exists.  Since game notes are managed in units of 256 bytes, the actual region reserved will be a multiple of 256.</p>
+
+<p>When NU_CONT_PAK_NOCREATE is specified and no game note exists, PFS_ERR_INVALID is returned to file.error. The value returned to file.error is slightly different depending on whether the mode is set to NU_CONT_PAK_CREATE or NU_CONT_PAK_NOCREATE. For NU_CONT_PAK_CREATE, the error value osPfsFindFile or osPfsAllocateFile is stored in file.error.  For NU_CONT_PAK_NOCREATE, the osPfsFindFile error code is put there. Please note the different error processes.</p>
+
+<p>The error check role differs for the nuContPakOpen function and the nuContPakFileOpen function.  The nuContPakOpen errors are physical errors, regarding the presence or absence of a Controller Pak, and whether the Controller Pak can be accessed.  In contrast, the nuContPakFileOpen errors are errors relating to the data in the Controller Pak, such as whether a game note exists and whether there is free space. Thus, the error processing routine can be branched according to the error group.</p>
+
+<p>Errors:</p>
+
+<p>PFS_ERR_NOPACK</p>
+
+<p>Nothing is inserted in the specified Controller.</p>
+
+<p>PFS_ERR_NEW_PACK</p>
+
+<p>The Controller Pak may have been changed.  Please perform the Open process again.</p>
+
+<p>PFS_ERR_INCONSISTENT</p>
+
+<p>There is an inconsistency in the file system management area.</p>
+
+<p>PFS_ERR_CONTRFAIL</p>
+
+<p>Data transfer with Controller has failed.</p>
+
+<p>PFS_ERR_INVALID</p>
+
+<p>Invalid parameter or the game note does not exist.</p>
+
+<p>PFS_DATA_FULL</p>
+
+<p>The Controller Pak does not have enough free space.</p>
+
+<p>PFS_DIR_FULL</p>
+
+<p>Cannot create game note since maximum number already exist.</p>
+
+<p>PFS_ERR_EXIST</p>
+
+<p>Cannot create game note because that game note already exists.</p>
+
+<hr>
+
+<pre>Reference: <a href="nuContPakOpen.htm">nuContPakOpen</a>,<a
+href="nuContPakFileOpenJis.htm">nuContPakFileOpenJis</a>,<a
+href="nuContPakCodeSet.htm">nuContPakCodeSet</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

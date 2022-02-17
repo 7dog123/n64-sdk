@@ -1,0 +1,10 @@
+Cautions for PARTNER-N64/Win
+
+The initial value of the IO address of the interface board that is set
+in a PC is 0x320.  When the setting of the interface board is changed,
+please open the EPTN64.CFG file in the install directory for PARTNER-N64
+by the Editor, and set it to the IO address that changed the setting of
+the port address.  
+
+In the README.TXT and VERSION.TXT in the install directory,  the most
+updated information and the supplementary information are found.  

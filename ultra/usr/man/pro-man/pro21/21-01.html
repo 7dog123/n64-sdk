@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 21</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro20/index20.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro21/index21.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Overview of the Audio RDRAM Usage</font></b>
+<a name="01"></a>
+<P>
+<font face="arial" size="-1" color="#000000">
+The following sections discuss the memory used by the audio system in a typical application. Memory requirements, and optimization are discussed in detail.
+<P>
+
+The amount of RDRAM needed by the audio system is dependent on numerous factors. Most importantly, the number of sounds being played at any given time will determine the size of most buffers. Most buffers must be large enough to accommodate the worst case scenario. Applications with fewer voices will need fewer buffers. The sample rate and frame rate chosen will effect the size of several important buffers.
+
+<P>
+<a name="01.1"></a>
+<b>Audio Buffers</b>
+<br>
+The majority of memory used by the audio, that can be optimized, comes from the following buffers:
+<ul>
+<li>The Sample DMA Buffers
+<p>
+<li>The Command List Buffers
+<P>
+<li>The Audio Output Buffers
+</ul>
+
+<P>
+There are several other buffers, but the gains obtained by optimizing them are less significant. These include:
+<ul>
+<li>The Audio Thread Stacksize
+<p>
+<li>The Synthesizer Update Buffers
+<P>
+<li>The Sequencer Event Buffers
+</ul>
+
+<P>
+In addition to optimizing the buffers listed above, it is important that several other buffers are no larger than they need to be. While you can’t optimize them per se, you should check to make sure that their size is no bigger than need be. Important buffers of these type include:
+<ul>
+<li>The Audio Heap
+<P>
+<li>The Sequence Buffer
+<P>
+<li>The Bank Control File Buffer
+<P>
+<li>The Reverb Delay Line Buffer
+</ul>
+<P>
+Because the heap size is dependent on the size of the buffers allocated from the heap, it is important to optimize the other buffers first.
+
+<P>
+<a name="01.2"></a>
+<b>Sample Rate, Frame Rate, and Other Factors</b>
+<br>
+In order to determine the size of most of the buffers, you will need to determine several factors first. Most importantly, sample rate and frame rate. Higher sample rates will require larger output buffers, more DMA space, and larger command list buffers. Likewise, slower frame rates require larger output buffers, more DMA buffer space, and larger command list buffers.
+
+<P>
+<b>Note:</b> Audio frame rate can be different from video frame rate. It is possible for the audio to be operating at 60 frames per second, while the graphics are operating at 30 frames per second.
+
+<P>
+In addition to the sample rate and frame rate, the specific sounds, and how they are set up can effect the size and number of DMA buffers, as can the individual sequences used.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

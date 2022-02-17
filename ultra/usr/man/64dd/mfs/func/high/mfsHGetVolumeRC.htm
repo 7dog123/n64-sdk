@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHGetVolumeRC</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHGetVolumeRC</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHGetVolumeRC(s32 drive)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>drive Drive name ('A', 'B', ...)</p>
+
+<p><strong>Return value:</strong>Update counter value (a negative value is an error)</p>
+
+<p><strong>Function:</strong>
+Obtains update counter of volume</p>
+
+<p><strong>Description:</strong> This function obtains and returns the update counter of the drive specified by drive.  Since the update counter only exists in the RAM area, the MFS_ERR_REFUSE error will occur if this function is used for the ROM area.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NOTFOUND	Drive not found
+MFS_ERR_REFUSE		Illegal operation</pre>
+
+<hr>
+</body>
+</html>

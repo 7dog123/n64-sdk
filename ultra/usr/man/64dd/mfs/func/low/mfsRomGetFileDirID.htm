@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileDirID</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileDirID<br>
+mfsRamGetFileDirID</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileDirID(MfsDirID upDirID, u8* name, u8* type)
+	s32 mfsRamGetFileDirID(MfsDirID upDirID, u8* name, u8* type)
+Arguments:	*name		File name
+	*type		File type
+Return value:Directory ID of obtained file (a negative value is an error)
+Function:	Obtains directory ID of file
+Description:	This function obtains and returns the directory ID of the file whose name is specified by name and type.  
+The file name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+The file type, which represents the type of file, can be specified by using up to five ASCII characters.
+	
+Main errors:
+	MFS_ERR_NOTFOUND Specified directory or file not found</pre>
+</body>
+</html>

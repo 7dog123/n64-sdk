@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.10 StList</h3>
+
+<hr size=3>
+<h4>2) StGroup Area</h4>
+
+<BLOCKQUOTE>The StGroup area describes the texture coordinate. The StGroup area is mapped as follows.</BLOCKQUOTE>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="5">StGroupHeader</th>
+
+<td>u32</td>
+
+<td>st_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this\st_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>St(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>St(st_num - 1)</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>StGroup Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 st_group_tag</td>
+
+<td><font size=+0>A tag which Indicates StGroup, enter the following.</font>
+<pre><b><font size=+0>TAG_ST_GROUP&nbsp;&nbsp;&nbsp; 0x00070100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_st_group_index</td>
+
+<td><font size=+0>Index number in this StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_header_size</td>
+
+<td><font size=+0>Number of bytes in StGroupHeader area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_size</td>
+
+<td><font size=+0>Total number of bytes in StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_num</td>
+
+<td><font size=+0>Total number of St area in this StGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg10-3.htm">St</a></td>
+
+<td><font size=+0>Texture coordinates per 1 vertex.&nbsp;</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg10.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg10-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

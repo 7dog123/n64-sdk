@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body background="Lavender_Speckled60C1.gif" bgcolor="#FFFFFF">
+<font face="arial">
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="4"><strong>Graphics Related</strong></font></p>
+
+<hr>
+
+<p><font color="#FF0000" size="4"><strong>Functions</strong></font><font
+size="2">(M)=Macro</font></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxInit.htm"><strong>nuGfxInit</strong></a></td>
+        <td><font face="arial" size="-1">Initialize and start the graphics thread and the graphics task	manager</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxTaskMgrInit.htm"><strong>nuGfxTaskMgrInit</strong></a></td>
+        <td><font face="arial" size="-1">Initialize and start the graphics task manager</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxTaskStart.htm"><strong>nuGfxTaskStart</strong></a><strong><img
+        src="../../../gif/update98.gif" border="0" width="48" height="12"></td>
+        <td><font face="arial" size="-1">Start the graphics task</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxFuncSet.htm"><strong>nuGfxFuncSet</strong></a></td>
+        <td><font face="arial" size="-1">Register the call back function in the graphics thread</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxFuncRemove.htm"><strong>nuGfxFuncRemove</strong></a><font
+        size="2"> (M) </font></td>
+        <td><font face="arial" size="-1">Delete call back function which is registered in the	graphics thread (Macro)
+        </font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxPreNMIFuncSet.htm"><strong>nuGfxPreNMIFuncSet</strong></a></td>
+        <td><font face="arial" size="-1">Register call back function in the graphics thread</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxPreNMIFuncRemove.htm"><strong>nuGfxPreNMIFuncRemove</strong></a><font face="arial" size="-1"> (M) </font></td>
+        <td><font face="arial" size="-1">Delete call back function which was registered in the	graphics thread (Macro)</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxSwapCfbFuncSet.htm"><strong>nuGfxSwapCfbFuncSet</strong></a></td>
+        <td><font face="arial" size="-1">Register call back function which is executed when the graphics task is	completed</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxSwapCfbFuncRemove.htm"><strong>nuGfxSwapCfbFuncRemove</strong></a><font face="arial" size="-1"> (M) </font></td>
+        <td><font face="arial" size="-1">Delete call back function which is executed when the graphics task is	completed (Macro)</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxTaskEndFuncSet.htm"><strong>nuGfxTaskEndFuncSet</strong></a></td>
+        <td><font face="arial" size="-1">Register call back function which is executed when the graphics task is	completed</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxTaskEndFuncRemove.htm"><strong>nuGfxTaskEndFuncRemove</strong></a><font face="arial" size="-1"> (M) </font></td>
+        <td><font face="arial" size="-1"><font size="2">Delete call back function which is executed when the graphics task is	completed (Macro)</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxSwapCfb.htm"><strong>nuGfxSwapCfb</strong></a></td>
+        <td><font face="arial" size="-1">Register the frame buffer which is displayed at the next	retrace</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxSetCfb.htm"><strong>nuGfxSetCfb</strong></a><strong><img
+        src="../../../gif/update98.gif" border="0" width="48" height="12"></td>
+        <td><font face="arial" size="-1">Register the frame buffer</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxTaskAllEndWait.htm"><strong>nuGfxTaskAllEndWait</strong></a></td>
+        <td><font face="arial" size="-1">Wait for the completion of graphics task</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxRetraceWait.htm"><strong>nuGfxRetraceWait</strong></a></td>
+        <td><font face="arial" size="-1">Wait for the number of retraces specified by	retrace_num</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxDisplayOff.htm"><strong>nuGfxDisplayOff</strong></a></td>
+        <td><font face="arial" size="-1">Black out the screen</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxDisplayOn.htm"><strong>nuGfxDisplayOn</strong></a></td>
+        <td><font face="arial" size="-1">Display the screen upon switching to next frame buffer</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxSetZBuffer.htm"><strong>nuGfxSetZBuffer</strong></a><font face="arial" size="-1"> (M) </font></td>
+        <td><font face="arial" size="-1">Register the Z-Buffer (Macro)</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxSetUcode.htm"><strong>nuGfxSetUcode</strong></a><font face="arial" size="-1"> (M) </font></td>
+        <td><font face="arial" size="-1">Register the graphics microcode (Macro)</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#FF0000" size="4"><strong>Global Variables</strong></font></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxUcode.htm"><strong>nuGfxUcode</strong></a></td>
+        <td><font face="arial" size="-1">Pointer to the graphics microcode structure</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxCfb.htm"><strong>nuGfxCfb</strong></a></td>
+        <td><font face="arial" size="-1">Pointer to the pointer array for the frame buffer</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxCfb_ptr.htm"><strong>nuGfxCfb_ptr</strong></a></td>
+        <td><font face="arial" size="-1">Pointer to the frame buffer used for the drawing object of	the graphics task</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxCfbNum.htm"><strong>nuGfxCfbNum</strong></a></td>
+        <td><font face="arial" size="-1">The number of frame buffer used for the drawing object of	the graphics task</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxZBuffer.htm"><strong>nuGfxZBuffer</strong></a></td>
+        <td><font face="arial" size="-1">Pointer to the Z-Buffer</font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxTaskSpool.htm"><strong>nuGfxTaskSpool</strong></a></td>
+        <td><font face="arial" size="-1">The number of unexecuted or incomplete graphics tasks
+        </font></td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1"><a href="nuGfxDisplay.htm"><strong>nuGfxDisplay</strong></a></td>
+        <td><font face="arial" size="-1">Flag for displaying/not displaying the screen
+        </font></td>
+    </tr>
+</table>
+
+<hr>
+</body>
+</html>

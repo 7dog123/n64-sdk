@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetVolumeAttr</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetVolumeAttr</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetVolumeAttr(u8 attr)
+Arguments:	attr		Attribute
+Return value:Error
+Function:	Sets volume attribute
+Description:	This function sets the volume attribute.
+The following attributes can be specified.
+
+	MFS_VOLUME_ATTR_VPROTECT_WRITE	0x20	Volume write protected
+	MFS_VOLUME_ATTR_VPROTECT_READ	0x40	Volume read protected
+	MFS_VOLUME_ATTR_WPROTECT 	0x80	Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsInit*() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsInit*() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+
+
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTMFSDISK	Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different. 
+	MFS_ERR_VERSION	Different version MFS-format disk
+                          The version is an unsupported version.     
+	MFS_ERR_PROTECT	Write protected
+                          The medium is volume protected. </pre>
+</body>
+</html>

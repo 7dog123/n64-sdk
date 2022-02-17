@@ -1,0 +1,438 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.13 MatList</font></h3>
+
+<hr size=3>
+<h4>2) Mat Area</h4>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>mat_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_mat_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_shade_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_color_type0</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_color_type1</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_alpha_type0</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_alpha_type1</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>prim_red</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>prim_green</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>prim_blue</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>prim_alpha</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag0</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag1</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag2</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag3</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag4</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag5</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag6</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_flag7</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>local_light_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tex_index(tex_num - 1)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Mat Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 mat_tag</td>
+
+<td><font size=+0>Tag indicating Mat. Set the following flag.&nbsp;</font>
+<pre><b><font size=+0>TAG_MAT 0x000a0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_mat_index</td>
+
+<td><font size=+0>Index number of this Mat area.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_size</td>
+
+<td><font size=+0>Size of this Mat area.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_name_index</td>
+
+<td><font size=+0>Index number in NameList that describes Mat name.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#MAT_TYPE">u32 mat_type</a></td>
+
+<td>
+<P>The flags available for specifying material types in Mat are mat_type, mat_shade_type, mat_color_type0, mat_color_type1, mat_alpha_type0, and mat_alpha_type1.</P>
+
+<P>The mat_type flag specifies how the flags set for the material types are applied. The following two specification methods are currently defined.</P>
+
+<PRE><b>
+MAT_TYPE_NIFF           0x00000000
+MAT_TYPE_N64            0x01010101
+</b></PRE>
+
+<P>When MAT_TYPE_NIFF has been specified, mat_color_type* and mat_alpha_type* define the material type according to the respective MAT_TYPE_NIFF specification methods.  In this case, the color value and alpha value can use all of the colors which are specified in NIFF.</P>
+
+<P>When MAT_TYPE_N64 has been specified, mat_color_type* and mat_alpha_type* define the material types according to the respective MAT_TYPE_N64 specification method. In this case, all of the color combiner settings on the Nintendo 64 can be performed.  However, since color values and alhpa values that do not exist as formats in NIFF cannot be used, it is necessary to allot those values in advance to several user_flags when converting data from NIFF to N64.</P>
+
+</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#MAT_SHADE_TYPE">u32 mat_shade_type</a></td>
+
+<td>
+This field primarily specifies the shading attributes of materials. The following flags are currently defined.
+
+<PRE><B>
+MAT_SHADE_LIGHT_OFF       0x00000000
+MAT_SHADE_LIGHT_LOCAL     0x00000001
+MAT_SHADE_LIGHT_GLOBAL    0x00000002
+MAT_SHADE_FLAT            0x00000000
+MAT_SHADE_SMOOTH          0x00000010
+MAT_SHADE_USE_HILIGHT     0x00000100
+MAT_SHADE_USE_REFLECT     0x00000200
+</B></PRE>
+
+<P>The MAT_SHADE_LIGHT_* flag specifies the effect of light on materials.  If MAT_SHADE_LIGHT_OFF is set, the lighting process specified is not performed. If MAT_SHADE_LIGHT_LOCAL is set, the Light in LightList that has the index specified by the local_light_index of this Mat area is used. If MAT_SHADE_LIGHT_GLOBAL is used, the Light that links to Scene is used.</P>
+
+<P>MAT_SHADE_FLAT and MAT_SHADE_SMOOTH are flags that specify shading information of triangles. If MAT_SHADE_FLAT is set, triangles are drawn using the spefified material. If MAT_SHADE_SMOOTH is set, triangles are drawn using the specified material with color graduated between vertices.</P>
+
+<P>MAT_SHADE_USE_HILIGHT specifies the use of highlight texture mapping. MAT_SHADE_USE_REFLECT specifies the use of reflection texture mapping.</P>
+
+<P>The MAT_SHADE_LIGHT_* flag must always be specified and only one MAT_SHADE_LIGHT_* setting can be specified. Either MAT_SHADE_FLAT or MAT_SHADE_SMOOTH must always be specified. The use of MAT_SHADE_USE_HILIGHT and MAT_SHADE_USE_REFLECT is optional. Only one or the other may be specified.</P>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#MAT_COLOR_TYPE">u32 mat_color_type0</a></td>
+
+<td>Sets color gradations of materials.</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#MAT_COLOR_TYPE">u32 mat_color_type1</a></td>
+
+<td>Sets color gradations of materials. Used only when specifying a 2-cycle mode rendering type.</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#MAT_COLOR_TYPE">u32 mat_alpha_type0</a></td>
+
+<td>Sets alpha gradations of materials.</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#MAT_COLOR_TYPE">u32 mat_alpha_type1</a></td>
+
+<td>Sets alpha gradations of materials. Used only when specifying a 2-cycle mode rendering type.</td>
+</tr>
+
+<tr>
+<td NOWRAP>float prim_red</td>
+
+<td><font size=+0>Red component of primitive color&nbsp;</font>
+<p><font size=+0>0 &lt;= prim_red &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float prim_green</td>
+
+<td><font size=+0>Green component of primitive color&nbsp;</font>
+<p><font size=+0>0 &lt;= prim_green &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float prim_blue</td>
+
+<td><font size=+0>Blue component of primitive color&nbsp;</font>
+<p><font size=+0>0 &lt;= prim_blue &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float prim_alpha</td>
+
+<td><font size=+0>Alpha component of primitive color&nbsp;</font>
+<p><font size=+0>0 &lt;= prim_alpha &lt;= 1.0</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag0</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag1</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag2</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag3</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag4</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag5</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag6</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 usr_flag7</td>
+
+<td>32-bit user-defined flag. With the converter to be released by NCL, there may be cases where a user flag is allocated data in advance.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 local_light_index</td>
+
+<td>Specifies the index number in LightList of Light that is referred to when specifying MAT_SHADE_LIGHT_LOCAL. Applies only
+when MAT_SHADE_LIGHT_LOCAL is specified. In other cases, this data area exists but its contents are ignored.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_num</td>
+
+<td><font size=+0>The number of textures to be used with Mat. Either 0,
+1, or 2.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Size of Nintendo extension block&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>Size of user extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tex_index</td>
+
+<td><font size=+0>Index number in TexList of the texture used with Mat.&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensinoBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<P><B>Note:</B> Refer to <A HREF="../chapt4/Seg1.htm#12">Section 4.12, About Mat</A>, for precautions.</P>
+
+<HR>
+
+<A HREF="seg13.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg14.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

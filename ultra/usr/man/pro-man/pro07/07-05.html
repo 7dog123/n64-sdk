@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 7</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro07/index7.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro07/index7.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Scheduling and Preemption</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Once the OS is running, the highest-priority runnable thread in the system always has control of the CPU. When a thread gains control of the CPU, it continues to run until it requires some resource or event to continue. It then relinquishes control of the CPU and the next highest priority thread runs. Typically, this happens as a result of the running thread calling the function to receive a message. If no message is present in the message queue, the running thread will block until a message arrives. Note that the thread is no longer runnable when it is blocked on a message queue, so it no longer fits the criterion of being the highest-priority runnable thread.
+<P>
+More frequently, the running thread loses control of the CPU through preemption. In response to an exception (for example, an interrupt), a higher priority thread becomes runnable. Since that thread should now be the running thread, the state of the interrupted thread will be saved in its thread data structure, the state of the newly-runnable thread will be loaded to the CPU, and the new thread will resume execution at the point where it last ran. The preempted thread is still runnable; but no longer has the highest priority. When it one again becomes the highest priority thread, it will run from the point where the interrupt occurred.
+<P>
+Note that the running thread does not need to be at a sequence point (for example, a system call) to lose control of the CPU. Thus, this fits the classical description of a preemptive system. 
+<P>
+Multiple threads within an application frequently need to synchronize their execution. For example, thread A cannot continue until thread B has performed some operation. The message-passing functions provide the needed synchronization mechanism, and are described in the chapter on messages.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

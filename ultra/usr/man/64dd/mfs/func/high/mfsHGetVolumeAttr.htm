@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHGetVolumeAttr</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHGetVolumeAttr</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHGetVolumeAttr(s32 drive)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>drive Drive name ('A', 'B', ...)</p>
+
+<p><strong>Return value:</strong>Volume attribute (a negative value is an error)</p>
+
+<p><strong>Function:</strong>
+Obtains volume attribute</p>
+
+<p><strong>Description:</strong> This function obtains and returns the volume attribute of the drive specified by drive. The volume attribute, which is represented by u8-type bits, can have the following contents.</p>
+
+<pre>MFS_VOLUME_ATTR_VPROTECT_WRITE	0x20 Volume write protected
+MFS_VOLUME_ATTR_VPROTECT_READ	0x40 Volume read protected
+MFS_VOLUME_ATTR_WPROTECT	0x80 Write protected</pre>
+
+<p>When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.</p>
+
+<p>When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.</p>
+
+<p>When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NOTFOUND	Drive not found</pre>
+
+<hr>
+</body>
+</html>

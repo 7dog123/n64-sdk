@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 5</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro05/index5.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro05/index5.7.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Building ROM Images</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+A final set of tools, headers, and libraries are available to pack your database and code into final ROM images for the Nintendo 64. The Nintendo 64 development environment heavily leverages the C compiler and preprocessor tools to process symbolic data into binary objects. A ROM packing tool, <i>makerom</i>(1P) packs these objects into a single monolithic ROM image according to a specification of where these objects go.
+<P>
+<a name="01"></a>
+<b>C Compiler Suite</b>
+<br>
+Currently, the Nintendo 64 development environment has only been verified with the IRIX 5.3 MIPS C-compiler suite. The interfaces provided do not rely on proprietary features of this compiler; however backend tools such as <i>makerom</i>  may rely on specifics of the MIPS symbol table format.
+It is required that all modules be compiled or assembled with the <font face="courier" size="-1"><b>-non_shared</b></font> and <font face="courier" size="-1"><b>-G 0</b></font> compilation flags; neither position independent code or a global data area is supported. Since the MIPS R4300 supports the MIPS II instruction set, the <font face="courier" size="-1"><b>-mips2</b></font> flag is also recommended, as are optimization flags (<font face="courier" size="-1"><b>-O and -O3</font></b>).
+<P>
+<a name="02"></a>
+<b>ROM Image Packer</b>
+<br>
+The ROM image packer <i>(makerom)</i> takes as input relocatable objects created by the compiler, and performs the final relocations of code symbols. To perform these relocations, it invokes a next generation link editor that allows objects to be linked at arbitrary addresses specified by the developer. After these relocations, <i>makerom</i> extracts the code and initialized data portions of the resulting binary and packs them onto a ROM image. The <i>makerom</i> tool can also copy raw data files to the ROM as desired.
+<P>
+<b>Note:</b> When building a ROM image for the console (as opposed to the development system), be sure to:
+<ul>
+<li>link with libultra.a and <u>not</u> libultra_d.a
+<P>
+<li>remove all calls to printf and its variations from your application
+<P>
+<li>remove any functions specific to the development board (such as command line parsing or logging) from your application</ul>
+<P>
+<a name="03"></a>
+<b>Headers and Libraries</b>
+<br>
+Although the Nintendo 64 API includes interfaces for a wide variety of areas, the interfaces are made available by including a single header file, <i>/usr/include/ultra64.h</i>, and by linking with a single library, <i>/usr/lib/libultra.a</i> (or <i>/usr/lib/libultra_d.a</i>).The library routines are broken into their finest level of granularity, so applications “pay as they go," only including routines they actually use.
+<P>
+<b>Note:</b> There are two versions of the Nintendo 64 library: a debug version (<i>/usr/lib/libultra_d.a</i>) and a non-debug version (<i>/usr/lib/libultra.a</i>). The debug version of the library provides additional run time checks at the expense of some space on the ROM and DRAM, as well as some performance. The kinds of checks performed include argument checking (especially hard to find alignment problems), improper use of interfaces, audio resource problems, etc. It is recommended that the debug library be used in initial development, and then replaced by the non-debug library later in the development cycle.
+<P>
+In case of error, the game loading program <i>gload</i>(1P) will interpret and display the errors on the host.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

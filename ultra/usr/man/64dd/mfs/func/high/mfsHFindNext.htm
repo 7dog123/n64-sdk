@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFindNext</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFindNext</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHFindNext(MfsFfblk *ffblk)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>*ffblk	MfsFfblk structure</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>Continues file search</p>
+
+<p><strong>Description:</strong>This function continues the file search specified by mfsHFindFirst.</p>
+
+<p>The same values that were specified in mfsHFindFirst are specified for ffblk.  Information required to continue the search is contained here. If the file is found, the information is entered ffblk and MFS_ERR_NO is returned. If no file is found, MFS_ERR_SEARCHEND is returned.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_NOTFOUND	Drive not found
+MFS_ERR_DEVICE		Device error
+			An error occurred in an internally called Leo function. Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT		Write protected
+			The volume attribute is write protected, or the medium is volume protected.</pre>
+
+<hr>
+</body>
+</html>

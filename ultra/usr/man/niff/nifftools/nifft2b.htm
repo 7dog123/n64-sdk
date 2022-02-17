@@ -1,0 +1,51 @@
+ <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="Author" content="Yoshino Hiroshi">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (WinNT; I) [Netscape]">
+   <title>nifft2b</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B"
+alink="#FF0000">
+
+<h1>nifft2b</h1>
+
+<p><font color="#FF0000">Converts NIFF dump format text to NIFF
+</font></p>
+
+<h3>Syntax</h3>
+
+<blockquote>
+    nifft2b input-file output-file
+</blockquote>
+
+<h3>Explanation</h3>
+
+Reads the text file input-file and outputs it to the NIFF data file output-file.
+<p>
+This command can convert the data output in text format by niffb2t into NIFF binary data. 
+<ul>
+ <li>Lines that start with  "@" are skipped.
+ <li>Each line can have up to 6 units of data.
+      If a line has 0 units of data, that line is skipped.
+</ul>
+
+4 byte numerics written in the text and delimited by spaces are converted as-is into 4 byte binary data.
+<p>
+
+<h3>Notes</h3>
+If there are errors in the data list, sometimes the file cannot be converted.<br>
+
+<h3>See also</h3>
+<a href="niffb2t.htm">niffb2t</a>
+
+<hr>
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<div align=right><a href="index.htm"><img SRC="../../gif/index.gif" BORDER=0></a></div>
+
+</body>
+</html>

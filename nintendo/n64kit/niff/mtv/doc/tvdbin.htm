@@ -1,0 +1,387 @@
+<html>
+<head>
+<title>
+File Formats Output by the Converter
+</title>
+<!-- Editor Notes: Ron Daring 7/13/1999, This file was copied from the ../niff/doc/mtv/ directory to conform with NCL's structure. -->
+</head>
+<body bgcolor="white">
+<basefont size=4>
+
+<a name="top">
+
+<input value="Return" type="button" onClick="history.back()">
+<br>
+<center>
+<font size=6>6. File Format Output by the Converter</font>
+</center>
+<hr size=3>
+
+<a href="#tvd"><font size=5>.tvd files</font></a><br>
+	<dl>
+	<li><a href="#zentai">Overall composition</a><br></li>
+	<li><a href="#tvfh">tv_file_header structure</a><br></li>
+	<li><a href="#tiimage">texture_info_image structure</a><br></li>
+	<li><a href="#palette">Palette data</a><br></li>
+	<li><a href="#pixel">Pixel data</a><br></li>
+	</dl>
+<a href="#bin"><font size=5>.bin files</font></a><br>
+
+<!-------------------------------------------
+				.tvd files
+--------------------------------------------->
+
+<hr size=3>
+
+<a name="tvd"><font size=5 color="#ff0080">.tvd files</font><br>
+
+<blockquote>
+Files of this format are output by <a href="index.htm#trans">trans.exe</a><br>
+<br>
+<a href="#zentai">Overall composition</a><br>
+<a href="#tvfh">tv_file_header structure</a><br>
+<a href="#tiimage">texture_info_image structure</a><br>
+<a href="#palette">Palette data</a><br>
+<a href="#pixel">Pixel data</a><br>
+<br>
+
+<!-------------- Overall composition ----------------->
+
+<br>
+<a name="zentai"><b>Overall composition</b><br>
+<dl>
+<li>
+<table border>
+<tr>
+	<td>Address<br></td>
+	<td><nobr>Palettes used</nobr><br></td>
+	<td><nobr>Palettes not used</nobr><br></td>
+</tr><tr>
+	<td>0x00000000</td>
+	<td colspan=2><a href="#tvfh">tv_file_header</a></td>
+</tr><tr>
+	<td>0x00000010</td>
+	<td colspan=2><a href="#tiimage">texture_info_image</a></td>
+</tr><tr>
+	<td>0x00000100</td>
+	<td><a href="#palette">Palette data</a></td>
+	<td rowspan=2 align=center><a href="#pixel">Pixel data</a></td>
+</tr><tr>
+	<td>0x00000n00<font size=2><sup>(*1)</sup></font></td>
+	<td><a href="#pixel">Pixel data</a></td>
+</tr>
+</table>
+<font size=3>
+(*1) The next 0x200 bytes are used per palette when palettes are used.<br>
+Thus, n = 2*(tv_file_header.num_of_palette) + 1 <br>
+However, if the palette is made from 16 colors, then num_of_palette is <br>
+divided by 16 and the result (rounded up) is used in this equation.<br>
+</font>
+</li>
+</dl>
+
+<!-------------- tv_file_header structure ----------------->
+
+<a name="tvfh"><b>tv_file_header structure<br></b>
+<dl><li>
+<table border>
+<tr>
+	<td align=center>Type
+	<td align=center>Variable name
+	<td align=center>Description
+</tr><tr>
+	<td>char
+	<td>recognize[8]
+	<td>Recognition code "TexTvIEw"
+</tr><tr>
+	<td>u16
+	<td>num_of_texture
+	<td>Number of textures
+</tr><tr>
+	<td>u16
+	<td>num_of_palette
+	<td>Number of palettes
+</tr><tr>
+	<td>u32
+	<td>size_of_pixel_data
+	<td><nobr>The volume (in bytes) per texture</nobr>
+</tr>
+</table>
+	<dl><li>
+	<pre>
+typedef struct {
+    char recognize[8];         /* Recognition code TexTvIEw */
+    u32  num_of_texture;       /* Number of textures */
+    u32  size_of_pixel_data;   /* Pixel size */
+} tv_file_header;
+	</pre>
+	</li></dl>
+</li></dl>
+
+<!-------------- texture_info_image structure ----------------->
+
+<a name="tiimage"><b>texture_info_image structure <br></b>
+<dl>
+<li>
+This structure was made based on the S2DEX structure.<br>
+It contains some unused members.<br>
+<table border>
+<tr>
+	<td align=center>Type
+	<td align=center>Variable name
+	<td align=center>Description
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>imageX
+	<td align=left>Not used.
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>imageW
+	<td align=left>The width of the image.
+</tr>
+<tr>
+	<td align=center>s16
+	<td align=center>frameX
+	<td align=left>The upper-left position of the image.<br>
+					Effected by the center position of the image <br>
+					when the image is rotated with the Control Stick.
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>frameW
+	<td align=left>Not used.  However, for images that fit in TMEM,<br>
+	                 if this value is larger than imageW, then the same image<br>
+	                 will look like it has been WRAP-processed.  This can be used<br>
+	                 to see bricks, checkers, etc.<br>
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>imageY
+	<td align=left>Not used.
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>imageH
+	<td align=left>The height of the image.
+</tr>
+<tr>
+	<td align=center>s16
+	<td align=center>frameY
+	<td align=left>The upper-right position of the image.<br>
+					Effected by the center position of the image <br>
+					when the image is rotated with the Control Stick.
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>frameH
+	<td align=left>Not used.  However, for images that fit in TMEM,<br>
+	                 if this value is larger than imageH, then the same image<br>
+	                 will look like it has been WRAP-processed.  This can be used<br>
+	                 to see checkered, polka dot and other patterns.<br>
+</tr>
+<tr>
+	<td align=center>u32
+	<td align=center>loadmode
+	<td align=left>The way to load textures.
+					Presently, you should always specify 2 (use load tiles).<br>
+</tr>
+<tr>
+	<td align=center>u32
+	<td align=center>cms
+	<td align=left>Always 2<br>
+					Clamp mode, G_TX_CLAMP
+					Automatically WRAP when the value of frameW is larger than imageW.<br>
+</tr>
+<tr>
+	<td align=center>u32
+	<td align=center>cmt
+	<td align=left>Always 2<br>
+					Clamp mode, G_TX_CLAMP
+					Automatically WRAP when the value of frameH is larger than imageH.<br>
+</tr>
+<tr>
+	<td align=center>u32
+	<td align=center>tlutMode
+	<td align=left>The palette mode<br>
+					Either G_TT_NONE, G_TT_RGBA16, or G_TT_IA16<br>
+</tr>
+<tr>
+	<td align=center>u16
+	<td align=center>imagePal[8]
+	<td align=left>The texture palette number.<br>
+					Presently, you should specify 0 for all texture palette numbers.<br>
+</tr>
+<tr>
+	<td align=center>u8
+	<td align=center>imageFmt
+	<td align=left>The texture format<br>
+					The value of G_IM_FMT_* is entered.<br>
+</tr>
+<tr>
+	<td align=center>u8
+	<td align=center>imageSiz
+	<td align=left>The texture size<br>
+					The value of G_IM_SIZ_*b is entered.<br>
+</tr>
+<tr>
+	<td align=center>u8
+	<td align=center>mipmapNum
+	<td align=left>The number of MIP maps<br>
+					If all of the load blocks which comprise the texture data<br>
+					are loaded into TMEM, then MIP maps can be used.<br>
+					N64 can support up to RGBA32 <br>
+					but it does not support WIN applications.<br>
+</tr>
+<tr>
+	<td align=center>u8
+	<td align=center>bg_flag
+	<td align=left>Background attribute.<br>
+					When this variable is "1" then the texture is processed as background.<br>
+</tr>
+</table>
+
+	<dl><li>
+	<font face="Courier" size=3>
+	<pre>
+typedef	struct
+{
+    u16 imageX;         /*  X coordinate of the read texture */
+    u16 imageW;         /*  Width of the read texture */
+    s16 frameX;         /*  Upper left X coordinate of the */
+                        /*  transferred frame              */
+    u16 frameW;         /*  Width of the transferred frame */
+    u16 imageY;         /*  Y coordinate of the read texture  */
+    u16 imageH;         /*  Height of the read texture     */
+    s16 frameY;         /*  Upper left Y coordinate of the */
+                        /*  transferred frame              */
+    u16 frameH;         /*  Height of the transferred frame */
+
+    u32 loadmode;       /*  Load mode  MESH_LOADMODE_*       */
+    u32 cms;            /*  Horizontal clamp mode            */
+    u32 cmt;            /*  Vertical clamp mode              */
+
+    u32 tlutMode;       /*  Palette mode  	G_TT_*        */
+    u16 imagePal[8];    /*  Palette number                   */
+
+    u8  imageFmt;       /*  Format    	G_IM_FMT_*            */
+    u8  imageSiz;       /*  Bit depth 	G_IM_SIZ_*b  */
+    u8  mipmapNum;      /*  Number of MIP maps */
+    u8  bg_flag;        /*  Background attribute flag */
+    u8  boundary[4];    /*  Adjust to 64 bit boundary */
+} texture_info_image;
+	</pre>
+	</font>
+	</li></dl>
+</li></dl>
+
+<!-------------- Palette data ----------------->
+
+<a name="palette"><b>Palette data <br></b>
+<dl><li>
+u16	palette[256];<br>
+<br>
+	<dl><li>
+	The palette data is entered in order.<br>
+	There are (tv_file_header.num_of_palette) units of palette data.<br>
+ However, if the palette is made from 16 colors, then num_of_palette is <br>
+ divided by 16 and the result (rounded up) is used here.<br>
+	</li></dl>
+</li></dl>
+
+<!-------------- Pixel data ----------------->
+
+<a name="pixel"><b>Pixel data<br></b>
+<dl><li>
+char	name[12];<br>
+u16		PaletteBlock;<br>
+u16		PaletteNumber;<br>
+u32		pixel[(tv_file_header.size_of_pixel_data+7)/8];<br>
+<br>
+	<dl><li>
+	"name" contains the name of the texture<br>
+	One block is 256 colors.  The value entered in PaletteBlock describes which block's palettes to use.<br>
+	PaletteNumber is only valid for images with a 16 color palette.  The value entered in PaletteNumber specifies which palette to use within the block selected with PaletteBlock <br>
+	For PaletteBlock, enter a value from 0 ~ (the number of blocks used-1).  For PaletteNumber enter a value from 0~15.<br>
+	A pixel is stored as a 1 byte boundary per line (non-4bit textures can be ignored)<br>
+	for an overall 8 byte boundary.<br>
+	This makes for a combined (tv_file_header.num_of_texture) number of textures.<br>
+	</li></dl>
+</li></dl>
+<br>
+
+</blockquote>
+
+<p align="right"><a href="index.htm#top">
+Index
+<img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<!-------------------------------------------
+				.bin files
+--------------------------------------------->
+
+<br><hr size=3 width=100%></br>
+
+<a name="bin"><font size=5 color="#ff0080">.bin files</font><br>
+
+<blockquote>
+This file represents a number of <a href="#tvd">.tvd files</a> integrated together<br>
+and converted into a format executable by texv.n64 <br>
+It is output by <a href="index.htm#texview">texview.exe</a><br>
+
+<dl><li>
+<table border>
+<tr>
+	<td align=center valign=top>Address<br></td>
+	<td align=center valign=center colspan=2><nobr>Description</nobr><br></td>
+</tr>
+<tr>
+	<td align=center valign=top>0x00000000<br></td>
+	<td align=left valign=center><nobr>char code[8]</nobr><br></td>
+	<td align=left valign=center><nobr>Recognition code "TexVHeaD"</nobr><br></td>
+</tr>
+<tr>
+	<td align=center valign=top>0x0000000c<br></td>
+	<td align=left valign=center><nobr>u32 num_of_tvd</nobr><br></td>
+	<td align=left valign=center><nobr>The number of integrated .tvd files</nobr><br></td>
+</tr>
+<tr>
+	<td align=center valign=top>0x00000010<br></td>
+	<td align=left valign=center><nobr>u32 rom_read_address[num_of_tvd]</nobr><br></td>
+	<td align=left valign=center><nobr>The .tvd file address</nobr><br></td>
+</tr>
+<tr>
+	<td align=center valign=top>0x00001000<br></td>
+	<td align=left valign=center colspan=2><nobr>.tvd file contents (num_of_tvd units)</nobr><br></td>
+</tr>
+</table>
+	<dl><li>
+	"code" is for data recognition.<br>
+	"num_of_tvd" is the number of integrated .tvd files.  It includes background.<br>
+	"rom_read_address[]" is the address from where to read in ROM.<br>
+	The adress is entered on the assumption that data will be nloaded into 0x400000<br>
+	The .tvd file contents are entered as-is.  It is aligned to byte 0x1000.<br>
+	</li></dl>
+</li></dl>
+<br>
+
+</blockquote>
+
+<p align="right"><a href="index.htm#top">
+Index
+<img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<!--------------------------
+    Copyright
+---------------------------->
+
+<br><hr size=3 width=100%></br>
+
+<p><font size="2">Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved. </font></p>
+
+<br>
+
+</body>
+</html>
+

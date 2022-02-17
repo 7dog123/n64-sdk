@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 14</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro14/index14.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro14/index14.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+
+<b><font face="arial" color="#29296b">Simple Texture Effects</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This section describes some ‘sprite’-type effects that are commonly useful for texture rectangles.  This is  intended to be a starting point for programmers, not a complete list. Undoubtedly, clever programmers will find  the hardware allows many other effects.
+<P>
+
+<b>Flip</b>
+<br>
+Flip means to rotate an image 180 degrees around the X or Y axis or both as shown in Figure 14.2.1.
+
+<P>
+<b>Figure 14.2.1</B> &nbsp;Flipping Texture Rectangles
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-07.gif"></tr></td></table>
+<P>
+
+If the texture map to be flipped has a size that is a power of two in the direction of the flip, then you can use the mirror_enable (see <a target="main" href="../pro13/13-04.html#06">Section 13.4.6, “Mirror Enable S,T”</a>)  bit in the tile descriptor to perform the flip.  For example, suppose we have loaded a 32x32 16-bit RGBA texture into Tmem.  To flip the texture in X we can use the code in Example 14-11.
+
+<P>
+
+<b>Example 14-11</b> &nbsp;Flip a Texture in X
+<pre><font face="courier" size="3">gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0,
+G_TX_RENDERTILE,0,
+G_TX_MIRROR, 5, G_TX_NOLOD, /* s */
+G_TX_NOMIRROR, 5, G_TX_NOLOD), /* t */
+gsSPTextureRectangle(50 &#060&#060 2, 50 &#060&#060 2, 150 &#060&#060 2, 150 &#060&#060 2, 
+G_TX_RENDERTILE, 
+32 &#060&#060 5, 0, /* start s on mirror boundary */
+1 &#060&#060 10, 1 &#060&#060 10),
+</pre></font>
+
+<P>
+Note that the S start point is 32.  Since the texture will be mirrored when the S coordinate is between 32 and 63 if the mirror enable bit in the tile is set, we get the effect of a flipped texture.  If the mirror bit is disabled, the texture will remain unflipped.
+<P>
+For textures that are not power of two sizes, we must use another approach for flipping the textures.  Suppose we have loaded a 48x42 16-bit RGBA texture in Tmem and would like to flip the texture in T.  The  code in Example 14-12 would accomplish this.
+
+<p>
+<b>Example 14-12</b> &nbsp;Flip a Texture in Y (non power-of-two size)
+<pre><font face="courier" size="3">gsSPTextureRectangle(50 &#060&#060 2, 50 &#060&#060 2, 98 &#060&#060 2, 92 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 41 &#060&#060 5, /* start t at bottom of texture */
+1 &#060&#060 10, ((-1) &#060&#060 10)&0xffff), /* step from bottom to top of texture*/
+</pre></font>
+
+<P>
+Note that we change the texture T coordinate to start at the bottom of the texture and change the increment in T so that we step from the bottom of the texture to the top, thus flipping the texture in Y.
+There is also a variation of the texture rectangle called <i>g*DPTextureRectangleFlip()</i> that swaps the S and T coordinates in hardware.  If we had a display list as in Example 14-13
+
+<P>
+<b>Example 14-13</b> &nbsp;TextureRectangleFlip command
+<pre><font face="courier" size="3">gsSPTextureRectangleFlip(50 &#060&#060 2, 50 &#060&#060 2, 98 &#060&#060 2, 92 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 0,
+1 &#060&#060 10, 1 &#060&#060 10)
+</pre></font>
+
+<P>
+we would get an resulting image as shown in Figure 14.2.2.
+
+
+<P>
+<b>Figure 14.2.2</B> &nbsp;TextureRectangleFlip Command
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-08.gif"></tr></td></table>
+<P>
+
+<a name="01"></a>
+<b>Mirror</b>
+<br>
+Mirroring is also useful for data compression in cases where the texture has axial symmetry.  For example, a tree  could be created with half of a tree texture that was mirrored in X as shown in Figure 14.2.3.
+
+<P>
+<b>Figure 14.2.3</B> &nbsp;Mirrored Tree
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-09.gif"></tr></td></table>
+<P>
+
+As mentioned before, to use hardware mirroring, the texture must be a power of two size in the direction to be mirrored.  Suppose the tree texture above is a 16x40 16-bit RGBA texture.  Example 14-14 will render the mirrored tree as shown in Figure 14.2.3.
+
+<P>
+<b>Example 14-14</b> &nbsp;Mirrored Tree
+<pre><font face="courier" size="3">gsDPLoadTextureTile(tree, G_IM_FMT_RGBA, G_IM_SIZ_16b,
+16, 40, 
+0, 0, 15, 39,
+0,
+G_TX_MIRROR, G_TX_CLAMP, 
+4, G_TX_NOMASK,
+G_TX_NOLOD, G_TX_NOLOD),
+gsSPTextureRectangle(50 &#060&#060 2, 50 &#060&#060 2, 82 &#060&#060 2, 90 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 0, 
+1 &#060&#060 10, 1 &#060&#060 10),
+</pre></font>
+
+<P>
+<a name="02"></a>
+<b>Wrap</b>
+<br>
+Wrapping  allows a small texture to fill a larger rectangle by repeating the texture over and over.  In the Nintendo 64, wrapping is enabled if the mask (see <a target="main" href="../pro13/13-04.html#07">“Section 13.4.7, Mask S,T”</a> )  in the tile descriptor is non-zero and the clamp bit (see <a target="main" href="../pro13/13-04.html#11">Section 13.4.11, “Clamp S,T”</a> ) in the tile descriptor is not set for the coordinate in question.  The mask determines which power of two the wrap occurs on.   Figure 14.2.4 shows the results for various wrap boundaries using a single texture.  
+
+<P>
+<b>Figure 14.2.4</B> &nbsp;Wrapping on Several Boundaries of the Same Texture
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-10.gif"></tr></td></table>
+<P>
+
+Wrapping can also be used in conjunction with mirroring.  Suppose we wanted to wrap the mirrored tree shown in Figure 14.2.3 above.  This could be done using the code in Example 14-15.
+
+<P>
+<b>Example 14-15</b> &nbsp;Wrapped and Mirrored Tree
+<pre><font face="courier" size="3">gsDPLoadTextureTile(tree, G_IM_FMT_RGBA, G_IM_SIZ_16b,
+16, 40, 
+0, 0, 15, 39,
+0,
+G_TX_MIRROR | G_TX_WRAP, G_TX_CLAMP, 
+4, G_TX_NOMASK,
+G_TX_NOLOD, G_TX_NOLOD),
+gsSPTextureRectangle(50 &#060&#060 2, 50 &#060&#060 2, 114 &#060&#060 2, 90 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 0, 
+1 &#060&#060 10, 1 &#060&#060 10),
+</pre></font>
+
+<P>
+Note that the G_TX_WRAP above is really unnecessary because wrapping is implicit as we have a non-zero mask value and are not clamping.  It is included just for documentation purposes.  The resulting image would look like Figure 14.2.5.
+
+
+<P>
+<b>Figure 14.2.5</B> &nbsp;Wrapped and Mirrored Tree
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-11.gif"></tr></td></table>
+<P>
+
+<a name="03"></a>
+<b>Sliding Textures</b>
+<br>
+It is easy to slide a texture relative to the rectangle primitive by the changing the tile descriptor values of SL and TL (see <a target="main" href="../pro13/13-04.html#09">Section 13.4.9, “SL,TL”</a>).  Using the tile descriptor allows the texture coordinates to be statically defined.  The effect of changing SL, TL is shown in 
+Figure 14.2.6.
+
+
+<P>
+<b>Figure 14.2.6</B> &nbsp;Effect of Changing SL, TL
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-12.gif"></tr></td></table>
+<P>
+
+Suppose we have a 32x32 4-bit I texture loaded in Tmem.  In Example 14-16, two rectangles are rendered with the texture placed in different positions using SL and TL.
+
+<P>
+<b>Example 14-16</b> &nbsp;Sliding Texture Using SL, TL
+<pre><font face="courier" size="3">gsDPSetTileSize(G_TX_RENDERTILE, 50, 50, 82, 82),
+gsSPTextureRectangle(50 &#060&#060 2, 50 &#060&#060 2, 82 &#060&#060 2, 82 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 0, 
+1 &#060&#060 10, 1 &#060&#060 10),
+gsDPSetTileSize(G_TX_RENDERTILE, 80, 100, 112, 132),
+gsSPTextureRectangle(100 &#060&#060 2, 100 &#060&#060 2, 132 &#060&#060 2, 132 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 0,
+1 &#060&#060 10, 1 &#060&#060 10),
+</pre></font>
+
+<P>
+Note that SH and TH are only used when clamping.  Because SL and TL are unsigned, the texture rectangle coordinates must be offset to allow sliding above the top edge or to the left of the left edge of the rectangle.  This is shown in Figure 14.2.7  and Example 14-17.
+
+<P>
+<b>Figure 14.2.7</B> &nbsp;Biasing Texture Coordinates for Positive SL, TL
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-13.gif"></tr></td></table>
+<P>
+
+<b>Example 14-17</b> &nbsp;Biased Coordinates for Positive SL
+<pre><font face="courier" size="3">gsDPSetTileSize(G_TX_RENDERTILE, 25, 50, 57, 82),
+gsSPTextureRectangle(50 &#060&#060 2, 50 &#060&#060 2, 82 &#060&#060 2, 82 &#060&#060 2, 
+G_TX_RENDERTILE, 
+50 &#060&#060 5, 0, 
+1 &#060&#060 10, 1 &#060&#060 10),
+</pre></font>
+
+<P>
+<a name="04"></a>
+<b>Smooth Scrolling</b>
+<br>
+Scrolling involves positioning texture rectangles on the screen and also positioning the texture within the rectangle.  The rectangle geometry can be positioned with 2 bits of fractional precision in X and Y.  The texture coordinates can be specified with 5 bits of fractional precision in S and T.  To get the smoothest scrolling, you can use the S and T start point as the fractional part and the rectangle’s X and Y position for the integer part.  So effectively, you are sliding the texture to achieve fractional displacements.  Example 14-18 shows how such positioning could be achieved.  Keep in mind that a border area around the texture must be present so that the texture doesn’t clamp when it slides off the rectangle.  
+<P>
+<b>Example 14-18</b> &nbsp;Accurate Positioning Using S and T
+<pre><font face="courier" size="3">float xpos = 10.375, ypos = 19.432;
+int xi, xf, yi, yf;
+xi = (int) xpos;
+yi = (int) ypos;
+xf = 32 - 32 * (xpos - xi);
+yf = 32 - 32 * (ypos - yi);
+gDPTextureRectangle(glistp++,
+xi &#060&#060 2, yi &#060&#060 2, (xi+32) &#060&#060 2, (yi+32) &#060&#060 2, 
+G_TX_RENDERTILE, 
+xf, yf, 
+1 &#060&#060 10, 1 &#060&#060 10);
+</pre></font>
+
+<P>
+<a name="05"></a>
+<b>Billboards</b>
+<br>
+Billboards are textures that define complex outlines by using texture transparency.  For example, rather than creating a tree using polygons, you can use an image of a tree, with the portion of the image outside the tree having an alpha of 0 (transparent) and the interior of the tree having an alpha of 1 (opaque).  This is shown graphically in Figure 14.2.8.  This technique allows complex scenes to be built by compositing simple images together.  
+
+<P>
+<b>Figure 14.2.8</B> &nbsp;Texture Billboard
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-14.gif"></tr></td></table>
+<P>
+
+It is important to consider the antialiasing of the edges created by the texture’s alpha pattern.  If only 1 bit of alpha is used, then the pixel is either written or not.  If more bits of alpha are used to create a smoother transition from opaque to transparent the edges will be blended with the background.  Billboards should be rendered after all opaque background objects have been rendered.  There are several texel formats that allow multiple bits of alpha (see <a target="_top" href="../pro14/index14.6.html">Section 14.6, “Color Index Frame Buffer”</a>) and ways of combining different types (see <a target="main" href="../pro14/14-03.html#05">Section 14.3.5, “Combining Types”</a>). To render this type of antialiased texture billboard, you must be in one or two cycle mode and you should use the render mode G_RM_AA_TEX_EDGE.  Please see <a target="main" href="../pro15/15-05.html#04">Section 15.5.4, “Texture Edge Mode, TEX_EDGE”</a> for further details. 
+
+<P>
+Texture billboards can also be rendered in a write-only fashion but this also implies no antialiasing of the texture edge.  This mode is called ‘alpha compare’ and basically thresholds the texel alpha with a register alpha value or a random alpha source to generate a write enable for the pixel.  Please see <a target="main" href="../pro15/15-05.html#04">Section 15.5.4, “Alpha Compare Calculation”</a> for further details.
+
+<P>
+<a name="06"></a>
+<b>Cloud (CLD) Render Mode</b>
+<br>
+Cloud render mode is intended for rendering texture billboards that are not opaque, i.e. smoke clouds, explosions, etc.  These are special cases because care must be taken not to disturb the antialiased edges of things behind the transparent cloud, because these edges will be seen through the cloud.  
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

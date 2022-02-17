@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 6</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro06/index6.9.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro07/index7.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Boot Procedure</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+When using the Nintendo 64 development system, the developer needs to run the game loader <i>gload</i>(1P) program to download his prepared ROM image into the cartridge memory on the development board. After the memory image is loaded, gload can optionally read back the memory and verify the contents. It then generates a reset signal to the development board, causing the R4300 to jump to the reset vector where it begins executing the boot code from the PIF rom.
+<P>
+Some of the important tasks performed by the boot code include:
+<ol>
+<li>Initialize the R4300 CP0 registers
+<P>
+<li>Initialize the RCP (such as halt RSP, reset PI, blank video, stop audio)
+<P>
+<li>Initialize RDRAM and CPU caches
+<P>
+<li>Load 1 MB of game from ROM to RDRAM at physical address 0x00000400
+<P>
+<li>Clear RCP status
+<P>
+<li>Jump to game code
+<P>
+<li>Execute game preamble code (which is similar to crt0.o and is linked to game during makerom process)
+<P>
+<table border=0 width=70%>
+<tr><td><font face="arial" size="-1">
+<ul><li>clear BSS for boot segment (as defined in the spec file)</td></tr>
+<tr><td><font face="arial" size="-1"><ul><li>set up boot segment stack pointer
+<tr><td><font face="arial" size="-1"><ul><li>jump to boot entry routine</tr></td></table>
+<P>
+<li>Boot entry routine should call <i>osInitialize</i>(3P) 
+</ol>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../os/os.html">
+            <IMG BORDER=0 SRC="../images/mh_os.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<H2><FONT COLOR="0000A0">
+Video Interface (VI) Management</FONT>
+</H2>
+
+<B>VI Management Functions</B><BR>
+There are 16 management functions for the video interface (VI):
+
+<FONT FACE="COURIER NEW,COURIER"><UL>
+<LI>osViGetStatus
+<LI>osViGetCurrentMode
+<LI>osViGetCurrentLine
+<LI>osViGetCurrentField
+<LI>osViGetCurrentFramebuffer
+<LI>osViGetNextFramebuffer
+<LI>osViSetMode
+<LI>osViSetEvent
+<LI>osViSetSpecialFeatures
+<LI>osViSetXScale
+<LI>osViSetYScale
+<LI>osViSwapBuffer
+<LI>osViBlack
+<LI>osViFade
+<LI>osViRepeatLine
+<LI>osCreateViManager</UL></FONT>
+
+Links to each of these VI management functions are listed in the "See Also" section at the foot of this article.
+
+<BR><BR><B>42 Video Display Modes</B><BR>
+
+The VI is responsible for displaying the RDP-rendered
+images in different video modes. Currently, VI supports 42 video display
+modes -- 14 for NTSC, 14 for PAL, and 14 for MPAL. Each mode contains
+different settings to handle attributes such as interlaced and non-
+interlaced, 16-bit and 32-bit color pixel, and low and high resolution.
+Furthermore, a mode can be configured to rescale the image to sacrifice
+resolution for rendering speed.<BR>
+<BR>
+
+These supported modes can be represented by 5 switches:
+
+<UL><LI>high/low resolution
+<LI>16-/32-bit color pixel
+<LI>anti-aliased/point-sampled
+<LI>filtered/not filtered
+<LI>NTSC/PAL/MPAL format</UL>
+
+There are symbolic names
+defined for these modes in &lt;<B>os.h</B>&gt;. For example, <FONT FACE="COURIER NEW,COURIER">uhOpenGame</FONT>
+represents an NTSC mode that supports low resolution, point sampled, non-
+interlaced, and 16-bit color pixel. Similarly, <FONT FACE="COURIER NEW,COURIER">OS_VI_PAL_LPN1</FONT> refers to
+the same mode but in PAL format. The last four-character block (<FONT FACE="COURIER NEW,COURIER">LPN1</FONT>) in the symbol name is constructed by using the following codes for each character position:
+
+<UL><LI>1st position is H for high resolution or L for low resolution
+<LI>2nd position is A for anti-aliasing or P for point-sampled
+<LI>3rd position for:<BR>
+<BR>
+
+<UL><LI>Low resolution is N for non-interlace or F for interlace
+<LI>High resolution is N for normal-interlace F deflickered interlace</UL><BR>
+
+<LI>4th position is 1 for 16-bit pixel size or 2 for 32-bit pixel size</UL>
+
+When you apply these codes, the following 14 modes are supported for NTSC as
+well as for PAL and MPAL for a total of 42 modes:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+LPN1   HPN1
+LPF1   HPF1
+LAN1   HAN1
+LAF1   HAF1
+LPN2   HPN2
+LPF2   HPF2
+LAN2   LAF2
+</PRE></FONT>
+
+In <B>low</B> resolution (320 pixels by 240 lines), you have a choice between
+non-interlaced and interlaced mode.  Non-interlaced mode repeats the same
+frame each field. Interlaced mode interpolates between adjacent lines,
+weighting 75% of the line above plus 25% of the line below in the first
+field, and then weighting 25% of the line above plus 75% of the line below in
+the second field. Note that there is no flicker because there are no
+high spatial frequencies.<BR>
+<BR>
+
+In <B>high</B> resolution (640 pixels by 480 lines), you have a choice between
+normal interlace and deflickered interlace. Normal interlace uses just
+the data rendered in one field to display that field. This mode can use
+one high resolution frame buffer without additional double buffering because
+one field can be displayed while the next is being rendered without
+stepping on each other. However, any single pixel with high detail will
+flicker because it is only displayed in one field. Deflickered
+interlace averages adjacent lines to filter out the high frequency
+vertical detail, but at the cost of requiring double buffering of the
+entire high resolution frame because both rendered fields are used to
+display each field.
+
+<BR><BR><B>VI Management Functions</B><BR>
+You can use the 16 functions described in this section to manage the VI.<BR>
+<BR>
+
+Currently, there is a global VI mode table (<FONT FACE="COURIER NEW,COURIER">osViModeTable</FONT>) that
+contains register settings for these 42 modes. You can use the <FONT FACE="COURIER NEW,COURIER">osViSetMode</FONT> function to register one of these modes with the VI to be used at the next vertical retrace. This function simply overwrites all the VI registers with data from the location pointed to by the <FONT FACE="COURIER NEW,COURIER">mode</FONT> argument, which is a pointer into <FONT FACE="COURIER NEW,COURIER">osViModeTable</B>. All previous settings (such as
+XY scaling and gamma correction) are reset. For example, to register the NTSC, low
+resolution, anti-aliased, non-interlaced, 16-bit mode with the VI, use this code:<BR>
+<BR>
+
+<FONT FACE="COURIER NEW,COURIER">osViSetMode(osViModeTable[OS_VI_NTSC_LAN1]);</FONT><BR>
+<BR>
+
+For storage efficiency, the global VI mode table is divided
+into 42 separate mode structures with each structure globally
+defined in a separate source file. These structures are externally
+declared in &lt;<B>os.h</B>&gt;. To gain access to the equivalent mode mentioned above, use this code:<BR>
+<BR>
+
+<FONT FACE="COURIER NEW,COURIER">osViSetMode(osViModeNtscLan1);</FONT><BR>
+<BR>
+
+You can call <FONT FACE="COURIER NEW,COURIER">osViGetCurrentMode</FONT> to return the VI mode currently being used.<BR>
+<BR>
+
+After setting the display mode, the application should call <FONT FACE="COURIER NEW,COURIER">osViSetEvent</FONT> to register a message queue (<FONT FACE="COURIER NEW,COURIER">mq</FONT>) and a message (<FONT FACE="COURIER NEW,COURIER">m</FONT>) with the VI manager. This allows the program to receive the notification message (<FONT FACE="COURIER NEW,COURIER">m</FONT>) at the message queue (<FONT FACE="COURIER NEW,COURIER">mq</FONT>) from the VI manager when a vertical retrace occurs. Setting <FONT FACE="COURIER NEW,COURIER">retraceCount</FONT> to a value higher than 1 (such as 2) decreases the frequency with which the application receives the vertical retrace notification. This allows it to run at a slower speed such as 30 Hz instead of 60 Hz.<BR>
+<BR>
+
+The VI manager is a system thread that must be invoked at the beginning
+of the application. To do this, call <FONT FACE="COURIER NEW,COURIER">osCreateViManager</FONT> with the priority (<FONT FACE="COURIER NEW,COURIER">pri</FONT>) at which it is to run. Usually, this priority should be set to <FONT FACE="COURIER NEW,COURIER">OS_PRIORITY_VIMGR</FONT>, which is defined in &lt;<B>os.h</B>&gt;. The VI manager is designed to service both
+the VI interrupt (<FONT FACE="COURIER NEW,COURIER">OS_EVENT_VI</FONT>) and CPU counter interrupt
+(<FONT FACE="COURIER NEW,COURIER">OS_EVENT_COUNTER</FONT>) in the most efficient manner. The counter interrupt is
+used by the timer manager.<BR>
+<BR>
+
+Once the display mode and message queue have been registered with the VI
+manager, the application needs to call <FONT FACE="COURIER NEW,COURIER">osViSwapBuffer</FONT> to register the frame buffer (<FONT FACE="COURIER NEW,COURIER">frameBufPtr</FONT>) to be displayed at the next vertical retrace
+interrupt.<BR>
+<BR>
+
+When Nintendo 64 powers on, the boot code sets the timing to NTSC,
+PAL, or MPAL and blanks out the video. The call to <FONT FACE="COURIER NEW,COURIER">osCreateViManager</FONT> initializes the video to LAN1 (in either NTSC, PAL, or MPAL mode) and also blanks out the video. The first time video is enabled is when <FONT FACE="COURIER NEW,COURIER">osViSetMode</FONT> is called. To keep the screen blank until after the first use of <FONT FACE="COURIER NEW,COURIER">osViSwapBuffer</FONT>, call <FONT FACE="COURIER NEW,COURIER">osViBlack(TRUE)</FONT> immediately after the <FONT FACE="COURIER NEW,COURIER">osViSetMode</FONT> call. Then call <FONT FACE="COURIER NEW,COURIER">osViBlack(FALSE)</FONT> right before the first call to <FONT FACE="COURIER NEW,COURIER">osViSwapBuffer</FONT>.<BR>
+<BR>
+
+Call <FONT FACE="COURIER NEW,COURIER">osViSetXScale</FONT> to scale the image up horizontally (in the X direction) to the required display format from a reduced number of rendered pixels per line. The <FONT FACE="COURIER NEW,COURIER">value</FONT> argument specifies the scaling factor and can range from 0.25 to 1.0.<BR>
+<BR>
+
+Call <FONT FACE="COURIER NEW,COURIER">osViSetYScale</FONT> to scale the image
+up vertically (in the Y direction) to the required display format from a
+reduced number of rendered lines per frame. Use Y-scaling only in low resolution and non-interlaced modes such as <FONT FACE="COURIER NEW,COURIER">LAN1</FONT>,
+<FONT FACE="COURIER NEW,COURIER">LAN2</FONT>, <FONT FACE="COURIER NEW,COURIER">LPN1</FONT>, and <FONT FACE="COURIER NEW,COURIER">LPN2</FONT>. The <FONT FACE="COURIER NEW,COURIER">value</FONT> argument specifies the scaling factor and can range from 0.05 to 1.0.<BR>
+<BR>
+
+Call <FONT FACE="COURIER NEW,COURIER">osViSetSpecialFeatures</FONT> to enable or disable various VI special features such as GAMMA, GAMMA_DITHER, DIVOT, and DITHER_FILTER. There are symbolic names defined in &lt;<B>os.h</B>&gt; including:
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER">OS_VI_GAMMA_ON</FONT> and <FONT FACE="COURIER NEW,COURIER">OS_VI_GAMMA_OFF</FONT>
+<LI><FONT FACE="COURIER NEW,COURIER">OS_VI_GAMMA_DITHER_ON</FONT> and <FONT FACE="COURIER NEW,COURIER">OS_VI_GAMMA_DITHER_OFF</FONT>
+<LI><FONT FACE="COURIER NEW,COURIER">OS_VI_DIVOT_ON</FONT> and <FONT FACE="COURIER NEW,COURIER">OS_VI_DIVOT_OFF</FONT>
+<LI><FONT FACE="COURIER NEW,COURIER">OS_VI_DITHER_FILTER_ON</FONT> and <FONT FACE="COURIER NEW,COURIER">OS_VI_DITHER_FILTER_OFF</FONT></UL>
+
+You can OR these names together to enable or disable specific features. Note that some of these settings only make sense in certain video modes.
+For example Gamma Dithering only happens if Gamma Correction is
+enabled, and Divot Removal only occurs in an anti-aliased video mode.
+Divot is a special operation that can be (optionally) performed on the
+anti-aliased pixels to filter out the "divot" (one pixel notch)
+artifacts when multiple silhouettes overlap on a pixel. Note that this
+filter is not used in regions of full coverage, so high spatial frequency
+textures within a surface will not be disturbed.<BR>
+<BR>
+
+Call <FONT FACE="COURIER NEW,COURIER">osViGetStatus</FONT> to get the value of the video interface status/control register. The unsigned 32-bit returned value contains
+various bit patterns that are defined in &lt;<B>rcp.h</B>&gt;. Some of these patterns include:
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_TYPE_16</FONT> - 16-bit pixel size
+<LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_TYPE_32</FONT> - 32-bit pixel size
+<LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_GAMMA_DITHER_ON</FONT> - gamma_dither mode is enabled
+<LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_GAMMA_ON</FONT> - gamma correction is enabled
+<LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_DIVOT_ON</FONT> - divot mode is enabled
+<LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_SERRATE_ON</FONT> - serrate mode is enabled
+<LI><FONT FACE="COURIER NEW,COURIER">VI_CTRL_DITHER_FILTER_ON</FONT> - dither filter mode is enabled</UL>
+
+You can mask (AND) these bit patterns against the returned value to
+interpret the video interface status. Serrate mode mentioned above is a
+special feature of true NTSC that provides a twice line frequency narrow
+sync pulse during vertical sync. This feature helps ancient analog
+amplifiers to stabilize vertical retrace phase lock loop. Apparently,
+there are some very high-end TVs that can differentiate between true
+interlaced and low resolution non-interlaced mode by the presence or
+absence of these serration pulses. The global VI mode table is
+initialized to have serrate mode enabled in all interlaced modes and
+disabled in all low resolution non-interlaced modes.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osViGetCurrentLine</FONT> function returns the current half line, sampled once per line. The least significant bit (lsb) of this value is constant within a field in non-interlaced modes but toggles to give the field number (0 or 1) in interlaced modes.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osViGetCurrentField</FONT> function returns the field number (either 0 or 1) currently being accessed by the VI.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osViGetCurrentFramebuffer</FONT> function returns an opaque pointer to the currently displayed frame buffer.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osViGetNextFramebuffer</FONT> function returns an
+opaque pointer to the next frame buffer to be displayed.<BR>
+<BR>
+
+Based on the active flag setting, which can be TRUE (enabled, screen
+black) or FALSE (disabled), the <FONT FACE="COURIER NEW,COURIER">osViBlack</FONT> function can black out the screen and still generate vertical retrace signals. You can only use <FONT FACE="COURIER NEW,COURIER">osViBlack</FONT> when the
+<FONT FACE="COURIER NEW,COURIER">YScale</FONT> factor for the video mode is 1.0. Using it for <FONT FACE="COURIER NEW,COURIER">YScale</FONT> factors that are not 1.0 creates the potential for the video interface to malfunction and enter a state that cannot be exited without resetting the system.<BR>
+<BR>
+
+In low-resolution, point-sampled, and non-interlaced modes (such as LPN1 and LPN2), you can use the 10-bit fractional interpolation factor in the <FONT FACE="COURIER NEW,COURIER">osViFade</FONT> function to fade between the first two scan lines of the frame buffer.<BR>
+<BR>
+
+You can call the <FONT FACE="COURIER NEW,COURIER">osViRepeatLine</FONT> function to repeat the first scan line of the frame buffer for the entire frame.
+
+<BR><BR><B>Notes</B><BR>
+The VI manager must be started at the beginning of the program so that
+vertical retrace interrupts can be serviced as quickly as possible. Note
+that <FONT FACE="COURIER NEW,COURIER">osViSetMode</FONT> resets all current settings such as X-Y scaling and special features such as gamma to the default values defined in the global mode table.<BR>
+<BR>
+
+The video back-end filter can only execute an anti-aliasing filter or a
+dither filter, but not both simultaneously. This is especially visible on
+"billboard" cutouts in texture edge mode during magnification in the
+region of the cutout where alpha goes from 1 to 0. In this region, the
+dither pattern is visible because the back-end filter executes an anti-alias
+filter (due to partial coverage) and turns off the dither filter.<BR>
+<BR>
+
+This problem also occurs on anti-aliased silhouette edges of polygons, but
+it is not obvious due to the small width of the partially covered region.
+
+<BR><BR><B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViGetStatus.html">osViGetStatus</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViGetCurrentMode.html">osViGetCurrentMode</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViGetCurrentLine.html">osViGetCurrentLine</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViGetCurrentField.html">osViGetCurrentField</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViGetCurrentFramebuffer.html">osViGetCurrentFramebuffer</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViGetNextFramebuffer.html">osViGetNextFramebuffer</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViSetMode.html">osViSetMode</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViSetEvent.html">osViSetEvent</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViSetSpecialFeatures.html">osViSetSpecialFeatures</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViSetXScale.html">osViSetXScale</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViSetYScale.html">osViSetYScale</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViSwapBuffer.html">osViSwapBuffer</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViBlack.html">osViBlack</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViFade.html">osViFade</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osViRepeatLine.html">osViRepeatLine</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osCreateViManager.html">osCreateViManager</A></FONT><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osSetEventMesg.html">osSetEventMesg</A><BR>
+<A HREF="../os/osGetTime.html">osGetTime</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+

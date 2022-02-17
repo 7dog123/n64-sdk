@@ -1,0 +1,14 @@
+Function name:mfsReadRtc
+──────────────────────────────────────
+Format:	s32 mfsReadRTC(LEODiskTime* time)
+Arguments:	time		LEODiskTime structure buffer
+Return value:Error
+Function:	Reads data and time from internal RTC
+Description:	This function reads the date and time from the internal RTC and stores them in time.
+It enables LeoReadRTC to be handled by using the MFS library.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>1.2.8 Graphics and Audio Scheduling</H1>
+
+<P>An N64 game has both a graphics and an audio process. On the N64, a graphics process flows from the CPU to the RSP to the RDP, and an audio process flows from the CPU to the RSP.</P>
+
+<P>Also, while the graphics process sometimes requires more than one frame to draw one scene, the audio process must be provided in each and every frame. Otherwise, the sound pauses inappropriately or causes popping  noises.</P>
+
+<P>If a graphics process is intensive, the RSP may be kept occupied by it and therefore fail to yield to the audio process. The Scheduler thread prevents this problem from occurring.</P>
+
+<P>The Scheduler thread is a high-priority thread that can grab the attention of the CPU, RSP, and RDP at any time because it has a higher priority than a currently executing thread. When the Scheduler thread receives a VI retrace (vertical synchronization interrupt) message, it analyzes the current RSP status.  If the RSP is running a graphics process, the Scheduler saves the current state of the graphics process, and then the Scheduler yields the RSP to the audio process. When the audio process finishes, the Scheduler restores the graphics process at the point where it was interrupted.  In other words, the Scheduler controls RSP traffic as shown in this illustration:</P>
+
+<IMG SRC="../images/1-2-8-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=247 BORDER=0><BR>
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

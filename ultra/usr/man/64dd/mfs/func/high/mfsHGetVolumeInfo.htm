@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHGetVolumeInfo</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHGetVolumeInfo</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHGetVolumeInfo(s32 drive,
+MfsVolumeInfo* volumeInfo)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>drive Drive name ('A', 'B', ...)<br>
+*volumeInfo Buffer for storing volume information</p>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong> Obtains volume information</p>
+
+<p><strong>Description:</strong> This function obtains volume information for the drive specified by drive and stores it in the MfsVolumeInfo structure buffer specified by volumeInfo.
+The MfsVolumeInfo structure consists of the following members.</p>
+
+<pre>typedef struct st_VolumeInfo {
+	LEODiskTime time;		// Date volume was formatted
+	u16 renewalCounter;		// update counter
+	u8 name[MFS_VOLUME_NAME_SIZE];	//Volume name
+	u8 attribute;			// Volume attribute
+	u8 destination;			// Destination code
+} MfsVolumeInfo;</pre>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_NOTFOUND	Drive not found</pre>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><STRONG>nuAuInit
+nuAuInitEx</STRONG></FONT></pre>
+</P>
+
+
+<HR>
+<font face="arial" size="-1">
+<STRONG>Syntax</STRONG><br>
+<font face="courier" size="3"><pre>
+s32 nuAuInit(void)
+s32 nuAuInitEx(void)
+</PRE></font>
+
+<P>
+<STRONG>Arguments</STRONG>
+<br>
+None
+
+
+<P>
+<STRONG>Return Values</STRONG>
+<br>
+Heap size consumed
+
+<P>
+<STRONG>Explanation</STRONG>
+<br>
+This initializes the audio manager and starts two sequence players and one sound player.  It also registers the default function which is called when a PRENMI event has occurred. 
+</P>
+<P>
+The least significant portion of the frame buffer is set to 320 Kbytes as the audio heap.  For two sequence players, 32 Kbytes each are assigned from this heap. 
+</P>
+<P>
+If you wish to change the audio heap size or to change the sequence data storage buffer size, rather than using nuAuInit, refer to the nuAuInit source and initialize the audio yourself. 
+</P>
+<P>
+The nuAuInit function calls the nuAuMgrInit function and starts the audio manager.  This audio manager plays back audio using retrace events.  This is the method which has been used in the past. 
+</P>
+<P>
+The nuAuInitEx function calls the nuAuMgrInitEx function.  This audio manager plays back audio using retrace events and AI events.  This is a new audio manager.  Since AI-DMA control can be reliably and efficiently accomplished when this audio manager is used, the AI buffer is empty and noise is unlikely to occur.  In addition, two audio data buffers are sufficient. 
+</P>
+<P>
+The difference between these two audio managers is the timing with which audio tasks are executed. In the case of the conventional audio manager, audio tasks are executed immediately after a retrace event. However, when AI events are used, audio tasks are executed when the AI-DMA register becomes empty.</P>
+<P>
+In addition, due to restrictions on the smallest processing unit in the audio microcode, audio data cannot be created accurately in one-frame pieces. 
+Consequently, since the audio task execution timing changes for each frame, care is required as this may affect graphics tasks. </P>
+<HR>
+
+<b>See Also</b>
+<br>
+<A href="nuAuMgrInit.htm">nuAuMgrInit</A>
+<br><A href="nuAuMgrInit.htm">nuAuMgrInitEx</A>
+<br><A href="nuAuSeqPlayerInit.htm">nuAuSeqPlayerInit</A>
+<br><A href="nuAuSndPlayerInit.htm">nuAuSndPlayerInit</A>
+<br><A href="nuAuPreNMIFuncSet.htm">nuAuPreNMIFuncSet</A>
+
+<hr>
+<P>
+<b>Revision History</b>
+<br>
+2/1/1999 &nbsp; Added text regarding nuAuInitEx function.
+</P>
+<hr>
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</body>
+</html>

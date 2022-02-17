@@ -1,0 +1,310 @@
+<html>
+<title>
+JointNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+19. Joint Node
+
+</h2>
+<hr size="3">
+
+<h3>
+<A NAME="jointListD">(1) JointList Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 joint_list_tag
+</td>
+<td>
+Specifies the tags of JointList.  Please set the tags shown below.
+<pre>
+<b>
+TAG_JOINT_LIST          0x00250000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_list_header_size
+</td>
+<td>
+Specifies the JointListHeader byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_list_size
+</td>
+<td>
+Specifies the JointList byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_num
+</td>
+<td>
+Specifies the total number of the Joint.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_num_byte
+</td>
+<td>
+Specifies the byte size of each Joint.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+Joint 
+</td>
+<td>
+This is the Joint area.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="joint_C.htm#jointListC">See Data Chunk</A></P>
+</blockquote>
+
+
+
+<h3>
+<A NAME="jointD">(2) Joint Description (English)</A>
+</h3>
+<blockquote>
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 joint_tag
+</td>
+<td>
+Specifies the tags of Joint.  Please set the tags shown below.
+<pre>
+<b>
+TAG_JOINT               0x00250100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_joint_index
+</td>
+<td>
+Specifies the index number for this Joint.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_size
+</td>
+<td>
+Specifies the Joint byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_name_index
+</td>
+<td>
+Specifies the index number of the Joint name in NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_type
+</td>
+<td>
+Specifies the Joint type.<p>
+In NIFF 2.0, IK-Chain only handles a 2-joint-chain.  The following flags are defined:
+<pre>
+<b>
+NIFF2_1ST_JOINT             0x00000000
+NIFF2_2ND_JOINT             0x00000001
+NIFF2_JOINT_UP              0x00000000
+NIFF2_JOINT_DOWN            0x00010000
+</b>
+</pre>
+Set NIFF2_1ST_JOINT for the 1st Joint.<p>
+Set NIFF2_2ND_JOINT for the 2nd Joint.<p>
+With NIFF2_JOINT_UP, IK-Chain moves in a forward direction in response to the movement of an Effector.  A forward direction means IK-Chain bends when the Effector moves in the positive direction along the Y axis of the 1st Joint.<p>
+With NIFF2_JOINT_DOWN, IK-Chain moves in the reverse direction in response to the movement of an Effector.  A reverse direction means IK-Chain bends when the Effector moves in the negative direction along the Y axis of the 1st Joint.<p>
+NIFF2_1ST_JOINT, NIFF2_2ND_JOINT, NIFF2_JOINT_UP, and NIFF2_JOINT_DOWN are specified with bitOR.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+float joint_length
+</td>
+<td>
+Specifies the Joint length.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float resplane_axis_x<br>
+float resplane_axis_y<br>
+float resplane_axis_z
+</td>
+<td>
+This vector indicates divergence from the direction of the Z axis. It
+indicates the normal vector of the IK resolution plane. Please set
+toward the Z axis (x,y,z)=(0,0,1). 
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 obj_num
+</td>
+<td>
+Specifies the total number of the Obj linked to Joint.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_obj_num
+</td>
+<td>
+Specifies the total number of the Obj linked to Joint that reference an external file.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 joint_index
+</td>
+<td>
+Specifies the index number of a Joint linked by this Joint.  When linking this Joint to an Effector, please specify the following flag:
+<pre>
+<b>
+NIFF2_NO_LINK_TO_JOINT&#9;&#9;0xffffffff
+</b>
+</pre>
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 effector_index
+</td>
+<td>
+Specifies the index number of the Effector linked to this Joint. When linking this Joint to a Joint, please specify the following flag:
+<pre>
+<b>
+NIFF2_NO_LINK_TO_EFFECTOR&#9;0xffffffff
+</b>
+</pre>
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 anim_index
+</td>
+<td>
+
+Specifies the index number of the AnimGroup linked to this Joint.
+For the 1st Joint, the resolution plane can be determined using the
+PreferredAxisConstraint channel or the UpVectorConstraint channel.
+If these constraints are not used, then the resolution plane will be determined as
+parallel to the Z axis of ChainRoot.
+For Joint rotation, highest priority goes to rotation around the X axis.
+The actual resolution plane becomes the plane that faces the Z axis
+without conflicting with rotation around the X axis.
+When there is a link to PreferredAxisConstraint, the Joint's Z axis is
+adjusted in the direction of the object which has that constraint. Of
+course, rotation around the X axis has the highest priority.
+When there is a link to UpVectorConstraint, the origin point of the
+1st Joint and the origin points of Effector and Constraint objects are
+calculated so they lay on the resolution plane.
+The 2nd Joint is ignored, even when it is linked to animation.
+If there are no links to animation, please specify anim_index =
+0xffffffff. 
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 obj_index
+</td>
+<td>
+Specifies the index number for the Obj linked from the Joint<p>
+When obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_obj_file_name_index
+</td>
+<td>
+When the Obj that is linked from the Joint references an external file, this file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+When external_obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 external_obj_name_index
+</td>
+<td>
+When the Obj that is linked from the Joint references an external file, that Obj name is specified with an ExternalNameList index number.
+<p>
+When external_obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+</table>
+
+<P><A HREF="joint_C.htm#jointC">See Data Chunk</A></P>
+<P><A HREF="appendix/IK_system_E.htm">See Appendix 5: IK System</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

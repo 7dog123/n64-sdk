@@ -1,0 +1,1269 @@
+<html>
+
+
+<!..
+-- CHANGE START --
+1998/10/07
+
+softimage scale‚ð‚·‚×‚Äunique scale‚É•ÏXB
+
+-- CHANGE END --
+..>
+
+
+<title>
+AnimNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+12. Anim Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="animGroupC">(1) AnimGroup Data Chunk</A>
+</h3>
+<blockquote>
+The following data will be added to Anim Node. 
+<p>
+
+<table border>
+<tr>
+<th rowspan="12">
+AnimGroupHeader
+</th>
+<td>
+u32
+</td>
+<td>
+anim_group_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_anim_group_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_group_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_group_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+frame_rate
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_loop
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+anim_rot_mtx_order
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<th rowspan="3">
+</th>
+<td colspan="2">
+<center>
+Anim(0)
+</center>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+Anim(anim_num - 1)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<th rowspan="62">
+NintendoExtensionBlock
+</th>
+<td>
+u32
+</td>
+<td>
+use_animation_channel
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+rotate_axis_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+rotate_x_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+rotate_y_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+rotate_z_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+orientation_xy_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+translation_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+unique_scale_num
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+classical_scale_num
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+kind_of_orientation_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+orientation_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+kind_of_direction_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+direction_constraint_node
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td >
+u32
+</td>
+<td>
+kind_of_upvector_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+upvector_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td >
+u32
+</td>
+<td>
+kind_of_preferred_axis_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+preferred_axis_constraint_node
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+kind_of_position_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+position_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+kind_of_unique_scale_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+unique_scale_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+kind_of_classical_scale_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+classical_scale_constraint_node
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_orientation_constraint_file_name_index
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_orientation_constraint_obj_name_index
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_direction_constraint_file_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_direction_consrtaint_obj_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_upvector_constraint_file_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_upvector_constraint_obj_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_perferred_axis_constraint_file_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_preferred_axis_constraint_obj_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_position_constraint_file_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_position_constraint_obj_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_unique_scale_constraint_file_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_unique_scale_constraint_obj_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_classical_scale_constraint_file_name_index
+<td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_classical_scale_constraint_obj_name_index
+<td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateAxis(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateAxis(rotate_axis_num - 1)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateX(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateX(rotate_x_num - 1)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateY(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateY(rotate_y_num - 1)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateZ(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+RotateZ(rotate_z_num - 1)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+OrientationXY(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+OrientationXY(orientation_xy_num - 1)
+</center>
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+Translation(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+Translation(tiranslation_num - 1)
+</center>
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+UniqueScale(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+UniqueScale(unique_scale_num - 1)
+</center>
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+ClassicalScale(0)
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+ClassicalScale(classical_scale_num - 1)
+</center>
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+--- other extension data ---
+</center>
+</td>
+</tr>
+
+
+<tr>
+<th rowspan="1">
+</th>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="anim_E.htm#animGroupD">See Description</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="rotateAxisC">(2) RotateAxis Data Chunk</A>
+</h3>
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+axis_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+axis_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+axis_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+rotation_angle
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_axis_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_axis_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_axis_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_rotation_angle
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="anim_E.htm#rotateAxisD">See Description</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="rotateXC">(3) RotateX Data Chunk</A>
+</h3>
+<blockquote>
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+rotate_angle
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_rotate_angle
+</td>
+</tr>
+</table>
+<P><A HREF="anim_E.htm#rotateXD">See Description</A></P>
+</blockquote>
+<h3>
+<A NAME="rotateYC">(4) RotateY Data Chunk</A>
+</h3>
+<blockquote>
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+rotate_angle
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_rotate_angle
+</td>
+</tr>
+</table>
+
+<P><A HREF="anim_E.htm#rotateYD">See Description</A></P>
+</blockquote>
+
+<h3>
+<A NAME="rotateZC">(5) RotateZ Data Chunk</A>
+</h3>
+
+<blockquote>
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+rotate_angle
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_rotate_angle
+</td>
+</tr>
+</table>
+<P><A HREF="anim_E.htm#rotateZD">See Description</A></P>
+</blockquote>
+
+<h3>
+<A NAME="orientationXyC">(6) OrientationXY Data Chunk</A>
+</h3>
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+x_axis_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+x_axis_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+x_axis_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+y_axis_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+y_axis_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+y_axis_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_x_axis_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_x_axis_y
+</td>
+</tr>
+<tr>
+<td>
+flaot
+</td>
+<td>
+differential_x_axis_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_y_axis_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_y_axis_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_y_axis_z
+</td>
+</tr>
+</table>
+<P><A HREF="anim_E.htm#orientationXyD">See Description</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="translationC">(7) Translation Data Chunk</A>
+</h3>
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+translate_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+translate_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+translate_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_translate_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_translate_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_translate_z
+</td>
+</tr>
+</table>
+<P><A HREF="anim_E.htm#translationD">See Description</A></P>
+
+</blockquote>
+
+
+<h3>
+<A NAME="uniqueScaleC">(8) UniqueScale Data Chunk</A>
+</h3>
+
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+scale_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+scale_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+scale_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_scale_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_scale_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_scale_z
+</td>
+</tr>
+</table>
+<P><A HREF="anim_E.htm#uniqueScaleD">See Description</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="classicalScaleC">(9) ClassicalScale Data Chunk</A>
+</h3>
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+<tr>
+<td>
+u32
+</td>
+<td>
+interpolation_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+key
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+scale_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+scale_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+scale_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_scale_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_scale_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+differential_scale_z
+</td>
+</tr>
+</table>
+
+<P><A HREF="anim_E.htm#classicalScaleD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+
+</blockquote>
+
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

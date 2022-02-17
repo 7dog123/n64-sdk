@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 2</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro01/index1.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro02/index2.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+
+<b><font face="arial" color="#29296b">Operating System
+</font></b>
+
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This chapter describes common problems that you might encounter when you start bringing up your Nintendo 64 software. The potential problem areas are:
+
+<ul>
+<li>operating system
+<li>graphics
+<li>audio
+<li>integration
+</ul>
+
+<P>
+<a name="01"></a>
+<b>Game locks up immediately</b>
+<br>
+A common error is to start the rmon thread at the same priority as the spawning thread. Rmon then immediately goes to sleep and locks up the system. The recommended way for starting the system is to create an idle thread in the boot procedure at a high priority. From the idle thread start all the other application threads, then lower the priority to zero and loop forever to become the idle thread.   Note that the rmon thread is not needed for printfs. See the <i>osSyncPrintf (3P)</i>  man page.
+
+<P>
+<a name="02"></a>
+<b>Game encounters a CPU exception</b>
+<br>
+During the development of your game, you may (intentionally or unintentionally) encounter various CPU exceptions (or faults) such as TLB miss, address error, or divide-by-zero. 
+<P>
+Currently, the system fault handler saves the context of the faulted thread, stops the faulted thread from execution, sends a message to any thread registered for the OS_EVENT_FAULT event, and dispatches the next runnable thread from the system run queue. If rmon is running, it would register for the OS_EVENT_FAULT event, receive the message from the exception handler, stop all user threads (except the idle thread), and send the faulted thread context to the host. If gload is running on the host, it would receive the faulted thread context and print its content to the screen. If gvd is running on the host, it would receive the fault notification and point you to where the fault occurred. If rmon is not running on the target, you probably experience a strange behavior (i.e. hang) in your game since the faulted thread can no longer run.
+<P>
+If you want to catch the OS_EVENT_FAULT event (instead of using rmon), you can use two internal OS functions to find the faulted thread and handle the exception yourself. They are __<i>osGetCurrFaultedThread (3P)</i>  and __<i>osGetNextFaultedThread (3P)</i>.  Please refer to the "N64 Online Function Reference Manual</i> (man pages) for more information.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

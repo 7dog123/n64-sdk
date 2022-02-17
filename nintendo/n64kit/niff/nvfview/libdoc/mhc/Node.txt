@@ -1,0 +1,69 @@
+Function 
+(  Node is the unit for constructing a hierarchy. 
+
+Functions 
+(  void mhcNodeInit( MhcNode *node_ptr,
+		    const u32 type,
+		    MhcNodeEvalFunc evaluate,
+		    MhcNodeGetFieldPtrFunc get_field_ptr,
+		    MhcNodeBindFunc bind,
+		    MhcNodeDestroyFunc destroy )
+  Initializes node. 
+
+(  void mhcNodeBeginEval( MhcNode *node_ptr )
+  Prepares for node evaluation. 
+
+(  int mhcNodeIsReadyToEvaluate( MhcNode *node_ptr,
+				MhcScene *scene_ptr )
+  Checks whether node can be evaluated. 
+
+(  void mhcNodeComplete( MhcNode *node_ptr, MhcScene *scene_ptr )
+  Completes evaluation of node.  Nodes existing in this node can subsequently be evaluated. 
+
+(  void mhcNodeAddInput( MhcNode *node_ptr, MhcReference *input_ptr )
+  Add input of node. 
+
+(  void mhcNodeRemoveInput( MhcNode *node_ptr, MhcReference *input_ptr )
+  Cancel input of node. 
+
+(  void mhcNodeAddOutput( MhcNode *node_ptr, MhcReference *output_ptr )
+  Add output of node. 
+
+(  void mhcNodeRemoveOutput( MhcNode *node_ptr, MhcReference *input_ptr )
+  Cancel output of node. 
+
+(  void mhcNodeSetInputMask( MhcNode *node_ptr,
+			    const u32 mask,
+			    MhcScene *scene_ptr )
+  Sets bit mask indicating that input has been resolved. 
+
+Macros
+(  _mhcNodeActivate(node_ptr)
+  Makes it possible to evaluate node. 
+
+(  _mhcNodeInactivate(node_ptr)
+  Makes it so that node cannot be evaluated. 
+
+(  _mhcNodeIsActive(node_ptr)
+  Checks whether node can be evaluated. 
+
+(  _mhcNodeSetName(node_ptr,name_str)
+  Sets name. 
+
+(  _mhcNodeEvaluate(node_ptr,instance_ptr,scene_ptr)
+  Evaluates node. 
+
+(  _mhcNodeGetFieldPtr(node_ptr,f_id,idx)
+  Returns pointer to field. 
+
+(  _mhcNodeBind(node_ptr,module_ptr,scene_ptr)
+  Links node to scene. 
+
+(  _mhcNodeDestroy(node_ptr)
+  Destroys node. 
+
+History 
+  1998/11/25  Takamitsu Hirata 
+    Node.h, node.c:  Initial version 
+  1999/1/6  Takamitsu Hirata
+    Corresponds to change of mhcReferenceResolve().

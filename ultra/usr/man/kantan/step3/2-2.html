@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.2.2 Using Vertices, Edges and Planes</H1>
+
+<P>Using vertices, edges, and planes to render three-dimensional models is more complex than it is to use them to render two-dimensional models because of the added depth information.  To render a cube in three-dimensions, you need information about 8 vertices, 12 edges, and 6 planes as shown here:</P>
+
+<P><IMG SRC="../images/3-2-2-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=347 HEIGHT=133 BORDER=0>
+
+<P>You have to be careful when connecting vertices. If you simply connect vertices to make edges, you may end up rendering an object different from the one you want, as shown here:</P>
+
+<P><IMG SRC="../images/3-2-2-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=390 HEIGHT=146 BORDER=0>
+ 
+<P>You also have to be careful with models that contain planes because many three-dimensional processes have rules about creating planes. The following three rules are representative.</P>
+
+
+<H2>Rules About Creating Planes</H2>
+
+<H3>Rule One: No Open Sides</H3>
+
+<P>Edges that together define a plane must be closed:</P>
+
+<P><IMG SRC="../images/3-2-2-3.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=115 BORDER=0>
+
+
+<H3>Rule Two: No Dents</H3>
+
+<P>Planes must be convex polygons (polygons without dents). Concave polygons are not allowed:</P>
+
+<P><IMG SRC="../images/3-2-2-4.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=113 BORDER=0>
+
+ 
+<H3>Rule Three: No Twisting</H3>
+
+<P>Polygons having more than three vertices must not be twisted; that is, vertices must be on the same plane, and edges must not intersect:</P>
+
+<P><IMG SRC="../images/3-2-2-5.gif" ALT="Illustration" ALIGN="bottom" WIDTH=366 HEIGHT=171 BORDER=0>
+ 
+<P>If you create and draw planes that don't meet these three rules, you won't get the correct result.</P>
+
+
+<H2>Heavy vs. Light Graphics Processes</H2>
+
+<P>Rendering a model that has many planes takes a long time. Therefore, if you try to render a complex model in real-time, you may encounter problems. For real-time rendering, you have to pay close attention to the drawing rate. You need to decide how many surfaces (planes) your game can support. A model with few surfaces like the cube on the right in the following illustration requires a relatively "light" drawing process when compared with a model that has many surfaces like the sphere on the left:</P>
+
+<P><IMG SRC="../images/3-2-2-6.gif" ALT="Illustration" ALIGN="bottom" WIDTH=362 HEIGHT=101 BORDER=0>
+
+
+<H2>Back Face Culling</H2>
+ 
+<P>To help with this problem, there is a technique called "back face culling" that ensures that no unseen back surfaces are drawn. This reduces the number of planes to be drawn and therefore lightens the process.</P>
+
+<P><IMG SRC="../images/3-2-2-7.gif" ALT="Illustration" ALIGN="bottom" WIDTH=314 HEIGHT=95 BORDER=0>
+
+
+<H2>Front vs. Back</H2>
+
+<P>The next problem is how we should judge the front and back of planes. What is obvious to a human being can be a difficult process for a computer.  In general, computers judge the front and back by the order of edges created to connect vertices. In the N64 system, planes that are rendered by   connecting vertices in a counter-clockwise manner become the front.</P>
+ 
+<P><IMG SRC="../images/3-2-2-8.gif" ALT="Illustration" ALIGN="bottom" WIDTH=408 HEIGHT=125 BORDER=0>
+
+<P>You can distinguish front from back for the computer by using a normal vector.  This technique will be explained later. It is important for the computer to recognize the front from the back so that it can improve the drawing rate by not doing the drawing calculations for the back side planes.</P>
+
+<P>Pay attention to all the issues discussed here when creating your planes. Then combine the planes to complete a three-dimensional object as shown here:</P>
+ 
+<P><IMG SRC="../images/3-2-2-9.gif" ALT="Illustration" ALIGN="bottom" WIDTH=171 HEIGHT=166 BORDER=0>
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

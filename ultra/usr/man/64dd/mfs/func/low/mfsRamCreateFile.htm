@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamCreateFile</title>
+</head>
+
+<body>
+
+<h1>mfsRamCreateFile</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamCreateFile(MfsDirID upDirID, u8* name, u8* type)
+Arguments:	upDirID		Directory ID of directory to which created file belongs
+	*name		File name
+	*type		File type
+Return value:Directory ID of created file (a negative value is an error)
+Function:	Creates file
+Description:	This function creates a file having the name specified by name in the directory specified by upDirID.
+Immediately after a file is created, its file size is 0 and it has no attribute.
+The file name can be specified in ASCII code or shift JIS code.  Up to 20 ASCII characters can be specified.  The only kanji codes that can be used are the ones in the table in APPENDIX.B of the 64DD Programming Manual.  Also, the slash '/' cannot be used since it is the directory separator.
+The file type, which represents the type of file, can be specified by using up to five ASCII characters.
+
+Main errors:
+	MFS_ERR_NOTFOUND Specified directory not found	
+	MFS_ERR_PROTECT	Write protected
+			The directory attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+	MFS_ERR_NAME	File name error
+			The file name contains a character code that cannot be used.
+	MFS_ERR_FILEEXIST Specified file name already exists</pre>
+
+<hr>
+</body>
+</html>

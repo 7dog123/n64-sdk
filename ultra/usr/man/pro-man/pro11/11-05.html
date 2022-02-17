@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Texture State</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The following command sets the RSP texture state:
+
+<P>
+<b>Table 1</b> &nbsp;gsSPTexture(int s, int t, int levels, int tile, int on)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="65%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">s</td>
+<td width=70%><font face="arial" size="-1">s-coordinate texture scale (16-bit unsigned fraction)</td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">t</td>
+<td width=70%><font face="arial" size="-1">t-coordinate texture scale (16-bit unsigned fraction)</td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">levels</td>
+<td width=70%><font face="arial" size="-1">
+(maximum number of mip-map levels) - 1</td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">tile</td>
+<td width=70%><font face="arial" size="-1">
+which tile in the TMEM</td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">on</td>
+<td width=70%><font face="arial" size="-1">
+G_ON or G_OFF</td>
+</tr>
+</table>
+
+<P>
+As explained previously, a vertex’s s and t coordinates are texel-space coordinates in a S10.5 format. The texture coordinate usually ranges from 0 to (texel_size - 1), possibly larger to implement “wrapped” textures. The maximum number of times that a texture may be wrapped is limited by the number of integer bits in this coordinate.
+<P>
+Since the <i>s</i> and <i>t</i> coordinate texture scale parameters are only fractional numbers, they cannot represent values >= 1.0. For non-scaled textures, applications typically use a vertex texture coordinate format of S9.6, and a scale value of 0.5 (0x8000 in 16-bit unsigned format).
+<P>
+The <i>levels</i> parameter tells the pipeline the maximum number of mipmap levels to use, if mip-mapping is enabled.
+<P>
+The <i>tile</i> parameter tells the pipeline which of the 8 possible tiles in the RCP texture memory to use when texturing the following primitives
+<P>
+The <i>on</i> parameter turns texturing on or off in the RSP. If texturing is turned off in the RSP, textured primitives will not be generated, regardless of the RDP state. 
+<P>
+Likewise, setting the RSP state is necessary, but not sufficient to generate textured primitives. The RDP state must also be set in the appropriate manner, please see <a target="_top" href="../pro12/index12.4.html">“TX: Texture Engine.”</a>
+<P>
+Texturing is sensitive to large numbers and overflows.  Please refer to <a target="main" href="../pro11/11-03.html#04">Section 11.3.4, "Note on Coordinate Systems and Big Numbers"</a> for notes on how to avoid texturing problems such as textures shifting across surfaces, textures tearing, and edges between polygons becoming visible in the texture.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

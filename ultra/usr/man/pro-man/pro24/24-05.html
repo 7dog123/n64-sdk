@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 24</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro24/index24.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro25/index.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">CPU Tuning</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Parallel Execution of the CPU and the RCP</b>
+<br>
+Full speed rendering in the Nintendo 64 can only be accomplished by fully utilizing all of it’s resources. One of the most powerful is the coarse-grain parallelism that can be achieved between the CPU and the RCP.
+<P>
+There are many ways you can exploit this parallelism, here are some ideas:
+<ul>
+<li>compute game and animation parameters for frame (n+1) while frame (n) is rendered with the RCP.
+<P>
+<li>compute game and animation parameters while another RCP task is computing. If your game includes several RCP tasks per frame, you can pipeline them so the CPU and the RCP are always busy at the same time.
+<P>
+<li>instruct the RDP to render from a DRAM display list while the RSP is used to compute another task, such as audio.
+</ul>
+
+<P>
+<a name="02"></a>
+<b>Sorting</b>
+<br>
+A detailed analysis of sorting algorithms is beyond the scope of this document. The reader is referred to texts by Knuth<sup>1</sup> or Sedgewick<sup>2</sup>, among others. It is useful to review major properties of sorting algorithm analysis and see how they relate to real-time system performance.
+
+<P>
+Properties of sorting algorithms which we want to compare include:
+<ul>
+<li>best case sorting time
+<P>
+<li>worst case sorting time
+<P>
+<li>average case sorting time
+<p>
+<li>additional memory requirements
+<P>
+<li>size of the code to implement
+<P>
+<li>ability to exploit coherence
+</ul>
+
+<P>
+The time to sort is probably the most important; obviously we want to choose an algorithm that is fast. But it is not that easy. Some of the fastest sorting algorithms have the widest disparity between their average time and their worst-case time. This makes it difficult to predict performance necessary for a real-time system.
+
+<P>
+Often the difference between worst-average-best-case performance is the initial order of the data. By knowing what we are sorting (and why) we can choose a better sort. For example, if we are sorting Z-values in order to determine visibility drawing order, we can reason that this order varies only slightly from frame to frame (objects do not move “dramatically” and sort interchanges are local). By exploiting this frame to frame coherence, we can choose a sort with linear performance for the “already nearly sorted” case, speeding up our sort tremendously.
+
+<P>
+Additional memory requirements are also a major concern in an embedded system. They must be minimal, and most of all, predictable. Consider the sorting problem when designing your data structures.
+<P>
+<hr size="1" align="left" width="40%">
+<sup>1</sup>Knuth, D.E., <i>The Art of Computer Programming, Volume 3: Searching and Sorting, </i> 
+Addison-Wesley Publishing, 1973, ISBN: 0-201-03803-X.
+<P>
+<sup>2</sup>Sedgewiick, R., <i>Algorothims in C,</i> Addison-Wesley Publishing, 1990, ISBN:0-201-51425-7.
+<P>
+
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

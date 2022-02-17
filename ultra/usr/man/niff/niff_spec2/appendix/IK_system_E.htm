@@ -1,0 +1,87 @@
+<html>
+<title>
+IK System
+</title>
+<body bgcolor="ffffff">
+
+<h2>
+Appendix 5: IK System
+</h2>
+<hr size="3">
+
+<blockquote>
+The NIFF 2.0 IK System supports the 2Bone IK System as shown in Figure 1 below.<p>
+It takes the form: Chain Root -> Joint0 -> Joint1 -> Effector<p>
+The Joint0, Joint1 conversion matrix is obtained by determining the position of Root and Effector.<p>
+<center>
+<img src="./img/2bone_ik.jpg">
+<p>
+<b>
+Figure 1: 2Bone IK
+</b>
+<p>
+</center>
+The IK Joint axis is determined as shown in Figure 2 below:<p>
+<center>
+<img src="./img/joint_axis.jpg">
+<p>
+<b>
+Figure 2: Joint axis
+</b>
+<p>
+</center>
+IK deformation is carried out on the Resolution Plane.<p>
+This plane is fundamentally as shown in Figure 3 below, where the plane defines the normal line to the Z axis of Joint0 passing through Joint0's point of origin.<p>
+<center>
+<img src="./img/ik_axis.jpg">
+<p>
+<b>
+Figure 3: Resolution Plane
+</b>
+<p>
+</center>
+However, the normal line of the Resolution Plane can be changed.<p>
+By specifying the axis of the transformed Resolution Plane as shown in Figure 4 below, the original IK movement can be distorted.<p>
+In this situation, by applying Preferred Axis Constraint and Up Vector Constraint to Joint0, the object of Constraint can be determined on the original Resolution Plane and then moved on the transformed Resolution Plane where Joint0, Joint1 have been changed.<p>
+<center>
+<img src="./img/resplane.jpg">
+<p>
+<b>
+Figure 4: Transformed Resolution Plane
+</b>
+<p>
+</center>
+With the IK System, the transformation matrix of Joint0, Joint1 is determined by the movement of the Effector.  In this case, two types of deformation will occur, depending on the flag passed to Joint0.<p>
+If the NIFF2_JOINT_UP flag is set in Joint0, then IK will exhibit "bending" movement when the Effector moves in the direction of the Y axis of Joint0, as shown in Figure 5 below.<p>
+<center>
+<img src="./img/joint_up.jpg">
+<p>
+<b>
+Figure 5: When NIFF2_JOINT_UP is specified
+</b>
+</center>
+<p>
+Conversely, if the NIFF2_JOINT_DOWN flag is set in Joint0, then IK will exhibit "bending" movement when the Effector moves in the direction opposite to the Y axis of Joint0, as shown in Figure 6 below.<p>
+<center>
+<img src="./img/joint_down.jpg">
+<p>
+<b>
+Figure 6: When NIFF2_JOINT_DOWN is specified
+</b>
+<p>
+</center>
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+
+</body>
+
+
+
+</html>

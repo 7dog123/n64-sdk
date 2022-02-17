@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 19</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro19/index19.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro20/index20.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Compressed Midi File Format</font></b>
+<P>
+<font face="arial" size="-1" color="#000000">
+The compressed midi file format is composed of a header and up to sixteen individual tracks. Each midi channel will have its own track. If there are no midi events for a particular channel, the track will not be created, and the offset to that track will be set to zero.
+The compressed midi file header is a collection of 16 offsets and a division value.
+<pre><font face="courier" size="3">typedef struct {
+    u32      trackOffset[16];
+    u32      division;
+} ALCMidiHdr;
+</pre></font>
+
+The offset is specified in bytes from the begining of the file to the begining of the track. The division value is taken from the input midi file.
+<P>
+The format for the individual tracks is similar to the format used in a standard midi file. Each track consists of a series of events, seperated by delta times in ticks. Ticks are specified using variable length numbers, and ever event must have a delta value, even if that value is zero. Midi events are of the same format as that used in the standard midi file except as specified below.
+
+<ol>
+<li>There are no note offs, instead note ons are followed by a variable length number that specifies the number of ticks duration. As an example, a note on of middle C with a velocity of 80 and a duration of 240 ticks would be expressed by the following sequence of hex bytes: 0x90 0x3C 0x50 0x81 0x70. Note that when calculating the deltas between events, the duration is not taken into account.
+<P>
+<li>Only two types of meta events are supported, tempo events and end of track events, and they are both slightly altered. Tempo events are composed of a meta status byte, (0xFF) a subtype byte (0x51) and three bytes that contain the new tempo. (Note that the len byte has been removed.) The end of track event is composed of only two bytes, a meta status byte, (0xFF) and a subtype byte (0x2F). Care should be taken to see that the end of track event occurs after all the notes in the track have played out their full duration.
+<P>
+<li>Loops are allowed using a combination of loop start and loop end events. A track can have up to 128 loops which can be nested. Each loop within a track has a unique loop number. The loop start event is composed of four bytes; a meta status byte (0xFF), a loop start subtype byte (0x2E), a loop number (0-127), and an end byte (0xFF). A loop end event is composed of eight bytes, a meta status byte (0xFF), a loop end subtype byte (0x2D), a loop count byte (0-255), a current loop count (should be the same as the loop count byte), and four bytes that specify the number of bytes difference between the end of the loop end event, and the begining of the loop start event. (note that if this value is calculated before the pattern matching compression takes place, this value will have to be adjusted to compensate for any compression of data that takes place between the loop end and the loop start.) The loop count value should be a zero to loop forever, otherwise it should be set to one less than the number of times the section should repeat. (i.e. to hear a section eight times, you would set the loop count to seven.)
+<P>
+<li>Running status is supported for all events except across meta events and across loop points.
+</ol>
+
+<P>
+The compressed midi file format uses a system of matching patterns in the data, and replacing them with markers, instead of repeating the data. When constructing tracks, any pattern of data may be replaced by any previous track data with a marker. A pattern marker consists of four bytes. The first byte is 0xFE. The second two bytes are an unsigned 16 bit value that specifies the difference, in bytes, between the begining of the marker, and the begining of the pattern. The last byte is the length of the pattern. In order to distinguish between a data byte of 0xFE and a pattern marker’s first byte, any data byte of 0xFE will be followed by another byte of 0xFE. 
+
+<P>
+<b>Note:</b> The maximum pattern length is 0xFF and the maximum distance between the marker and the pattern is 0xFDFF.
+<P>
+Nesting of patterns is not supported. If a marker is encountered within a repeated pattern, the marker data will be returned to the sequence player, as actual midi data.
+<P>
+<b>Note:</b> Patterns replaced with markers may not contain bytes of value 0xFF or the current loop count byte of a loop end event.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

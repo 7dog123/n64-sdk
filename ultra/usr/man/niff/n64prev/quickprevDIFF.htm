@@ -1,0 +1,110 @@
+<html>
+
+<head>
+<title>クイックプレビュー</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3> １．クイックプレビューの概要 <p></h3>
+
+  これまでの n64prevプレビューア は、niff2gfx コンバータが生成したＣの
+ソースファイルを /64prev ディレクトリでコンパイルすることでNINTENDO64
+のROMイメージを作成し、それをエミュレータボードやIS-VIEWERにロードして
+いました。クイックプレビューでは、描画用ROMイメージをあらかじめロード
+しておき、niff2gfx が生成したモデルのバイナリデータを決められた番地に
+ロードすることでプレビューすることができます。プレビューの際、コンパイ
+ルの必要がないため、大幅な時間の短縮が実現しました。<p>
+
+<font color=red>
+[注意]
+  クイックプレビューをIS-VIEWERで行うにはmakemaskしないデータを扱うこ
+とができるようになった、nload の新しいバージョンを入手してください。</font><p>
+
+<h3>２．描画用ROMイメージの作成方法 <p></h3>
+
+ ROM image for drawing can be created by compiling the model.c in /n64prev directory in the same manner as the previous preview. By default, the ROM image created by compiling is nuprev.n64 for WIN version and rom for SGI version. Please change names properly and use it as the ROM image for drawing.  <p>
+
+  model.c は niff2gfx が生成したデータですので、サンプルの niff データ
+などから作成してください。model.c のデータは、クイックプレビューのモデ
+ルデータを初期化したときや、クイックプレビューに失敗したときなどに表示
+されます。  <p>
+
+  nd（描画オブジェクトマネージャ）を各自チューンナップした際は描画用
+ROMイメージも忘れずに更新してください。<p>
+
+NIFFeditorのリリース版では、n64prevの下にquickprevというディレクトリがあり、そ
+こにある star.niff から作成した、quickprev.n64という描画ROMイメージがあります。
+NIFFeditorからクイックプレビューする場合にはこれを使用しています。<p>
+また、NIFFeditorで任意のNIFFデータを開いてメニューからプレビューを実行すれば
+ROMイメージの作成をすることができます。<p>
+
+<h3>３．クイックプレビューの実行 <p></h3>
+
+  クイックプレビューの処理の流れは以下のようになります。<p>
+<dl>
+ <dt>    (1) 描画用ROMイメージのロード
+ <dt>    (2) 描画したい niff データをバイナリのモデルデータにコンバート
+ <dt>    (3) (2)で生成したバイナリのモデルデータを 0x200000 番地にロード
+</dl>
+
+一度、(1) を実行しておくと次からは (2),(3) だけでプレビューできます。<p>
+
+  ここで、エミュレータボート、IS-VIEWERそれぞれで具体的なコマンドを例
+示します。ただし、描画用ROMイメージを quickprev.n64、プレビューする 
+niff データを niffprev.nif、バイナリのモデルデータを model.bin としま
+す。   <p>
+ 
+[エミュレータボード]
+<dl>
+ <dt>    (1) gload -s quickprev.n64
+ <dt>    (2) niff2gfx -b niffprev.nif model.bin
+ <dt>    (3) gload -s -o0x200000 model.bin
+</dl>
+<p>
+
+[IS-VIEWER]
+<dl>
+ <dt>    (1) nload -n -v quickprev.n64
+ <dt>    (2) niff2gfx -b niffprev.nif model.bin 
+ <dt>    (3) nload -n -v -s0x200000 model.bin
+</dl>
+
+ （ Note： Add an argument for niff2gfx according to conditions individually.）<p>
+
+  画面の右上に"IMPORT"と表示されていればクイックプレビューによる表示が
+行われていることを示しています。<p>
+
+<h3> ４．クイックプレビューの初期化 <p> </h3>
+
+  Even when a quick preview becomes possible, it is still possible to continue to output model.c and compile & preview as before.  しかし、現在の n64prev 
+プレビューアでは 0x200000 番地にモデルデータが存在する場合、そちらのモ
+デルデータがプレビューされるため、model.c のモデルデータをプレビューで
+きない場合が生じます。このため、従来のようなコンパイル＆プレビューをす
+る際は、プレビューの前に 0x200000 番地のモデルデータを消去する必要があ
+ります。（このモデルデータの消去をクイックプレビューの初期化と呼びます。） 
+<p>
+  プレビューアが 0x200000 番地のモデルデータを認識するのは、0x200000 
+番地からの4bytesが "niff" という文字列である場合です。そこで、この文字
+列の場所に違うデータをロードすることによりクイックプレビューの初期化を
+することができます。例えば、0xff が8バイト並んだだけのバイナリファイル 
+clean.bin を用いると、 <p>
+
+[エミュレータボード]
+<dl>
+ <dt>   gload -s -o0x200000 clean.bin
+</dl> 
+[IS-VIEWER]
+<dl>
+ <dt>            nload -n -v -s0x200000 clean.bin  
+</dl> 
+
+によってクイックプレビューが初期化され、model.c のモデルデータがプレビュー
+されるようになります。 <p>
+
+NIFFeditorから実行した場合は上記内容は自動的に行われます。<p>
+<hr>
+<font size=-1>
+Copyright (C) 1998-1999 NINTENDO Co.,Ltd./MONEGI CORPORATION All rights reserved.</P></font>
+</body>
+</html>

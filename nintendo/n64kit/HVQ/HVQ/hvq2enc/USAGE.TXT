@@ -1,0 +1,151 @@
+================================================================
+Still image compression tool hvq2enc version 2.6
+
+Instruction Manual
+================================================================
+
+
+Introduction
+============
+
+hvq2enc is a still image compression tool that uses the HVQ2 method to compress 
+image data.  
+   
+HVQ2 is a proprietary still image encoding method developed by Hudson.  The method 
+is like JPEG, in that the image cannot be directly decompressed (i.e., the data 
+cannot be completely restored to its original form), but the quality of the 
+regenerated image can be adjusted by changing the compression parameters.  The 
+higher the quality of the regenerated image, the lower the extent of image 
+compression.  Conversely, the higher the compression ratio, the lower the quality 
+of the regenerated image.
+
+This relationship between compression ratio and image quality is the same or 
+better with HVQ2 compared to JPEG, and it outshines JPEG when it comes to images 
+that have distinct outlines and text.  Moreover, HVQ2 can decode compressed data 
+faster than JPEG software.
+
+
+
+4:1:1 mode and 4:2:2 mode
+=========================
+
+HQV2 presently offers two types of encoding: a 4:1:1 mode and a 4:2:2 mode.
+
+The 4:1:1 mode provides slightly lower color quality (fidelity) than the 4:2:2 
+mode, but offers more effective compression and faster decoding.  And in any event, 
+the difference in color fidelity is virtually indistinguishable, subjectively.
+
+hvq2enc supports both modes.
+
+
+
+hvq2enc Operating Environment
+=============================
+
+hvq2enc is a command that runs from the MS-DOS prompt of Windows 95.
+
+
+How to Use hvq2enc
+==================
+
+The tool is used in the following way:
+
+     hvq2enc [-q thr] [-s type] [-o image-output] image_input code_output
+
+Specify the path for the input image file in the argument image_input.  The input 
+image file can take any of the following formats: 
+
+
+     * Windows or OS/2 1.x bitmap format (BMP/DIB)
+        (However, no support for the compressed format (RLE))
+
+
+     * PPM (Portable Pixelmap) ASCII format and raw format
+
+The format of the input image file is determined automatically from the contents 
+of the file.
+
+The horizontal pixel count of the input image must be an integer multiple of 8.  
+The vertical pixel count of the image file must be an integer multiple of 8 if the 
+-s 1 option is specified (the default), or an integer multiple of 4 if the -s 2 
+option is specified.  If the input file does not conform to these rules, any 
+excess at the bottom or the right side of the image will be automatically cut off.
+
+The compressed data (the HVQ2 file) will be written to the path specified by the 
+code_output argument.  If a file already exists with that name, it will be 
+overwritten, so be careful when specifying the path.
+
+
+The following optional arguments are available: 
+
+    -q thr
+
+     Specify an integer of 0 or greater.  The greater the value, the higher the 
+     compression ratio but the lower the quality of the decoded image.  Conversely, 
+     the smaller the value, the higher the quality of the image but the larger the 
+     size of the encoded file and the more time it takes to compress.  When the -q 
+     option is not specified, the default value of thr is 800. 
+
+    -s type
+
+     When 1 is specified for type, the image is compressed in 4:1:1 mode.  When 2 
+     is specified, it is compressed in 4:2:2 mode.  When the -s option is not 
+     specified, the default type is 1.
+
+
+    -o image_output
+
+     The decoded image file is output to the path specified by image_output.  If a 
+     file already exists with that name, it will be overwritten, so please be 
+     careful.  When the path specified by image_output ends with ".bmp" (case 
+     insensitive), the output file takes on the OS2 bit map format (uncompressed, 
+     24bit/pixel).  Otherwise, it takes on the PPM (Portable Pixelmap) raw format.
+
+
+HVQ2 File Format
+================
+
+hvq2enc version 2.6 outputs the compressed data to a file in the "HQV2 1.0" format 
+described below:
+
+
+
+"HVQ2 1.0" file header
+----------------------------------------------------------------------
+   Offset    Size        Explanation
+  (bytes)   (bytes)
+----------------------------------------------------------------------
+    +0        16     File version (*1)
+   +16         4     File size (*2)(*5)
+   +20         1     Color difference component - horizontal 
+                     sampling rate (*3)
+   +21         1     Color difference component - vertical
+                     sampling rate (*4)
+   +22         2     Number of pixels in horizontal direction (*5)
+   +24         2     Number of pixels in vertical direction (*5)
+   +26         6     Encoding parameter (*6)
+   +32         4     Required number of FIFO packets for 2-pass decoding (*5)
+   +36        54     Section offset table (*6)
+----------------------------------------------------------------------
+
+*1  "HVQ2 1.0" is stored with a ASCIIZ character string.
+*2  The file size must be an integer multiple of 4.
+*3  Must be 2 for HVQ2 1.0 
+*4  2 for 4:1:1 mode, and 1 for 4:2:2 mode.
+*5  The big endian method is used for this data.
+*6  Not disclosed.
+
+
+
+Notes
+=====
+
+In general, the smaller the size of the image, the lower the compression 
+efficiency.  An extremely small image may not even be compressed.
+
+
+Main changes from version 2.5
+=============================
+
+-- Fixed the problem regarding incorrect input of 16bit color Windows bitmap files.
+

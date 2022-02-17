@@ -1,0 +1,24 @@
+Function 
+-  Sets up RDP blender. 
+  MrnBlenderMode defines the cycle type and render mode of the RDP. 
+
+Functions 
+-  void mrnBlenderModeSet( MrnBlenderMode *mode_ptr,
+                          const u8 cycle_type,
+                          const u8 p1, const u8 m1, const u8 a1, const u8 b1,
+                          const u8 p2, const u8 m2, const u8 a2, const u8 b2,
+                          const u16 render_mode_flags );
+  Sets values in MrnBlenderMode. 
+    p1, m1, a1, b1 are for the 1st cycle. 
+    p2, m2, a2, b2 are for the 2nd cycle. 
+  Select the various arguments from the following macros. 
+    cycle_type:  	MRN_BLENDER_MODE_CYCLE_TYPE_*
+    p1,p2:       	MRN_BLENDER_MODE_P_*
+    m1,m2:       	MRN_BLENDER_MODE_M_*
+    a1,a2:       	MRN_BLENDER_MODE_A_*
+    b1,b2:       	MRN_BLENDER_MODE_B_*
+  render_mode_flags is set by the logical sum of MRN_BLENDER_MODE_*. 
+
+History 
+  1998/ 9/22 Takamitsu Hirata 
+    BlenderMode.h, blendermode.c :  Initial version 

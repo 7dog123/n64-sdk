@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContDataGet</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContDataGet(OSContPad *contpad, u32 cont_no)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>*contpad	 Controller data structure
+cont_no		 The number of Controller read</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p>Gets the Controller data</p>
+
+<p>The Controller data is read at retrace time, or with the osContDataRead function, and stored in the internal buffer of the Controller Manager.  The nuContDataGet function copies the data from the internal buffer. To get data from all 4 controllers, please use nuContDataGetAll.</p>
+
+<pre>For Example:	
+	OSContPad	padData;
+
+	/* read data from 1 Controller */
+	nuContDataGet(&amp;padData, 0);</pre>
+
+<p><strong>Note:</strong></p>
+
+<p>This function was a macro in V1.1</p>
+
+<hr>
+
+<pre>Reference: <a href="nuContDataRead.htm">nuContDataRead</a>,<a
+href="nuContDataGetAll.htm">nuContDataGetAll</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

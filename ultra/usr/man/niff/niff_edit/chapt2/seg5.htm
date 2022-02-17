@@ -1,0 +1,387 @@
+<html>
+<body bgcolor="ffffff">
+<br>
+<hr size=3>
+<br>
+<h1>Chapter 2 NIFFeditor for SGI</h1>
+<br>
+<hr size=3>
+<br>
+<h3>(6)Node Settings</h3>
+<p>
+<blockquote>
+　The node setting dialog box for SGI can be started by clicking on the respective node. There are currently five nodes that allow settings via the dialog box. They are 
+<a href=#SCENE>
+Scene
+</a>
+,
+<a href=#OBJ>
+Obj
+</a>
+,
+<a href=#SHAPE>
+Shape
+</a>
+,
+<a href=#MAT>
+Mat
+</a>
+, and
+<a href=#TEX>
+Texture.
+</a>
+The method of entering settings for each is described below.
+</blockquote>
+<p>
+<blockquote>
+<b>
+<a name="SCENE">
+<li>Scene Node<p>
+</b>
+<blockquote>
+　The flags with the NIFF Scene node can be set using the dialog box illustrated below.<p>
+<center>
+<img src="./NIFFeditSGI_scene.gif">
+<p>
+<b>Figure　Scene Node Settings Dialog Box</b>
+</center>
+<p>
+<b>
+Name<p>
+</b>
+<blockquote>
+　The Scene name is diaplayed in this box.
+</blockquote>
+<p>
+<b>
+SCENE_CFG_VIDEO<p>
+</b>
+<blockquote>
+　This sets the video mode flag of the 
+<a href="../../niff_spec/chapt3/seg4.htm">
+scene_cfg
+</a> data in the SceneList.<p>
+　Use the switch to set one of three modes,NTSC, PAL, or MPAL.
+</blockquote>
+<p>
+<b>
+GAMMA<p>
+</b>
+<blockquote>
+　This sets the flag for gamma correction of the 
+<a href="../../niff_spec/chapt3/seg4.htm">
+scene_cfg
+</a> data in the SceneList.
+</blockquote>
+<p>
+<b>
+DITHER<p>
+</b>
+<blockquote>
+　This sets the flag for dithering the 
+<a href="../../niff_spec/chapt3/seg4.htm">
+scene_cfg 
+</a> data in the SceneList.
+</blockquote>
+<p>
+<b>
+DIVOT<p>
+</b>
+<blockquote>
+　This sets the flag for divoting the 
+<a href="../../niff_spec/chapt3/seg4.htm">
+scene_cfg
+</a> data in the SceneList.
+</blockquote>
+<p>
+</blockquote>
+<b>
+<a name="OBJ">
+<li>Obj Node<p>
+</b>
+<blockquote>
+　The flags in the NIFF Obj node can be set using this dialog box as illustrated below.
+<p>
+<center>
+<img src="./NIFFeditSGI_obj.gif"><p>
+<b>
+Figure　Obj Node Settings Dialog Box
+</b>
+<p>
+</center>
+<b>
+Name<p>
+</b>
+<blockquote>
+　The Obj name is displayed in this box.
+</blockquote>
+<p>
+<b>
+ACTIVE Switch <p>
+</b>
+<blockquote>
+　When turn ON, this sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+obj_state
+</a>
+flag in the NIFF Obj to ACTIVE.
+</blockquote>
+<p>
+<b>
+type<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+obj_type
+</a>
+data in the NIFF Obj. THis can be selected from among NULL object, 3D object, and BILLBOARD object.
+</blockquote>
+<p>
+<b>
+group<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+obj_group
+</a>
+data in the NIFF Obj. When the NONE switch is turned ON, the setting is OB_GROUP_NONE. When the NONE switch is turn OFF, the priority is the one shown in the selection box on the right.
+</blockquote>
+<p>
+<b>
+priority<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+obj_pri
+</a>
+data in the NIFF Obj. When the NONE switch is truned ON, the settings is OBJ_PRI_NONE. When the NONE switch is turned OFF, the priority is the one shown in the selection box on the right.
+</blockquote>
+<p>
+<b>
+render_priority<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+obj_render_pri
+</a>
+data in the NIFF Obj. IF[NIFF->] is selected, the NIFF render mode selection switch on the right can be used to select any of OPA_SURF, OPA_INTER, OPA_DECAL, TEX_EDGE, XLU_SURF, XLU_INTER, or XLU_DECAL.<p>
+　If [N64->] is selected, the render mode setting is described in render_type0 and render_type1, below the render_priority switch. At present, render_pri can only be set to the [NIFF->] setting.
+</blockquote>
+<p>
+<b>
+render_cycle_type<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+obj_render_cycle_type
+</a>
+data in the NIFF Obj. Select either 1 cycle or 2cycle.
+</blockquote>
+<p>
+<b>
+Have Link_Billboard<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg5-2.htm">
+have_link_billboard
+</a>
+flag in the NIFF Obj.
+</blockquote>
+</blockquote>
+<p>
+<b>
+<a name="SHAPE">
+<li>Shape Node<p>
+</b>
+<blockquote>
+　Flags can be set inside the NIFF LOD node using the following dialog box.
+<p>
+<center>
+<img src="./NIFFeditSGI_shape.gif"><p>
+Figure　Shape Node Setting Dialog Box
+</center>
+<p>
+<b>
+Name<p>
+</b>
+<blockquote>
+　The shape name is displayed in this box.
+</blockquote>
+<p>
+<b>
+ALIAS<p>
+</b>
+<blockquote>
+　This sets the type of anti-aliasing for the 
+<a href="../../niff_spec/chapt3/seg6-2.htm">
+shape_type
+</a>
+flag in the NIFF Shape node. Select one from among ANTI(anti-aliasing), REDUCED(simple anti-aliasing), and NONE(no anti-aliasing).
+</blockquote>
+<p>
+<b>
+Z-Buffer<p>
+</b>
+<blockquote>
+　When this switch is turned ON, the 
+<a href="../../niff_spec/chapt3/seg6-2.htm">
+shape_type
+</a>
+Z-Buffer in the NIFF Shape node becomes enabled.
+</blockquote>
+<p>
+<b>
+Culling<p>
+</b>
+<blockquote>
+　This performs culling control of the 
+<a href="../../niff_spec/chapt3/seg6-2.htm">
+shape_type
+</a>
+in the NIFF Shape node. Turn FRONT to ON, for front face culling, or turn BACK to ON for back face culling. Turn both ON to cull both faces. Turn both OFF for no culling.
+</blockquote>
+</blockquote>
+<p>
+<b>
+<a name="MAT">
+<li>Mat Node<p>
+</b>
+<blockquote>
+　This sets the flags in the NIFF Mat nodes. The dialog box is illustrated below.
+<p>
+<center>
+<img src="./NIFFeditSGI_mat.gif">
+<p>
+Figure Mat Node Settings Dialog box<p>
+</center>
+<b>
+Name<p>
+</b>
+<blockquote>
+　The mat name is displayed in this box.
+</blockquote>
+<p>
+<b>
+shade_type<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+mat_shade_type
+</a>
+data in the NIFF Mat. The switches for performing lighting settings, shade settings, and environment settings are lined up from left to right. <p>
+　From the lighting settings, select one from among GLOBAL(global light), LOCAL(local light), and NON(no light).<p>
+　From the shade settings, select one from between FLAT(flat shading) and SMOOTH(smooth shading). <p>
+　From the environment map settings, select one from among USE_REFLECT(reflection mapping), USE_HILIGHT(highlight mapping), and NONE(no environment mapping).
+</blockquote>
+<p>
+<b>
+mat_type<p>
+</b>
+<blockquote>
+　This sets the 
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+mat_type
+</a>
+in the NIFF Mat. First select the mat type setting method, either NIFF or N64. After changing this switch, the user must currently close the dialog box by clicking [OK] once. Then, click the node again to re0open the dialog box. Otherwise, the display updates. This problem will be corrected in a future revision.<p>
+　If [NIFF] has been selected, the display is in dedicated NIFF color setting mode. In this case, you can choose whether or not to select anything for the various colors: color_type0, color_type1, alpha_type0, and alpha_type1. Multiple colors can also be selected at the same time. However, when these are converted to a display list, the way they are selected is determined by the converter.<p>
+　If [N64] has been selected, the colors are selected according to the color combiner selection method of the N64.
+</blockquote>
+<p>
+<b>
+prim_color<p>
+</b>
+<blockquote>
+　This defines the 
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+prim_red, prim_green, prim_blue, and prim_alpha
+</a>
+data in the NIFF Mat. Indicate each color selection in the range of 0 to 1.
+</blockquote>
+<p>
+<b>
+usr_flag*<p>
+</b>
+<blockquote>
+　This describes the 
+<a href="../../niff_spec/chapt3/seg13-2.htm">
+usr_flag
+</a>
+data in NIFF Mat.
+</blockquote>
+</blockquote>
+<p>
+<b>
+<a name="TEX">
+<li>Tex Node<p>
+</b>
+<center>
+<img src="./NIFFeditSGI_tex.gif">
+<p>
+Figure　Tex Node Setting Dialog box<p>
+</center>
+<blockquote>
+<b>
+Name<p>
+</b>
+<blockquote>
+　This box displays the Tex name.
+</blockquote>
+<p>
+<b>
+Form<p>
+</b>
+<blockquote>
+　This is used to select the texture format. I, IA, CI, YUV, RGB, and RGBA. This is reflected in the 
+<a href="../../niff_spec/chapt3/seg14-2.htm">
+tex_type
+</a>
+data in the NIFF Tex node.
+
+</blockquote>
+<p>
+<b>
+Depth<p>
+</b>
+<blockquote>
+　This is used to select the number of bits per texture pixel. Select one from among 4bit, 8bit, 16bit, and 32bit. This is reflected in the 
+<a href="../../niff_spec/chapt3/seg14-2.htm">
+tex_type
+</a>
+data in the NIFF Tex node.
+</blockquote>
+<p>
+<b>
+Wrap_s, Wrap_t<p>
+</b>
+<blockquote>
+　The wrap, clamp, and mirror of the texture can be set. This is reflected in the 
+<a href="../../niff_spec/chapt3/seg14-2.htm">
+tex_wrap_s, and tex_wrap_t
+</a>
+data in the NIFF Tex node.
+</blockquote>
+<p>
+
+</blockquote>
+
+
+
+</blockquote>
+<p>
+<a href="../chapt3/seg1.htm">
+Jump to next！
+</a>
+
+</body>
+</html>
+
+
+
+

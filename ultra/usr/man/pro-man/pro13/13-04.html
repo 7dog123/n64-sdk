@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 13</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro13/index13.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro13/index13.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Tile Attributes</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The RDP has a small on-chip memory for buffering up to eight tile descriptors at a time. A tile descriptor contains all the information for a texture tile including format; size; line; Tmem address; palette; mirror enable S, T; mask S, T; shift S, T; SL, TL; SH, TH; and clamp S, T.
+<P>
+<a name="01"></a>
+<b>Format</b>
+<br>
+Format of texels in texture tile.
+
+<p>
+<b>Table 1</b> &nbsp;Tile Format Encoding
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Format Value</td>
+<td width=60%><font face="arial" size="-1"><b>Format</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">0</td>
+<td width=60%><font face="arial" size="-1">RGBA</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">1</td>
+<td width=60%><font face="arial" size="-1">YUV</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">2</td>
+<td width=60%><font face="arial" size="-1">CI</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">3</td>
+<td width=60%><font face="arial" size="-1">IA</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">4</td>
+<td width=60%><font face="arial" size="-1">I</td>
+</tr></table>
+
+<P>
+<a name="02"></a>
+<b>Size</b>
+<br>
+Size of texels in texture tile.
+<p>
+<b>Table 2</b> &nbsp;Size of Texels in Texture Tile
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Size Value</td>
+<td width=60%><font face="arial" size="-1"><b>Size of texel in bits</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">0</td>
+<td width=60%><font face="arial" size="-1">4</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">1</td>
+<td width=60%><font face="arial" size="-1">8</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">2</td>
+<td width=60%><font face="arial" size="-1">16</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">3</td>
+<td width=60%><font face="arial" size="-1">32</td>
+</tr></table>
+
+<P>
+<a name="03"></a>
+<b>Line</b>
+<br>
+Number of 64-bit words in one  row of the tile. Dependent on tile row width as well as texel type/size. When tiles are loaded using  the LoadTile command, the rows are padded to 64-bit boundaries. When LoadBlock is used to load a texture, it is assumed that the rows have already been padded. Line can also be used to control the stride through TMEM. By controlling Line, smaller tiles can be pieced together into one larger continuous tile.
+
+<P>
+<a name="04"></a>
+<b>Tmem Address</b>
+<br>
+Tile offset (0-511) in Tmem (64-bit) words.
+
+<P>
+<a NAME="05"></A>
+<b>Palette</b>
+<br>
+Palette number (0-15) of 4-bit Color Index (CI) textures. An 8-bit index into the high half of Tmem is formed by placing the palette number in the 4 MSBs and the 4-bit texel value in the 4 LSBs. The color in Tmem at this index becomes the color of the pixel. Therefore, for a 4-bit CI texture, you may select one of 16 palettes with each palette having up to 16 entries. Palettes can be loaded into Tmem using the LoadTLUT command or, optionally, the <i>LoadBlock</i> command.
+
+<P>
+<a name="06"></a>
+<b>Mirror Enable S,T</b>
+<br>
+Enables mirroring of texture coordinates. When the bit indicated by the  (Mask Value + 1) is 0 the coordinates are unchanged. When this bit is 1, however, the coordinates are inverted. Useful for symmetric patterns like trees, faces, etc. For example, a mask of 2 with mirror enabled would yield the following texture coordinates:
+<pre><font face="courier" size="3">0,1,2,3,4,5,6,7,...Input coordinate
+0,1,2,3,3,2,1,0,...Mirrored Coordinate</pre></font><BR>
+
+<P>
+<a name="07"></a>
+<b>Mask S,T</b>
+<br>
+Number of bits of tile coordinate to let through. For example, a mask of 1 indicates one bit of the texture coordinate should come through the mask, giving a pattern of 0,1,0,1... As another example, a mask value of 5 indicates that the texture should wrap every 32 texels, i.e., the lower 5 bits are passed through the mask.  A mask value of 0 forces clamping the texture coordinates to be between (SL,TL),(SH,TH)  inclusive. The mask value + 1 indicates the bit position that is looked at for mirroring. See discussion in Mirror Enable, above.
+
+<P>
+<a name="08"></a>
+<b>Shift S,T</b>
+<br>
+Shift texture coordinates after perspective divide. Used in  MIP maps and possibly for precision reasons (see the discussion of Detail texture later in this document).	Also useful for combining two differently scaled textures.
+
+<p>
+<b>Table 3</b> &nbsp;Shift Encoding
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Shift Value</td>
+<td width=60%><font face="arial" size="-1"><b>Shift</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">0</td>
+<td width=60%><font face="arial" size="-1">no shift</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">1</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 1</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">2</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 2</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">3</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 3</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">4</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 4</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">5</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 5</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">6</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 6</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">7</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 7</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">8</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 8</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">9</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 9</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">10</td>
+<td width=60%><font face="arial" size="-1">&#062&#062 10</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">11</td>
+<td width=60%><font face="arial" size="-1">&#060&#060 5</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">12</td>
+<td width=60%><font face="arial" size="-1">&#060&#060 4</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">13</td>
+<td width=60%><font face="arial" size="-1">&#060&#060 3</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">14</td>
+<td width=60%><font face="arial" size="-1">&#060&#060 2</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">15</td>
+<td width=60%><font face="arial" size="-1">&#060&#060 1</td>
+</tr></table>
+ 
+<P>
+<a name="09"></a>
+<b>SL,TL</b>
+<br>
+When rendering, the starting texel column, row of tile in texture image space,  10.2 fixed point. Can be used to slide texture w.r.t. the primitive. When loading, the starting texel column, row within the DRAM texture image.
+
+<P>
+<a name="10"></a>
+<b>SH,TH</b>
+<br>
+When rendering, the ending texel column, row of tile in texture image space, 10.2 fixed point. Used for clamping only. When loading, the ending texel column, row within the DRAM texture image.
+
+<P>
+<a name="11"></a>
+<b>Clamp S,T</b>
+<br>
+Enable clamp during wrap or mirror. When not masking, Clamp S,T is ignored and clamping is implicitly enabled. This bit allows clamping the texture coordinates when the mask is non-zero. Useful when you want to mirror and then clamp like an airplane wing insignia. The border of the insignia would have an alpha of 0. For example, SH = 11, mask = 2, mirror = 1, clamp = 1:
+<pre><font face="courier" size="3">0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...Input Coordinate
+0,1,2,3,3,2,1,0,0,1, 2, 3, 3, 3, 3, 3,...Mirrored/Clamped 
+Coordinates</pre></font>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

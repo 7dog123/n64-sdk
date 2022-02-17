@@ -1,0 +1,966 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Audio Library Functions Index</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/line2back.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=610>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=200 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=20 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=400 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=610>
+      <FONT SIZE="-2" COLOR=#29296B FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=200>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>Audio Library Functions</B><BR>
+            <B>in Alphabetical Order</B><BR><BR>
+<FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=1 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=400 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=400>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../al/al.html">
+            <IMG BORDER=0 SRC="../images/menu_al.gif"></A>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           
+ <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" ALIGN=TOP WIDTH=40></A>
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" ALIGN=TOP WIDTH=40</A>
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" ALIGN=TOP WIDTH=40></A>
+         </TR>
+
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=400>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../al/al.html"><IMG BORDER=0 SRC="../images/mh_audio.gif"></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=400>
+         <TR VALIGN="bottom" ALIGN="left">
+             <TD><FONT COLOR=#0000A0 FACE="ARIAL" SIZE=-2>
+To search the list, choose Find from the Edit menu in your browser.
+            </FONT></TD></tr></table>
+<P>
+
+
+<!---------------------------------------------------->
+<!--Define Index Text and bottom graphics-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=5 ROWSPAN=1 WIDTH=610>
+      <FONT SIZE="-2" COLOR=#29296B FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=14 CELLPADDING=0 UNITS="pixels" WIDTH=610>
+
+         <TR VALIGN="top" ALIGN="left">
+            <TD COLSPAN=1 WIDTH=210>
+               <IMG SRC="../images/space.gif" WIDTH=210 HEIGHT=1 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=400>
+               <IMG SRC="../images/space.gif" WIDTH=400 HEIGHT=1 BORDER=0></FONT></TD>
+         </TR>
+
+
+         <TR>
+            <TD><FONT FACE="ARIAL" SIZE=-1>
+            <A HREF="../al/alAudioFrame.html">alAudioFrame</a>
+            </FONT></TD>
+            <TD><FONT FACE="ARIAL" SIZE=-1>
+            <B>Creates an audio command list for one frame</B>
+            </FONT></TD>
+         </TR>
+
+         <TR>
+            <TD><FONT FACE="ARIAL" SIZE=-1>
+            <A HREF="../al/alBnkfNew.html">alBnkfNew</A>
+            </FONT></TD>
+            <TD><FONT FACE="ARIAL" SIZE=-1>
+            <B>Initializes a bank file for use on the Nintendo 64</B>
+            </FONT></TD>
+         </TR>
+
+<!--Insert Index Items Here. Then tag Index1, Index2, and TR-->
+
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCents2Ratio.html">alCents2Ratio</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Converts an s32 cents value to an f32 ratio</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alClose.html">alClose
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Shuts down the N64 Audio Library</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeq.html">alCSeq</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Nintendo 64 Compressed MIDI sequence routines</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqGetLoc.html">alCSeqGetLoc</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a marker with the current sequence location for use with the compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqGetTicks.html">alCSeqGetTicks</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the number of MIDI clock ticks of the compressed MIDI sequence location</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqNew.html">alCSeqNew
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes an N64 compressed MIDI sequence structure</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqNewMarker.html">alCSeqNewMarker
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a sequence marker at a given location for use with the compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqNextEvent.html">alCSeqNextEvent
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the next MIDI event from the compressed MIDI sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqPlayer.html">alCSeqPlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Nintendo 64 Compressed MIDI sequence player routines</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqSecToTicks.html">alCSeqSecToTicks</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Converts from seconds to MIDI clock ticks</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqSetLoc.html">alCSeqSetLoc</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the current sequence location within the compressed MIDI sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSeqTicksToSec.html">alCSeqTicksToSec</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Converts from MIDI clock ticks to seconds</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPDelete.html">alCSPDelete
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetChannelPriority.html">alCSPGetChannelPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPGetChlPriority</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetChlFXMix.html">alCSPGetChlFXMix
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the effect mix for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetChlPan.html">alCSPGetChlPan
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetChlPriority.html">alCSPGetChlPriority
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetChlProgram.html">alCSPGetChlProgram
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the MIDI program number assigned to a MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetChlVol.html">alCSPGetChlVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetFXMix.html">alCSPGetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPGetChlFXMix</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetPan.html">alCSPGetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPGetChlPan</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetProgram.html">alCSPGetProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPGetChlProgram</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetSeq.html">alCSPGetSeq
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the sequence currently assigned to the compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetTempo.html">alCSPGetTempo
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the tempo of the current sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetTime.html">alCSPGetTime</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been removed from the library and is no longer supported</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPGetVol.html">alCSPGetVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPNew.html">alCSPNew
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPPlay.html">alCSPPlay
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts the target sequence playing</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSendMidi.html">alCSPSendMidi</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sends the given MIDI message to the compressed sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetBank.html">alCSPSetBank
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the instrument bank for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetChannelPriority.html">alCSPSetChannelPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPSetChlPriority</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetChlFXMix.html">alCSPSetChlFXMix
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the effect mix on the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetChlPan.html">alCSPSetChlPan
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetChlPriority.html">alCSPSetChlPriority
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetChlProgram.html">alCSPSetChlProgram
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Assigns a MIDI program to a MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetFXMix.html">alCSPSetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPSetChlFXMix</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetChlVol.html">alCSPSetChlVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetPan.html">alCSPSetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPSetChlPan</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetProgram.html">alCSPSetProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alCSPSetChlProgram</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetSeq.html">alCSPSetSeq
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the compressed MIDI sequence player's target sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetTempo.html">alCSPSetTempo
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the tempo for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetTime.html">alCSPSetTime</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been removed from the audio library and is no longer supported</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPSetVol.html">alCSPSetVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alCSPStop.html">alCSPStop
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stops the target compressed MIDI sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alHeapAlloc.html">alHeapAlloc</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates memory from an Nintendo 64 audio heap</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alHeapCheck.html">alHeapCheck</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Checks the consistency of an N64 audio heap</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alHeapInit.html">alHeapInit</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes an audio heap for use with the Nintendo 64 Audio Library</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alInit.html">alInit
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes the N64 Audio Library</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alParseAbiCL.html">alParseAbiCL</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Prints an ABI (audio binary interface) command list in human readable format</B></FONT></TD></TR>
+
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeq.html">alSeq</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Nintendo 64 MIDI sequence routines</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqFileNew.html">alSeqFileNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a Sequence Bank File for use on the N64</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqGetLoc.html">alSeqGetLoc</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a marker with the current sequence location</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqGetTicks.html">alSeqGetTicks</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the number of MIDI clock ticks of the sequence location</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqNew.html">alSeqNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes an N64 MIDI sequence structure</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqNewMarker.html">alSeqNewMarker
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a sequence marker at a given location</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqNextEvent.html">alSeqNextEvent
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the next MIDI event in the sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqPlayer.html">alSeqPlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Nintendo 64 MIDI sequence player routines</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpDelete.html">alSeqpDelete
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetChannelPriority.html">alSeqpGetChannelPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpGetChlPriority</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetChlFXMix.html">alSeqpGetChlFXMix
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the effect mix for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetChlPan.html">alSeqpGetChlPan
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetChlPriority.html">alSeqpGetChlPriority
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetChlProgram.html">alSeqpGetChlProgram
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the MIDI program number assigned to a MIDI</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetChlVol.html">alSeqpGetChlVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetFXMix.html">alSeqpGetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpGetChlFXMix</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetPan.html">alSeqpGetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpGetChlPan</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetProgram.html">alSeqpGetProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpGetChlProgram</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetSeq.html">alSeqpGetSeq
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the sequence currently assigned to the ALSeqPlayer</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetTempo.html">alSeqpGetTempo
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the tempo of the current sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetTime.html">alSeqpGetTime</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been removed from the audio library and is no longer supported</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpGetVol.html">alSeqpGetVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpLoop.html">alSeqpLoop
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets sequence loop points</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpNew.html">alSeqpNew
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a Type 0 MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpPlay.html">alSeqpPlay
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts the target sequence playing</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSendMidi.html">alSeqpSendMidi
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sends the given MIDI message to the sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetBank.html">alSeqpSetBank
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the instrument bank for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetChannelPriority.html">alSeqpSetChannelPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpSetChlPriority</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetChlFXMix.html">alSeqpSetChlFXMix
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the effect mix on the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetChlPan.html">alSeqpSetChlPan
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetChlPriority.html">alSeqpSetChlPriority
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetChlProgram.html">alSeqpSetChlProgram
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Assigns a MIDI program to a MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetChlVol.html">alSeqpSetChlVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Set the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetFXMix.html">alSeqpSetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpSetChlFXMix</B></FONT></TD></TR> 
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetPan.html">alSeqpSetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpSetChlPan</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetProgram.html">alSeqpSetProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been renamed alSeqpSetChlProgram</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetSeq.html">alSeqpSetSeq
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the sequence player's target sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetTempo.html">alSeqpSetTempo
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the tempo for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetTime.html">alSeqpSetTime</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been removed from the audio library and is no longer supported</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpSetVol.html">alSeqpSetVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqpStop.html">alSeqpStop
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stop the target sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqSecToTicks.html">alSeqSecToTicks</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Converts from seconds to MIDI clock ticks</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqSetLoc.html">alSeqSetLoc</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the current sequence location</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSeqTicksToSec.html">alSeqTicksToSec</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Converts from MIDI clock ticks to seconds</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpAllocate.html">alSndpAllocate
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates a sound to a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpDeallocate.html">alSndpDeallocate
+</A></FONT></TD><TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a sound from a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpDelete.html">alSndpDelete
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpGetSound.html">alSndpGetSound
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Gets the identifier of the current target sound in a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpGetState.html">alSndpGetState
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Gets the state (playing, stopping, or stopped) of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpHeapSize.html">alSndpHeapSize</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been removed from the audio library and is no longer supported</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpNew.html">alSndpNew
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpPlay.html">alSndpPlay
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts playing the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpPlayAt.html">alSndpPlayAt
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts playing the current target sound at a specified time</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpSetFXMix.html">alSndpSetFXMix
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the wet/dry mix of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpSetPan.html">alSndpSetPan
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pan position of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpSetPitch.html">alSndpSetPitch
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pitch of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpSetPriority.html">alSndpSetPriority
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority of a sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpSetSound.html">alSndpSetSound
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the current target sound in a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpSetVol.html">alSndpSetVol
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the volume of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSndpStop.html">alSndpStop
+</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stops playing the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynAddPlayer.html">alSynAddPlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Adds a client player to the synthesizer</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynAllocFX.html">alSynAllocFX</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates an audio effect processor</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynAllocVoice.html">alSynAllocVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates a synthesizer voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynDelete.html">alSynDelete</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B><I>NOT IMPLEMENTED</I> - Deletes the synthesizer driver</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynFreeFX.html">alSynFreeFX</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B><I>NOT IMPLEMENTED</I> - Deletes allocated effect processor</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynFreeVoice.html">alSynFreeVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a synthesizer voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynGetFXRef.html">alSynGetFXRef</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Gets the address of an effect</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynGetPriority.html">alSynGetPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Requests the priority of a voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynHeapSize.html">alSynHeapSize</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Has been removed from the audio library and is no longer supported</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynNew.html">alSynNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates the specified synthesizer driver</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynRemovePlayer.html">alSynRemovePlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Removes a player from the synthesizer driver</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynSetFXMix.html">alSynSetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the wet/dry effect mix for a voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynSetFXParam.html">alSynSetFXParam</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets an effect parameter to the specified value</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynSetPan.html">alSynSetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the stereo pan position of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynSetPitch.html">alSynSetPitch</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pitch of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynSetPriority.html">alSynSetPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynSetVol.html">alSynSetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the target volume of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynStartVoice.html">alSynStartVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts synthesizing audio samples with the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynStartVoiceParams.html">alSynStartVoiceParams</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts synthesizing audio samples with the specified voice using the specified parameters</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/alSynStopVoice.html">alSynStopVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stops generating audio samples with the specified voice</B></FONT></TD></TR>
+
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alAudioFrame.html">n_alAudioFrame</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Creates an audio command list for one frame</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alClose.html">n_alClose</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Shuts down the n_audio library</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSeqNew.html">n_alCSeqNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes an n_audio compressed MIDI sequence structure</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSeqNewMarker.html">n_alCSeqNewMarker</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a sequence marker at a given location for use with the compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqNextEvent.html">n_alCSeqNextEvent</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the next MIDI event from the compressed MIDI sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPDelete.html">n_alCSPDelete</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetChlFXMix.html">n_alCSPGetChlFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the effect mix for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetChlPan.html">n_alCSPGetChlPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetChlPriority.html">n_alCSPGetChlPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetChlProgram.html">n_alCSPGetChlProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the MIDI program number assigned to a MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetChlVol.html">n_alCSPGetChlVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetSeq.html">n_alCSPGetSeq</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the sequence currently assigned to the compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetTempo.html">n_alCSPGetTempo</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the tempo of the current sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPGetVol.html">n_alCSPGetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPNew.html">n_alCSPNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a compressed MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPPlay.html">n_alCSPPlay</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts the target sequence playing</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetBank.html">n_alCSPSetBank</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the instrument bank for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetChlFXMix.html">n_alCSPSetChlFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the effect mix on the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetChlPan.html">n_alCSPSetChlPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetChlPriority.html">n_alCSPSetChlPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetChlProgram.html">n_alCSPSetChlProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Assigns a MIDI program to a MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetChlVol.html">n_alCSPSetChlVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetSeq.html">n_alCSPSetSeq</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the compressed MIDI sequence player's target sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetTempo.html">n_alCSPSetTempo</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the tempo for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPSetVol.html">n_alCSPSetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alCSPStop.html">n_alCSPStop</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stops the target compressed MIDI sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alInit.html">n_alInit</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes the n_audio library</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqNewMarker.html">n_alSeqNewMarker</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a sequence marker at a given location</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqNextEvent.html">n_alSeqNextEvent</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the next MIDI event in the sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpDelete.html">n_alSeqpDelete</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetChlFXMix.html">n_alSeqpGetChlFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the effect mix for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetChlPan.html">n_alSeqpGetChlPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetChlPriority.html">n_alSeqpGetChlPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetChlProgram.html">n_alSeqpGetChlProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the MIDI program number assigned to a MIDI</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetChlVol.html">n_alSeqpGetChlVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetSeq.html">n_alSeqpGetSeq</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the sequence currently assigned to the ALSeqPlayer</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetTempo.html">n_alSeqpGetTempo</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the tempo of the current sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpGetVol.html">n_alSeqpGetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Returns the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpLoop.html">n_alSeqpLoop</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets sequence loop points</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpNew.html">n_alSeqpNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a Type 0 MIDI sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpPlay.html">n_alSeqpPlay</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts the target sequence playing</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSendMidi.html">n_alSeqpSendMidi</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sends the given MIDI message to the sequence player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetBank.html">n_alSeqpSetBank</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the instrument bank for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetChlFXMix.html">n_alSeqpSetChlFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the effect mix on the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetChlPan.html">n_alSeqpSetChlPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pan position for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetChlPriority.html">n_alSeqpSetChlPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetChlProgram.html">n_alSeqpSetChlProgram</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Assigns a MIDI program to a MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetChlVol.html">n_alSeqpSetChlVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Set the volume for the given MIDI channel</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetSeq.html">n_alSeqpSetSeq</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the sequence player's target sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetTempo.html">n_alSeqpSetTempo</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Specifies the tempo for the sequence player to use</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpSetVol.html">n_alSeqpSetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the overall sequence volume</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSeqpStop.html">n_alSeqpStop</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stop the target sequence</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpAllocate.html">n_alSndpAllocate</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates a sound to a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpDeallocate.html">n_alSndpDeallocate</A></FONT></TD><TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a sound from a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpDelete.html">n_alSndpDelete</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpGetSound.html">n_alSndpGetSound</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Gets the identifier of the current target sound in a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpGetState.html">n_alSndpGetState</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Gets the state (playing, stopping, or stopped) of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpNew.html">n_alSndpNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Initializes a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpPlay.html">n_alSndpPlay</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts playing the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpPlayAt.html">n_alSndpPlayAt</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts playing the current target sound at a specified time</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpSetFXMix.html">n_alSndpSetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the wet/dry mix of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpSetPan.html">n_alSndpSetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pan position of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpSetPitch.html">n_alSndpSetPitch</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pitch of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpSetPriority.html">n_alSndpSetPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority of a sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpSetSound.html">n_alSndpSetSound</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the current target sound in a sound player</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpSetVol.html">n_alSndpSetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the volume of the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSndpStop.html">n_alSndpStop</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stops playing the current target sound</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynAddSeqPlayer.html">n_alSynAddSeqPlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Adds a client sequence player to the synthesizer</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynAddSndPlayer.html">n_alSynAddSndPlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Adds a client sound player to the synthesizer</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynAllocFX.html">n_alSynAllocFX</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates an audio effect processor</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynAllocVoice.html">n_alSynAllocVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates a synthesizer voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynDelete.html">n_alSynDelete</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deletes the synthesizer driver by deleting all players currently registered at the synthesizer driver</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynFreeFX.html">n_alSynFreeFX</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B><I>NOT IMPLEMENTED</I> - Deletes allocated effect processor</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynFreeVoice.html">n_alSynFreeVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Deallocates a synthesizer voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynGetFXRef.html">n_alSynGetFXRef</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Gets the address of an effect</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynGetPriority.html">n_alSynGetPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Requests the priority of a voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynNew.html">n_alSynNew</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Allocates the specified synthesizer driver</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynRemovePlayer.html">n_alSynRemovePlayer</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Removes a player from the synthesizer driver</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynSetFXMix.html">n_alSynSetFXMix</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the wet/dry effect mix for a voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynSetFXParam.html">n_alSynSetFXParam</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets an effect parameter to the specified value</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynSetPan.html">n_alSynSetPan</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the stereo pan position of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynSetPitch.html">n_alSynSetPitch</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the pitch of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynSetPriority.html">n_alSynSetPriority</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the priority of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynSetVol.html">n_alSynSetVol</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Sets the target volume of the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynStartVoice.html">n_alSynStartVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts synthesizing audio samples with the specified voice</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynStartVoiceParams.html">n_alSynStartVoiceParams</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Starts synthesizing audio samples with the specified voice using the specified parameters</B></FONT></TD></TR>
+
+<TR><TD><FONT FACE="ARIAL" SIZE=-1><A HREF="../al/n_alSynStopVoice.html">n_alSynStopVoice</A></FONT></TD>
+<TD><FONT FACE="ARIAL" SIZE=-1><B>Stops generating audio samples with the specified voice</B></FONT></TD></TR>
+
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180 ALIGN="left">
+         <TR VALIGN="bottom" ALIGN="left">
+            <TD COLSPAN=1>
+            <IMG BORDER=0 HEIGHT=10 WIDTH=1 SRC="../images/space.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center">
+            <TD COLSPAN=1>
+            <IMG BORDER=0 HEIGHT=20 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center">
+            <TD COLSPAN=3>
+            <FONT FACE="arial" SIZE=-2 COLOR=FF0000>
+            <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>Nintendo of America Inc.<BR>All rights reserved.<BR>
+                  Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="right" WIDTH=385>
+            <TD COLSPAN=1 WIDTH=75>
+               <IMG SRC="../images/space.gif" WIDTH=75 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            <TD COLSPAN=1 WIDTH=75>
+               <IMG SRC="../images/space.gif" WIDTH=75 HEIGHT=21 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            <TD COLSPAN=1 WIDTH=75>
+               <IMG SRC="../images/space.gif" WIDTH=75 HEIGHT=21 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>

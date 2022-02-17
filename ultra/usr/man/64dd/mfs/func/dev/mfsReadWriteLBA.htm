@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsReadWriteLBA</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsReadWriteLBA</h1>
+
+<hr>
+
+<p><strong>Format</strong></p>
+
+<dl>
+    <dd>s32 mfsReadWriteLBA(u32 startLBA, u32 nLBAs, void*
+        buf,s32 direction)</dd>
+</dl>
+
+<p><strong>Arguments</strong></p>
+
+<dl>
+    <dd>startLBA Starting block address</dd>
+    <dd>nLBAs Number of blocks</dd>
+    <dd>*buf Buffer</dd>
+    <dd>direction Flag</dd>
+</dl>
+
+<p><strong>Return value</strong></p>
+
+<dl>
+    <dd>Error</dd>
+</dl>
+
+<p><strong>Function</strong></p>
+
+<dl>
+    <dd>Performs read/write of disk</dd>
+</dl>
+
+<p><strong>Description</strong></p>
+
+<p>This function enables LeoReadWrite to be handled by using the MFS library.
+Data read/write processing is performed in units of LBAs.</p>
+
+<p><strong>Main errors：</strong></p>
+
+<dl>
+    <dd>MFS_ERR_NO</dd>
+    <dd>　</dd>
+    <dd>Normal termination</dd>
+    <dt>　</dt>
+    <dd>MFS_ERR_DEVICE</dd>
+    <dt>　</dt>
+    <dd>Device error</dd>
+    <dd>An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.</dd>
+</dl>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Programming Cautions (10-11) Reliability of Data</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>10-11  Reliability of Data (Required)</h3>
+
+<b>Caution</b><br>
+Because the reliability of data contained in a Controller Pak can't be verified by N64 hardware or the N64 OS/Library, the reliability of this data must be verified by the game.
+
+<p>
+<b>Discussion</b><br>
+Data storage cannot be assured if power is interrupted or if the Controller Pak
+is removed during write access.
+
+<p>
+Examples of measures to prevent destruction of back-up data are:
+
+<ol>
+<li>Detection of errors ... Checksum / CRC.
+<li>Detection of abnormal data by the program.
+<li>Check the Controller Pak for brand new data or destroyed data.
+<li>Writing completion flag.
+<li>Back up the saved data (write it to two locations).
+</ol>
+
+<p align="right">
+<a href="./index10.html"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 24</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro24/index24.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro24/index24.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Raster Tuning (Filtrate)</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Disable Atomic Primitives</b>
+<br>
+Atomic primitive mode (gPipelineMode(G_PM_1PRIMITIVE)) is intended to avoid span buffer coherency problems which can be caused by sucessive primitives with overlapping spans during “read-modify-write” modes (z-buffered or blended modes). The 1PRIMITIVE mode inserts a delay into the pipeline  between each primitive to make sure there are no overlaps.
+
+<P>
+In reality, the overlap case is very rare, and would be hard to see unless you were looking for it. In the worst case, the lost cycles between primitives can add up to about 1-1.5Mpixels/sec of lost fillrate. 
+
+<P>
+To disable the atomic primitive mode, use the command gPipelineMode(G_PM_NPRIMITIVE).
+
+<P>
+<a name="02"></a>
+<b>Partial Sorting for Z-Buffer</b>
+<br>
+A “partial sorting” of objects being drawn can accelerate rendering when using z-buffering. The z-buffer test is a conditional write, so if objects are drawn in roughly front-to-back order, this test will often prevent the write to update the z-buffer value.
+
+<P>
+<a name="03"></a>
+<b>No Z-Buffer</b>
+<br>
+Z-buffer causes major penalty in fillrate. Antialiasing also causes some performance loss in fillrate. We have included a simple performance tool (blockmonkey) in the release to give you a feel for geometry and fillrate performance.
+
+<P>
+There are many visibility sorting algorithms available and even more hybrids of these algorithms. There are also properties of particular games that impart valuable information about depth order. If a game can use these techniques and avoid z-buffering, performance will improve.
+
+<P>
+<a name="03.1"></a>
+<b>Convex Objects</b>
+<br>
+If a group of objects are all convex, a centroid or bounding volume sort and back-face rejection will give the proper rendering order.
+
+<P>
+<a name="03.2"></a>
+<b>Meshed Objects</b>
+<br>
+Many meshed objects have a small number of mesh traversal orders which are correct sorts at arbitrary orientation, even though they are concave. Meshed object are topologically 2D, for example, a torus, a terrain height field, building corridors, etc. With one batch of vertex points, one of several polygon descriptor display lists could be selected by view location. For example, the polygons in a terrain mesh might have four orders across the mesh, S+T+, S-T+, S+T-, S-T-. The two sides of the mesh then closest to the view point select the order.
+
+<P>
+<a name="03.3"></a>
+<b>Cell Based Scenes</b>
+<br>
+Cells are simply a higher level of mesh, where the cell draw order can be determined from view.
+
+<P>
+<a name="03.4"></a>
+<b>Layered Scenes</b>
+<br>
+Often layers of data are known never to be behind another (buildings on a landscape, furniture in a room). then the layers can be drawn in this order, with only a sort within each layer.
+
+<P>
+<a name="03.5"></a>
+<b>Bucket Sort</b>
+<br>
+Attractive since data need only be accessed once. A linked list of buckets can avoid local overflow without excessive memory usage. the bucket can be a display list, for example, of calls to clumps.
+
+<P>
+<a name="03.6"></a>
+<b>Avoid Cyclic Objects</b>
+<br>
+Clumps of polygons in which NO sort order is correct (three long triangles arranged in a triangle in which at each corner a different triangle is in front) have no visibility solution without subdivision.
+
+<P>
+<a name="03.7"></a>
+<b>Game-Specific Visibility</b>
+<br>
+Many game situations provide implied visibility order between objects or even within objects. Consider a jet fighter flight simulator game: The player is always moving “forward” (in general) and targets attack from a limited number of directions. This could allow you to model the targets carefully and achieve correct surface visibility determination, even if they are not strictly convex.
+
+<P>
+<a name="04"></a>
+<b>No Antialiasing</b>
+<br>
+Turning off antialiasing can help increase fillrate. To minimize the aliasing effects, you can increase the horizontal resolution of the framebuffer. Performance tests (blockmonkey) show that 512x240 “no AA no ZB” is faster than 320x240 “AA no ZB” on large polygons. In some cases, this is better than a 25% gain, in exchange for an increase in framebuffer size.
+
+<P>
+On smaller polygons, you will pay a 5% to 10% fixed overhead due to additional video bandwidth. Both antialiasing and dither filter video hardware require fetching 3 scanlines and filter down to produce a single scanline of video.
+
+<P>
+<a name="05"></a>
+<b>Reduced Aliasing</b>
+<br>
+Reduced Aliasing refers to a blender mode (see the G_RM_RA* macros in gbi.h)  in which the color and the pixel coverage  are only written instead of the normal read/modify /write cycle.  In this mode  silouette edges will be antialiased, but internal edges of an object will not be antialiased.   This mode works with and without z-buffering.
+
+<P>
+Silouettes can also have artifacts in this mode when displayed on top of a surface which has edges through it, such as a tesselated background, which has also been rendered in this mode.  This is because the edges in the background will be partial, rather than fully covered.
+In this case, the pixel will have multiple partial fragments, and the antialiasing on the silouette will look wrong.  A possible work around for this problem is to  render the background in non-antialiased mode, which will write full coverage to the framebuffer.  Then render the foreground characters using this reduced antialiasing mode.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

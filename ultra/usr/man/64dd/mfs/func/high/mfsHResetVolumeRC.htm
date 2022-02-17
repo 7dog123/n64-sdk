@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHResetVolumeRC</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHResetVolumeRC</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHResetVolumeRC(s32 drive)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>drive Drive name ('A', 'B', ...)</p>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Resets update counter of volume</p>
+
+<p><strong>Description:</strong>
+This function resets the update counter value of the volume to 0.
+Since the update counter only exists in the RAM area, the MFS_ERR_REFUSE error will occur if this function is used for the ROM area.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_NOTFOUND	Drive not found
+MFS_ERR_DEVICE		Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT		Write protected
+			The volume attribute is write protected, or the medium is volume protected.
+MFS_ERR_REFUSE 		Illegal operation</pre>
+
+<hr>
+</body>
+</html>

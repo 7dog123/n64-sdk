@@ -1,0 +1,225 @@
+<html>
+<head>
+<title>Developers News 1.4</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr>
+<p align="center">
+<font size="6"><strong><IMG src="gif/devnews.gif" height="44" width="453">1.4</strong></font>
+
+</p>
+<p align="left">
+<b> Nintendo 64 Developers Newsletters will be published periodically,
+as needed.  These feature software and hardware system anomalies, which
+have been discovered, and their solutions and/or work-arounds.  Development
+tips will also be included.</b>
+</p>
+
+<hr>
+
+<h2>EEPROM (Electrical Erasable Programmable ROM)</h2>
+The EEPROM installed within some Nintendo 64 Game Pak(s) is a 512-byte 
+(64 words x 64 bits) EEPROM. It contains a circuit for communication with 
+the Nintendo 64 Control Deck's RCP serial interface.
+<p>
+
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="./gif/Img00004.gif"></tr></td></table>
+
+
+<h3>Data Reliability</h3>
+Each EEPROM address 0~63 can normally be over-written around 100,000 times. 
+Beyond this point, memory cell deterioration may prevent data from being 
+written normally.  Data can safely be stored on a EEPROM for up to ten 
+years. However, if no new data have been written, the memory cells' charge 
+gradually dies and data may not be readable beyond this period.  Thus, it is 
+important to include check sum and parity bit data in order to check data 
+reliability.
+
+<h3>Precautions when Writing Data</h3>
+When writing data (<a target=top href="../n64man/os/osEepromWrite.html">osEepromWrite</a>), there is a wait of approximately 15 msec 
+between the interface circuit's reception of the write command and completion 
+of data being written to the memory cells. If a second osEepromWrite is 
+called during this period, the program will go into a needless "read status" 
+polling loop inside the function until the first write command is completed.  
+Therefore, when performing consecutive writes, more than 15 msec must be 
+allowed between the completion of one write command and execution of the next 
+write command.
+<p>
+The command <a target=top href="../n64man/os/osEepromLongWrite.html">osEepromLongWrite</a> uses the CPU timer to create the required 15 
+msec interval. The timer is set to interrupt after 15 msec, while the thread 
+that called the function goes to the wait status.
+
+<h3>Related Commands</h3>
+
+<font face="courier">s32 <a target=top href="../n64man/os/osEepromProbe.html">osEepromProbe</a>(OSMesgQueue *mq)</font>
+<p>
+This command checks for the presence of EEPROM. EEPROM is present if the 
+returned value is 1 and absent if the returned value is 0.  0 will also be 
+returned when a hardware error occurs (in the communication path).
+<p>
+
+<font face="courier">s32 <a target=top href="../n64man/os/osEepromWrite.html">osEepromWrite</a>(OSMesgQueue *mq, u8 address, u8 *buffer)</font>
+<p>
+This command writes 8 bytes of data to the EEPROM address (0~63).  If the 
+write command has been properly sent to the interface circuit, a value of 0 
+is returned.  If the address is not 0~63,  a value of -1 is returned. If 
+there is no EEPROM (due to trouble in the communication path) or the 
+interface circuit has not responded (CONT_NO_RESPONSE_ERROR), a value of 8 
+is returned.
+<p>
+
+<font face="courier">s32 <a target=top href="../n64man/os/osEepromRead.html">osEepromRead</a>(OSMesgQueue *mq, u8 address, u8 *buffer)</font>
+<p>
+This command reads 8 bytes of data from the EEPROM address (0~63).  If the 
+data have been properly read (no error in the communication path), a value 
+of 0 is returned. If the address is not 0~63, a value of -1 is returned. If 
+there is no EEPROM (due to trouble in the communication path) or the 
+interface circuit has not responded (CONT_NO_RESPONSE_ERROR),  a value of 8 
+is returned.
+<p>
+
+<font face="courier">s32 <a target=top href="../n64man/os/osEepromLongWrite.html">osEepromLongWrite</a>(OSMesgQueue *mq, u8 address, u8 *buffer, int length)</font>
+<p>
+This command writes 8 ( "length" bytes of successive data to the EEPROM 
+address (0~63).  Actually, it merely calls up osEepromWrite "length" times 
+as a part of the function.  There is a 15 msec wait using the CPU timer, 
+however, for each write function.  As with osEepromWrite, a value of 0 is 
+returned if all write commands ("length" times worth) are sent to the 
+interface circuit.  If the address is not 0~63,  a value of -1 is returned.  
+If there is no EEPROM (due to trouble in the communication path) or the 
+interface circuit has not responded (CONT_NO_RESPONSE_ERROR), a value of 8 
+is returned.
+<p>
+
+<font face="courier">s32 <a target=top href="../n64man/os/osEepromLongRead.html">osEepromLongRead</a>(OSMesgQueue *mq, u8 address, u8 *buffer, int length)</font>
+<p>
+This command reads 8 x "length" bytes of successive data to the EEPROM 
+address (0~63).  Actually, it merely calls up <a target=top href="../n64man/os/osEepromRead.html">osEepromRead</a> "length" times 
+as a part of the function. The return values are the same as for sEepromRead,
+where a value of 0 is returned if all data ("length" times worth) have been 
+properly read.  If the address is not 0~63, a value of -1 is returned. If 
+there is no EEPROM (due to trouble in the communication path) or the 
+interface circuit has not responded (CONT_NO_RESPONSE_ERROR), a value of 8 
+is returned.
+<p>
+
+<hr>
+
+<pre>
+#include <ultra64. h>
+#define NUM_MESSAGE 1
+
+OSMesgQueue	siMesgQueue;            /* Message queue for SI */
+OSMesg          siMesgBuf[NUM_MESSAGE];	/* Message buffer for SI */
+OSMesg          dummyMessage;          	/* Dummy message to put in queue */
+static OSContStatus sdata[MAXCONTROLLERS];  /* Controller port status */
+
+/* Write data to all 512 bytes of EEPRom. */
+int save_eeprom(OSMesgQueue *mq, u8 *buffer)
+{
+  int i, ret = 0;
+
+  /* Confirm EEPROM communication */
+  if ( <a target=top href="../n64man/os/osEepromProbe.html">osEepromProbe</a>(mq)  != 1)
+    return -1;
+
+  for (i = 0; i < EEPROM_MAXBLOCKS ; i++) {
+    /* Write data to EEPROM */
+    ret |= <a target=top href="../n64man/os/osEepromWrite.html">osEepromWrite</a>(mq, i, buffer) ;
+
+    /* Wait 15msec */
+    WAIT_15_M_SEC() ;
+  }
+  return ret;
+}
+
+/* Read all 512 bytes of EEPRom. */
+int load_eeprom(OSMesgQueue *mq, u8 *buffer)
+{
+  int i,ret = 0;
+
+  /* Confirm EEPROM communication */
+  if ( osEepromProbe (mq) != 1 )
+    return -1;
+
+  /* Read EEPROM data */
+  for(i = 0; i < EEPROM_MAXBLOCKS ; i++)
+    ret |= <a target=top href="../n64man/os/osEepromRead.html">osEepromRead</a>(mq, i, buffer) ;
+    return ret;
+  }
+
+void main_proc (void)
+{
+  /* Buffer for writing 512 bytes */
+  u8 save_buffer [EEPROM_MAXBLOCKS * EEPROM_BLOCK_SIZE] ;
+
+  /* Buffer for reading 512 bytes */
+  u8 load_buffer [EEPROM_MAXBLOCKS * EEPROM_BLOCK_SIZE] ;
+
+  /* Controller data */
+  static OSContPad rdata [MAXCONTROLLERS] ;
+
+  int ret = 0;
+  u8 p;
+
+  /* Assign siMesgBuf as message queue's area. */
+  <a target=top href="../n64man/os/osCreateMesgQueue.html">osCreateMesgQueue</a>(&siMesgQueue, siMesgBuf, NUM_MESSAGE) ;
+
+  /* Set to send dummyMessage to si message queue at interrupt */
+  <a target=top href="../n64man/os/osSetEventMesg.html">osSetEventMesg</a>(OS_EVENT_SI, &siMesgQueue, dummyMessage) ;
+  
+  /* Checks controller's connection status. */
+  <a target=top href="../n64man/os/osContInit.html">osContInit</a>(&siMesgQueue, &p, &sdata[0]) ;
+  
+  while(1) {
+
+    /* Controller connected. */
+    if (p) {
+
+      /* Activate trigger to read data. */
+      <a target=top href="../n64man/os/osContStartReadData.html">osContStartReadData</a>(&siMesgQueue) ;
+  
+      /* Wait for message from si */
+      <a target=top href="../n64man/os/osRecvMesg.html">osRecvMesg</a>(&siMesgQueue, NULL, OS_MESG_BLOCK) ;
+
+      /* If No. 0 controller connected */
+      if(p & 0x1) {
+
+        /* Copy data from controller to rdata */
+        <a target=top href="../n64man/os/osContGetReadData.html">osContGetReadData</a>(&rdata[0]) ;
+
+        /* A of No. 0 controller pressed */
+        if( rdata[0].button & CONT_A ) {
+
+          /* Saves save_buffer data to EEPROM */
+          ret = save_eeprom(&siMesgQueue, save_buffer) ;
+
+          if( ret )
+          ERROR_PROC_1 ( ) ; /* Error processing */
+        }
+
+        /* B of No. 0 controller pressed */
+        if( rdata[0].button & CONT_B ) {
+
+          /* Load EEPROM data to load_buffer */
+          ret = load_eeprom(&siMesgQueue, load_buffer) ;
+
+          if( ret )
+          ERROR_PROC_2 ( ) ; /* Error processing */
+        }
+
+      } /* if(p & 0x1) */
+    } /* if(p) */
+  } /* while(1) */
+}
+</pre>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

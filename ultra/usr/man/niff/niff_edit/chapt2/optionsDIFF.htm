@@ -1,0 +1,77 @@
+<html>
+<title>
+NIFFeditor for SGI コンバートオプション
+</title>
+<body bgcolor="ffffff">
+
+<H5 align="right">NIFFeditor for SGI</H5>
+<h2>9. convert_optionsファイルについて</h2>
+
+<a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./spec.htm">
+<img src="../../../gif/previous.gif"
+border="0" width="65" height="17"></a>
+
+<hr><!------------------------------------------------->
+<p>
+
+　NIFFeditor for SGIは、NIFFデータからNINTENDO64グラフィクスデータへのコンバータであるniff2gfxコマンドをメニューから呼び出すことができます。niff2gfxコマンドにはコンバートのための各種スイッチがついており、これらを設定することによって必要な設定でグラフィクスデータを取り出すことができます。(詳しくは、「niff2gfx」の章を参照してください。)<p>
+　NIFFeditorでは、このniff2gfxのオプションスイッチをconvert_optionsファ
+イルを書き換えることによって設定することができます。ホームディレクトリ内
+の<a href="start.htm#optionfile">.niffcnvops</a>
+ファイルがその設定用ファイルです。<p>
+　[Convert to N64 DL]->[Set Options and Go]メニューを使用して設定することもできますが、テキストエディタで編集する事もできます。なお、このファイルはNIFFeditor起動時に読み込まれます。<p>
+<center>
+<table border>
+<tr nowrap>
+<td><b>  convert_optionsのファイルの中身  </b></td>
+</tr>
+<tr>
+<td>
+../usr_data<br>
+default.c<br>
+-header default.h<br>
+-scale<br>
+-niffinfo<br>
+-regmask<br>
+-vtxshare<br>
+-vtxcache<br>
+-outobj<br>
+-outmask 0
+</td>
+</tr>
+</table>
+</center>
+<p>
+のようにテキストファイルで記述します。<p>
+1行目はファイルを出力したいディレクトリを指定します。
+必ず指定しなければなりません。<p>
+2行目はDLを出力するファイル名を指定します。必ず指定しなければなりません。<p>
+3行目以下はオプションフラグ(-****)を必ずつけて記述します。
+順番は任意です。
+また、記述しなくてもかまいませんが、その場合はオプションをつけずに
+niff2gfxを実行します。
+従って、niff2gfxが必ず要求するオプションに関しては必ず記述しなければなりません。<p>
+Refer to the chapter of「niff2gfx」for the contents of the option.  <p>
+
+<font color=red>Starting with Ver.2.00</font>, file names specified by menus of [NIFF2tool]-[PreviewScript] and [NIFF2tool]-[PreviewFile]  are written in the last 2 lines. 
+
+<hr> <!----------------------------------------------->
+<font size=-1>
+Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved</font>
+
+<p align="right"><a href="../indexsgi.htm">
+目次へ
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+
+</body>
+</html>
+
+
+
+
+
+

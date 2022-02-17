@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.9.29 Administration of Virtual and Physical Addresses</H1>
+
+
+<P><SPAN ID=mono>OS_K0_TO_PHYSICAL</SPAN> - Convert the CPU virtual address (KSEG0), which is direct-mapped with cache, to the physical address.<BR>
+<SPAN ID=mono>OS_K1_TO_PHYSICAL</SPAN> - Convert the CPU virtual address (KSEG1), which is direct-mapped without cache, to the physical address.<BR>
+<SPAN ID=mono>OS_PHYSICAL_TO_KO</SPAN> - Convert the physical address to the direct-map CPU virtual address (KSEG0) with cache.<BR>
+<SPAN ID=mono>OS_PHYSICAL_TO_K1</SPAN> - Convert the physical address to the direct-map CPU virtual address (KSEG1) without cache.<BR>
+<SPAN ID=mono>osVirtualToPhysical</SPAN>  - Convert the CPU virtual address to the physical address.<BR>
+<SPAN ID=mono>osPhysicalToVirtual</SPAN>  - Convert the CPU physical address to the virtual address.<BR>
+<SPAN ID=mono>osMapTLB</SPAN> - Set up the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osUnmapTLB</SPAN> - Free the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osUnmapTLBAll</SPAN> - Free all the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osSetTLBASID</SPAN> - Set the ID setting of the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osGetRegionBufSize</SPAN> - Get the size of the memory buffer.
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

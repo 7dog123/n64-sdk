@@ -1,0 +1,250 @@
+<html>
+<body bgcolor="ffffff">
+
+<H5 align="right">NIFFeditor for SGI</H5>
+<h2>4.  メニュー
+<img src="../../../gif/update.gif" width="48" height="12"></h2>
+
+<a href="../indexsgi.htm">
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./whattodo.htm">
+<img src="../../../gif/previous.gif"
+border="0" width="65" height="17"></a>
+<a href="./mouse.htm">
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a>
+
+<hr><!------------------------------------------------->
+
+
+<blockquote>
+　NIFFエディタには下記のメニューが用意されています。
+<blockquote>
+<li>メインメニュー<p>
+<center>
+<img src="./main-menu.gif"><p>
+</center>
+　上記がメインメニューです。各項目毎に行う動作は以下の通りです。<p>
+<b>[File]－[New]コマンド</b><p>
+<blockquote>
+　メインウィンドウ上のツリー表示をクリアします。
+<!-- 現在はツリーを表示したまま新しいファイルからデータを正しく読むことはできませんので、必ず<b>[New]</b>してからファイルを読み込んでください。-->
+</blockquote>
+<p>
+<b>[File]-[Open]コマンド</b><p>
+<blockquote>
+　新しいファイルを読み込んでツリー表示を行います。読み込むファイルはダイアログから選択、入力可能です。<p>
+<center>
+<img src="./fileselect.gif">
+<p>図　ファイル読み込みダイアログ
+</center><p>
+</blockquote>
+<a name="save">
+<b>[File]-[Save]コマンド</b><p>
+</a>
+<blockquote>
+　読み込んだファイルに上書き保存します。「Overwrite OK?」と聞いてきますので、[OK]ボタンをクリックすると上書き保存します。上書きしたくない場合は[Cancel]ボタンをクリックしてください。<p>
+<center>
+<img src="./Overwrite_OK.gif"><p>
+図　上書き保存警告ダイアログ
+</center><p>
+</blockquote>
+<b>[File]-[Save As ...]コマンド</b><p>
+<blockquote>
+　新しいファイルを指定して保存します。[Open]コマンドと同様にファイル指定用のダイアログでファイル名を入力します。
+</blockquote>
+<p>
+<a name="editmode"><b>[Edit]-[Edit Mode]コマンド</b></a>
+<p>
+<blockquote>
+　ON(マークに色が付いた状態)で、リンクの変更(追加、削除)、ノードの名前、ノードのフラグの設定変更が可能になります。トグル設定です。<p>
+</blockquote>
+<p>
+<b><a name="deletelink">[Edit]-[Delete Link]コマンド</a></b><p>
+<blockquote>
+　マウスで選択したリンクを削除します。
+削除できないリンクを選択している場合は警告が出ます。
+</blockquote>
+<p>
+<b>[View]-[Default]コマンド</b><p>
+<blockquote>
+  ツリー表示を標準設定に戻します。
+　現在はDisplay Texture Image(テクスチャ表示)がOFFになります。
+</blockquote>
+<p>
+<a name="dispteximg">
+<b>[View]-[Display Texture Image]コマンド</b><p>
+</a>
+<blockquote>
+　ON(マークに色が付いた状態)にすると、テクスチャのイメージがTexノード上に
+表示されます。デフォルトはOFFです。
+<p>
+　すでにTexノードが表示されている状態では、ここをONにしただけではノードの表示はそのままです。ファイルを読み込み直すか、Texノードをいったん非表示にしてから再度表示させてください。(Texノードをマウス右ボタンでクリックしたときに出るメニューでHideを選択で非表示、非表示にしたTexノードの親ノードをマウス右ボタンでクリックしたときに出るメニューでExpandまたはShowImmdiateChildrenを選択で再度表示されます。)
+</blockquote>
+<p>
+
+<b>[N64 tool] menu</b><p>
+<blockquote>
+Since commands under this menu do not correspond to NIFF2.0 file, this menu becomes invalid when NIFF2.0 file is read.   
+</blockquote>
+<p>
+
+<a name="preview">
+<b>[N64 tool]-[N64 Quick Preview(IS-VIEWER)]コマンド
+</b><p>
+</a>
+<blockquote>
+　NINTENDO64実機での<a href="../../n64prev/quickprev.htm">クイックプレビュー</a>をIS-VIEWER64を使用して行います。
+</blockquote>
+<p>
+<b>
+[N64 tool]-[N64 Quick Preview(Emu-Board)]コマンド
+</b>
+<p>
+<blockquote>
+　NINTENDO64実機での<a href="../../n64prev/quickprev.htm">クイックプレビュー</a>をEmu-Boardを使用して行います。
+</blockquote>
+<p>
+<b>[N64 tool]-[Nintendo64 Preview(IS-VIEWER)]コマンド</b><p>
+</a>
+<blockquote>
+　NINTENDO64実機でのプレビューをIS-VIEWER64を使用して行います。
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Nintendo64 Preview(Emu-Board)]コマンド
+</b>
+<p>
+<blockquote>
+　NINTENDO64実機でのプレビューをEmu-Boardを使用して行います。
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Convert to N64 DL]-[Set Options and Go]コマンド
+</b>
+<p>
+<blockquote>
+　NINTENDO64用グラフィクスデータを出力するためのコンバータを起動します。コンバータのオプションをセットすることができます。<p>
+　設定したオプションはユーザーのホームディレクトリにある .niffcnvops ファイルに反映され次のコンバート時にも有効となります。<p>
+　またここで設定したオプションはPreviewコマンドにも有効になります。<p>
+
+オプションについての詳細は<a href="../../niff2gfx/index.htm">
+「niff2gfxコンバータ」のマニュアル
+			  </a>
+をご参照ください。
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Convert to N64 DL]-[Set Output Directory]コマンド
+</b>
+<p>
+<blockquote>
+　NINTENDO64用グラフィクスデータを出力するディレクトリを指定します。出力先を指定するダイアログボックスが表示されるので、ディレクトリを選択してください。
+このディレクトリ指定も .niffcnvops にセーブされます。
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Kill [gn]load]
+</b>
+<p>
+<blockquote>
+　プレビュー時に行うgload(Emu-Board用)、nload(IS-VIEWER64用)プロセスをkillします。
+</blockquote>
+<p>
+<!-- NIFF2 tool ----------------------------------------- -->
+<b>[NIFF2 tool]-[Preview(IS-VIEWER)] command
+<img src="../../../gif/new.gif"> </b>
+</b><p>
+</a>
+<blockquote>
+　Preview with NINTENDO64 is performed by nvfview using IS-VIEWER64.   
+</blockquote>
+<p>
+<b>
+[NIFF2 tool]-[Preview(Emu-Board)] command
+<img src="../../../gif/new.gif"> </b>
+</b>
+<p>
+<blockquote>
+　Preview with NINTENDO64 is performed by nvfview using Emu-Board.   
+</blockquote>
+
+<p>
+<b>
+[NIFF2 tool]-[Convert to NVF]-[Set Options and Go] command
+<img src="../../../gif/new.gif"> </b>
+</b>
+<p>
+<blockquote>
+　Start up the converter to output NVF data.  It is possible to set the option of the converter. 
+<p>
+　The option that was set will be reflected to .niffcnvops file in the user's home directory, and become valid when performing the next convert, too.  This fileis common with a file used by [N64 tool]-[Convert to N64 DL]-[Set Options and Go] command, and the same option is used by both.   
+<p>
+　And the option set here becomes valid with the Preview command.   
+<p>
+
+Refer to <a href="../../niff2nvf/index.htm#three">
+「niff2nvf converter」manual for details of the option.
+			  </a>
+ 
+</blockquote>
+<p>
+<b>
+[NIFF2 tool]-[Convert to N64 DL]-[Set Output Directory] command
+<img src="../../../gif/new.gif"> </b>
+</b>
+<p>
+<blockquote>
+　Specify the directory to which NINTENDO64 graphics data is output.   Since a dialogue box that specifies to where it will be output is displayed, please select a directory.   This directory specification is also saved in .niffcnvops.
+</blockquote>
+
+<b> [NIFF2 tool]-[Execute Script]
+<img src="../../../gif/new.gif"> </b>
+<blockquote>
+Output NIFF data to the file specified by [NIFF2 tool]-[Preview File], and execute the script file specified by [NIFF2 tool]-[PreviewScript].    
+<p>
+By default, output to /usr/local/n64kit/nvfview/model.niff, and execute  
+/usr/local/n64kit/nvfview/nvfview.   
+<p>
+Since anything can be specified for a script file if it is an execution file, it is possible to have an optional process performed, not necessarily Preview, if a file is provided.
+When NIFF data with NIFFeditor is preferred to be used, a file that is specified by [PreviewFile] can be used.  
+</blockquote>
+<b> [NIFF2 tool]-[PreviewScript]
+<img src="../../../gif/new.gif"></b>
+<blockquote>
+Specify an execution file that is executed by [NIFF2 tool]-[Execute Script].  
+</blockquote>
+<b> [NIFF2 tool]-[PreviewFile]
+<img src="../../../gif/new.gif"></b>
+<blockquote>
+Output NIFF data that is read to the file when [NIFF2tool]-[Execute Script] is executed.  Specify that file. 
+</blockquote>
+<b>
+[HELP]-[Product Information]コマンド
+</b>
+<p>
+<blockquote>
+　NIFFエディタのバージョン情報を表示します。
+</blockquote>
+</blockquote>
+</blockquote>
+<p align="right">
+</blockquote>
+
+<hr>
+<font size=-1>
+Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights
+reserved.</font>
+
+<p align="right"><a href="../indexsgi.htm">
+目次へ
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./mouse.htm">
+次へ
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a></p>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<HR>
+
+<Pre>
+<FONT size="6"><STRONG>nuSiMgrStop</STRONG></FONT>
+</Pre>
+
+<HR>
+
+<Pre>
+<STRONG>Syntax: </STRONG>
+</Pre>
+
+<Pre>
+void nuSiMgrStop(void)
+</Pre>
+
+<Pre>
+<STRONG>Argument: </STRONG>
+</Pre>
+
+<Pre>
+None
+</Pre>
+
+<Pre>
+<STRONG>Return Value: </STRONG>
+</Pre>
+
+<Pre>
+None
+</Pre>
+
+<Pre>
+<STRONG>Description: </STRONG>
+</Pre>
+
+<P>
+<FONT color="#FF0000">Stops SI manager thread</FONT>
+</P>
+
+<P>
+This safely stops the SI manager thread.  When the SI manager thread is stopped in a manner outside its normal operation, there is a danger of the Si manager thread being completely stopped while it is waiting for a message from the SI.  When this function is used, the thread is stopped after the Si manager is placed in a state in which it can be stopped.  While the thread is stopped, the scheduler is set so that it will not send retrace messages. </P>
+Use this function when directly accessing SI devices from the user application. <BR>
+
+<P>
+To continue execution of the SI manager thread once it has been stopped, call the nuSiMgrRestart() function. 
+</P>
+
+<HR>
+
+<P>
+Reference:  <A href="nuSiMgrRestart.htm">nuSiMgrRestart</A>
+</P>
+
+<P>
+<A href="index.htm"><IMG src="../../../gif/index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

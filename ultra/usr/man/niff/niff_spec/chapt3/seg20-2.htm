@@ -1,0 +1,253 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.20 EnvList</h3>
+
+<hr size=3>
+<h4>2) Env Area</h4>
+
+<blockquote>
+The Env area is used for the environment settings of a scene. The Env area is mapped as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>env_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_env_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>env_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>env_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>fog</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>fog_color</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>fog_near</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>fog_far</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>fill_color</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>fill_depth</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>bg_sprite_img</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>bg_sprite_depth</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Env Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 env_tag</td>
+
+<td><font size=+0>Tag indicating Env. Set the following</font>
+<pre><b><font size=+0>TAG_ENV 0x00100100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_env_index</td>
+
+<td><font size=+0>Index number of this Env</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 env_size</td>
+
+<td><font size=+0>Size of this Env</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 env_name_index</td>
+
+<td><font size=+0>Index number of Env name in NameList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#FOG">u32 fog</a></td>
+
+<td><font size=+0>When FOG is used, set the following</font>
+<pre><b><font size=+0>ENV_FOG_USE&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001</font></b>
+
+</pre>
+<font size=+0>When FOG is not used, set the following.</font>
+<pre><b><font size=+0>ENV_FOG_NONE&nbsp;&nbsp;&nbsp; 0x00000000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 fog_color</td>
+
+<td><font size=+0>When FOG is used, set as 0xRRGGBBAA.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 fog_near</td>
+
+<td><font size=+0>Sets the starting position where Fog is displayed. Set
+the near clipping plane as 0 and the far clipping plane as 1000, then pick the
+value in between.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 fog_far</td>
+
+<td><font size=+0>Sets the saturation point of FOG. Set the near clipping plane
+as 0 and the far clipping plane as 1000, then pick the value in between.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#FILL_COLOR">u32 fill_color</a></td>
+
+<td><font size=+0>Sets the color for clearing the frame buffer. Specify as 0x00RRGGBB.</font>
+
+<BR><br><font size=+0>When the frame buffer is not cleared by the fill color, set the
+following:</font>
+<pre><b><font size=+0>FILL_COLOR_NONE 0xffffffff</font></b></pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#FILL_DEPTH">u32 fill_depth</a></td>
+
+<td><font size=+0>Sets the color for clearing the Z buffer. Specify as
+0x00RRGGBB.</font>
+
+<BR><br><font size=+0>When the Z buffer is not cleared by the fill color, specify the following:</font>
+<pre><b><font size=+0>FILL_DEPTH_NONE 0xffffffff</font></b></pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#BG_SPRITE_IMG">u32 bg_sprite_img</a></td>
+
+<td>Specifies the TexList index number of the texture image to be used in BG.
+
+<BR><br><font size=+0>When a texture image is not used, specify:</font>
+<pre><b><font size=+0>BG_COLOR_IMG_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xffffffff</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#BG_SPRITE_DEPTH">u32 bg_sprite_depth</a></td>
+
+<td>Specifies the TextList index number of the depth image to be used in BG.
+
+<BR><br>When a depth image is not used, specify:
+<pre><b><font size=+0>BG_DEPTH_IMG_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xffffffff</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensinoBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg20.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg21.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

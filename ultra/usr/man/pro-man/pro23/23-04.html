@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 23</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro23/index23.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro23/index23.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Programming Model</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+While a game may use any programming style desired by its author(s), there are certain restrictions imposed by the debugger. Those developers who want to use the debugger must conform to the rules of the programming model to obtain the benefits of source-level debugging. 
+<P>
+This section discusses the restrictions that apply.
+The most obvious requirement is that you must use the OS, since the debugger depends on it. It will not work under an OS of your own design, because it is designed for the Nintendo 64 OS.
+
+<P>
+Use of the debugger also requires that you restrict thread priorities to a specific range. User threads (those that are part of the game) are assigned the range 1 through 127, with 127 being the highest-priority thread. The OS does not prevent you from assigning thread priorities higher than 127, but you will be unable to debug them. In fact, use of priorities in this range may prevent the debugger from working at all. 
+
+<P>
+While the OS does not impose any restrictions on the idlethread (other than the requirement that there be one), the debugger requires that the idlethread be assigned priority level zero. It is not sufficient that it be the lowest priority thread in the system: it must be zero. Otherwise, the debugger may attempt to suspend it, which will lock up the system. The rmon main thread should be set to priority OS_PRIORITY_RMON.
+
+<P>
+The boot procedure for the system is described elsewhere, but some parts of it are repeated here because a review is helpful. Each application has a boot function, which is called at startup (after security checking, of course). The boot function initializes the operating system, and then creates and starts the main thread. The boot procedure may also do other things, such as hardware initialization, if desired. It can also create other threads, but starting a thread is always the last thing the boot procedure does. The reason for this is simple; once control is transferred to a thread, there is no way to get back to the boot procedure. To enable as much debugging of your start-up code as possible, the boot procedure should be minimal—probably just the three function calls that are required to start the main thread.
+
+<P>
+The main thread starts other threads within the system, including the debugger thread. There is more flexibility here, although the ability to debug system startup is significantly better if the recommended model is followed. The recommended model is for the main thread to create all other threads in the system, start only the rmon thread(s), and then lower its own priority and become the idle thread. Again, you don’t have to do this, but debugging will work much better if you do. 
+
+<P>
+Clearly, you can’t debug any code that comes before starting the debugger (rmon) thread. It is also the case that you can’t really debug code that has already executed by the time the debugger starts up. This is not so much a function of time as it is of the traditional approach used in debugging embedded systems like the Nintendo 64. That is, if you want to watch the system start from inside the debugger, then you can’t really start running the application. Since the debugger is just another thread under the OS, it does not keep your application from running off and executing the game application. Some debuggers may “hold off” the application until the debugger is ready; this one doesn’t.
+
+<P>
+Of course, this does not mean that you can’t debug the startup of your application. It just means you must bring up your system in a stopped state and start it running from within the debugger. To do this, your code should start only two threads (although it can create as many as it wants, since creating a thread does not cause it to run). The two threads are the rmon thread, which is considered to be only one thread for now, and the idle thread. Comment out or conditionally compile in the osStartThread calls for other threads so that they do not run until told to do so. Running a thread from the debugger is exactly like calling osStartThread.
+
+<P>
+What happens if you don’t follow this procedure and you start all the threads in your system? Unfortunately, in most cases the debugger will be harder to start, since it needs a stopped thread to connect to. The idle thread and the debugger threads will be running, but it is likely that all your application threads will be blocked on some event. Since the OS now allows waiting threads to be stopped, you may bring up the application in a running state, use the multithread view to stop the thread to which you will attach, and then use Switch Thread to connect.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

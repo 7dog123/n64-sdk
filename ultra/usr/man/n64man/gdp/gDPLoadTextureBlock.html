@@ -1,0 +1,529 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gdp/gdp.html">
+            <IMG BORDER=0 SRC="../images/mh_gdp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+gDPLoadTextureBlock [macro]
+</FONT>
+</H2>
+
+<P>Loads a texture as a contiguous texture block.
+
+<P><B>Syntax</B>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A href="../../header/gbi.htm">gbi.h</A> */
+gDPLoadTextureBlock(
+        Gfx *gdl, 
+        u32 timg, 
+        u32 fmt, 
+        u32 siz, 
+        u32 width, 
+        u32 height, 
+        u32 pal, 
+        u32 cms, 
+        u32 cmt, 
+        u32 masks, 
+        u32 maskt, 
+        u32 shifts, 
+        u32 shiftt )
+gsDPLoadTextureBlock(
+        u32 timg,
+        u32 fmt, 
+        u32 siz, 
+        u32 width,
+        u32 height, 
+        u32 pal, 
+        u32 cms,
+        u32 cmt, 
+        u32 masks,
+        u32 maskt, 
+        u32 shifts,
+        u32 shiftt )</PRE></FONT>
+
+<P><B>Arguments</B>
+<ul>
+  <li>gdl is the display list pointer
+  <P>
+  <li>timg is the address of the texture image (64-bit alignment)
+  <P>
+  <li>fmt is the texture image format:
+  <br>G_IM_FMT_RGBA (RGBA format)
+  <br>G_IM_FMT_YUV (YUV format)
+  <br>G_IM_FMT_CI  (CI format)
+  <br>G_IM_FMT_IA (IA format)
+  <br>G_IM_FMT_I (I format)
+  <P>
+  <li>siz is the pixel component size:
+  <br>G_IM_SIZ_8b (8 bits/texel)
+  <br>G_IM_SIZ_16b (16 bits/texel)
+  <br>G_IM_SIZ_32b (32 bits/texel)
+  <P>
+  <li>width is the texture image width
+  <P>
+  <li>height is the texture image height
+  <p>
+  <li>pal is the location of palette for 4-bit color index texture (4-bit precision, 0-15)
+  <P>
+  <li>cms is the s-axis mirror, no-mirror, wrap and clamp flags
+  <br>G_TX_MIRROR (enable mirror operations)
+  <br>G_TX_NOMIRROR (disable mirror operations)
+  <br>G_TX_WRAP (enable wrap operations)
+  <br>G_TX_CLAMP (enable clamp operations)
+  <P>
+  <li>cmt is the t-axis mirror, no-mirror, wrap and clamp flags
+  <br>G_TX_MIRROR (enable mirror operations)
+  <br>G_TX_NOMIRROR (disable mirror operations)
+  <br>G_TX_WRAP (enable wrap operations)
+  <br>G_TX_CLAMP (enable clamp operations)
+  <P>
+  <li>masks is the s-axis mask (4-bit precision, 0-15)
+  <br>G_TX_NOMASK (do not mask, 0)
+  <br>numeric value n (mask, 1-15)
+  <p>
+  <li>maskt is the t-axis mask (4-bit precision, 0-15)
+  <br>G_TX_NOMASK (do not mask, 0)
+  <br>numeric value n (mask, 1-15)
+  <P>
+  <li>shifts is the s-coordinate shift value (4-bit precision, 0-15)
+  <br>G_TX_NOLOD (do not shift, 0)
+  <br>numeric value n (shift, 1-15)
+  <P>
+  <li>shiftt is the t-coordinate shift value (4-bit precision, 0-15)
+  <br>G_TX_NOLOD (do not shift, 0)
+  <br>numeric value n (shift, 1-15)
+</ul>
+
+
+<P><B>Explanation</B>
+<br>
+Loads a texture from DRAM into texture memory (TMEM).  Because this macro loads the texture image into a contiguous region in memory, it is the most efficient way to load a texture.  DRAM transfers are also most efficient with large blocks.
+</P>
+<P>
+This macro is actually comprised of a number of 64-bit GBI commands.  Thus, if you need to find out the exact size of the display list, you need to consider how many GBI commands it is comprised of.
+</P>
+
+<P>Regarding the <B>fmt</B> argument:
+    <DL>
+    <DT><B>G_IM_FMT_RGBA</B>
+    <DD>Each texel comprises four elements of information: RGB (red, green, blue) and alpha (opacity).
+    <DT><B>G_IM_FMT_YUV</B>
+    <DD>Each texel comprises a Y (intensity) component and a UV (color difference) component.
+    <DT><B>G_IM_FMT_CI</B>
+    <DD>Each texel is comprised of index information specifying palette data.
+    <DT><B>G_IM_FMT_IA</B>
+    <DD>Each texel is comprised of I (intensity) information and alpha information.
+    <DT><B>G_IM_FMT_I</B>
+    <DD>Each texel is a texture with only I information.  Since this is extremely compact, it is useful when only a few colors are being used.
+    <DT>
+    <DT><P>You can choose from among 7 different texture image formats.  The table shows the valid combinations of format and size.  Select the format that best suits the texture compression method and type.
+<DT></dl>
+
+<P>
+<TABLE border="1" cellspacing="0" cellpadding="3">
+  <TR>
+    <TD rowspan="2" colspan="2"><br></TD>
+    <TD nowrap colspan="3" align="center" valign="middle"><font face="arial" size="-1">G_IM_SIZ_ (Size)</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">8b</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">16b</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">32b</TD></TR>
+  <TR>
+    <TD nowrap rowspan="5" align="center" valign="middle"><font face="arial" size="-1">G_IM_FMT_<BR>
+ (Format)</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">RGBA</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X<BR>
+ (5/5/5/1)</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X<BR>
+ (8/8/8/8)</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">YUV</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;<BR>
+</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">CI</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;<BR>
+</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">IA</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X<BR>
+ (4/4)</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X<BR>
+ (8/8)</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">I</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">X</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&nbsp;<BR>
+</TD></TR>
+</TABLE>
+
+
+<P>Regarding the <B>cms</B> and <B>cmt</B> arguments:
+</DL>
+<DL>
+  <DT>Multiple specifications can be made with a bit sum of the following flags:
+<P>
+    <DT><B>G_TX_MIRROR</B>
+    <DD>Enables mirroring.  Mirror textures can be used for textures with axial symmetry, like a tree.  Symmetric textures are an effective way to reduce texture volume.
+    <DT><B>G_TX_NOMIRROR</B>
+    <DD>Disables mirroring.
+    <DT><B>G_TX_WRAP</B>
+    <DD>Enables wrapping.  A wrapped texture repeats a texel.  The wrapping cycle can be specified by a mask.
+    <DT><B>G_TX_CLAMP</B>
+    <DD>Enables clamping.  A clamped texture repeats the edge texel color when sampling outside of the texture map.  Clamping is performed at the boundary of the texture tile.
+</DL>
+<DL>
+  <DT>
+  <DT>Regarding the <B>masks</B> and <B>maskt</B> arguments:
+</DL>
+<DL>
+    <DT><B>G_TX_NOMASK</B> (0)
+    <DD>No mask is used.
+<P>
+    <DT><B>numeric value n</B> (1-15)
+    <DD>Specifies the wrap position with the value of n.  The low-order n bits of the s,t texel coordinates are used for texture sampling.
+    <DT>
+<P>
+    <DD>Texture sampling utilizes the low-order n bits of the s,t texture coordinates.  You would set to 5 to wrap a texture with a boundary of 32x32 (2<SUP>5</SUP>x2<SUP>5</SUP>).  Set to 0 to perform clamping.
+</DL>
+<DL>
+  <DT>
+  <DT>Regarding the <B>shifts</B> and <B>shiftt</B> arguments:
+</DL>
+<DL>
+    <DT><B>G_TX_NOLOD</B> (0)
+    <DD>No shifting is performed.
+<P>
+    <DT><B>numeric value n</B> (1-15)
+    <DD>Shifts the s,t texel coordinate by n bits.  This enables the sampling of low-level LOD maps and detail textures.
+    <DT>
+    <DT><P>The values specified by <B>shifts</B> and <B>shiftt</B> (the shift parameter values) represent the amount by which the s,t coordinates are shifted to the left or to the right.  This is used for the MIP-mapping, detail, and sharp mode settings.  The values 0-10 are interpreted as right shifts, and the values 11-15 are interpreted as left shifts (see the table below).
+  <DT>
+
+<P>
+<TABLE border="1" cellspacing="0" cellpadding="3">
+  <TR>
+    <TD nowrap align="center" valign="middle" width="150"><font face="arial" size="-1"><B>Shift parameter value</B></TD>
+    <TD nowrap align="center" valign="middle" width="150"><font face="arial" size="-1"><B>Shift amount</B></TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">0</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">No shift</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">1</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&gt;&gt; 1</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">2</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&gt;&gt; 2</TD></TR>
+  <TR>
+    <TD nowrap colspan="2" align="center" valign="middle"><font face="arial" size="-1">...</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">9</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&gt;&gt; 9</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">10</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&gt;&gt; 10</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">11</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&lt;&lt; 5</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">12</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&lt;&lt; 4</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">13</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&lt;&lt; 3</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">14</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&lt;&lt; 2</TD></TR>
+  <TR>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">15</TD>
+    <TD nowrap align="center" valign="middle"><font face="arial" size="-1">&lt;&lt; 1</TD></TR>
+</TABLE>
+
+
+<DL>
+  <DT>
+
+</DL>
+<P>
+For details about each argument, see <A target="new" HREF="../../pro-man/pro13/13-04.html">Section 13.4, "Tile Attributes,"</a> in the N64 Online Programming Manual.  For information about using this macro, see <A target="new" HREF="../../pro-man/pro13/13-05.html">Section 13.5, "Tile Descriptor Loading."</a>
+</P>
+
+<P><B>Notes</B>
+<br>
+To load a 4-bit texture, use the <A href="gDPLoadTextureTile_4b.html"><FONT FACE="Courier,Courier New">gDPLoadTextureTile_4b</FONT></A> macro, no matter what the type.
+</P>
+<P>
+Also, note that operation is not currently guaranteed for G_IM_FMT_YUV (YUV format).
+</P>
+
+<P><B>Cautions</B>
+<br>
+There are some restrictions regarding the loading of textures with this macro.  To ignore the restrictions, use the <FONT FACE="Courier,Courier New">gDPLoadTextureBlockS</FONT> macro.  However, that form of the macro requires that every 32 bits in the odd lines of the texture data be pre-swapped.  This kind of texture data is created using rgb2c with the -S option.  You enter a number after  -S to indicate how many texels to swap at a time.  That is to say, if the texture you are creating is 32bit, you enter 2 for 16bit, 4 for 8bit, and 8 for 4bit.  To learn about the restrictions on loading, see <A target="new" HREF="../../pro-man/pro13/index13.0a.html">Chapter 13, Appendix A, "LoadBlock Line Limits"</a> and <A target="new" HREF="../../pro-man/pro13/13-08.html">Section 13.8, "Texture Memory,"</a> in the N64 Online Programming Manual.  Also, note that additional texture macros are defined in <A href="../../header/gbi.htm">gbi.h</A>
+</P>
+
+<P><B>See Also</B>
+<br>
+<A href="gDPLoadTextureBlock_4b.html"><FONT FACE="Courier,Courier New">gDPLoadTextureBlock_4b</FONT></A><BR>
+<A href="gDPLoadTextureTile.html"><FONT FACE="Courier,Courier New">gDPLoadTextureTile</FONT></A><BR>
+<A href="gDPLoadTextureTile_4b.html"><FONT FACE="Courier,Courier New">gDPLoadTextureTile_4b</FONT></A><BR>
+<A href="gDPLoadTLUT_pal256.html"><FONT FACE="Courier,Courier New">gDPLoadTLUT_pal256</FONT></A><BR>
+<A href="gDPSetTextureDetail.html"><FONT FACE="Courier,Courier New">gDPSetTextureDetail</FONT></A><BR>
+<A href="../gu/guLoadTextureBlockMipMap.html"><FONT FACE="Courier,Courier New">guLoadTextureBlockMipMap</FONT></A><BR>
+rgb2c
+</P>
+
+<P><B>Revision History</B>
+<br>
+2/1/99 Completely rewritten.
+<P>
+
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998-1999<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last Updated April, 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

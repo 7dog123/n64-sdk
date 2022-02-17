@@ -1,0 +1,222 @@
+<html>
+<body bgcolor="ffffff">
+<title>
+CiImgNode
+</title>
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+13. CiImg Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="ciImgListD">(1) CiImgList Description (English)</A>
+</h3>
+<blockquote>
+
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 ci_img_list_tag
+</td>
+<td>
+CiImgList is the list of index images that are used by the color index texture.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_CI_IMG_LIST         0x00200000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_list_header_size
+</td>
+<td>
+Specifies the byte size of the CiImgListHeader.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_list_size
+</td>
+<td>
+Specifies the byte size of the CiImgList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_num
+</td>
+<td>
+Specifies the CiImg number included in CiImgList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_num_byte
+</td>
+<td>
+Specifies the byte size of each CiImg.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+CiImg
+</td>
+<td>
+This is the CiImg area.  One color index image is stored here.
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="ci_img_C.htm#ciImgListC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+<A NAME="ciImgD">(2) CiImg Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border Width="600">
+
+<tr>
+<td nowrap>
+u32 ci_img_tag
+</td>
+<td>
+Specifies the tags of CiImg.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_CI_IMG              0x00200100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_ci_img_index
+</td>
+<td>
+Specifies the index number of this CiImg.
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td nowrap>
+u32 ci_img_header_size
+</td
+<td>
+Specifies the byte size of the CiImgheader.
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td nowrap>
+u32 ci_img_size
+</td>
+<td>
+Specifies the byte size of the CiImg.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_name_index
+</td>
+<td>
+Specifies the index number of the NameList that indicates the CiImg name.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_width
+</td>
+<td>
+Specifies the CiImg width.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_height
+</td>
+<td>
+Specifies the CiImg height.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 ci_img_pixel_depth
+</td>
+<td>
+Specifies the bit size per pixel of CiImg.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_CI_PIXEL_DEPTH_4&#9;0x00000004
+NIFF2_CI_PIXEL_DEPTH_8&#9;0x00000008
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 reserved
+</td>
+<td>
+Please set it to 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 pixel_index_array
+</td>
+<td>
+This area specifies which color of the palette is used for each pixel.<p>
+The pixel data is specified in order from the bottom-left of the image data.<p>
+In the case of 4bitCI, pixel data is stored in pixel_index_array using the big endian method, in 8-pixel units, in order from the bottom-left of the image data. <p>
+In the case of 8bitCI, pixel data is stored in pixel_index_array using the big endian method, in 4-pixel units, in order from the bottom-left of the image data.<p>
+In either case, if the last data segment is less than 32-bits, the remainder is filled with 0x0.<p>
+pixel_index_array_num is the total number of pixel_index_array that are created by the above processes.
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="ci_img_C.htm#ciImgC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

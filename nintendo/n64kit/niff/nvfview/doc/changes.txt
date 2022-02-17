@@ -1,0 +1,50 @@
+changes.txt
+
+Revision History
+
+1/22/1999
+- Point light source function was added. 
+
+1/28/1999
+- Bugs with background and fog menu were fixed. 
+
+2/9/1999
+- The bug with point light source function was fixed.  
+
+2/9/1999
+- The scheduler was changed.  
+- Frame rate display was added.  
+
+2/18/1999
+- Changed so that Animation information of nvf2bin is 1 frame longer.     
+
+2/22/1999
+- Y coordinate of TaskPerfBar was set at 204.   
+- The bug with performance report of the scheduler was fixed.  
+
+2/23/1999
+- Changed to be compatible with FPAL.   
+
+2/26/1999
+-Changed to be compatible with NVF with more than one animation. 
+
+3/1/1999
+- Fixed the bug with Envelope.  
+
+3/8/1999
+ Changed the operation method of L/R buttons
+ Improved compatibility with NuSystem
+ Fixed bug with one function
+ Increased the size of instant buffer
+
+3/29/1999
+ Modified NVF format
+
+3/30/1999
+ Added Show/Hide PERF BAR in VIDEO menu
+
+4/9/1999
+ Fixed bug that occurs with RotationZXY
+
+7/5/1999
+ Fixed bug in scheduler

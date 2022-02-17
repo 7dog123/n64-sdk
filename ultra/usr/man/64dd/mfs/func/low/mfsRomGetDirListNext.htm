@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetDirListNext</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetDirListNext<br>
+mfsRamGetDirListNext</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetDirListNext(MfsDirList* dirList)
+	s32 mfsRamGetDirListNext(MfsDirList* dirList)
+Arguments:	dirList		MfsDirList structure buffer
+Return value:Directory ID (a negative value is an error)
+Function:	Continues to obtain directory contents
+Description:	This function continues the search of mfsR*mGetDirListFirst.
+The same values that were specified in mfsR*mGetDirListFirst are specified for dirList.
+
+Main errors:
+	MFS_ERR_SEARCHEND	Content not in directory </pre>
+</body>
+</html>

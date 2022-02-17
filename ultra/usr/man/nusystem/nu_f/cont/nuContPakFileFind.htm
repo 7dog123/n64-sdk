@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContPakFileFind</strong></font><font
+size="4">(Macro)</font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContPakFileFind(NUContPakFile *file, u8* noteName, u8* extName)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>*file	   Controller Pak structure
+*noteName  Game note name (N64 font code 16 bytes)
+*extName    Note extension (N64 font code 1 byte)</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Searches for game note</strong></p>
+
+<p>Searches to see whether the specified game note is in the Controller Pak.
+   If the game note is found, then the note number is returned to file.file_no.  If the note is not found, then PFS_INVALID is returned to file.error.
+</p>
+
+<p>For "file," the device must be opened by the nuContPakOpen function.
+</p>
+
+<p>Before this function is called, the company code and game code must be registered by the nuContPakCodeSet function.
+</p>
+
+<p>noteName is the name of the game note in 16 bytes of N64 font code.  If the game note name is not a full 16 bytes, assign 0x00 to the unused area.
+</p>
+
+<p>extName specifies the extension for use of multiple notes.  The size is 4 bytes, but only 1 byte is usable, and it is normally 0x00.  Additional notes get assigned 0x1A~0x33 (N64 font code 'A'~'Z').
+</p>
+
+<p>The value returned by the osPfsFileFind function is stored in file.error.
+</p>
+
+<p>This function is a macro for the nuContPakFileOpen function.
+</p>
+
+<hr>
+
+<pre>Reference:	<a href="nuContPakOpen.htm">nuContPakOpen</a>, <a href="nuContPakFileOpen.htm">nuContPakFileOpen</a>, <a
+href="nuContPakFileOpenJis.htm">nuContPakFileOpenJis</a>,<BR>
+                <a href="nuContPakFileFindJis.htm">nuContPakFileFindJis</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

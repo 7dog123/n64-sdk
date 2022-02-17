@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetFiletAttr</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetFiletAttr</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetFileAttr(MfsDirID dirID, u16 attr)
+Arguments:	dirID	Directory ID of file (directory)
+	attr	Attribute
+Return value:Attribute of file (directory) (a negative value is an error)
+Function:	Sets attribute of file (directory)
+Description:	This function sets the attribute of the file or directory specified by dirID to attr.  The following values can be specified for attr.
+
+	MFS_FILE_ATTR_FORBID_W	0x2000	Write protected
+	MFS_FILE_ATTR_FORBID_R	0x1000	Read protected
+	MFS_FILE_ATTR_HIDDEN	0x0800	Hidden file
+	MFS_FILE_ATTR_ENCODE	0x0400	Encoded file
+	MFS_FILE_ATTR_COPYLIMIT	0x0200	Copy limited
+
+	FS_FILE_ATTR_ENCODE and MFS_FILE_ATTR_COPYLIMIT are ineffective for a directory.
+
+	Data can be read from a read-protected file when the company code and game code of the file are the same as the company code and game code set in the library.
+For file hiding, all this function does is set the bit.  The actual hiding process is performed by the application.
+A copy-limited file can be copied only the set number of times.  The application limits the copying.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+      <title>niOpenNt</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<BASEFONT SIZE=2>
+
+<h1>
+niOpenNt</h1>
+<font color="#FF0000">Reads a NIFF text file</font>
+<br>&nbsp;
+<h3>
+Syntax</h3>
+
+<blockquote>#include&nbsp; "niffapi.h"
+<p>int niOpenNt(char *filename, Nis *nis);</blockquote>
+
+<h3>
+Arguments</h3>
+<b>filename</b>
+<blockquote>The name of the NIFF text file to read</blockquote>
+<b>nis</b>
+<blockquote>Pointer to the Nis structure where the data to be read is held.
+<br>nis must have been already initialized with the niNewNis()function.</blockquote>
+
+<h3>
+Returned value</h3>
+TRUE(=1) if the file is read without error.  FALSE(=0) if an error occurs.
+<h3>
+Explanation</h3>
+Reads a NIFF text file and stores it in the Nis structure.  A NIFF text file is a file storing NIFF data expressed in text format.  NIFF text format can be output with the niOutputNt() function.<p>
+This function performs the processes which are appropriate for the given NIFF version.
+<h3>
+See also</h3>
+<a href="ninewnis.htm">niNewNis</a>, <a href="nioutputnt.htm">niOutputNt</a>, for the Nis structure see n64kit/niff/niffapi/nis.h, nis2.h
+<p>
+
+<P><A HREF="index.htm">Back to NIFFAPI Index</A></P>
+
+<P><font size=-1>Copyright 1998-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION All rights reserved.</P>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 15</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro15/index15.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro15/index15.7.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Video Filter</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The video filter performs the second pass of the analogizing algorithm. The first pass is done in the blender and involves antialiasing of <i>internal</i>  or <i>non-silhouette</i>  edges.  After the image is rendered into the framebuffer, all pixels except those that are on the silhouettes of objects will be fully covered (coverage = 1.0).  For partially covered pixels, the video filter performs a linear interpolation between the foreground color and the background color:
+  
+<P>
+<a name="eq11"></a>
+<b>Equation 11</B> &nbsp;Video Filter Interpolation
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro15/gif/m15-11.gif"></tr></td></table>
+<P>
+
+The <i>ForeGround</i>  color is always the color stored in the frame buffer for that pixel.  The BackGround color is found by examining fully covered pixels in a 5x3 pixel area around the current pixel.  Note that Z is not used in determining the <i>BackGround</i>  color and so it is safe for Z to be single-buffered.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

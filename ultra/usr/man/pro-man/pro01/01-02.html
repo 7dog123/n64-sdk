@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 1</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro01/index1.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro01/index1.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Installing the N64 Emulator Software</font></b>
+
+<P>
+<a name="soft"></a>
+<font face="arial" size="-1" color="#000000">
+The Nintendo 64 development software image is not the only software required for development. Your Indy workstation must also contain the following 5.3 products:
+
+<ul>
+<li>dev
+<li>c_dev
+<li>compiler_dev
+<li>gl_dev
+<li>CaseVision, version 2.4
+<li>WorkShop, version 2.4
+</ul>
+
+<P>
+Three products are bundled with the Nintendo 64 development software:
+<ul>
+<li>GameShop
+<li>ultra
+<li>dmedia_eoe (version 5.5)
+</ul>
+
+<P>
+<b>Note:</b> Casevision and Workshop need to be installed before Gameshop.  Workshop needs to be version 2.4 or earlier.
+
+
+<P>
+<a name="01"></a>
+<b>READMEs and Release Notes</b>
+<br>
+After installing the software, you will find a collection of sample demonstration applications in /usr/src/PR. The  README_DEMOS file describes each of the applications' key features. You will also find the release notes in /usr/src/PR/relnotes. The release notes summarizes the differences from the last release and includes a  discussion of the various bugs, workarounds and caveats of the system.
+
+<P>
+<a name="02"></a>
+<b>Other Sources</b>
+<br>
+In the /usr/src/PR/assets directory, you will find the source files for building the general MIDI bank. An initial complete general MIDI bank was created for testing purposes. For a game, we assume that you will gut the bank down to include only those instrument and sounds that you need. Therefore, this directory gives you a starting point to do that.
+
+<P>
+In the /usr/src/PR/libultra directory you will find portions of the Nintendo 64 system library code (libultra.a). This code is supplied to give a starting point on writing your own custom versions of these sub components. However, these sources require extensive SGI source tree build environment tools to actually build. Therefore, only the non -buildable sources are shipped currently.
+
+<p>
+<a name="03"></a>
+<b>Executables</b>
+<br>
+The first piece of software you will need to use is <i>gload</i>. This program downloads the ROM image onto the Nintendo 64 development board and starts execution. Soon after, you will need to use <i>dbgif</i> and <i>gvd</i> to debug your program.
+
+<ul>
+<li>/usr/sbin/gload
+<P>
+<li>/usr/sbin/dbgif
+<P>
+<li>/usr/sbin/gvd
+</ul>
+
+<P>
+There are also conversion tools that help in converting data into Nintendo 64 format. For example, <i>flt2c</i> converts a MultiGen database into a C data structure that can be compiled into binary form. Most of these tools reside in /usr/sbin but some are supplied in source form in /usr/src/PR/conv.  Keep in mind that these are templates for your own custom database conversion tools. We cannot possibly address the needs of all developers.
+
+<P>
+<a name="04"></a>
+<b>Installing the N64 Emulator Software</b>
+<br>
+Please follow the procedure shown below to install the N64 Emulation Software. 
+<ol>
+<li>Expand the contents of the DAT tape. 
+<P>
+<li>Insert the DAT tape and input &quot;tar xv&quot; in the appropriate directory. 
+<br>A directory containing the version name will be created under that directory. 
+<P>
+<li>Start Software Manager.
+<P>
+<li>Check to make sure the necessary <a target="main" href="../pro01/01-02.html#soft">software applications</a> are installed.
+<P>
+<li>Auto-install the IRIS provided software and ProDev/WorkShop. 
+</ol>
+
+<ul>
+<ul type="a.">
+<li>Select custom install.
+<P>
+<li>Install the Graphics Library Image Tools that are located in the Execution Environment 2 sub-directory on the  IRIX5.3 CD.
+</ul></ul>
+
+<P>
+<ol start="6">
+<li>Install the emulator software. 
+<P>
+<li>In Software Manager, specify a version name for the directory name and select custom install. Install the following applications:</ol>
+
+<ul><ul>
+<li>GameShop
+<li>ultra
+<li>dmedia_eoe (version 5.5)
+</ul></ul>
+<P>
+If the installation is unsuccessful, check to make sure that the 5.3 software products are installed correctly, try installing the emulator software again.
+
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

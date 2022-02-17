@@ -1,0 +1,549 @@
+<html>
+<title>
+ClusterNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+16. Cluster Node
+
+</h2>
+
+<hr size="3">
+
+<h3>
+<A NAME="clusterListD">(1) ClusterList Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 cluster_list_tag
+</td>
+<td>
+Specifies the tags that indicate the ClusterList.  Please set the tag shown below.
+<pre>
+<b>
+TAG_CLUSTER_LIST        0x00280000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_list_header_size 
+</td>
+<td>
+Specifies the byte size of the ClusterListHeader.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_list_size
+</td>
+<td>
+Specifies the byte size of the ClusterList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_shape_num
+</td>
+<td>
+Specifies the total number of ClusterShape.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_shape_size
+</td>
+<td>
+Specifies the byte size of the ClusterShape.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+ClusterShape
+</td>
+<td>
+This is the ClusterShape area.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="cluster_C.htm#clusterListC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+<A NAME="clusterShapeD">(2) ClusterShape Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 cluster_shape_tag
+</td>
+<td>
+Specifies the tags that indicate the ClusterShape.  Please set the tag shown below.
+<pre>
+<b>
+TAG_CLUSTER_SHAPE        0x00280100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_cluster_shape_index
+</td>
+<td>
+Specifies the index number of the ClusterShape.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_shape_size
+</td>
+<td>
+Specifies the byte size of the ClusterShape.
+</td>
+</tr>
+
+<tr>
+<td  nowrap>
+u32 cluster_shape_name_index
+</td>
+<td>
+Specifies this ClusterShape name with the index number in NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_shape_type
+</td>
+<td>
+0x0
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_num
+</td>
+<td>
+Specifies the total number of Cluster.<p>
+
+If in One Shape there is any vertex not assigned to a Cluster, please register the vertex as One Cluster and assign it to Cluster(0).
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 cluster_tri_num
+</td>
+<td>
+Specifies the total number of ClusterTri.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+Cluster
+</td>
+<td>
+Registers the set of vertices for a given node as a Cluster.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+ClusterTri
+</td>
+<td>
+Displays 1 polygon using the vertices that belong to a Cluster in ClusterShape.
+</td>
+</tr>
+</table>
+<P><A HREF="cluster_C.htm#clusterShapeC">See Data Chunk</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="clusterD">(3) Cluster Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 cluster_tag
+</td>
+<td>
+Specifies the tags that indicate the Cluster.  Please set the tags shown below.
+<pre>
+<b>
+TAG_CLUSTER        0x00280110
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_cluster_index
+</td>
+<td>
+Specifies the index number for the Cluster in this ClusterShape.
+</td>
+</tr>
+
+<tr>
+<td  nowrap>
+u32 cluster_size
+</td>
+<td>
+Specifies the byte size of the Cluster.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_name_index
+</td>
+<td>
+Specifies this Cluster name with the index number in NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_transform_node
+</td>
+<td>
+The tag shown below describes the type of node that is specified by the Cluster.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+</b>
+</pre>
+For an external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 transform_node_index
+</td>
+<td>
+Specifies the index number of the node that is influenced by the Cluster.<p>
+For an external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_transform_obj_file_name_index
+</td>
+<td>
+If the Obj that is influenced by the Cluster is referenced as an external file, that file name is specified by the index number of the ExternalNameList.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_transform_obj_name_index
+</td>
+<td>
+If the Obj that is influenced by the Cluster is referenced as an external file, that Obj name is specified by the index number of the ExternalNameList.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 cluster_vtx_group_index
+</td>
+<td>
+Specifies the index number for the VtxGroup specifying the vertex coordinates in this Cluster.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_vtx_nv_group_index
+</td>
+<td>
+Specifies the index number for the VtxNvGroup specifying the normal vectors of the vertices in this Cluster.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_tri_nv_group_index
+</td>
+<td>
+Specifies the index number for the TriNvGroup specifying the normal vectors of the polygons in this Cluster.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 cluster_vtx_color_group_index
+</td>
+<td>
+Specifies the index number for the VtxColorGroup specifying the colors of the vertices in this Cluster.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 cluster_tri_color_group_index
+</td>
+<td>
+Specifies the index number for the TriNvGroup specifying the colors of the polygons in this Cluster.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 cluster_st_group_index
+</td>
+<td>
+Specifies the index number for the StGroup specifying the ST values of the vertices in this Cluster.
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="cluster_C.htm#clusterC">See Data Chunk</A></P>
+
+</blockquote>
+
+<h3>
+<A NAME="clusterTriD">(4) ClusterTri Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 cluster_tri_tag
+</td>
+<td>
+Specifies the tags that indicate ClusterTri.  Please set the tag shown below.
+<pre>
+<b>
+TAG_CLUSTER_TRI        0x00280180
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_cluster_tri_index
+</td>
+<td>
+Specifies the index number of the ClusterTri.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_tri_size
+</td>
+<td>
+Specifies the byte size of the ClusterTri.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_cluster_for_tri
+</td>
+<td>
+The tag shown below specifies the type of Cluster used in tri_nv_index and  tri_color_index.
+<pre>
+<b>
+TAG_CLUSTER        0x00280110
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_index_for_tri
+</td>
+<td>
+Specifies the index number of the Cluser used in tri_nv_index and tri_color_index.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 tri_nv_index
+</td>
+<td>
+Specifies the index number of the normal vectors for this triangle.<p>
+If polygons with four or more sides are to be automatically divided with the CG tool, please average the normal vectors of the vertices and output identical data for the normal vectors of the triangle.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 tri_color_index
+</td>
+<td>
+Specifies the color of this triangle.<p>
+If polygons with four or more sides are to be automatically divided with the CG tool, please output identical data for the colors of the triangle.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+ClusterVtx
+</td>
+<td>
+This is the ClusterVtx area.  Specifies the Vtx that comprise this triangle.
+</td>
+</tr>
+
+</table>
+<P><A HREF="cluster_C.htm#clusterTriC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+<A NAME="clusterVtxD">(5) ClusterVtx Description (English)</A>
+</h3>
+
+
+<blockquote>
+<table border width="600">
+
+<tr>
+
+<td nowrap>
+u32 kind_of_cluster
+</td>
+
+
+<td>
+The tag shown below describes the type of Cluster to which this vertex belongs.
+<pre>
+<b>
+TAG_CLUSTER        0x00280110
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 cluster_index
+</td>
+<td>
+Specifies the index number of the Cluster.
+
+
+
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 vtx_index
+</td>
+<td>
+Specifies the index number of the vertex.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 st_index
+</td>
+<td>
+Specifies the index number of the ST value of the vertex.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 vtx_nv_index
+</td>
+<td>
+Specifies the index number of the normal vector of the vertex.<p>
+Output so it is identical to vtx_index.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 vtx_color_index
+</td>
+<td>
+Specifies the index number for the color of the vertex.<p>
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="cluster_C.htm#clusterVtxC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+</blockquote>
+
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

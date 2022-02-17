@@ -1,0 +1,168 @@
+<html>
+<title>
+ExternalNameNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+21. ExternalName Node
+
+</h2>
+
+<hr size="3">
+
+<h3>
+<A NAME="externalNameListD">(1) ExternalNameList Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 external_name_list_tag
+</td>
+<td>
+Specifies the tags of ExternalNameList.  Please set the tags shown below.
+<pre>
+<b>
+TAG_EXTERNAL_NAME_LIST  0x00270000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_name_list_header_size
+</td>
+<td>
+Specifies the ExternalNameListHeader byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_name_list_size
+</td>
+<td>
+Specifies the ExternalNameList byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_name_num
+</td>
+<td>
+Specifies the total number of the ExternalName.
+</td>
+</tr>
+
+<tr>
+<td>
+u32 external_name_num_byte
+</td>
+<td>
+Specifies the ExternalName byte size.
+</td>
+</tr>
+
+<tr>
+<td>
+ExternalName
+</td>
+<td>
+ExternalName
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="external_name_C.htm#externalNameListC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+<A NAME="externalNameD">(2) ExternalName Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap=>
+u32 external_name_tag
+</td>
+<td>
+Specifies the tags of ExternalName.  Please set the tags shown below.
+<pre>
+<b>
+TAG_EXTERNAL_NAME       0x00270100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_external_name_index
+</td>
+<td>
+Specifies this ExternalName index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_name_header_size
+</td>
+<td>
+Specifies the ExternalNameHeader byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_name_size
+</td>
+<td>
+Specifies the ExternalName byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+external_node_name
+</td>
+<td>
+Specifies the externally referenced node name.  Please describe with ASCII characters.<p>
+Usable characters are ASCII code 0x21(!) ~ 0x7e(~).<p>
+If the character string size is not a multiple of 4 bytes, please align by filling with NULL.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="external_name_C.htm#externalNameC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

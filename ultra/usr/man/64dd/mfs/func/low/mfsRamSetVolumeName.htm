@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetVolumeName</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetVolumeName</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetVolumeName(u8* name)
+Arguments:	*name		Name to be set
+Return value:Error
+Function:	Sets volume name
+Description:	This function sets the volume name.  A volume name consists of 20 characters.
+
+Main error:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTMFSDISK	Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different.
+	MFS_ERR_VERSION	Different version MFS-format disk
+			The version is an unsupported version.
+	MFS_ERR_PROTECT	Write protected
+			The medium is volume protected. </pre>
+</body>
+</html>

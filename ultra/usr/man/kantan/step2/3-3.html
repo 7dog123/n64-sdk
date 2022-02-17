@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.3.3 Software Processes</H1>
+
+<P>The audio library interprets the sound data and constructs the audio command list.
+
+<H2>Library Types</H2>
+
+<P>There are four types of audio libraries:</P>
+
+<UL>
+<LI><B>Sound Player</B><BR>
+Use the sound player library to interpret sound effects. It can reproduce ADPCM compression, 16-bit non-compression (linear PCM), looped sound, and so on.<BR>
+<BR>
+
+<LI><B>Sequence Player</B><BR>
+Use the sequence player to interpret MIDI files. It executes the allocation of the sequencer, instrument bank, synthesizer resource, and sequence interpretation, and it schedules the MIDI messages.<BR>
+<BR>
+
+<LI><B>Synthesizer Driver</B><BR>
+Use the synthesizer driver library to make the audio command list. You can register several players in this driver. Though you will usually register the sound player or the sequence player, you can register a player of your own making.<BR>
+<BR>
+
+<LI><B>Audio Microcode</B><BR>
+Use the audio microcode for waveform synthesis. The data is DMA-transferred from the audio buffer to the RSP. Then the audio microcode operates the RSP as the processor for waveform synthesis.
+</UL>
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

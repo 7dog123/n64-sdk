@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.9.10 Textures</H1>
+
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guLoadTextureBlockMipMap</SPAN> - Calculate the MIP-map pyramid from the original texture, and return the MIP-map texture with the required display list for drawing.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPTexture</SPAN> - Make the texture effective and specify the scaling of the texture.<BR>
+<SPAN ID=mono>gDPLoadBlock</SPAN> - Load TMEM using this low-level TMEM load macro.<BR>
+<SPAN ID=mono>gDPLoadTLUT_pal16</SPAN> - Load the CI4 (16 colors) pallet to texture memory.<BR>
+<SPAN ID=mono>gDPLoadTLUT_pal256</SPAN> - Load the CI8 (256 colors) pallet to texture memory.<BR>
+<SPAN ID=mono>gDPLoadTextureBlock</SPAN> - Load the consecutive texture block to TMEM.<BR>
+<SPAN ID=mono>gDPLoadTextureBlock_4b</SPAN> - Load the consecutive 4-bit texture block to TMEM.<BR>
+<SPAN ID=mono>gDPLoadTextureTile</SPAN> - Load a part of a large texture image to TMEM.<BR>
+<SPAN ID=mono>gDPLoadTextureTile_4b</SPAN> - Load a part of a large 4-bit texture image to TMEM.<BR>
+<SPAN ID=mono>gDPSetTextureImage</SPAN> - Set the texture area.<BR>
+<SPAN ID=mono>gDPSetTextureConvert</SPAN> - Control and convert the color texture filter.<BR>
+<SPAN ID=mono>gDPSetTextureDetail</SPAN> - Turn ON/OFF the detail texture.<BR>
+<SPAN ID=mono>gDPSetTextureFilter</SPAN> - Set the filter type on the sampling of the texture tile.<BR>
+<SPAN ID=mono>gDPSetTextureLOD</SPAN> - Turn ON/OFF LOD for the MIP-map texture.<BR>
+<SPAN ID=mono>gDPSetTextureLUT</SPAN> - Set the full color texture.<BR>
+<SPAN ID=mono>gDPSetTexturePersp</SPAN> - Turn ON/OFF texture map perspective transformation correction.<BR>
+<SPAN ID=mono>gDPSetTile</SPAN> - Set the parameter for one of the eight tile descriptors.<BR>
+<SPAN ID=mono>gDPSetTileSize</SPAN> - Set the parameter for one of the eight tile descriptors.
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

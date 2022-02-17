@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30">Function</strong></font></pre>
+
+<hr>
+
+<pre><font size="6"><strong>nuAuStlInit</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuAuStlInit(musConfig *config)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>*config	  musConfig structure of N64 Sound Tools player 
+          (Set Parameters for config->basenote,
+          config->detune, config->fxs, config->priority
+          in advance)</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Heap size consumed</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p>Initialize the audio manager and activate two sequence players and 
+		the sound player. Also, register the default function to be called when 
+		a PRE NMI event occurs.</p>
+
+<p>The least significant 320 Kbytes of the frame buffer are set as the audio heap.  0x4000 bytes are also reserved for each binary song data buffer for the sequence player (songs in N64 Sound Tools).  0x4000 bytes are likewise reserved for the sound effects bank data buffer. 
+</P>
+<P>
+The playback rate, number of channels, and thread priority of the musConfig structure for the N64 Sound Tools player also are set within this function.</p>
+
+<P>
+There are two methods of setting these musConfig structures, and when changing the audio heap size or the size of the sequence data storage buffer.  One is to call this function after directly changing the musConfig structure variable nuAuStlConfig, which is defined in the nuAuSltInit function.  The other is to refer to the nuAuInit source and initialize the audio yourself, without using nuAuInit. 
+</P>
+<P>
+The default values of the nuAuStlConfig variables are defined as follows. 
+</P>
+<PRE>
+musConfig nuAuStlConfig = {
+    0,                                  /* control_flag         */
+    NU_AU_CHANNELS,                     /* channels             */
+    NULL,                               /* sched                */
+    NU_AU_MGR_THREAD_PRI,               /* thread_priority      */
+    (unsigned char*)NU_AU_HEAP_ADDR,    /* heap                 */
+    NU_AU_HEAP_SIZE,                    /* heap_length          */
+    NULL,                               /* ptr                  */
+    NULL,                               /* wbk                  */
+    NULL,                               /* default_fxbank       */
+    NU_AU_FIFO_LENGTH,                  /* fifo_length          */
+    NU_AU_SYN_UPDATE_MAX,               /* syn_updates          */
+    NU_AU_OUTPUT_RATE,                  /* syn_output_rate      */
+    NU_AU_CLIST_LEN,                    /* cmd buffer size      */
+    1,                                  /* syn_retraceCount     */
+    NU_AU_DMA_BUFFER_NUM,               /* syn_num_dma_bufs     */
+    NU_AU_DMA_BUFFER_SIZE               /* syn_dma_buf_size     */
+};
+</PRE>
+<HR>
+<P>
+- CAUTION
+</P>
+<P>
+NuSystem Ver. 2.00 and later is compatible with N64 Sound Tools Ver. 3.xx.  Please note that the specifications of functions have changed from prior versions. 
+</P>
+<HR>
+<P>
+- Revision History
+</P>
+<P>
+1999/2/1  Change heap size from 512 Kbytes to 320 Kbytes. 
+</P>
+<HR>
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</body>
+</html>

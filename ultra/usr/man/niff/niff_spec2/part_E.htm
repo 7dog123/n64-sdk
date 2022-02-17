@@ -1,0 +1,67 @@
+<html>
+<title>
+PartNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+8. Part Node
+
+</h2>
+<hr size=2>
+<h3>
+<A NAME="partNodeD">(1) Part Node Description (English)</A>
+</h3>
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 tri_group_index
+</td>
+<td>
+
+
+This data is ignored since NIFF 2.0 uses the geometry data specified by the shape_tri_link that is specified in Shape.
+
+
+
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 tri_index
+</td>
+<td>
+
+
+As of NIFF 2.0, the index number specified by this data is the index number of Tri in TriGroup, EnvelopeTri in Envelope or ClusterTri in ClusterShape.<p>
+The type of node and the index number of TriGroup, Envelope and ClusterShape are distinguished by shape_tri_link and kind_of_node_for_geometry of the Shape node that is linked by this Part.
+
+
+</td>
+</tr>
+
+
+</table>
+
+</blockquote>
+
+<P><A HREF="part_C.htm#partNodeC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

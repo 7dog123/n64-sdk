@@ -1,0 +1,47 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="Author" content="Yoshino Hiroshi">
+   <title>niffb2t</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B"
+alink="#FF0000">
+
+<h1>niffb2t</h1>
+
+<p><font color="#FF0000">NIFF dump
+</font></p>
+
+<h3>Syntax</h3>
+
+<blockquote>
+    niffb2t input-file
+</blockquote>
+
+<h3>Explanation</h3>
+
+Inserts delimiters for every List of the NIFF data input-file, using 4byte hexadecimal space delimiters to output the file in text format to standard output.  When data cannot be output using nb2nt, this command can be used to determine where the errors are in the NIFF data.
+<p>
+The List delimiters are processed based on the data of the FileHeader part.
+If the FileHeader cannot be read, the data cannot be output.
+<p>
+By entering the command as
+<blockquote>
+<code>niffb2t input-file &gt output-file </code>
+</blockquote>
+the data can be dumped to output-file.
+
+<h3>Notes</h3>
+If there are errors in the NIFF data, sometimes it cannot be output as text.<br>
+
+<h3>See also</h3>
+<a href="nifft2b.htm">nifft2b</a>
+
+<hr>
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<div align=right><a href="index.htm"><img SRC="../../gif/index.gif" BORDER=0 height=17 width=65></a></div>
+</body>
+</html>

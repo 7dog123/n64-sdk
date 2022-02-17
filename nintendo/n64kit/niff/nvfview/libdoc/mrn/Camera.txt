@@ -1,0 +1,18 @@
+Function 
+-  Sets up camera. 
+
+Functions 
+-  void mrnCameraInit( MrnCamera *camera_ptr, const u32 type );
+  Initializes camera. 
+  Select either MRN_CAMERA_TYPE_PERSPECTIVE or 
+             	MRN_CAMERA_TYPE_ORTHOGONAL for the type. 
+
+-  Gfx *mrnCameraGenerateGfx( MrnCamera *camera_ptr,
+			     MrnContext *context_ptr,
+			     Gfx *gfx_ptr );
+  Generates a gfx of the camera settings and returns the updated gfx pointer. 
+  This function is called when there is no mrn module. 
+
+History 
+  1998/10/12 Takamitsu Hirata 
+    Camera.h, camera.c :  Initial version 

@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.3.2 Model Coordinate System</H1>
+
+<P>The model coordinate system is the base system used when creating model data for a specific design of an object as shown here:</P>
+
+<P><IMG SRC="../images/3-3-2-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=247 HEIGHT=153 BORDER=0>
+
+<P>Generally, when modeling several objects, you define the coordinate origin, axes, scale, and so on individually so that it is easy to model each object.  For example, when  modeling a robot's arm consisting of a forearm and an upper arm, you use an individual coordinate system for each of them. Depending on the modeler, the range used as a model coordinate, may be normalized to <SPAN ID=mono>-1.0 &lt;= x &lt; 1.0</SPAN>, <SPAN ID=mono>-1.0 &lt;= y &lt; 1.0</SPAN>, and <SPAN ID=mono>-1.0 &lt;= z &lt; 1.0</SPAN>. In this case, you have to create the model data within this limitation.</P>
+
+<P>You can use the model coordinate system to define each modeling object independently.  For example, when you model an airplane like the one shown above, you might define a length of 1 meter as 0.1 and do modeling in a space where one edge is 20 meters (because the range of each axis is from -1.0 to 1.0). When you model a human head, you could define 1 centimeter as 0.05, and then do the modeling in a space where one edge is 40 centimeters.</P>
+
+<P>The coordinates defined in the model coordinate system are expressed as <I>(x<SUB>m</SUB>...,y<SUB>m</SUB>...,z<SUB>m</SUB>...,)</I>.</P>
+
+<P>Note that there is no uniform model coordinate system that all 3D modelers of each company use. Each 3D modeler is free to set up their own model coordinate system.</P>
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

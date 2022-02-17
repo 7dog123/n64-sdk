@@ -1,0 +1,59 @@
+History of Revisions to the Standard Function Library (libnustd.a)
+
+Revisions from V1.2(Jul 13 1999)
+* Added #pragma intrinsic of math.h to sqrt, fabs, and fabsf.
+  For IRIX6.2 and higher these functions are in-line expansion functions.
+
+Revision from V1.1 (May 11, 1999)
+* malloc() function familiy provides a new set of functions that 
+  support multi-threading. 'mt_' is added to the front of the original 
+  functions. However, multi-thread support has not been applied to InitHeap() 
+  because it wouldn't make a significant improvement.
+
+* The source code for the malloc() function family is separately provided
+  for each function. (mt_)mallocmemdsp() is also included in the library
+  release version (libnustd.a) because it won't be linked unless 
+  the user uses it.
+
+* malloc() and free() are changed to _malloc() and _free() where those 
+  functions are called within realloc(), calloc(), and memalign().
+
+* malloc_st_ptr has been removed because it does not need to be an 
+  external variable. This variable is defined as an auto variable 
+  within realloc(), which is the only function that refers this 
+  variable.
+
+* Fixed a problem where the address of the next block was 
+  miscalculated when trying to change the block size without changing 
+  the current pointer in realloc().
+
+* In modff() and powf(), some values were cast with double where float 
+  should have been used. These have been fixed. Now float is used to 
+  cast values where it is appropriate.
+
+* mt_qsort() has been provided to support multi-thread for qsort(). 
+
+* Fixed a problem in acosf() where atan2(x, z) was used instead 
+  of atan2f(x, z). 
+
+* The functions that are also included in N64OS have been renamed. The 
+  resulting names start with '_n'.
+
+
+Error correction of README.TXT (July 11, 1998)
+* Library to be specified when creating ROM version was wrong.
+    (wrong) -lultra    (right) -lultra_rom
+    (wrong) -lgultra   (right) -lgultra_rom
+
+Changes since V1.0 (Dec 20, 1997)
+* Added stblib.h, in essence moving the functions defined with this 
+  header.
+* Fixed the sequential search using bsearch.
+* Fixed the problems with the div, ldiv, fmod, and fmodf functions.
+* Added the isspace macro.
+* Permitted  -1 in the isXXX argument.
+* Changed the atof, atoi, atol, strtod, strtol, and strtoul functions 
+  for isspace to use and read out header white space.
+* Fixed problem with qsort function.
+* Made some improvements to rand function.
+

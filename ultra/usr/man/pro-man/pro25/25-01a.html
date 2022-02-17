@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 25</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro25/index.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro25/index25.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">gspF3DEX (3P)</font></b>
+<P>
+<font face="arial" size="-1" color="#000000">
+This microcode is part of the F3DEX series that includes the following seven microcode object files: 
+<ul>
+<li>gspF3DEX.fifo.o 
+<li>gspF3DEX.NoN.fifo.o 
+<li>gspF3DLX.fifo.o 
+<li>gspF3DLX.NoN.fifo.o 
+<li>gspF3DLX.Rej.fifo.o 
+<li>gspF3DLP.Rej.fifo.o 
+<li>gspL3DEX.fifo.o
+</ul>
+
+<P>
+<b>F3DEX Microcode Series (F3DEX Package)</b>
+<br>
+The F3DEX microcode series includes seven tuned and updated versions of the previous Fast3D, F3DNoN, and Line3D microcodes. All of the new versions are of the .fifo subtype; that is, they use fifo exclusively as the method by which commands are passed from the RSP to the RDP. In addition, the vertex cache size is increased, and the matrix stack is increased from 10 levels to 18 levels. The seven microcode versions in this series are listed below. Among them are several versions designed to improve performance by restricting function: 
+<ul>
+<li>gspF3DEX 
+<li>gspF3DEX.NoN
+<P>
+<li>gspF3DLX 
+<li>gspF3DLX.NoN
+<P>
+<li>gspF3DLX.Rej
+<P>
+<li>gspF3DLP.Rej
+<P>
+<li>gspL3DEX
+</ul>
+
+<P>
+These seven modified microcodes comprise what is known as the "F3DEX microcode series" or the "F3DEX package." These microcodes have been specially modified to .fifo subtypes to improve performance. The following sections describe their features. 
+<P>
+<b>F3DEX - gspF3DEX.fifo.o or gspF3DEX.NoN.fifo.o</b>
+<br>
+These are extended versions of the Fast3D microcode. The vertex cache size is increased to 32, and gSP2Triangles, a GBI command for displaying two triangles at once, is supported. Not supported is the gSP1Quadrangle command, a GBI command for displaying rectangles that was supported in F3DEX Version 1.21 and earlier versions. (However, this is emulated by gSP2Triangles.)
+<P>
+In addition, the number of DL links has been increased from 10 to 18 levels. 
+<P>
+<b>gspF3DEX.fifo.o is a version with Near Clip</b>
+<br>gspF3DEX.NoN.fifo.o is a version without Near Clip.
+<P>
+<b>F3DLX - gspF3DLX.fifo.o or gspF3DLX.NoN.fifo.o</b>
+<br>
+To improve processing speed, this version simplifies the subpixel calculation from that in the F3DEX microcode. Therefore, little wrinkles may appear when using textures.
+<P>
+This microcode retains compatibility with F3DEX and GBI, and improves the processing capacity of the RSP. They do so by simplifying the calculation for each vertex of a polygon from subpixel precision to pixel precision.
+<P>
+An extension unique to F3DLX allows clipping to be turned ON or OFF using a DL command. The graphics binary interface (GBI) of the F3DLX microcode is identical to that of the F3DEX microcode. However, in F3DLX, clipping can be controlled by turning it on or off. When the clipping is off, performance improves a little. 
+<P>                           
+<b>gspF3DLX.fifo.o is a version with Near Clip</b>
+<br>
+gspF3DLX.NoN.fifo.o is a version without Near Clip.
+
+<P>
+<b>F3DLX.Rej - gspF3DLX.Rej.fifo.o</b>
+<br>
+For this microcode, the clipping processing in the general microcode is removed. Instead, reject processing is included. In other words, this version substitutes rejection processing for clipping. This processing is lighter than the old clipping processing. The vertex cache size is 64, and the gSPTriangles commands are supported. This has been optimized using the assumption that 2Tri operation will be performed. When the vertex of a triangle falls outside the defined reject rectangle, no portion of that triangle is rendered. Consequently, this version is not suited for large triangles. Texture perspective correction is implemented. 
+
+<P>
+<b>F3DLP.Rej - gspF3DLP.Rej.fifo.o</b>
+<br>
+This has macros equivalent to those of F3DLX.Rej. However, because texture perspective correction is not implemented, the RSP processing speed is faster. The vertex cache size is 80. 
+
+<P>
+<b>L3DEX - gspL3DEX.fifo.o</b>
+<br>
+This is a modified version of the Line3D microcode adapted to cache size of 32. It is the same as gspLine3D and allows polygons rendered by F3DEX to be displayed using wireframes. 
+
+<P>
+<b>Loading F3DEX Series Microcode</b>
+<br>
+You can use the <font face="courier">gSPLoadUcode</font> or <font face="courier">gSPloadUcodeL</font> <FONT FACE="ARIAL" SIZE="-1">macro to load any of the seven package microcodes.
+
+<P>
+<font face="courier">gSPLoadUcode(Gfx *gdl, u64 *uc_start, u64 *uc_dstart)
+<br>
+gsSPLoadUcode(u64 *uc_start, u64 *uc_dstart)</font>
+<ul>
+<li><font face="courier">uc_start</font> <FONT FACE="ARIAL" SIZE="-1">points to the start of the microcode text section (physical address) 
+<li><font face="courier">uc_dstart</font> <FONT FACE="ARIAL" SIZE="-1">points to the start of the microcode data section (physical address)</UL>
+
+<P>
+These functions load the specified microcode. However, they can load only the microcode included in the package (F3DEX, F3DLX, F3DLX.Rej, F3DLP.Rej, and L3DEX); they cannot load other microcode, such as Fast3D or Turbo3D. Because microcode loading increases overhead, discretion in loading is recommended to obtain good performance. For practical purposes, this means intermittently switching between the microcode types used for rendering. For example, use a clip-capable microcode such as F3DLX to render landscapes, and use fast microcode such as F3DLX.Rej to render characters. As with previous releases, you can switch between F3DEX and L3DEX when rendering lines without CPU involvement.
+<P>
+<b>Note:</b> When microcode is loaded using this GBI, the internal state of the RSP is initialized (segment address, viewport, geometry mode, matrix, link information of display). Thus, RSP-related settings must be reset immediately after microcode loading. Furthermore, the DL linking information is initialized. Caution is therefore recommended when using these commands in a DL called using the gSPDisplayList macro because control will not return to the calling DL.
+<P>
+To enable use of the gSPLoadUcode macro, you must set t.flag, which is a member of the OSTask structure, to OS_TASK_LOADABLE as shown here: 
+<pre>
+OSTask *tp;
+tp->t.flag = OS_TASK_LOADABLE | OS_TASK_DP_WAIT;
+</pre>
+
+<P>
+To make this flag valid, a patch must be applied to the OS. Applying the patch makes the OS upward/host compatible. This patch is already contained in OSs using the N64 Software Library 2.0H or later.
+<P> 
+The gSPloadUcodeL macro makes loading microcode even easier: 
+<p>
+<font face="courier">gSPLoadUcodeL(Gfx *gdl, ucode_name)
+<br>
+<font face="courier">gsSPLoadUcodeL(ucode_name)</font>
+
+<P>
+<FONT FACE="ARIAL" SIZE="-1">
+Commands (a) and (b) below are equivalent: 
+<P>
+<ul type="a">
+<li><font face="courier">gsSPLoadUcode
+<BR>
+(OS_K0_TO_PHYSICAL(&gspF3DEX_fifoTextStart),
+<br>
+OS_K0_TO_PHYSICAL(&gspF3DEX_fifoDataStart))</font>
+<P>
+<li><font face="courier">gsSPLoadUcodeL(gspF3DEX_fifo)</font>
+</ul>
+
+<P>
+<FONT FACE="ARIAL" SIZE="-1">
+<a name="rejectbox">
+<b>Rejection Processing</b>
+<br>
+In rejection processing, the only triangles drawn are those for which all three vertexes are inside a certain area of the screen. This area is slightly wider than the screen. Even if just one vertex is outside the area, the triangle is not drawn. This area is called the "reject box."
+<P>
+The reject box varies depending on the size of the TV screen. For X and Y, when the screen size is 320 x 240, the reject box is twice as big as the screen at beginning as shown in the following drawing:
+
+<P>
+Reject Box
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-00.gif"></tr></td></table>
+
+<P>
+The area can be changed by calling gSPClipRatio. A value can be selected from FRUSTRATIO_2 to FRUSTRATIO_6.
+<P>
+For the Z direction (depth of screen), a reject box can be done with the far plane, but not with the near plane.
+<P> 
+If you draw a big triangle and want part of it to appear on the screen, but one vertex of the triangle is out of the reject box, the triangle will not be drawn because of reject processing. In this case, you need to divide the big triangle into several small triangles so that an unnatural "missing polygon" can be avoided.
+<P>
+In F3DLX.Rej and F3DLP.Rej, the processing speed of the gSP2Triangles command has been improved by using reject processing. Therefore, when creating the display list (DL), please use gSP2Triangles whenever possible.
+
+<p>
+<B>Notes for Reject Processing</B>
+<BR>
+The gspF3DLX.Rej.fifo.o microcode object file is a version with texture perspective correction.  The gspF3DLP.Rej.fifo.o microcode object file is a version without texture perspective correction.  F3DLP.Rej is slightly faster than F3DLX.Rej. The processing performance of the SP is improved, but because there are no changes in DP itself, DP often is not fast enough in parallel with SP. In such cases, consideration must be given to setting the render mode to a mode such as RA mode (G_RM_RA_ZB_OPA_SURF).  The rejection processing microcode does not support G_CULL_BOTH. 
+
+<p>
+<B>Header file</B>
+<ul>
+<li>headers-2.0e/*.h is the header file for U64 Dev 2.0e 
+<li>headers-2.0f/*.h is the header file for U64 Dev 2.0f 
+<li>headers-2.0g/*.h is the header file for U64 Dev 2.0g
+</ul>
+
+<P>
+Please use this after moving the file which corresponds to your development environment to /usr/include/PR. 
+<P>
+
+<b>GBI Compatibility Issues</b>
+<br>
+There is no compatibility on a binary level between the GBI (graphics binary interface) of this F3DEX microcode series and the previous Fast3D microcode.
+
+<P>
+However, the differences between them can be eliminated by using gbi.h. Even though they use the same DL, a suitable GBI for each can be specified by using the compile option; that is, by defining the keyword F3DEX_GBI before including the gbi.h file. For example, when the DL is written in the static_ex.c file, please add #define F3DEX_GBI before including ultra64.h as shown here: 
+<pre>
+ static_ex.c:
+|
+|#define  F3DEX_GBI
+|#include 
+|
+</pre>
+
+<P>
+All the microcodes F3DEX, F3DLX, F3DLX.Rej, and F3DLP.Rej are compatible at the GBI binary level. Therefore, the DL can be shared. However, even the same commands process differently because of things such as the reject processing described previously, so the same graphics may not be drawn even when using the same DL. 
+<P>
+
+<b>OS Patch Installation</b>
+<br>
+There are patches of the OS for gSPLoadUcode in the os_patches directory. Please use the following procedure to install a patch: 
+<pre>
+% cd os_patches
+% make
+</pre>
+
+<P>
+By doing this, the patched libraries (libultra.a, libultra_rom.a, and libultra_d.a) are created in the os_patches directory. Please move them to /usr/lib before using them. 
+
+<P>
+The following macros were added or changed when the F3DEX microcode series was added to the N64 development environment.
+<ul>
+<li>gSPVertex 
+<li>gSP2Triangles 
+<li>gSP1Quadrangle 
+<li>gSPSetGeometryMode 
+<li>gSPCullDisplayList 
+<li>gSPClipRatio 
+<li>gSPModifyVertex 
+<li>gSPBranchLessZ 
+<li>gSPBranchLessZrg 
+<li>gSPLoadUcodeL 
+</ul>
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

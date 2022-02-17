@@ -1,0 +1,61 @@
+Function
+  A group of hierarchy structures consists of Module
+
+Functions
+  void mhcModuleInit( MhcModule *module_ptr )
+  Initializes MhcModule
+
+  void mhcModuleDestroy( MhcModule *module_ptr )
+  Destroys MhcModule
+
+  void mhcModuleBeginEval( MhcModule *module_ptr )
+  Initializes for evaluating MhcModule
+
+  MhcNode *mhcModuleGetExternalNode( MhcModule *module_ptr,
+				     MhcScene *scene_ptr,
+				     const u32 index )
+  Resolves external reference node
+
+  MhcNode *mhcModuleGetNodeByName( MhcModule *module_ptr,
+				   const char *node_name )
+  Searches for a node specified by its name
+
+  u32 mhcModuleGetNodeByType( MhcModule *module_ptr,
+			      const u32 type,
+			      const u32 array_size,
+			      MhcNode **node_ptr_array )
+  Returns the number of specified node searched by type
+
+  void mhcModuleActivate( MhcModule *module_ptr )
+  Activates MhcModule
+
+  void mhcModuleInactivate( MhcModule *module_ptr )
+  Inactivates MhcModule
+
+  void mhcModuleBind( MhcModule *module_ptr,
+		      MhcScene *scene_ptr )
+  Binds Module with scene, which makes all the module available.
+
+  int mhcModuleLoad( MhcModule *module_ptr,
+		     MifFileParser *file_parser_ptr,
+		     MisInput *input_ptr )
+  Imports Module
+
+  int mhcModuleUnload( MhcModule *module_ptr );
+  Deletes the contents of module that has been imported
+
+Macro
+  _mhcModuleIsActive(module_ptr)
+  Checks if Module is active
+
+  _mhcModuleGetNodeByIndex(module_ptr,index)
+  Searches for a node specified by Index
+
+  _mhcModuleAddNode(module_ptr,node_ptr)
+  Adds a node to Module
+
+History
+  1998/11/25 Takamitsu Hirata
+    Module.h, module.c: Initial version
+  1999/03/09 Takamitsu Hirata
+    Module.h, module.c: Added Flat mode

@@ -1,0 +1,25 @@
+Function 
+-  Defines view. 
+  The result of rendering is written to view as an image. 
+
+Functions
+-  void mrnViewInit( MrnView *view_ptr )
+  Initializes mrnView. 
+
+-  Gfx *mrnViewGenerateClearGfx( MrnView *view_ptr,
+				MrnContext *context_ptr,
+				Gfx *gfx_ptr )
+  Generates a gfx which clears view. 
+
+-  Gfx *mrnViewGenerateSetupGfx( MrnView *view_ptr,
+				MrnContext *context_ptr,
+				Gfx *gfx_ptr )
+  Generates a gfx which sets the view. 
+
+-  void mrnViewSetClearColor( MrnView *view_ptr, MvmColor4c color )
+  Sets the background color when the view is cleared. 
+  When anti-aliasing is used, the alpha component is made 255. 
+
+History
+  1998/10/27 Takamitsu Hirata 
+    View.h, view.c :  Initial version 

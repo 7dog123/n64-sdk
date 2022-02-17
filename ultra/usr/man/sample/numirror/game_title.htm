@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=x-sjis">
+<title>GAME TITLE DETAILS</title>
+
+
+<meta name="Microsoft Theme" content="none"><meta name="Microsoft Border" content="tl, default"></head>
+
+<body text="#000000" bgcolor="#FFFFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%">
+
+</td><td valign="top" width="24"></td><!--msnavigation--><td valign="top">
+
+<p align="center"><br>
+<strong><big><big>GAME TITLE DETAILS</big></big></strong></p>
+
+<p align="left"><strong>1.  Description of Processing in Game Title</strong></p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;Game Title is written as a call-back function (om_title_main() function).<br>
+&nbsp;&nbsp;&nbsp;Call-back functions can be registered with Nusystem's nuGfxFuncSet function, and registered functions will be executed on each vertical retrace.<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; 
+At present, primarily the following kinds of processing have been incorporated into Game Title.</p>
+
+<p align="left">&nbsp;&nbsp; (1) Read texture data from ROM<br>
+&nbsp;&nbsp; (2) Draw texture data using sprite microcode<br>
+&nbsp;&nbsp; (3) Loop display of MONEGI logo and game title with passage of set time</p>
+
+<p align="left"><strong>2. Texture Data</strong></p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; There are two types of texture data drawn by Game Title:  the MONEGI logo and the game title. <br>
+&nbsp;&nbsp;&nbsp; The various texture data are defined in the Data directory according to the structure in (1).</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; (1) Texture Data Structures</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -MONEGI logo ----- 
+logo_imgs.c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Game title 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----- opening_imgs.c</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; (2) Texture Data Format</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Since S2DEX sprite microcode is used, the texture data drawn by Game Title are defined using the uObjTxSprite data format.  <font color="#0000FF">(Defined in the om_title_param.c file)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This time, <font color="#0000FF">the data defined in the om_title_param.c file have been manually prepared, but</font> the generation of image data itself (16bit or 32bit C language data) was accomplished by independently creating a data generation tool. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The data generation tool created in (3) will be introduced below. </p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; (3) Image Data Generation Tool (TextureConv.exe)</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Only the PC version of the image generation tool is shown in the figure below. </br>
+
+<align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; There is currently no English version of this tool. </p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="gif/game_t1.gif" alt="wpe1.gif (37538 ƒoƒCƒg)" WIDTH="406" HEIGHT="381"></p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Output File
+----- The name of the C language source file or header file is specified in Output File. </p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Data Name &nbsp; 
+-------- 
+The data tag name used for the data search is specified in Data Name. </p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -X: &nbsp; 
+------------- The X size of one tile, when the texture data for one picture is divided into tile units, is specified in X. <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Y:&nbsp; 
+------------- The Y size of one tile, when the texture data for one picture is divided into tile units, is specified in Y.</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -To 16bit
+&nbsp; ------- Check the To 16bit radio button when the data is to be generated in 16 bit data format. </p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -To 32bit
+&nbsp; ------- Check the To 32bit radio button when the data is to be generated in 32 bit data format. </p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000FF">Only bit-mapped files are supported as the file format for the files input to the TextureConv.exe tool.</font><br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; (3) Texture Data Search Method</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The two types of texture data introduced in (1) are not static data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Texture data are arranged in ROM as ROM data, and are read from ROM into RDRAM when needed. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The same segment in RDRAM is used for both the MONEGI logo and game title data (segment sharing).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In other words, when the MONEGI logo data are read into a segment in RDRAM, <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; there are no game title data in RDRAM, while there are no MONEGI logo data <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in RDRAM when game title data have been read into the segment in RDRAM. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Namely, data overlaying is performed. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is necessary to install this overlay when developing a large application in N64. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this numirror sample, an overlay is installed not only for data, but it is also possible to overlay the program code. </p>
+
+<p align="left"></p>
+<font FACE="‚l‚r –¾’©" SIZE="3">
+
+<p><CENTER><img SRC="gif/Image2.gif"></CENTER></font></p>
+
+<p><CENTER>(Figure 1)</CENTER></p>
+<!--msnavigation--></td></tr><!--msnavigation--></table>
+</body>
+</html>

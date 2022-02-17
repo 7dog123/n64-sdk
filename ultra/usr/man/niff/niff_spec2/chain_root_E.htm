@@ -1,0 +1,232 @@
+<html>
+<title>
+ChainRootNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+18. ChainRoot Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="chainRootListD">(1) ChainRootList Description (English)</A>
+</h3>
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 chain_root_list_tag
+</td>
+<td>
+Specifies the tags of ChainRootList.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_CHAIN_ROOT_LIST     0x00240000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_list_header_size
+</td>
+<td>
+Specifies the ChainRootListHeader byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_list_size
+</td>
+<td>
+Specifies the ChainRootList byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_list_num
+</td>
+<td>
+Specifies the total number of the ChainRoot.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_num_byte
+</td>
+<td>
+Specifies the byte size of each ChainRoot.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+ChainRoot
+</td>
+<td>
+This is the ChainRoot area.
+</td>
+</tr>
+</table>
+<P><A HREF="chain_root_C.htm#chainRootListC">See Data Chunk</A></P>
+</blockquote>
+
+
+<h3>
+<A NAME="chainRootD">(2) ChainRoot Description (English)</A>
+</h3>
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 chain_root_tag
+</td>
+<td>
+Specifies the tags of ChainRoot.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_CHAIN_ROOT          0x00240100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_chain_root_index
+</td>
+<td>
+Specifies the index number of this ChainRoot.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_size
+</td>
+<td>
+Specifies the ChainRoot byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_name_index
+</td>
+<td>
+Uses a NameList index number to describe the ChainRoot name.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 chain_root_type
+</td>
+<td>
+Specifies the ChainRoot type.  Please specify 0x0 as the default.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 obj_num
+</td>
+<td>
+Specifies the total number of the Obj linked from the ChainRoot.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_obj_num
+</td>
+<td>
+Specifies the total number of the Obj linked from the ChainRoot that references an external file.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 anim_index
+</td>
+<td>
+Specifies the ChainRoot animation with the index number of the AnimGroup.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 joint_index
+</td>
+<td>
+Specifies the Joint index number that is linked from the ChainRoot.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 obj_index
+</td>
+<td>
+Specifies the Obj index number that is linked from the ChainRoot.<p>
+If obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+
+
+
+<tr>
+<td nowrap>
+u32 external_obj_file_name_index
+</td>
+<td>
+If the Obj that is linked from the ChainRoot references an external file, that file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If external_obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 external_obj_name_index
+</td>
+<td>
+If the Obj that is linked from the ChainRoot references an external file, that Obj name is specified with an ExternalNameList index number.<p>
+If external_obj_num = 0, this field is not specified.
+</td>
+</tr>
+</table>
+<P><A HREF="chain_root_C.htm#chainRootC">See Data Chunk</A></P>
+<P><A HREF="appendix/IK_system_E.htm">See Appendix 5: IK System</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

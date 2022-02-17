@@ -1,0 +1,53 @@
+#=======================================================================#
+#		NIFFprev						#
+#		Makefile.win						#
+#									#
+#		Copyright (C) 1997, NINTENDO Co,Ltd.			#
+#									#
+#-----------------------------------------------------------------------# 
+#
+
+# The directory which has include files and library of NuSYSTEM
+#
+N64KITDIR    = c:\nintendo\n64kit
+NUSYSINCDIR  = $(N64KITDIR)\nusys\include
+NUSYSLIBDIR  = $(N64KITDIR)\nusys\lib
+NUSTDINC     = $(N64KITDIR)\nustd\include
+NUSTDLIB     = $(N64KITDIR)\nustd\lib
+
+N64GCC_PATH =	$(ROOT)\gcc\mipse
+N64GCC_BIN =	$(N64GCC_PATH)\bin
+N64GCC_INC =	$(ROOT)\usr\include
+USR_INC    =	..\include
+LIBDIR     =	.\lib
+CC =		$(N64GCC_BIN)\gcc
+AS =		$(N64GCC_BIN)\as
+LD =		$(N64GCC_BIN)\ld
+MAKEROM =	mild
+
+APP =		mirror_house.out
+
+AUDIO_CDEFS = -DNUALSTL -DN_AUDIO
+#NUAUDIOLIB = -lnualstl_n -ln_numus -ln_gaudio_sc
+NUAUDIOLIB = -lnualstl_n -ln_numus -ln_gaudio_sc
+GBI = -DF3DEX_GBI_2
+
+CC_INC = -I. -I$(NUSTDINC) -I$(N64GCC_INC)\pr -I$(N64GCC_INC) -I$(NUSYSINCDIR) -I$(USR_INC)
+
+#default: sp_select_bg.c sp_lit.c test_data2.c
+default: opening_imgs.c logo_imgs.c
+	$(CC) -g -G 0 -c $(CC_INC) $(CC_DEF) opening_imgs.c
+	$(CC) -g -G 0 -c $(CC_INC) $(CC_DEF) logo_imgs.c
+	$(CC) -g -G 0 -c $(CC_INC) $(CC_DEF) sp_select_bg.c
+	$(CC) -g -G 0 -c $(CC_INC) $(CC_DEF) opening.c
+	$(CC) -g -G 0 -c $(CC_INC) $(CC_DEF) om_mem_heap.c
+
+CC_INC =	-I. -I$(NUSTDINC) -I$(N64GCC_INC)\pr -I$(N64GCC_INC) -I$(NUSYSINCDIR) -I$(USR_INC)
+
+clean:
+	del *.o
+
+install:
+	copy *.o ..\.
+
+# DO NOT DELETE

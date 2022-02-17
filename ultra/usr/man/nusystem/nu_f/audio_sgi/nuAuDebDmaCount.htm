@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<body bgcolor="#FFFFFF">
+<Pre>
+<FONT face="arial" size="4" color="#408080"><STRONG><IMG src="../nusystem2.gif" height="30" width="176"> Global Variables</STRONG></FONT>
+</Pre>
+
+
+<HR>
+<Pre>
+<FONT face="arial" size="6" color="#408080"><STRONG>nuAuDebDmaCount
+nuAuDebDmaMax
+nuAuDebDmaBufMaxUse
+nuAuDebDmaCallBackCount
+nuAuDebDmaCallBackMax
+nuAuDebAcmdLenMax</STRONG></FONT>
+</Pre>
+
+<HR>
+
+<font face="arial" size="-1">
+<STRONG>Syntax</STRONG>
+<br>
+<font face="courier" size="3"><PRE>u32 nuAuDebDmaMax
+u32 nuAuDebDmaBufMaxUse
+u32 nuAuDebDmaCallbackCount
+u32 nuAuDebDmaCallbackFrame
+u32 nuAuDebDmaCallbackMax
+u32 nuAuDebAcmdLenMax
+</PRE></font>
+
+
+<P>
+<STRONG>Explanation</STRONG><br>
+Audio debugging parameter acquisition variable.
+
+
+<P>
+The value of the variable can be acquired as the following kinds of values during audio playback.  This is used primarily for the tuning of audio parameters. 
+</P>
+
+<TABLE width="558" border="1">
+  <TR>
+    <TD><font face="arial" size="-1">nuAuDebDmaCount</TD>
+    <TD width="545"><font face="arial" size="-1">Number of times PI-DMA was actually performed during audio playback</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">nuAuDebDmaMax</TD>
+    <TD><font face="arial" size="-1">Maximum number of times PI-DMA is performed in 1 process units during audio playback</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">nuAuDebDmaBufMaxUse</TD>
+    <TD><font face="arial" size="-1">Maximum number of PI-DMA buffers used during audio playback</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">nuAuDebDmaCallBackCount</TD>
+    <TD><font face="arial" size="-1">Total number of callback function calls during audio playback</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">nuAuDebDmaCallBackMax</TD>
+    <TD><font face="arial" size="-1">Maximum number of times callback functions were called in 1 process units during audio playback</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">nuAuAcmdLenMax</TD>
+    <TD><font face="arial" size="-1">Maximum size of audio command list created</TD></TR>
+</TABLE>
+
+
+<P>A "1 process unit" is defined as a processing unit when the alAudioFrame function or the n_alAudioFrame function is called only once.
+</P> 
+
+<HR>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

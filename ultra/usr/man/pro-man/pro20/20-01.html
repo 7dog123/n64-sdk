@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 20</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro19/index19.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro20/index20.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Overview of the Audio System</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This chapter instructs the musician and sound designer in how to use the audio development tools currently available for the Nintendo 64. It is divided into the following sections:
+<ul>
+<li>An overview of the audio system. 
+<P>
+<li>Discusion of the constraints and decisions that should be made in conjunction with the programmer or game designer. 
+<P>
+<li>Suggestions for creating samples. 
+<P>
+<li>Playback parameters and the .inst file. 
+<P>
+<li>How to create bank files. 
+<P>
+<li>MIDI files and MIDI implementation. 
+<P>
+<li>Music development tools.
+<P>
+<li>Overview of Audio System
+</ul>
+
+
+<P>
+In order for the musician or sound designer to produce sounds and music for the Nintendo64, a short explanation of the audio system is helpful, though not necessary. To that end, a brief description of the audio system is included here. (The audio system is discussed in greater detail in the programmers documentation.) In addition to a brief description of the audio system, several important items the musician should be aware of are listed below.
+
+<P>
+<a name="01"></a>
+<b>Brief Description of the Audio System</b>
+<br>
+The audio system for the Nintendo 64 is composed of a Sound Player (for playing single samples, such as sound effects) and a Sequence Player (for playing music). When the game starts up, it creates and initializes a sound player and a sequence player. It then assigns a bank of sound effects to the sound player, and assigns a bank of instruments and a bank of MIDI sequences to the sequence player. To play a sound effect, the game sends a message to the sound player, telling it what sound effect to set as its target, and then sends another message to the sound player, telling it to play the target sound. To play a MIDI sequence, the game must load the sequence data, then attach the sequence to the sequence player, and then send a message to the sequence player to start playing the music. 
+
+<P>
+<b>Note:</b> Musical sequences can be stored as either type 0 MIDI files, or in a compressed midi format unique to the Nintendo64. It is very important that the programmer and the musician agree on which file format to use.
+
+<P>
+There are several components to the sound system. First, there are the samples that are stored in ROM. Accompanying the samples are a group of parameters used for playback (Key Mappings, Envelopes, Root Pitch, and so on). In order to process the sounds, a section of the RAM must be allocated for the audio system. 
+
+<P>
+In software, there are two main sections. One part runs on the CPU and the other part runs on the RSP. The audio system must share the RSP with the graphics processing. The RSP is where most of the low-level processing takes place, and this is where the samples are mixed into an output stream. This output stream is then fed to a pair of DACs for stereo output.
+
+<P>
+There are four types of files used by the game for audio production: .ctl, .tbl, .seq, and .sbk. Before the game can play back either sound effects or music, the musician and sound designer must create these files. The .tbl files contain the compressed samples. The .bnk files contain the associated control information necessary for playback. .bnk files and .tbl files are always paired. 
+
+<P>
+The .seq files are MIDI files that have all unneeded events removed, and the .sbk files are banks of .seq files. Typically, there will be at least one pair of .bnk and .tbl files for music, and a separate pair for sound effects. (Although it would be possible to put all sounds into one pair, or alternatively, have numerous pairs.)
+
+<P>
+The reason that banks are stored in two files is that then the raw audio data doesn’t need to be loaded into RAM; only the information pointing to the samples, and the values for the playback parameters. When a sound is to be played, only a small portion of the sample is loaded into a RAM buffer. After it has been used for playback, it can be discarded, and the buffer reused for the next portion of the sample. The result is that a comparatively small amount of RAM is needed for sound.
+
+<P>
+<a name="02"></a>
+<b>Typical Development Process</b>
+<br>
+When creating audio for an Nintendo 64 game, the musician typically follows these steps:
+
+<ol>
+<li>Create the samples as AIFF files.
+<P>
+<li>Encode the samples into AIFC files.
+<P>
+<li>Create a .inst file.
+<P>
+<li>Compile the .inst file, with the samples into the bank files.
+<P>
+<li>Create the MIDI sequence files.
+<P>
+<li>Compile the MIDI sequence files into .seq files, and then compile the .seq files into a .sbk file.
+<P>
+<li>Deliver the .tbl .bnk and .sbk files to the programmer.
+</ol>
+
+<P>
+<a name="03"></a>
+<b>Common Values</b>
+<br>
+Throughout this document and when referring to .inst files, several things are kept constant:
+<ul>
+<li>Middle C (MIDI note 60) is referred to as C4. (Some synthesizer and software manufactures refer to Middle C as C3.)
+<P>
+<li>Pan values range from 0 to 127, with 0 being full left, 64 center pan, and 127 full right.
+<P>
+<li>Volumes are from 0 to 127, with 0 meaning there will be no sound, and 127 being full volume.
+
+</u>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

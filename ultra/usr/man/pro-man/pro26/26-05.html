@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 26</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro26/index26.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro26/index26.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">N64 Mouse</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>What is the N64 Mouse?</b>
+<br>
+A mouse is scheduled to be developed in the near future. The mouse will be connected to the N64 Controller port. This section explains the use of the mouse.
+<P>
+There are no special N64 functions for use with a mouse. When creating applications which utilize a mouse, use the same 
+set of functions which are used with the <a target="_top" href="../pro26/index26.2.html">Standard N64 Controller.</a>  
+<P>
+<a name="02"></a>
+<b>How to Use the N64 Mouse</b>
+<br>
+First execute the <a target="main" href="../pro26/26-01.html#06.1">osContInit()</a> function in order to make the initial settings for using the SI.  Next check the value of the "type" member variable of the OSContStatus structure to confirm that the mouse has been attached.  You know the mouse is attached when b12~b8 of "type" are all 0, the CONT_RELATIVE bit is raised, and the CONT_ABSOLUTE and CONT_JOYPORT bits are not raised.
+<P>
+A macro has been defined in OS 2.0I and after, so check using the following method: 
+<pre><font face="courier" size="3">osContInit(&amp;siMessageQ, &amp;pattern, contstat);
+for (I = 0 ; I &lt; MAXCONTROLLERS ; I ++) {
+	if ((pattern &gt;&gt; I) &amp; 1) {
+		if ((contstat[I].type &amp; CONT_TYPE_MASK) == CONT_TYPE_MOUSE){
+			osSyncPrintf(&quot;Mouse\n&quot;);
+		} else {
+			osSyncPrintf(&quot;Some other device\n&quot;);
+		}
+	} else {
+		osSyncPrintf(&quot;Nothing is inserted\n&quot;);
+	}
+}
+</pre></font>
+
+<P>
+<A name="03"></A>
+<b>How to Read the Data</b>
+<br>
+To read data from the mouse, use the Controller read functions,  <a target="main" href="../pro26/26-02.html#04.1">osContStartReadData() and osContGetReadData().</a>  
+<P>
+The data read about the movement of the mouse is placed in the "stick_x" and "stick_y" member variables of the OSContPad structure, while the data read about clicking the mouse buttons is placed in the "button" member variable.  
+<P>
+The left mouse button corresponds to the A_BUTTON, and right mouse button corresponds to the B_BUTTON.  
+<P>
+The "button" member variable is ANDed with A_BUTTON or B_BUTTON to check which mouse button has been clicked.
+<P>
+<br>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>1.1.4 Memory</H1>
+
+<H2>RDRAM Main Memory</H2>
+
+<P>Main memory is provided by two very high-speed memory chips called RDRAM (Rambus DRAM). Each of the two RDRAM chips in the N64 provide a memory map of 2 megabytes by 9 bits for a total memory size of 4 megabytes by 9 bits. N64 has been designed so that all three processors (CPU, RSP, and RDP) can share this memory.</P>
+
+<IMG SRC="../images/1-1-4-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=360 HEIGHT=240 BORDER=0>
+
+<P>Also, N64 provides a tremendous advantage in that any place in RDRAM can be used not only to store the program or data but also to be the frame buffer, the Z-buffer, or the audio buffer. In addition, connecting the Memory Pak to the N64 Control Deck expands RDRAM by another 4 megabytes by 9 bits.</P>
+
+<H2>Memory Management</H2>
+
+You are free to manage memory as appropriate for each game you develop. The N64 Operating System does not force you to use any specific method.  The memory region library that dynamically allocates fixed-length memory blocks now fully supports all features of the <TT>malloc</TT> and <TT>free</TT> standard C functions.
+
+<H2>CPU Addressing</H2>
+
+<P>Be careful when working with CPU addresses.  They are virtual addresses, not physical addresses.  The CPU is operated in 32-bit kernel mode which means that each address space is 32 bits. (Note that this in no way excludes 64-bit integer arithmetic.)</P>
+
+<P>In 32-bit kernel mode, memory is divided into the following five segments:</P>
+
+<PRE><B>
+Start      - End         ID     Use</B>
+0x00000000 - 0x7fffffff  KUSEG  TLB mapping
+0x80000000 - 0x9fffffff  KSEG0  Direct map, cache
+0xa0000000 - 0xbfffffff  KSEG1  Direct map, non-cache
+0xc0000000 - 0xdfffffff  KSSEG  TLB mapping
+0xe0000000 - 0xffffffff  KSEG3  TLB mapping
+</PRE>
+
+<IMG SRC="../images/1-1-4-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=410 HEIGHT=194 BORDER=0>
+
+<P>Usually, you'll want to use KSEG0 where mapping between physical and virtual addresses is simple.  In this segment, the address that masks the upper 3 bits of the virtual address becomes the physical address. Of course, you can use the other segments that use the TLB (translation lookaside buffer).</P>
+
+<H2>RSP Addressing</H2>
+
+<P>The RSP uses a <I>segment address</I> system to identify the RDRAM address where the display list, matrix data, vertex data, or texture data is located. This information is used by the RSP-driven graphics microcode, which can manage up to 16 segments.</P>
+
+<P>In the 32-bit address given as the segment address, the four bits from bit 31 to 28 are ignored. The four bits from bit 27 to 24 form a segment ID to identify the base address of one of the 16 segments. The 24 bits from bit 23 to 0 hold the segment offset. To find the physical address, simply add the segment offset to the segment base address specified by the segment ID.</P>
+
+<IMG SRC="../images/1-1-4-3.gif" ALT="Illustration" ALIGN="bottom" WIDTH=410 HEIGHT=265 BORDER=0>
+
+<H2>RDP Addressing</H2>
+
+<P>The RDP uses the physical address. By design, the display list is passed to the RDP by way of the RSP. In the RSP, the segment address is converted to the physical address. So the display list can always use the segment address system regardless of whether it is to be processed by the RSP or the RDP.</P>
+
+
+<!-- Begin Footer -->
+
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

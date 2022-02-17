@@ -1,0 +1,65 @@
+LIB = $(ROOT)/usr/lib
+LPR = $(LIB)/PR
+INC = $(ROOT)/usr/include
+CC  = gcc
+LD  = ld
+MAKEROM = mild
+
+.c.o:
+	$(CC) -g -G 0 -c -I. -I$(INC)/PR -I$(INC) -D_LANGUAGE_C -D_MIPS_SZLONG=32 -D_MIPS_SZINT=32 -D_DEBUG $<
+
+APP =		simple.out
+
+TARGETS =	simple.n64
+
+HFILES =		\
+	simple.h	\
+	audio.h		\
+	gfx.h		\
+	misc.h		\
+	gfx_tri.h	\
+	gfx_vtx.h
+
+CODEFILES =		\
+	audio.c		\
+	audiomgr.c	\
+	controller.c	\
+	gfx.c		\
+	gfxstack.c	\
+	gfxyield.c	\
+	misc.c		\
+	simple.c
+
+CODEOBJECTS =	$(CODEFILES:.c=.o)
+
+CODESEGMENT =	codesegment.o
+
+# Data files that have thier own segments:
+
+DATAFILES =		\
+	gfxdynamic.c	\
+	gfxdlists.c	\
+	gfxzbuffer.c	\
+	gfxinit.c	\
+	gfxstatic.c	\
+	gfxcfb.c
+
+DATAOBJECTS =	$(DATAFILES:.c=.o)
+
+OBJECTS =	$(CODESEGMENT) $(DATAOBJECTS)
+
+LDFLAGS = $(MKDEPOPT) -L$(LIB) -lgultra_d -L$(GCCDIR)/mipse/lib -lkmc
+
+default: $(TARGETS)
+
+$(CODESEGMENT):	$(CODEOBJECTS) makefile
+		$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+$(TARGETS):	$(OBJECTS)
+		$(MAKEROM) spec -r $(TARGETS) -e $(APP)
+
+$(CODEOBJECTS) $(DATAOBJECTS) :	__elfcom.tbl __elfcom.elf
+
+__elfcom.tbl __elfcom.elf : __elfcom.o
+	elftbl
+

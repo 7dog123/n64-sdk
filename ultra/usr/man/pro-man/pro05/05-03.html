@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 5</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro05/index5.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro05/index5.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Gamma Correction</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The SNES and Super Famicom do not have gamma correction hardware but the Nintendo 64 does. Some developers have indicated that the colors on the Nintendo 64 look “washed out” with gamma correction turned on.
+<P>
+If you are currently writing games for SNES or Super Famicom (or any machine that does not have gamma correction), your production path is likely to be setup to compensate for the lack of gamma correction hardware. In other words, you are most likely selecting pre-gamma corrected colors. If you use this same production path and turn Nintendo 64 gamma correction on, you will get the washed out effect because you would performed the gamma correction twice.
+<P>
+To undo the first gamma correction, square and shift down by 8 each color component (assuming 8 bit color) or rework your path to exclude the gamma correction stop, leaving gamma correction to the hardware.
+<P>
+Every step in your production path must be involved in the color selection process: modeling/paint software, computer monitors, image conversion software, the game software, and the Nintendo 64 hardware.
+<P>
+Gamma correction on the Nintendo 64 is recommended; the antialiasing and video hardware work best when it is enabled.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

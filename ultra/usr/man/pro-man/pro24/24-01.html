@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 24</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro23/index23.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro24/index24.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Game World Organization</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The following sections will discuss
+<ul>
+<li>Data Reduction
+<li>Geometry Tuning
+<li>Raster Tuning
+<li>CPU Tuning
+</ul>
+<P>
+<a name="01"></a>
+<b>Data Reduction - Game World Organization</b>
+<br>
+The most important performance tuning technique in graphics is to discard as much geometry as possible before animation computation and rendering. Depending on your game, you can organize the geometry in several ways that enable rapid culling of large quantities of data. One example is a simple grid of fixed-sized regions:
+
+<P>
+<b>Figure 24.1.1</B> &nbsp;Fixed Size Grid Database Organization
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro24/gif/f24-01.gif"></tr></td></table>
+<P>
+
+
+You could also build a hierarchy of different-sized grids to give you a quadtree:
+
+<P>
+<b>Figure 24.1.2</B> &nbsp;Quadtrees
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro24/gif/f24-02.gif"></tr></td></table>
+<P>
+
+You can extend this into 3D and get either a fixed size cube organization or octrees. Keep in mind that you are trying to eliminate work; not just graphics rendering but also texture loads and animation processing such as collision detection.
+<P>
+The grid need not be regular either, you could also use other boundaries if it suits your data. One example of this is a “portal connectivity” organization inside of a building. In a building with rooms and hallways, the possible list of things that you can see can be represented by a portal connectivity description, which lists which rooms of the building are possibly visible.
+
+<P>
+You can further reject more data by testing a list of screen projected portal rectangles against visibility to determine whether to consider data in a particular room or hallway.
+<P>
+<b>Figure 24.1.3</B> &nbsp;Portals Connectivity Visibility
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro24/gif/f24-03.gif"></tr></td></table>
+<P>
+
+
+
+
+<a name="02"></a>
+<b>Hierarchical Culling</b>
+<br>
+Throwing away geometry to eliminate processing does not have to stop at the top level. A common organization at the object level is a bounding volume test to eliminate objects <i>(see gSPCullDisplayList( )</i>).
+<P>
+<b>Figure 24.1.4</B> &nbsp;Bounding Sphere Test
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro24/gif/f24-04.gif"></tr></td></table>
+<P>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

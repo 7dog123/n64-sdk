@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFopen</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFopen</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHFopen(MfsFile* handle, u8*
+path, u16 mode)</p>
+
+<p><strong>Arguments:</strong> *handle
+Pointer for storing file handle pointer</p>
+
+<pre>*path	File pathname
+mode	Mode for opening file</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>Opens file</p>
+
+<p><strong>Description:</strong> This function opens the file specified by path and sets the file handle pointer to handle.</p>
+
+<p>"path" specifies the file name and its path with a character string.  The maximum length of the character string is 128 characters including the terminating NULL.</p>
+
+<p>The following access modes can be specified for mode.</p>
+
+<pre>MFS_OPEN_READ	0x0001 Read
+MFS_OPEN_WRITE	0x0002 Write
+MFS_OPEN_UPDATE	0x0000 Update
+MFS_OPEN_APPEND	0x0010 Append
+MFS_OPEN_CREATE	0x0020 Create</pre>
+
+<p>MFS_OPEN_READ and MFS_OPEN_WRITE can be specified at the same time.<br>
+When MFS_OPEN_WRITE is specified, MFS_OPEN_APPEND can be specified.<br>
+When MFS_OPEN_APPEND is not specified, MFS_OPEN_UPDATE is assumed.<br>
+When MFS_OPEN_UPDATE is used, the existing file contents are lost.<br>
+When only MFS_OPEN_READ is specified, the MFS_OPEN_UPDATE and MFS_OPEN_APPEND specifications are ineffective.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_FATAL		File cannot be opened
+			There is no free file handle.
+MFS_ERR_NOTFOUND	File not found
+			The file was not found, or the directory was not found. 
+MFS_ERR_NAME 		File name error
+			The pathname does not contain a file name, or there is no extension.
+MFS_ERR_REFUSE 		Illegal operation
+			A ROM area was opened in write mode.</pre>
+
+<hr>
+</body>
+</html>

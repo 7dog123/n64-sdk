@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContPakFileNum</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContPakFileNum(NUContPakFile *file, s32 *max_files, s32
+*used_files)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>*file		Controller Pak structure
+*max_files	Maximum number of notes in Pak
+*used_files	Number of notes used in Pak</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Gets the maximum number of notes and the number of notes being used in the Controller Pak</strong></p>
+
+<p>For "file," the device must be opened by the nuContPakOpen function.</p>
+
+<p>The maximum number of notes is returned to max_files.</p>
+
+<p>The number of files being used is returned to used_files.</p>
+
+<p>The value returned by the osPfsNumFiles function is stored in file.error.</p>
+
+<p><strong>Errors:</strong></p>
+
+<p>PFS_ERR_NOPACK</p>
+
+<p>Nothing is inserted in the specified Controller.</p>
+
+<p>PFS_ERR_NEW_PACK</p>
+
+<p>The Controller Pak may have been changed.  Please perform the Open process again.</p>
+
+<p>PFS_ERR_INCONSISTENT</p>
+
+<p>There is an inconsistency in the file system management area.</p>
+
+<p>PFS_ERR_CONTRFAIL</p>
+
+<p>Data transfer with Controller has failed.</p>
+
+<p>PFS_ERR_INVALID</p>
+
+<p>Invalid parameter or the game note does not exist.</p>
+
+<hr>
+
+<p>Reference: <a href="nuContPakOpen.htm">nuContPakOpen</a></p>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

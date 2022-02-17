@@ -1,0 +1,56 @@
+Forced power interruption during a write operation
+			Nintendo Development Dept. 3
+					Takayoshi Hashida
+
+
+1. Symptoms
+
+	When the user turns the power off during a write operation to the N64 
+	Disk Drive, the contents of the block being written at that time can be
+ 	destroyed. The next time the block is read, one of two things can occur:
+
+	i) An error 23 is generated.
+	ii) No error is generated, but the data is destroyed.
+
+
+	While either symptom can arise, there is no danger of damage to the dis
+	or to the drive.  (For details, please see "3 - Countermeasures".)
+
+	In the past, an error 24 could occur either when the power was cut or 
+	for various reasons. Because of this, it was difficult to ascertain 
+	whether the error was a temporary error (generated because the power was
+ 	cut during a write operation) or whether it was a fatal error - 
+	requiring a fix.  With the installation of this patch, the only error 
+	generated when the power is cut is an error 23.
+
+	The same holds true when the disk is forcibly ejected during a write 
+	operation, and the power is cut while the system is waiting for the disk
+ 	to be reinserted.(Please see Error Processing Sequences in section 10 of
+ 	the N64 Disk Drive Programming Manual).  
+
+
+2. Detection
+
+	Beware of symptom ii where no error is generated but the data is destroyed.  
+	In this situation new data can be written to the front sectors in the block, but 
+	the rest of the 85 sectors maintain their old data.
+
+	Run a checksum for the game in order to detect when this occurs.
+
+
+3. Countermeasures
+
+	In the case of either symptom, the data cannot be recovered. However, it is possible 
+	to rewrite the data and to continue to use the disk.  Since the disk is not destroyed,  
+	there is no need to display an error message on the screen.
+
+	For data rewrites, please make appropriate use of the initial values of saved data.
+
+	Since the cause of an error 23 generated during a ROM area read might be different 
+	than a power cutoff during a write operation, please display the error number and 
+	prompt the user to read the manual.
+
+	Although the message displayed states "the data cannot be recovered," it is possible 
+	to recover the data using "mirroring," or the process of securing two save regions as 
+	described in section 12.12 of the N64 Disk Drive Programming Manual.
+

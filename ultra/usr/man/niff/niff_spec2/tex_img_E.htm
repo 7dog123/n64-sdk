@@ -1,0 +1,74 @@
+<html>
+<title>
+TexImgNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+11. TexImg Node
+</h2>
+
+<hr size="3">
+
+<h3>
+<A NAME="texImgNodeD">(1) TexImg Node Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+<table border width="600">
+<tr>
+<td nowrap>
+u32 mipmap_max_level
+</td>
+<td>
+When MipMap is used, the MipMap image is stored in the TexImgData area and the total number of levels is specified here.<p>
+If MipMap is not used, please specify with the following flag:
+<pre>
+<b>
+NIFF2_NO_MIPMAP&#9;0x00000000
+</b>
+</pre>
+The maximum value for MipMap levels is specified with the following flag.  A higher value than this cannot be previewed by N64.
+<pre>
+<b>
+NIFF2_MIPMAP_MAX_LEVEL_MAX&#9;0x00000007
+</b>
+</pre>
+In addition, the value of mipmap_max_level must be set greater than the value of TexNode -> mipmap_level.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 mipmap_img_offset
+</td>
+<td>
+The offset for each level of the MipMap image stored in the TexImgData area is specified in bytes.  When MipMap is used, the texture image of each level is stored in the TexImgData area in order, starting from level 0.<p>
+
+mipmap_img_offset(0) is the offset value of the Level 1's MipMap image. There is no data saving space for the Level 0 because the offset value of the Level 0 is always zero.
+<p>
+
+This field is not specified when MipMap is not used.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="tex_img_C.htm#texImgNodeC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

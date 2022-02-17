@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gsp/gsp.html">
+            <IMG BORDER=0 SRC="../images/mh_gsp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+gSPMatrix
+</FONT>
+</H2>
+
+<B>Syntax</b>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A href="../../header/gbi.htm">gbi.h</A> */
+gSPMatrix(Gfx *gdl, Mtx *matrix, u8 param)
+gsSPMatrix(Mtx *matrix, u8 param)</PRE></FONT>
+
+<P>
+<B>Arguments</B>
+<ul>
+  <li>gdl is the display list pointer.
+<P>
+  <li>matrix is the 4x4 fixed-point matrix.
+<P>
+  <li>param is the operation flags:
+  <br>(* Multiple flags can be specified as the bit sum of the flags.)
+  <br>G_MTX_PROJECTION (Operate on the projection matrix stack)
+  <br>G_MTX_MODELVIEW (Operate on the model view matrix stack)
+  <br>G_MTX_MUL (Multiply top of matrix stack and matrix m)
+  <br>G_MTX_LOAD (Load matrix m at top)
+  <br>G_MTX_NOPUSH (Do not push on matrix stack before matrix operation)
+  <br>G_MTX_PUSH (Push on matrix stack before matrix operation)
+</ul>
+
+<P>
+<B>Explanation</B><BR>
+gSPMatrix inserts matrix operations in the display list.  With these argument specifications you can set which matrix stack to use (projection or model view), the loading position, and whether to concatenate or push.  For details, please see <a target="new" href="../../pro-man/pro11/index11.3.html">Section 11.3, "Matrix State"</a> in the N64 Online Programming Manual.
+
+<P>
+<ul>
+<li>Concerning the <B>matrix</B> argument:
+<br>
+This format is hidden in the graphics utility library and is usually not revealed to the programmer.  However, it is necessary to understand this format in certain cases (static matrix declarations or direct operation on elements).
+<P>
+The matrix elements are grouped such that the first 8 elements (16 in s16 format) hold the 16-bit integer elements, and the next 8 elements (16 in s16 format) hold the 16-bit fractional elements.  The Mt_t x type is declared as a long [4][4] matrix.
+</ul>
+<P>
+To declare a static unit matrix, the code would look as follows:
+<P>
+<FONT FACE="COURIER NEW,COURIER" SIZE="3"><PRE>#include "gbi.h"
+static Mtx ident =
+{
+/* integer portion: */
+0x00010000, 0x00000000,     |1000|
+0x00000001, 0x00000000,     |0100|
+0x00000000, 0x00010000, --> |0010|     
+0x00000000, 0x00000001,     |0001|     |1.00.00.00.0|
+                                    -->|0.01.00.00.0|
+/* fractional portion: */   |0000|     |0.00.01.00.0|
+0x00000000, 0x00000000,     |0000|     |0.00.00.01.0|
+0x00000000, 0x00000000,     |0000|
+0x00000000, 0x00000000, --> |0000|
+0x00000000, 0x00000000,     |0000|
+};</PRE></FONT>
+
+<P>
+A matrix with the translation elements (10.5, 20.5, 30.5) would look as follows.
+<pre><font face="courier" size="3">
+mat.m[1][2] = (10 &lt;&lt; 16) | (20);          | 1.0 0.0 0.00.0|
+mat.m[1][3] = (30 &lt;&lt; 16) | (1);      ---> | 0.0 1.0 0.00.0|
+mat.m[3][2] = (0x8000 &lt;&lt; 16) | (0x8000);  | 0.0 0.0 1.00.0|
+mat.m[3][3] = (0x8000 &lt;&lt; 16) | (0);       |10.520.530.51.0|
+</pre></font>
+
+
+<P>
+<b>Note</b>
+<br>
+Matrix concatenation in the RSP geometry engine is performed using 32-bit integer calculations.  A 32-bit x 32-bit calculation produces a 64-bit value, and only the middle 32 bits remain in the new matrix (see the figure below).  Therefore, when matrices are concatenated, fixed-point numerical values will generate errors.
+
+<P>
+
+<IMG border=0 src="../images/gSPMatrix00.gif">
+<P>
+The middle 32 bits that remain in the new matrix
+
+<P>
+To maintain the highest precision, the absolute values of each component of the matrices must not differ significantly.  Extreme scale and translation arguments will reduce the transformation precision.   Since rotation matrix and projection matrix operations require very small fractional numbers, some of these may be lost when multiplied by large integer values.  Also, the least significant bit (LSB) of each matrix term is rounded off when matrices are concatenated.  As a result, a 1/2 LSB error is generated in the matrix for each concatenation.  To guarantee full precision, concatenate the matrices using floating-point operations in the CPU and only load that result in the RSP.
+
+
+<P>
+<b>Comment</b>
+<br>
+Each G_MTX_MODELVIEW matrix operation is accompanied by an implicit matrix multiplication, even when G_MTX_LOAD is explicitly specified.  The matrix which results from combining the model view (M) matrix and projection (P) matrix is used when the vertices are to be transformed by only a single matrix during the transformation.
+
+<P>
+One way to optimize the process is to concatenate modeling matrices in the CPU, and concatenate viewing (V) matrices and projection matrices in the projection matrix stack.  When this is done, the MxVP matrix concatenation is carried out each time the modeling matrix is loaded.  There are also other simple ways of concatenating modeling matrices.  For example, a matrix that concatenates a rotation matrix around one axis with a translation matrix can be obtained by simply entering the appropriate elements for the matrix components.
+
+<P>
+The Mtx structure is as follows:
+</P>
+<PRE>
+<font face="courier" size="3">typedef long  Mtx_t[4][4];
+typedef union{
+        Mtx_t           m;
+        long long int   force_structure_alignment;
+} Mtx;
+</font>
+</PRE>
+
+<P>
+<b>See Also</b>
+<br>
+<A href="gSPForceMatrix.html">gSPForceMatrix</A>
+<br><A href="gSPInsertMatrix.html">gSPInsertMatrix</A>
+<br><A href="gSPPerspNormalize.html">gSPPerspNormalize</A>
+<br><A href="gSPPopMatrix.html">gSPPopMatrix</A>
+
+<P>
+<b>Revision History</b>
+<br>
+2/1/1999   Completely rewritten.
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

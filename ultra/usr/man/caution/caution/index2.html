@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Programming Cautions (2) Backup Memory</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Backup Memory</h2>
+
+The following cautions should be observed when baking up data.
+
+<ul>
+<li><a href="#1">2-1  Dealing with Damaged Backup Data (Required)</a>
+<li><a href="#2">2-2  Backup Memory Initialization (Required)</a>
+<li><a href="#3">2-3  Life Span of EEPROM (in the write mode) (Required)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>2-1  Dealing with Damaged Backup Data (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that the program continues to function as intended even if the power switch is turned off while data is being saved.  (The data must be restored or memory must be re-initialized.)
+
+<p>
+<b>Discussion</b><br>
+It is impossible to prevent the destruction of data when power is turned off while data is being saved.</P>
+
+<p>
+Examples of measures to take for back-up data which has been destroyed are:
+
+<ol>
+<li>Error detection  -------- Check-sum / CRC.
+<li>Detection of other than normal data by the game program.
+<li>Check the Controller Pak for new or destroyed data.
+<li>Use a flag which indicates completion of the data saving process.
+</ol>
+
+<font face="courier">
+For example:
+
+<p>
+When initializing the saved data, an initialization finish flag (or dirty bit) should not be written until after the initialization is completed. Push the Reset Switch during the initialization process to make sure that no abnormalities occur during subsequent initialization attempts.
+</font>
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="2"></a><h3>2-2  Backup Memory Initialization (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that the initialization process works properly even when the content of the back-up memory is undefined.
+
+<p>
+<b>Discussion</b><br>
+A specific value is stored in back-up memory when it is shipped from the factory.  However, this value may be lost over time.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="3"></a><h3>2-3  Life Span of EEPROM (in the write mode) (Required)</h3>
+
+<b>Caution</b><br>
+Do not write unnecessary data to EEPROM.
+
+<p>
+<b>Discussion</b><br>
+Each EEPROM address 0~63 can normally be over-written around 100,000 times. Beyond this point, memory cell deterioration may prevent data from being written normally.  Data can safely be stored on a EEPROM for up to ten years. However, if no new data have been written, the memory cells' charge gradually dies and data may not be readable beyond this period.  Thus, it is important to include check sum and parity bit data in order to check data reliability.
+
+<p>
+For more information, please refer to Developer News 1.4:  <a href="../../developerNews/news-04.html">EEPROM (Electrical Erasable Programmable ROM)</a>.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

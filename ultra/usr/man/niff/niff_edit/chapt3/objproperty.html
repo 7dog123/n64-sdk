@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>Object Node Properties</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>Object Node Properties</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="目次へ" border="0"></a>
+<a href="lightproperty.html"><img src="images/previous.gif" alt="前ページへ" border="0"></a>
+<a href="lodproperty.html"><img src="images/next.gif" alt="次ページへ" border="0"></a>
+
+<hr>
+
+<p>The following tabs are available in the Object node properties:</p>
+
+<ul>
+<li><a href="#name">Node name</a>
+<li><a href="#state">State</a>
+<li><a href="#type">Type</a>
+<li><a href="#group">Group</a>
+<li><a href="#cycle">Cycle</a>
+<li><a href="#priority">Priority</a>
+<li><a href="#render">Rendering</a>
+<li><a href="#billboard">Billboard</a>
+</ul>
+
+<h3><a name="name">Node name</a></h3>
+
+<p>The "Node name" tab sets the name of the Object node.</p>
+
+<img src="images/objname.gif" alt="ノード名">
+
+<p>The node name is displayed if the node is linked to the Name area.  If it is not linked, then "Unknown" is displayed here.  To change the node name, edit the node name that is displayed here.  If you want to set a new node name for a node that is not linked to the Name area, simply delete "Unknown" and input the desired name.  Conversely, if you want to delete the node name, simply delete the name that is displayed here.</p>
+<p>The characters that can be used for node names are the ASCII characters "!" (0x21) to "~" (0x7e).  Note that the name cannot contain a space nor any Japanese characters.</p>
+
+<h3><a name="state">State</a></h3>
+
+<p>Use the "State" tab to specify the state of the object.</p>
+
+<img src="images/objstate.gif" alt="ステート">
+
+<p>Select one of the following states for the object state:</p>
+
+<ul>
+<li>Ignore all links to the object
+<li>Activate the object
+</ul>
+
+<h3><a name="type">Type</a></h3>
+
+<p>Use the "Type" tab to specify the object type.</p>
+
+<img src="images/objtype.gif" alt="タイプ">
+
+<p>Select one of the following types for the object:</p>
+
+<ul>
+<li>NULL object
+<li>Object that has polygon data
+<li>Billboard-type object
+</ul>
+
+<h3><a name="group">Group</a></h3>
+
+<p>Use the "Group" tab to specify the object group number.</p>
+
+<img src="images/objgroup.gif" alt="グループ">
+
+<p>When you want to specify a group number because you have separated objects into groups according to type, check the "Set object group" box and then enter a hexadecimal value for the object group number.</p>
+
+<h3><a name="cycle">Cycle</a></h3>
+
+<p>Use the "Cycle" tab to specify the object rendering cycle.</p>
+
+<img src="images/objcycle.gif" alt="サイクル">
+
+<p>Select one of the following for the rendering cycle of the object:</p>
+
+<ul>
+<li>Set at 1 cycle
+<li>Set at 2 cycles
+</ul>
+
+<h3><a name="priority">Priority</a></h3>
+
+<p>Use the "Priority" tab to specify the priority of the object.</p>
+
+<img src="images/objpriority.gif" alt="優先順位">
+
+<p>If you want to specify the order of priority for objects of the same type, check the "Set object's priority" box and then enter a hexadecimal value for the object's priority.</p>
+
+<h3><a name="render">Rendering</a></h3>
+
+<p>Use the "Rendering" tab to specify the order of priority for rendering objects.</p>
+
+<img src="images/objrender.gif" alt="レンダリング">
+
+<p>Select one of the following render modes for the rendering priority:</p>
+
+<ul>
+<li>Use NIFF-dedicated render mode
+<li>Use NINTENDO64 render mode
+</ul>
+
+<p>If "Use NIFF-dedicated render mode" is selected, you can specify any rendering priority and render type from OPA_SURF to XLU_DECAL.  If  "Use NINTENDO64 render mode" is selected, you can specify hexadecimal values in Type0 and Type1 for the NINTENDO<sup>64</sup> rendering mode flags. </p>
+
+<h3><a name="billboard">Billboard</a></h3>
+
+<p>Use the "Billboard" tab to specify presence/absence of billboard objects.</p>
+
+<img src="images/objbillboard.gif" alt="ビルボード">
+
+<p>When a billboard object is included in the low-level links of this object, place a checkmark in the "Include hierarchy link to billboard object" box.</p>
+
+<hr>
+
+</body>
+</html>

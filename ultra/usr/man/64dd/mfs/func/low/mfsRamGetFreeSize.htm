@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamGetFreeSize</title>
+</head>
+
+<body>
+
+<h1>mfsRamGetFreeSize</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamGetFreeSize(void)
+Arguments:	None
+Return value:Size of free space (a negative value is an error)
+Function:	Obtains size of free space
+Description:	This function obtains the size of free space on the disk.  It calculates and returns the total block size of all unused blocks, in bytes.
+
+Main errors:
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different.
+	MFS_ERR_VERSION	Different version disk 
+	MFS_ERR_PROTECT	Write protected
+			The medium is volume protected. </pre>
+</body>
+</html>

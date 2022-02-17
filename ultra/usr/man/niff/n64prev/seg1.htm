@@ -1,0 +1,148 @@
+<html>
+<body>
+
+<h2>n64prev Previewer</h2>
+
+<hr size=3>
+
+<ul>
+<LI><A HREF="#PURPOSE">Purpose</A>
+<LI><A HREF="#PACKAGE">n64prev Previewer Package</A>
+<li><a href="#MAP">Memory Map</a></li>
+<li><a href="#MAIN">Main Program Flow</a></li>
+<li><a href="#HRC">Hierarchal Structure and Link of Drawings</a></li>
+<li><a href="how2play.htm">Operating the n64prev Previewer</a></li>
+<LI><A HREF="#OBJECT">The Object Display Driver</A>
+<LI><A HREF="#CORRECTING">Correcting the Program</A>
+<li><a href="./history.htm">Revision History</a>
+</ul>
+
+<hr size=3>
+
+
+<H2><A NAME="PURPOSE">Purpose</A></H2>
+
+<P>The n64prev Previewer has been designed and implemented to display the NIFF converter and the output data of niff2gfx.</P>
+
+<P>Because N64 is a game machine, the N64 Previewer has been developed specifically with game making in mind, so it can be applied to your game software with minimum effort.</P>
+
+<H2><A NAME="PACKAGE">n64prev Previewer Package</A></H2>
+
+The n64prev Previewer uses NuSystem and is designed based on the display driver, which draws the output file consisting of the display list from the N64 and reference structure from the NIFF data.<BR>
+<BR>
+
+Source files are largely divided into the following blocks:
+
+<P>The activation part and main:</P>
+<UL>
+<LI>main.c
+</UL>
+<P>The service routine (including the interface with NuSystem):</P>
+<UL>
+<LI>pack.h
+<LI>pub.h
+<LI>malloc.c, malloc.h
+<LI>gfx.c, gfx.h
+<LI>expad.c, expad.h
+<LI>exgu.c, exgu.h
+</UL>
+<P>The display manager:</P>
+<UL>
+<LI>nd.h
+<LI>ndman.c
+<LI>ndeval.c
+<LI>nddisp.c
+</UL>
+<P>The key operation (two types):</P>
+<UL>
+<LI>tbmove.c, tbmove.h
+<LI>trckball.c, trckball.h
+<LI>cruise.c, cruise.h
+</UL>
+<P>The sample model data :</P>
+<UL>
+<LI>premodel.c
+<LI>n64.c
+</UL>
+
+
+<h2><A NAME="MAP">Memory Map</A></h2>
+
+<P><I><B>Figure 1:</B> Previewer Memory Map</I><BR><BR>
+<IMG SRC="mem_map.gif" ALIGN="bottom" WIDTH=653 HEIGHT=483></P>
+
+<h2><A NAME="MAIN">Main Program Flow</A></h2>
+
+<P>The figure below illustrates the main program flow of n64prev Previewer.</P>
+
+<P><I><B>Figure 2:</B> Main Game Program Flow</I><BR><BR>
+<IMG SRC="prog_flow.gif" ALT="Main Game Program Flow" ALIGN="bottom" WIDTH=460 HEIGHT=509></P>
+
+<h2><A NAME="HRC">Hierarchical Structure and Links of Drawings</A></h2>
+
+<P>The figure below uses the example of an automobile to demonstrate the hierarchical structure of drawings in n64prev Previewer.</P>
+
+<P><I><B>Figure 3:</B> Hierarchical Structure of an Automobile Drawing</I><BR><BR>
+<IMG SRC="car_hrc0.gif" ALIGN="bottom" WIDTH=399 HEIGHT=291></P>
+
+<P>Assuming that the object of the hierarchical structure above is ndEntryObject(), the following two links can be made.</P>
+
+<P><I><B>Figure 4:</B> Drawing Links</I><BR><BR>
+<IMG SRC="links.gif" ALT="Drawing Links" ALIGN="bottom" WIDTH=690 HEIGHT=437></P>
+
+<H2><A NAME="OBJECT">The Object Display Driver</A></H2>
+
+The object display driver is the 3D object manager. It has two layers of links, link and a bi-direction link that activates the model data created in niff2gfx.<BR>
+<BR>
+
+The object display driver is composed of the processing unit, called "instance."  Though the creation and deletion are provided with different functions, the internal structure is the same; and it treats the object and animation in the same way.<BR>
+<BR>
+
+Note: The service function that provides the link operation for instance has not been prepared at the present time.<BR>
+<BR>
+
+It uses the layer structure link for executing the animation or calculating the display coordinate system.  And it provides the drawing in order of the surface type following the twin-direction link of the display priority base, and implements the model display on contradiction.
+
+<H3>Specification</H3>
+
+The Object Display Driver reserves and releases the most memory resources by way of a general memory manager.<BR>
+<BR>
+
+In the case of a game that creates and deletes the object or animation frequently, resource management should be set up to use a pre-defined array of fixed-length data to get a performance improvement in memory management.<BR>
+<BR>
+
+Because the ndEntryObject() function receives the NDR_OBJ structure, which is the object database, and creates the instance, the created status is unique.<BR>
+<BR>
+
+The ndEntryAnimation() function uses the only NDR_ANIM structure in the animation database and isn't defined. It passes some instance numbers, which have already been created, and sets the format that executes the animation for the preceding instance.<BR>
+<BR>
+
+In the ndEvalInstance() function, a flag checks to see if an update to the matrix is needed for each NDC_ITYPE_OBJECT object. If it doesn't need to, it is not supposed to create the Mtx buffer. In this way, you can shorten the processing time consumed by unused Mtx calculations.<BR>
+<BR>
+
+In the current version, the end process isn't provided when the object instance that operates the animation is deleted. Because the link among the animation time keeper instance, the animation instance, and the object instance is weak, you need to manage these things on the application side.<BR>
+<BR>
+
+The instance has the callback pointer. The callback occurs when the instance appears in an ndEvalInstance() or ndDeleteInstance() function.  Please be careful that you do not call functions in which the link of instances is changeable (like ndDeleteINstance() or ndEntry*Instance()) within this callback routine.
+The priority change of instances or functions, which stretch the link again with the parent change, have not yet been prepared. 
+
+<H2><A NAME="CORRECTING">Correcting the Program</A></H2>
+
+<H3>The Memory Manager</H3>
+
+The n64prev Previewer memory manager needs a lot of resources.  In the case of a game, you cannot always take time to reserve and release the resources.  So, you need to design the program so it doesn't use the memory manager itself to determine cases.<BR>
+<BR>
+
+There is room to reconsider area memory.  If you plan well, you can create a memory manager that has a high enough speed, can be disposable, and corresponds to the variable length memory.  
+
+<H3>The Relational Routine for Gfx</H3>
+
+Gfx* is a return value for the gfxBegin() function.  The memory that this pointer indicates is only a unilateral writing for the memory from the CPU.  Because it accesses in units of 8 bytes, the whole processing time may become fast if you use it by converting to the pointer of the non-cache area.
+
+<HR WIDTH=3>
+
+<hr><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION <BR>All rights reserved.</font>
+
+</body>
+</html>

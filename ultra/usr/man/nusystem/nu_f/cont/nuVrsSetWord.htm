@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<HR>
+
+<Pre>
+<FONT size="6"><STRONG>nuVrsSetWord</STRONG></FONT>
+</Pre>
+
+<HR>
+
+<Pre>
+<STRONG>Syntax: </STRONG>
+</Pre>
+
+<Pre>
+s32 nuVrsSetWord(NUVrsHandle* handle, u8* word)
+</Pre>
+
+<Pre>
+<STRONG>Arguments: </STRONG>
+</Pre>
+
+<PRE>
+handle  NUVrsHandle structure
+word    Word to be registered
+</PRE>
+
+<Pre>
+<STRONG>Return Value: </STRONG>
+</Pre>
+
+<Pre>
+Error
+</Pre>
+
+<Pre>
+<STRONG>Description: </STRONG>
+</Pre>
+
+<P>
+<FONT color="#FF0000">Stores a word in the dictionary</FONT>
+</P>
+
+<P>
+This stores the word specified by "word" in the Voice Recognition System Dictionary. 
+"handle" must be initialized with the <A href="nuVrsOpen.htm">nuVrsOpen</A> function. 
+The return value is the return value from the <A target=main href="../../../pro-man/pro26/26-08.html#06.3">osVoiceSetWord</A> function.
+</p>
+
+<p>
+This function calls the osVoiceSetWord function via the SI manager. 
+</P>
+
+<P>
+<B>Errors: </B>
+</P>
+
+<TABLE width="589" border="1">
+  <TR>
+    <TD width="173">CONT_ERR_NO_CONTROLLER</TD>
+    <TD>Nothing is connected to the Controller port. </TD>
+  </TR>
+  <TR>
+    <TD>CONT_ERR_DEVICE</TD>
+    <TD width="377">Something other than the Voice Recognition System is connected to the Controller port. </TD>
+  </TR>
+  <TR>
+    <TD>CONT_ERR_VOICE_NO_RESPONSE</TD>
+    <TD>No response from Voice Recognition System.  There may be a problem with the hardware. </TD>
+  </TR>
+  <TR>
+    <TD>CONT_ERR_CONTRFAIL</TD>
+    <TD>Data transfer failure.  There is a problem in the Voice Recognition System connection. </TD>
+  </TR>
+  <TR>
+    <TD>CONT_ERR_INVALID</TD>
+    <TD>There is an error in the way this function was called or in the argument.  This error will not occur if the correct calling method is used.  Please          correct the problem so that this error does not occur when development is completed. </TD>
+  </TR>
+  <TR>
+    <TD>CONT_ERR_VOICE_WORD</TD>
+    <TD>You have attempted to register an invalid word.  The word which has been set has been disabled and the word number has not be incremented.  Execute          the osVoiceSetWord() function again to register a valid word. </TD>
+  </TR>
+  <TR>
+    <TD>CONT_ERR_VOICE_MEMORY</TD>
+    <TD>The dictionary memory is full.  If a recognition command was executed in this state, normal recognition processing can be performed even if the     number of words which have been set is less than the number of words set by the osVoiceClearDictionary() function.  When this error occurs, manage the number of words which have actually been set on the application side. </TD>
+  </TR>
+</TABLE>
+
+<HR>
+
+<P>
+See also:  <A href="nuVrsOpen.htm">nuVrsOpen</A>, <A target=main href="../../../pro-man/pro26/26-08.html#06.3">osVoiceSetWord</A>
+</P>
+
+<P>
+<A href="index.htm"><IMG src="../../../gif/index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

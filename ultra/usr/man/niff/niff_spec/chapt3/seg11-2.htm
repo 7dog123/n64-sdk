@@ -1,0 +1,251 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.11 TriList</font></h3>
+
+<hr size=3>
+<h4>2) TriGroup Area</h4>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="8">TriGroupHeader</th>
+
+<td>u32</td>
+
+<td>tri_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_tri_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_anim_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_anim_frame_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>
+<center>tri_num</center>
+</td>
+</tr>
+
+<tr>
+<th ROWSPAN="9"></th>
+
+<td COLSPAN="2">
+<center>ReferenceVtxData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>ReferenceTriColorData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>ReferenceVtxColorData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>ReferenceTriNvData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>ReferenceVtxNvData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>ReferenceStData</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Tri(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Tri(tri_num - 1)</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+
+<CAPTION ALIGN="top"><b>TriGroup Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tri_group_tag</td>
+
+<td><font size=+0>Tag indicating TriGroup. Set the following flag.</font>
+<pre><b><font size=+0>TAG_TRI_GROUP&nbsp;&nbsp; 0x00080100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_tri_group_index</td>
+
+<td><font size=+0>Index number of TriGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_group_header_size</td>
+
+<td><font size=+0>Number of bytes of TriGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_group_size</td>
+
+<td><font size=+0>Size of TriGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_group_name_index</td>
+
+<td><font size=+0>Index of this TriGroup name in the NameList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#TRI_ANIM_TYPE">u32 tri_anim_type</a></td>
+
+<td><font size=+0>Indicates the shape animation type being used. The following flags are currently available.&nbsp;</font>
+<pre><b><font size=+0>TRI_ANIM_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+TRI_ANIM_VTX_FULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001
+TRI_ANIM_VTX_KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000002
+TRI_ANIM_TRI_COLOR_FULL 0x00000010
+TRI_ANIM_TRI_COLOR_KEY&nbsp; 0x00000020
+TRI_ANIM_VTX_COLOR_FULL 0x00000100
+TRI_ANIM_VTX_COLOR_KEY&nbsp; 0x00000200
+TRI_ANIM_TRI_NV_FULL&nbsp;&nbsp;&nbsp; 0x00001000
+TRI_ANIM_TRI_NV_KEY&nbsp;&nbsp;&nbsp;&nbsp; 0x00002000
+TRI_ANIM_VTX_NV_FULL&nbsp;&nbsp;&nbsp; 0x00010000
+TRI_ANIM_VTX_NV_KEY&nbsp;&nbsp;&nbsp;&nbsp; 0x00020000
+TRI_ANIM_ST_FULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00100000
+TRI_ANIM_ST_KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00200000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_anim_frame_num</td>
+
+<td><font size=+0>Total number of shape animation frames.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_num</td>
+
+<td><font size=+0>Number of bytes of this TriGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-3.htm">ReferenceVtxData</a></td>
+
+<td><font size=+0>Reference VtxGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-4.htm">ReferenceTriColorData</a></td>
+
+<td><font size=+0>Reference TriColorGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-5.htm">ReferenceVtxColorData</a></td>
+
+<td><font size=+0>Reference VtxColorGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-6.htm">ReferenceTriNvData</a></td>
+
+<td><font size=+0>ReferenceTriNvGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-7.htm">ReferenceVtxNvData</a></td>
+
+<td><font size=+0>Reference VtxNvGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-8.htm">ReferenceStData</a></td>
+
+<td><font size=+0>Reference StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-9.htm">Tri</a></td>
+
+<td><font size=+0>Tri area.</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg11.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg11-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

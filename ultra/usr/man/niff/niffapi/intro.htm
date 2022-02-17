@@ -1,0 +1,85 @@
+<html>
+<head>
+      <title>NIFFAPI Introduction</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<BASEFONT SIZE=2>
+<h2>NIFFAPI Introduction</h2>
+
+<h3>What Is NIFFAPI?</h3>
+
+<P>NIFFAPI is a group of header files and a library providing a program interface to NIFF files. It is located under n64kit/niff/niffapi.  Functions have been prepared to read/write files and convert them to text.</P>
+
+<p>The data structure which corresponds to NIFF binary files is called NIS.  This is differentiated from NIS2, which corresponds to the data added in NIFF 2.0.  As a convention, functions which handle NIS are named starting with ni*.  The library is named libnis.a
+
+<h3>NIFFAPI Files</h3>
+
+<P>The following header files have been supplied:</P>
+
+<table BORDER CELLSPACING=0 CELLPADDING=3 >
+<tr>
+<td>niffapi.h</td>
+
+<td>NIFFAPI function declarations</td>
+</tr>
+
+<tr>
+<td>nis.h</td>
+
+<td>NIS structure definitions</td>
+</tr>
+
+<tr>
+<td>nis2.h</td>
+
+<td>NIS2 structure definitions</td>
+</tr>
+
+<tr>
+<td>nifftags.h&nbsp;</td>
+
+<td>Constants, etc. corresponding to NIFF 1.0</td>
+</tr>
+
+<tr>
+<td>niff2tags.h</td>
+
+<td>Constants, etc. added to NIFF 2.0</td>
+</tr>
+
+<tr>
+<td>niffn64.h</td>
+
+<td>Important items extracted from N64 header files</td>
+</tr>
+</table>
+
+<p>If you include niffapi.h from inside the program, then all the header files will be included.
+<P></P>
+<table BORDER CELLSPACING=0 CELLPADDING=3 >
+<tr>
+<td>sample.c</td>
+
+<td>Simple sample program</td>
+</tr>
+
+<tr>
+<td>Makefile</td>
+
+<td>makefile for sample.c</td>
+</tr>
+
+<tr>
+<td>yellow-cube.niff</td>
+
+<td>Data for execution of the sample</td>
+</tr>
+</table>
+
+<P><A HREF="index.htm">Back to NIFFAPI Index</A></P>
+
+<P><font size=-1>Copyright 1998-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION All rights reserved.</P>
+
+</body>
+</html>

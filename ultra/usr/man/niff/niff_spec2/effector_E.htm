@@ -1,0 +1,228 @@
+<html>
+<title>
+EffectorNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+20. Effector Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="effectorListD">(1) EffectorList Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 effector_list_tag
+</td>
+<td>
+Specifies the tags of EffectorList.  Please set the tags shown below.
+<pre>
+<b>
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_list_header_size
+</td>
+<td>
+Specifies the EffectorListHeader byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_list_size
+</td>
+<td>
+Specifies the EffetorList byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_num
+</td>
+<td>
+Specifies the total number of the Effector.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_num_byte
+</td>
+<td>
+Specifies the Effector byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+Effector
+</td>
+<td>
+This is the Effector area.
+</td>
+</tr>
+
+</table>
+<P><A HREF="effector_C.htm#effectorListC">See Data Chunk</A></P>
+</blockquote>
+
+
+
+
+<h3>
+<A NAME="effectorD">(2) Effector Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 effector_tag
+</td>
+<td>
+Specifies the tags of Effector.  Please set the tags shown below.
+<pre>
+<b>
+TAG_EFFECTOR            0x00260100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_effector_index
+</td>
+<td>
+Specifies this Effector's index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_size
+</td>
+<td>
+Specifies the Effector byte size.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_name_index
+</td>
+<td>
+Uses a NameList index number to specify the Effector name.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 effector_type
+</td>
+<td>
+Specifies the Effector type.  Please specify 0x0 as the default.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 obj_num
+</td>
+<td>
+Specifies the total number of Obj linked from Effector.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_obj_num
+</td>
+<td>
+Specifies the total number of Obj linked from Effector that are referenced by an external file.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 anim_index
+</td>
+<td>
+Specifies the AnimGroup index number linked from Effector.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 obj_index
+</td>
+<td>
+Specifies the Obj index number linked from Effector.<p>
+If obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 external_obj_file_name_index
+</td>
+<td>
+When the Obj that is linked from the Effector references an external file, that file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If external_obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 external_obj_name_index
+</td>
+<td>
+When the Obj that is linked from the Effector references an external file, that Obj name is specified with an ExternalNameList index number.<p>
+If external_obj_num = 0, this field is not specified.
+</td>
+</tr>
+
+
+</table>
+
+<P><A HREF="effector_C.htm#effectorC">See Data Chunk</A></P>
+<P><A HREF="appendix/IK_system_E.htm">See Appendix 5: IK System</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

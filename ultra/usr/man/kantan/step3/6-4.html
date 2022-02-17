@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.6.4 Coordinate System Transformation</H1>
+
+<P>This section explains how to transform the coordinates of one coordinate system into the coordinates for another coordinate system one after another as your system moves through the coordinate transformation flow previously depicted (see section 3.3.7, <I>Coordinate Transformation Flow</I>).</P>
+
+<P>To make this explanation as generic as possible, we will use numbers to identify the coordinate systems. The conversion matrix to convert from coordinate system 1 to coordinate system 2 will be depicted as <IMG SRC="../images/3-6-4-1.gif" ALIGN="bottom" WIDTH=26 HEIGHT=17 BORDER=0>, from coordinate system 2 to coordinate system 3 as <IMG SRC="../images/3-6-4-2.gif" ALIGN="bottom" WIDTH=28 HEIGHT=17 BORDER=0>, and from coordinate system 3 to that of 4 as <IMG SRC="../images/3-6-4-3.gif" ALIGN="bottom" WIDTH=26 HEIGHT=17 BORDER=0>.</P>
+
+<P>Coordinates in each coordinate system for a point P will be depicted as <IMG SRC="../images/3-6-4-4.gif" ALIGN="bottom" BORDER=0>, <IMG SRC="../images/3-6-4-5.gif" ALIGN="bottom" WIDTH=20 HEIGHT=17 BORDER=0>, <IMG SRC="../images/3-6-4-6.gif" ALIGN="bottom" WIDTH=20 HEIGHT=17 BORDER=0>, and <IMG SRC="../images/3-6-4-7.gif" ALIGN="bottom" WIDTH=20 HEIGHT=17 BORDER=0>.</P>
+
+<P>Therefore, when you convert from one coordinate system to another in order, the following formulas apply:</P>
+
+<UL>
+<LI><IMG SRC="../images/3-6-4-8.gif" ALIGN="bottom" WIDTH=72 HEIGHT=17 BORDER=0> (equation 1: conversion equation from the coordinate system 1 to coordinate system 2)<BR>
+<BR>
+
+<LI><IMG SRC="../images/3-6-4-9.gif" ALIGN="bottom" WIDTH=72 HEIGHT=17 BORDER=0> (equation 2:  conversion equation from the coordinate system 2 to coordinate system 3)<BR>
+<BR>
+
+<LI><IMG SRC="../images/3-6-4-10.gif" ALIGN="bottom" BORDER=0> (equation 3:  conversion equation from the coordinate system 3 to coordinate system 4)
+</UL>
+
+<P>Now if you substitute equation 1 for equation 2 and substitute the result for equation 3, you can get the equation for coordinate transformation from coordinate system 1 to that of 4 in a single equation:</P>
+
+<P><IMG SRC="../images/3-6-4-11.gif" ALIGN="bottom" WIDTH=115 HEIGHT=17 BORDER=0> (equation 4:  conversion equation from the coordinate system 1 to that of 4 in a single stretch)
+
+<P>A process that provides several conversions in a row like this is called a <I>conversion synthesis</I>.  As you can see from the equations given above, a conversion synthesis involves the multiplication of conversion matrices.
+
+<P>Now to apply this to your game situation. Obviously, a single model has several vertices, and you need to provide an identical coordinate transformation for each vertex. However, to provide the same matrix multiplication repeatedly is inefficient. Therefore, do the matrix multiplication first.  Then, use the matrix to convert from the first coordinate system to the last coordinate system at a stretch for better calculation efficiency.
+
+<P>For example, if:</P>
+
+<P><IMG SRC="../images/3-6-4-12.gif" ALIGN="bottom" WIDTH=115 HEIGHT=17 BORDER=0>
+
+<P>then <IMG SRC="../images/3-6-4-13.gif" ALIGN="bottom" WIDTH=112 HEIGHT=17 BORDER=0> becomes the conversion matrix from coordinate system 1 to that of 4.  And you can specify equation 4 using the following simple form:</P>
+
+<P><IMG SRC="../images/3-6-4-14.gif" ALIGN="bottom" WIDTH=109 HEIGHT=17 BORDER=0>
+
+<P>Therefore, when you actually draw an image, you can provide a single coordinate transformation calculation to convert directly from the model coordinate system to the normal screen coordinate system at a stretch without separately doing the world and view coordinate system conversions.
+
+<P>Remember, however, that matrix multiplication is not commutative; that is, you can't switch the order and get the same result. Therefore, when you provide the conversion by using matrices, you need to be careful of the order in which you multiply the matrices.  If you multiply them in the wrong order, you get the totally different result as the following illustration shows.</P>
+
+<P><IMG SRC="../images/3-6-4-15.gif" ALIGN="bottom" WIDTH=425 HEIGHT=270 BORDER=0>
+
+<P>Similarly, when you provide several rotational conversions, the result is very different depending on the order of rotating axes; in other words, XYZ will give a result very different from YXZ.  This is very important, you must be careful.
+ 
+<P>Note that the 3D modelers sold by various third-party companies are not standardized on the directions of axes, directions, names of axes, rotational orders, or rotational directions. Therefore, in the case of the rotation of a polygon model, you need to verify the rotational procedures used by modelers when using the output data from those modelers.
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

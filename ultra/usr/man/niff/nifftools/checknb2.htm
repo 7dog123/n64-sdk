@@ -1,0 +1,55 @@
+<HTML>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="Author" content="Yoshino Hiroshi">
+   <title>checknb2</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B"
+alink="#FF0000">
+
+<h1>checknb2</h1>
+
+<p><font color="#FF0000">NIFF checker  Checking NIFF data
+</font></p>
+
+<h3>Syntax</h3>
+
+<blockquote>
+    checknb2 input-file
+</blockquote>
+
+<h3>Explanation</h3>
+
+Checks whether there are mistakes in the NIFF data input-file.
+Checks according to the NIFF version of the data that was read.
+
+<p>
+The entire NIFF data file is read, and then a check is performed on the necessary parts.  The data is output in the same format as nb2nt.
+<p>
+The entire output, including errors and Warnings, is sent to standard output.
+<p>
+What is checked is the data size and the tags.  This command does not check whether the links are correct.  No other checks are performed.  Therefore, there is no guarantee that data is correct even though nothing was detected by checknb2.
+
+<h3>Notes</h3>
+Since the data is read as much as possible even when errors occur, sometimes a "segmentation fault" error can arise.<br>
+
+<h3>See also</h3>
+<a href="nb2nt.htm">nb2nt</a>,<a href="niffb2t.htm">niffb2t</a>
+
+<hr>
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<div align=right><a href="index.htm"><img SRC="../../gif/index.gif" BORDER=0 height=17 width=65></a></div>
+</body>
+
+</HTML>
+
+
+<HTML>
+
+
+</HTML>
+
+

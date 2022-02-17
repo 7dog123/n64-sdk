@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=x-sjis">
+<title>SELECT CHARACTER</title>
+
+
+<meta name="Microsoft Theme" content="none"><meta name="Microsoft Border" content="tl, default"></head>
+
+<body bgcolor="#FFFFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%">
+
+</td><td valign="top" width="24"></td><!--msnavigation--><td valign="top">
+
+<p align="center"><br>
+<big><big><strong>SELECT CHARACTER DETAILS</strong></big></big></p>
+
+<p align="left"> </p>
+
+<p align="left"><strong>1. Description of Processing in Select Character</strong></p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;Select Character has been created as a call-back function (om_select_character_main() function). <br>
+&nbsp;&nbsp;&nbsp;Call-back functions can be registered with Nusystem's nuGfxFuncSet function, and registered functions will be executed on each vertical trace.<br>
+&nbsp;&nbsp;&nbsp; At present, primarily the following kinds of processing have been incorporated into Select Character.</p></p>
+
+<p align="left">&nbsp;&nbsp;(1) Deformation animation control for selectable characters<br>
+&nbsp;&nbsp;(2) Animation (key frame) control of character selected by player<br>
+&nbsp;&nbsp;(3) Character selection cursor control<br>
+&nbsp;&nbsp;(4) Drawing of Select Character BG texture data using F3DEX sprite library</p>
+
+<p align="left">&nbsp;&nbsp;NOTE:  Select Character texture data are loaded from ROM by main.c .</p>
+
+<p align="left"><strong>2. Texture Data</strong></p>
+
+<p align="left"><strong>&nbsp; &nbsp; </strong>There is one type of texture data drawn by Select Character:  Select Character BG.<br>
+&nbsp;&nbsp;The texture data are defined by the structure in (1) in the Data director. </p>
+
+<p align="left">&nbsp;&nbsp;(1) Texture data structure</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Select Character BG . . . .  sp_select_bg.c</p>
+
+<p align="left">&nbsp;&nbsp;(2) Texture data format</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The texture data format drawn by Select Character uses the sprite library data format for the F3DEX microcode.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mksprite," available with the standard N64OS is used as the data format conversion tool. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mksprite" itself, is a script program written in the UNIX C shell, and generates data (C language source files) by calling the C program rgb2c in the script.</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#FF0000">NOTE:  "mksprite" and the rgb2c tool are provided only in the SGI version N64OS. </font><br>
+</p>
+
+<p align="left">&nbsp;&nbsp;(3) How to use the tool command</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The method of using the mksprite tool command is introduced below. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For details about mksprite and the sprite library, please refer to Chapter 16 "N64 Sprite Library" in the N64 Programming Manual.</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mksprite name imagefile.rgb 
+tileX tileY overlap &gt; outfilename</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name 
+&nbsp;&nbsp;&nbsp;&nbsp; ...........&nbsp; Specify any tag name for the sprite data structure in name.</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; imagefile.rgb .. &nbsp; 
+Specify the image file to be converted in imagefile.rgb.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The format of this image file must be the SGI Image format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;If the file is saved in a commercial image editing tool, select SGI Image format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tileX 
+.................. In tileX, specify the X size of 1 tile when the texture data for one picture is divided into tile units.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tileY .................. In tileY, specify the Y size of 1 tile when the texture data for one picture is divided into tile units.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; overlap ........... &nbsp; overlap is specified when the sprite size is to be scaled.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Specify 0 when the sprite size is not to be scaled.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+For details, refer to Chapter 16 of the N64 Programming Manual. </p>
+
+<p align="left"> 
+<!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

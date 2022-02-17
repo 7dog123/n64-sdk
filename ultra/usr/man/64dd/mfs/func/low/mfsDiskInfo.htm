@@ -1,0 +1,13 @@
+Variable name:mfsDiskInfo
+──────────────────────────────────────
+Definition:	MfsDiskInfo mfsDiskInfo
+Descrition:	This variable is a structure for storing information related to the disk within the MFS library.
+<P>
+When the disk is accessed by the MFS library, the disk information is checked first and stored in this structure.  The structure members are as follows.<br>
+	
+	typedef struct st_MfsDiskInfo {<br>
+	    LEOCapacity	cap;		/* Disk Capacity		*/<br>
+	    LEODiskID	diskID;		/* Disk ID			*/<br>
+	    u16		blockNum;	/* ROM Block 			*/<br>
+	} MfsDiskInfo;<br>
+</P>

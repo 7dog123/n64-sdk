@@ -1,0 +1,132 @@
+<html>
+<title>
+ShapeNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+7. Shape Node
+
+</h2>
+<hr size=2>
+<h3>
+<A NAME="shapeNodeD">(1) Shape Node Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border width="640">
+
+<tr>
+<td nowrap valign="top">
+u32 shape_type
+</td>
+<td>
+Specifies the Shape type.  As of this time, the following flags are defined:<pre>
+<b>
+SHAPE_TYPE_CLEAR&#9;0x00000000
+SHAPE_TYPE_AA&#9;&#9;0x00000001
+SHAPE_TYPE_RA&#9;&#9;0x00000002
+SHAPE_TYPE_ZB&#9;&#9;0x00000004
+SHAPE_TYPE_CULL_BACK&#9;0x00000010
+SHAPE_TYPE_CULL_FRONT&#9;0x00000020
+SHAPE_TYPE_CULL_BOTH&#9;0x00000030
+</b>
+</pre>
+SHAPE_TYPE_CLEAR clears the shape type.<p>
+SHAPE_TYPE_AA performs anti-aliasing.<p>
+SHAPE_TYPE_RA performs reduced aliasing.<p>
+SHAPE_TYPE_ZB performs Z buffering.<p>
+SHAPE_TYPE_CULL_BACK performs back face culling.<p>
+SHAPE_TYPE_CULL_FRONT performs front face culling.<p>
+SHAPE_TYPE_CULL_BOTH always performs culling.<p>
+The SHAPE_TYPE_AA flag and the SHAPE_TYPE_RA flag cannot be specified together at the same time.  Further, you only specify one of the SHAPE_TYPE_CULL_* flags.<p>
+If you want to specify the shape type for anti-aliasing, Z-buffering and back face culling, you would set the flags as shown below:<p>
+<pre>
+<b>
+SHAPE_TYPE_AA | SHAPE_TYPE_ZB | SHAPE_TYPE_CULL_BACK
+</b>
+</pre>
+The following flag has been added since NIFF2.0:
+<pre>
+<b>
+SHAPE_TYPE_USE_VTX_ALPHA_FOR_FOG&#9;0x00000100
+</b>
+</pre>
+Set this flag when you will be using vertex alpha with Fog.  Normally, when you use Fog, the vertex alpha is not output when you convert from NIFF to N64.  But if you set this flag, the vertex alpha will be forcibly output even when you use Fog.
+</td>
+</tr>
+
+
+
+
+
+<tr>
+<td nowrap>
+u32 kind_of_node_for_geometry
+</td>
+<td>
+
+
+NIFF 2.0 makes it possible to link three kinds of nodes with shape_tri_link.  These nodes are the TriGroup node, the Envelope node, and the ClusterShape node.<br>
+By setting any one of the following tags in the data, shape_tri_link will indicate the index number from the pertinent list.
+
+<pre>
+<b>
+TAG_TRI_GROUP           0x00080100
+TAG_ENVELOPE            0x00220100
+TAG_CLUSTER_SHAPE       0x00280100
+</b>
+</pre>
+For the TAG_TRI_GROUP tag, shape_tri_link describes the TriGroup index number.<br>
+For the TAG_ENVELOPE tag, shape_tri_link describes the Envelope index number.<br>
+For the TAG_CLUSTER_SHAPE tag, shape_tri_link describes the ClusterShape index number.
+
+
+
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_mat_file_name_index
+</td>
+<td>
+When the Mat node references an external file, that file name is described with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when describing the file name.<p>
+In this case, specify shape_mat_link = ExternalNameList index number.<p>
+If an external file is not referenced, please set to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_mat_name_index
+</td>
+<td>
+When the Mat node references an external file, the Mat name is described with an ExternalNameList index number.<p>
+In this case, specify shape_mat_link = ExternalNameList index number.<p>
+If an external file is not referenced, please set to 0xffffffff.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="shape_C.htm#shapeNodeC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Vertex State</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The RSP state includes a vertex buffer, holding up to 16 vertices. This buffer can be loaded with any number of consecutive vertices, beginning at any location.
+<P> 
+<P>
+<b>Table 1</b> &nbsp;gsSPVertex(Vtx *v, unsigned int n, unsigned int v0)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="65%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">v</td>
+<td width=70%><font face="arial" size="-1">pointer to a list of vertices</td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">n</td>
+<td width=70%><font face="arial" size="-1">number of vertices</td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">v0</td>
+<td width=70%><font face="arial" size="-1">
+vertex buffer location to load vertices into</td>
+</tr>
+</table>
+<P>
+
+At the time the vertices are loaded, they are transformed by the current matrix state and possibly shaded by the current lighting state.
+<P>
+Vertices are not re-transformed again, if the matrix state changes, the old (previously-transformed) vertices are not affected. This feature can be exploited to construct data that is knit together between two groups of points with different transformations (such as an elbow joint of a character).
+<P>
+Since the vertex processing is heavily vectorized and pipelined, it is important that each load loads as many vertices as possible.
+<P>
+Since the vertex loading is a relatively slow operation, it is also important that any triangles that share vertices be rendered using the same vertex state, rather than re-loading these same vertices later.
+<P>
+Please see <a target="main" href="../pro11/11-03.html#04">Section 11.3.4, “Note on Coordinate Systems and Big Numbers”</a> for information about keeping coordinates from becoming too large.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

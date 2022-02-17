@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>NIFF 2.0 Graphic Environment </title>
+</head>
+<body bgcolor="#FFFFFF">
+
+
+<IMG SRC="img/niffnavi2_title.gif" ALIGN="bottom" WIDTH=600 HEIGHT=275 BORDER=0>
+
+<hr size="3">
+
+<h2>1. NIFF 2.0 Environment</h2>
+
+<blockquote>In addition to the previous NIFF environment, the new release
+of NIFF 2.0 environment is designed for taking full advantage of the NVF
+library, its application tool 'nvfview' pre- viewer and the NIFF to NVF
+converter 'niff2nvf'.</blockquote>
+
+<blockquote>Also, the NIFF API support library and its basic application
+libraries, called NIFF Tools, enable users to customize NIFF 2.0.</blockquote>
+
+<blockquote>Off course, it is possible that previous NIFF 1.0 files can be used by the tools described above. In actual game development, these tools
+would be essential.</blockquote>
+
+<blockquote>Updated 'niff2gfx' and 'n64prev' are included for the user
+who already uses niff2gfx + nd.
+<br></blockquote>
+
+<blockquote>The following list describes the contents of this release.</blockquote>
+
+<table BORDER >
+<tr>
+<th COLSPAN="2" BGCOLOR="#FF8080">Nintendo Tool List</th>
+</tr>
+
+<tr>
+<td>NIFFeditor&nbsp;</td>
+
+<td>This tool is used to edit the hierarchical structure of NIFF and flag data. Conversion and editing of data with IS-Viewer 64 is possible by using niff2gfx, n64prev, niff2nvf and nvfview. SGI and Win95/NT versions of NIFFeditor are available.</td>
+</tr>
+
+<tr>
+<td>niff2gfx&nbsp;</td>
+
+<td>This tool converts NIFF to N64. It outputs the structure data of a
+scene, object and animation that are used by the drawing object manager
+called 'nd', and also, outputs the display list which is in accordance
+with N64GBI.&nbsp; SGI and Win95/NT versions are available.</td>
+</tr>
+
+<tr>
+<td>NVF&nbsp;</td>
+
+<td>Data format which displays the features of NIFF on an actual N64. 
+The format can be used directly by N64.</td>
+</tr>
+
+<tr>
+<td>niff2nvf&nbsp;</td>
+
+<td>This tool converts NIFF to NVF. It converts NIFF 2.0 data to
+the NVF node. Also, it is compatible with NIFF 1.0.</td>
+</tr>
+
+<tr>
+<td>nvfview&nbsp;</td>
+
+<td>An N64 pre-viewer that utilizes NVF. It consists of libraries which display
+NVF.</td>
+</tr>
+
+<tr>
+<td>NIFFAPI&nbsp;</td>
+
+<td>Supports libraries which enable users to customize a NIFF file. The basic
+API (like NIFF file Open) is available.</td>
+</tr>
+
+<tr>
+<td>NIFF Tools&nbsp;</td>
+
+<td>These tools enable users to edit NIFF files. The basic tools (such as the binary to text converter) are available.</td>
+</tr>
+
+<tr>
+<td>n64prev&nbsp;</td>
+
+<td>Directory which contains the source code of 'nd' (which also supports
+NIFF1.0) and the pre-viewer software, (for convenience, refer to 'n64prev'
+as the 'pre-viewer'). After reading 'niff2gfx' converted data, a ROM file
+can be created by 'make' the data. The ROM file enables it to be 'pre-viewed'
+using an actual Nintendo 64. However, NIFF 2.0 expanded data is not supported.</td>
+</tr>
+
+<tr>
+<td>MultiTextureViewer&nbsp;</td>
+
+<td>This tool is not related directly to NIFF. This is a tool for confirming
+the texture data in BMP and RGB format using an actual N64. 'N64CITextureEditor'
+format can be pre-viewed. Also, it enables the user to output the format of N64
+to a text format.</td>
+</tr>
+
+<tr>
+<td>CITextureEditor&nbsp;</td>
+
+<td>This editor creates the CI (color index) texture. The tool consists
+of the pre-view function, the palette editor, etc. These functions
+are necessary to create CI texture.</td>
+</tr>
+</table>
+
+<h2>
+2. The expanded features of NIFF 2.0</h2>
+
+<blockquote>The following describes the expanded features of NIFF 2.0.
+<ul>
+<li>
+Performs Color Index formatted texture.</li>
+
+<li>
+Performs Mipmap functions</li>
+
+<li>
+Various animation data are added</li>
+
+<li>
+Animation Constraint function</li>
+
+<li>
+Functions with Hermite Interpolation</li>
+
+<li>
+Double Joints Inverse Kinematics function</li>
+
+<li>
+Flexible Envelope function</li>
+
+<li>
+Fog scene data is added</li>
+</ul>
+The new addition of the NVF format also functions with the new features
+above, and is supported by the display libraries. 'nvfview'
+is structured by these libraries.
+
+<p>All NIFF tools are compatible with NIFF 2.0.</blockquote>
+
+<hr>
+<p><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION <BR>All rights reserved.</font>
+
+</body>
+</html>

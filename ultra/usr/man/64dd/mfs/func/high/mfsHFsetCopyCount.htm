@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFsetCopyCount</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFsetCopyCount</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHFsetCopyCount(MfsFile
+handle, u8 count)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>handle File handle
+count Copy counter value</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Sets copy counter value</p>
+
+<p><strong>Description:</strong> This function sets the copy counter value of the file specified by handle to count.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination
+MFS_ERR_FATAL	File open error
+		he file is not opened.
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT Write protected
+		The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Function name:mfsSetLeoReadyFunc
+──────────────────────────────────────
+Format:	void mfsSetLeoReadyFunc(void (*func)(void))
+Arguments:	func
+Return value: None
+Function:	Registers PI control function (after using PI)
+Description:	This function registers a callback function that is to be called within MFS after an asynchronous Leo function is called.
+The callback function registered by this function mainly includes PI exclusive control code.

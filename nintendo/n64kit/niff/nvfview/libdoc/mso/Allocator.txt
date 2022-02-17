@@ -1,0 +1,55 @@
+Function 
+-  Customizes memory allocation. 
+
+Functions 
+-  void msoAllocatorEnableDebugMode( MsoAllocator *allocator_ptr,
+				    const u32 enable )
+  When enable == true, switches allocator to debug mode. 
+  When in the debug mode, at the same time the allocator acquires memory, it writes a debug cookie into 
+  the header thereof. 
+
+-  u32 msoAllocatorIsDebugMode( const MsoAllocator *allocator_ptr )
+  Returns whether the allocator is operating in debug mode. 
+
+-  void msoAllocatorSetDebugCookie( MsoAllocator *allocator_ptr,
+				   const u32 debug_cookie )
+  Sets the debug cookie.
+
+-  u32 msoAllocatorGetDebugCookie( const MsoAllocator *allocator_ptr );
+  Gets the debug cookie.
+
+-  void *msoAllocatorAllocate( MsoAllocator *allocator_ptr, const u32 size );
+  Gets "size" bytes of memory with an 8-byte boundary. 
+
+-  void *msoAllocatorAllocateAligned( MsoAllocator *allocator_ptr,
+				     const u32 size, const u16 align );
+  Gets "size" bytes of memory with the boundary specified by align. 
+  Align is an index expression and has a minimum value of 3 (8-byte boundary). 
+
+-  void msoAllocatorFree( MsoAllocator *allocator_ptr, void *mem_ptr );
+  Opens memory acquired by msoAllocatorAllocate( ), msoAllocatorAllocateAligned( ). 
+
+-  void msoSetDefaultAllocator( MsoAllocator *allocator_ptr );
+  Sets the default allocator.  The default allocator is used by msoMalloc( ), msoNallocAligned( ), and
+  msoFree( ). 
+
+-  MsoAllocator *msoGetDefaultAllocator( void );
+  Gets the default allocator.
+
+-  void *msoMalloc( const u32 size );
+  Acquires memory using the default allocator. 
+
+-  void *msoMallocAligned( const u32 size, const u16 align );
+  Acquires memory using the default allocator.  The value of align is the same as for
+  msoAllocatorAllocateAligned( ). 
+
+-  void msoFree( void *mem_ptr );
+  Releases memory using the default allocator. 
+
+History
+  1998/08/24 Takamitsu Hirata 
+    Allocator.h, allocator.c: :  Initial version 
+  1998/08/26 Takamitsu Hirata 
+    Allocator.h, allocator.c:  Changed pointer expression
+  1998/10/05 Takamitsu Hirata 
+    allocator.c: Corrected error in argument of msoAllocatorAllocateAligned( ). 

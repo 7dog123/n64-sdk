@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 14</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro14/index14.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro14/index14.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Multi-Tile Effects</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+There are eight tile descriptors available in the tile memory of the RDP.  These tile descriptors contain information about the type and size of tiles and where these tiles are located in Tmem.  In two-cycle mode, texture from two tiles is available for each pixel.  Many effects are possible by manipulation of tile descriptors and combining of the textured pixels.
+<p>
+In the <i>g*DPLoadTexture*</i>  commands, a simple two-tile system is used for loading and rendering.  In this system, the G_TX_LOADTILE is used for loading a tile starting at Tmem address 0 and the tile descriptor G_TX_RENDERTILE is set up for rendering the tile.  This is a double-buffering scheme which avoids having to insert tile sync commands in the load macro.  Notice that since each tile is loaded at Tmem address 0 and the G_TX_RENDERTILE is always used for rendering, we cannot use these macro for loading multiple tiles into Tmem.
+<P>
+In order to allow the user to manage Tmem for multi-tile effects, the load macros <i>g*DPLoadMultiTile</i>  and <i>g*DPLoadMultiBlock</i>  were created.  These macros allow the user to specify the Tmem address of the tile and the tile descriptor number to use when rendering this tile.
+
+<P>
+<a name="01"></a>
+<b>Simple  Morph</b>
+<br>
+One simple use of two tiles is to  linearly interpolate,  using a parameter to indicate the blend amount,  between the tiles.  A register value in the color combiner, such as primitive alpha, can be used as the ‘slider’ to blend between the two textures as shown in Example 14-22.  Notice that we define our own color combine mode to achieve this effect, since gbi.h didn’t have the mode we needed.
+
+<P>
+<b>Example 14-22</b> &nbsp;Interpolate Between Two Tiles
+<pre><font face="courier" size="3">#define MY_MORPH		 TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, \
+TEXEL1, TEXEL0, PRIMITIVE, TEXEL0
+gsDPSetCyleType(G_CYC_2CYCLE),
+gsDPSetTextureLOD(G_TL_TILE),
+gsDPSetPrimColor(0, 0, 0, 0, 0, 128), /* 0.5 blend */
+gsDPSetCombineMode(MY_MORPH, G_CC_PASS2),
+gsDPLoadMultiTile(face0, 
+0, /* Tmem address in 64-bit words */
+G_TX_RENDERTILE, /* tile */
+G_IM_FMT_RGBA, G_IM_SIZ_16b,
+32, 32, 
+0, 0, 31, 31,
+0,
+G_TX_NOMIRROR, G_TX_NOMIRROR, 
+G_TX_NOMASK, G_TX_NOMASK,
+G_TX_NOLOD, G_TX_NOLOD),
+gsDPLoadMultiTile(face1, 
+256, /* Tmem address in 64-bit words */
+G_TX_RENDERTILE+1, /* tile */
+G_IM_FMT_RGBA, G_IM_SIZ_16b,
+32, 32, 
+0, 0, 31, 31,
+0,
+G_TX_NOMIRROR, G_TX_NOMIRROR, 
+G_TX_NOMASK, G_TX_NOMASK,
+G_TX_NOLOD, G_TX_NOLOD),
+gsSPTextureRectangle(glistp++,
+50 &#060&#060 2, 50 &#060&#060 2, 82 &#060&#060 2, 82 &#060&#060 2, 
+G_TX_RENDERTILE, 
+0, 0, 
+1 &#060&#060 10, 1 &#060&#060 10);
+</pre></font>
+
+<P>
+By making the primitive alpha an animation variable, a simple ‘morph’ effect can be achieved.
+
+<P>
+<a name="02"></a>
+<b>Smoothing Flip-Book Animations</b>
+<br>
+Often sprite animations are a sequence of key frames which are selected at the appropriate time by some animation variable.  The linear interpolation between two images as described in “Simple Morph” above can be used to smoothly transition between two key frames.  Imagine a series of <i>n</i>  images in an animation selected using an animation variable <i>frame</i>.  The integer part of frame is called <i>frame_i</i> and the fractional part is called <i>frame_f</i>.     An algorithm for smoothing the sequence is described in Example 14-23.
+
+<P>
+<b>Example 14-23</b> &nbsp;Smoothing an Animation Sequence
+<pre><font face="courier" size="3">Load tiles frame_i and frame_i+1 into Tmem
+Set primitive alpha = 256 * frame_f
+Render the rectangle using MY_MORPH combiner mode
+</pre></font>
+
+<P>
+The frames do not necessarily have to be related in time.  For example, you could  interpolate between different flame images that are randomly selected to create a fire effect.
+
+<P>
+<A name="03"></a>
+<b>Shrinking Sprites</b>
+<br>
+In the previous discussion of scaling in <a target="main" href="../pro14/14-01.html#01.2">“Bilinear Filtering,”</a> we only discussed scaling a sprite to a larger size since scaling it smaller would result in aliasing effects.  It is possible to effectively shrink an image by interpolating between two tiles, one of which is a half the size of the other tile.  This is shown in Figure 14.4.1.  Prim_lod_frac is a register in the color combiner that can be used to indicate the fractional distance between the two ‘levels-of-detail’ of the sprite.  Note that there is no special reason we used this register as the interpolation parameter, other than it’s name suggests this use.
+
+<P>
+<b>Figure 14.4.1</B> &nbsp;Shrinking a Sprite
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-15.gif"></tr></td></table>
+
+<P>
+One of the tile descriptor parameters is the shift (see <a target="main" href="../pro13/13-04.html#08">Section 13.4.8, “Shift S,T”</a>) that describes how many places to bitwise shift the tile coordinates for the primitive.  This implies that one tile’s size is related to the other’s by some integer shift, but the tiles don’t necessarily have to be power of two sizes.   Example 14-24 shows the code to create a sprite that is 0.75 the size of the larger image.  The user must scale the size of the rectangle primitive by the desired amount as well.
+
+<P>
+<b>Example 14-24</b> &nbsp;Shrinking a Sprite
+<pre><font face="courier" size="3">#define MY_LOD		 TEXEL1, TEXEL0, PRIM_LOD_FRAC, TEXEL0, \
+TEXEL1, TEXEL0, PRIM_LOD_FRAC, TEXEL0
+gsDPSetCyleType(G_CYC_2CYCLE),
+gsDPSetTextureLOD(G_TL_TILE),
+gsDPSetPrimColor(0, 128, 0, 0, 0, 0), /* 0.5 lod_frac */
+gsDPSetCombineMode(MY_LOD, G_CC_PASS2),
+gsDPLoadMultiTile(face0, 
+0, /* Tmem address in 64-bit words */
+G_TX_RENDERTILE, /* tile */
+G_IM_FMT_RGBA, G_IM_SIZ_16b,
+32, 32, 
+0, 0, 31, 31,
+0,
+G_TX_NOMIRROR, G_TX_NOMIRROR, 
+G_TX_NOMASK, G_TX_NOMASK,
+G_TX_NOLOD, G_TX_NOLOD),
+gsDPLoadMultiTile(face1, 
+256, /* Tmem address in 64-bit words */
+G_TX_RENDERTILE+1, /* tile */
+G_IM_FMT_RGBA, G_IM_SIZ_16b,
+16, 16, 
+0, 0, 15, 15,
+0,
+G_TX_NOMIRROR, G_TX_NOMIRROR, 
+G_TX_NOMASK, G_TX_NOMASK,
+G_TX_NOLOD, G_TX_NOLOD),
+gsSPTextureRectangle(glistp++,
+50 &#060&#060 2, 50 &#060&#060 2, 82 &#060&#060 2, 82 &#060&#060 2, 
+G_TX_RENDERTILE, 
+8 &#060&#060 5, 8 &#060&#060 5, 
+1 &#060&#060 10, 1 &#060&#060 10);
+</pre></font>
+
+<P>
+<a name="04"></a>
+<b>Texture Decals</b>
+<br>
+We can use the alpha of one tile to select between the texel color of two different tiles to create a texture decal.  Figure 14.4.2  shows an example of a flag created using textures decals.  The insignia of the flag has transparency around it’s edges.  After mirroring and wrapping once, the texture is clamped.  In the color combiner, the texture alpha is used to interpolate between the flag stripes and the insignia.  Where the alpha is zero, the stripes will show, where the alpha is one, the insignia will show.
+
+<P>
+<b>Figure 14.4.2</B> &nbsp;Texture Decals
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-16.gif"></tr></td></table>
+<P>
+
+<a name="05"></a>
+<b>Interference Effects</b>
+<br>
+Multiplying two textures together, especially while sliding the textures relative to each other can create interference patterns.  For example, a horizontal stripe pattern multiplied by a vertical stripe pattern creates a set of bright spots at the intersection of the points.  If the stripes are slid relative to each other, the points will move also.  Multiplying can also be used to modulate one image with another.  For example, Figure 14.4.3 shows a complex wave resulting from the modulation of two simple waves.
+
+<P>
+<b>Figure 14.4.3</B> &nbsp;Modulation
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro14/gif/f14-17.gif"></tr></td></table>
+<P>
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

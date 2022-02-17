@@ -1,0 +1,57 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="Author" content="Yoshino Hiroshi">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (WinNT; I) [Netscape]">
+   <title>nt2nb</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B"
+alink="#FF0000">
+
+<h1>nt2nb</h1>
+
+<p><font color="#FF0000">Converts NIFF text into binary
+</font></p>
+
+<h3>Syntax</h3>
+
+<blockquote>
+    nt2nb input-file output-file
+</blockquote>
+
+<h3>Explanation</h3>
+
+Reads the text file input-file and outputs it to the NIFF data file output-file.
+<p>
+This command can convert the data output in text format by nb2nt into NIFF binary data. 
+
+<ul>
+ <li> Everything below ";" is a comment and is thrown out when the file is read.
+ <li> The read data is a list of integers and real numbers, but it corresponds to a list of NIFF binary data
+ <li> If the list of numerical data is not wrong, then it does not matter whether the other character strings are correct or not.
+ <li>If the first character in a string is - or 0~9, the string is judged to be numerical data.  After the string has been judged to be numerical data, it is read as "floating" if there is a decimal point.
+ <li>The part bounded by &lt;List name&gt and &lt/List name&gt is read as that List, and it does not matter what is written outside of its delimiters.
+</ul>
+
+Basically, each numeric written in text format and delimited by spaces is converted into 4bytes of binary data.  Character strings that are not numerics are skipped.<p>
+Texture data and NameList are not 4byte data, so these are given special treatment.  Please refer to the output of nb2nt.
+
+<p>
+
+<h3>Notes</h3>
+If there are errors in the data list, sometimes the file cannot be converted.<br>
+Because floating data is rounded off with nb2nt, you cannot be certain you have returned to the original data when using nt2nb.
+
+<h3>See also</h3>
+<a href="nb2nt.htm">nb2nt</a>
+
+<hr>
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<div align=right><a href="index.htm"><img SRC="../../gif/index.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

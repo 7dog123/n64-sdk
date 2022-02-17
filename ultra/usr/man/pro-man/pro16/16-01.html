@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 16</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro16/overindex.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro16/index16.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+
+<b><font face="arial" color="#29296b">Application Program Interface</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01.1"></a>
+<b>Making Sprites</b>
+<br>
+Sprites are usually used to draw images onto the screen. For these simple cases, a few scripts are provided to automatically take a specified image and generate an appropriate sprite data structure. The generated sprite may then be edited manually or modified at run time to create dynamic behavior.
+<pre>
+mksprite name imgfile.rgb tileX tileY overlap > sp_name.h
+</pre>
+<P>
+This program takes a Silicon Graphics image file and generates a sprite. This sprite consists of a number of individual bitmaps (tiles) that are tileX apart in the x direction and tileY apart in the y direction. If overlap is “0,” then these bitmaps are exactly tileX by tileY in size and should not be scaled (see spScale()). If overlap is “1,” then the tiles are (tileX+1) by (tileY+1) in size. These sprites may be scaled and the textures will be properly interpolated. This extra pixel of overlap, or “border,” provides the required data to create smooth transitions between tiles. The generated file may be included in an application and the sprite may be manipulated with the name “name.”
+<pre>
+mkisprite name imgfile.rgb tileX tileY overlap &#062 sp_name.h
+</pre>
+<P>
+This command is just like mksprite, except that it converts the image to an 8-bit Color Index format, computes the TLUT, and generates the sprite with all the appropriate changes to support this format.
+
+<P>
+<a name="01.2"></a>
+<b>Manipulating Sprites</b>
+<p>
+void <b>spInit</b><i>(Gfx **glistp)</i>
+
+
+<P>
+This routine is called at the beginning of sprite drawing. Some GBI display list commands are added to the specified glistp to get the RCP into the correct mode for sprite rendering. This sets default texturing modes.
+<P>
+void <b>spFinish</b><i>(Gfx **glistp)</i>
+
+
+<P>
+This routine is called at the end of sprite drawing. Some GBI display list commands are added to the specified glistp to get the RCP to complete all pending drawing operations and reset the RCP to its regular state. It also tacks on a <i>gEndDisplayList( )</i>.
+<p>
+void <b>spMove</b><i>(Sprite *sp, s32 x, s32 y)</i>
+
+
+<P>
+This routine sets the screen position of the upper left-hand corner of the sprite.
+<p>
+void <b>spScale</b><i>(Sprite *sp, f32 sx, f32 sy)</i>
+
+
+<P>
+This routine sets the resizing amount for this sprite. Scales may be less than 1.0 to produce a smaller image, or greater than 1 to create an expanded image.
+<p>
+void <b>spSetZ</b><i>(Sprite *sp, s32 z)</i>
+
+
+<P>
+This routine sets the z-buffer depth of the sprite. This may cause the sprite to be obscured by previously drawn sprites that were drawn with a smaller value of Z.
+<P>
+void <b>spColor</b><i>(Sprite *sp,  u8 red,  u8 green, u8 blue,  u8 alpha)</i>
+
+
+<P>
+This routine sets the color of the sprite. Based on how the sprite is to be drawn, this could be either the PRIMITIVE_COLOR or the FILL_COLOR.
+<P>
+void <b>spSetAttribute</b><i>(Sprite *sp, s32 attr)</i>
+
+<P>
+This routine sets the indicated attributes. “attr” can be the bit-wise OR of many attributes.
+<P>
+void <b>spClearAttribute</b><i>(Sprite *sp, s32 attr)</i>
+
+
+<P>
+This routine clears the indicated attributes. “attr” can be the bit-wise OR of many attributes.
+<P>
+void <b>spScissor</b><i>(s32 xmin, s32 xmax, s32 ymin, s32 ymax)</i>
+
+
+<P>
+This routine specifies the bounding region in which sprites will be drawn.  By default, this region is initialized with <i>xmin=0, xmax=319, ymin=0, and ymax=239.</i>
+
+<P>
+<a name="01.3"></a>
+<b>Drawing Sprites</b>
+<p>
+Gfx <b>*spDraw</b><i>(Sprite *sp)</i>
+
+<P>
+This routine constructs a display list starting at sp->next_dl that draws the sprite into the framebuffer in the indicated way. This display list is terminated with an <i>gEndDisplayList( )</i> entry, and the sp->next_dl entry is updated to point to one entry past this. The pointer to the start of this display list is returned.
+
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

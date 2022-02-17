@@ -1,0 +1,14 @@
+Function name:mfsSetRtc
+──────────────────────────────────────
+Format:	s32 mfsWrtieRTC(LEODiskTime* time)
+Arguments:	time		LEODiskTime structure buffer
+Return value: Error
+Function:	Sets internal RTC
+Description:	This function sets the date and time of the internal RTC to the values specified by time.
+It enables LeoSetRTC to be handled by using the MFS library.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.

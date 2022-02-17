@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.11 TriList</font></h3>
+
+<hr size=3>
+<h4>8) Reference StData Area</h4>
+
+<hr size=1>
+<br><b>When TRI_ANIM_ST_FULL is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>st_group_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_index(tri_anim_frame_num)</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Reference StData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 st_group_index</td>
+
+<td><font size=+0>Index number of StGroup to be referred</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When TRI_ANIM_ST_KEY is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>st_anim_key_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_anim_key(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_anim_key(st_anim_key_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_index(st_anim_key_num - 1)</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Reference StData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 st_anim_key_num</td>
+
+<td><font size=+0>Total number of key frame animation keys</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_anim_key</td>
+
+<td><font size=+0>Key frame value&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_index</td>
+
+<td><font size=+0>Index number of StGroup corresponding to key</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When ST animation is not performed</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>st_group_index</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Reference StData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 st_group_index</td>
+
+<td><font size=+0>Index number of StGroup to be referred</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg11-7.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg11-9.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

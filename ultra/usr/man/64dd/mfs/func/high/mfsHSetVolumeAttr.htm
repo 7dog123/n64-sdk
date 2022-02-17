@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHSetVolumeAttr</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHSetVolumeAttr</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHSetVolumeAttr(s32 drive, u8
+attr)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>drive	Drive name ('A', 'B', ...)
+attr	Attribute</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Sets volume attribute</p>
+
+<p><strong>Description:</strong> This function sets the attribute of the drive specified by drive to attr.
+The following attributes can be specified.</p>
+
+<p>MFS_VOLUME_ATTR_VPROTECT_WRITE 0x20
+Volume write protected<br>
+MFS_VOLUME_ATTR_VPROTECT_READ 0x40
+Volume read protected<br>
+MFS_VOLUME_ATTR_WPROTECT 0x80 Write protected</p>
+
+<p>When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.</p>
+
+<p>When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.</p>
+
+<p>When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_NOTFOUND	Drive not found
+MFS_ERR_DEVICE		Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT		Write protected
+			The volume attribute is write protected, or the medium is volume protected.</pre>
+
+<hr>
+</body>
+</html>

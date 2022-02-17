@@ -1,0 +1,14 @@
+Function 
+(  Analyzes IFF form. 
+
+Functions 
+(  void mifFormParserInit( MifFormParser *, ... )
+  Initializes MifFormParser. 
+  List the MifChunkParser that you wish to use in the variable argument. 
+
+(  int mifFormParserRead(MifFormParser *, MisInput *, void *)
+  Reads form. 
+
+History 
+  1998/10/06 Junji Takae
+    FormParser.h, formparser.c:  Initial version 

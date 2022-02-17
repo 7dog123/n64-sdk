@@ -1,0 +1,34 @@
+/*
+ * spec
+ */
+#include <nusys.h>
+#include "params.h"
+
+beginseg
+	name	"code"
+	flags	BOOT OBJECT
+	entry	nuBoot
+	address	NU_SPEC_BOOT_ADDR
+	stack	NU_SPEC_BOOT_STACK
+	include CODESEGMENT
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspL3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.Rej.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspS2DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/n_aspMain.o"
+endseg
+
+beginseg name "sbk" flags RAW include SBK_DATA endseg
+beginseg name "ctl" flags RAW include CTL_DATA endseg
+beginseg name "tbl" flags RAW include TBL_DATA endseg
+
+beginwave
+	name	APPNAME
+	include "code"
+	include "sbk"
+	include "ctl"
+	include "tbl"
+endwave

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 6</title>
+</head>
+<body bgcolor="#FFFFFF">
+<table border=0><tr><td><a target="_top" href="../pro06/index6.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro06/index6.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Threads</font></b>
+<P>
+<font face="arial" size="-1" color="#000000">
+All code that runs under the operating system, runs in the same address space. That is, the game runs as one process. While it is possible to structure a game application as one monolithic program, it is usually advantageous to subdivide it into smaller, more manageable subprograms called threads. <P>
+With its own stack, each thread usually performs one function, often repetitively. This subdivision leads to simplicity for each thread; thus, it is easier to “get it right” and to minimize interference between threads. The threads section describes these threads, how they are scheduled, and how various operations may be performed on them.
+<P>
+Threads may be created, destroyed, stopped, or blocked (the latter by waiting on a message). Threads normally run until they require some resource or event to continue, at which point they yield the CPU to another thread. Each thread has an assigned priority level, used to determine which thread has access to the CPU at any given time. In response to an external event, a thread may be forced to yield control of the CPU. The operating system preserves the state of the thread properly for restarting at a later time. Thus, the system can be described as preemptive. Threads may even be preempted during system calls when it is safe to do so.
+<P>
+There is no concept of a swap clock or “round-robin” scheduling as is found in UNIX and other time-sharing systems. Thus, two or more threads that run at the same priority level do not alternate in use of the CPU. The thread that “has” the CPU runs until it yields or is preempted by a higher priority thread in response to an exception.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,27 @@
+NIFF Sample Model Data NO.2 [Bathroom]
+* Software:
+
+SOFT IMAGE 3D 3.7SP1 (Modeling and Animation)
+Photoshop (Texture)
+
+* About the texture:
+
+Water in the shower    : IA Texture (4bit)
+Picture of the Dragon  : IA Texture (4bit)
+Wing of the Dragon     : IA Texture (4bit)
+Body of the Dragon     : CI Texture (4bit)
+Laundry Hanger         : IA Texture
+
+* About the Animation:
+
+Dragon's Wing and Head - Rotate
+Water - Scale Animation
+
+Editor's Comments
+
+The bath mat and towel has the same texture but is made to appear differently with 
+CC configuration. 
+
+The water in the shower is scaled after applying on Alfa Channel. Also, the image 
+of the texture is altered by lighting. The common materials are edited through 
+NIFF EDITOR.   

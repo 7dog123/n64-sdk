@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 13</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro13/index13.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro13/index13.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Texture Image Space</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Texture coordinates are defined for textured primitives in Texture Image Space. This space has a range of +/- 1K texel. Tiles are smaller rectangular regions of a texture that fit into the on-chip texture memory of the RCP (Tmem).
+
+<P>
+<b>Figure 13.3.1</B> &nbsp;Image Space and Tile Space
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro13/gif/f13-01.gif"></tr></td></table> 
+<P>
+
+Tiles are defined in Texture Image Space using SL, TL and SH, TH coordinates, as shown in the figure above. Tile coordinates must lie in the positive S,T quadrant of Texture Image Space. However texture coordinates of the primitive can lie in any of the four quadrants of image space. In other words, primitives can have negative texture coordinates which can be useful when wrapping a texture on a very large primitive. Tiles can be up to 1024 columns wide and up to 256 rows tall. Tiles <b>do not</b> have to be sized to a power of 2 (wrapping and mirroring, however, happen on power-of-2 boundaries).
+<P>
+The texture coordinates of the primitive (in Texture Image Space) are converted into Tile Space by subtracting the SL,TL from the (possibly perspective-corrected) texture coordinates of the pixel. This indirection allows arbitrary placement of the tile with respect to the primitive. This implies that the texture coordinates can be defined once in the database; and that the texture can be translated (or slid) with respect to the primitive by simply manipulating the SL,TL values using the <i>SetTileSize</i> RDP command.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

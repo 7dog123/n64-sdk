@@ -1,0 +1,66 @@
+
+        Changes in Specifications Regarding LeoSpdlMotor Function 
+
+                                             Nintendo Development Dept. No. 3
+							Kiyoyuki Watanabe
+
+1. Purpose of This Patch
+
+	This patch adds a new LEO_MOTOR_BRAKE mode to the existing 
+	LeoSpdlMotor function. 
+
+
+2. Changes to the LeoSpdlMotor Function
+
+	Three different modes LEO_MOTOR_ACTIVE, LEO_MOTOR_STANDBY, and 
+	LEO_MOTOR_STOP could be specified as modes with the old LeoSpdlMotor 
+	function.  With this specification change, it will be possible to 
+	specify a new LEO_MOTOR_BRAKE mode. 
+
+	Forcibly stopping the disk by specifying the BRAKE mode with 
+	LeoSpdlMotor has the following differences from allowing the disk to 
+	stop naturally without specifying a mode (or stopping by specifying 
+	the SLEEP mode). 
+
+	(When BRAKE mode has been specified) 
+	* The disk stops immediately (average 1.5 seconds, maximum 3 seconds). 
+	* When disk stops, a small catching sound is emitted by the forced stop. 
+	(When disk stops normally or when SLEEP mode has been specified)
+	* It takes some time until the disk stops (average 3 seconds, maximum 
+	6 seconds). 
+	* Virtually no sound is emitted as the device just waits for the disk to
+ 	stop naturally. 
+
+
+3. Using the BRAKE Mode 
+
+	For example, when it is necessary to swap disks during a game, the need
+ 	arises to rapidly stop the disk which is currently rotating.  The BRAKE
+ 	mode is effective in this kind of situation. 
+	Conversely, when the game is proceeding normally, it is more effective 
+	to let the disk stop naturally by terminating read/write because of the
+ 	sound made by stopping the disk or because the need may arise to 
+	read/write again by the time the disk stops. 
+
+
+4. Precautions for this Patch 
+
+	The reason that care is necessary when using this patch is that these 
+	changes are only effective with the new type of drive. 
+	The LEO_MOTOR_BRAKE mode is effective only with the new spec development
+ 	drive that was released and distributed in 1998.  Since forced stops are
+ 	always performed with the development drive released and distributed in
+ 	1997, even if the LEO_MOTOR_BRAKE mode is specified, the drive will 
+	operate as though the LEO_MOTOR_SLEEP mode had been specified.  
+	(However, the oldest type of drive is not forcibly stopped and, 
+	conversely, always waits for the disk to stop.) 
+	It is possible to check the drive with the LeoInquiry function to 
+	determine whether you have an old or a new type of drive.  This value 
+	will be 0x14 for the new drive, while the value will be 0x4 for the old
+ 	drive.  
+	Now, all of the commercially available mass-produced drives are new 
+	specification drives which are compatible with the BRAKE mode. 
+	Even if this patch is installed in an environment in which an old drive
+ 	is being used, there will not be any problems since the mode 
+	specification will not have any meaning. 
+

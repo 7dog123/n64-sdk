@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Programming Cautions (4) Compiler, Assembler and Library</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Compiler, Assembler and Library</h2>
+<ul>
+<li><a href="#1">4-1  Version of the Library (Recommended)</a>
+<li><a href="#2">4-2  R4300 Multiplication Anomaly (Required)</a>
+<li><a href="#3">4-3  Deleting Debug Information (Required)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>4-1  Version of the Library (Recommended)</h3>
+
+<b>Caution</b><br>
+The most recent version of the N64 OS/Library should be used for each game program.
+
+<p>
+<b>Discussion</b><br>
+The library may be revised to avoid a problem with Control Deck compatibility.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="2"></a><h3>4-2  R4300 Multiplication Anomaly (Required)</h3>
+
+<b>Caution</b><br>
+Use the standard compiler and assembler with any and all necessary patches. If a different compiler or assembler is used, ensure that integer or floating point multiplication is not performed immediately following a floating point multiplication.
+
+<p>
+<b>Discussion</b><br>
+The program may not work as expected if one of the operands of the first multiplication is not a number, zero, or infinity.
+
+<p>
+<font face="courier">
+<u>Example-1</u>  Multiplication instructions are allocated continuously
+<p>
+<pre>
+  .
+  .
+mul.d   fv0,ft0
+mult    a0,a1
+  .
+  .
+</pre>
+
+<p>
+<u>Example-2</u> First multiplication instruction is in a delay slot of branch instruction and also the second multiplication instruction is on the destination of the branch
+<p>
+<pre>
+  .
+  .
+bne     t1,t7,Label           ; branch instruction
+mul.s   fa0,fa1               ; delay slot
+  .
+  .
+Label:
+dmult   t1,t7
+  .
+  .
+</pre>
+</font>
+
+<p>
+<b>Note:</b> If IRIX 5.3 is being used for the development system, patch1118 must be installed to ensure that back-to-back multiplies are not generated.  This patch is distributed with the standard N64 development system. If using IRIX 6.2 with IDO 7.1, no patch needs to be installed.  In both cases, use the &quot;-Wab, -r4300_mul&quot; compiler option in order to activate the multiply check.
+
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="3"></a><h3>4-3  Deleting Debug Information (Required)</h3>
+
+<b>Caution</b><br>
+When programs are compiled or assembled as a release version, debug information (-g option when using the standard compiler and debugger) must not be added.  The debug library should not be used.
+
+<p>
+<b>Discussion</b><br>
+When debug information is left in the program its execution speed is slow and program size is larger.  If any operation related to the interface between the e-board and host is left in the program, it could create problems with the program.
+
+<p>
+<b>Note:</b> Delete &quot;-g&quot; option if standard compiler and assembler are used. Delete rmon related operation and interface to host such as osSyncPrintf(). If assert() is used, it must be removed from the ROM version by inserting #define NDEBUG.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

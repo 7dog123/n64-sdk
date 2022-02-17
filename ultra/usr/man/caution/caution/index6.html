@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Programming Cautions (6) Reset (NMI)</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Reset (NMI)</h2>
+
+The following cautions should be observed when performing program reset.  For additional information, please refer to Developer News 1.5:  <a href="../../developerNews/news-05.html">Reset Processing</a>.
+
+<ul>
+<li><a href="#1">6-1  Determining Hot-start and Cold-start (Required)</a>
+<li><a href="#2">6-2  Y Scale Reset (Required)</a>
+<li><a href="#3">6-3  Suspension of Graphics and Audio Tasks (Required)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>6-1  Determining Hot-start and Cold-start (Required)</h3>
+
+<b>Caution</b><br>
+To determine whether a hot-start or cold-start of the Control Deck has occurred, use the global variable, <a href="../../n64man/os/osResetType.html">osResetType</a>.
+
+<p>
+<b>Discussion</b><br>
+A hot-start or cold-start cannot be reliably determined solely based upon the contents of memory.  Using osResetType will prevent a game from locking up due to assumption of hot-start conditions.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="2"></a><h3>6-2  Y Scale Reset (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that a preemption by another thread, which changes the Y scale, has not occurred after resetting the Y scale to 1.0 in the PRENMI routine.  Don't perform an operation that prevents vertical retrace.
+
+<p>
+<b>Discussion</b><br>
+If the video mode registers have been altered in any non-standard way, these registers must also be set back to their original values in the PRENMI routine.  Failure to reset these values may cause lockups on NMI.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="3"></a><h3>6-3  Suspension of Graphics and Audio Tasks (Required)</h3>
+
+<b>Caution</b><br>
+When a PRENMI event occurs, graphic and audio tasks must be stopped before NMI occurs. 
+
+<p>
+<b>Discussion</b><br>
+When the reset button is pressed, a PRENMI signal is generated which should be processed by the game.  This PRENMI signal is guaranteed to come at least 0.5 seconds before the NMI which resets the N64 hardware.  In this 0.5 seconds, a number of operations must be performed in order to prepare the machine for the NMI.  If these operations are not performed, the RSP may not function properly after system reset.
+
+<p>
+These operations are:</P>
+<ol>
+<li>Stop graphics tasks.
+<li>Stop audio tasks.
+<li>Don't issue new PI DMA requests.
+<li>Return YScale to 1 and VI registers to original values.
+<li>Reset N64 Disk Drive.
+</ol>
+
+<p>
+Because at least 0.5 seconds will elapse between the PRENMI signal and NMI generation, the game has a small amount of time to reset gracefully.  Examples of things which can be performed in this amount of  time include ramping the audio down gradually and slowly dimming the screen to black.
+
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="5"><b><img src="../../gif/nusystem2.gif"
+width="176" height="30"></b></font><a name="top"><font size="6"><strong> </strong></font><font
+size="5">&quot;INSIDE NuSystem&quot;</font></a></p>
+
+<p><font size="4"><strong><a href="#1">5.1 What the Audio Manager Does</a><br>
+<a href="#2">5.2 How DMA Transfers to the AI Work</a></strong></font><br>
+</p>
+
+<hr>
+
+<p><a name="1"><font size="5"><strong>5.1 What the Audio Manager Does</strong></font></a></p>
+
+<p>N64 uses the CPU and RSP to create audio data, and it uses direct memory access (DMA) to transfer that data to the audio interface (AI) for reproduction. Interrupting the data during reproduction generates an unpleasant noise, so you must prepare the sound data so it cannot be interrupted. For this, you should create one frame of audio data for every retrace. 
+</p>
+
+<p>In NuSystem, the Audio Manager performs the task of creating the audio data for every retrace. There are three Audio Managers - one for use with Audio microcode, one for use with the N_Audio microcode, and one for use with N64 Sound Tools. The following explains how to use the Audio Manager for N_Audio microcode, but the basic procedure is the same for any microcode.
+</p>
+
+<p>Initialization of the NuSystem Audio Manager proceeds according to the flow shown in Figure 5.1. This initialization occurs within the nuAuMgrInit function.</p>
+
+<I><B>Figure 5.1</B> -- Audio Manager Initialization Flow Diagram</I>
+<p><img src="../../gif/nusys-10.gif"></p>
+
+<p>The nuAuMgrInit function first initializes the audio heap so it can be used. Then the buffers used by audio are all secured from this heap. The nuAuMgrInit function's arguments specify the pointer and size of this audio heap. In NuSystem, initialization with the nuAuInit function allocates a 512K-byte heap region in memory at the position shown in Figure 1.4.</p>
+
+<p>The command list buffer, which is the buffer for the audio command list created by the CPU and passed to the RSP, secures 1K-byte*2. The necessary size of this buffer differs depending on the sequence data and number of sounds, so be careful.</p>
+
+<p>The audio buffer, which stores the waveform data created by the RSP from the command list passed from the CPU, secures 4K-bytes*3. The size varies depending on the reproduction frequency. A size of 4K-bytes enables reproduction at 44.1kHz, so the size can be reduced in the case of lower frequencies.</p>
+
+<p>The synthesizer driver is initialized using the configuration structure specified with nuAuMgrInit function arguments. After that the Audio Manager is activated. The Audio Manager registers as a client in the Scheduler, calculates parameters from the set reproduction frequency, and waits for a retrace message.</p>
+
+<p>When the Audio Manager receives a retrace message, it first checks the DMA state. If the DMA register is not open, it waits for the next retrace message without creating a command list. If the DMA register is open, it uses the osAiNextBuffer function to set the audio buffer created in the previous frame.</p>
+
+<p>Next, the size of the data remaining in the AI buffer is obtained with the osAiGetLength function, and the size of the waveform data to be created in the frame is calculated. Then the audio command list is created by calling the n_alAudioFrame function. This audio command list together with a task activation message is sent to the audio task thread, and an RSP task creates waveform data from the audio command list. The created data is set in the DMA register at the start of the next frame and sent to the AI as shown in Figure 5.2.</p>
+
+<I><B>Figure 5.2</B> -- Audio Manager Process Flow Diagram</I>
+<p><img src="../../gif/nusys-11.gif"></p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="2"><font size="5"><strong>5.2  How DMA Transfers to the AI Work</strong></font></a></p>
+
+<p>To customize the NuSystem audio, you need to understand how DMA (direct memory access) transfers to the audio interface (AI) work. The AI's DMA transfer element address register has two levels - the address register of the data currently being transferred by DMA and the register of the address that will be transferred by DMA once the current DMA transfer is complete. This is shown in Figure 5.3.</p>
+
+<I><B>Figure 5.3</B> -- Organization of a DMA Transfer (Conceptual Diagram)</I>
+<p><font size="2"><img src="../../gif/nusys-12.gif"></font></p>
+
+<p>From the CPU an address can only be set in the register of the address that will be transferred next by DMA. In Figure 5.3, the DMA transfer is from the DMA address register 0 address 0x80300000. When this DMA transfer is complete, the DMA address register 1 value 0x80301000 is moved to DMA address register 0, and DMA transfer is performed from 0x80301000. In this diagram, an address can be set from the CPU in DMA address register 1. With this organization, DMA can transfer audio data to the AI without interruption.</p>
+
+<I><B>Figure 5.4</B> -- Setting the DMA Registers (Conceptual Diagram)</I>
+<p><img src="../../gif/nusys-13.gif"></p>
+
+<p>An address from the CPU can only be set in DMA address register 1. Any address already set in that resister will be overwritten, so the data at that address will no longer be transferable by DMA. This is shown in Figure 13. Under these circumstances, the tempo will be reproduced faster. To determine whether an address has already been set in DMA address register 1, check the osAiGetStatus function's return value's AI_STATUS_FIFO_FULL bit, or check the osAiNextBuffer function's return value to see if it set an address in DMA address register 1. There are three audio buffers - one for DMA address register 0, one for DMA address register 1, and one for RSP output.</p>
+
+<p>Figure 5.5 shows the flow of the n_alAudioFrame function in response to audio playback and halt requests (known as events) from your application.</p>
+
+<I><B>Figure 5.5</B> -- Audio Event Processing Flow Diagram</I>
+<p><img src="../../gif/nusys-14.gif"></p>
+
+<p>To reproduce a sequence, the application calls the nuAuSeqPlayerPlay function, which calls N64 OS sequence functions internally. The N64 OS sequence functions add the playback event to the event buffer. When the n_alAudioFrame function is executed from the Audio Manager by a retrace, the n_AudioFrame function executes the sequence player. The sequence player removes and processes events from the event buffer to play back a sequence. Through this type of flow a playback request is passed from your application to the sequence player, the request is processed, and the sequence is reproduced. Sounds work in the same way.</p>
+
+<p>As shown in Figure 5.5, the number of the event list buffer for the sequence is specified in maxEvents, which is a member of the ALSeqpConfig structure used to initialize the sequence player. This structure is specified when the sequence player is initialized. At that time, the command buffer region specified in maxEvents is secured from the audio heap region. (For the sound driver, the ALSndConfig structure is employed.) If event requests in excess of the number specified in maxEvents come from your application, they will be ignored, so be careful.</p>
+
+<p>The audio heap size is set and secured for the synthesizer driver, the sequence player, and the sound players. The synthesizer driver is initialized by the alInit function. Those members of the ALSynConfig structure that are passed during initialization and are related to heap memory are:</p>
+
+<UL>
+<LI>maxPVoice is the number of physical voices
+<LI>maxUPdates is the number of internal parameter updates
+<LI>FxType is the effect type
+</UL>
+
+<UL>
+<LI>maxPVoice is the number of physical voices
+<LI>maxUPdates is the number of internal parameter updates
+<LI>FxType is the effect type
+</UL>
+The sequence player is initialized by the alSeqpNew and alCSPNew functions. Members of ALSeqConfig structure that are passed during initialization and are related to heap memory are:
+<UL>
+<LI>maxChannels is the maximum number of channel
+<LI>maxVoices is the maximum number of sounds or voices
+<LI>maxEvents is the maximum number of events
+</UL>
+The sound player is initialized by the alSndInit function. Members of ALSndConfig that are passed during initialization and are related to heap memory are:
+<UL>
+<LI>maxSounds is the maximum number of sounds
+<LI>maxEvents is the maximum number of events
+</UL>
+
+<p>To calculate the heap size, follow these steps:</p>
+
+<OL>
+<LI>Compute the heap size secured by the synthesizer driver:
+
+<PRE><FONT FACE="COURIER NEW,COURIER" SIZE=3>
+144 + maxPVoice * 432 + maxUPdates * 32 + FxType
+The size in FxType depends on the effect type:
+
+   AL_FX_NONE	 0
+   AL_FX_SMALLROOM 	8192
+   AL_FX_BIGROOM	 8224
+   AL_FX_ECHO	 1640
+   AL_FX_CHORUS 	304
+   AL_FX_FLANGE 304</FONT></PRE>
+
+<LI>Compute the heap size secured by the sequence player:
+
+<PRE><FONT FACE="COURIER NEW,COURIER" SIZE=3>maxChannels * 16 + maxVioces * 64 + maxEvents * 32</FONT></PRE>
+
+<LI>Compute the heap size secured by the sound player:
+
+<PRE><FONT FACE="COURIER NEW,COURIER" SIZE=3>maxSounds * 48 + maxEvents * 32</FONT></PRE>
+
+<LI>Add the results of steps 1 through 3 to get the audio heap size needed at the time of initialization. To that number, add space for each of the following buffers, which are allocated from the heap:
+<BR><BR>
+
+<UL>
+<LI>Command list buffer
+<LI>Audio buffer
+<LI>DMA buffer (waveform data buffer)
+<LI>Sequence data buffer
+<LI>Bank file buffer
+</UL>
+</OL>
+
+<p>By following these steps, you can calculate the necessary size of the audio heap. When you calculate your heap size, remember that the alHeapAlloc function takes a 16-byte alignment when a heap region is secured from the audio heap.</p>
+
+<p>Now that you understand DMA transfers and the audio heap, the process of customizing the audio is basically a process of reducing memory. The minimum value can be determined using the previously described computations, but that leaves two uncertain parameters, the command list buffer and the DMA buffer.</p>
+
+<p>The command list buffer is passed by the CPU to the RSP. The size of this buffer varies depending on the playback frequency, the sequence, and the audio, but usually 1K-byte is sufficient.</p>
+
+<p>Planning for the DMA buffer is not as easy. The DMA buffer temporarily stores the necessary ROM waveform data for the playback of a sequence or sound. If the size of this buffer is not big enough, the necessary waveform data will not be transferred from ROM. In this situation, suitable waveform data (data at the start of the buffer) will become available, but the sounds will be strange. If you reduce the size of the DMA buffer and increase the number of buffers, the DMA transfers will be incessant and performance will decline.</p>
+
+<p>NuSystem prepares a DMA buffer of a little over 1K-byte so playback frequencies of even 44.1KHz are not a problem. In the case of low playback frequencies, you can halve the size of the DMA buffer to 512 bytes. You can adjust the DMA buffer if necessary.</p>
+
+<p>NuSystem also uses 32K*2 for the sequence data buffer and 8K*3 for the audio buffer. If you don't need this big a buffer, reduce the values to reduce the size of the heap.<BR>
+<BR>
+
+Performance is strongly related to DMA. To begin with, the DMA buffer is needed for the transfer of waveform data from ROM. But if the necessary waveform data is transferred and held in RAM, then DMA transfers are not needed. This alone gives a boost to performance.<BR>
+<BR>
+
+The final step in customizing the audio is to lower the playback frequency if possible. If the frequency is greater than 32KHz and audio data needs to be created for nearly every frame, try dropping the frequency to 22KHz; then you need only create audio data two times for every three frames. However, you also need to make a small change to the Audio Manager. On line 409 of the nuaumgr.c file, change this line:
+
+<PRE><FONT FACE="COURIER NEW,COURIER" SIZE=3>FrameSizeAjst = FrameSize - NU_AU_NAUDIO_SMAPLES;</FONT></PRE>
+
+to this line:
+
+<PRE><FONT FACE="COURIER NEW,COURIER" SIZE=3>FrameSizeAjst = FrameSize;</FONT></PRE>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

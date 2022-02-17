@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.2.8 3D 3D Geometry Calculations</H1>
+
+<P>Geometry calculations, which mainly calculate coordinate transformations, play a leading role in the 3D process.
+
+<H2>Matrix</H2>
+
+<P>A matrix (two-dimensional array) forms the core of the coordinate transformation process. A matrix is used to convert from one coordinate system to another. A matrix is specified in this manner:
+
+<BLOCKQUOTE><PRE>float mf[4][4];</PRE></BLOCKQUOTE>
+
+<P>This matrix consists of 16 elements (4 lines by 4 columns), so it can hold all the modulation elements of the coordinate translation, rotation, projection, and scaling at the same time.
+
+<P>The geometry calculations that use these matrices would take a long time if they were calculated by the CPU, so when N64 needs to do a geometry calculation, the RCP takes over. The RCP does the actual calculation and processes the coordinate transformation much more quickly than the CPU could. After completing the calculations, the RCP puts the result back into the display list for use by the CPU.
+
+<H2>Coordinate System</H2>
+
+<P>The 3D rendering process ultimately loops through the coordinate transformation process several times to process the two-dimensional coordinate system of the frame buffer image.
+
+<P>N64 uses the following three coordinate systems:</P>
+
+<UL>
+<LI>Local Coordinate System also known as Device or Object Coordinate System
+<LI>World Coordinate System
+<LI>Frame Buffer Coordinate System
+</UL>
+
+<P>The coordinate data is converted in order from the beginning. Two transformation matrices are used. The local to world coordinate transformation uses a model view matrix (A) and the world to frame buffer coordinate transformation uses a projection matrix (B).
+
+<H2>Transformation Matrix</H2>
+
+<P>A model view matrix defines where to place the model (the object to be displayed) in the world coordinate system. The depth of the matrix stack varies depending on which microcode is being used.
+
+<P>A projection matrix defines how each object placed in the world coordinate system is actually reflected in the frame buffer. The RCP has a "state" area where it stores the model view matrix and the projection matrix. The RCP is continually updated during the analysis of the display list, and it performs the vertex calculations. As the RCP completes these operations, the CPU constructs the display list.
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

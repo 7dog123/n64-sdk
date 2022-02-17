@@ -1,0 +1,226 @@
+<html>
+<title>
+TexNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+10. Tex Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="texNodeD">(1) Tex Node Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 tex_filter
+</td>
+<td>
+Specifies the macro for N64 texture filtering.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_TEX_FILTER_POINT&#9;&#9;0x00000000
+NIFF2_TEX_FILTER_BILERP&#9;&#9;0x00000001
+NIFF2_TEX_FILTER_AVERAGE&#9;0x00000002
+</b>
+</pre>
+Please set TEX_FILTER_BILERP as the default.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 use_perspective_correction
+</td>
+<td>
+Sets texture perspective correction ON/OFF.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_NO_PERSPECTIVE_CORRECTION&#9;0x00000000
+NIFF2_PERSPECTIVE_CORRECTION&#9;0x00000001
+</b>
+</pre>
+Please set PERSPECTIVE_CORRECTION as the default value.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 mipmap_level
+</td>
+<td>
+Specifies the MipMap texture level.<p>
+0 &lt;= mipmap_level &lt;= 7<p>
+If MipMap is not used, please specify the following flag:
+<pre>
+<b>
+NIFF2_NO_MIPMAP&#9;0x00000000
+</b>
+</pre>
+The maximum level value for MipMap images created on the NIFF->N64 converter is specified by TexImg -> mipmap_max_level.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 use_color_palette
+</td>
+<td>
+When color index texture needs to be used, one of the following needs to be specified:<BR><BR>
+1. As in NIFF 1.0, create the color index texture automatically using the NIFF->N64 converter,<BR><BR>
+2. Specify the color index texture using the index texture image and color palette added in NIFF 2.0. <BR><BR>
+
+The following flags have been defined:
+<pre>
+<b>
+NIFF2_NO_USE_COLOR_PALETTE&#9;0x00000000
+NIFF2_USE_COLOR_PALETTE&#9;&#9;0x00000001
+</b>
+</pre>
+If using the the NIFF->N64 converter (as in NIFF 1.0), please specify NIFF2_NO_USE_COLOR_PALETTE.<p>
+If using the color index texture image and color palette added in NIFF 2.0, please specify NIFF2_USE_COLOR_PALETTE.<BR><BR>  
+
+In the latter case, the tex_tile_img_index in TexDataArea points to a CiImgList index number, and tex_tile_img_num indicates the total number of CiImg that are used.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_tex_img_num
+</td>
+<td>
+Specifies the total number of TexImg that are referenced as external files.<p>
+When a TexImg is referenced as an external file, all TexImg must be referenced as an external file.<p>
+If this is the case, please specify tex_img_index = 0xffffffff, tex_tile_img_num = 0x0.<p>
+In addition, when color index texture is used, ColorPalette is also referenced as an external file.<p>
+If TexImg is not referenced as an external file, please specify 0x0.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_palette_index
+</td>
+<td>
+In the case of use_color_palette = NIFF2_USE_COLOR_PALETTE, the color palettes that are used are specified by a ColorPaletteList index number.<p>
+This area is not used when use_color_palette = 0.
+
+<!..
+-- ADD START --
+1998/09/30
+..>
+
+<p>
+In the case of TEX_ANIM_OFF, specify color_palette_index(0) only.
+
+<!..
+-- ADD END --
+..>
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 tlut_palette_number
+</td>
+<td>
+When a 4bit color index texture is used and a 256-color palette is specified, specify it to the offset value of the palette that is divided by 16.  Normally, it is set to 0x0.
+<p>
+If NIFF2_NO_USE_COLOR_PALETTE = 0x00000000, this field is not used.   <p>
+And, if 8bitCI texture (256 colors) is used as TexImg,  this field will always 
+be 0x0.  <p>
+If 4bitCI texture and 16-color-palette are used, please set the value of this field to 0x0.  
+
+<!..
+-- ADD END --
+1998/09/30
+..>
+
+<p>
+When TEX_ANIM_OFF, set to tlut_palette_number(0).
+
+<!..
+-- ADD END --
+..>
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_tex_img_file_name_index
+</td>
+<td>
+When Texture Image is referenced as an external file, the file name is specified by an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This area is not specified if there is no external file reference.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_tex_img_name_index
+</td>
+<td>
+When Texture Image is referenced as an external file, the name of the TexImg that is referenced is specified by an ExternalNameList index number.<p>
+This area is not specified if there is no external file reference.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_color_palette_file_name_index
+</td>
+<td>
+When ColorPalette is referenced as an external file, the file name is specified by an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying the file name.<p>
+This area is not specified if there is no external file reference.<p>
+In the case of NIFF2_NO_USE_COLOR_PALETTE = 0x00000000, this field is not specified.    
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_color_palette_name_index
+</td>
+<td>
+When ColorPalette is referenced as an external file, the ColorPalette name is specified by an ExternalNameList index number.<p>
+This area is not specified if there is no external file reference.<p>
+In the case of NIFF2_NO_USE_COLOR_PALETTE = 0x00000000, this field is not specified.   
+</td>
+</tr>
+
+
+
+</table>
+
+<P><A HREF="tex_C.htm#texNodeC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

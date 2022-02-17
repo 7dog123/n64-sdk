@@ -1,0 +1,64 @@
+#!smake -k
+#=======================================================================#
+#		NIFFprev						#
+#		Makefile						#
+#									#
+#		Copyright (C) 1997,1998, NINTENDO Co,Ltd.		#
+#		Copyright (C) 1998, MONEGI CORPORATION.			#
+#									#
+#-----------------------------------------------------------------------#
+
+include $(ROOT)/usr/include/make/PRdefs
+
+# Directory in which an include file and a library of NuSYSTEM exist.
+#
+N64KITDIR    = /usr/local/n64kit
+NUSYSINCDIR  = ../include
+NUSYSLIBDIR  = ../lib
+GLIBINCDIR  = ../include
+GLIBDIR  = ../lib
+
+# GBI setting. When F3DEX2 is used, it will be F3DEX_GBI_2
+GBI =		F3DEX_GBI_2
+
+APP =		nvfview
+
+OPTIMIZER =	-g
+
+TARGET =	nvfview.N64
+
+CODEFILES   =	main.c defscene.c object.c \
+		menu.c mode.c \
+		rootmenu.c cameramenu.c objectmenu.c iconmenu.c \
+		bgcolormenu.c fogmenu.c animmenu.c videomenu.c \
+		viewerinfo.c
+
+CODEOBJECTS =	$(CODEFILES:.c=.o) $(NUSYSLIBDIR)/nusys.o
+
+CODESEGMENT =	codesegment.o
+
+OBJECTS =	$(CODESEGMENT)
+
+CP =		cp
+
+LCDEFS =	-D$(GBI)
+
+LCINCS =	-I. -I/usr/include -I/usr/include/PR -I$(NUSYSINCDIR) -I$(GLIBINCDIR)
+LCOPTS =	-fullwarn -wlint,-f -woff 813,819,826,827,852 -non_shared -G 0
+
+LDFLAGS =	$(MKDEPOPT) -nostdlib -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) -L$(GLIBDIR) -lmgi -lmsn -lmhc -lmrn -lmif -lmis -lmvm -lmso -lnusys -lultra_rom
+
+LDIRT  =	$(APP)
+
+DEPENDFILE =    dependfile
+
+default:	$(TARGET)
+
+include $(COMMONRULES)
+
+$(CODESEGMENT):	$(CODEOBJECTS)
+	$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+$(TARGET): spec $(OBJECTS)
+	$(MAKEROM) -D$(GBI) -s 9 -r $(TARGET) -I$(NUSYSINCDIR) spec
+	$(CP) $(TARGET) ..

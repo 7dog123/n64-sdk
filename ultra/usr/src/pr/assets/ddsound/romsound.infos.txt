@@ -1,0 +1,5256 @@
+-------------------------------------
+       Sample Number 0              
+[Aifc/001PF.32.a4.aifc]
+
+ROM ADDRESS       20h
+-------------------------------------
+ADPCMSIZE       15228
+SAMPLESIZE      27072
+LOOP-START      13701
+LOOP-END        27055
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.594604
+
+-------------------------------------
+       Sample Number 1              
+[Aifc/001PF.32.a5.aifc]
+
+ROM ADDRESS     3ba0h
+-------------------------------------
+ADPCMSIZE        8262
+SAMPLESIZE      14688
+LOOP-START      11578
+LOOP-END        14670
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 2              
+[Aifc/001PF.32.c4.aifc]
+
+ROM ADDRESS     5bf0h
+-------------------------------------
+ADPCMSIZE       20476
+SAMPLESIZE      36401
+LOOP-START      17741
+LOOP-END        36377
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 3              
+[Aifc/001PF.32.c5.aifc]
+
+ROM ADDRESS     abf0h
+-------------------------------------
+ADPCMSIZE       20314
+SAMPLESIZE      36113
+LOOP-START      18226
+LOOP-END        36092
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 4              
+[Aifc/001PF.32.c7.aifc]
+
+ROM ADDRESS     fb50h
+-------------------------------------
+ADPCMSIZE        9216
+SAMPLESIZE      16384
+LOOP-START      12425
+LOOP-END        16354
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        96
+C4-32K TUNE  0.125000
+
+-------------------------------------
+       Sample Number 5              
+[Aifc/001PF.32.fs6.aifc]
+
+ROM ADDRESS    11f50h
+-------------------------------------
+ADPCMSIZE        8866
+SAMPLESIZE      15761
+LOOP-START       7986
+LOOP-END        15729
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        90
+C4-32K TUNE  0.176777
+
+-------------------------------------
+       Sample Number 6              
+[Aifc/002EP.32.c4.aifc]
+
+ROM ADDRESS    14200h
+-------------------------------------
+ADPCMSIZE       16408
+SAMPLESIZE      29169
+LOOP-START      13136
+LOOP-END        29147
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 7              
+[Aifc/002EP.32.c5.aifc]
+
+ROM ADDRESS    18220h
+-------------------------------------
+ADPCMSIZE       14518
+SAMPLESIZE      25809
+LOOP-START      10328
+LOOP-END        25788
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 8              
+[Aifc/002EP.32.c6.aifc]
+
+ROM ADDRESS    1bae0h
+-------------------------------------
+ADPCMSIZE       11494
+SAMPLESIZE      20433
+LOOP-START       6908
+LOOP-END        20413
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        84
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 9              
+[Aifc/003Harpsicord.32.c5.aifc]
+
+ROM ADDRESS    1e7d0h
+-------------------------------------
+ADPCMSIZE       16020
+SAMPLESIZE      28480
+LOOP-START      25954
+LOOP-END        28464
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 10              
+[Aifc/003Harpsicord.32.f4.aifc]
+
+ROM ADDRESS    22670h
+-------------------------------------
+ADPCMSIZE       17056
+SAMPLESIZE      30321
+LOOP-START      21415
+LOOP-END        30303
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        65
+C4-32K TUNE  0.749154
+
+-------------------------------------
+       Sample Number 11              
+[Aifc/003Harpsicord.32.g3.aifc]
+
+ROM ADDRESS    26910h
+-------------------------------------
+ADPCMSIZE       11944
+SAMPLESIZE      21233
+LOOP-START      16482
+LOOP-END        21215
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        55
+C4-32K TUNE  1.334840
+
+-------------------------------------
+       Sample Number 12              
+[Aifc/004iClavinet.32.fs2.aifc]
+
+ROM ADDRESS    297c0h
+-------------------------------------
+ADPCMSIZE       34506
+SAMPLESIZE      61344
+LOOP-START      59596
+LOOP-END        61325
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        42
+C4-32K TUNE  2.828428
+
+-------------------------------------
+       Sample Number 13              
+[Aifc/005Celesta.32.c6.aifc]
+
+ROM ADDRESS    31e90h
+-------------------------------------
+ADPCMSIZE       11430
+SAMPLESIZE      20320
+LOOP-START      19331
+LOOP-END        20294
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        84
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 14              
+[Aifc/006Glocken.32.a6.aifc]
+
+ROM ADDRESS    34b40h
+-------------------------------------
+ADPCMSIZE       14482
+SAMPLESIZE      25745
+LOOP-START      24706
+LOOP-END        25726
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        93
+C4-32K TUNE  0.148651
+
+-------------------------------------
+       Sample Number 15              
+[Aifc/006Glocken.32.d6.aifc]
+
+ROM ADDRESS    383e0h
+-------------------------------------
+ADPCMSIZE       19926
+SAMPLESIZE      35424
+LOOP-START      34046
+LOOP-END        35403
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        86
+C4-32K TUNE  0.222725
+
+-------------------------------------
+       Sample Number 16              
+[Aifc/006Glocken.32.fs5.aifc]
+
+ROM ADDRESS    3d1c0h
+-------------------------------------
+ADPCMSIZE       20106
+SAMPLESIZE      35744
+LOOP-START      31232
+LOOP-END        35723
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.353553
+
+-------------------------------------
+       Sample Number 17              
+[Aifc/007Vibraphone.32.a3.aifc]
+
+ROM ADDRESS    42050h
+-------------------------------------
+ADPCMSIZE       19512
+SAMPLESIZE      34688
+LOOP-START      33360
+LOOP-END        34668
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        57
+C4-32K TUNE  1.189207
+
+-------------------------------------
+       Sample Number 18              
+[Aifc/007Vibraphone.32.cs5.aifc]
+
+ROM ADDRESS    46c90h
+-------------------------------------
+ADPCMSIZE       18018
+SAMPLESIZE      32032
+LOOP-START      26541
+LOOP-END        32015
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        73
+C4-32K TUNE  0.471937
+
+-------------------------------------
+       Sample Number 19              
+[Aifc/007Vibraphone.32.d4.aifc]
+
+ROM ADDRESS    4b300h
+-------------------------------------
+ADPCMSIZE       18234
+SAMPLESIZE      32416
+LOOP-START      28804
+LOOP-END        32398
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 20              
+[Aifc/008Marimba.32.d4.aifc]
+
+ROM ADDRESS    4fa40h
+-------------------------------------
+ADPCMSIZE        9882
+SAMPLESIZE      17568
+LOOP-START      13404
+LOOP-END        17548
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 21              
+[Aifc/008Marimba.32.d5.aifc]
+
+ROM ADDRESS    520e0h
+-------------------------------------
+ADPCMSIZE        8586
+SAMPLESIZE      15264
+LOOP-START      13603
+LOOP-END        15237
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.445449
+
+-------------------------------------
+       Sample Number 22              
+[Aifc/008Marimba.32.e3.aifc]
+
+ROM ADDRESS    54270h
+-------------------------------------
+ADPCMSIZE       18810
+SAMPLESIZE      33440
+LOOP-START      16527
+LOOP-END        33424
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        52
+C4-32K TUNE  1.587401
+
+-------------------------------------
+       Sample Number 23              
+[Aifc/009Xylophone.32.a5.aifc]
+
+ROM ADDRESS    58bf0h
+-------------------------------------
+ADPCMSIZE        4860
+SAMPLESIZE       8640
+LOOP-START       6789
+LOOP-END         8624
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 24              
+[Aifc/009Xylophone.32.d5.aifc]
+
+ROM ADDRESS    59ef0h
+-------------------------------------
+ADPCMSIZE        5140
+SAMPLESIZE       9137
+LOOP-START       8102
+LOOP-END         9110
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.445449
+
+-------------------------------------
+       Sample Number 25              
+[Aifc/009Xylophone.32.e6.aifc]
+
+ROM ADDRESS    5b310h
+-------------------------------------
+ADPCMSIZE        4086
+SAMPLESIZE       7264
+LOOP-START       3959
+LOOP-END         7247
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        88
+C4-32K TUNE  0.198425
+
+-------------------------------------
+       Sample Number 26              
+[Aifc/010TublarBell.32.fs4.aifc]
+
+ROM ADDRESS    5c310h
+-------------------------------------
+ADPCMSIZE        8856
+SAMPLESIZE      15744
+LOOP-START      12400
+LOOP-END        15720
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        66
+C4-32K TUNE  0.707107
+
+-------------------------------------
+       Sample Number 27              
+[Aifc/011JazzOrg.32.fs6.aifc]
+
+ROM ADDRESS    5e5b0h
+-------------------------------------
+ADPCMSIZE        3088
+SAMPLESIZE       5489
+LOOP-START       2269
+LOOP-END         5469
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        90
+C4-32K TUNE  0.176777
+
+-------------------------------------
+       Sample Number 28              
+[Aifc/011JazzOrg.32.gs5.aifc]
+
+ROM ADDRESS    5f1c0h
+-------------------------------------
+ADPCMSIZE        4438
+SAMPLESIZE       7889
+LOOP-START       2163
+LOOP-END         7865
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        80
+C4-32K TUNE  0.314980
+
+-------------------------------------
+       Sample Number 29              
+[Aifc/012PipeOrg.32.c4.aifc]
+
+ROM ADDRESS    60320h
+-------------------------------------
+ADPCMSIZE       38494
+SAMPLESIZE      68433
+LOOP-START      10672
+LOOP-END        68415
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 30              
+[Aifc/012PipeOrg.32.c5.aifc]
+
+ROM ADDRESS    69980h
+-------------------------------------
+ADPCMSIZE       16786
+SAMPLESIZE      29841
+LOOP-START       5681
+LOOP-END        29819
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 31              
+[Aifc/013LesOrgFst.32.a4.aifc]
+
+ROM ADDRESS    6db20h
+-------------------------------------
+ADPCMSIZE        4176
+SAMPLESIZE       7424
+LOOP-START       3466
+LOOP-END         7404
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.594604
+
+-------------------------------------
+       Sample Number 32              
+[Aifc/013LesOrgFst.32.a5.aifc]
+
+ROM ADDRESS    6eb70h
+-------------------------------------
+ADPCMSIZE       10072
+SAMPLESIZE      17905
+LOOP-START       9838
+LOOP-END        17877
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 33              
+[Aifc/013LesOrgFst.32.ds6.aifc]
+
+ROM ADDRESS    712d0h
+-------------------------------------
+ADPCMSIZE        5176
+SAMPLESIZE       9201
+LOOP-START       5172
+LOOP-END         9173
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        87
+C4-32K TUNE  0.210224
+
+-------------------------------------
+       Sample Number 34              
+[Aifc/014LesOrgSlw.32.cs6.aifc]
+
+ROM ADDRESS    72710h
+-------------------------------------
+ADPCMSIZE       11394
+SAMPLESIZE      20256
+LOOP-START       7673
+LOOP-END        20230
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        85
+C4-32K TUNE  0.235969
+
+-------------------------------------
+       Sample Number 35              
+[Aifc/014LesOrgSlw.32.f5.aifc]
+
+ROM ADDRESS    753a0h
+-------------------------------------
+ADPCMSIZE       13392
+SAMPLESIZE      23808
+LOOP-START      10774
+LOOP-END        23778
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        77
+C4-32K TUNE  0.374577
+
+-------------------------------------
+       Sample Number 36              
+[Aifc/014LesOrgSlw.32.g4.aifc]
+
+ROM ADDRESS    787f0h
+-------------------------------------
+ADPCMSIZE       14140
+SAMPLESIZE      25137
+LOOP-START      12109
+LOOP-END        25109
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 37              
+[Aifc/015Accordion.32.b3.aifc]
+
+ROM ADDRESS    7bf30h
+-------------------------------------
+ADPCMSIZE       26290
+SAMPLESIZE      46737
+LOOP-START      15614
+LOOP-END        46714
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        59
+C4-32K TUNE  1.059463
+
+-------------------------------------
+       Sample Number 38              
+[Aifc/015Accordion.32.f4.aifc]
+
+ROM ADDRESS    825f0h
+-------------------------------------
+ADPCMSIZE       18082
+SAMPLESIZE      32145
+LOOP-START       8579
+LOOP-END        32127
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        65
+C4-32K TUNE  0.749154
+
+-------------------------------------
+       Sample Number 39              
+[Aifc/015Accordion.32.gs3.aifc]
+
+ROM ADDRESS    86ca0h
+-------------------------------------
+ADPCMSIZE       19738
+SAMPLESIZE      35089
+LOOP-START      13642
+LOOP-END        35060
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        56
+C4-32K TUNE  1.259921
+
+-------------------------------------
+       Sample Number 40              
+[Aifc/016Harmonica.32.ds6.aifc]
+
+ROM ADDRESS    8b9c0h
+-------------------------------------
+ADPCMSIZE        4590
+SAMPLESIZE       8160
+LOOP-START       3353
+LOOP-END         8135
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        87
+C4-32K TUNE  0.210224
+
+-------------------------------------
+       Sample Number 41              
+[Aifc/016Harmonica.32.gs5.aifc]
+
+ROM ADDRESS    8cbb0h
+-------------------------------------
+ADPCMSIZE        8874
+SAMPLESIZE      15776
+LOOP-START       4110
+LOOP-END        15748
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        80
+C4-32K TUNE  0.314980
+
+-------------------------------------
+       Sample Number 42              
+[Aifc/017NylonGuit.32.cs4.aifc]
+
+ROM ADDRESS    8ee60h
+-------------------------------------
+ADPCMSIZE       12186
+SAMPLESIZE      21664
+LOOP-START      19684
+LOOP-END        21646
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        61
+C4-32K TUNE  0.943875
+
+-------------------------------------
+       Sample Number 43              
+[Aifc/017NylonGuit.32.ds5.aifc]
+
+ROM ADDRESS    91e00h
+-------------------------------------
+ADPCMSIZE       10800
+SAMPLESIZE      19200
+LOOP-START      16035
+LOOP-END        19171
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        75
+C4-32K TUNE  0.420448
+
+-------------------------------------
+       Sample Number 44              
+[Aifc/017NylonGuit.32.gs3.aifc]
+
+ROM ADDRESS    94830h
+-------------------------------------
+ADPCMSIZE       16480
+SAMPLESIZE      29297
+LOOP-START      21110
+LOOP-END        29276
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        56
+C4-32K TUNE  1.259921
+
+-------------------------------------
+       Sample Number 45              
+[Aifc/018ChoGuit.t.32.c4.aifc]
+
+ROM ADDRESS    98890h
+-------------------------------------
+ADPCMSIZE       15760
+SAMPLESIZE      28017
+LOOP-START       6954
+LOOP-END        27994
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 46              
+[Aifc/019MtGuit.32.d3.aifc]
+
+ROM ADDRESS    9c620h
+-------------------------------------
+ADPCMSIZE        4986
+SAMPLESIZE       8864
+LOOP-START          0
+LOOP-END         8864
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        50
+C4-32K TUNE  1.781798
+
+-------------------------------------
+       Sample Number 47              
+[Aifc/020DistGuit.32.b3.aifc]
+
+ROM ADDRESS    9d9a0h
+-------------------------------------
+ADPCMSIZE       28000
+SAMPLESIZE      49777
+LOOP-START      15110
+LOOP-END        49746
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        59
+C4-32K TUNE  1.059463
+
+-------------------------------------
+       Sample Number 48              
+[Aifc/020DistGuit.32.d5.aifc]
+
+ROM ADDRESS    a4700h
+-------------------------------------
+ADPCMSIZE       19234
+SAMPLESIZE      34193
+LOOP-START      33346
+LOOP-END        34162
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.445449
+
+-------------------------------------
+       Sample Number 49              
+[Aifc/020DistGuit.32.e3.aifc]
+
+ROM ADDRESS    a9230h
+-------------------------------------
+ADPCMSIZE       38808
+SAMPLESIZE      68992
+LOOP-START      16642
+LOOP-END        68961
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        52
+C4-32K TUNE  1.587401
+
+-------------------------------------
+       Sample Number 50              
+[Aifc/020DistGuit.32.e4.aifc]
+
+ROM ADDRESS    b29d0h
+-------------------------------------
+ADPCMSIZE       22680
+SAMPLESIZE      40320
+LOOP-START      39426
+LOOP-END        40299
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 51              
+[Aifc/025Chop.32.a1.aifc]
+
+ROM ADDRESS    b8270h
+-------------------------------------
+ADPCMSIZE       16192
+SAMPLESIZE      28785
+LOOP-START      25275
+LOOP-END        28767
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        33
+C4-32K TUNE  4.756829
+
+-------------------------------------
+       Sample Number 52              
+[Aifc/025Chop.32.d2.aifc]
+
+ROM ADDRESS    bc1b0h
+-------------------------------------
+ADPCMSIZE       16228
+SAMPLESIZE      28849
+LOOP-START      27950
+LOOP-END        28822
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        38
+C4-32K TUNE  3.563596
+
+-------------------------------------
+       Sample Number 53              
+[Aifc/025Chop.32.e1.aifc]
+
+ROM ADDRESS    c0120h
+-------------------------------------
+ADPCMSIZE       14716
+SAMPLESIZE      26161
+LOOP-START      23020
+LOOP-END        26132
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        28
+C4-32K TUNE  6.349606
+
+-------------------------------------
+       Sample Number 54              
+[Aifc/026Pull.32.a2.aifc]
+
+ROM ADDRESS    c3aa0h
+-------------------------------------
+ADPCMSIZE        3970
+SAMPLESIZE       7057
+LOOP-START       5863
+LOOP-END         7028
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        45
+C4-32K TUNE  2.378414
+
+-------------------------------------
+       Sample Number 55              
+[Aifc/026Pull.32.d3.aifc]
+
+ROM ADDRESS    c4a30h
+-------------------------------------
+ADPCMSIZE        4420
+SAMPLESIZE       7857
+LOOP-START       4568
+LOOP-END         7837
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        50
+C4-32K TUNE  1.781798
+
+-------------------------------------
+       Sample Number 56              
+[Aifc/026Pull.32.e2.aifc]
+
+ROM ADDRESS    c5b80h
+-------------------------------------
+ADPCMSIZE        5212
+SAMPLESIZE       9265
+LOOP-START       8069
+LOOP-END         9234
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        40
+C4-32K TUNE  3.174803
+
+-------------------------------------
+       Sample Number 57              
+[Aifc/027Vln.32.as4.aifc]
+
+ROM ADDRESS    c6fe0h
+-------------------------------------
+ADPCMSIZE        5770
+SAMPLESIZE      10257
+LOOP-START       3161
+LOOP-END        10233
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        70
+C4-32K TUNE  0.561231
+
+-------------------------------------
+       Sample Number 58              
+[Aifc/027Vln.32.e5.aifc]
+
+ROM ADDRESS    c8670h
+-------------------------------------
+ADPCMSIZE        2574
+SAMPLESIZE       4576
+LOOP-START       3000
+LOOP-END         4551
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        76
+C4-32K TUNE  0.396850
+
+-------------------------------------
+       Sample Number 59              
+[Aifc/027Vln.32.fs4.aifc]
+
+ROM ADDRESS    c9080h
+-------------------------------------
+ADPCMSIZE       12546
+SAMPLESIZE      22304
+LOOP-START       3528
+LOOP-END        22280
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        66
+C4-32K TUNE  0.707107
+
+-------------------------------------
+       Sample Number 60              
+[Aifc/028Viola.32.c4.aifc]
+
+ROM ADDRESS    cc190h
+-------------------------------------
+ADPCMSIZE       17632
+SAMPLESIZE      31345
+LOOP-START       2967
+LOOP-END        31319
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 61              
+[Aifc/028Viola.32.d5.aifc]
+
+ROM ADDRESS    d0670h
+-------------------------------------
+ADPCMSIZE       10080
+SAMPLESIZE      17920
+LOOP-START       3137
+LOOP-END        17889
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.445449
+
+-------------------------------------
+       Sample Number 62              
+[Aifc/028Viola.32.f4.aifc]
+
+ROM ADDRESS    d2dd0h
+-------------------------------------
+ADPCMSIZE        9478
+SAMPLESIZE      16849
+LOOP-START       3648
+LOOP-END        16832
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        65
+C4-32K TUNE  0.749154
+
+-------------------------------------
+       Sample Number 63              
+[Aifc/029Cello.32.as3.aifc]
+
+ROM ADDRESS    d52e0h
+-------------------------------------
+ADPCMSIZE       22914
+SAMPLESIZE      40736
+LOOP-START      12528
+LOOP-END        40716
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        58
+C4-32K TUNE  1.122462
+
+-------------------------------------
+       Sample Number 64              
+[Aifc/029Cello.32.d3.aifc]
+
+ROM ADDRESS    dac70h
+-------------------------------------
+ADPCMSIZE       14130
+SAMPLESIZE      25120
+LOOP-START       5894
+LOOP-END        25094
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        50
+C4-32K TUNE  1.781798
+
+-------------------------------------
+       Sample Number 65              
+[Aifc/029Cello.32.f2.aifc]
+
+ROM ADDRESS    de3b0h
+-------------------------------------
+ADPCMSIZE       19458
+SAMPLESIZE      34592
+LOOP-START      29063
+LOOP-END        34568
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        41
+C4-32K TUNE  2.996615
+
+-------------------------------------
+       Sample Number 66              
+[Aifc/030Pizz.32.as4.aifc]
+
+ROM ADDRESS    e2fc0h
+-------------------------------------
+ADPCMSIZE       13428
+SAMPLESIZE      23872
+LOOP-START      21998
+LOOP-END        23852
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        70
+C4-32K TUNE  0.561231
+
+-------------------------------------
+       Sample Number 67              
+[Aifc/030Pizz.32.b2.aifc]
+
+ROM ADDRESS    e6440h
+-------------------------------------
+ADPCMSIZE       12988
+SAMPLESIZE      23089
+LOOP-START      22029
+LOOP-END        23065
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        47
+C4-32K TUNE  2.118926
+
+-------------------------------------
+       Sample Number 68              
+[Aifc/030Pizz.32.fs5.aifc]
+
+ROM ADDRESS    e9700h
+-------------------------------------
+ADPCMSIZE       11052
+SAMPLESIZE      19648
+LOOP-START      16441
+LOOP-END        19622
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.353553
+
+-------------------------------------
+       Sample Number 69              
+[Aifc/031Strings.32.a4.aifc]
+
+ROM ADDRESS    ec230h
+-------------------------------------
+ADPCMSIZE       32724
+SAMPLESIZE      58176
+LOOP-START      12621
+LOOP-END        58154
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.594604
+
+-------------------------------------
+       Sample Number 70              
+[Aifc/031Strings.32.as3.aifc]
+
+ROM ADDRESS    f4210h
+-------------------------------------
+ADPCMSIZE       44676
+SAMPLESIZE      79424
+LOOP-START       8135
+LOOP-END        79408
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        58
+C4-32K TUNE  1.122462
+
+-------------------------------------
+       Sample Number 71              
+[Aifc/031Strings.32.c3.aifc]
+
+ROM ADDRESS    ff0a0h
+-------------------------------------
+ADPCMSIZE       46414
+SAMPLESIZE      82513
+LOOP-START      15907
+LOOP-END        82482
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        48
+C4-32K TUNE  2.000000
+
+-------------------------------------
+       Sample Number 72              
+[Aifc/031Strings.32.d4.aifc]
+
+ROM ADDRESS   10a5f0h
+-------------------------------------
+ADPCMSIZE       54820
+SAMPLESIZE      97457
+LOOP-START      10693
+LOOP-END        97430
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 73              
+[Aifc/031Strings.32.g2.aifc]
+
+ROM ADDRESS   117c20h
+-------------------------------------
+ADPCMSIZE       49086
+SAMPLESIZE      87264
+LOOP-START      27670
+LOOP-END        87247
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        43
+C4-32K TUNE  2.669680
+
+-------------------------------------
+       Sample Number 74              
+[Aifc/031Strings.32.g6.aifc]
+
+ROM ADDRESS   123be0h
+-------------------------------------
+ADPCMSIZE       33850
+SAMPLESIZE      60177
+LOOP-START      13422
+LOOP-END        60148
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        91
+C4-32K TUNE  0.166855
+
+-------------------------------------
+       Sample Number 75              
+[Aifc/031Strings.32.gs5.aifc]
+
+ROM ADDRESS   12c020h
+-------------------------------------
+ADPCMSIZE       27162
+SAMPLESIZE      48288
+LOOP-START       8353
+LOOP-END        48264
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        80
+C4-32K TUNE  0.314980
+
+-------------------------------------
+       Sample Number 76              
+[Aifc/032Harp.32.cs4.aifc]
+
+ROM ADDRESS   132a40h
+-------------------------------------
+ADPCMSIZE       16552
+SAMPLESIZE      29425
+LOOP-START      28482
+LOOP-END        29406
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        61
+C4-32K TUNE  0.943875
+
+-------------------------------------
+       Sample Number 77              
+[Aifc/032Harp.32.cs5.aifc]
+
+ROM ADDRESS   136af0h
+-------------------------------------
+ADPCMSIZE       15012
+SAMPLESIZE      26688
+LOOP-START      25392
+LOOP-END        26662
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        73
+C4-32K TUNE  0.471937
+
+-------------------------------------
+       Sample Number 78              
+[Aifc/032Harp.32.e6.aifc]
+
+ROM ADDRESS   13a5a0h
+-------------------------------------
+ADPCMSIZE        9442
+SAMPLESIZE      16785
+LOOP-START      15891
+LOOP-END        16764
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        88
+C4-32K TUNE  0.198425
+
+-------------------------------------
+       Sample Number 79              
+[Aifc/033Timpani.32.c4.aifc]
+
+ROM ADDRESS   13ca90h
+-------------------------------------
+ADPCMSIZE       20422
+SAMPLESIZE      36305
+LOOP-START      20579
+LOOP-END        36283
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 80              
+[Aifc/034Chorus.32.cs5.aifc]
+
+ROM ADDRESS   141a60h
+-------------------------------------
+ADPCMSIZE       15562
+SAMPLESIZE      27665
+LOOP-START       9422
+LOOP-END        27645
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        73
+C4-32K TUNE  0.471937
+
+-------------------------------------
+       Sample Number 81              
+[Aifc/034Chorus.32.f5.aifc]
+
+ROM ADDRESS   145730h
+-------------------------------------
+ADPCMSIZE       19882
+SAMPLESIZE      35345
+LOOP-START       8431
+LOOP-END        35325
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        77
+C4-32K TUNE  0.374577
+
+-------------------------------------
+       Sample Number 82              
+[Aifc/034Chorus.32.g4.aifc]
+
+ROM ADDRESS   14a4e0h
+-------------------------------------
+ADPCMSIZE       14184
+SAMPLESIZE      25216
+LOOP-START       6602
+LOOP-END        25195
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 83              
+[Aifc/035Tp.32.c5.aifc]
+
+ROM ADDRESS   14dc50h
+-------------------------------------
+ADPCMSIZE        5382
+SAMPLESIZE       9568
+LOOP-START       5336
+LOOP-END         9542
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 84              
+[Aifc/035Tp.32.f5.aifc]
+
+ROM ADDRESS   14f160h
+-------------------------------------
+ADPCMSIZE        8244
+SAMPLESIZE      14656
+LOOP-START       4961
+LOOP-END        14639
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        77
+C4-32K TUNE  0.374577
+
+-------------------------------------
+       Sample Number 85              
+[Aifc/035Tp.32.g4.aifc]
+
+ROM ADDRESS   1511a0h
+-------------------------------------
+ADPCMSIZE        4914
+SAMPLESIZE       8736
+LOOP-START       5372
+LOOP-END         8706
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 86              
+[Aifc/036Tb.32.d4.aifc]
+
+ROM ADDRESS   1524e0h
+-------------------------------------
+ADPCMSIZE        9766
+SAMPLESIZE      17361
+LOOP-START       3391
+LOOP-END        17342
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 87              
+[Aifc/036Tb.32.gs3.aifc]
+
+ROM ADDRESS   154b10h
+-------------------------------------
+ADPCMSIZE       10080
+SAMPLESIZE      17920
+LOOP-START       5721
+LOOP-END        17893
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        56
+C4-32K TUNE  1.259921
+
+-------------------------------------
+       Sample Number 88              
+[Aifc/036Tb.32.gs4.aifc]
+
+ROM ADDRESS   157270h
+-------------------------------------
+ADPCMSIZE        6984
+SAMPLESIZE      12416
+LOOP-START       2368
+LOOP-END        12389
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        68
+C4-32K TUNE  0.629961
+
+-------------------------------------
+       Sample Number 89              
+[Aifc/037Tuba.32.c3.aifc]
+
+ROM ADDRESS   158dc0h
+-------------------------------------
+ADPCMSIZE        6570
+SAMPLESIZE      11680
+LOOP-START       8964
+LOOP-END        11655
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        48
+C4-32K TUNE  2.000000
+
+-------------------------------------
+       Sample Number 90              
+[Aifc/037Tuba.32.e2.aifc]
+
+ROM ADDRESS   15a770h
+-------------------------------------
+ADPCMSIZE       12132
+SAMPLESIZE      21568
+LOOP-START       9896
+LOOP-END        21545
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        40
+C4-32K TUNE  3.174803
+
+-------------------------------------
+       Sample Number 91              
+[Aifc/037Tuba.32.gs2.aifc]
+
+ROM ADDRESS   15d6e0h
+-------------------------------------
+ADPCMSIZE        9216
+SAMPLESIZE      16384
+LOOP-START       9586
+LOOP-END        16368
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        44
+C4-32K TUNE  2.519842
+
+-------------------------------------
+       Sample Number 92              
+[Aifc/038MtTp.32.a4.aifc]
+
+ROM ADDRESS   15fae0h
+-------------------------------------
+ADPCMSIZE        4528
+SAMPLESIZE       8049
+LOOP-START       2934
+LOOP-END         8025
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.594604
+
+-------------------------------------
+       Sample Number 93              
+[Aifc/038MtTp.32.ds5.aifc]
+
+ROM ADDRESS   160c90h
+-------------------------------------
+ADPCMSIZE        2898
+SAMPLESIZE       5152
+LOOP-START       3437
+LOOP-END         5134
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        75
+C4-32K TUNE  0.420448
+
+-------------------------------------
+       Sample Number 94              
+[Aifc/039FHorn.32.b4.aifc]
+
+ROM ADDRESS   1617f0h
+-------------------------------------
+ADPCMSIZE        3348
+SAMPLESIZE       5952
+LOOP-START       3140
+LOOP-END         5925
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        71
+C4-32K TUNE  0.529732
+
+-------------------------------------
+       Sample Number 95              
+[Aifc/039FHorn.32.g4.aifc]
+
+ROM ADDRESS   162510h
+-------------------------------------
+ADPCMSIZE        2512
+SAMPLESIZE       4465
+LOOP-START       1907
+LOOP-END         4436
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 96              
+[Aifc/040Brass.32.as4.aifc]
+
+ROM ADDRESS   162ee0h
+-------------------------------------
+ADPCMSIZE       24714
+SAMPLESIZE      43936
+LOOP-START       9949
+LOOP-END        43917
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        70
+C4-32K TUNE  0.561231
+
+-------------------------------------
+       Sample Number 97              
+[Aifc/040Brass.32.fs5.aifc]
+
+ROM ADDRESS   168f70h
+-------------------------------------
+ADPCMSIZE       27108
+SAMPLESIZE      48192
+LOOP-START      11721
+LOOP-END        48170
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.353553
+
+-------------------------------------
+       Sample Number 98              
+[Aifc/041SynBrass.32.c5.aifc]
+
+ROM ADDRESS   16f960h
+-------------------------------------
+ADPCMSIZE       16722
+SAMPLESIZE      29728
+LOOP-START       9342
+LOOP-END        29702
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 99              
+[Aifc/041SynBrass.32.c6.aifc]
+
+ROM ADDRESS   173ac0h
+-------------------------------------
+ADPCMSIZE        8640
+SAMPLESIZE      15360
+LOOP-START       5159
+LOOP-END        15337
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        84
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 100              
+[Aifc/042SopSax.32.a5.aifc]
+
+ROM ADDRESS   175c80h
+-------------------------------------
+ADPCMSIZE        3258
+SAMPLESIZE       5792
+LOOP-START       2595
+LOOP-END         5763
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 101              
+[Aifc/042SopSax.32.b4.aifc]
+
+ROM ADDRESS   176940h
+-------------------------------------
+ADPCMSIZE        2818
+SAMPLESIZE       5009
+LOOP-START       2721
+LOOP-END         4992
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        71
+C4-32K TUNE  0.529732
+
+-------------------------------------
+       Sample Number 102              
+[Aifc/042SopSax.32.e5.aifc]
+
+ROM ADDRESS   177450h
+-------------------------------------
+ADPCMSIZE        1738
+SAMPLESIZE       3089
+LOOP-START       1754
+LOOP-END         3066
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        76
+C4-32K TUNE  0.396850
+
+-------------------------------------
+       Sample Number 103              
+[Aifc/043AltSax.32.e4.aifc]
+
+ROM ADDRESS   177b20h
+-------------------------------------
+ADPCMSIZE        7704
+SAMPLESIZE      13696
+LOOP-START       4553
+LOOP-END        13670
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 104              
+[Aifc/043AltSax.32.e5.aifc]
+
+ROM ADDRESS   179940h
+-------------------------------------
+ADPCMSIZE        4680
+SAMPLESIZE       8320
+LOOP-START       3300
+LOOP-END         8292
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        76
+C4-32K TUNE  0.396850
+
+-------------------------------------
+       Sample Number 105              
+[Aifc/043AltSax.32.g4.aifc]
+
+ROM ADDRESS   17ab90h
+-------------------------------------
+ADPCMSIZE        3520
+SAMPLESIZE       6257
+LOOP-START       4447
+LOOP-END         6239
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 106              
+[Aifc/044TenSax.32.a3.aifc]
+
+ROM ADDRESS   17b950h
+-------------------------------------
+ADPCMSIZE        5302
+SAMPLESIZE       9425
+LOOP-START       5630
+LOOP-END         9408
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        57
+C4-32K TUNE  1.189207
+
+-------------------------------------
+       Sample Number 107              
+[Aifc/044TenSax.32.a4.aifc]
+
+ROM ADDRESS   17ce10h
+-------------------------------------
+ADPCMSIZE        5040
+SAMPLESIZE       8960
+LOOP-START       6762
+LOOP-END         8942
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.594604
+
+-------------------------------------
+       Sample Number 108              
+[Aifc/044TenSax.32.e4.aifc]
+
+ROM ADDRESS   17e1c0h
+-------------------------------------
+ADPCMSIZE        6732
+SAMPLESIZE      11968
+LOOP-START       5830
+LOOP-END        11942
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 109              
+[Aifc/045BarSax.32.d3.aifc]
+
+ROM ADDRESS   17fc10h
+-------------------------------------
+ADPCMSIZE        7174
+SAMPLESIZE      12753
+LOOP-START       4227
+LOOP-END        12726
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        50
+C4-32K TUNE  1.781798
+
+-------------------------------------
+       Sample Number 110              
+[Aifc/045BarSax.32.gs2.aifc]
+
+ROM ADDRESS   181820h
+-------------------------------------
+ADPCMSIZE        3448
+SAMPLESIZE       6129
+LOOP-START       3019
+LOOP-END         6102
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        44
+C4-32K TUNE  2.519842
+
+-------------------------------------
+       Sample Number 111              
+[Aifc/046Oboe.32.fs5.aifc]
+
+ROM ADDRESS   1825a0h
+-------------------------------------
+ADPCMSIZE        7578
+SAMPLESIZE      13472
+LOOP-START      12317
+LOOP-END        13441
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.353553
+
+-------------------------------------
+       Sample Number 112              
+[Aifc/047EHorn.32.e3.aifc]
+
+ROM ADDRESS   184340h
+-------------------------------------
+ADPCMSIZE        7398
+SAMPLESIZE      13152
+LOOP-START       2449
+LOOP-END        13135
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        52
+C4-32K TUNE  1.587401
+
+-------------------------------------
+       Sample Number 113              
+[Aifc/048Bsn.32.a2.aifc]
+
+ROM ADDRESS   186030h
+-------------------------------------
+ADPCMSIZE        5374
+SAMPLESIZE       9553
+LOOP-START       6335
+LOOP-END         9533
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        45
+C4-32K TUNE  2.378414
+
+-------------------------------------
+       Sample Number 114              
+[Aifc/048Bsn.32.c2.aifc]
+
+ROM ADDRESS   187530h
+-------------------------------------
+ADPCMSIZE        6282
+SAMPLESIZE      11168
+LOOP-START       5765
+LOOP-END        11144
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        36
+C4-32K TUNE  4.000000
+
+-------------------------------------
+       Sample Number 115              
+[Aifc/048Bsn.32.e2.aifc]
+
+ROM ADDRESS   188dc0h
+-------------------------------------
+ADPCMSIZE       10728
+SAMPLESIZE      19072
+LOOP-START       7396
+LOOP-END        19045
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        40
+C4-32K TUNE  3.174803
+
+-------------------------------------
+       Sample Number 116              
+[Aifc/049Cl.32.c5.aifc]
+
+ROM ADDRESS   18b7b0h
+-------------------------------------
+ADPCMSIZE        3052
+SAMPLESIZE       5425
+LOOP-START       3452
+LOOP-END         5408
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 117              
+[Aifc/049Cl.32.g4.aifc]
+
+ROM ADDRESS   18c3a0h
+-------------------------------------
+ADPCMSIZE        4294
+SAMPLESIZE       7633
+LOOP-START       3118
+LOOP-END         7605
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 118              
+[Aifc/049Cl.32.g5.aifc]
+
+ROM ADDRESS   18d470h
+-------------------------------------
+ADPCMSIZE        2962
+SAMPLESIZE       5265
+LOOP-START       3234
+LOOP-END         5233
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        79
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 119              
+[Aifc/050Picclo.32.g6.aifc]
+
+ROM ADDRESS   18e010h
+-------------------------------------
+ADPCMSIZE       18054
+SAMPLESIZE      32096
+LOOP-START      30397
+LOOP-END        32069
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        91
+C4-32K TUNE  0.166855
+
+-------------------------------------
+       Sample Number 120              
+[Aifc/051Flute.32.cs6.aifc]
+
+ROM ADDRESS   1926a0h
+-------------------------------------
+ADPCMSIZE        3088
+SAMPLESIZE       5489
+LOOP-START       4130
+LOOP-END         5458
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        85
+C4-32K TUNE  0.235969
+
+-------------------------------------
+       Sample Number 121              
+[Aifc/051Flute.32.fs6.aifc]
+
+ROM ADDRESS   1932b0h
+-------------------------------------
+ADPCMSIZE        2962
+SAMPLESIZE       5265
+LOOP-START       4066
+LOOP-END         5233
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        90
+C4-32K TUNE  0.176777
+
+-------------------------------------
+       Sample Number 122              
+[Aifc/052Recorder.32.d6.aifc]
+
+ROM ADDRESS   193e50h
+-------------------------------------
+ADPCMSIZE        3636
+SAMPLESIZE       6464
+LOOP-START       3630
+LOOP-END         6436
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        86
+C4-32K TUNE  0.222725
+
+-------------------------------------
+       Sample Number 123              
+[Aifc/052Recorder.32.f6.aifc]
+
+ROM ADDRESS   194c90h
+-------------------------------------
+ADPCMSIZE        2268
+SAMPLESIZE       4032
+LOOP-START       2023
+LOOP-END         4016
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        89
+C4-32K TUNE  0.187288
+
+-------------------------------------
+       Sample Number 124              
+[Aifc/053PanFlute.32.a5.aifc]
+
+ROM ADDRESS   195570h
+-------------------------------------
+ADPCMSIZE       17938
+SAMPLESIZE      31889
+LOOP-START       7345
+LOOP-END        31857
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 125              
+[Aifc/053PanFlute.32.d6.aifc]
+
+ROM ADDRESS   199b90h
+-------------------------------------
+ADPCMSIZE       13150
+SAMPLESIZE      23377
+LOOP-START       4910
+LOOP-END        23354
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        86
+C4-32K TUNE  0.222725
+
+-------------------------------------
+       Sample Number 126              
+[Aifc/053PanFlute.32.ds5.aifc]
+
+ROM ADDRESS   19cef0h
+-------------------------------------
+ADPCMSIZE       16156
+SAMPLESIZE      28721
+LOOP-START      10337
+LOOP-END        28704
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        75
+C4-32K TUNE  0.420448
+
+-------------------------------------
+       Sample Number 127              
+[Aifc/054SteelDrm.32.c4.aifc]
+
+ROM ADDRESS   1a0e10h
+-------------------------------------
+ADPCMSIZE       19548
+SAMPLESIZE      34752
+LOOP-START      23642
+LOOP-END        34735
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 128              
+[Aifc/054SteelDrm.32.d5.aifc]
+
+ROM ADDRESS   1a5a70h
+-------------------------------------
+ADPCMSIZE        9964
+SAMPLESIZE      17713
+LOOP-START      12687
+LOOP-END        17682
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.445449
+
+-------------------------------------
+       Sample Number 129              
+[Aifc/054SteelDrm.32.g4.aifc]
+
+ROM ADDRESS   1a8160h
+-------------------------------------
+ADPCMSIZE       13366
+SAMPLESIZE      23761
+LOOP-START      16178
+LOOP-END        23743
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 130              
+[Aifc/055StandardBD.32.c4.aifc]
+
+ROM ADDRESS   1ab5a0h
+-------------------------------------
+ADPCMSIZE        3124
+SAMPLESIZE       5553
+LOOP-START          0
+LOOP-END         5553
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 131              
+[Aifc/056GateBD.32.c4.aifc]
+
+ROM ADDRESS   1ac1e0h
+-------------------------------------
+ADPCMSIZE        6210
+SAMPLESIZE      11040
+LOOP-START          0
+LOOP-END        11040
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 132              
+[Aifc/057OrchBD.32.c4.aifc]
+
+ROM ADDRESS   1ada30h
+-------------------------------------
+ADPCMSIZE       37684
+SAMPLESIZE      66993
+LOOP-START      56445
+LOOP-END        66976
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 133              
+[Aifc/058StandardSD.32.c4.aifc]
+
+ROM ADDRESS   1b6d70h
+-------------------------------------
+ADPCMSIZE        4968
+SAMPLESIZE       8832
+LOOP-START          0
+LOOP-END         8832
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 134              
+[Aifc/059GateSD.32.c4.aifc]
+
+ROM ADDRESS   1b80e0h
+-------------------------------------
+ADPCMSIZE        7354
+SAMPLESIZE      13073
+LOOP-START          0
+LOOP-END        13073
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 135              
+[Aifc/060OrchSD.32.c4.aifc]
+
+ROM ADDRESS   1b9da0h
+-------------------------------------
+ADPCMSIZE        3916
+SAMPLESIZE       6961
+LOOP-START          0
+LOOP-END         6961
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 136              
+[Aifc/061Rim.32.c4.aifc]
+
+ROM ADDRESS   1bacf0h
+-------------------------------------
+ADPCMSIZE        3106
+SAMPLESIZE       5521
+LOOP-START          0
+LOOP-END         5521
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 137              
+[Aifc/062Close.32.c4.aifc]
+
+ROM ADDRESS   1bb920h
+-------------------------------------
+ADPCMSIZE        1602
+SAMPLESIZE       2848
+LOOP-START          0
+LOOP-END         2848
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 138              
+[Aifc/063Open.32.c4.aifc]
+
+ROM ADDRESS   1bbf70h
+-------------------------------------
+ADPCMSIZE       17910
+SAMPLESIZE      31840
+LOOP-START      17908
+LOOP-END        31825
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 139              
+[Aifc/064Tom.32.g4.aifc]
+
+ROM ADDRESS   1c0570h
+-------------------------------------
+ADPCMSIZE        9712
+SAMPLESIZE      17265
+LOOP-START          0
+LOOP-END        17265
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 140              
+[Aifc/065TomLow.32.c4.aifc]
+
+ROM ADDRESS   1c2b60h
+-------------------------------------
+ADPCMSIZE       25678
+SAMPLESIZE      45649
+LOOP-START          0
+LOOP-END        45649
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 141              
+[Aifc/066Crash.32.c4.aifc]
+
+ROM ADDRESS   1c8fb0h
+-------------------------------------
+ADPCMSIZE       29934
+SAMPLESIZE      53216
+LOOP-START      33926
+LOOP-END        53188
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 142              
+[Aifc/067Ride.32.c4.aifc]
+
+ROM ADDRESS   1d04a0h
+-------------------------------------
+ADPCMSIZE       20088
+SAMPLESIZE      35712
+LOOP-START       5734
+LOOP-END        35686
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 143              
+[Aifc/068Bongo1.32.c4.aifc]
+
+ROM ADDRESS   1d5320h
+-------------------------------------
+ADPCMSIZE        2746
+SAMPLESIZE       4881
+LOOP-START          0
+LOOP-END         4881
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 144              
+[Aifc/069Bongo2.32.c4.aifc]
+
+ROM ADDRESS   1d5de0h
+-------------------------------------
+ADPCMSIZE        3600
+SAMPLESIZE       6400
+LOOP-START          0
+LOOP-END         6400
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 145              
+[Aifc/070CongaMute.32.c4.aifc]
+
+ROM ADDRESS   1d6bf0h
+-------------------------------------
+ADPCMSIZE        3358
+SAMPLESIZE       5969
+LOOP-START          0
+LOOP-END         5969
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 146              
+[Aifc/071CongaOpen.32.c4.aifc]
+
+ROM ADDRESS   1d7910h
+-------------------------------------
+ADPCMSIZE        4518
+SAMPLESIZE       8032
+LOOP-START          0
+LOOP-END         8032
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 147              
+[Aifc/072CongaSlap.32.c4.aifc]
+
+ROM ADDRESS   1d8ac0h
+-------------------------------------
+ADPCMSIZE        6328
+SAMPLESIZE      11249
+LOOP-START          0
+LOOP-END        11249
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 148              
+[Aifc/073Shaker.32.c4.aifc]
+
+ROM ADDRESS   1da380h
+-------------------------------------
+ADPCMSIZE        1252
+SAMPLESIZE       2225
+LOOP-START          0
+LOOP-END         2225
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 149              
+[Aifc/074CowBell.32.c4.aifc]
+
+ROM ADDRESS   1da870h
+-------------------------------------
+ADPCMSIZE        2278
+SAMPLESIZE       4049
+LOOP-START          0
+LOOP-END         4049
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 150              
+[Aifc/075Agogo.32.c4.aifc]
+
+ROM ADDRESS   1db160h
+-------------------------------------
+ADPCMSIZE       15912
+SAMPLESIZE      28288
+LOOP-START      22480
+LOOP-END        28265
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        60
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 151              
+[Aifc/076Tamb.32.e4.aifc]
+
+ROM ADDRESS   1def90h
+-------------------------------------
+ADPCMSIZE        9514
+SAMPLESIZE      16913
+LOOP-START          0
+LOOP-END        16913
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 152              
+[Aifc/077Noise.32.c7.aifc]
+
+ROM ADDRESS   1e14c0h
+-------------------------------------
+ADPCMSIZE       10324
+SAMPLESIZE      18353
+LOOP-START       1832
+LOOP-END        18334
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   32000.00
+BASEMIDIKEY        96
+C4-32K TUNE  0.125000
+
+-------------------------------------
+       Sample Number 153              
+[Aifc16/001PF.16.a4.aifc]
+
+ROM ADDRESS   1e3d20h
+-------------------------------------
+ADPCMSIZE        7624
+SAMPLESIZE      13553
+LOOP-START       6849
+LOOP-END        13526
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 154              
+[Aifc16/001PF.16.a5.aifc]
+
+ROM ADDRESS   1e5af0h
+-------------------------------------
+ADPCMSIZE        4140
+SAMPLESIZE       7360
+LOOP-START       5789
+LOOP-END         7335
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.148651
+
+-------------------------------------
+       Sample Number 155              
+[Aifc16/001PF.16.c4.aifc]
+
+ROM ADDRESS   1e6b20h
+-------------------------------------
+ADPCMSIZE       10242
+SAMPLESIZE      18208
+LOOP-START       8870
+LOOP-END        18188
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 156              
+[Aifc16/001PF.16.c5.aifc]
+
+ROM ADDRESS   1e9330h
+-------------------------------------
+ADPCMSIZE       10062
+SAMPLESIZE      17888
+LOOP-START       9052
+LOOP-END        17863
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 157              
+[Aifc16/001PF.16.fs6.aifc]
+
+ROM ADDRESS   1eba80h
+-------------------------------------
+ADPCMSIZE        4438
+SAMPLESIZE       7889
+LOOP-START       3723
+LOOP-END         7865
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        90
+C4-32K TUNE  0.088389
+
+-------------------------------------
+       Sample Number 158              
+[Aifc16/002EP.16.c4.aifc]
+
+ROM ADDRESS   1ecbe0h
+-------------------------------------
+ADPCMSIZE        8208
+SAMPLESIZE      14592
+LOOP-START       6567
+LOOP-END        14572
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 159              
+[Aifc16/002EP.16.c5.aifc]
+
+ROM ADDRESS   1eebf0h
+-------------------------------------
+ADPCMSIZE        7264
+SAMPLESIZE      12913
+LOOP-START       5164
+LOOP-END        12894
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 160              
+[Aifc16/002EP.16.c6.aifc]
+
+ROM ADDRESS   1f0850h
+-------------------------------------
+ADPCMSIZE        5760
+SAMPLESIZE      10240
+LOOP-START       3454
+LOOP-END        10222
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        84
+C4-32K TUNE  0.125000
+
+-------------------------------------
+       Sample Number 161              
+[Aifc16/003Harpsicord.16.c5.aifc]
+
+ROM ADDRESS   1f1ed0h
+-------------------------------------
+ADPCMSIZE        7624
+SAMPLESIZE      13553
+LOOP-START      12273
+LOOP-END        13528
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 162              
+[Aifc16/003Harpsicord.16.f4.aifc]
+
+ROM ADDRESS   1f3ca0h
+-------------------------------------
+ADPCMSIZE        6732
+SAMPLESIZE      11968
+LOOP-START      10708
+LOOP-END        11945
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        65
+C4-32K TUNE  0.374577
+
+-------------------------------------
+       Sample Number 163              
+[Aifc16/003Harpsicord.16.g3.aifc]
+
+ROM ADDRESS   1f56f0h
+-------------------------------------
+ADPCMSIZE        5248
+SAMPLESIZE       9329
+LOOP-START       8486
+LOOP-END         9302
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        55
+C4-32K TUNE  0.667420
+
+-------------------------------------
+       Sample Number 164              
+[Aifc16/004iClavinet.16.fs2.aifc]
+
+ROM ADDRESS   1f6b70h
+-------------------------------------
+ADPCMSIZE       17262
+SAMPLESIZE      30688
+LOOP-START      29798
+LOOP-END        30662
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        42
+C4-32K TUNE  1.414214
+
+-------------------------------------
+       Sample Number 165              
+[Aifc16/005Celesta.16.c6.aifc]
+
+ROM ADDRESS   1faee0h
+-------------------------------------
+ADPCMSIZE        5922
+SAMPLESIZE      10528
+LOOP-START       9662
+LOOP-END        10502
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        84
+C4-32K TUNE  0.125000
+
+-------------------------------------
+       Sample Number 166              
+[Aifc16/006Glocken.16.d6.aifc]
+
+ROM ADDRESS   1fc610h
+-------------------------------------
+ADPCMSIZE        9028
+SAMPLESIZE      16049
+LOOP-START      15092
+LOOP-END        16019
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        86
+C4-32K TUNE  0.111363
+
+-------------------------------------
+       Sample Number 167              
+[Aifc16/006Glocken.16.fs5.aifc]
+
+ROM ADDRESS   1fe960h
+-------------------------------------
+ADPCMSIZE        8848
+SAMPLESIZE      15729
+LOOP-START      14818
+LOOP-END        15712
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.176776
+
+-------------------------------------
+       Sample Number 168              
+[Aifc16/007Vibraphone.16.a3.aifc]
+
+ROM ADDRESS   200bf0h
+-------------------------------------
+ADPCMSIZE       10134
+SAMPLESIZE      18016
+LOOP-START      16679
+LOOP-END        17987
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        57
+C4-32K TUNE  0.594603
+
+-------------------------------------
+       Sample Number 169              
+[Aifc16/007Vibraphone.16.cs5.aifc]
+
+ROM ADDRESS   203390h
+-------------------------------------
+ADPCMSIZE        8272
+SAMPLESIZE      14705
+LOOP-START      13817
+LOOP-END        14681
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        73
+C4-32K TUNE  0.235969
+
+-------------------------------------
+       Sample Number 170              
+[Aifc16/007Vibraphone.16.d4.aifc]
+
+ROM ADDRESS   2053e0h
+-------------------------------------
+ADPCMSIZE        8838
+SAMPLESIZE      15712
+LOOP-START      14266
+LOOP-END        15682
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.445450
+
+-------------------------------------
+       Sample Number 171              
+[Aifc16/008Marimba.16.d4.aifc]
+
+ROM ADDRESS   207670h
+-------------------------------------
+ADPCMSIZE        4950
+SAMPLESIZE       8800
+LOOP-START       6702
+LOOP-END         8774
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.445450
+
+-------------------------------------
+       Sample Number 172              
+[Aifc16/008Marimba.16.d5.aifc]
+
+ROM ADDRESS   2089d0h
+-------------------------------------
+ADPCMSIZE        4302
+SAMPLESIZE       7648
+LOOP-START       6800
+LOOP-END         7617
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.222724
+
+-------------------------------------
+       Sample Number 173              
+[Aifc16/008Marimba.16.e3.aifc]
+
+ROM ADDRESS   209aa0h
+-------------------------------------
+ADPCMSIZE        6192
+SAMPLESIZE      11008
+LOOP-START       8262
+LOOP-END        10981
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        52
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 174              
+[Aifc16/009Xylophone.16.d5.aifc]
+
+ROM ADDRESS   20b2d0h
+-------------------------------------
+ADPCMSIZE        2854
+SAMPLESIZE       5073
+LOOP-START       4048
+LOOP-END         5056
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.222724
+
+-------------------------------------
+       Sample Number 175              
+[Aifc16/009Xylophone.16.e6.aifc]
+
+ROM ADDRESS   20be00h
+-------------------------------------
+ADPCMSIZE        1584
+SAMPLESIZE       2816
+LOOP-START       1979
+LOOP-END         2798
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        88
+C4-32K TUNE  0.099212
+
+-------------------------------------
+       Sample Number 176              
+[Aifc16/010TublarBell.16.fs4.aifc]
+
+ROM ADDRESS   20c430h
+-------------------------------------
+ADPCMSIZE        4438
+SAMPLESIZE       7889
+LOOP-START       6200
+LOOP-END         7860
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        66
+C4-32K TUNE  0.353554
+
+-------------------------------------
+       Sample Number 177              
+[Aifc16/011JazzOrg.16.gs5.aifc]
+
+ROM ADDRESS   20d590h
+-------------------------------------
+ADPCMSIZE        1450
+SAMPLESIZE       2577
+LOOP-START       1081
+LOOP-END         2545
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        80
+C4-32K TUNE  0.157490
+
+-------------------------------------
+       Sample Number 178              
+[Aifc16/012PipeOrg.16.c4.aifc]
+
+ROM ADDRESS   20db40h
+-------------------------------------
+ADPCMSIZE       19062
+SAMPLESIZE      33888
+LOOP-START       5104
+LOOP-END        33858
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 179              
+[Aifc16/012PipeOrg.16.c5.aifc]
+
+ROM ADDRESS   2125c0h
+-------------------------------------
+ADPCMSIZE        8398
+SAMPLESIZE      14929
+LOOP-START       2840
+LOOP-END        14909
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 180              
+[Aifc16/013LesOrgFst.16.a4.aifc]
+
+ROM ADDRESS   214690h
+-------------------------------------
+ADPCMSIZE        2098
+SAMPLESIZE       3729
+LOOP-START       1733
+LOOP-END         3702
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 181              
+[Aifc16/013LesOrgFst.16.a5.aifc]
+
+ROM ADDRESS   214ed0h
+-------------------------------------
+ADPCMSIZE        5040
+SAMPLESIZE       8960
+LOOP-START       4919
+LOOP-END         8938
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.148651
+
+-------------------------------------
+       Sample Number 182              
+[Aifc16/013LesOrgFst.16.ds6.aifc]
+
+ROM ADDRESS   216280h
+-------------------------------------
+ADPCMSIZE        2620
+SAMPLESIZE       4657
+LOOP-START       2604
+LOOP-END         4630
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        87
+C4-32K TUNE  0.105112
+
+-------------------------------------
+       Sample Number 183              
+[Aifc16/014LesOrgSlw.16.cs6.aifc]
+
+ROM ADDRESS   216cc0h
+-------------------------------------
+ADPCMSIZE        5706
+SAMPLESIZE      10144
+LOOP-START       3836
+LOOP-END        10115
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        85
+C4-32K TUNE  0.117985
+
+-------------------------------------
+       Sample Number 184              
+[Aifc16/014LesOrgSlw.16.f5.aifc]
+
+ROM ADDRESS   218310h
+-------------------------------------
+ADPCMSIZE        6706
+SAMPLESIZE      11921
+LOOP-START       5387
+LOOP-END        11889
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        77
+C4-32K TUNE  0.187288
+
+-------------------------------------
+       Sample Number 185              
+[Aifc16/014LesOrgSlw.16.g4.aifc]
+
+ROM ADDRESS   219d50h
+-------------------------------------
+ADPCMSIZE        7074
+SAMPLESIZE      12576
+LOOP-START       6054
+LOOP-END        12554
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 186              
+[Aifc16/015Accordion.16.b3.aifc]
+
+ROM ADDRESS   21b900h
+-------------------------------------
+ADPCMSIZE       13150
+SAMPLESIZE      23377
+LOOP-START       7807
+LOOP-END        23357
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        59
+C4-32K TUNE  0.529732
+
+-------------------------------------
+       Sample Number 187              
+[Aifc16/015Accordion.16.gs3.aifc]
+
+ROM ADDRESS   21ec60h
+-------------------------------------
+ADPCMSIZE        9874
+SAMPLESIZE      17553
+LOOP-START       6821
+LOOP-END        17530
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        56
+C4-32K TUNE  0.629960
+
+-------------------------------------
+       Sample Number 188              
+[Aifc16/016Harmonica.16.gs5.aifc]
+
+ROM ADDRESS   221300h
+-------------------------------------
+ADPCMSIZE        2430
+SAMPLESIZE       4320
+LOOP-START       1554
+LOOP-END         4290
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        80
+C4-32K TUNE  0.157490
+
+-------------------------------------
+       Sample Number 189              
+[Aifc16/017NylonGuit.16.cs4.aifc]
+
+ROM ADDRESS   221c80h
+-------------------------------------
+ADPCMSIZE        5634
+SAMPLESIZE      10016
+LOOP-START       7969
+LOOP-END         9989
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        61
+C4-32K TUNE  0.471938
+
+-------------------------------------
+       Sample Number 190              
+[Aifc16/017NylonGuit.16.gs3.aifc]
+
+ROM ADDRESS   223290h
+-------------------------------------
+ADPCMSIZE        5472
+SAMPLESIZE       9728
+LOOP-START       8552
+LOOP-END         9707
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        56
+C4-32K TUNE  0.629960
+
+-------------------------------------
+       Sample Number 191              
+[Aifc16/018ChoGuit.16.c4.aifc]
+
+ROM ADDRESS   2247f0h
+-------------------------------------
+ADPCMSIZE        7884
+SAMPLESIZE      14016
+LOOP-START       3477
+LOOP-END        13997
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 192              
+[Aifc16/019MtGuit.16.d3.aifc]
+
+ROM ADDRESS   2266c0h
+-------------------------------------
+ADPCMSIZE        2494
+SAMPLESIZE       4433
+LOOP-START          0
+LOOP-END         4433
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        50
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 193              
+[Aifc16/020DistGuit.16.b3.aifc]
+
+ROM ADDRESS   227080h
+-------------------------------------
+ADPCMSIZE       14004
+SAMPLESIZE      24896
+LOOP-START       7555
+LOOP-END        24873
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        59
+C4-32K TUNE  0.529732
+
+-------------------------------------
+       Sample Number 194              
+[Aifc16/020DistGuit.16.e3.aifc]
+
+ROM ADDRESS   22a740h
+-------------------------------------
+ADPCMSIZE       19404
+SAMPLESIZE      34496
+LOOP-START       8321
+LOOP-END        34480
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        52
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 195              
+[Aifc16/021AcBass.16.a1.aifc]
+
+ROM ADDRESS   22f310h
+-------------------------------------
+ADPCMSIZE        1638
+SAMPLESIZE       2912
+LOOP-START       2034
+LOOP-END         2895
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        33
+C4-32K TUNE  2.378414
+
+-------------------------------------
+       Sample Number 196              
+[Aifc16/021AcBass.16.a2.aifc]
+
+ROM ADDRESS   22f980h
+-------------------------------------
+ADPCMSIZE        9622
+SAMPLESIZE      17105
+LOOP-START      15919
+LOOP-END        17081
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        45
+C4-32K TUNE  1.189207
+
+-------------------------------------
+       Sample Number 197              
+[Aifc16/021AcBass.16.e2.aifc]
+
+ROM ADDRESS   231f20h
+-------------------------------------
+ADPCMSIZE        2088
+SAMPLESIZE       3712
+LOOP-START       2711
+LOOP-END         3691
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        40
+C4-32K TUNE  1.587402
+
+-------------------------------------
+       Sample Number 198              
+[Aifc16/022FngBass.16.a1.aifc]
+
+ROM ADDRESS   232750h
+-------------------------------------
+ADPCMSIZE        4672
+SAMPLESIZE       8305
+LOOP-START       7125
+LOOP-END         8287
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        33
+C4-32K TUNE  2.378414
+
+-------------------------------------
+       Sample Number 199              
+[Aifc16/022FngBass.16.b0.aifc]
+
+ROM ADDRESS   233990h
+-------------------------------------
+ADPCMSIZE        5392
+SAMPLESIZE       9585
+LOOP-START       8519
+LOOP-END         9553
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        23
+C4-32K TUNE  4.237853
+
+-------------------------------------
+       Sample Number 200              
+[Aifc16/022FngBass.16.d2.aifc]
+
+ROM ADDRESS   234ea0h
+-------------------------------------
+ADPCMSIZE        2502
+SAMPLESIZE       4448
+LOOP-START       3111
+LOOP-END         4421
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        38
+C4-32K TUNE  1.781798
+
+-------------------------------------
+       Sample Number 201              
+[Aifc16/023PickBass.16.a1.aifc]
+
+ROM ADDRESS   235870h
+-------------------------------------
+ADPCMSIZE        7416
+SAMPLESIZE      13184
+LOOP-START      11997
+LOOP-END        13160
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        33
+C4-32K TUNE  2.378414
+
+-------------------------------------
+       Sample Number 202              
+[Aifc16/023PickBass.16.d2.aifc]
+
+ROM ADDRESS   237570h
+-------------------------------------
+ADPCMSIZE        4834
+SAMPLESIZE       8593
+LOOP-START       7694
+LOOP-END         8566
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        38
+C4-32K TUNE  1.781798
+
+-------------------------------------
+       Sample Number 203              
+[Aifc16/023PickBass.16.e1.aifc]
+
+ROM ADDRESS   238860h
+-------------------------------------
+ADPCMSIZE        5230
+SAMPLESIZE       9297
+LOOP-START       8102
+LOOP-END         9267
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        28
+C4-32K TUNE  3.174803
+
+-------------------------------------
+       Sample Number 204              
+[Aifc16/024Fretless.16.e2.aifc]
+
+ROM ADDRESS   239cd0h
+-------------------------------------
+ADPCMSIZE       10566
+SAMPLESIZE      18784
+LOOP-START      17214
+LOOP-END        18767
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        40
+C4-32K TUNE  1.587402
+
+-------------------------------------
+       Sample Number 205              
+[Aifc16/024Fretless.t.16.a2.aifc]
+
+ROM ADDRESS   23c620h
+-------------------------------------
+ADPCMSIZE        8002
+SAMPLESIZE      14225
+LOOP-START      13330
+LOOP-END        14203
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        45
+C4-32K TUNE  1.189207
+
+-------------------------------------
+       Sample Number 206              
+[Aifc16/025Chop.16.e1.aifc]
+
+ROM ADDRESS   23e570h
+-------------------------------------
+ADPCMSIZE        7362
+SAMPLESIZE      13088
+LOOP-START      11510
+LOOP-END        13066
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        28
+C4-32K TUNE  3.174803
+
+-------------------------------------
+       Sample Number 207              
+[Aifc16/026Pull.16.d3.aifc]
+
+ROM ADDRESS   240240h
+-------------------------------------
+ADPCMSIZE        2214
+SAMPLESIZE       3936
+LOOP-START       2284
+LOOP-END         3918
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        50
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 208              
+[Aifc16/027Vln.16.as4.aifc]
+
+ROM ADDRESS   240af0h
+-------------------------------------
+ADPCMSIZE        2908
+SAMPLESIZE       5169
+LOOP-START       1615
+LOOP-END         5151
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        70
+C4-32K TUNE  0.280616
+
+-------------------------------------
+       Sample Number 209              
+[Aifc16/027Vln.16.e5.aifc]
+
+ROM ADDRESS   241650h
+-------------------------------------
+ADPCMSIZE        1270
+SAMPLESIZE       2257
+LOOP-START       1088
+LOOP-END         2227
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        76
+C4-32K TUNE  0.198425
+
+-------------------------------------
+       Sample Number 210              
+[Aifc16/027Vln.16.fs4.aifc]
+
+ROM ADDRESS   241b50h
+-------------------------------------
+ADPCMSIZE        5814
+SAMPLESIZE      10336
+LOOP-START        929
+LOOP-END        10305
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        66
+C4-32K TUNE  0.353554
+
+-------------------------------------
+       Sample Number 211              
+[Aifc16/028Viola.16.c4.aifc]
+
+ROM ADDRESS   243210h
+-------------------------------------
+ADPCMSIZE        8812
+SAMPLESIZE      15665
+LOOP-START       1464
+LOOP-END        15640
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 212              
+[Aifc16/028Viola.16.d5.aifc]
+
+ROM ADDRESS   245480h
+-------------------------------------
+ADPCMSIZE        4896
+SAMPLESIZE       8704
+LOOP-START       1297
+LOOP-END         8673
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        74
+C4-32K TUNE  0.222724
+
+-------------------------------------
+       Sample Number 213              
+[Aifc16/028Viola.16.f4.aifc]
+
+ROM ADDRESS   2467a0h
+-------------------------------------
+ADPCMSIZE        4734
+SAMPLESIZE       8416
+LOOP-START       1797
+LOOP-END         8389
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        65
+C4-32K TUNE  0.374577
+
+-------------------------------------
+       Sample Number 214              
+[Aifc16/029Cello.16.d3.aifc]
+
+ROM ADDRESS   247a20h
+-------------------------------------
+ADPCMSIZE        4474
+SAMPLESIZE       7953
+LOOP-START       3136
+LOOP-END         7936
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        50
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 215              
+[Aifc16/029Cello.16.f2.aifc]
+
+ROM ADDRESS   248ba0h
+-------------------------------------
+ADPCMSIZE        9738
+SAMPLESIZE      17312
+LOOP-START      13248
+LOOP-END        17285
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        41
+C4-32K TUNE  1.498307
+
+-------------------------------------
+       Sample Number 216              
+[Aifc16/030Pizz.16.as4.aifc]
+
+ROM ADDRESS   24b1b0h
+-------------------------------------
+ADPCMSIZE        6724
+SAMPLESIZE      11953
+LOOP-START      10999
+LOOP-END        11926
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        70
+C4-32K TUNE  0.280616
+
+-------------------------------------
+       Sample Number 217              
+[Aifc16/030Pizz.16.b2.aifc]
+
+ROM ADDRESS   24cc00h
+-------------------------------------
+ADPCMSIZE        6724
+SAMPLESIZE      11953
+LOOP-START      11014
+LOOP-END        11924
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        47
+C4-32K TUNE  1.059463
+
+-------------------------------------
+       Sample Number 218              
+[Aifc16/031Strings.16.a4.aifc]
+
+ROM ADDRESS   24e650h
+-------------------------------------
+ADPCMSIZE       16372
+SAMPLESIZE      29105
+LOOP-START       6309
+LOOP-END        29076
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 219              
+[Aifc16/031Strings.16.as3.aifc]
+
+ROM ADDRESS   252650h
+-------------------------------------
+ADPCMSIZE       22348
+SAMPLESIZE      39729
+LOOP-START       4066
+LOOP-END        39703
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        58
+C4-32K TUNE  0.561231
+
+-------------------------------------
+       Sample Number 220              
+[Aifc16/031Strings.16.c3.aifc]
+
+ROM ADDRESS   257da0h
+-------------------------------------
+ADPCMSIZE       23212
+SAMPLESIZE      41265
+LOOP-START       7952
+LOOP-END        41240
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        48
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 221              
+[Aifc16/031Strings.16.d4.aifc]
+
+ROM ADDRESS   25d850h
+-------------------------------------
+ADPCMSIZE       27414
+SAMPLESIZE      48736
+LOOP-START       5343
+LOOP-END        48712
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.445450
+
+-------------------------------------
+       Sample Number 222              
+[Aifc16/031Strings.16.g2.aifc]
+
+ROM ADDRESS   264370h
+-------------------------------------
+ADPCMSIZE       24552
+SAMPLESIZE      43648
+LOOP-START      13833
+LOOP-END        43621
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        43
+C4-32K TUNE  1.334840
+
+-------------------------------------
+       Sample Number 223              
+[Aifc16/031Strings.16.gs5.aifc]
+
+ROM ADDRESS   26a360h
+-------------------------------------
+ADPCMSIZE       13590
+SAMPLESIZE      24160
+LOOP-START       4174
+LOOP-END        24130
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        80
+C4-32K TUNE  0.157490
+
+-------------------------------------
+       Sample Number 224              
+[Aifc16/032Harp.16.cs4.aifc]
+
+ROM ADDRESS   26d880h
+-------------------------------------
+ADPCMSIZE        8478
+SAMPLESIZE      15072
+LOOP-START      14240
+LOOP-END        15045
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        61
+C4-32K TUNE  0.471938
+
+-------------------------------------
+       Sample Number 225              
+[Aifc16/032Harp.16.cs5.aifc]
+
+ROM ADDRESS   26f9a0h
+-------------------------------------
+ADPCMSIZE        7606
+SAMPLESIZE      13521
+LOOP-START      12695
+LOOP-END        13503
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        73
+C4-32K TUNE  0.235969
+
+-------------------------------------
+       Sample Number 226              
+[Aifc16/032Harp.16.e6.aifc]
+
+ROM ADDRESS   271760h
+-------------------------------------
+ADPCMSIZE        4788
+SAMPLESIZE       8512
+LOOP-START       7496
+LOOP-END         8490
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        88
+C4-32K TUNE  0.099212
+
+-------------------------------------
+       Sample Number 227              
+[Aifc16/033Timpani.16.c4.aifc]
+
+ROM ADDRESS   272a20h
+-------------------------------------
+ADPCMSIZE       10216
+SAMPLESIZE      18161
+LOOP-START      10285
+LOOP-END        18137
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 228              
+[Aifc16/034Chorus.16.cs5.aifc]
+
+ROM ADDRESS   275210h
+-------------------------------------
+ADPCMSIZE        7786
+SAMPLESIZE      13841
+LOOP-START       4711
+LOOP-END        13822
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        73
+C4-32K TUNE  0.235969
+
+-------------------------------------
+       Sample Number 229              
+[Aifc16/034Chorus.16.g4.aifc]
+
+ROM ADDRESS   277080h
+-------------------------------------
+ADPCMSIZE        7102
+SAMPLESIZE      12625
+LOOP-START       3301
+LOOP-END        12597
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 230              
+[Aifc16/035Tp.16.c5.aifc]
+
+ROM ADDRESS   278c40h
+-------------------------------------
+ADPCMSIZE        2304
+SAMPLESIZE       4096
+LOOP-START       2675
+LOOP-END         4077
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 231              
+[Aifc16/035Tp.16.f5.aifc]
+
+ROM ADDRESS   279540h
+-------------------------------------
+ADPCMSIZE        2296
+SAMPLESIZE       4081
+LOOP-START       3006
+LOOP-END         4056
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        77
+C4-32K TUNE  0.187288
+
+-------------------------------------
+       Sample Number 232              
+[Aifc16/035Tp.t.16.g4.aifc]
+
+ROM ADDRESS   279e40h
+-------------------------------------
+ADPCMSIZE        2466
+SAMPLESIZE       4384
+LOOP-START       2686
+LOOP-END         4353
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 233              
+[Aifc16/036Tb.16.d4.aifc]
+
+ROM ADDRESS   27a7f0h
+-------------------------------------
+ADPCMSIZE        1458
+SAMPLESIZE       2592
+LOOP-START       1696
+LOOP-END         2568
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        62
+C4-32K TUNE  0.445450
+
+-------------------------------------
+       Sample Number 234              
+[Aifc16/036Tb.16.gs3.aifc]
+
+ROM ADDRESS   27adb0h
+-------------------------------------
+ADPCMSIZE        2304
+SAMPLESIZE       4096
+LOOP-START       2091
+LOOP-END         4094
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        56
+C4-32K TUNE  0.629960
+
+-------------------------------------
+       Sample Number 235              
+[Aifc16/036Tb.16.gs4.aifc]
+
+ROM ADDRESS   27b6b0h
+-------------------------------------
+ADPCMSIZE        1134
+SAMPLESIZE       2016
+LOOP-START       1146
+LOOP-END         1994
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        68
+C4-32K TUNE  0.314981
+
+-------------------------------------
+       Sample Number 236              
+[Aifc16/037Tuba.16.c3.aifc]
+
+ROM ADDRESS   27bb20h
+-------------------------------------
+ADPCMSIZE        2944
+SAMPLESIZE       5233
+LOOP-START       4115
+LOOP-END         5216
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        48
+C4-32K TUNE  1.000000
+
+-------------------------------------
+       Sample Number 237              
+[Aifc16/037Tuba.16.e2.aifc]
+
+ROM ADDRESS   27c6a0h
+-------------------------------------
+ADPCMSIZE        2934
+SAMPLESIZE       5216
+LOOP-START       4222
+LOOP-END         5193
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        40
+C4-32K TUNE  1.587402
+
+-------------------------------------
+       Sample Number 238              
+[Aifc16/037Tuba.16.gs2.aifc]
+
+ROM ADDRESS   27d220h
+-------------------------------------
+ADPCMSIZE        2466
+SAMPLESIZE       4384
+LOOP-START       3437
+LOOP-END         4361
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        44
+C4-32K TUNE  1.259921
+
+-------------------------------------
+       Sample Number 239              
+[Aifc16/038MtTp.16.a4.aifc]
+
+ROM ADDRESS   27dbd0h
+-------------------------------------
+ADPCMSIZE        1288
+SAMPLESIZE       2289
+LOOP-START       1469
+LOOP-END         2269
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 240              
+[Aifc16/038MtTp.16.ds5.aifc]
+
+ROM ADDRESS   27e0e0h
+-------------------------------------
+ADPCMSIZE        1594
+SAMPLESIZE       2833
+LOOP-START       1722
+LOOP-END         2802
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        75
+C4-32K TUNE  0.210224
+
+-------------------------------------
+       Sample Number 241              
+[Aifc16/039FHorn.16.b4.aifc]
+
+ROM ADDRESS   27e720h
+-------------------------------------
+ADPCMSIZE        1108
+SAMPLESIZE       1969
+LOOP-START        836
+LOOP-END         1937
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        71
+C4-32K TUNE  0.264866
+
+-------------------------------------
+       Sample Number 242              
+[Aifc16/039FHorn.16.g4.aifc]
+
+ROM ADDRESS   27eb80h
+-------------------------------------
+ADPCMSIZE        1098
+SAMPLESIZE       1952
+LOOP-START        953
+LOOP-END         1932
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 243              
+[Aifc16/040Brass.16.as4.aifc]
+
+ROM ADDRESS   27efd0h
+-------------------------------------
+ADPCMSIZE       12366
+SAMPLESIZE      21984
+LOOP-START       4974
+LOOP-END        21958
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        70
+C4-32K TUNE  0.280616
+
+-------------------------------------
+       Sample Number 244              
+[Aifc16/040Brass.16.fs5.aifc]
+
+ROM ADDRESS   282020h
+-------------------------------------
+ADPCMSIZE       13510
+SAMPLESIZE      24017
+LOOP-START       5859
+LOOP-END        23997
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.176776
+
+-------------------------------------
+       Sample Number 245              
+[Aifc16/041SynBrass.16.c5.aifc]
+
+ROM ADDRESS   2854f0h
+-------------------------------------
+ADPCMSIZE        8370
+SAMPLESIZE      14880
+LOOP-START       4671
+LOOP-END        14851
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 246              
+[Aifc16/041SynBrass.16.c6.aifc]
+
+ROM ADDRESS   2875b0h
+-------------------------------------
+ADPCMSIZE        4330
+SAMPLESIZE       7697
+LOOP-START       2580
+LOOP-END         7669
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        84
+C4-32K TUNE  0.125000
+
+-------------------------------------
+       Sample Number 247              
+[Aifc16/042SopSax.16.a5.aifc]
+
+ROM ADDRESS   2886a0h
+-------------------------------------
+ADPCMSIZE        1638
+SAMPLESIZE       2912
+LOOP-START       1298
+LOOP-END         2882
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.148651
+
+-------------------------------------
+       Sample Number 248              
+[Aifc16/042SopSax.16.b4.aifc]
+
+ROM ADDRESS   288d10h
+-------------------------------------
+ADPCMSIZE        1270
+SAMPLESIZE       2257
+LOOP-START       1361
+LOOP-END         2237
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        71
+C4-32K TUNE  0.264866
+
+-------------------------------------
+       Sample Number 249              
+[Aifc16/042SopSax.16.e5.aifc]
+
+ROM ADDRESS   289210h
+-------------------------------------
+ADPCMSIZE        1242
+SAMPLESIZE       2208
+LOOP-START        878
+LOOP-END         2190
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        76
+C4-32K TUNE  0.198425
+
+-------------------------------------
+       Sample Number 250              
+[Aifc16/043AltSax.16.e4.aifc]
+
+ROM ADDRESS   2896f0h
+-------------------------------------
+ADPCMSIZE        3150
+SAMPLESIZE       5600
+LOOP-START       2432
+LOOP-END         5584
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.396850
+
+-------------------------------------
+       Sample Number 251              
+[Aifc16/043AltSax.16.e5.aifc]
+
+ROM ADDRESS   28a340h
+-------------------------------------
+ADPCMSIZE        2386
+SAMPLESIZE       4241
+LOOP-START       1720
+LOOP-END         4216
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        76
+C4-32K TUNE  0.198425
+
+-------------------------------------
+       Sample Number 252              
+[Aifc16/043AltSax.16.g4.aifc]
+
+ROM ADDRESS   28aca0h
+-------------------------------------
+ADPCMSIZE        1404
+SAMPLESIZE       2496
+LOOP-START       1582
+LOOP-END         2478
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 253              
+[Aifc16/044TenSax.16.a3.aifc]
+
+ROM ADDRESS   28b220h
+-------------------------------------
+ADPCMSIZE        2088
+SAMPLESIZE       3712
+LOOP-START       2814
+LOOP-END         3686
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        57
+C4-32K TUNE  0.594603
+
+-------------------------------------
+       Sample Number 254              
+[Aifc16/044TenSax.16.a4.aifc]
+
+ROM ADDRESS   28ba50h
+-------------------------------------
+ADPCMSIZE        2034
+SAMPLESIZE       3616
+LOOP-START       2727
+LOOP-END         3599
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        69
+C4-32K TUNE  0.297302
+
+-------------------------------------
+       Sample Number 255              
+[Aifc16/044TenSax.16.e4.aifc]
+
+ROM ADDRESS   28c250h
+-------------------------------------
+ADPCMSIZE        1836
+SAMPLESIZE       3264
+LOOP-START       2368
+LOOP-END         3241
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.396850
+
+-------------------------------------
+       Sample Number 256              
+[Aifc16/045BarSax.16.d3.aifc]
+
+ROM ADDRESS   28c980h
+-------------------------------------
+ADPCMSIZE        1108
+SAMPLESIZE       1969
+LOOP-START       1065
+LOOP-END         1937
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        50
+C4-32K TUNE  0.890899
+
+-------------------------------------
+       Sample Number 257              
+[Aifc16/045BarSax.16.gs2.aifc]
+
+ROM ADDRESS   28cde0h
+-------------------------------------
+ADPCMSIZE        1386
+SAMPLESIZE       2464
+LOOP-START       1509
+LOOP-END         2434
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        44
+C4-32K TUNE  1.259921
+
+-------------------------------------
+       Sample Number 258              
+[Aifc16/046Oboe.16.fs5.aifc]
+
+ROM ADDRESS   28d350h
+-------------------------------------
+ADPCMSIZE        4114
+SAMPLESIZE       7313
+LOOP-START       6440
+LOOP-END         7283
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        78
+C4-32K TUNE  0.176776
+
+-------------------------------------
+       Sample Number 259              
+[Aifc16/047EHorn.16.e3.aifc]
+
+ROM ADDRESS   28e370h
+-------------------------------------
+ADPCMSIZE        3708
+SAMPLESIZE       6592
+LOOP-START       1223
+LOOP-END         6566
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        52
+C4-32K TUNE  0.793701
+
+-------------------------------------
+       Sample Number 260              
+[Aifc16/048Bsn.16.c2.aifc]
+
+ROM ADDRESS   28f1f0h
+-------------------------------------
+ADPCMSIZE        1540
+SAMPLESIZE       2737
+LOOP-START       1735
+LOOP-END         2713
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        36
+C4-32K TUNE  2.000000
+
+-------------------------------------
+       Sample Number 261              
+[Aifc16/049Cl.16.c5.aifc]
+
+ROM ADDRESS   28f800h
+-------------------------------------
+ADPCMSIZE        1530
+SAMPLESIZE       2720
+LOOP-START       1726
+LOOP-END         2704
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        72
+C4-32K TUNE  0.250000
+
+-------------------------------------
+       Sample Number 262              
+[Aifc16/049Cl.16.g4.aifc]
+
+ROM ADDRESS   28fe00h
+-------------------------------------
+ADPCMSIZE        1638
+SAMPLESIZE       2912
+LOOP-START       1335
+LOOP-END         2885
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 263              
+[Aifc16/050Picclo.16.g6.aifc]
+
+ROM ADDRESS   290470h
+-------------------------------------
+ADPCMSIZE        9036
+SAMPLESIZE      16064
+LOOP-START      15199
+LOOP-END        16035
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        91
+C4-32K TUNE  0.083428
+
+-------------------------------------
+       Sample Number 264              
+[Aifc16/051Flute.16.cs6.aifc]
+
+ROM ADDRESS   2927c0h
+-------------------------------------
+ADPCMSIZE        1738
+SAMPLESIZE       3089
+LOOP-START       2065
+LOOP-END         3061
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        85
+C4-32K TUNE  0.117985
+
+-------------------------------------
+       Sample Number 265              
+[Aifc16/051Flute.16.fs6.aifc]
+
+ROM ADDRESS   292e90h
+-------------------------------------
+ADPCMSIZE        1702
+SAMPLESIZE       3025
+LOOP-START       1839
+LOOP-END         3006
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        90
+C4-32K TUNE  0.088389
+
+-------------------------------------
+       Sample Number 266              
+[Aifc16/052Recorder.16.d6.aifc]
+
+ROM ADDRESS   293540h
+-------------------------------------
+ADPCMSIZE        1818
+SAMPLESIZE       3232
+LOOP-START       1814
+LOOP-END         3217
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        86
+C4-32K TUNE  0.111363
+
+-------------------------------------
+       Sample Number 267              
+[Aifc16/053PanFlute.16.a5.aifc]
+
+ROM ADDRESS   293c60h
+-------------------------------------
+ADPCMSIZE        8974
+SAMPLESIZE      15953
+LOOP-START       3672
+LOOP-END        15928
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        81
+C4-32K TUNE  0.148651
+
+-------------------------------------
+       Sample Number 268              
+[Aifc16/054SteelDrm.16.g4.aifc]
+
+ROM ADDRESS   295f70h
+-------------------------------------
+ADPCMSIZE        6688
+SAMPLESIZE      11889
+LOOP-START       8089
+LOOP-END        11871
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 269              
+[Aifc16/055StandardBD.16.c4.aifc]
+
+ROM ADDRESS   297990h
+-------------------------------------
+ADPCMSIZE        1558
+SAMPLESIZE       2769
+LOOP-START          0
+LOOP-END         2769
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 270              
+[Aifc16/056GateBD.16.c4.aifc]
+
+ROM ADDRESS   297fb0h
+-------------------------------------
+ADPCMSIZE        3078
+SAMPLESIZE       5472
+LOOP-START          0
+LOOP-END         5472
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 271              
+[Aifc16/057OrchBD.16.c4.aifc]
+
+ROM ADDRESS   298bc0h
+-------------------------------------
+ADPCMSIZE       18846
+SAMPLESIZE      33504
+LOOP-START      28222
+LOOP-END        33488
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 272              
+[Aifc16/058StandardSD.16.c4.aifc]
+
+ROM ADDRESS   29d560h
+-------------------------------------
+ADPCMSIZE        2484
+SAMPLESIZE       4416
+LOOP-START          0
+LOOP-END         4416
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 273              
+[Aifc16/059GateSD.16.c4.aifc]
+
+ROM ADDRESS   29df20h
+-------------------------------------
+ADPCMSIZE        3682
+SAMPLESIZE       6545
+LOOP-START          0
+LOOP-END         6545
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 274              
+[Aifc16/060OrchSD.16.c4.aifc]
+
+ROM ADDRESS   29ed90h
+-------------------------------------
+ADPCMSIZE        1962
+SAMPLESIZE       3488
+LOOP-START          0
+LOOP-END         3488
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 275              
+[Aifc16/061Rim.16.c4.aifc]
+
+ROM ADDRESS   29f540h
+-------------------------------------
+ADPCMSIZE        1512
+SAMPLESIZE       2688
+LOOP-START          0
+LOOP-END         2688
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 276              
+[Aifc16/062Close.16.c4.aifc]
+
+ROM ADDRESS   29fb30h
+-------------------------------------
+ADPCMSIZE         802
+SAMPLESIZE       1425
+LOOP-START          0
+LOOP-END         1425
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 277              
+[Aifc16/063Open.16.c4.aifc]
+
+ROM ADDRESS   29fe60h
+-------------------------------------
+ADPCMSIZE        8956
+SAMPLESIZE      15921
+LOOP-START       8954
+LOOP-END        15912
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 278              
+[Aifc16/064Tom.16.g4.aifc]
+
+ROM ADDRESS   2a2160h
+-------------------------------------
+ADPCMSIZE        4816
+SAMPLESIZE       8561
+LOOP-START          0
+LOOP-END         8561
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        67
+C4-32K TUNE  0.333710
+
+-------------------------------------
+       Sample Number 279              
+[Aifc16/065TomLow.16.c4.aifc]
+
+ROM ADDRESS   2a3430h
+-------------------------------------
+ADPCMSIZE       12844
+SAMPLESIZE      22833
+LOOP-START          0
+LOOP-END        22833
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 280              
+[Aifc16/066Crash.16.c4.aifc]
+
+ROM ADDRESS   2a6660h
+-------------------------------------
+ADPCMSIZE       14968
+SAMPLESIZE      26609
+LOOP-START      16961
+LOOP-END        26592
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 281              
+[Aifc16/067Ride.16.c4.aifc]
+
+ROM ADDRESS   2aa0e0h
+-------------------------------------
+ADPCMSIZE       10054
+SAMPLESIZE      17873
+LOOP-START       2866
+LOOP-END        17846
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 282              
+[Aifc16/068Bongo1.16.c4.aifc]
+
+ROM ADDRESS   2ac830h
+-------------------------------------
+ADPCMSIZE        1378
+SAMPLESIZE       2449
+LOOP-START          0
+LOOP-END         2449
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 283              
+[Aifc16/069Bongo2.16.c4.aifc]
+
+ROM ADDRESS   2acda0h
+-------------------------------------
+ADPCMSIZE        1800
+SAMPLESIZE       3200
+LOOP-START          0
+LOOP-END         3200
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 284              
+[Aifc16/070CongaMute.16.c4.aifc]
+
+ROM ADDRESS   2ad4b0h
+-------------------------------------
+ADPCMSIZE        1684
+SAMPLESIZE       2993
+LOOP-START          0
+LOOP-END         2993
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 285              
+[Aifc16/071CongaOpen.16.c4.aifc]
+
+ROM ADDRESS   2adb50h
+-------------------------------------
+ADPCMSIZE        2260
+SAMPLESIZE       4017
+LOOP-START          0
+LOOP-END         4017
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 286              
+[Aifc16/072CongaSlap.16.c4.aifc]
+
+ROM ADDRESS   2ae430h
+-------------------------------------
+ADPCMSIZE        3168
+SAMPLESIZE       5632
+LOOP-START          0
+LOOP-END         5632
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 287              
+[Aifc16/073Shaker.16.c4.aifc]
+
+ROM ADDRESS   2af090h
+-------------------------------------
+ADPCMSIZE         622
+SAMPLESIZE       1105
+LOOP-START          0
+LOOP-END         1105
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 288              
+[Aifc16/074CowBell.16.c4.aifc]
+
+ROM ADDRESS   2af300h
+-------------------------------------
+ADPCMSIZE        1144
+SAMPLESIZE       2033
+LOOP-START          0
+LOOP-END         2033
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 289              
+[Aifc16/075Agogo.16.c4.aifc]
+
+ROM ADDRESS   2af780h
+-------------------------------------
+ADPCMSIZE        7966
+SAMPLESIZE      14161
+LOOP-START      11239
+LOOP-END        14131
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        60
+C4-32K TUNE  0.500000
+
+-------------------------------------
+       Sample Number 290              
+[Aifc16/076Tamb.16.e4.aifc]
+
+ROM ADDRESS   2b16a0h
+-------------------------------------
+ADPCMSIZE        4752
+SAMPLESIZE       8448
+LOOP-START          0
+LOOP-END         8448
+LOOP-COUNT          0
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        64
+C4-32K TUNE  0.396850
+
+-------------------------------------
+       Sample Number 291              
+[Aifc16/077Noise.16.c7.aifc]
+
+ROM ADDRESS   2b2930h
+-------------------------------------
+ADPCMSIZE        5166
+SAMPLESIZE       9184
+LOOP-START        657
+LOOP-END         9166
+LOOP-COUNT      65535
+BOOK-ORDER          2
+BOOK-PREDIC         2
+BOOK-BYTES         64
+SAMPLERATE   16000.00
+BASEMIDIKEY        96
+C4-32K TUNE  0.062500
+

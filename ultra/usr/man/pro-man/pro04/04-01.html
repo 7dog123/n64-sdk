@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 4</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro03/index3.8.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro04/index4.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Resource Access Management</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This chapter describes the runtime Nintendo 64 software architecture. It is intended as a brief tour of the overall architecture and discusses the basic design guidelines. More specific details are provided in subsequent chapters. 
+This chapter briefly covers the following topics:
+<ul>
+<li>CPU: threads, messages, interrupts, cache coherency, tlbs
+<P>
+<li>IO: device library, device manager
+<p>
+<li>Memory: static allocation, region library
+<P>
+<li>RCP: tasks, command lists, yielding
+Graphics: graphics interface
+<P>
+<li>Audio: sequencer, audio player, driver, wavetable synthesis
+<P>
+<li>Application: typical application framework
+<P>
+<li>Debugger: debugger support for CPU and RSP
+</ul>
+<P>
+The Nintendo 64 game machine is made up of a variety of resources.  These resources include the CPU, memory, memory  bus bandwidth, IO devices, the RSP, the RDP, and peripheral devices.  The software is designed to provide raw access to all of the resources. The software layer basically translates logical functions and arguments into exact hardware register settings. 
+<P>
+Management of most resources is left up to the game itself. Resources such as processor access and memory usage are too precious to waste by using some general management algorithm that is not tailored to a particular game’s requirement. The only management layers provided are the audio playback and I/O device access. 
+<P>
+The audio playback mechanism is fairly consistent from game to game. Only the sounds themselves are different. Therefore, a general tool to stream audio playback is useful. The I/O devices can be managed to provide simultaneous multiple access contexts for different threads. For example, streaming audio data and paging in graphics database might require sharing access to the ROM.
+<P>
+<b>Figure 4.1.1</B> &nbsp;Application Resources
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro04/gif/f04-01.gif"></tr></td></table>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

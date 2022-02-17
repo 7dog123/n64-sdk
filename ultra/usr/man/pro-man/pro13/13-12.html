@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 13</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro13/index13.11.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro13/index13.0a.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Applications</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Multiple Tile Effects</b>
+<p>
+<b>Interference Textures</b>
+<br>
+Since you can access two separate tiles in two-cycle mode, it easy to achieve interference pattern effects.  Of course, you can use textures that are different sizes (wrap on different intervals) to decrease the amount of apparent repetition.  This is especially useful for textures on terrain or for waves on the ocean, for example.
+
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro13/gif/f13-25-00.gif"></tr></td></table>
+
+<P>
+<b>Lighting with Textures</b>
+<br>
+Multiple tiles can be used for lighting effects.  In the example below, a small texture is repeated many times but a small light texture is scaled up to create the effect of a spotlight.  In this example you could use the input coordinates should be defined using Tex 0’s coordinates.  
+
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro13/gif/f13-25-01.gif"></tr></td></table>
+<P>
+
+
+The <i>shift</i>  parameter of the tile descriptor for Tex 1 could be used to right shift the input coordinates to the required values.  It would be a bad idea to use Tex 1’s coordinates as the input coordinates and then left shift to obtain Tex 0’s coordinates.  This is because when you shift left, you shift zeros into the lsb’s of the coordinate, thus losing precision.
+
+<P>
+<b>Extended Alpha Using Multiple Textures</b>
+<br>
+The 16 bit RGBA texture type is often used to texture sprites and billboards because this is the only type that allows a large number of colors. Unfortunately, this type only has one bit of alpha (which means you cannot prefilter texture edges), and can lead to pixelated texture edges.
+<P>
+One way to get more bits of alpha (in order to create smoother outlines) is to use two tiles.  The first tile describes the RGB color of the texture, while the second tile describes the alpha channel of the texture.  Render the texture in two-cycle mode.  In the color combiner, select T0 as the source and in the alpha combiner select T1 as the source.
+<P>
+A code fragment indicates how to set the combine modes and load the textures:
+<pre><font face="courier" size="3">#define MULTIBIT_ALPHA  0, 0, 0, TEXEL0, 0, 0, 0, TEXEL1
+
+...
+    /* use special combine mode */
+    gsDPSetCombineMode(MULTIBIT_ALPHA, G_CC_PASS2),
+...
+    /*
+     *  Load alpha texture at Tmem = 256, notice I use a
+     *  different load macro that allows specifying Tmem
+     *  address.
+     */
+    _gsDPLoadTextureBlock_4b(I4molecule, 256, G_IM_FMT_I,
+            32, 32, 0,
+             G_TX_WRAP, G_TX_WRAP,
+             5, 5, G_TX_NOLOD, G_TX_NOLOD),
+
+    /*
+     *  Load color texture starting at Tmem=0
+     */
+    gsDPLoadTextureBlock(RGBA16molecule, G_IM_FMT_RGBA,
+            G_IM_SIZ_16b, 32, 32, 0, G_TX_WRAP, G_TX_WRAP,
+             5, 5, G_TX_NOLOD, G_TX_NOLOD),
+
+    /*
+     *  Since normal load macros use tile 0 for render, I
+     *  need to set tile 1 manually to point at alpha
+     *  texture.
+     */
+
+    gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_4b, 2, 256, 1,
+        0,
+        0, 0, 0,
+        0, 0, 0),
+    gsDPSetTileSize( 1, 0, 0, 31 &#060 &#060 2, 31 &#060 &#060 2),
+
+...
+    /* make sure in two-cycle mode */
+    gsDPSetCycleType(G_CYC_2CYCLE),
+
+</pre></font>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

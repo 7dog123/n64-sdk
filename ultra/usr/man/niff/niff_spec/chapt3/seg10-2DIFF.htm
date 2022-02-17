@@ -1,0 +1,124 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-10. StList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(2)StGroupエリア</font></h4>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="5">StGroupHeader</th>
+
+<td>u32</td>
+
+<td>st_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this\st_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>St(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>St(st_num - 1)</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　StGroup Area Memory Map</font></b></center>
+
+<center><table BORDER >
+<tr>
+<td NOWRAP>u32 st_group_tag</td>
+
+<td><font size=+0>A tag which Indicates StGroup, enter the following.</font>
+<pre><b><font size=+0>TAG_ST_GROUP&nbsp;&nbsp;&nbsp; 0x00070100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_st_group_index</td>
+
+<td><font size=+0>Index number in this StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_header_size</td>
+
+<td><font size=+0>Number of bytes in StGroupHeader area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_size</td>
+
+<td><font size=+0>Total number of bytes in StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_num</td>
+
+<td><font size=+0>Total number of St area in this StGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg10-3.htm">St</a></td>
+
+<td><font size=+0>Texture coordinates per 1 vertex.&nbsp;</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg10-3.htm">次へ</a></font><a href="seg10-3.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

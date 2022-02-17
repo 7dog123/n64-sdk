@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="5"><b> <img src="../../gif/nusystem2.gif"
+width="176" height="30"></b></font><a name="top"><font size="6"><strong> </strong></font><font
+size="5">&quot;INSIDE NuSystem&quot;</font></a></p>
+
+<p><a href="#1"><font size="4"><strong>1.1 Preface</strong></font></a><font
+size="4"><strong><br>
+</strong></font><a href="#2"><font size="4"><strong>1.2 NuSystem Structural Components</strong></font></a><font
+size="4"><strong><br>
+</strong></font><a href="#3"><font size="4"><strong>1.3 NuSystem Boot Flow</strong></font></a><font
+size="4"><strong><br>
+</strong></font><a href="#4"><font size="4"><strong>1.4 NuSystem Basic Process Flow</strong></font></a><font
+size="4"><strong><br>
+</strong></font><a href="#5"><font size="4"><strong>1.5 NuSystem Memory Map</strong></font></a><strong><img
+src="../../gif/update98.gif" width="48" height="12"></strong></p>
+
+<hr>
+
+<p><a name="1"><font size="5"><strong>1.1 Preface</strong></font></a></p>
+
+<p>NuSystem is a system library that provides device and system managers to manage the routine and repetitive aspects of N64 development for you. Essentially, NuSystem is a miniature version of the N64 operating system. You simply include the appropriate NuSystem files in your application, and NuSystem makes N64 development easier by hiding the initialization part of the N64 operating system and exposing only the event message processes and the absolutely necessary threads.
+</p>
+
+<p>In addition, NuSystem gives you an Audio Manager to play back audio and an SI Manager to control all the devices that connect to the N64 through the SI (serial interface). The SI Manager works by controlling all the SI device managers including the Controller Manager, the Controller Pak Manager, the EEPROM manager, and the Rumble Pak Manager.
+</p>
+
+<p>The SI Manager and Audio Manager can be created as application-independent managers without changing the NuSystem source code. NuSystem comes complete with the source code, so you can freely customize it. You can add to the NuSystem functions and improve or change libraries to better fit your needs.
+</p>
+
+<p>The N64 operating system gives you, the game developer, maximum freedom and control. With that freedom comes responsibility. The N64 OS provides only a bare minimum number of functions in order to minimize the consumption of resources and give applications direct access to the resources. Because processing is independent in N64 threads and messages, the programmer needs to use advanced programming techniques for such things as thread synchronization and exclusive control of data. Luckily, most of the necessary processes are common among game programs, so they can be made into easy-to-use components. That is what NuSystem does for you. NuSystem will help ease the process of learning N64 game development by wrapping many of the details up into the NuSystem components.</p>
+
+<p>NuSystem is designed to help you reduce the amount of effort needed in the initial stage of N64 program development. NuSystem turns complex N64 OS functions into easy-to-use components that you can control by using callback and front-end functions. This makes N64 programming easier. The flexible NuSystem design takes processing speed, memory efficiency, and expandability into consideration. With NuSystem, you can begin a program without touching the complicated aspects of the N64 system.</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="2"><font size="5"><strong>1.2 NuSystem Structural Components</strong></font></a></p>
+
+<p>NuSystem can be broadly divided into the following seven components:
+<br>
+</p>
+
+<ol>
+    <li>Initiator
+    <li>Scheduler
+    <li>Graphics Task Manager
+    <li>Audio Manager
+    <li>SI Manager
+    <li>PI Manager
+    <li>Debug Library
+</ol>
+
+<P>Items 2 through 6 are the main components of NuSystem.</P>
+
+<p>The Graphics Manager, Audio Manager, and SI Manager can be application-independent components in which case the Nusystem components are not included. Figure 1.1 shows the relationship between NuSystem and the N64 operating system.
+</p>
+
+<p><I><B>Figure 1.1</B> -- Hierarchical Structure of NuSystem and N64 OS</I>
+<br>
+</p>
+
+<p><img src="../../gif/nusys-1.gif"></p>
+
+<p>As you can see, NuSystem is situated between the N64 operating system and the application. The application can call the N64 operating system directly or through NuSystem.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="3"><font size="5"><strong>1.3 NuSystem Boot Flow</strong></font></a></p>
+
+<p>The following figure shows the entire process flow when NuSystem is in use, from the time the N64 power is turned on until the application's entry function (mainproc) is executed:
+<br>
+</p>
+<I><B>Figure 1.2</B> -- NuSystem Boot Flow</I>
+
+<p><img src="../../gif/nusys-2.gif"><br>
+</p>
+
+<p>As you can see in Figure 1.2, after the power is turned on, the boot entry function (nuBoot) is the first function executed. After the N64 operating system is initialized by the Initiator, the nuBoot function creates and then transfers control to the idle thread. The idle thread starts the Scheduler, initializes the PI, and then creates and executes the thread for the mainproc function, which is the entry point for the application.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="4"><font size="5"><strong>1.4 NuSystem Basic Process Flow</strong></font></a></p>
+
+<p>Figure 1.3 shows the basic processes flow between NuSystem and the application.
+<br>
+</p>
+<I><B>Figure 1.3</B> -- Process Flow Between NuSystem and Application</I>
+
+<p><img src="../../gif/nusys-3.gif"></p>
+
+<p>Each manager is an independent thread waiting for an event message or a message from your application. These event messages are retrace, PRE-NMI, and end of task. Messages from your application are sent from NuSystem functions.
+</p>
+
+<p>When a manager receives a message, it checks the type of message and performs the appropriate process. Depending on the situation, it returns a termination message and the data. For example, if the SI Manager receives a retrace message, it uses the serial interface (SI) to read the Controller data. This is done in parallel with application processing.
+</p>
+
+<p>Note that the application uses NuSystem function calls to gain access to each manager. This is a characteristic of NuSystem. The threads and messages are hidden, and the necessary part of the thread is offered to the application in callback form. If an application prepares a callback function and registers the function pointer in NuSystem, NuSystem (or to be more precise, the manager) executes the corresponding callback function to that event or message.
+</p>
+
+<p>For example, a device manager like the Controller Manager can use the NuSystem SI Manager to manage devices connected through the SI that require complicated exclusive control thus easing the burden on the application and ensuring exclusive control.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="5"><font size="5"><strong>1.5 NuSystem Memory Map</strong></font></a></p>
+
+<p>When the nuGfxInit and nuAuInit functions are called at the start of an application, they set the default memory map as shown in figure 4 and proceed to initialize graphics and audio.
+</p>
+
+<I><B>Figure 1.4</B> -- Default Memory Map</I><BR>
+
+</font><img src="../../gif/nusys-4.gif"></p>
+
+<p>The system region is reserved for use by parameter and interrupt vectors. The Z-Buffer is mapped below the code region. RDRAM has a page register in each 1M memory bank, so memory access is faster when the Z-Buffer is separated from the frame buffer. By mapping memory in this way, the application allocates of a wide contiguous region of memory.</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

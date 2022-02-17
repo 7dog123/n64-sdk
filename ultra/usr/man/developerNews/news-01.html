@@ -1,0 +1,329 @@
+<html>
+<head>
+<title>Developers News 1.1</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr>
+<p align="center">
+<font size="6"><strong><IMG src="gif/devnews.gif" height="44" width="453">1.1</strong></font>
+</p>
+
+<p align="left">
+<b> Nintendo 64 Developers Newsletters will be published periodically,
+as needed.  These feature software and hardware system anomalies, which
+have been discovered, and their solutions and/or work-arounds.  Development
+tips will also be included.</b>
+</b>
+</p>
+
+<hr>
+
+<A name="top"></A><h2>Contents</h2>
+<ul>
+<li><a href="#tip1">Tip: 16b RGBA Textures with more than 1-Bit Alphas</a>
+<li><a href="#tip2">Tip: Rendering Clouds or Explosions</a>
+<li><a href="#tip3">Tip: Improving Z Buffer Performance</a>
+<li><a href="#tip4">Tip: Man Pages</a>
+<li><a href="#tip5">Tip: Using the Turbo Microcode</a>
+<li><a href="#tip6">Tip: Gamma Correction</a>
+<li><a href="#tip7">New: Blender Add Mode</a>
+<li><a href="#tip8">Note: 6.2 System Software Release with Ultra64 Development Software</a>
+<li><a href="#tip9">Bug: Audio DMA Example Code</a>
+<li><a href="#tip10">Bug: midiDmon</a>
+</ul>
+
+<hr>
+
+<A NAME="tip1"></A><h3>Tip: 16b RGBA Textures with more than 1-Bit Alphas</h3>
+
+The 16 bit RGBA texture type is often used to texture sprites and billboards 
+because this is the only type that allows a large number of colors.  
+Unfortunately, this type only has one bit of alpha (which means you can't 
+prefilter texture edges), and can lead to pixelated texture edges.
+
+<p>
+One way to get more bits of alpha (in order to create smoother outlines) is 
+to use two tiles.  The first tile describes the RGB color of the 
+texture, while the second tile describes the alpha channel of the 
+texture.  Render the texture in two-cycle mode. In the color combiner, 
+select T0 as the source and in the alpha combiner select T1 as the source.
+
+<p>
+A code fragment indicates how to set the combine modes and load the textures:
+
+<p>
+<pre>
+    #define MULTIBIT_ALPHA&nbsp; 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL1
+
+    ...
+
+      /* use special combine mode */
+      <a target=top href="../n64man/gdp/gDPSetCombineMode.html">gsDPSetCombineMode</a>(MULTIBIT_ALPHA, G_CC_PASS2);
+
+    ...
+
+      /*
+       * Load alpha texture at Tmem = 256, notice I use a different load
+       * macro that allows specifying Tmem address.
+       */
+      _gsDPLoadTextureBlock_4b(I4molecule, 256, G_IM_FMT_I,
+                32, 32, 0,
+                G_TX_WRAP, G_TX_WRAP,
+                5, 5, G_TX_NOLOD, G_TX_NOLOD);
+
+      /* 
+       * Load color texture starting at Tmem=0
+       */
+
+      <a target=top href="../n64man/gdp/gDPLoadTextureBlock.html">gsDPLoadTextureBlock</a>(RGBA16molecule, G_IM_FMT_RGBA, G_IM_SIZ_16b,
+                32, 32, 0,
+                G_TX_WRAP, G_TX_WRAP,
+                5, 5, G_TX_NOLOD, G_TX_NOLOD);
+
+      /*
+       * Since normal load macros use tile 0 for render, I need to set
+       * tile 1 manually to point at alpha texture.
+       */
+      <a target=top href="../n64man/gdp/gDPSetTile.html">gsDPSetTile</a>(G_IM_FMT_I, G_IM_SIZ_4b, 2, 256, 1, 
+                0,
+                0, 0, 0,
+                0, 0, 0);
+      <a target=top href="../n64man/gdp/gDPSetTileSize.html">gsDPSetTileSize</a>( 1, 0, 0, 31 << 2, 31 << 2);
+
+    ...
+ 
+      /* Make sure in two-cycle mode */
+      <a target=top href="../n64man/gdp/gDPSetCycleType.html">gsDPSetCycleType</a>(G_CYC_2CYCLE);
+</pre>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip2"></A><h3>Tip: Rendering Clouds or Explosions</h3>
+
+Implement rendering effects such as smoke clouds or explosions with a 
+texture. Set the texture alpha to the outline of the smoke or explosion
+and render the texture onto a transparent polygon so that one can see 
+through the smoke to the objects behind.
+
+<p>
+In this situation, the correct <a target=top href="../n64man/gdp/gDPSetRenderMode.html">g*DPSetRenderMode()</a> to use is:
+
+<blockquote>
+RM_ZB_CLD_SURF or RM_CLD_SURF
+</blockquote>
+
+This 'cloud' mode preserves the antialiasing of objects behind the cloud 
+primitive, unlike TEX_EDGE and XLU_SURF modes.
+
+<p>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip3"></A><h3>Tip: Improving Z Buffer Performance</h3>
+
+A &quot;partial sorting&quot; of objects being drawn can accelerate rendering 
+when using z-buffering. The z-buffer test is a conditional write, so if 
+objects are drawn in roughly front-to-back order, this test will often 
+prevent the write to update the z-buffer value.
+
+<p>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip4"></A><h3>Tip: Man Pages</h3>
+
+The default release install the man pages in /usr/share/catman. If 
+you install it elsewhere, be sure to run 'makewhatis' and update the
+whatis database, so you can use the powerful 'man -k' and 'apropos' 
+commands.
+
+<p>
+Likewise, if you installed the man pages in the default location, but 
+you've never heard of 'man -k', check it out.
+
+<p>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip5"></A><h3>Tip: Using the Turbo Microcode</h3>
+
+Using the new 'turbo' microcode requires some sorting on the CPU. The 
+turbo ucode is extremely efficient if you can use a 'bounding box' or 
+'object centroid' sort technique. This technique can require careful 
+modeling, and for some scenarios it's downright difficult.
+
+<p>
+Note: We are also considering other types of sorting, such as an individual 
+polygon sort. Desigining such a sort that works well on the Ultra64, given 
+the graphics pipeline depth, vector RSP, etc., is not simple. If anybody 
+has any suggestions or ideas they want to share, email Developer Support
+at support@noa.com.
+
+<p>
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip6"></A><h3>Tip: Gamma Correction</h3>
+
+SNES and Super Famicom do not have gamma correction hardware but the Nintendo 
+64 does. Some developers have indicated that the colors look washed out on 
+the Ultra 64 with gamma correction turned on.
+
+<p>
+If you are currently writing games for SNES or Super Famicom (or any machine 
+that does not have gamma correction), your production path is likely to be 
+setup to compensate for the lack of gamma correction hardware. In other
+words, you are probably picking pre-gamma corrected colors. If you use this 
+same production path and turn Ultra 64 gamma correction on, you will get the 
+wash out effect because you would have gamma corrected twice.
+
+<p>
+To undo the first gamma correction, square and shift down by 8 each color 
+component (assuming 8 bit color) or rework your path to exclude the gamma
+correction stop, leaving gamma correction to the hardware.
+
+<p>
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip7"></A><h3>New: Blender Add Mode</h3>
+
+A new <a target=top href="../n64man/gdp/gDPSetRenderMode.html">g*DPSetRenderMode()</a> has been implemented that allows the pixel color 
+to be added to the memory color.&nbsp; The macro has been added to gbi.h
+and will be available on the next release. In the interim, you can define 
+the following:
+
+<p>
+<pre>
+    #define RM_ADD(clk) \
+        IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_OPA \
+        GBL_c##clk(G_BL_CLR_IN, G_BL_A_FOG, G_BL_CLR_MEM, G_BL_1)
+
+    #define G_RM_ADD       RM_ADD(1)
+    #define G_RM_ADD2      RM_ADD(2)
+</pre>
+
+<p>
+Several notes about this mode:
+
+<ul>
+<li>You must set fog alpha equal to 0xff for this mode to work, e.g. 
+<a target=top href="../n64man/gdp/gDPSetFogColor.html">gsDPSetFogColor</a>(255, 255, 255, 255).
+<li>Since the blender does not clamp the final color (all the inputs are 
+clamped and normal interpolation operations won't under/overflow) the user 
+must guarantee that the results will not overflow or weird effects may occur.
+</ul>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip8"></A><h3>Note: System Software Release with Ultra64 Development Software</h3>
+
+Ultra64 development software works with System Software Relase 5.3 only. 
+We anticipate supporting 6.2 when it is released, but no date has been
+set.
+
+<p>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip9"></A><h3>Bug: Audio DMA Example Code</h3>
+
+There are two bugs in the audio dma initialization example code. Neither 
+effect the operation of the examples, but if you have incorporated this code
+into your game you may want to change fix it as described below.
+
+<p>
+The first bug occurs in the code that allocates buffers to handle audio dma 
+requests. In in the routine __amDmaNew (in simple/audio.c), the following
+code allocates the buffers:
+
+<p>
+<pre>
+    for (i=0; i&lt;NUM_DMA_BUFFERS-1; i++)
+    {
+      alLink((ALLink*)&amp;dmaBuffs[i+1],(ALLink*)&amp;dmaBuffs[i]);
+      dmaBuffs[i].ptr = <a target=top href="../n64man/al/alHeapAlloc.html">alHeapAlloc</a>(&amp;hp, 1, DMA_BUFFER_LENGTH);
+    }
+</pre>
+
+<p>
+Notice that the for loop iterates to NUM_DMA_BUFFERS-1, not NUM_DMA_BUFFERS 
+(needed since the last dma buffer can't be linked to a dmaBuffs[i+1] which 
+doesn't exist) so the last buffer is never allocated.
+
+<p>
+The second bug (in the same code) occurs when you move the location of the 
+dmaBuffs to uninitialized memory (non-global memory) or reinitialize the
+dmaBuffs. In that case, the values of the first dmaBuff's node.prev and 
+node.next are uninitialized.
+
+<p>
+Both of these bugs can be avoided by changing the portion of the 
+__amDmaNew routine shown above to:
+
+<p>
+<pre>
+    dmaBuffs[0].node.prev = 0;
+    dmaBuffs[0].node.next = 0;
+    for (i=0; i&lt;NUM_DMA_BUFFERS-1; i++)
+    {
+      alLink((ALLink*)&amp;dmaBuffs[i+1],(ALLink*)&amp;dmaBuffs[i]);
+      dmaBuffs[i].ptr = <a target=top href="../n64man/al/alHeapAlloc.html">alHeapAlloc</a>(&amp;hp, 1, DMA_BUFFER_LENGTH);
+    }
+
+    /* last buffer already linked, but still needs buffer */
+    dmaBuffs[i].ptr = <a target=top href="../n64man/al/alHeapAlloc.html">alHeapAlloc</a>(&amp;hp,1,DMA_BUFFER_LENGTH);
+</pre>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<A NAME="tip10"></A><h3>Bug: midiDmon</h3>
+
+A bug that prevented midiDmon from running in the last release (1.0F/2.0B) 
+has been corrected. New versions of midiDmon are available via ftp from 
+sgi.com.
+
+<ul>
+<li>ftp to sgi.com
+<li>log in as name: &quot;anonymous&quot; passwd: &lt;your email 
+address&gt;
+<li>cd to private
+<li>get midiDmon.hw1 for hardware 1 dev systems, or midiDmon.hw2 for 
+hardware 2 dev systems.
+</ul>
+
+<p align="right">
+<a href="#top"><img src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

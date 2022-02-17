@@ -1,0 +1,50 @@
+/*
+  msn/SkeletonPx2.h
+    Copyright (C) 1998, NINTENDO Co,Ltd., MONEGI CORPORATION.
+    Mar. 24, 1999.
+*/
+
+#ifndef _msn_SkeletonPx2_h
+#define _msn_SkeletonPx2_h 1
+
+#include "mhc/Node.h"
+#include "mhc/NodeHandle.h"
+#include "mif/ChunkParser.h"
+#include "mso/derive.h"
+#include "mvm/Matrix.h"
+#include "mvm/Vector.h"
+#include "msn/Skeleton2.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+#include <ultra64.h>
+
+/* Declare constant macro */
+#define MSN_SKELETON_PX2_FIELD_BONE_LENGTH		(0)
+#define MSN_SKELETON_PX2_FIELD_JOINT1_SCALE		(1)
+#define MSN_SKELETON_PX2_FIELD_JOINT2_SCALE		(2)
+#define MSN_SKELETON_PX2_FIELD_EFFECTOR_POSITION	(3)
+#define MSN_SKELETON_PX2_FIELD_AXIS			(4)
+#define MSN_SKELETON_PX2_FIELD_Z_POSITION		(5)
+
+/* Declare types of a structure */
+typedef struct _MsnSkeletonPx2
+{
+    _msoDeriveFrom( MhcNode );
+    MsnSkeleton2	skeleton;
+    MvmVector3f		z;
+} MsnSkeletonPx2;
+
+/* Declare Functions */
+extern void msnSkeletonPx2Init( MsnSkeletonPx2 *skeleton_ptr );
+
+/* Declare global variables */
+extern MifChunkParser gMsnSkeletonPx2ChunkParser;
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+#endif /* _msn_SkeletonPx2_h */

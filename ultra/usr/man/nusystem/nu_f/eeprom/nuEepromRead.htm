@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font face="arial" size="4"><strong>Function</strong></font></p>
+
+<hr>
+<font face="arial">
+<pre><font color="#0000A0" size="6"><strong>nuEepromRead</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>s32 nuEepromRead(u8 address, u8* buffer, u16 len)</pre></font>
+
+<P>
+
+<b>Arguments</b>
+<ul>
+<li>address is the EEPROM address from which to read data
+<P>
+<li>*buffer is the pointer to buffer for storing the data
+<P>
+<li>len is the length of data</ul>
+
+<P>
+<strong>Return Value</strong>
+<ul>
+<li>0: Normal termination
+<P>
+<li>-1: Address is incorrect or the EEPROM Manager is not registered
+<P>
+<li>CONT_NO_RESPONSE_ERROR: The interface does not respond
+</ul>
+
+<P>
+<strong>Explanation</strong>
+<br>
+Reads out data from EEPROM
+
+<p>
+Reads data from the specified "address" in EEPROM and stores it in the specified "buffer."  The length of the data is specified by "len."
+   The specified "address" is 0-63 for 4K EEPROM and 0-255 for 16K EEPROM, and len*8 bytes of data are read.</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="nuEepromMgrInit.htm">nuEepromMgrInit</a>
+<br><a href="nuEepromCheck.htm">nuEepromCheck</a>
+<br><a href="nuEepromWrite.htm">nuEepromWrite</a></pre>
+
+<p>
+<a href="index.htm"><img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+</body>
+</html>

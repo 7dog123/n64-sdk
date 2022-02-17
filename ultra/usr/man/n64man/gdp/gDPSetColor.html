@@ -1,0 +1,415 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gdp/gdp.html">
+            <IMG BORDER=0 SRC="../images/mh_gdp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+Color-Setting Functions
+</FONT>
+</H2>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include "gbi.h"
+
+gDPSetPrimColor(Gfx *gdl,
+   unsigned int m,
+   unsigned int l,
+   unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gsDPSetPrimColor(unsigned int m,
+   unsigned int l,
+   unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gDPSetEnvColor(Gfx *gdl,
+   unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gsDPSetEnvColor(unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gDPSetFogColor(Gfx *gdl,
+   unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gsDPSetFogColor(unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gDPSetBlendColor(Gfx *gdl,
+   unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+gsDPSetBlendColor(unsigned int r,
+   unsigned int g,
+   unsigned int b,
+   unsigned int a)
+
+GPACK_RGBA5551(r, g, b, a)
+
+GPACK_ZDZ(z, dz)
+
+gDPSetFillColor(Gfx *gdl,
+   unsigned int c)
+
+gsDPSetFillColor(unsigned int c)</PRE></FONT>
+
+<B>Arguments</B>
+<UL><LI><FONT FACE="COURIER NEW,COURIER">gdl</FONT> is the pointer to the graphics display list
+<LI><FONT FACE="COURIER NEW,COURIER">c</FONT> is the 32-bit color value
+<LI><FONT FACE="COURIER NEW,COURIER">r, g, b, a</FONT> specify the RGBA color component with 8 bits of precision each
+<LI><FONT FACE="COURIER NEW,COURIER">m</FONT> is the minimum value clamp for LOD &lt; 1.0 in .8 format. When LOD is less than 1.0, it is used to modulate between the highest resolution map and the detail texture if enabled. This argument (m) sets a clamp to prevent the detailed texture from completely overtaking the original face texture
+<LI><FONT FACE="COURIER NEW,COURIER">l</FONT>is the LOD fraction in .8 format</UL>
+
+<B>Explanation</B><BR>
+These macros set the RDP internal color registers. They include the following macros:
+
+<FONT FACE="COURIER NEW,COURIER"><UL>
+<LI>gDPSetPrimColor
+<LI>gDPSetEnvColor
+<LI>gDPSetFillColor
+<LI>gDPSetFogColor
+<LI>gDPSetBlendColor</UL></FONT>
+
+Each of these also has a static version:
+
+<FONT FACE="COURIER NEW,COURIER"><UL>
+<LI>gsDPSetPrimColor
+<LI>gsDPSetEnvColor
+<LI>gsDPSetFillColor
+<LI>gsDPSetFogColor
+<LI>gsDPSetBlendColor</UL></FONT>
+
+The environment and primitive colors are in the color combiner (CC).  The fog and blend colors are in the blender (BL). The fill color is in the memory interface.<BR>
+<BR>
+
+The primitive color is a general-purpose color register in the CC.  For
+example, it can be used to represent a constant flat-shaded face color
+applied to a primitive. The primitive color register is also used in
+rendering a specular highlight. The texture map for a specular highlight
+determines the highlight intensity and the content of the primitive color
+register determines the highlight color.<BR>
+<BR>
+
+The fog color is a color register in the BL.  The N64 does fog by
+Gouraud shading the fog decay coefficient in the alpha channel of the RDP
+pipeline, with the BL using the decay to modulate the pipeline pixel
+color against an ambient fog color.  Because the RDP pipeline's alpha
+channel is used for Gouraud shading fog decay coefficients, it is not
+possible to Gouraud shade the normal alpha values.  This means that you
+cannot do variable transparency within a single triangle while using fog.
+You can still do constant transparency within a triangle by configuring
+the BL to use gDPSetBlendColor. Also keep in mind that Gouraud shading of
+fog decay coefficient over a large screen pixel distance will result in
+unrealistic fog.  This is because fog decays exponentially, not linearly.
+You can fix this by breaking up large geometry into piecewise linear
+sections to approximate exponential decay.<BR>
+<BR>
+
+The environment color is a general-purpose color register in the CC.  For
+example, it could be used to represent the ambient color of your scene.
+In an additional use, the LOD fraction could be used to modulate between
+texel color and environment color. This can keep the RDP pipeline in 1
+cycle mode and does a cheap 2 map MIP map, working well with any low
+frequency textures where the middle maps in a MIP map might not be so
+useful.  The environment color register is also used in rendering a
+second specular highlight. The texture map for a specular highlight
+determines the highlight intensity and the content of the environment
+color register determines the color of the second highlight.<BR>
+<BR>
+
+The 32-bit fill color is used only in fill mode.  Because the hardware
+writes 64 bits per clock in fill mode, the 32-bit color data represents two
+pixels, which are replicated to be a block of four pixels.  The details of
+how 32 bits fill into four 18-bit pixels are described in the "RDP State
+Machine" chapter of the <a target="new" href="../../pro-man/start/index.html">N64 Programming Manual</a>. (Note that composing the
+32-bit fill color out of two different 16-bit pixels could be used for
+special effects).<BR>
+<BR>
+
+There are two macros that help pack colors for color or Z-Buffer fill.
+GPACK_RGBA5551(r, g, b, a) and GPACK_ZDZ(z, dz) pack a 16-bit color for
+clearing these two buffers respectively.  The maximum Z-Buffer value is
+G_MAXFBZ. Keep in mind these macros return 16 bits and must be
+duplicated for the 32-bit fill color.<BR>
+<BR>
+
+The blend color is a general-purpose color register in the BL.  For
+example, you could use it to set the alpha component for constant
+transparency of an object while using fog.  The alpha component can also
+be used as a threshold value for conditional writes to the framebuffer.<BR>
+<BR>
+
+Use gDPSetFillColor to clear color and Z-Buffers.  Clearing Z
+requires that the pointer to the color buffer be set to equal the pointer to the z buffer prior to calling the gDPSetFillColor macro.<BR>
+<BR>
+
+<B>Note</B><BR>
+To do fog, the RSP graphics microcode must generate fog decay
+coefficients in the alpha channel. See <A HREF="../gsp/gSPSetGeometryMode.html">gSPSetGeometryMode</A>.
+
+<BR><BR><B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../gdp/gDPFillRectangle.html">gDPFillRectangle</A><BR>
+<A HREF="../gdp/gDPSetCycleType.html">gDPSetCycleType</A><BR>
+<A HREF="../gdp/gDPSetCombineMode.html">gDPSetCombineMode</A><BR>
+<A HREF="../gdp/gDPSetRenderMode.html">gDPSetRenderMode</A><BR>
+<A HREF="../gdp/gDPSetAlphaCompare.html">gDPSetAlphaCompare</A><BR></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

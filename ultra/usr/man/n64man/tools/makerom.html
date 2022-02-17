@@ -1,0 +1,497 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../tools/tools.html">
+            <IMG BORDER=0 SRC="../images/mh_tools.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0">
+<H2>makerom (IRIX 6.x)<BR>
+makerom (IRIX 5.3)</H2>
+</FONT>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+makerom [-D name[=def]] [-I dir] [-U name]
+  [-d] [-m] [-o] 
+  [-b bootstrap filename] [-h header filename]
+  [-s romsize] [-f filldata] 
+  [-p pif2 bootstrap filename] [-r romfile]
+  specfile</PRE></FONT>
+
+<B>Explanation</B><BR>
+It creates a ROM cartridge image and associated ELF object files. That is, it creates a ROM image suitable for downloading into the
+Game Pak ROM by the <FONT FACE="COURIER NEW,COURIER"><A HREF="../tools/gload.html">gload</A></FONT> tool.  It takes as input the specification file (specfile) that describes the organization of object and raw data files
+into segments. Then <FONT FACE="COURIER NEW,COURIER">makerom</FONT> invokes a link editor to resolve all undefined references, perform relocations, and create ELF object files for the Nintendo 64 debugger, <FONT FACE="COURIER NEW,COURIER"><A HREF="../tools/gvd.html">gvd</A></FONT>.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">makerom</FONT> tool intentionally loads the first 8K bytes with the default bootstrap, pif bootstrap, and header files, unless you override these built-in defaults with command line options.
+
+<BR><BR><B>Command Line Options</B><BR>
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-D</B><I>name[=def]</I></FONT> Is passed to cpp(1) for use during its invocation.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-I</B><I>directory</I></FONT> Is passed to cpp(1) for use during its invocation.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>U</B><I>name</I></FONT> Is passed to cpp(1) for use during its invocation.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-d</B></FONT> Gives a verbose account of all the actions that <FONT FACE="COURIER NEW,COURIER">makerom</FONT>
+takes, leaving temporary files created that are ordinarily
+deleted.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-m</B></FONT> Prints a link editor map to standard output for diagnostic
+purposes.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-o</B></FONT> Disables checking of overlapping sections. By default,
+segments with direct-mapped CPU addresses are checked to
+ensure that the underlying physical memory mappings do not
+conflict.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-b &lt;bootstrap filename&gt;</B></FONT> Overrides the default filename (<B>/usr/lib/PR/Boot</B>). This
+file must be in <FONT FACE="COURIER NEW,COURIER">COFF</FONT> format, and is loaded as 1K bytes into the ramrom memory.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-h &lt;header filename&gt;</B></FONT>
+Overrides the default ROM header filename (<B>/usr/lib/PR/romheader</B>).  This file is in ASCII format, and each character is converted to hex and loaded in
+sequence, starting at the beginning of ramrom memory. Currently only 32 bytes are used.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-s &lt;romsize (Mbits)&gt;</B></FONT> Creates a ROM image with the specified size. This option is
+required for making the real Game Pak.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-f &lt;filldata (0x0 - 0xff)&gt;</B></FONT>
+Sets the fill pattern for "holes" within a ROM image. The
+argument <FONT FACE="COURIER NEW,COURIER">filldata</FONT> is a one-byte hexadecimal constant. Use this option when you create a ROM image using the <FONT FACE="COURIER NEW,COURIER">-s</FONT> option. It is required for making the real Game Pak.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-p &lt;pif bootstrap file&gt;</B></FONT> Overrides the pif bootstrap filename (<B>/usr/lib/PR/pif2Boot</B>).  This file must be in COFF format. It is loaded as 4K bytes into the ramrom memory.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-r</B></FONT> Provides an alternate ROM image file; the default is 'rom'.
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-B 0</B></FONT> An option that concerns only games supported by 64DD. Using this option creates a startup game. For information on startup games, please see Section 15.1, "Restarting," in the N64 Disk Drive Programming Manual.
+</UL>
+
+The <FONT FACE="COURIER NEW,COURIER">makerom</FONT> tool searches in three places for the bootstrap, pif bootstrap, and ROM header files in this order:
+
+<UL><LI>$(ROOT)/&lt;filename&gt;
+<LI>$(WORKAREA)/&lt;filename&gt;
+<LI>/&lt;filename&gt;</UL>
+
+The ROOT and WORKAREA shell environment variables are used internally at Nintendo. The <FONT FACE="COURIER NEW,COURIER">makerom</FONT> tool's use of these variables allow our internal developers to use sw modules created within their personal development source directories, even if the same modules are installed on the development system upon
+which they are running their new code.  If these variables are not set,
+you must supply the full pathname for these files, should you wish to
+override the defaults built into <FONT FACE="COURIER NEW,COURIER">makerom</FONT>.
+The spec file is preprocessed with the C language preprocessor (cpp) so
+that header files may be used for consistency with source and #defines
+may be used for clarity.<BR>
+<BR>
+
+Following is the grammar of the specification file:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+&lt;specFile&gt;      :&lt;segmentList&gt; &lt;waveList&gt;
+
+&lt;segmentList&gt;   :&lt;segment&gt;
+                |&lt;segmentList&gt; &lt;segment&gt;
+
+&lt;segment&gt;       :beginseg &lt;segStmtList&gt; endseg
+
+&lt;segStmtList&gt;   :&lt;segStatement&gt;
+                |&lt;segStmtList&gt; &lt;segStatement&gt;
+
+&lt;segStatement&gt;  :name &lt;segmentName&gt;
+                |address &lt;constant&gt;
+                |after &lt;segmentName&gt;
+                |after max[&lt;segmentName&gt;,&lt;segmentName&gt;]
+                |after min[&lt;segmentName&gt;,&lt;segmentName&gt;]
+                |include &lt;filename&gt;
+                |maxsize &lt;constant&gt;
+                |align &lt;constant&gt;
+                |flags &lt;flagList&gt;
+                |number &lt;constant&gt;
+                |entry &lt;symbol&gt;
+                |stack &lt;stackValue&gt;
+
+&lt;flagList&gt;      :&lt;flag&gt;
+                |&lt;flagList&gt; &lt;flag&gt;
+
+&lt;flag&gt;          :BOOT
+                |OBJECT
+                |RAW
+
+&lt;stackValue&gt;    :&lt;constant&gt;
+                |&lt;symbol&gt;
+                |&lt;symbol&gt; + &lt;constant&gt;
+
+&lt;waveList&gt;      :&lt;wave&gt;
+                |&lt;waveList&gt; &lt;wave&gt;
+
+&lt;wave&gt;          :beginwave &lt;waveStmtList&gt; endwave
+
+&lt;waveStmtList&gt;  :&lt;waveStatement&gt;
+                |&lt;waveStmtList&gt; &lt;waveStatement&gt;
+
+&lt;waveStatement&gt; :name &lt;waveName&gt;
+                |include &lt;segmentName&gt;
+</PRE></font>
+
+<P>
+The `name' statement when used in the segment definition provides <FONT FACE="COURIER NEW,COURIER">makerom</FONT>
+with a string that it associates with the segment.  It uses this for two
+reasons:
+
+<UL><LI>To associate the segment with "waves" described below
+<LI>To create some predefined symbols that may be referenced by code segments</UL>
+
+These symbols should be declared as an external array to
+avoid their interpretation as gp-relative data.  The symbols, and their
+meaning are:
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentStart</B></FONT> is the beginning virtual or segment address of 
+the segment
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentEnd</B></FONT> is the ending virtual or segment address of 
+the segment plus one
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentTextStart</B></FONT> if any program text (instructions) are 
+present, this is the starting address of the text
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentTextEnd</B></FONT> if any program text (instructions) are 
+present, this is the ending address of the text 
+plus one
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentDataStart</B></FONT> if any program initialized data is present, this is 
+the starting address of this section
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentDataEnd</B></FONT>if any program initialized data is present, this is 
+the ending address of this section plus one
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentBssStart</B></FONT> if any program uninitialized data is present, this is 
+the starting address of this section
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentDataEnd</B></FONT> if any program uninitialized data is present, this is
+the ending address of this section plus one
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentRomStart</B></FONT> is the beginning ROM address of the segment
+
+<LI><FONT FACE="COURIER NEW,COURIER"><B>_`name'SegmentRomEnd</B></FONT> is the ending ROM address of the segment plus one
+</UL>
+The `flags' statement provides some specific information about the
+segment.  Segments flagged as <FONT FACE="COURIER NEW,COURIER">OBJECT</FONT> are composed of nonshared ELF
+relocatables; otherwise, they are of type RAW and consist of
+uninterpreted data.  The segment flagged as the <FONT FACE="COURIER NEW,COURIER">BOOT</FONT> segment is of
+special significance.  It must be the first segment in the specification
+file, and it is linked at a fixed address.  The `entry' statement gives
+the symbol that will be jumped to immediately after the rom image is
+loaded by <FONT FACE="COURIER NEW,COURIER">gload</FONT>.  The `stack' segment specifies the beginning stack
+address of the boot code. It may either be a constant virtual address,
+or optionally, a program segment symbol name plus an offset.  The later
+form is often useful since stacks grow backwards (towards smaller
+addresses) as procedures are invoked.<BR>
+<BR>
+
+The `address', `number', and `after' statements are ways of indicating
+the beginning virtual address of an <FONT FACE="COURIER NEW,COURIER">OBJECT</FONT> segment.  The `address'
+statements are primarily intended for segments that will be executed by
+the CPU, whereas segments numbered by the `number' segment are primarily
+intended to be accessed by the RSP.  The `after' keyword can place a
+segment directly after the address range of another segment; this can be
+useful for preventing holes in the address space while easily
+accommodating changes in segment sizes.<BR>
+<BR>
+
+Each of one or more `include' statements of a segment definition
+specifies files that comprise the segment.  If the segment has been
+flagged with <FONT FACE="COURIER NEW,COURIER">OBJECT</FONT>, the specified file should be a nonshared ELF
+relocatable; a RAW file can be of any type.<BR>
+<BR>
+
+
+The `maxsize' statement can be used to enforce a size restriction (in
+bytes) that the total segment size must not exceed.<BR>
+<BR>
+
+The `align' statement can be used to align a segment to a given number of
+bytes.  By default, segments are aligned to 16 byte (128 bit) boundaries.<BR>
+<BR>
+
+After the segments have been defined, a definition for one or more
+"waves" is expected.  Each wave definition results in a different ELF
+object file being created.  Multiple waves may be used as desired to keep
+distinct address spaces, perhaps for dramatically different scenes and
+resulting memory layouts.<BR>
+<BR>
+
+The `name' statement of a wave definition will be used as the file name
+of the resulting ELF object file that corresponds to the wave.  The
+`include' statement of a wave definition specifies which of the
+previously defined segments are to be included in a wave. The inclusion
+of the a segment into a wave makes its symbols available to all other
+segments of the wave.<BR>
+<BR>
+
+<B>Example</B><BR>
+The following spec file describes an application with two segments:  a
+boot program segment and a static data segment.  A single ELF object file
+named <B>rotate</B> is created.
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+beginseg
+   name "program"
+   flags BOOT OBJECT
+   entry mainproc
+   stack mainThreadStack + 0x1000
+   include "rotate.o"
+endseg
+
+beginseg
+   name "static"
+   flags OBJECT
+   number 1
+   include "square.o"
+endseg
+
+beginwave
+   name "rotate"
+   include "program"
+   include "static"
+endwave</PRE></FONT>
+
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../tools/gload.html">gload</A><BR>
+<A HREF="../tools/gvd.html">gvd</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+ <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+    <TR VALIGN="top" ALIGN="center" WIDTH=312>
+  
+
+  <TD COLSPAN=1 WIDTH=52>
+<IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+    </TR>
+    <TR VALIGN="top" ALIGN="center">
+  
+
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../al/al.html">
+<IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../gdp/gdp.html">
+<IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../gdsp/gdsp.html">
+<IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../gsp/gsp.html">
+<IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../gt/gt.html">
+<IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../gu/gu.html">
+<IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+    </TR>
+    <TR VALIGN="top" ALIGN="right">
+  
+
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../math/math.html">
+<IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../nusys/nusys.html">
+<IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../os/os.html">
+<IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../sp/sp.html">
+<IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../uh/uh.html">
+<IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+  <TD COLSPAN=1 WIDTH=52>
+<A HREF="../64dd/64dd.html">
+<IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+ </TABLE>
+
+ <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+    <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+  <TD><BR><BR>
+  <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+  </TD>
+    </TR>
+    <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+  <TD>
+  <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+  <BR>
+<B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+Last updated March 1998
+  </B>
+  </FONT>
+  </TD>
+    </TR>
+ </TABLE>
+ </FONT>
+ </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

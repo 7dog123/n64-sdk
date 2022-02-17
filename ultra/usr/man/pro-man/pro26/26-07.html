@@ -1,0 +1,824 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 26</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro26/index26.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro26/index26.8.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">N64 Game Boy Pak</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Description of the N64 Game Boy Pak</b>
+<br>
+The N64 Game Boy Pak is a special N64 peripheral device that enables the N64 to read data from and write data to an ordinary Game Boy Game Pak. To use this device, plug the N64 Game Boy Pak into an N64 Controller that is connected to an N64 Control Deck. Then insert an ordinary Game Boy Game Pak into the N64 Game Boy Pak as illustrated.
+<P>
+<b>Figure 26.7.1</B> &nbsp;N64 Game Boy Pak
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-13.gif"></tr></td></table>
+
+<P>
+<a name="02"></a>
+<b>Features of the N64 Game Boy Pak</b>
+<br>
+The main features of the N64 Game Boy Pak are described below:
+
+<ul>
+<li>The N64 system can freely read data from and write data to memory in the Game Boy Game Pak in the same way memory is accessed by the Game Boy.
+<P>
+<li>No special format is used to gain access to the Game Boy Game Paks, so you can directly read from and write to memory addresses. However, data must be sent and received in 32-byte units.
+<P>
+<li>The N64 Game Boy Pak supports Game Boy Games that contain MBC1, MBC3, and MBC5 memory bank Controllers. MBC2 is <u>not</u> supported. Please ask us how to work with Game Boy Game Paks that use other types of memory Controllers. 
+<P>
+<li>Support for Game Boy Color is planned for the future.
+<P>
+<li>N64 does not automatically supply power to the N64 Game Boy Pak; you have total control over the power. You simply turn power on or off by calling software functions. Therefore, even when the power to the N64 Control Deck is turned on, you can insert (or remove) a Game Boy Game Pak.
+<P>
+<li>Although the data transfer may vary some depending upon the N64 Operating System version, it takes around 1.5 to 2.0 ms to transfer 32 bytes between the N64 and the N64 Game Boy Pak.
+</ul>
+
+
+<P>
+<a name="03"></a>
+<b>Programming the N64 Game Boy Pak</b>
+<br>
+
+This section explains the programming procedure used to gain access to the memory in the Game Boy Game Pak by using the N64 Game Boy Pak. The programming process is illustrated in Figure 26.7.2, and described below.
+
+<P>
+<b>Figure 26.7.2</B> &nbsp;Programming Procedure
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-14.gif"></tr></td></table>
+
+<ul>
+<li>The first step is to initialize the N64 Game Boy Pak and check its status. 
+<P>
+<li>Turn power on to the Game Boy Game Pak inserted in the N64 Game Boy Pak.
+<P>
+<LI>Read the registration area in the Game Boy Game Pak ROM to make sure that the correct Game Pak has been inserted.
+<P>
+<LI>Check to see if the Game Pak connector has good contact.</ul>
+
+<P>
+Only after these processes end normally should you attempt to read from or write to the Game Boy Game Pak. When you no longer need access to the Game Boy Game Pak, check the status of the N64 Game Boy Pak again to see whether an error occurred during the read/write session.
+
+<P>
+The following section explains the functions that are performed in each process. A more detailed explanation of these procedures (including error branching) is explained in <a target="main" href="../pro26/26-07.html#05">Section 26.7.5, "Examples Using N64 Game Boy Pak Functions."</a>
+
+<P>
+<a name="04"></a>
+<b>N64 Game Boy Pak Function Specifications</b>
+<br>
+This section explains the library functions used in the N64 program to handle the N64 Game Boy Pak.  Please refer to the <i>"DMG Technical Manual"</i> and the <i>"Game Boy Memory Controller Manual"</i> for details about the Game Boy memory map and register operations. 
+<P>
+There are a total of six N64 Game Boy Pak functions:
+
+<UL>
+<LI>To initialize the N64 Game Boy Pak, call <FONT FACE="COURIER NEW,COURIER">osGbpakInit().</FONT>
+<P>
+<LI>To check the status, call <FONT FACE="COURIER NEW,COURIER">osGbpakGetStatus().</FONT>
+<P>
+<LI>To turn power ON or OFF to the Game Boy Game Pak, call <FONT FACE="COURIER NEW,COURIER">osGGbpakPower().</FONT>
+<P>
+<LI>To read the registration area in the Game Boy Game Pak ROM, call <FONT FACE="COURIER NEW,COURIER">osGbpakReadId().</FONT>.
+<P>
+<LI>To detect a poor Game Boy Game Pak connection, call <FONT FACE="COURIER NEW,COURIER">osGbpakCheckConnector().</FONT>
+<P>
+<LI>To read from or write to the Game Boy Game Pak memory, call <FONT FACE="COURIER NEW,COURIER">osGbpakReadWrite().</FONT>.
+</UL>
+
+<P>
+These functions include internal operations that wait for a message from the serial interface (SI). Therefore, you can boost efficiency by creating threads for use by these N64 Game Boy Pak processes.
+
+
+<P>
+<a name="04.1"></a>
+<b>Initialization Function — osGbpakInit</b>
+<br>
+Initializes the hardware and the structures for controlling the N64 Game Boy Pak. 
+<P>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+
+s32 osGbpakInit(OSMesgQueue *siMessageQ, OSPfs *pfs, int channel);
+
+siMessageQ : The initialized message queue connected to OS_EVENT_SI
+pfs	     : Structure for controlling the N64 Game Boy Pak 
+channel	     : Controller channel number  
+</pre></font>
+
+<P>
+<b>Description</b>
+<br>
+osGbpakInit() is the function for initializing the N64 Game Boy Pak.  It initializes the pfs structure and the hardware.  There is thus no need to initialize the pfs structure on the application side.  siMessageQ is the initialized message queue connected to OS_EVENT_SI.  Please refer to osSetEventMesg() for information on how to make this connection.  
+<P>
+To use the N64 Game Boy Pak, you need to call this function first.  If the N64 Game Boy Pak is reinserted, please call the function again.  However, in this case you must call osContInit() before calling osGbpakInit() in order to internally initialize the OS.  
+<P>
+The osGbpakInit() function performs an internal 0.2 second wait process because it takes a maximum of  0.2 second for the N64 Game Boy Pak to stabilize after the power supply is turned ON. This wait process involves a 0.2s count using the CPU timer (osSetTimer() function).  Thus, before calling this function, you need to call the osCreateViManager() function.  
+<P>
+If the function terminates normally, a value of 0 is returned.  If an error occurs, one of the following error codes is returned: 
+
+<P>
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified controller. 						
+<P>
+<b>PFS_ERR_DEVICE</b>
+<br>
+Some device other than the N64 Game Boy Pak is inserted in the controller. 
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>
+Data transfers with the controller have failed.  The controller may not be connected correctly, or there may be some problem with the N64 Game Boy Pak or the controller connector.  
+
+<P>
+<a name="04.2"></a>
+<b>Detect Status Function — osGbpakGetStatus</b>
+<br>
+Gets status of the N64 Game Boy Pak
+
+<P>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+
+s32 osGbpakGetStatus(OSPfs *pfs, u8 *status);
+
+pfs	   : Structure for controlling the N64 Game Boy Pak 
+status	: The detected status 
+</pre></font>
+
+<P>
+<b>Description</b>
+<br>
+The osGbpakGetStatus() function is used to detect the status of the N64 Game Boy Pak.  The pfs structure must be initialized first with the osGbpakInit() function.  The detected result is returned to "status."  The status can be one of the following:  
+
+<P>
+<b>OS_GBPAK_GBCART_ON</b>
+<br>
+This bit indicates that a Game Boy game pak is inserted.  It is returned when a Game Boy game pak is inserted in the N64 Game Boy Pak.  
+
+<P>
+<b>OS_GBPAK_GBCART_PULL</b>
+<br>
+This bit indicates that removal of a Game Boy game pak has been detected.  It is returned once the Game Boy game pak has been removed. When there is a Game Boy game pak in the N64 Game Boy Pak and the  osGbpakGetStatus() or osGbpakReadId() function is called, this bit becomes 0.   
+
+<P>
+<b>OS_GBPAK_POWER</b>
+<br>
+This bit indicates the state of power supply to the Game Boy game pak. When this bit is 1, power is ON;  when this bit is 0, power is OFF.  Note that this only checks for power on the software side, and does not confirm that the hardware has a stable power supply.  The status of the latter cannot be checked on the software side.  For details, please refer to osGbpakPower().  
+
+<P>
+<b>OS_GBPAK_RSTB_DETECTION</b>
+<br>
+This bit indicates that the Reset signal has been detected.   When the Game Boy game pak is reset, this bit becomes 1.   If either the osGbpakGetStatus() or the osGbpakReadId () function is called when a Game Boy game pak is inserted, this bit returns to 0.  Because this bit becomes 1 when the power is turned on, you need to clear it back to 0 after the power is turned on by calling the osGbpakGetStatus() or the osGbpakReadId () function so the bit status can be used to detect a Reset signal.
+
+<P>
+If the function terminates normally, a value of 0 is returned.  If an error occurs, one of the following error codes is returned:
+
+<P>
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified controller.  						
+
+<P>
+<b>PFS_ERR_DEVICE</b>
+<br>
+A device other than the N64 Game Boy Pak is inserted in the controller.  
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>
+Data transfers with the controller have failed.  The controller may not be connected correctly, or there may be some problem with the N64 Game Boy Pak or the controller connector. 
+
+<P>
+<b>PFS_ERR_NO_GBCART</b>
+<br>
+No Game Boy game pak is inserted in the N64 Game Boy Pak.  
+
+<P>
+<b>PFS_ERR_NEW_GBCART</b>
+<br>
+A Game Boy game pak has been inserted and removed.   
+
+<P>
+If you remove and reinsert a Game Boy game pak and then reset N64, the flag for insertion and removal of the Game Boy game pak will remain up.  Therefore you need to be careful, because a PFS_ERR_NEW_GBCART error will be returned if osGbpakInit() and then osGbpakGetStatus() are executed after resetting N64.  The generation of such an error can be avoided by using osGbpakReadId() to check the status of the N64 Game Boy Pak after initialization.  
+
+<P>
+<a name="04.3"></a>
+<b>Game Boy Game Pak Power ON/OFF  — osGbpakPower</b>
+<br>
+Turns power ON/OFF to the Game Boy game pak inserted in the N64 Game Boy Pak.  
+<P>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+
+s32 osGbpakPower (OSPfs *pfs, s32 flag);
+
+pfs	 : Structure for controlling the N64 Game Boy Pak
+flag	: Specifies power ON/OFF  OS_GBPAK_POWER_ON	(Power ON)
+OS_GBPAK_POWER_OFF				(Power OFF)
+</pre></font>
+
+<P>
+<b>Description</b>
+<br>
+The osGbpakPower() function controls the supply of power to the Game Boy game pak.  Power is turned ON or OFF according to the value specified by the flag.  If power is turned from OFF to ON, the function performs an internal process for more than 0.12 second to wait for the power supply to stabilize.  Since this process uses the CPU timer (osSetTimer() function), you need to call the osCreateViManager() function before calling this function.   
+<P>
+Also, please use the osGbpakInit() function to initialize the pfs structure in advance.  
+<P>
+If the Game Boy game pak is not accessed for an extended period of time, use the osGbpakPower() function to turn the power OFF.  Then turn the power back ON the next time it is accessed.  
+<P>
+If the function terminates normally, a value of 0 is returned.  If an error occurs, one of the following error codes is returned:
+
+<P>
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified controller.							
+
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>
+Data transfers with the controller have failed.  The controller may not be connected correctly, or there may be some problem with the N64 Game Boy Pak or the controller connector. 
+
+<P>
+<a name="04.4"></a>
+<b>Reading the Game Boy Game Pak ROM Registration Area — osGbpakReadId</b>
+<br>
+Checks the registration area in the Game Boy game pak ROM 
+<P>
+
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+
+s32 osGbpakReadId (OSPfs *pfs, OSGame BoypakId *id, u8 *status);
+
+pfs	: Structure for controlling the N64 Game Boy Pak
+id	 : Pointer to the registration data structure in the Game Boy game pak ROM 
+status	: The detected status
+
+typedef struct {
+u16 fixed1;					Fixed data (0x00,0xc3)
+u16 start_address;						Program start address
+u8 nintendo_chr[0x30];						"Nintendo" character data
+u8 game_title[16];						Game title
+u16 company_code;					Company code
+u8 body_code;						Body code
+u8 cart_type;						Game pak type
+u8 rom_size;						ROM size
+u8 ram_size;						RAM size
+u8 country_code;						Country code
+u8 fixed_data;						Fixed data (0x33)
+u8 version;					Mask ROM version number 
+u8 isum;						Complement check
+u16 sum;						Sum check
+           
+} OSGame BoypakId;		: Registration data structure in 
+the Game Boy game pak ROM 
+</pre></font>
+
+<P>
+
+<b>Note:</b> Please refer to the "<i>Game Boy Master ROM Submission Procedure</i>" document for details about these variables.
+
+<P>
+
+<b>Description</b>
+<br>
+The osGbpakReadId () function reads the data in the registration area (0x100 ~ 0x14f) of the Game Boy game pak ROM and checks the data to confirm that the Game Boy game pak can be accessed correctly.
+
+<P>
+The following three processes are performed internally:
+
+<ul>
+<li>First, the N64 Game Boy Pak status is examined and the value is returned to "status."  This operation is the same as the osGbpakGetStatus() function.  
+<P>
+<li>Next, the status is checked, and if things are normal, then power is turned ON to the Game Boy game pak. This operation is the same as the osGbpakPower() function.  
+<P>
+<li>After these operations are finished, the registration area in the Game Boy game pak ROM is accessed.  The registration area data is read to check whether the ”Nintendo” character data area is correct, and then to confirm that the complement check is correct.  If the data is read correctly, then the registration data is stored in *id.  If the data cannot be read correctly, then the error "PFS_ERR_CONTRFAIL" is returned.
+</ul>
+
+<P>
+Note that this function does not check the game pak itself.  Please do this from the application side.  Specifically, please check the game title and the company code.  Since the game cannot be specified with the game title alone, please make sure to check the company code as well.  However, some of the first game paks released for the Game Boy may not contain the company code.  Please inquire with us about ways to check game paks that do not carry the company code.  
+
+<P>
+Call this function after initializing the N64 Game Boy Pak and before reading and writing data.  Since this function checks the status like osGbpakGetStatus() and turns the power ON like osGbpakPower(), neither one of these two other functions needs to be called. 
+
+<P>
+If the function terminates normally, a value of 0 is returned.  If an error occurs, one of the following error codes is returned:
+
+<P>
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified controller.
+
+<P>
+<b>PFS_ERR_DEVICE</b>
+<br>
+A device other than the N64 Game Boy Pak is inserted in the controller.
+
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>
+Data transfers with the controller have failed.  The controller may not be connected correctly, or there may be some problem with the N64 Game Boy Pak or the controller connector. 
+
+<P>
+<b>PFS_ERR_NO_GBCART</b>
+<br>
+No Game Boy game pak is inserted in the N64 Game Boy Pak.  
+
+
+<P>
+<a name="04.5"></a>
+<b>Detecting Poor Contact by Connector—  osGbpakCheckConnector</b>
+<br>
+Detects poor contact by the Game Boy game pak connector.
+
+<P>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+
+s32 osGbpakCheckConnector(OSPfs *pfs, u8 *status);
+</pre></font>
+
+<P>
+<b>Description</b>
+<br>
+The osGbpakCheckConnector() function confirms that the N64 Game Boy Pak and the Game Boy game pak are firmly connected together.  It verifies the operation of every address line by accessing specific areas of ROM and RAM (when there is RAM).  
+
+<P>
+If you call osGbpakReadWrite() without first calling this function, data could be read or written to the wrong address because of a poor connection.  Therefore, please make sure to call the osGbpakCheckConnector() function before calling the osGbpakReadWrite() function. 
+
+<P>
+If the function terminates normally, a value of 0 is returned.  If an error occurs, one of the following error codes is returned:
+
+<P>
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified controller.
+
+<P>
+<b>PFS_ERR_DEVICE</b>
+<br>
+A device other than the N64 Game Boy Pak is inserted in the controller.
+
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>
+Data transfers with the controller have failed.  The controller may not be connected correctly, or there may be some problem with the N64 Game Boy Pak or the controller connector. 
+
+<P>
+<b>PFS_ERR_NO_GBCART</b>
+<br>
+No Game Boy game pak is inserted in the N64 Game Boy Pak.  
+Note that the osGbpakCheckConnector() function only supports Game Boy game paks using MBC1,3,5 or no memory controller at all.  If the Game Boy game pak uses some other memory controller, please refer to the procedure described below and create a check program on the application side.
+
+<P>
+The paragraphs below explain the processes which are carried out by osGbpakCheckConnector() function.  More specifically, they describe how the ROM area data and the RAM area data are used to verify operation of the address lines.
+
+<P>
+<u>ROM area check</u>
+<br>
+From ROM addresses [0x0000,0x0080,0x0100,0x0200,0x0400,0x0800,0x1000,0x2000,0x4000 ] read the first 32 bytes of data, and compare this with the next adjacent 32 bytes of data.  Next, compare the data in address 0x0000 with the data at all the addresses in 32-byte units.  If this check does not yield any 32-byte data units that are the same, then proceed to the RAM area check described below.  If a 32-byte unit is found to be exactly the same, then shift 32 bytes from the address of both data sets and compare again.  If the data is still the same after repeating this process four times, then generate an error that there is some problem with the address lines, and terminate.
+
+<P>
+The addresses used here are used once for each address line from bit 7 to bit 14.  Thus, if the data is exactly the same, then chances are high there is a disparity in the address lines.  As for the address lines for bit 6 and below, they have already been confirmed from reading the registration area in ROM.  The address line for bit 15 is verified in procedure (2) below.
+
+<P>
+<u>RAM area check</u>
+<br>
+Next, compare 32 bytes of data from ROM area address 0x2000 with 32 bytes of data from RAM area address 0xa000.  If the compared blocks of data are different, terminate normally.  If the data is still the same after shifting 32 bytes and comparing again up to four times, then generate an error that there is some problem
+with the address lines, and terminate.
+<P>
+Bit 15 could be verified with address 0x8000, but this part cannot be accessed with the indicated RAM area, so address 0xa000 is used.
+
+
+<P>
+<a name="04.6"></a>
+<b>Reading and Writing to Game Boy Game Pak Memory — osGbpakReadWrite</b>
+<br>
+Read/write process to the Game Boy game pak memory
+
+<P>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include &#060ultra64.h&#062
+
+s32 osGbpakReadWrite (OSPfs *pfs, u16 flag, u16 address, u8 *buffer, u16 size);
+
+pfs	   : Structure for controlling the N64 Game Boy Pak
+flag	  : OS_READ (read time), OS_WRITE (write time)
+address	: Game Boy game pak CPU address
+buffer	 : Pointer to buffer in RDRAM
+size	   : Read/write byte size
+</pre></font>
+
+<p>
+<b>Description</b>
+<br>
+The osGbpakReadWrite () function accesses the Game Boy game pak memory via the N64 Game Boy Pak.  It can be used to access the game pak memory when a Game Boy game pak is inserted in the N64 Game Boy Pak.  The pfs structure must be initialized first with the osGbpakInit() function.
+<P>
+Specify in "flag" either OS_READ or OS_WRITE.  When OS_READ is specified, data is read from the Game Boy game pak, while OS_WRITE specifies writing data to the Game Boy game pak.  Specify in "address" the value of the Game Boy game pak's CPU address (0x0000 ~ 0xbfff).  Briefly put, by specifying the same address accessed by the Game Boy CPU, it becomes possible to access the ROM and RAM in the Game Boy game pak.  However, the values in "address" and "size" must be multiples of 32.
+<P>
+Caution is required when dealing with the returned values.  This function cannot determine whether the Game Boy game pak has been pulled out, or whether Game Boy game paks have been exchanged.  That is to say, a "0" (normal termination) is returned even if the Game Boy game pak has been removed during function operations.  Thus, please confirm the status before and after calling this function to make sure the Game Boy game pak has not been removed.
+<P>
+Furthermore, please note that this function terminates normally without returning an error even when it is executed while the power is OFF to the Game Boy game pak.  Thus, you may think you have written data to the game pak when in fact nothing has been done.
+<P>
+If the function terminates normally, a value of 0 is returned.  If an error occurs, one of the following error codes is returned:
+
+<P>
+<b>PFS_ERR_NOPACK</b>
+<br>
+Nothing is inserted in the specified controller.
+
+<P>
+<b>PFS_ERR_CONTRFAIL</b>
+<br>
+Data transfers with the controller have failed.  The controller may not be connected correctly, or there may be some problem with the N64 Game Boy Pak or the controller connector. 
+
+
+<P>
+<a name="05"></a>
+<b>Examples Using N64 Game Boy Pak Functions</b>
+<br>
+Below we provide two examples that show concrete ways to the use the various N64 Game Boy Pak functions.  One concerns reading and writing data to the Game Boy game pak, while the other deals with the exchange of a game pak.  
+<P>
+In order to facilitate an understanding of the overall process of each function, the functions in these examples include processes that branch on the evaluation of errors.  In a real program, it would be more efficient to create a separate error evaluation function, and transfer to this function whenever an error arises in any of the other functions.  
+<P>
+Also, the messages used here are strictly examples, so with the exception of one set message, please use messages as you see fit on the application side.  Please see <a target="main" href="../pro26/26-07.html#step012">item #12, "Special error messages,"</a> for an explanation about the one set message that must be displayed as specified.
+<P>
+For further details, please also refer to the sample programs in the /usr/src/PR/demos/Game Boypak/ directory.
+
+
+<P>
+<a name="05.1"></a>
+<b>Reading and Writing Data to the Game Boy Game Pak</b>
+<br>
+Figure 26.7.3 provides a flow chart for the procedure described below. The following steps are performed:
+
+<ul>
+<li>The osGbpakInit() function is used to initialize the N64 Game Boy Pak.
+<P>
+<li>The osGbpakReadId() function is used to check the status of the N64 Game Boy Pak, to turn power ON to the Game Boy game pak, and to access the registration area in ROM.
+<P>
+<li>The osGbpakCheckConnector() function is used to determine whether the Game Boy game pak connector is making poor contact.
+<P>
+<li>The osGbpakReadWrite() function is used to access the Game Boy game pak memory.
+<P>
+<li>The osGbpakGetStatus() function is used to check the status of the N64 Game Boy Pak, and to confirm that the Game Boy game pak was not removed during the memory access process.
+</ul>
+
+<P>
+<b>Figure 26.7.3</B> &nbsp;Reading and Writing Data to the Game Boy Game Pak
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-15.gif"></tr></td></table>
+<P>
+
+Each of these five processes is described in detail below.
+
+<ol>
+<a name="step1"></a>
+<li>Initialization of N64 Game Boy Pak 
+<br>
+In this process, the osGbpakInit() function is called in order to initialize the N64 Game Boy Pak.   Please check the value returned by the osGbpakInit() function on the program side.  If there is a device error, display a message and try to initialize again.   One of three device errors can arise: PFS_ERR_NOPACK (nothing is inserted in the specified controller), PFS_ERR_DEVICE (some device other than the N64 Game Boy Pak is inserted in the controller) or PFS_ERR_CONTRFAIL (the controller or the N64 Game Boy Pak may be damaged, or there is a bad connection).
+<P>   
+If the N64 Game Boy Pak needs to be reinserted because of an error, please set it up so the procedure can be restarted by pressing a key.  Note that an error message may arise due to a poor connection if the Restart button is pressed at the same time that the N64 Game Boy Pak is inserted in the controller.
+
+<P>
+<a name="step2"></a>
+<li>Check N64 Game Boy Pak Status, Turn Power on to Game Boy Game Pak, Access Registration Area in ROM
+<br>
+In this step, the osGbpakReadId() function is called to perform the processes described below.  The Game Boy game pak is accessed for this step as well as for steps (3) and (4), so please display a message up until the end of step (5) saying something like "Accessing.  Please do not remove the Game Boy game pak." 
+<P>
+The first process performed by the osGbpakReadId() function is to read and check the status of the N64 Game Boy Pak.  If this process terminates normally, then power is turned on to the Game Boy game pak. After that, the registration area in the Game Boy game pak ROM is read in order to verify that the memory can be accessed correctly.  Specifically, the "Nintendo" character data area and the complement check are verified.
+<P>
+On the program side, if a device error occurs, jump the process back to step (1), and if a Game Boy game pak error occurs, display a message and repeat step (2).  In the case of a PFS_ERR_CONTRFAIL device error, please make sure to display the following message:
+
+<P> "There is a problem with the Game Boy game pak connector.  Turn off power to the N64 console and refer to the N64 Game Boy Pak instruction manual."  
+
+<P>
+The two possible Game Boy game pak errors are PFS_ERR_NO_GBCART (a Game Boy game pak is not inserted) and PFS_ERR_NEW_GBCART (the Game Boy game pak was removed at least once after initialization).  If the Game Boy game pak needs to be reinserted, please set it up so the procedure can be restarted by pressing a key.
+<P>
+Next, read and check the registration area data, and make a separate check to verify that the correct Game Boy game pak is inserted.  Specifically, check the game title and the company code.  The osGbpakReadId() function does not do this, so please check from the application side.
+
+<P>
+<a name="step3"></a>
+<li>Determine Whether the Game Boy Game Pak Connector is Making Poor Contact
+<br>
+In this process, the osGbpakCheckConnector() function is called and used to check whether the Game Boy game pak connector is making poor contact.
+<P> 
+Please make sure to execute this function before accessing the Game Boy game pak with the osGbpakReadWrite() function.
+<P>
+On the program side, if a device error occurs, jump the process back to step (1), and if a Game Boy game pak error occurs, display a message and execute step (2).  In the case of a PFS_ERR_CONTRFAIL device error, please make sure to display the following message:
+<P>
+"There is a problem with the Game Boy game pak connector.  Turn off power to the N64 console and refer to the N64 Game Boy Pak instruction manual."
+<P>
+<b>Note: </b> As discussed previously, the osGbpakCheckConnector() function only supports Game Boy game paks using MBC1,3,5 or no memory controller at all.  If the Game Boy game pak uses some other memory controller, please refer to the procedure described below and create a check program on the application side.
+</ol>
+
+<P>
+The paragraphs below explain the processes carried out by the osGbpakCheckConnector() function. Specifically, they describe how the ROM area data and the RAM area data are used to verify operation of the address lines.
+<P>
+<a name="step3i"></a>
+<ul type="i">
+<li><u>ROM area check</u>
+<br>
+From ROM addresses [0x0000,0x0080,0x0100,0x0200,0x0400,0x0800,0x1000,0x2000,0x4000 ] read the first 32 bytes of data, and compare this with the next adjacent 32 bytes of data.  Next, compare the data in address 0x0000 with the data at all the addresses in 32-byte units.  If this check does not yield any 32-byte data units that are the same, then proceed to the RAM area check described below.  If a 32-byte unit is found to be exactly the same, then shift 32 bytes from the address of both data sets and compare again.  If the data is still the same after repeating this process four times, then generate an error that there is some problem with the address lines, and terminate.
+<P>
+The addresses used here are used once for each address line from bit 7 to bit 14.  Thus, if the data is exactly the same, then chances are high there is a disparity in the address lines.  As for the address lines for bit 6 and below, they have already been confirmed from reading the registration area in ROM.  The address line for bit 15 is verified in procedure (ii) below.
+
+<P>
+<a name="step3ii"></a>
+<li><u>RAM area check</u>
+<br>
+Next, compare 32 bytes of data from ROM area address 0x2000 with 32 bytes of data from RAM area address 0xa000.  If the compared blocks of data are different, terminate normally.  If the data is still the same after shifting 32 bytes and comparing again up to four times, then generate an error that there is some problem
+with the address lines, and terminate.
+<P>
+Bit 15 could be verified with address 0x8000, but this part cannot be accessed with the indicated RAM area, so address 0xa000 is used.
+<P>
+Please be careful, because if by chance during the RAM area check procedure (ii) the 128 bytes from ROM address 0x2000 contain the initial data from RAM, or if during game play the ROM contents are exactly the same, then an error will arise and the system will not advance.  In this situation, do not use the osGame BoypakCheckConnector() function, but instead create a function on the application side to check the address line for bit 15.  For example, check the data in ROM address 0x3000 with the data in RAM address 0xb000.   If the same problem arises during the ROM area check procedure (i), please create a separate function that can check the address lines for bits 7 to 14.
+</ul>
+<P>
+
+<ol start="4">
+<a name="step4"></a>
+<li>Access the Game Boy Game Pak Memory
+<br>
+If no problems arise during process (3), then use the osGbpakReadWrite() function to access the Game Boy game pak and read/write data.  If a device error is generated, redo the whole procedure starting from process step (1).  The osGbpakReadWrite() function will terminate normally even if the Game Boy game pak is removed during access.  Thus, in this step there is no branching on an error involving removal of the Game Boy game pak.
+
+<P>
+<a name="step5"></a>
+<li>Check the Status of the N64 Game Boy Pak
+<br>
+In this step, the osGbpakGetStatus() function is used to check the status of the N64 Game Boy Pak, and to confirm that there were no problems with the device during access to the Game Boy game pak in process 4).  If there is a device error, return to <a target="main" href="../pro26/26-07.html#step1">step (1)</a>.  If there is a Game Boy game pak error, return to <a target="main" href="../pro26/26-07.html#step2">step (2)</a> and proceed after
+performing a status check.
+
+<P>
+If this function terminates normally, check the status variable and verify the state of the power supply to the Game Boy game pak.  If power has been turned OFF to the Game Boy game pak even though the function has terminated normally, then chances are either the controller or the N64 Game Boy Pak was disconnected during the
+procedure.  In this case, repeat from step (1).
+<P>
+Beyond this point, if no access is made to the Game Boy game pak for a long period of time, please use the osGbpakPower() function to turn power OFF to the Game Boy game pak.
+</ol>
+
+<P>
+Figures 26.7.4 through 26.7.8 show the flow of steps 1 through 5 in greater detail.
+
+<P>
+<b>Figure 26.7.4</B> &nbsp;Initialization of the N64 Game Boy Pak
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-16.gif"></tr></td></table>
+<P>
+
+<P>
+<a name="fig26-17"></a>
+<b>Figure 26.7.5</B> &nbsp;Check the Status of the Game Boy Pak, Turn Power ON to Game Boy Game Pak, Access Registration Area in ROM <p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-17.gif"></tr></td></table>
+<P>
+
+<P>
+<b>Figure 26.7.6</B> &nbsp;Determine Whether Game Boy Pak is Making Poor Contact
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-18.gif"></tr></td></table>
+<P>
+
+<P>
+<b>Figure 26.7.7</B> &nbsp;Access Game Boy Pak Memory
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-19.gif"></tr></td></table>
+<P>
+
+<P>
+<b>Figure 26.7.8</B> &nbsp;Check Status of N64 Game Boy Pak
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-20.gif"></tr></td></table>
+
+<P>
+<a name="05.2"></a>
+<b>Switching a Game Boy Game Pak</b>
+<br>
+Figure 26.7.9 shows the flow for the process when a different Game Boy game pak is inserted.  The following steps are performed:
+
+<ol type="A">
+<li>The osGbpakGetStatus() function is used to check the status of the N64 Game Boy Pak.
+<P>
+<li>The osGbpakPower() function is used to turn power OFF to the Game Boy game pak.
+</ol>
+
+<P>
+<b>Figure 26.7.9</B> &nbsp;Switching a Game Boy Game Pak
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-21.gif"></tr></td></table>
+<P>
+
+Each of these two processes is described in detail below.
+<P>
+The osGbpakGetStatus () function is used to perform the following processes: 
+
+<ol type="A">
+<li>The first step is to read and check the status of the N64 Game Boy Pak.  If there is a device error, return the process to <a target="main" href="../pro26/26-07.html#step1">step (1)</a> above, and perform the whole sequence again starting with initialization.  
+<P>
+<li>
+If the status check terminates normally, perform step B to turn power OFF to the Game Boy game pak.  After this step terminates normally, display a message to the user asking them to insert a new game pak.  If there is a device error, return the process to <a target="main" href="../pro26/26-07.html#step1">step (1)</a> above, and perform the whole sequence again starting with initialization.</ol>
+
+<P>
+After normal termination, repeat step A again to check the status.  If the new Game Boy game pak is inserted correctly, then a PFS_ERR_NEW_GBCART error will be generated, and you should transfer to <a target="main" href="../pro26/26-07.html#step2">step (2)</a> above, to turn the power ON to the Game Boy game pak.  If no game pak is inserted, then a PFS_ERR_NO_GBCART error will be generated, so display a message asking the user to insert a Game Boy game pak and repeat the previous step.  If the user does nothing and the old game pak is left inserted, repeat step B.
+
+<P>
+Following are precautions for programs that do not wait for key input, but rather auto-detect reinsertion of the N64 Game Boy Pak or the Game Boy game pak and then promptly move on to the next process step. 
+
+<P>
+In confirming insertion of the N64 Game Boy Pak, please use the osContStartQuery() and osContGetQuery() functions to check the status of the controller before executing the osGbpakInit() function.  More specifically, confirm a value of 1 for both the OSContStatus structure member variable "status" obtained with the osContGetQuery() function, and for the CONT_CARD_ON OR bit.  After you have confirmed that the
+N64 Game Boy Pak is inserted, then you can execute the osGbpakInit() function to perform initialization.
+
+<P>
+In confirming insertion of the Game Boy game pak, please always use the osGame BoypakGetStatus() function to check the status of the N64 Game Boy Pak.  Then, after confirming insertion of the Game Boy game pak, please wait for at least 10 frames before executing the osGbpakReadId() function.  If you do not wait, but instead
+proceed immediately to the next process, this can cause a connection error to be generated if the connection is not yet stable.
+
+<P>
+However, we do not recommend using either of these methods, since there is a higher chance of generating errors if you do not have the program wait for key input.
+
+<P>
+<a name="06"></a>
+<b>Programming Cautions</b>
+<br>
+
+<ol>
+<a name="step01"></a>
+<li>Power OFF to the Game Boy game pak
+<br>
+If a Game Boy game pak remains inserted but is not used for an extended period of time, there is a chance the user will remove it from the N64 Game Boy Pak.  Therefore, if the Game Boy game pak is not accessed for an extended time period, please turn the power OFF.  
+<P>
+<a name="step02"></a>
+<li>Removing the Game Boy game pak
+<br>
+When the Game Boy game pak is removed, the power turns off automatically.  However, when you want the user to remove the game pak, please make sure on the software side to turn the power OFF first and then display some message asking the user to "Please remove the game pak".  If the game pak is removed while the power is ON, in the worst case scenario data may be lost.   
+<P>
+<a name=step"03"></a>
+<li>Inserting and removing the controller, N64 Game Boy Pak or Game Boy game pak during program execution  
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-13.gif"></tr></td></table>
+
+<P>
+<a name="step03a"></a>
+A. Controller
+<br>
+If the controller is detached, power will be suddenly cut to the N64 Game Boy Pak.  In this case, start again from the initialization step just like when the N64 Game Boy Pak has been removed.
+<P>
+<a name="step03b"></a>
+B. N64 Game Boy Pak
+<br>
+If the N64 Game Boy Pak has been inserted and then removed, start again from the initialization step, as described in <a target="main" href="../pro26/26-07.html#04.1">Section 26.7.4.1, "Initialization Function."</a> 
+<P>
+C. Game Boy Game Pak
+<br>
+Please display a message telling the user not to remove the Game Boy game pak while it is being accessed.  Data transfers continue to the end even if the Game Boy game pak has been removed right in the middle of a read/write, without realizing that the game pak has been removed. Thus, in order to detect a chance removal of the Game Boy game pak, please perform a N64 Game Boy Pak status check immediately before and after the data transfer.</ol>
+
+<P>
+<ol start="4">
+<a name="step04"></a>
+<li>Accessing the wrong Game Boy game pak
+<br>
+As shown in <a target="main" href="../pro26/26-07.html#fig26-17">Figure 26.7.5,</a> every application should check the game title and company code after the osGbpakReadId() function has been used to read the data in the registration area of the Game Boy game pak ROM.  If the check is performed incorrectly, then you might access the data region of an unintended Game Boy game pak and possibly even destroy the game data.  Please take special care when creating this part of the program.
+
+<P>
+<a name="step05"></a>
+<li>Accessing Game Boy game paks made by other companies
+<br>
+Regarding Game Boy game paks made by other companies, please do not access any other region except the registration area in ROM.  Please only access Nintendo game paks.  Inquire with the other companies about access to their game paks.
+
+<P>
+<a name="step06"></a>
+<li>Resetting N64
+<br>
+Resetting the N64 console does not initialize the status of the N64 Game Boy Pak.  To do this, please execute the osGbpakGetStatus() or osGbpakReadId() functions.
+
+<P>
+<a name="step07"></a>
+<li>Writing data reliably to the Game Boy game pak
+<br>
+When data is written from the N64 Game Boy Pak to the Game Boy game pak, the consistency of the data is not verified with a checksum.  For this reason, we recommend using the Verify operation (reading the written data and comparing it with the original data) for safer data saving.
+
+<P>
+<a name="step08"></a>
+<li>Writing to the registers used for controlling the Game Boy game pak
+<br>
+When writing to numerous control resisters, please write last to the register which cancels write protection to RAM (register 0 in the case of MBC1).  This is because if you write to this register first and enable writing to RAM, then when you specify writing to another register, there is a chance the data will be mistakenly written to some different address.  In addition, when the Game Boy game pak is accessed from N64 via the N64 Game Boy Pak, data is transferred in units of 32 bytes.
+<P> 
+Thus, when 1 byte of data is written in the Game Boy register, please transfer data in a way such that the important data is contained in the final 1 byte of the 32-byte unit.  In the preceding 31 bytes, write some value other than the value for writing data to the register which cancels write protection to RAM (for an MBC1 type this value is 0x0a).
+
+<P>
+<a name="step09"></a>
+<li>Game Boy game pak version updates
+<br>
+If there is a chance that the format for backup data will change when the same game comes out on an updated version of the Game Boy game pak sometime in the future, please take the following measures.  First, at Game Boy development time, store the code that indicates the backup data format version in a special area of Game Boy ROM.  Then, on the N64 program side, check this version code and branch to the access process for that version.  In this way, the game pak can be correctly accessed even if the version differs.
+
+<P>
+<a name="step010"></a>
+<li>Identifying the owner of the Game Boy game pak
+<br>
+If necessary, check the Game Boy game pak RAM to identify the owner of the game pak, for example, to recognize that this is a Pocket Monster Game Boy game pak and it stores Johnny's data.  This can protect against mistakenly overwriting Johnny's data with another person's game data.  Please perform this process after checking to see whether the Game Boy game pak connector is making poor contact.
+
+<P>
+<a name="step011"></a>
+<li>Notes concerning the display of messages
+<br>
+When displaying messages, please make sure to write "Nintendo64" and "N64 Game Boy Pak" as presented here, without adding any extra spaces.
+
+<P>
+<a name="step012"></a>
+<li>Special error messages
+<br>
+In principle, the application is free to utilize idiosyncratic messages for each error.  However, in these two following instances, please display the fixed message we provide here.  When the osGbpakReadId() function or the osGbpakCheckConnector() function generates a PFS_ERR_CONTRAFIL device error, please make sure to display the following message: 
+<P>
+"There is a problem with the Game Boy game pak connector. 
+Turn off power to the N64 console and refer to the 64Game Boy instruction manual."   
+<P>
+The reason for this is because this message with this exact wording is included in the N64 Game Boy Pak instruction manual.
+
+<P>
+<a name="step013"></a>
+<li>Note concerning access to Game Boy game pak ROM and expanded RAM
+<br>
+When accessing Game Boy game pak ROM or expanded RAM, on rare occasions the data read/write can fail even when the osGbpakReadId(), osGbpakCheckConnector() and osGbpakReadWrite() functions terminate normally.  The reason why this occurs is explained below:
+<P>
+The Game Boy game pak is designed to receive a voltage of 5 volts from the Vcc (power terminal) and send data from the signal line (High signal or Low signal) to ROM or RAM.  Usually, if the terminal connection is poor, both the Vcc and the signal line voltage become nearly zero, access to ROM or expanded RAM fails, and an error is detected by either the osGbpakReadId() function or the osGbpakCheckConnector() function.  
+<P> 
+However, on rare occasions, only the Vcc bus connection is poor, and voltage is supplied to the Vcc when a High signal comes from the signal line at startup.   When this occurs, no error is detected by the osGbpakReadId() or osGbpakCheckConnector() functions.  If ROM or RAM is accessed in this state, the voltage will drop during access, and once it falls below a certain standard, a Reset signal will be generated. Since the registers are cleared when the Reset occurs, the data transfer will fail.
+<P>
+Since check functions like osGbpakReadId() and osGbpakCheckConnector() can pass normally even when the Vcc terminal is poorly connected, please execute the following procedures to detect this situation:
+</ol>
+
+<P>
+<ul>
+<ul type="a">
+<a name="step013-01"></a>
+<li>Execute the osGbpakGetStatus() function after accessing ROM or expanded RAM to check whether the OS_GBPAK_RSTB_DETECTION bit (the 
+Reset signal detection flag) is 1.  This function needs to be executed immediately after accessing ROM or expanded RAM, since this flag will be cleared the first time the function inspects the status after RAM is accessed.
+<P>
+<a name="step013-02"></a>
+<li>If this bit is 1, it means access failed because the Vcc is poorly connected.  In this case, display a message informing the user that the Game Boy game pak connector is dirty or otherwise abnormal.  
+</ul></ul>
+
+<P>
+<ol start="14">
+<a name="step014"></a>
+<li>Getting a more reliable check on the connection of the Game Boy game pak connector
+<br>
+Improper connection of the Game Boy game pak connector is checked by the osGbpakCheckConnector() function.  This function works by reading and comparing data in ROM or expanded RAM.  More specifically, it reads out data from specified addresses and compares the data to see if they differ.  If the data differ, then the address lines are assumed to be properly connected.
+<P>
+However, an appropriate value may be returned from RAM even when the connector is poorly connected.  If this returned value differs when compared to the data in ROM, then it is falsely assumed that the connector is attached properly. 
+<P>
+You can perform a more reliable check by writing data to RAM and then reading that data for the comparison check.  To do this, prepare a 32-byte free area in RAM with a 32 byte-aligned start address.  Write data to this area, and then read the data and compare the two to check whether the data was written correctly.
+<P>   
+The above procedure improves the reliability of accessing expanded RAM. However, if this method cannot be used, for example because the free area cannot be reserved in RAM, it is not compulsory.  This procedure is recommended to improve reliability, but the minimum requirement is the check with the osGbpakCheckConnector() function.  Any additional check is left to the discretion of the creator of the application.
+
+<P>
+<a name="step015"></a>
+<li>Preventing wrongful diversion of data from Game Boy game pak's expanded RAM 
+<br>
+If you are worried about data in the expanded RAM of one Game Boy game pak being copied into another game pak, please note of the following:
+<P>
+Consider you are running the Game Boy game emulator on N64.  You insert a Game Boy game pak into the N64 Game Boy Pak, load the data from expanded RAM into N64, and begin to play.  If you were to insert a different Game Boy game pak during execution of the game, then the data from that game would be saved to expanded RAM in the new game pak.  It is thus easy to create a duplicate of the data.  This can be prevented by detecting whether the game pak has been removed, but the mechanism for detecting the insertion and removal of game paks can easily become inoperable if the N64 Game Boy Pak is handled the wrong way.
+<P>
+Thus, sometimes wrongful copying of data cannot be prevented by simply checking for the insertion and removal of Game Boy game paks.  Instead, the following method can be used: prepare a 32-byte free area with a 32 byte-aligned start address in RAM, as explained in <a target="main" href="../pro26/26-07.html#step014">item (14)</a>, but this time write random data to the area.   Then, when saving data to expanded RAM during a game, read this random data to check whether the game pak has been exchanged. 
+   
+<P>
+As mentioned in item (14), we recommend this method, but it is up to the creator of the application to decide whether to perform the check.
+</ol>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

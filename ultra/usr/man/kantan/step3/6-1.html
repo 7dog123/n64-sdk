@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.6.1 2D Transformation</H1>
+
+<P>In <A HREF="index3.html" TARGET="_top">Chapter 3</A> you learned that you need to convert from one coordinate system to another in order to ultimately display a picture on the TV screen. Now this chapter shows you how to actually do the coordinate system transformations by using matrix calculations.
+
+<P>Usually, 3x3 matrices are used for two-dimensional coordinate transformations and 4x4 matrices are used for three-dimensional coordinate transformations. In addition, to display the coordinates of vertices, we show you how to use the two-dimensional vector [x y 1] and the three-dimensional vector [x y z 1].
+
+<P>In general, a matrix like the following is used for two-dimensional coordinate transformations:</P>
+
+<P><IMG SRC="../images/3-6-1-1.gif" ALIGN="bottom" WIDTH=144 HEIGHT=73 BORDER=0>
+
+<P>During the transformation process three different variations of this conversion matrix are created to apply scaling information, translation information, and rotation information:</P>
+
+<UL>
+<LI><B>Scaling matrix to specify enlargements or reductions</B><BR>
+<BR>
+
+To apply scaling information, you multiply a scaling matrix by a vector [x y 1]. The scaling matrix has scaling information for the X-axis and Y-axis specified by the vector. The scaling matrix looks like this:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-1-2.gif" ALIGN="bottom" WIDTH=120 HEIGHT=73 BORDER=0><BR>
+<BR>
+
+To do the conversion, multiply the matrix by the vector to get this result:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-1-3.gif" ALIGN="bottom" WIDTH=269 HEIGHT=73 BORDER=0><BR>
+<BR>
+ 
+The post-conversion coordinates <IMG SRC="../images/3-6-1-4.gif" ALIGN="bottom" WIDTH=49 HEIGHT=25 BORDER=0> are:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-1-5.gif" ALIGN="bottom" WIDTH=65 HEIGHT=51 BORDER=0><BR>
+<BR>
+
+In this way, the x and y coordinates are enlarged or reduced by the corresponding scaling factor (s). Note that if the scaling factor of a certain axis is negative, that axis will be reversed.<BR>
+<BR>
+
+<IMG SRC="../images/3-6-1-6.gif" ALIGN="bottom" WIDTH=173 HEIGHT=138 BORDER=0><BR>
+<BR>
+
+<LI><B>Translation matrix</B><BR>
+<BR>
+
+The two-dimensional translation matrix looks like this:<BR>
+<BR>
+<IMG SRC="../images/3-6-1-7.gif" ALIGN="bottom" WIDTH=113 HEIGHT=75 BORDER=0><BR><BR>
+
+The translation matrix is used to specify movement; it translates the coordinates of an object to move it to a new location. The reason that you need to specify a two-dimensional coordinate in the vector [x y 1] is so you can apply the translation factors specified in the matrix to the coordinates. When you do the multiplication, you get this result:<BR>
+<BR>
+<IMG SRC="../images/3-6-1-8.gif" ALIGN="bottom" WIDTH=293 HEIGHT=78 BORDER=0><BR><BR>
+
+The 1 added as a third element of the vector specifies that the translation factors <IMG SRC="../images/3-6-1-9.gif" ALIGN="bottom" WIDTH=37 HEIGHT=22 BORDER=0> are to be added to each component. This type of vector coordinate system that adds a new constant component 1 is called a <I>homogeneous coordinate system</I>.<BR>
+<BR>
+
+<LI><B>Rotation matrix to specify rotation around a point of origin</B><BR>
+<BR>
+
+If you set the rotational angle to <IMG SRC="../images/3-6-1-10.gif" ALIGN="bottom" WIDTH=14 HEIGHT=13 BORDER=0>, the rotational matrix looks like this:<BR>
+<BR>
+<IMG SRC="../images/3-6-1-11.gif" ALIGN="bottom" WIDTH=164 HEIGHT=73 BORDER=0><BR>
+<BR>
+
+As a standard, positive angles rotate counter-clockwise and negative angles rotate clockwise with the origin at the center as shown here:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-1-12.gif" ALIGN="bottom" WIDTH=192 HEIGHT=157 BORDER=0>
+</UL>
+
+<P>As you can see, the three conversion matrices hold the information needed to specify scaling, translating and rotating.</P>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.3.2 Hardware Processes</H1>
+
+<H2>CPU Process</H2>
+
+<P>The CPU completes these steps:</P>
+
+<OL>
+<LI>Construct the audio command list in RDRAM for waveform synthesis.
+<LI>Transfer the audio command list and audio microcode to the RSP.
+<LI>Transfer the waveform data (linear PCM) from the RSP to RDRAM to the AI.
+</OL>
+
+<H2>RSP Process</H2>
+
+<P>The RSP completes these steps:</P>
+
+<OL>
+<LI>Execute the microcode transferred from RDRAM.
+<LI>Accept the audio command list in RDRAM and synthesize the waveform data.
+<LI>Transfer the synthesized waveform data to the audio buffer in RDRAM.
+</OL>
+
+<P>The following illustration shows the process:
+
+<P><IMG SRC="../images/2-3-2-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=421 HEIGHT=281 BORDER=0>
+
+<H2>AI Process</H2>
+
+<P>The AI process transfers the waveform data from the audio buffer to the audio DAC (digital-to-analog converter).
+
+<H2>Audio DAC Process</H2>
+
+<P>In the audio DAC, the digital waveform data is converted to an analog audio signal and output as illustrated here:
+
+<P><IMG SRC="../images/2-3-2-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=367 BORDER=0>
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

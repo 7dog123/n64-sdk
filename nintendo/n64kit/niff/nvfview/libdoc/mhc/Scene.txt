@@ -1,0 +1,56 @@
+Function
+  Scene holds all the data needed for hierarchy evaluation
+
+Functions
+  void mhcSceneInit( MhcScene *scene_ptr,
+		     const u32 max_modules,
+		     const u32 max_instances,
+		     const u32 transform_buffer_size )
+  Initializes Scene
+
+  void mhcSceneDestroy( MhcScene *scene_ptr )
+  Destroys Scene
+
+  MhcNode *mhcSceneGetNode( MhcScene *scene_ptr,
+			    const u32 module_id,
+			    const char *node_name )
+  Returns pointer to Node
+
+  int mhcSceneEvaluate( MhcScene *scene_ptr,
+			MrnScene *mrn_scene_ptr )
+  Evaluates Scene and generates rendering object.
+  The only difference from mhcSceneEvaluateFlat( ) is that this
+  consideres Module[0] the root.
+
+  int mhcSceneEvaluateFlat( MhcScene *scene_ptr,
+			    MrnScene *mrn_scene_ptr )
+  Evaluates Scene and generates rendering object.
+  The only difference from mhcSceneEvaluateFlat( ) is that this
+  consideres all the Module the root.
+
+  MhcInstance *mhcSceneCreateInstance( MhcScene *scene_ptr )
+  Generates an instance
+
+  void mhcScenePutInstance( MhcScene *scene_ptr,
+			    MhcInstance *instance_ptr )
+  Evaluates an instance and adds it to the list
+
+  void mhcSceneBind( MhcScene *scene_ptr )
+  Binds all Scene with module
+
+  float *mhcSceneAllocTransformBuffer( MhcScene *scene_ptr, const u32 size )
+  Allocates dynamic buffer needed for coordinate conversion
+
+Macro
+  _mhcSceneGetModule(scene_ptr,id)
+  Returns pointer to Module
+
+  _mhcSceneAllocVector3f(scene_ptr)
+  Allocates MvmVector3f to the buffer for coordinate conversion
+
+  _mhcSceneAllocMatrix33f(scene_ptr) \
+  Allocates MvbMatrix33f to the buffer for coordinate conversion
+
+History
+  1998/11/11 Takamitsu Hirata
+    Scene.h, scene.c: Initial version

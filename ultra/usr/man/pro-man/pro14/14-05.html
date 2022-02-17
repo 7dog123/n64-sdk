@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 14</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro14/index14.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro14/index14.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Tiling Large Images</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+
+Sometimes it is desirable to render large textures, i.e. textures to large enough to fit entirely into Tmem.  This can be accomplished via ‘tiling’ or breaking the large image up into smaller rectangular tiles that do fit into Tmem.  The tiles are rendered onto primitives that form a mesh coincident with the texture tiling.  The textured rectangle primitive is a useful primitive for tiling a background image in a sprite game, for instance.  If you point sample the texture tile, it is only necessary to load the number of texels you wish to display.  However, if you want to bilinearly filter the texture, you must load a border region of one texel around the tile so that the interpolation works correctly at the edges of the tile.  Please see <a target="main" href="../pro13/13-07.html#05.3">Section 13.7.5.3, “Bilinear Filtering and Point Sampling”</a> for more information.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

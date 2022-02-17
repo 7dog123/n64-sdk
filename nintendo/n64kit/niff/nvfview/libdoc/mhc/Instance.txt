@@ -1,0 +1,21 @@
+Function 
+(  Instance is used together with node in hierarchy evaluation. 
+   In addition to information related to the node, instance also has information regarding the hierarchy. 
+
+Functions 
+(  void mhcInstanceInit( MhcInstance *instance_ptr, MhcNode *node_ptr );
+  Initializes MhcInstance. 
+
+Macros 
+(  _mhcInstanceCopyContext(dest_ptr,src_ptr)
+  Copies hierarchy context of MhcInstance. 
+
+(  _mhcInstanceIsReady(instance_ptr)
+  Checks whether MhcInstance can be evaluated. 
+
+(  _mhcInstanceEvaluate(instance_ptr,scene_ptr)
+  Evaluates MhcInstance. 
+
+History 
+  1998/10/12  Takamitsu Hirata 
+    Instance.h, instance.c:  Initial version 

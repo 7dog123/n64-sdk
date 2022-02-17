@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.16 AnimList</font></h3>
+
+<hr size=3>
+<h4>2) AnimGroup</h4>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="12">AnimGroupHeader</th>
+
+<td>u32</td>
+
+<td>anim_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_anim_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>frame_rate</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_loop</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_rot_mtx_order</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>Anim(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Anim(anim_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>AnimGroup Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 anim_group_tag</td>
+
+<td><font size=+0>Tag indicating AnimGroup. Set the following flag.</font>
+<pre><b><font size=+0>TAG_ANIM_GROUP&nbsp; 0x000c0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_anim_group_index</td>
+
+<td><font size=+0>Index number of this AnimGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_group_header_size</td>
+
+<td><font size=+0>Size of this AnimGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_group_size</td>
+
+<td><font size=+0>Size of this AnimGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_name_index</td>
+
+<td><font size=+0>Index number of AnimGroup name contained in NameList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#ANIM_TYPE">u32 anim_type</a></td>
+
+<td>Specifies the animation type. The following are currently defined.
+
+<pre><b><font size=+0>ANIM_TYPE_STATIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+ANIM_TYPE_FULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000002
+ANIM_TYPE_KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000003
+ANIM_TYPE_BILLBOARD_OBJ 0x00000004</font></b>
+</pre>
+
+ANIM_TYPE_STATIC converts non-animated data into matrix data like an object. Apply to data for a house or mountain, or a fixed camera view.
+
+<BR><br>ANIM_TYPE_FULL performs full frame animation. Specify to include every frame of the animation data.
+
+<BR><br>ANIM_TYPE_KEY performs key frame animation. Specify to include every key frame of the animation data.
+
+<BR><br><font size=+0>ANIM_TYPE_BILLBOARD_OBJ specifies animation that always faces toward a specified object.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 frame_rate</td>
+
+<td><font size=+0>Specifies the animation frame rate.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_num</td>
+
+<td><font size=+0>Specifies the number of Anim area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#ANIM_LOOP">u32 anim_loop</a></td>
+
+<td>Sets the number of loops the animation will execute. To set an inifinite number of loops, specify the following:
+<pre><b><font size=+0>ANIM_LOOP_ENDLESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000</font></b>
+
+</pre>
+&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#ANIM_ROT_MTX_ORDER">u32 anim_rot_mtx_order</a></td>
+
+<td><font size=+0>Specifies the calculation order of X axial, Y axial and Z axial
+rotation. Use the following flag. The calculation is done backwards. 
+For example, if ANIM_ROT_ORDER_XYZ is specified, rotation matrix R would
+be R=Z*Y*X.</font>
+
+<pre><b><font size=+0>ANIM_ROT_ORDER_XYZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00010203
+ANIM_ROT_ORDER_XZY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00010302
+ANIM_ROT_ORDER_YXZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00020103
+ANIM_ROT_ORDER_YZX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00030102
+ANIM_ROT_ORDER_ZXY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00020301
+ANIM_ROT_ORDER_ZYX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00030201</font></b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg16-3.htm">Anim</a></td>
+
+<td><font size=+0>Actual animation data.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg16.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg16-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

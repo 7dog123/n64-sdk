@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 18</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro18/index18.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro18/index18.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">The MIDI File Tools: midicvt, midiprint, midicomp</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>midicvt</b><BR>
+<br>
+The Audio Library plays only Type 0 Standard MIDI files. You can use midicvt to convert from Type1 (which are generally output by most MIDI sequencers) to Type0.
+
+<P>
+<b>Invoking midicvt</b>
+<br>
+midicvt is invoked as follows:
+<pre><font face="courier" size="3">	midicvt [-v] [-s] <input file> <output file>
+</pre></font>
+
+
+
+
+<p>
+<b>Table 1</b> &nbsp;midicvt Command Line Options
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Command Line Option</td>
+<td width=60%><font face="arial" size="-1"><b>Function</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-v</td>
+<td width=60%><font face="arial" size="-1">Turns on verbose mode.
+</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-s</td>
+<td width=60%><font face="arial" size="-1">Strips out any messages that are not used by the Audio Library. These include text messages and system exclusives.
+</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">input file</td>
+<td width=60%><font face="arial" size="-1">The name of a Type 0 or Type 1 Standard MIDI file.</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">output file</td>
+<td width=60%><font face="arial" size="-1">The name for the Type 0 output file.</td></tr>
+</table>
+	
+<P>
+<a name="02"></a>	
+<b>midiprint</b>
+<br>
+The midiprint tool prints a text listing of the time-based MIDI events in a Type 0 or Type 1 Standard MIDI file.
+
+<p>
+<b>Invoking midiprint</b>
+<pre><font face="courier" size="3">	midiprint [-v] -o <output file> <input file>
+</pre></font>
+
+<p>
+<b>Table 2</b> &nbsp;midiprint Command Line Options
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Command Line Option</td>
+<td width=60%><font face="arial" size="-1"><b>Function</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-v</td>
+<td width=60%><font face="arial" size="-1">Verbose mode.
+</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">-o &#060output file&#062</td>
+<td width=60%><font face="arial" size="-1">The optional output file for the MIDI event text.
+</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">&#060input file&#062</td>
+<td width=60%><font face="arial" size="-1">The name of the Type 0 or Type 1 Standard MIDI file to list.</td></tr></table>
+	
+
+<P>	
+<a name="03"></a>
+<b>midicomp</b>
+<br>
+The midicomp tool is used to compress midi files of either Type 0 or Type 1 to a format recognized by the compact sequence player. 
+
+<P>
+<a name="03.1"></a>
+<b>Invoking midicomp</b>
+<br>
+midicomp is invoked as follows:
+<pre><font face="courier" size="3">
+ midicomp <input file> <output file>
+</pre></font>
+
+<p>
+<b>Table 3</b> &nbsp;midicomp Command Line Options
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Command Line Option</td>
+<td width=60%><font face="arial" size="-1"><b>Function</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">&#060input file&#062</td>
+<td width=60%><font face="arial" size="-1">The name of the Type 0 or Type 1 Standard MIDI file to compress. 
+</td></tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">&#060output file&#062</td>
+<td width=60%><font face="arial" size="-1">The name to use for the output file.</td></tr></table>
+
+<P>
+<a name="03.2"></a>
+<b>Making Files that Will Compact Better</b>
+<br>
+Different midi files will be compressed by different percentages, based on the content of the files. All files (except very small files) should be compressed at least somewhat. Because midicomp achieves compression by recognizing patterns and then compressing these, the greatest amounts of compression occur when the files are repetitive. Patterns and sections created in a sequencer using cut and paste are the ones most likely to be compressed.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

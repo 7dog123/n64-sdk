@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 26</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro26/index26.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro26/index26.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<b><font face="arial" color="#29296b">Standard N64 Controller</font></b>
+
+<P>
+<a name="01"></a>
+<font face="arial" size="-1" color="#000000">
+<b>What is the Standard Controller?</b>
+<br>
+The standard N64 Controller, illustrated below, is a controller which is marketed by Nintendo to be used with the N64 Control Deck.  This Controller is distributed as part of the Nintendo 64 Control Set or may be purchased through Nintendo authorized retailers. This chapter addresses common questions asked by software developers concerning the standard N64 Controller.
+
+<P>
+<b>Standard Controller Recognition</b>
+<p>
+<a name="02"></a>
+<b>Figure 26.2.1</B> &nbsp;Standard Controller
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/controller.gif"></tr></td></table>
+
+<p>
+<b>Figure 26.2.2</B> &nbsp;Standard Controller (back view)
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-02-01.gif"></tr></td></table>
+
+
+
+<P>
+<a name="03"></a>
+<b>How to Build the Program for the Standard Controller</b>
+<br>
+The chart below outlines the flow for a program used to handle the Standard Controller.  An explanation of each step follows.
+<p>
+<b>Figure 26.2.3</B> &nbsp;Flow for Standard Controller Program 
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-02-02.gif"></tr></td></table>
+
+<P>
+<ol>
+<li>Make the initial settings in order to use the serial interface (SI). Execute the osContInit() function.  This need only be done once.  With the Controller, there is no need to initialize the SI device itself.
+<P>
+<li>Verify that the Standard Controller is plugged in. This is done by checking the status that is returned after execution of the osContInit() function.  To be specific, you need to verify that the value of the "type" member variable of the OSContStatus structure, which is an argument of the osContInit() function, is equal to CONT_TYPE_NORMAL when the value of "type" is masked with CONT_TYPE_MASK.  When the Standard Controller is connected,  both the CONT_ABSOLUTE bit and the CONT_JOYPORT bit are set in "type."  CONT_TYPE_NORMAL incorporates the bits for both CONT_ABSOLUTE and CONT_JOYPORT.
+<P>
+<li>After the first two steps are performed, execute the osContStartReadData() function to begin reading the data from the Controller Pak. Executing this function starts the reading of data from the control stick and the buttons.
+<P>
+<li>As the final step, return the data read from the control stick and the buttons of the Controller to the structure used for storing the data. Execute the osContGetReadData() function.  This returns the data read from the Controller's control stick and the buttons to the function's osContPad structure argument.
+<P></ol>
+<P>
+By repeating these steps to read and get data, you can build a program which responds to the Controller in real time.
+
+<P>
+For a concrete example, see the sample program in section <A target="main" href="../pro26/26-02.html#04.1">26.2.4.1, "osContStartReadData, osContGetRead Data</A>
+
+<P>
+<A name="04"></A>
+<b>Standard Controller Function Specifications</b>
+<br>
+Following are descriptions of the the library functions used to handle the Standard Controller in an N64 program.
+
+<P>
+<br>
+<a name="04.1"></a>
+<b>Function Name - osContStartReadData, osContGetReadData</b>
+<br>
+Start reading data from the Controller
+
+<P>
+<b>Syntax</b>
+<pre><font face="courier" size="3">#include <ultra64.h>
+
+s32 osContStartReadData(OSMesgQueue *mq);
+
+void osContGetReadData(OSContPad *pad); 
+</pre></font>
+
+<P>
+<font face="arial" size="-1">
+<b>Description</b>
+<br>
+The osContStartReadData and osContGetReadData functions obtain game Controller input settings.
+<P>
+The osContStartReadData function issues a read data command to obtain game Controller input settings, and the osContGetReadData call returns 3D Stick data and button settings to the location pointed to by the pad argument.
+<P>
+You must supply a block of memory large enough for MAXCONTROLLERS structures of type OSContStatus. The message queue pointed to by the mq argument must be an initialized message queue associated with the OS_EVENT_SI event. Please see the osSetEventMesg function in the <i>N64 Online Function Reference Manual,</i> for details on how to create this association. 
+
+<P>
+The read data command will take about two milliseconds to pull data back from the game Controllers. You can use the osRecvMesg call on the message queue specified by the mq argument to wait for this event.
+<P> 
+If the osContSetCh() function (please see <A href="../pro26/26-01.html#06.4">Section 26.1.6.4, "osContSetCh"</A>) sets the number of direct-type SI devices accessed at a value less than the MAXCONTROLLERS number, then the area secured can be smaller than the MAXCONTROLLERS number, provided more devices are not added later.
+<p>
+
+<PRE><font face="courier" size="3">typedef struct {
+        u16     button;         /* Controller button data */
+        s8      stick_x;        /* Control stick's X coordinate position */
+        s8      stick_y;        /* Control stick's Y coordinate position */
+        u8      errno;          /* Error values returned from the Controller  */
+} OSContPad;
+</PRE></font>
+
+<P><font face="arial" size="-1">
+The Control Stick's coordinate positions stick_x and stick_y are signed characters with the range of -128 ~ 127.  However, for the actual program we recommend using values within the ranges shown below:
+<P>
+<table border=0 cellspacing="1" cellpadding="3">
+<tr>
+<td><font face="arial" size="-1">Left/right X axis</td><td><font face="arial" size="-1">+/- 61</td></tr>
+<tr><td><font face="arial" size="-1">Up/down Y axis</td><td><font face="arial" size="-1">+/- 63</td></tr>
+<tr><td><font face="arial" size="-1">X axis incline</td><td><font face="arial" size="-1">+/- 45</td></tr>
+<tr><td><font face="arial" size="-1">Y axis incline</td><td><font face="arial" size="-1">+/- 47</td></tr></table>
+
+<P>
+For additional information, please see <a target="main" href="../pro26/26-02.html#05">Section 26.2.5, Programming Notes.</a>
+
+<P>
+The 3D Control Stick data is of type signed char and in the range between 80 and -80. The game Controller's input settings can be the following defined constants: 
+<ul>
+<li>START_BUTTON is the start button
+<p>
+<li>A_BUTTON is the A Button
+<p>
+<li>B_BUTTON is the B Button
+<p>
+<li>U_CBUTTONS is the C Button Up
+<p>
+<li>D_CBUTTONS is the C Button Down
+<p>
+<li>L_C_BUTTONS is the C Button Left
+<P>
+<li>R_CBUTTONS is the C Button Right
+<p>
+<li>U_JPAD is the Control Stick Up
+<p>
+<li>D_JPAD is the Control Stick Down
+<p>
+<li>L_JPAD is the Control Stick Left
+<p>
+<li>R_JPAD is the Control Stick Right
+<p>
+<li>Z_TRIG is the Z Button
+<p>
+<li>L_TRIG is the L Button</td></tr>
+<P>
+<li>R_TRIG is the R Button
+</ul>
+
+<P>
+The error number returned from game Controllers include: 
+<P>
+<b>CONT_NO_RESPONSE_ERROR</b>
+<br>The controller does not respond.
+<P> 
+<b>CONT_OVERRUN_ERROR</b>
+<br>The controller sends data at a higher data transfer rate than the hardware can handle. In this case, you should ignore the data.<P>
+
+<b>Example</b>
+<PRE><font face="courier" size="3">void mainproc(void)
+{
+        OSMesgQueue     intMesgQueue;
+        OSMesg          intMesgBuf[1];
+        OSContStatus    sdata[MAXCONTROLLERS];
+        OSContPad       rdata[MAXCONTROLLERS];
+        u8              pattern;
+        int             i;
+        int             cont_exist = 0;
+/*
+        osCreateMesgQueue(&intMesgQueue,&intMesgBuf,1);
+        osSetEventMesg(OS_EVENT_SI, &intMesgQueue, NULL);
+        osContInit(&*intMesgQueue, &pattern, &sdata[0]);
+osCreateMesgQueue(&amp;intMesgQueue, intMesgBuf, 1);
+        osSetEventMesg(OS_EVENT_SI, &amp;intMesgQueue, NULL);
+        osContInit(&amp;intMesgQueue, &amp;pattern, &amp;sdata[0]);
+
+        /* Confirm if controller is inserted */
+        for(i = 0; i &lt; MAXCONTROLLERS; i++){
+                if(((pattern &gt;&gt; i) &amp; 1) &amp;&amp; (sdata[i].errno == 0)){
+                        if((sdata[i].type &amp; CONT_TYPE_MASK) == CONT_TYPE_NORMAL){
+                                osSyncPrintf(controller is inserted in port);
+                                cont_exist = 1;
+                        }
+                }
+        }
+
+        /* if controller is inserted */
+        if(cont_exist){
+                /* start reading controller data */
+                osContStartReadData(&amp;intMesgQueue);
+                       .
+                       .
+                /* “confirm the end of reading */
+                osRecvMesg(&amp;intMesgQueue, NULL, OS_MESG_BLOCK);
+                /* get controller data */
+                osContGetReadData(&amp;rdata[0]);
+        }
+}
+</PRE></font>
+
+
+
+<P><font face="arial" size="-1">
+<a name="05"></a>
+<b>Programming Notes</b>
+<ol>
+<li>The Control Stick Reset Function
+<br>
+Do not create a command during game play that involves simultaneously pressing the Left, Right, and Start button.
+<P>
+Simultaneously pressing these three buttons resets the neutral position of the Standard Controller's Control Stick.  Thus, make sure that no essential control actions inside the game reset the Control Stick.  And conversely, make sure that resetting the Control Stick has no unexpected action on the game.
+
+
+<P>
+<li>Simultaneously Pressing Up/Down or Left/Right on the Control Pad
+<br>
+Be sure the game does not hang or other problems arise when either the Up/Down, or Left/Right are pressed simultaneously on the Control Pad. Depending upon the situation, the user might press Up/Down or Left/Right at the same time.
+<P>
+As countermeasures to such an occurrence you can:
+<p>
+<ul>
+<li>Establish the priority for input from Up/Down and Left/Right 
+<li>Ignore this kind of input</ul>
+<P>
+<li>Manipulation of Unused Buttons
+<br>
+Be sure the game does not hang or other problems arise when the user presses unused buttons during a game.  The same goes for manipulation of other Controllers when a game is only designed to play from Controller 1.
+<P>
+Players sometimes press unused buttons during game play.  Unexpected input might also come from peripheral devices.
+<P>
+Please be especially careful about buttons that are not used during normal game play but are used when the game is run in debug mode.
+
+<P>
+<li>Playing with the Control Stick
+<br>
+Set some lower value for play with the Control Stick in order to avoid detecting input when  the stick has not been touched.
+<P>
+The coordinates of the Control Stick when it is not being touched are not necessarily set back to the origin.  Moreover, the actual position will vary from device to device, and even within the same device from one time to the next.
+
+<P>
+<li>Upper Limit Value for the Control Stick
+<br>
+The upper limit value which can be input with the Control Stick varies from Controller to Controller.  For important manipulations be careful not to set values which cannot be input.
+
+<P>
+Control Stick resolution differs from Controller to Controller.  Moreover, as a Controller gets old, the uppermost value that the Control Stick can input can decline.  To handle the variation between Control Sticks, we recommend you set the actual usable range to the values shown below.
+<P>
+<table border=0 cellspacing="1" cellpadding="3">
+<tr>
+<td><font face="arial" size="-1">Left/right X axis</td><td><font face="arial" size="-1">+/- 61</td></tr>
+<tr><td><font face="arial" size="-1">Up/down Y axis</td><td><font face="arial" size="-1">+/- 63</td></tr>
+<tr><td><font face="arial" size="-1">X axis incline</td><td><font face="arial" size="-1">+/- 45</td></tr>
+<tr><td><font face="arial" size="-1">Y axis incline</td><td><font face="arial" size="-1">+/- 47</td></tr></table>
+
+<P>
+3D Control Stick - Explanation of Symbols
+<p>
+<table border=0 cellspacing="1" cellpadding="1" width=80%>
+<tr><td><font face="arial" size="-1">XA</td><td><font face="arial" size="-1">Maximum horizontal center stop width</td></tr>
+<tr><td><font face="arial" size="-1">XB</td><td><font face="arial" size="-1">Minimum horizontal counts left</td></tr>
+<tr><td><font face="arial" size="-1">XB'</td><td><font face="arial" size="-1">Minimum horizontal counts right</td></tr>
+<tr><td><font face="arial" size="-1">XC</td><td><font face="arial" size="-1">Minimum horizontal counts with Control Stick in the up/right direction</td></tr>
+<tr><td><font face="arial" size="-1">	XC'</td><td><font face="arial" size="-1">Minimum horizontal counts with Control Stick in the up/left direction</td></tr>
+<tr><td><font face="arial" size="-1">XC''</td><td><font face="arial" size="-1">Minimum horizontal counts with Control Stick in the down/left direction</td></tr>
+<tr><td><font face="arial" size="-1">	XC'''</td><td>Minimum horizontal counts with Control Stick in the down/right direction</td></tr>
+<tr><td>YA</td><td><font face="arial" size="-1">Maximum vertical center stop width</td></tr>
+<tr><td><font face="arial" size="-1">YB</td><td><font face="arial" size="-1">Minimum vertical counts up</td></tr>
+<tr><td><font face="arial" size="-1">YB'</td><td><font face="arial" size="-1">Minimum vertical counts downM</td></tr>
+<tr><td><font face="arial" size="-1">YC</td><td><font face="arial" size="-1">Minimum vertical counts with Control Stick in the up/right direction</td></tr>
+<tr><td><font face="arial" size="-1">YC'</td><td><font face="arial" size="-1">Minimum vertical counts with Control Stick in the up/left direction</td></tr>
+<tr><td><font face="arial" size="-1">YC''</td><td><font face="arial" size="-1">Minimum vertical counts with Control Stick in the down/left direction</td></tr>
+<tr><td><font face="arial" size="-1">YC'''</td><td><font face="arial" size="-1">Minimum vertical counts with Control Stick in the down/right direction</td></tr></table>
+
+<P>
+<br>
+<b>Figure 26.2.4</B> &nbsp;3D Control Stick Values
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro26/gif/f26-02-03.gif"></tr></td></table>
+
+<P>
+A new Controller will present the following values.
+<P>
+<table border=1 cellspacing="3" cellpadding="3">
+<tr><td><font face="arial" size="-1">XA</td>
+<td><font face="arial" size="-1">MAX: 7 Counts</td></tr>
+<tr><td><font face="arial" size="-1">XBM: minimum guaranteed value of XB, XB'</td>
+<td><font face="arial" size="-1">MIN:  70 Counts</td></tr>
+<tr><td><font face="arial" size="-1">
+XCM:  minimum guaranteed value of XC, XC', XC'', XC'''</td>
+<td><font face="arial" size="-1">MIN:  54 Counts</td></tr>
+<tr><td><font face="arial" size="-1">YA:</td><td><font face="arial" size="-1">MAX:  7 Counts</td></tr>
+<tr><td><font face="arial" size="-1">YBM:  minimum guaranteed value of YB, YB'</td>
+<td><font face="arial" size="-1">MIN:  74 Counts</td></tr>
+<tr><td><font face="arial" size="-1">
+YCM:  minimum guaranteed value of YC, YC', YC'', YC'''</td><td><font face="arial" size="-1">MIN:  56 Counts</td></tr></table>
+
+<P>
+A Controller which has been used for approximately 5 million direction changes will present these values.
+<P>
+<table border=1 cellspacing="3" cellpadding="3">
+<tr><td><font face="arial" size="-1">XA</td><td><font face="arial" size="-1">MAX:  7 Counts</td></tr>
+<tr><td><font face="arial" size="-1">XBM	:  minimum guaranteed value of XB, XB'</td><td><font face="arial" size="-1">MIN:  68 Counts</td></tr>
+<tr><td><font face="arial" size="-1">XCM	:  minimum guaranteed value of XC, XC', XC'', XC'''</td><td><font face="arial" size="-1">MIN:  52 Counts</td></tr>
+<tr><td><font face="arial" size="-1">YA</td><td><font face="arial" size="-1">MAX:  7 Counts</td></tr>
+<tr><td><font face="arial" size="-1">YBM	:  minimum guaranteed value of YB, YB'</td><td><font face="arial" size="-1">MIN:  70 Counts</td></tr>
+<tr><td><font face="arial" size="-1">YCM	:  minimum guaranteed value of YC, YC', YC'', YC'''</td><td><font face="arial" size="-1">MIN:  54 Counts</td></tr></table>
+<P>
+Given the above values, the program's actual range can be calculated, as follows.
+<P>
+Horizontal direction of X axis (one side) MIN = XBM - XA = 68 - 7 = 61 Counts
+<P>
+Vertical direction of Y axis (one side) MIN = YBM - YA = 70 - 7 = 63 Counts
+<P>
+Diagonal direction of X axis (one side) MIN (45°) = XCM - XA = 52 - 7 = 45 Counts
+<P>
+Diagonal direction of Y axis (one side) MIN (45°) = YCM - YA = 54 - 7 = 47 Counts
+<P>
+If resolution is required, then calibration will need to be performed for every game (and for every Controller).  However, correcting the Controller every time can create problems related  to the fairness of a game.  Additionally, if you do not need to worry about the type of game and the central dead zone width (for example knocking down blocks), then the XBM, XCM, YBM, YCM values can act as the actual range in the program.
+
+<P>
+In short, you'll need to adjust the central dead zone width on the application side in accordance with the nature of the game.
+
+<P>
+<li>Control Stick Input Values
+<br>
+Make sure that nothing unusual happens no matter what value in the range from -128 to 127 is input, either Up/Down or Left/Right with the Control Stick.
+<P>
+If the neutral position of the Control Stick is off center, then these values could be input as the maximum (minimum) values.
+</ol>
+
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

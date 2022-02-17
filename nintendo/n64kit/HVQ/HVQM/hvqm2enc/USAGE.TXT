@@ -1,0 +1,224 @@
+============================================================================
+Motion picture compression tool hvqm2enc version 1.3
+
+User Instructions
+============================================================================
+
+
+Introduction
+============
+
+The motion picture compression tool hvqm2enc compresses motion picture data 
+containing audio, and outputs that compressed data as an HVQM file.  The images 
+are compressed using Hudson's proprietary HVQM2 image compression method, while 
+the audio is compressed using the ADPCM method.
+
+The HVQM2 image compression method is a variation on Hudson's proprietary HVQ2 
+still image compression method that has been expanded for use with motion video.  
+Just like with regular JPEG and MPEG, the image cannot be directly uncompressed 
+(i.e., the data cannot be completely restored to its original form), but the 
+quality of the regenerated image can be adjusted by changing the compression 
+parameters.  The higher the quality of the regenerated image, the lower the extent 
+of image compression.  Conversely, the higher the compression ratio, the lower the 
+quality of the regenerated image.  HVQM2, like HVQ2, is good at compressing 
+artificial images (i.e., computer graphics and hand-drawn animation), and the 
+compressed data can be quickly decoded using software.
+
+Although HVQM2 is a method for image compression, the HVQM2 compressed data file 
+format supports ADPCM audio data.  This is done so the HVQM2 method can support 
+the playback of audio data, which is indispensable for motion pictures.
+
+
+
+4:1:1 mode and 4:2:2 mode
+=========================
+
+HQVM2 offers two types of encoding: a 4:1:1 mode and a 4:2:2 mode.
+
+The 4:1:1 mode provides slightly lower color quality (fidelity) than the 4:2:2 
+mode, but offers more effective compression and faster decoding.  In any event, 
+the difference in color fidelity is virtually indistinguishable, subjectively.
+
+hvqm2enc supports both modes.
+
+
+
+hvqm2enc Operating Environment
+=============================
+
+hvqm2enc is a command that runs from the MS-DOS prompt of Microsoft Windows95.
+
+
+
+Input Data Format and Restrictions
+==================================
+
+The tool supports the Microsoft AVI file format for input files.  However, it does 
+not support the AVI file compression format.  It will only accept uncompressed 
+data.
+
+Regarding the size of the image, both the width (horizontal border) and height 
+(vertical border) must be integer multiples of 8.  If the input file does not 
+conform to these restrictions, the bottom edge or right edge of the image will be 
+automatically cropped.  Moreover, the image must be at least 144 pixels wide and 
+80 pixels tall.  The tool will not accept images that are smaller than this.
+
+Regarding the audio, the tool only supports monaural 16bit or 8bit.  If the motion 
+picture data contains 2 or more channels, only the first channel will be accepted, 
+and the remaining channels will be discarded.  8bit data is expanded to 16bit and 
+then encoded.
+
+
+How to Use hvqm2enc
+==================
+
+
+The tool is used in the following way:
+
+
+          hvqm2enc [option ...] input output
+
+Specify the path for the AVI file being input in the "input" argument.  The 
+compressed data (the HVQM file) is written to the path specified in the "output" 
+argument.  If a file already exists with that name, it will be overwritten, so 
+please be careful.
+
+
+The following optional arguments are available: 
+
+
+    -q thr
+
+    Specifies the compression quality of the image.  Please specify an integer of 
+    0 or greater for thr.  The greater the value, the higher the compression ratio 
+    but the lower the quality of the decoded image.  Conversely, the smaller the 
+    value, the higher the quality of the image but the larger the size of the 
+    encoded file and the more time it takes to compress.  When the -q option is 
+    not specified, the default value of thr is 400. 
+
+    -s type
+
+    When 1 is specified for type, the image is compressed in 4:1:1 mode.  When 2 
+    is specified, it is compressed in 4:2:2 mode.  When the -s option is not 
+    specified, the default type is 1.
+
+    -k N
+
+    Specifies, with an integer of 1 or more, the fixed interval at which key 
+    frames are inserted.  For example, if 6 is specified for N, then key frames 
+    are set at the 1st frame, 6th frame, 12th frame, etc.  Key frames can be used 
+    as jump points to start playback (you cannot jump to a frame that is not a key 
+    frame).  However, the more key frames there are, the lower the overall 
+    compression ratio.  When the -k option is not specified, the default value for 
+    N is 30.
+
+    -a N
+
+    Specifies a number between 0 and 100 indicating when there is enough variation 
+    between frames to encode a key frame.  When N is set to 100, a key frame 
+    cannot be inserted for any image, no mater how much variation there is.  When 
+    N is set to 0, every frame becomes a key frame.  When the -a option is not 
+    specified, the default value for N is 80.
+
+    -r N
+
+    Specifies a value between 0 and 63 for the range of image motion compensation.  
+    The greater the value, the longer it takes to encode the data, but the higher 
+    the image quality.  When the -r option is not specified, the default value for 
+    N is 32.
+
+
+    -i N
+
+    Specifies an integer of 1 or more for the interval at which audio records are 
+    inserted between video records.  For example, when 3 is specified for N, one 
+    audio record is inserted for every three video records.  When the -i option is 
+    not specified, the default value for N is 1.
+
+    -o path
+
+    Outputs the decoded image file for each frame to the folder (directory) 
+    specified in "path."  The file name is comprised of the 8-digit frame number 
+    plus the .BMP extension.  If a file already exists with that name, it will be 
+    overwritten, so please be careful.  The file is output in OS/2 bitmap format 
+    (uncompressed, 24bit/pixel).
+
+
+
+HVQM2 file format
+=================
+
+hvqm2enc version 1.0 outputs the compressed data to a file in the "HQVM2 1.0" 
+format described below: 
+
+
+"HVQM2 1.0" file header
+----------------------------------------------------------------------
+  Offset    Size        Explanation
+  (bytes)   (bytes)
+----------------------------------------------------------------------
+    +0        16     File version (*1)
+   +16         4     File size (*2)
+   +20         2     Number of pixels along horizontal edge
+   +22         2     Number of pixels along vertical edge
+   +24         1     Color difference component - horizontal 
+                     sampling rate (*3)
+   +25         1     Color difference component - vertical
+                     sampling rate (*4)
+   +26         1     Encoding parameter (*5)
+   +27         1     Encoding parameter (*5)
+   +28         4     Total number of video records
+   +32         4     Image frame interval [usec]
+   +36         4     Maximum size of the video record body (*2)
+   +40         4     Required number of FIFO packets for 2-pass decoding
+   +44         1     Audio data format (*6)
+   +45         1     Number of audio channels (*7)
+   +46         1     Number of bits in 1 audio sample (*8)
+   +47         1     Encoding parameter (*5)
+   +48         4     Total number of audio records
+   +52         4     Number of audio samples per second
+   +56         4     Maximum size of the audio record body (*2)
+----------------------------------------------------------------------
+
+*1  "HVQM2 1.0" is stored with a ASCIIZ character string
+*2  Number of bytes.  Must be an integer multiple of 4
+*3  Must be 2 for HVQM2 1.0
+*4  2 for 4:1:1 mode, and 1 for 4:2:2 mode
+*5  Not disclosed
+*6  0 for PCM audio data, and 1 for ADPCM audio data.  Always 1
+    for hvqm2enc version 1.3
+*7  Always 1 up to hvqm2enc version 1.3
+*8  Always 4 up to hvqm2enc version 1.3
+
+
+
+A number of records are lined up directly after this file header.  Each record 
+starts with the record header shown below.  The data directly after the record 
+header (and up until the next record header) is called the record body.
+
+Record Header
+---------------------------------------------------------------------------
+  Offset    Size        Explanation
+  (bytes)   (bytes)
+---------------------------------------------------------------------------
+    +0        2      Record type (*1)
+    +2        2      Data format 
+    +4        4      Size of record body (*2)
+---------------------------------------------------------------------------
+
+*1  0 for audio record, 1 for video record
+*2  Number of bytes.  Must be an integer multiple of 4
+
+
+The big endian method is used for both the file header and the record header data.
+
+
+
+Main changes from version 1.2
+=============================
+* Fixed problem of closing error if there is a data chunk that exceeds the 
+  Suggested Buffer Size described in AVI File Stream Header.
+
+* Compatible with AVI file formats generated by some tools not consistent with the 
+  specifications.
+

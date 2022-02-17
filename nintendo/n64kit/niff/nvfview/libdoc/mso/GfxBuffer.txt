@@ -1,0 +1,21 @@
+Function
+-  Manages a dynamic gfx buffer. 
+
+Functions 
+-  void msoGfxBufferInit( MsoGfxBuffer *buffer_ptr );
+  Initializes the gfx buffer. 
+
+-  void msoGfxBufferDestroy( MsoGfxBuffer *buffer_ptr );
+  Destroys the gfx buffer.  All memory held for gfx storage will be released. 
+
+-  void msoGfxBufferReserve( MsoGfxBuffer *buffer_ptr );
+  Reserves one area for gfx and returns its pointer. 
+
+-  void msoGfxBufferStore( MsoGfxBuffer *buffer_ptr, Gfx *dest_array );
+  Writes all gfx stored in the gfx buffer to dest_array. 
+  Before calling this function, an area must be reserved in dest_array which is larger than 
+  buffer_ptr->number_of_gfxs. 
+
+History
+  1998/10/08 Takamitsu Hirata 
+    GfxBuffer.h, gfxbuffer.c: :  Initial version 

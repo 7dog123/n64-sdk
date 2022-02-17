@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 17</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro17/index17.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro17/index17.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Writing Your Own Player</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+A Player is an Audio Library software object that works through the Synthesis Driver to construct audio command lists. Both the Sequence Player and the Sound Player are examples of Players.
+<P>
+A Player operates by signing into the driver and then responding to driver callback with driver API calls, described in <a target="_top" href="../pro17/index17.4.html">Section 17.4,  “The Synthesis Driver."</a>   The initialization procedure and the callback routine are detailed below.
+
+<p>
+<a name="01"></a>
+<b>Initializing the Player</b>
+<br>
+In order for your player to receive driver callbacks and to use the synthesis driver voice functions, you must first add the player as a driver client. This is accomplished with the alSynAddPlayer() call, which takes two arguments: a reference to the synthesis driver, and a reference to the ALPlayer structure that represents the player to be added. A reference to the synthesis driver may be obtained from the Audio Library globals structure alGlobals. The ALPlayer structure contains a reference to the voice handler callback function and a pointer that the player can use.
+
+<P>
+<b>Example 17-1</b> &nbsp;Player Initialization
+<pre><font face="courier" size="3">typedef struct MyPlayer_s {
+
+    ALPlayer node; 
+
+    /*
+     * include other player specific state here
+     */
+
+} MyPlayer;
+void playerNew(MyPlayer *p) 
+{
+    /*
+     * Initialize any player specific state here
+     */
+    
+    /*
+     * Sign into the synthesis driver so that the next time
+     * alAudioFrame is called, it will call the 	
+     * __voiceHandler function.
+     */
+    p->node.next       = NULL;
+    p->node.handler    = __voiceHandler;
+    p->node.clientData = p;
+    alSynAddPlayer(&alGlobals->drvr, &p->node);
+}
+
+void playerDelete(MyPlayer *p) 
+{
+    /*
+     * remove this player from the synthesis driver
+     */
+    alSynRemovePlayer(&alGlobals->drvr, &p->node);
+}
+</pre></font>
+<P>
+
+In the previous example, you’ll notice that the player structure contains a reference to __voiceHandler. This field points to a callback procedure, of type ALVoiceHandler, which the driver calls in the process of building the audio command list.
+
+<P>
+<a name="02"></a>
+<b>Implementing a Voice Handler</b>
+<br>
+When your application calls alAudioFrame(), the driver iterates through its list of players, calling the player’s voice handler functions at the appropriate offset (which translates to time) in the command list.
+
+<P>
+Typically, the player maintains a time-based list of events which the voice handler parses and translates into driver calls. The voice handler contributes to the construction of the command list by making driver voice calls. 
+
+<P>
+<b>Note:</b> Driver voice calls can be made only from within the voice handler function.
+<P>
+The voice handler returns the time, in microseconds, for the next callback.
+
+<P>
+
+<b>Example 17-2</b> &nbsp;The Voice Handler
+<pre><font face="courier" size="3">ALMicroTime __voiceHandler(void *node)
+{
+    MyPlayer    *p = (MyPlayer *)node;
+    
+    /*
+     * You can now make calls to the following synthesis 
+     * driver voice functions
+     *
+     *          alSynAllocVoice()
+     *          alSynFreeVoice()
+     *          alSynStartVoice()
+     *          alSynStopVoice()
+     *          alSynSetVol()
+     *          alSynSetPitch()
+     *          alSynSetPan()
+     *          alSynSetFXMix()
+     *          alSynSetPriority()
+     *          alSynGetPriority()
+     *          alSynSetFXParam()
+     */
+    
+    return 1000;        /* call back in 1 millisecond */
+}
+</pre></font>
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

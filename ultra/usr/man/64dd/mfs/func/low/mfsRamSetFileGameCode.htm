@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetFileGameCode</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetFileGameCode</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetFileGameCode(MfsDirID dirID, u8* companyCode, u8* gameCode)
+Arguments:	dirID	Directory ID of file (directory)
+	*companyCode	Company code
+	*gameCode	Game code
+Return value:Error
+Function:	Sets company code and game code of file (directory)
+Description:	This function sets the company code and game code of the file (directory) specified by dirID.
+The company code is a two-byte code, and the game code is a four-byte code.
+To set only the company code or only the game code, specify NULL for the buffer corresponding to the code that is not to be set.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

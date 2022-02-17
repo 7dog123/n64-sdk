@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 12</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro12/index12.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro12/index12.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">RS: Rasterizer</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The Rasterizer’s main job is implied in its name: to generate pixels that cover the interior of the primitive. The primitives are either triangles or rectangles. For each pixel, the RS generates the following attributes:
+<ul>
+<li>screen x, y location
+<P>
+<li>z depth for z-buffer purposes
+<P>
+<li>RGBA color information
+<P>
+<li>s/w, t/w, 1/w, lod for texture index, perspective correction, and mipmapping. 
+<br>These are commonly referred to as s, t, w, l.
+<P>
+<li>coverage value. </ul>
+
+<p>
+Pixels on the edge of primitives have partial coverage values. Interiors are full.
+<P>
+These values are sent to the pipelined blocks downstream for other computations, such as texture sampling, color blending, and so on.
+
+<P>
+<b>Figure 12.3.1</B> &nbsp;RS State and Input/Output
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-03.gif"></tr></td></table>
+<P>
+
+<a name="01"></a>
+<b>Scissoring</b>
+<br>
+Scissoring is commonly used to eliminate running performance-intensive clipping code in the geometry processing stage of a graphics pipeline. You do this by projecting the clipping rectangle at the near plane larger than the scissor rectangle. The rasterizer can then efficiently eliminate the portion outside of the screen rectangle.
+<P>
+The RSP geometry processing is performed in fixed-point arithmetic. The clipped rectangle boundary is not a perfect rectangle, because of precision errors. This artifact can also be eliminated using the scissoring rectangle.
+
+<P>
+<b>Figure 12.3.2</B> &nbsp;Scissor/Clipping/Screen Rectangles
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-04.gif"></tr></td></table>
+<P>
+Triangle A is scissored, but not clipped. B, C and E are trivially rejected because no pixels are enumerated. Only D is clipped and scissored.
+<P>
+
+<b>Table 1</b> &nbsp;gsDPSetScissor(ulx, uly, lrx, lry) 
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">ulx</td>
+<td width=60%><font face="arial" size="-1">upper left x</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">uly</td>
+<td width=60%><font face="arial" size="-1">upper left y</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">lrx</td>
+<td width=60%><font face="arial" size="-1">lower right x</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">lry	</td>
+<td width=60%><font face="arial" size="-1">lower right y</td>
+</tr></table>
+<P>
+
+<b>Note:</b> Rectangles are scissored with some restrictions. In 1CYCLE and 2CYCLE mode, rectangles are scissored the same as triangles. In FILL and COPY mode, rectangles are scissored to the nearest four pixel boundary; this might require rectangles to be scissored in screen space by the game software.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

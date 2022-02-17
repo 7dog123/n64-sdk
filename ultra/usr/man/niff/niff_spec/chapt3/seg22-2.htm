@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.22 NameList</h3>
+
+<hr size=3>
+<h4>2) Name Area</h4>
+
+<blockquote>
+The Name area stores the actual node Name. The Name area is mapped as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="4">NameHeader</th>
+
+<td>u32</td>
+
+<td>name_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>name_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>name_size</td>
+</tr>
+
+<tr>
+<th></th>
+
+<td COLSPAN="2">
+<center>node_name</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Name Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 name_tag</td>
+
+<td><font size=+0>Tag indicating Name</font>
+<pre><b><font size=+0>TAG_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00110100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_name_index</td>
+
+<td><font size=+0>Index number of this Name</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 name_header_size</td>
+
+<td><font size=+0>Size of this NameHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 name_size</td>
+
+<td><font size=+0>Size of this Name</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>node_name</td>
+
+<td><font size=+0>Node name*</font></td>
+</tr>
+</table></center>
+
+<blockquote>
+<b>*Note:</b> The node name is entered as ASCII text. Permissible ASCII characters are 0x21 (!) through 0x7e (~),
+in ASCII code. If the number of characters is not a multiple of 4 bytes, embed NULL bits to make the number of characters a multiple of 4 bytes. If the character string count is a multiple of 4 bytes, there is no need to insert NULL bits.
+</blockquote>
+
+<HR>
+
+<A HREF="seg22.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="../chapt4/Seg1.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0>
+</A>
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

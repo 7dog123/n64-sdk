@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContPakMgrInit</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContPakMgrInit(void)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Registers the Controller Pak Manager</strong></p>
+
+<p>Registers the Controller Pak Manager in the SI Manager. This function is called by the nuContInit function, so in most cases it does not need to be called. To remove the registration, use the nuContPakMgrRemove function.</p>
+
+<pre><font size="4"><strong>For example:</strong></font><BR><BR>
+
+	/* In this example, the Controller Manager and the Controller	*/
+	/* Pak Manager are used without using the nuContInit function	*/
+	/* Unlike with nuContInit function, the Rumble Pak cannot be used	*/
+	void appContInit(void)
+	{
+		/* Initialize and activate the Controller Manager */
+		nuContMgrInit();
+		
+		/* Activate the Controller Pak Manager */
+		nuContPakMgrInit();
+	}</pre>
+
+<hr>
+
+<pre>Reference: <a href="nuSiMgrInit.htm">nuSiMgrInit</a>,<a
+href="nuContInit.htm">nuContInit</a>,<a
+href="nuContPakMgrRemove.htm">nuContPakMgrRemove</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

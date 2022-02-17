@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Programming Cautions (14) Audio</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Audio</h2>
+<ul>
+<li><a href="#1">14-1  Prevention of Audio Pop (Required)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>14-1  Prevention of Audio Pop (Required)</h3>
+
+<b>Caution</b><br>
+Perform audio initialization as soon as possible (within the first 500ms) after power is applied to the N64 Control Deck.
+
+<p>
+<b>Discussion</b><br>
+The following three signals are input to the audio DAC.
+
+<ul>
+<li>Audio clock
+<li>LR clock (indicates which signal, L/R, is being transferred)
+<li>Audio data
+</ul>
+
+When power is applied to the N64 Control Deck, DC bias is applied to the outputs (L and R) of the audio DAC.  When the audio DAC is initialized (osAiSetFrequency called), the clock is input to the audio DAC and the DC bias voltage rises.  An audio pop may be generated when the voltage rise is amplified by the audio amplifier.
+
+<p>
+Audio output is muted during the first 500ms after power is applied to the N64 Control Deck.  The potential for this audio pop is greatly reduced if the audio initialization is performed during this period.
+
+<p>
+When using Partner-N64, the N64 OS initialization takes longer than the N64 Control Deck.  Because of this, audio DAC initialization is done after the mute period and an audio pop is generated.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

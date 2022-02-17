@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 17</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro17/index17.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro18/index18.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Implementing Vibrato and Tremolo</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<b>Note:</b> A full example of vibrato and tremolo implementation is given in the latest version of the playseq demo. GenMidiBank.inst has examples of how vibrato and tremolo would be set in the bank.
+
+<P>
+Vibrato and tremolo, are implemented by providing three callback routines; initOsc, updateOsc, and stopOsc. These routines act as the low frequency oscillator (LFO) that is modulated against either pitch or volume. When the sequence player determines that a note uses either vibrato or tremolo, it will call initOsc which will set a current value, and return a delta time specifying how long before it needs to update the value of the oscillator. After the delta time has passed, updateOsc will be called, which will set a current value and return a delta time until the next update. This will continue, until the note stops sounding, and at that time, stopOsc will be called, so that your application can do any necessary cleanup.
+<P>
+What each routine does, and how it does it is largely up to the application. All the sequence player expects is a delta time until the next callback, and a value to use as the current value. In addition the sequence player provides a mechanism for each note to have its own data, and for this data to be passed to subsequent calls of updateOsc. 
+<P>
+For vibrato or tremolo to be active, you must set the vibType or tremType of the instrument in the .inst file. A value of zero (the default) in these fields will be interpreted by the sequence player as either vibrato off or tremolo off. Any non-zero value will be considered as on. In addition to the type, the following fields can be used to specify parameters for the oscillator: vibRate, vibDepth, vibDelay, tremRate, tremDepth, tremDelay. These values are eight bit values and can be used in whatever way the oscillator callbacks deem appropriate.
+<P>
+When creating a sequence player, you must pass pointers to your callbacks through the ALSeqpConfig struct. The following code fragment demonstrates how to do this.
+<pre><font face="courier" size="3">ALSeqpConfig    seqc;
+
+seqc.maxVoices      = MAX_VOICES;
+seqc.maxEvents      = EVT_COUNT;
+seqc.maxChannels    = 16;
+seqc.heap           = &hp;
+seqc.initOsc        = &initOsc;
+seqc.updateOsc      = &updateOsc;
+seqc.stopOsc        = &stopOsc;
+
+alSeqpNew(seqp, &seqc);
+</pre></font>
+
+<P>
+<a name="01"></a>
+<b>The initOsc Routine</b>
+<br>
+<pre><font face="courier" size="3">ALMicroTime initOsc(void **oscState, f32 *initVal, u8
+		oscType,u8 oscRate, u8 oscDepth, u8 oscDelay);
+</pre></font>
+<p>
+The initOsc routine is the first callback to occur when a note is started, and either the vibType or tremType is non-zero. Vibrato and tremolo are handled separately by the sequence player, so if an instrument has both vibrato and tremolo, two calls will be made, one for each oscillator. When called, initOsc is passed a handle, in which it may store a pointer to a data structure. This pointer will be passed back to subsequent calls of updateOsc and stopOsc. This is optional. The second argument is a pointer to an f32 that must be set with a valid oscillator value. The remaining arguments are the oscType, oscRate, oscDepth, and oscDelay. These values may be used as you wish.
+<P>
+Typically initOsc will allocate enough memory for its data structure, and store a pointer to this memory in the oscState handle. This is optional though, and if your oscillator doesn’t have any state information it may not need to do this. After performing any computation that it needs, the initOsc routine returns a delta time, in microseconds, until the first call to updateOsc. If a delta time of zero is returned, the sequence player interprets this as a failure, and will not making any calls to either updateOsc or stopOsc. If the initVal is changed, the new value will be used. If the initVal remains unchanged, vibrato will default to a value of 1.0 and tremolo will default to a value of 127.
+<P>
+If the oscillator is a vibrato oscillator, the return value is multiplied against the unmodulated pitch to determine the modulated pitch. A value of 1.0 will have no effect, a value of 2.0 will raise the pitch one octave, and a value of .5 will lower the pitch one octave. If the oscillator is a tremolo oscillator, the returned f32 should be an integer value between 0 and 127. This value will be multiplied against the unmodulated volume to determine a modulated volume. A value of 127 will be full volume, and a value of 0 will be silent.
+
+<P>
+<a name="02"></a>
+<b>The updateOsc Routine</b>
+<br>
+<pre><font face="courier" size="3">ALMicroTime updateOsc(void *oscState, f32 *updateVal);
+</pre></font>
+
+<P>
+The updateOsc routine will be called whenever the delta time returned by either initOsc or the previous updateOsc call has expired. When called, updateOsc is passed the value returned by initOsc in the oscState handle. UpdateOsc should make whatever calculations it needs, set the new oscillator value in updateVal, and return a delta time until the next time updateOsc needs to be called. Valid oscillator values are the same as in the case of initOsc.
+
+<P>
+<a name="03"></a>
+<b>The stopOsc Routine</b><BR>
+<br>
+<pre><font face="courier" size="3">void stopOsc(void *oscState);
+</pre></font>
+
+<P>
+The main purpose of the stopOsc routine is to give the application the opportunity to free any memory stored in the oscState. StopOsc is not called until the note has completely finished processing. Even if your routine does nothing, you should still have a stopOsc routine if you have an initOsc routine.
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

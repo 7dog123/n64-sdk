@@ -1,0 +1,442 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body background="Pink_and_White1.gif" bgcolor="#FFFFFF">
+
+<p><a name="top"><img src="../../gif/n64_logo2.gif" width="136"
+height="21"><img src="../../gif/nusystem2.gif" width="240"
+height="30"></a></p>
+
+<h1><font color="#0000A0">Standard Function Reference</font></h1>
+
+<hr>
+
+<p><img src="Green_Square22A5.gif" width="12" height="12"> <a
+href="#1">Standard C Functions</a></p>
+
+<p><a href="#1"><img src="Green_Square22A5.gif" border="0"
+width="12" height="12"></a> <a href="#2">Math Library Functions</a>
+</p>
+
+<p><a href="#1"><img src="Green_Square22A5.gif" border="0"
+width="12" height="12"></a> <a href="#3">Memory Allocation Routines</a></p>
+
+<p><a href="#1"><img src="Green_Square22A5.gif" border="0"
+width="12" height="12"></a> <a href="#4">Character Functions</a></p>
+
+<hr>
+
+<h2><img src="Green_Stone61A4.gif" width="25" height="18"><a
+name="1">Standard C Functions</a></h2>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="memchr.html"><strong>memchr</strong></a></td>
+        <td width="410">Searches the buf memory area for the character (byte) specified by C</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="memmove.html"><strong>memmove</strong></a></td>
+        <td width="410">Copies the content of scr to dest for the number of bytes specified by
+                           count</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="memcmp.html"><strong>memcmp</strong></a></td>
+        <td width="410">Compares the content of the buf1 buffer with the content of the buf2
+                           buffer</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="memset.html"><strong>memset</strong></a></td>
+        <td width="410">Writes the single character (byte) specified by c over and over to the
+                           area specified by dst</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="memcpy.html"><strong>memcpy</strong></a></td>
+        <td width="410">Copies the content of scr to dest by the amount of count</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="strchr.html"><strong>strchr</strong></a></td>
+        <td width="410">Finds a character within a character string</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strcpy.html"><strong>strcpy</strong></a></td>
+        <td width="410">Copies str2 on top of str1</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strncat.html"><strong>strncat</strong></a></td>
+        <td width="410">Appends characters from str2 onto the end of str1</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strncpy.html"><strong>strncpy</strong></a></td>
+        <td width="410">Copies characters to the specified location</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strrchr.html"><strong>strrchr</strong></a></td>
+        <td width="410">Finds the last occurrence of a character within a string</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strcmp.html"><strong>strcmp</strong></a></td>
+        <td width="410">Compares two strings lexicographically</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strcspn.html"><strong>strcspn</strong></a></td>
+        <td width="410">Computes and returns the length of the maximum initial segment of
+                           a string that consists entirely of characters not found in another string</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strlen.html"><strong>strlen</strong></a></td>
+        <td width="410">Returns the length of the specified character string</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strncmp.html"><strong>strncmp</strong></a></td>
+        <td width="410">Compares at most n characters lexicographically from a string to at most
+                           n characters from another string</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strpbrk.html"><strong>strpbrk</strong></a></td>
+        <td width="410">Finds the first occurrence in string1 of any character currently in
+                           string2</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strspn.html"><strong>strspn</strong></a></td>
+        <td width="410">Computes the length of the maximum initial segment of string1 that
+                           completely holds string2</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strcat.html"><strong>strcat</strong></a></td>
+        <td width="410">Appends a copy of str2 onto the end of str1</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strstr.html"><strong>strstr</strong></a></td>
+        <td width="410">Locates the first occurrence of string2 in string1</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strtok.html"><strong>strtok</strong></a></td>
+        <td width="410">Breaks string1 into a sequence of tokens each of which is delimited by the character specified by string2</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="longjmp.html"><strong>longjmp</strong></a></td>
+        <td width="410"><a target=top href="setjmp.html">setjmp()</a>Restores the environment that was saved by the setjmp function</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="setjmp.html"><strong>setjmp</strong></a></td>
+        <td width="410"><a target=top href="longjmp.html">longjmp()</a>Saves its calling environment in the env buffer for the longjmp function</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="labs.html"><strong>labs</strong></a></td>
+        <td width="410">Returns the absolute value of the original value</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="abs.html"><strong>abs</strong></a></td>
+        <td width="410">Returns the absolute value of a specified integer</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="srand.html"><strong>srand</strong></a></td>
+        <td><a href="rand.html">rand()</a>Seeds the random number generator</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="rand.html"><strong>rand</strong></a></td>
+        <td>Returns a pseudo-random number falling in the range from 0 to 0x7fff</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="atof.html"><strong>atof</strong></a></td>
+        <td width="410">Converts the specified character string to a double-precision numerical value</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="atoi.html"><strong>atoi</strong></a></td>
+        <td width="410">Converts a character string to an interger</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="atol.html"><strong>atol</strong></a></td>
+        <td>Converts a character string to a "long" numeric value</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strtol.html"><strong>strtol</strong></a></td>
+        <td>Converts a specified character string to a "long" numeric value</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strtod.html"><strong>strtod</strong></a></td>
+        <td>Converts the string specified to a double-precision numeric value</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="strtoul.html"><strong>strtoul</strong></a></td>
+        <td>Converts a specified character string to an "unsigned long" numeric value</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="ldiv.html"><strong>ldiv</strong></a></td>
+        <td>Divides one "long" number by another "long" number </td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="div.html"><strong>div</strong></a></td>
+        <td>Divides one interger by another interger </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="qsort.html"><strong>qsort</strong></a></td>
+        <td width="410">Sorts an array in ascending order</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="bsearch.html"><strong>bsearch</strong></a></td>
+        <td width="410">Using a binary search, finds an element that matches the key
+                           argument in an array sorted in ascending order</td>
+    </tr>
+</table>
+
+<p><a href="#top"><img src="index.gif" border="0" width="65"
+height="17"></a></p>
+
+<hr>
+
+<h2><img src="Green_Stone61A4.gif" width="25" height="18"><a
+name="2">Math Library Functions</a> </h2>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="sin.html"><strong>sin/sinf</strong></a></td>
+        <td width="410">Returns the sine of a radian angle</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="cos.html"><strong>cos/cosf</strong></a></td>
+        <td>Returns the cosine of the specified argument</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="tan.html"><strong>tan/tanf</strong></a></td>
+        <td>Returns the tangent of a radian angle</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="asin.html"><strong>asin/asinf</strong></a></td>
+        <td>Returns the arc sine of the specified argument</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="acos.html"><strong>acos/acosf</strong></a></td>
+        <td>Returns the arc cosine of the specified argument</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="atan.html"><strong>atan/atanf</strong></a></td>
+        <td>Returns the arc tangent of the specified argument</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="atan2.html"><strong>atan2/atan2f</strong></a></td>
+        <td width="410">Returns the arc tangent of argument y divided by argument x</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="sinh.html"><strong>sinh/sinhf</strong></a></td>
+        <td width="410">Returns the hyperbolic sine of a radian angle</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="cosh.html"><strong>cosh/coshf</strong></a></td>
+        <td width="410">Returns the hyperbolic cosine of a radian angle</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="tanh.html"><strong>tanh/tanhf</strong></a></td>
+        <td>Returns the hyperbolic tangent of a radian angle</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="exp.html"><strong>exp/expf</strong></a></td>
+        <td width="410">Calculates an exponent to the x power </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="frexp.html"><strong>frexp/frexpf</strong></a></td>
+        <td width="410">Finds m and n to fill the formula x=m*(2^n)</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="ldexp.html"><strong>ldexp/ldexpf</strong></a></td>
+        <td width="410">Calculates x*(2^exp)</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="modf.html"><strong>modf/modff</strong></a></td>
+        <td width="410">Separates the fractional part of x from the integral part of x</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="log.html"><strong>log/logf</strong></a></td>
+        <td width="410">Calculates the natural logarithm of x</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="log10.html"><strong>log10/log10f</strong></a></td>
+        <td width="410">Calculates the common logarithm of x</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="pow.html"><strong>pow/powf</strong></a></td>
+        <td width="410">Calculates x to the y power</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="sqrt.html"><strong>sqrt/sqrtf</strong></a></td>
+        <td width="410">Finds the square root of x</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="fabs.html"><strong>fabs/fabsf</strong></a></td>
+        <td width="410">Returns the absolute value of x</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="floor.html"><strong>floor/floorf</strong></a></td>
+        <td>Returns the maximum integer value that is less than x</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="ceil.html"><strong>ceil/ceilf</strong></a></td>
+        <td width="410">Returns the minimum integer value that is greater than x</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="fmod.html"><strong>fmod/fmodf</strong></a></td>
+        <td width="410">Calculates the remainder of x/y</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="hypot.html"><strong>hypot/hypotf</strong></a></td>
+        <td width="410">Calculates the length of the hypotenuse for a right triangle</td>
+    </tr>
+</table>
+
+<p><a href="#top"><img src="index.gif" border="0" width="65"
+height="17"></a></p>
+
+<hr>
+
+<h2><img src="Green_Stone61A4.gif" width="25" height="18"><a
+name="3">Memory Allocation Routines</a></h2>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="InitHeap.html"><strong>InitHeap</strong></a></td>
+        <td width="410">Reserves and initializes a memory allocation area</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="malloc.html"><strong>malloc</strong></a></td>
+        <td width="410">Reserves a memory block that is greater in size than the area that was
+                           reserved by InitHeap function</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="free.html"><strong>free</strong></a></td>
+        <td>Frees the memory block that was reserved by the InitHeap
+                           function</td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="realloc.html"><strong>realloc</strong></a></td>
+        <td width="410">Resizes memory block in an area reserved by the InitHeap function</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="calloc.html"><strong>calloc</strong></a></td>
+        <td width="410">Reserves memory block with a specified number of elements of a specified size bytes
+                           each in the area reserved by the InitHeap function</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="memalign.html"><strong>memalign</strong></a></td>
+        <td width="410">Reserves memory block in area reserved by InitHeap function from area for which alignment
+                           was adjusted</td>
+    </tr>
+</table>
+
+<p><font color="#FF0000">For Debugging:</font></p>
+
+<table border="1" cellspacing="0" width="550">
+    <tr>
+        <td width="160"><a target=top href="malloc_memcheck.html"><strong>malloc_memcheck</strong></a></td>
+        <td width="410">Checks the memory allocation area</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="malloc_memdsp.html"><strong>malloc_memdsp</strong></a></td>
+        <td width="410">Makes 60 digits into 1 line for the specified one-dimensional character string</td>
+    </tr>
+</table>
+
+<p><a href="#top"><img src="index.gif" border="0" width="65"
+height="17"></a></p>
+
+<hr>
+
+<p><img src="Green_Stone61A4.gif" width="25" height="18"><a
+name="4"><font size="5"><strong>Character Functions</strong></font></a><font
+size="5"><strong> </strong></font>(M)Macros</p>
+
+<table border="1" cellspacing="0">
+    <tr>
+        <td width="160"><a target=top href="iscntrl.html"><strong>iscntrl</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is a control character</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="isdigit.html"><strong>isdigit</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is a digit (0-9)</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="islower.html"><strong>islower</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is a lowercase letter</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="isupper.html"><strong>isupper</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is a uppercase letter</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="isxdigit.html"><strong>isxdigit</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is a hexadecimal digit</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="isalnum.html"><strong>isalnum</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is an alphanumeric character</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="isascii.html"><strong>isascii</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is an ASCII code</td>
+    </tr>
+    <tr>
+        <td width="160"><a target=top href="isspace.html"><strong>isspace</strong></a><font
+        size="2">(M)</font></td>
+        <td>Checks to see if the specified character is a white space character</td>
+    </tr>
+</table>
+
+<p><a href="#top"><img src="index.gif" border="0" width="65"
+height="17"></a></p>
+
+</body>
+</html>

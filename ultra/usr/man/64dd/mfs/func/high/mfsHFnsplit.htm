@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFnsplit</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFnsplit</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHFnsplit(const u8* path, u8*
+drive, u8* dir, u8* name, u8* type)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Path name<br>
+*drive Drive name<br>
+*dir Directory name<br>
+*name File name<br>
+*type Extension</p>
+
+<p><strong>Return value:</strong>Flag indicating component</p>
+
+<p><strong>Function:</strong> Splits pathname into components</p>
+
+<p><strong>Description:</strong> This function splits the pathname specified by path into four components (drive name, directory name, file name, and extension) and stores them in the buffers specified by drive, dir, name, and type, respectively.  If NULL is specified for a buffer, the corresponding component is only split from the pathname and is not stored.</p>
+
+<p>The maximum sizes of these character strings are defined as follows.
+These values includes the terminating NULL space.</p>
+
+<pre>MFS_MAXPATH 128	Path name
+MFS_MAXDRIVE 3	Drive name
+MFS_MAXDIR 100	Directory name
+MFS_MAXFILE 21	File name
+MFS_MAXTYPE 7	Extension</pre>
+
+<p>mfsHFnsplit assumes that there is a sufficiently large amount of space to be able to store each non-NULL component.
+mfsHFnsplit uses the following rules to split path.</p>
+
+<p>* drive contains a colon (such as A: or B:)
+      * dir contains the directory separator '/' at the beginning and end (such as /nintendo/64/)
+      * type contains a period before the extension (such as .text or .html)</p>
+
+<p>A flag indicating whether or not a component is contained in path is returned as the return value.  
+The flag has a bit configuration in which the corresponding bits are as follows:</p>
+
+<pre>MFS_FNSPLIT_TYPE	0x02
+MFS_FNSPLIT_FILENAME	0x04
+MFS_FNSPLIT_DIRECTORY	0x08
+MFS_FNSPLIT_DRIVE	0x10</pre>
+
+<p>mfsHFsplit performs the opposite operation to the operation performed by mfsHFnmerge.</p>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHRmDir</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHRmDir</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHRmDir(const u8* path)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Directory name</p>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong> Deletes directory</p>
+
+<p><strong>Description:</strong> This function deletes the directory specified by path.
+The directory specified by path must satisfy the following conditions.</p>
+
+<dl>
+    <dd>* No files exist<br>
+        * It is not the current working directory<br>
+        * It is not the root directory</dd>
+</dl>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_NOTFOUND 	Directory not found
+MFS_ERR_DEVICE		Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT		Write protected
+			The directory attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected. </pre>
+
+<hr>
+</body>
+</html>

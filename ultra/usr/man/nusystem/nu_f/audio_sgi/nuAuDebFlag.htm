@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<body bgcolor="#FFFFFF">
+<Pre>
+<FONT face="arial" size="4" color="#408080"><STRONG><IMG src="../nusystem2.gif" height="30" width="176"> Global Variables</STRONG></FONT>
+</Pre>
+
+
+<HR>
+<Pre>
+<FONT face="arial" size="6" color="#408080"><STRONG>nuAuDebugFlag</STRONG></FONT>
+</Pre>
+
+<HR>
+<font face="arial" size="-1">
+<STRONG>Syntax</STRONG><br>
+<font face="courier" size="3"><PRE>u32 nuAuDebugFlag
+</PRE></font>
+
+
+<P>
+<STRONG>Explanation</STRONG>
+<br>
+Debug Flags
+</P>
+
+<P>
+This enables the debugging function specified to the audio manager while debugging or tuning audio. </P>
+
+<P>
+The values which can be specified are as follows.  When multiple are specified, they can be specified using "or". 
+</P>
+
+<TABLE>
+  <TR>
+    <TD><font face="arial" size="-1">NU_AU_DEBUG_NORMAL</TD>
+    <TD><font face="arial" size="-1">Performs warning or error output.  Output is sent to the console by the osSyncPrintf function.</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">NU_AU_DEBUG_DISABLEDMA</TD>
+    <TD><font face="arial" size="-1">Prohibits PI-DMA transfer</TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">NU_AU_DEBUG_DISABLEAI</TD>
+    <TD><font face="arial" size="-1">Prohibits setting an audio buffer in the AI register </TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">NU_AU_DEBUG_DISABLETASK</TD>
+    <TD><font face="arial" size="-1">Prohibits execution of audio tasks </TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">NU_AU_DEBUG_FIFOOFF</TD>
+    <TD><font face="arial" size="-1">Disables FIFO events </TD></TR>
+  <TR>
+    <TD><font face="arial" size="-1">NU_AU_DEBUG_RETRACEOFF</TD>
+    <TD><font face="arial" size="-1">Disables retrace events </TD></TR>
+</TABLE>
+
+<HR>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

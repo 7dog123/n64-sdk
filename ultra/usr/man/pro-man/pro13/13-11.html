@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 13</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro13/index13.10.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro13/index13.12.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Restrictions</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Texture Types and Modes</b>
+<br>
+The following is a list of restrictions concerning the use of certain textures types in certain modes:
+
+<P>
+<a name="01.1"></a>
+<b>Point Sample</b>
+<br>
+Clamp &/| (wrap | mirror) works for all texel types.
+
+<P>
+<a name="01.2"></a>
+<b>Filter</b>
+<br>
+Clamp works for all texel types.  Wrap t | mirror t | (clamp t & wrap t) | (clamp t & mirror t) works for all texel types.
+<P>
+Wrap s | mirror s | (clamp s & wrap s) | (clamp s & mirror s) works for all texel types except YUV.
+
+<P>
+<a name="01.3"></a>
+<b>Copy</b>
+<br>
+Clamping is implicitly disabled for copy mode.  32-bit RGBA and YUV texel types are not supported.  To copy these types, they should be loaded and copied as 16-bit RGBA type texels.  When using a 16-bit RGBA type to copy a 32-bit RGBA or YUV texture, <b>mirroring in s is not supported</b>.
+<P>
+Wrap or mirror works for 4, 8, and 16-bit types.
+
+<P>
+<a name="01.4"></a>
+<b>LOD</b>
+<br>
+You must put the RDP in two-cycle mode to use texture LOD.
+
+<P>
+<a name="02"></a>
+<b>Alignment</b>
+<br>
+The texture image pointer, as defined using the <i>gDPSetTextureImage</i>  command, must be 8-byte aligned.  Additionally, each tile  must be aligned according to its size.  For example, 8-bit texture tiles must be aligned to 8-bit boundaries, 16-bit textures to 16-bit boundaries, etc.  <b>One exception is 4-bit tiles,</b>  which must be accessed on byte (8-bit boundaries).
+
+<P>
+<a name="03"></a>
+<b>Tiles</b>
+<br>
+The maximum size of a tile is 256 rows (t coordinate) and 1024 texels (s coordinate) within the limits of Tmem size.  It is better to always make the s coordinate the longer coordinate in terms of load performance.
+<P>
+You should avoid shifting coordinates left using the shift parameter of a tile unless necessary.  Please see the example in <a target="_top" href="../pro13/index13.12.html">Section 13.12, Applications - "Multiple Tile Effects."</a>
+
+
+<P>
+<a name="04"></a>
+<b>Coordinate Range</b>
+<br>
+The valid texture coordinate range is currently from -1024.0 to +1023.99. A total range of 2K texels across a primitive. The texture hardware can handle this full range without any noticeable loss of accuracy. For small coordinate ranges however, if given a choice of coordinates close to zero or coordinates close to 1024, slightly higher quality may result from the lower coordinates. 
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

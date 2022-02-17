@@ -1,0 +1,113 @@
+Required Files 
+  nvfview.N64	   Viewer itself.
+  scene.nvf        NVF with default scene.
+  model.nvf        NVF with object. (Created in niff2nvs)
+  nvfview.bin      Combination of scene.nvf and model.nvf.
+
+Usage Example
+  run.bat
+
+Operations 
+  Z + Control Stick	Rotate object. 
+  Control Stick (up)	Move camera closer to object.
+  Control Stick(down)	Move camera away from object. 
+  C buttons		Move object up, down, left, right. 
+  L			Retrace animation one frame. 
+  R               	Advance animation one frame. 
+  A               	Play back animation.  (Toggle operation) 
+  B               	Reverse playback of animation. (Toggle operation) 
+
+Menu Operation Methods
+  The menu will not be displayed in the initial status. 
+  Press the START button to display the menu.
+  The current item will be displayed in red, while other items will be displayed in white. 
+      -  Move to items using up, down on the Control Pad. 
+      -  At the item whose value is to be set, decrease the value with left on the Control Pad, 
+         increase it with right on the Control Pad. 
+      -  Select the item with the START button. 
+
+  The initial menu consists of the following. 
+  -  OBJECT
+  -  CAMERA
+  -  FOG
+  -  BG COLOR
+  -  ANIMATION
+  -  VIDEO
+  -  ICON
+  -  EXIT
+	Select EXIT to leave the menu. 
+
+[OBJECT Menu]
+  Select the OBJECT item to display the OBJECT menu. 
+  The OBJECT menu consists of the following structure. 
+  -  SCENE/NINTENDO
+	This item allows you to toggle between SCENE and NINTENDO. 
+	SCENE displays the scene, NINTENDO displays the N64 logo. 
+  -  RESET
+        Reset the status of the object.  An object in the scene 
+        is selected and the position, orientation and scale of 
+        that object will be returned to their initial values. 
+  -  EXIT
+	Leave the OBJECT menu. 
+
+[CAMERA Menu]
+  -  CONTROL/SCENE
+	This item allows you to toggle between CONTROL and SCENE. 
+        SCENE utilizes the camera in the scene (if it can be used), 
+        while CONTROL utilizes a camera which can be manipulated 
+        by the Controller. 
+  -  RESET
+        Reset the status of the camera.  A CONTROL camera is selected 
+        and the position, orientation and scale of that camera will 
+        be returned to their initial values. 
+  -  EXIT
+	Leave the CAMERA menu. 
+
+[FOG Menu]
+  -  OFF/ON
+	Toggle the Fog ON/OFF. 
+  -  R, G, B, A
+	Specify the color of the Fog. 
+  -  NEAR, FAR
+	Specify the distance at which Fog is applied. 
+  -  RESET
+	Return the Fog parameters to their initial settings. 
+  -  EXIT
+	Leave the FOG menu. 
+
+[BG COLOR Menu]
+  -  R, G, B
+	Specify the background color. 
+  -  RESET
+	Return the background color to its initial setting. 
+  -  EXIT
+	Leave the BG COLOR menu. 
+
+[ANIMATION Menu]
+  -  Playback Speed (1, 0.5, 0.25, 2)
+        Switch the animation playback speed.  
+  -  Select(0 - 9999)
+	Switch animation to be recreated.
+  -  EXIT
+	Delete ANIMATION menu. 
+
+[VIDEO Menu]
+  -  GAMMA OFF/ON
+	Turn gamma correction ON/OFF. 
+  -  GAMMA DITHER OFF/ON
+	Turn gamma dithering ON/OFF. 
+  -  DIVOT OFF/ON
+	Turn divot ON/OFF. 
+  -  DITHER FILTER OFF/ON
+	Turn the dither filter ON/OFF. 
+  -  Screen Resolution 
+        Switch the screen resolution. 
+        If selected resolution cannot be used, 320x240 16bpp will be used. 
+  -  EXIT
+	Leave the VIDEO menu. 
+
+[ICON Menu]
+  -  OFF/ON
+        Display joints and effectors of inverse kinematics as icons. 
+  -  EXIT
+	Leave the ICON menu. 

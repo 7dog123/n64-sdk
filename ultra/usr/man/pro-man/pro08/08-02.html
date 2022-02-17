@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 8</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro08/index8.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro08/index8.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Design Approach</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Since Nintendo 64 operates in a real-time environment, its I/O subsystem is one of the most time-critical areas. Furthermore, the customized Nintendo 64 environment contains a well-known set of device interfaces that remains unchanged for some time to come. Therefore, its I/O subsystem is mainly designed for optimal throughput and response, and not for portability and generality. This design approach coincides with the main Nintendo 64 design philosophy, which has always been (and still is) to follow the minimal approach.
+<P>
+The Nintendo 64 I/O subsystem contains the following components:
+<ul>
+<li>a device-dependent system interface
+<li>a device manager for shared devices
+<li>a system exception handler</ul>
+<P>
+These components represent a much trimmed-down version of the typical I/O layers. All overhead associated with device-independent interfaces (that is, naming and buffering) has been removed; protection is implemented only on shared devices. Low-level (raw) I/O interface is also available, allowing you to customize device interfaces based upon your specific needs. The result is a very lightweight and optimized interface that allows you to access (in most cases) the devices directly.
+<P>
+Each of these components is described further in other sections of this manual. However, first it is important to discuss some properties (such as synchrony and mutual exclusion) that the Nintendo 64 I/O subsystem should exhibit.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

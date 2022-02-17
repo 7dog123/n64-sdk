@@ -1,0 +1,46 @@
+/*======================================================================*/
+/*		NIFFprev						*/
+/*		spec							*/
+/*									*/
+/*		Copyright (C) 1997, NINTENDO Co,Ltd.			*/
+/*		Copyright (C) 1998, MONEGI CORPORATION.			*/
+/*									*/
+/*----------------------------------------------------------------------*/ 
+#include "nusys.h"
+
+beginseg
+        name    "code"
+        flags   BOOT OBJECT
+        entry   nuBoot
+        address NU_SPEC_BOOT_ADDR
+        stack   NU_SPEC_BOOT_STACK
+	maxsize 0x00264000
+        include "codesegment.o"
+        include "$(ROOT)/usr/lib/PR/rspboot.o"
+        include "$(ROOT)/usr/lib/PR/aspMain.o"
+/*      include "$(ROOT)/usr/lib/PR/n_aspMain.o"	*/
+#ifdef F3DEX_GBI
+        include "$(ROOT)/usr/lib/PR/gspF3DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLP.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspL3DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo_d.o"
+#endif
+#ifdef F3DEX_GBI_2
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspL3DEX2.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspS2DEX2.fifo.o"
+#endif
+endseg
+
+beginwave
+	name	"prev"
+	include	"code"
+endwave

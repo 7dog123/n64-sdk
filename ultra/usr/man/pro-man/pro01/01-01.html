@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 1</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro01/index.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro01/index1.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">The N64 Emulator Board</font></b></a>
+
+<p>
+<font face="arial" size="-1" color="#000000">
+This chapter describes the procedure for installing the Nintendo  64 emulator board into a Silicon Graphics Indy workstation. It also describes the procedure for installing the Nintendo 64 development software, and includes a discussion of the location of the software components.
+
+<P>
+This chapter is not a complete installation guide. You must be familiar with the standard SGI software installation procedures and GIO board installation in an Indy workstation.
+
+<p>
+<a name="01"></a>
+<b>Removing the Upper Cover</b>
+<br>
+The Nintendo 64 Development Board is installed in the Indy workstation as described in the <i>Indy Workstation Owner’s Guide</i> (please see the chapter “Installing the GIO Option Board”). The following  instructions supplement that chapter and serve as an errata. 
+
+<P>
+Following is the procedure for removing the upper cover of the Indy Workstation.
+
+<ol>
+<li>Press and release the power button located on the front of the system to shut down the software and turn the power off. 
+<P>
+<li>Remove the power cable from the back of the Indy workstation. 
+<P>
+<li>To open the back of the Indy workstation, place the right-hand index and middle fingers on the back of the blue tab. 
+<P>
+<li>With both thumbs pressing down firmly on the black tab, push the blue tab toward you, lifting slightly upward.
+<P>
+<li>Slide the cover forward approximately 3cm to "unlatch" and remove it.
+<P>
+</ol>
+
+<b>Note:</b> It may take a considerable amount of strength to remove the cover. 
+
+<P>
+<b>Figure 1.1.1</B> &nbsp;Remove the Indy Workstation Cover
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro01/gif/f01-02.gif"></tr></td></table>
+<P>
+
+<P>
+The board is secured in the workstation by four screws that attach it to the standoffs on the base board. When you install the board, be careful not to damage any jumper wires that may be present on the board.
+
+<P>
+Figure 1.1.2 shows the placement of the Nintendo 64 Development board in the Indy workstation.
+
+<P>
+<b>Figure 1.1.2</B> &nbsp;Placement of the Emulator Board in the Indy Workstation
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro01/gif/f01-03.gif"></tr></td></table>
+<P>
+The Nintendo 64 Development board is not supported by the <i>hinv</i>  command. Once the board and software have been successfully installed, the boot monitor will echo “U64 Device found” during the power-up procedure.  The application <i>ginv</i>  in /usr/scr/PR/ginv can be used to print information about the installed development board such as the RCP version number, clock speed, and video mode.
+Nintendo 64 GIO Card
+
+<P>
+<a name="02"></a>
+<b>Connecting the Emulator Board</b>
+<br>
+The AV out port connector type is the same as that used on the current Super Nintendo Entertainment System. The cable that connects this port to an external television can be obtained from most stores that sell the SNES device. You can buy different cables to support Composite, S-Video RGB, or other formats that are standard in your country.
+
+<P>
+<b>Note:</b> The AV out can optionally be routed back to the Indy video input and audio inputs, allowing you to view and hear the game board on the local Indy workstation. The workstation accepts composite or S-video input as provided on separate SNES cables.
+
+<P>
+The game controller ports accept RJ-11 connectors (available on the U64 Development game controllers provided by Nintendo). There are connectors for six ports, though only connectors 1 through 4 are active. The connectors are named 1 through 6, and are numbered from left to right (when you view the connector from the back of the workstation).  Plugging a controller into port 5 will cause the machine to hang.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

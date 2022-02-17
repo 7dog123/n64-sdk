@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>[N64 CITextureEditor] 4. Users Guide</title>
+</head>
+<body>
+<p align="right"><a href="../ja/guide.html">Japanese</a></p>
+<h2>4. <font color=#008000>User's Guide</font></h2>
+<ol>
+ <li><a href="#GUIDE_PROJECT">Projects</a>
+ <ol>
+  <li><a href="#GUIDE_PROJECT_NEW">Creating a project</a>
+  <li><a href="#GUIDE_PROJECT_OPEN">Opening a project</a>
+  <li><a href="#GUIDE_PROJECT_SAVE">Saving a project</a>
+  <li><a href="#GUIDE_PROJECT_PICTURE">Adding a picture to a project</a>
+ </ol>
+ <li><a href="#GUIDE_IMAGE">Images</a>
+ <ol>
+  <li><a href="#GUIDE_IMAGE_NEW">Creating a new 4bit/8bit CI texture</a>
+  <li><a href="#GUIDE_IMAGE_OPEN">Opening a 4bit/8bit CI texture</a>
+  <li><a href="#GUIDE_IMAGE_SAVE">Saving a 4bit/8bit CI texture</a>
+  <li><a href="#GUIDE_IMAGE_IMPORT">Editing an existing image as a 4bit/8bit CI texture</a>
+  <li><a href="#GUIDE_IMAGE_PREVIEW">Previewing an image during editing on the target (NINTENDO<sup>64</sup>) using IS-VIEWER64</a>
+  <li><a href="#GUIDE_IMAGE_EXPORT">Exporting a created CI texture to a project.</a>
+ </ol>
+ <li><a href="#GUIDE_PALETTE">Palettes</a>
+ <ol>
+  <li><a href="#GUIDE_PALETTE_NEW">Creating a palette</a>
+  <li><a href="#GUIDE_PALETTE_EDIT">Editing a palette</a>
+  <li><a href="#GUIDE_PALETTE_SAVE">Saving a palette</a>
+ </ol>
+</ol>
+<hr>
+<ol>
+ <a name="GUIDE_PROJECT">
+ <li><b>Projects</b>
+ <ol>
+  <a name="GUIDE_PROJECT_NEW">
+  <li>Creating a project
+  <ol>
+   <li>Open the <a href="gui.html#UI_MENU_PROJECT">Project menu </a> and select "New..." to open the <a href="gui.html#UI_DLG_FILE_NEW_TPF">Project page of the New File dialog</a>.
+   <ul>
+    <img src="images/dlg_new_project.gif">
+   </ul>
+   <li>Enter the <a href="spec.html#FILE_TPF">TPF file name</a>/
+       TPF directory name inside the dialog.<br>
+   <ul> 
+    <form><input type="reset" value=" ... ">Press this button to open the Select Directory dialog.</form>
+    If no TMF/TLF directory is specified, then the directory becomes the same one as was specified for the TPF directory.
+   </ul>
+   <li>When the OK button is pressed, any open projects are closed.<br>
+       If the project has been edited, a dialog opens asking whether or not to save the file.
+   <li>If the new project has been created correctly, it will be opened in an editable state.
+   <ul>
+    <img src="images/window_tpf.gif">
+   </ul>
+  </ol>
+  <a name="GUIDE_PROJECT_OPEN">
+  <li>Opening a project
+  <ol>
+   <li>Any project that is already open will be closed.<br>
+       
+If that project has been edited, a dialog will open asking whether or not to save the file.
+   <li>To open a project, open the <a href="gui.html#UI_MENU_PROJECT">Project menu</a> and select "Open..."  This opens the Open File dialog, where you specify the target TPF and then press the Open button.
+   <li>If there are any previously edited projects, then a list of the recently edited files will be displayed in the <a href="gui.html#UI_MENU_FILE">File menu</a>, and it is also possible to select the file from here.
+   <li>If the file is properly loaded, the project will open in an editable state.
+  </ol>
+  <a name="GUIDE_PROJECT_SAVE">
+  <li>Saving a project
+  <ol>
+   <li>To save a project, you can select either "Save" or "Save As..." from the <a href="gui.html#UI_MENU_PROJECT">Project menu</a>.
+   <li>When saving a file for the first time or with "Save As..." the Save File dialog will open.  Here you can specify a name for the file.
+  </ol>
+  <a name="GUIDE_PROJECT_PICTURE">
+  <li>Adding a picture to a project
+  <ol>
+   <font color=red>Note: Pictures are assemblages of related images and palettes.<br>
+Pictures reference TMF/TLF file names, so the TMF/TLF assemblage must be in the TMF/TLF directory.</font>
+   <li>From the <a href="gui.html#UI_CTRL_PROJECT_BAR">Project dialog bar</a> or the
+<a href="gui.html#UI_MENU_PROJECT">Project menu</a>, select "Picture" "Add" (or "Change" if manipulating an existing picture) to open the <a href="gui.html#UI_DLG_EDIT_PICTURE">Edit Picture dialog</a>.
+   <ul>
+    <img src="images/dlg_edit_picture.gif">
+   </ul>
+   <li>Select picture name and TMF/TLF.
+       
+Since the TMF/TLF combo box lists the files that exist in the directory specified by the TMF/TLF directory, the selection can be made from here.<br>
+	   
+To create a new TMF/TLF, press the New button.<br>
+       
+When TMF is 4bit and TLF is 8bit, you can select which palette number (0~15) to use for TLF.<br>
+   <li>Open related pictures using the <a href="gui.html#UI_CTRL_PROJECT_BAR">Project dialog bar</a> or by clicking on the picture node in the project window.
+   <ul>
+    <img src="images/project_bar.gif">
+   </ul>
+   <li>Delete the currently selected picture using the <a href="gui.html#UI_CTRL_PROJECT_BAR">Project dialog bar</a> or by selecting "Picture" "Delete" from the <a href="gui.html#UI_MENU_PROJECT">Project menu</a>.
+  </ol>
+ </ol>
+ <a name="GUIDE_IMAGE">
+ <li><b>Images</b>
+ <ol>
+  <a name="GUIDE_IMAGE_NEW">
+  <li>Creating a new 4bit/8bit CI texture
+  <ol>
+   <li>From the <a href="gui.html#UI_MENU_FILE">File menu</a>, open the <a href="gui.html#UI_DLG_FILE_NEW_TMF">Image page of the New dialog</a>. 
+   <li>Select the size and bit mode, then press OK to open a new <a href="gui.html#UI_WINDOW_TMF">Texture Image window</a>.
+   <ul>
+    <img src="../images/window_tmf.gif">
+   </ul>
+  </ol>
+  <a name="GUIDE_IMAGE_OPEN">
+  <li>Opening a 4bit/8bit CI Texture
+  <ol>
+   <li>Open a texture image file from the <a href="gui.html#UI_MENU_FILE">File menu</a> by selecting either "New..." or by selecting a file from the list of recently edited TMF files.
+  </ol>
+  <a name="GUIDE_IMAGE_SAVE">
+  <li>Saving a 4bit/8bit CI texture
+  <ol>
+   <li>Select either "Save" or "Save As" from <a href="gui.html#UI_MENU_FILE">File menu</a>.
+  </ol>
+  <a name="GUIDE_IMAGE_IMPORT">
+  <li>Editing an existing image as a 4bit/8bit CI texture
+  <ol>
+   <li>Do this using the <a href="spec.html#FILE_IMPORT">Import function</a>.
+   <li>First, create or open a texture image for editing.
+   <li>Then, select the target file format from "Import" in the <a href="gui.html#UI_MENU_FILE">File menu</a>.
+   <li>Once imported, specify where to position the image.
+   <ul>
+    Press the Return key to set, or use the Escape key to cancel.
+    Manipulate the tracker (selection frame)to enlarge or reduce. 
+   </ul>
+   <li><font color=red>Alternately, a BMP file converted to 4bit/8bit can be directly opened from the File menu for TMF/TLF.</font>
+  </ol>
+  <a name="GUIDE_IMAGE_PREVIEW">
+  <li>Previewing an image during editing on the target (NINTENDO<sup>64</sup>) using IS-VIEWER64 
+  <ol>
+   <li>Select "Preview" in the <a href="gui.html#UI_MENU_VIEW">View menu</a> or press the NINTENDO64 button on the 
+       <a href="gui.html#UI_CTRL_VIEWBAR">View tool bar</a> to toggle preview to   IS-VIEWER64 ON/OFF in each texture image window.
+   <li>When this check is ON, any changes to images or palettes will automatically update the texture on IS-VIEWER64.
+  </ol>
+  <a name="GUIDE_IMAGE_EXPORT">
+  <li>Exporting a created CI texture to a project
+  <ol>
+   <li>Use the <a href="spec.html#FILE_EXPORT">Export function</a> to save the file as C language source.
+   <li>From the <a href="gui.html#UI_MENU_FILE">File menu</a>, select "Export" and then select "C."
+   <li>In addition to specifying the header file and C source file name, you can specify extern (can be externally referenced)/static (internal static binding), turn const (change prohibited) ON/OFF, and specify 64bit alignment.
+   <li>With export, the C source file is created.
+   <ul>
+    If static is selected, the header file is not created.
+   </ul>
+  </ol>
+ </ol>
+ <a name="GUIDE_PALETTE">
+ <li><b>Palettes</b>
+ <ol>
+  <a name="GUIDE_PALETTE_NEW">
+  <li>Creating a palette
+  <ol>
+   <li>Open the <a href="gui.html#UI_MENU_PALETTE">Palette menu</a> and select "New..." to open the <a href="gui.html#UI_DLG_FILE_NEW_TLF">Palette page of the New dialog</a>.
+   <li>Select the bit mode and 16bit RGBA or 16bit IA and then press OK.
+   <li>If done correctly, a new page is created in the <a href="gui.html#UI_CTRL_PALETTE_BAR">Palette dialog bar</a>.
+  </ol>
+  <a name="GUIDE_PALETTE_EDIT">
+  <li>Editing a palette
+  <ol>
+   <li>In the initial state, the palette is completely black, so add color by pressing the "Properties" button or double-clicking to open the <a href="gui.html#UI_DLG_EDIT_PALETTE">Color Selection dialog</a>.
+   <li>To borrow from another palette, open the page for the other palette, select the range and press the Copy button, select the page and position where you want to begin pasting, and then press the Paste button. 
+  </ol>
+  <a name="GUIDE_PALETTE_SAVE">
+  <li>Saving a palette
+  <ol>
+   <li>Open the <a href="gui.html#UI_MENU_PALETTE">Palette menu</a> and select either "Save" or "Save As..."
+  </ol>
+ </ol>
+</ol>
+<p align="right"><a href="../ja/guide.html">Japanese</a></p>
+<hr>
+<table width=100%>
+ <tr>
+  <td valign=top>
+   <a href="index.html">Return</a>
+  </td>
+  <td valign=top align=right nowrap>
+   <font size=-1>
+   Copyright (C) 1998 NINTENDO Co.,Ltd.<br>
+   Copyright (C) 1998 NINTENDO OF AMERICA, Inc.<br>
+   Copyright (C) 1998 MONEGI CORPORATION.<br>
+   Copyright (C) 1998 INTELLIGENT SYSTEMS Co.,Ltd.<br>
+   All rights reserved.<br>
+   </font>
+
+  </td>
+ </tr>
+</table>
+</body>
+</html>

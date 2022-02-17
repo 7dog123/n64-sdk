@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 6</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro06/index6.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro06/index6.7.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Input / Output</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The Nintendo 64 system spends a good deal of its time performing I/O operations. The operating system provides an optimized I/O interface layer that directly communicates with the hardware. Some of these interfaces include:
+<ul>
+<li>VI — the video interface  
+<br>The interface routines communicate with a video manager system thread, called the VI/Timer manager. This thread receives all vertical retrace interrupts and programs the video hardware. In addition, it also receives all counter interrupt messages and implements timer services.
+<p>
+<li>PI — the peripheral interface
+<br>The PI also has an associated I/O manager thread, the PI manager. It manages access to the ROM cartridge so that two threads do not attempt to DMA from ROM to RAM at the same time.
+<p>
+<li>AI — the audio interface
+<br>This interface programs the audio hardware to output the desired sample rate and manages access to the audio data buffer.
+<p>
+<li>DP — the RDP interface
+<br>It is mostly of interest because it has an associated system event when a DP operation is complete.
+<p>
+<li>Cont — the controller interface
+<br>This interface resets, detects, obtains status, queries and reads data from the game controllers.</ul>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Developers News 1.9a</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr>
+<p align="center">
+<font size="6"><strong><IMG src="gif/devnews.gif" height="44" width="453">1.9a</strong></font>
+
+</p>
+<p align="left">
+<b> Nintendo 64 Developers Newsletters will be published periodically,
+as needed.  These feature software and hardware system anomalies, which
+have been discovered, and their solutions and/or work-arounds.  Development
+tips will also be included.</b>
+</p>
+
+<hr>
+
+<h2>osPfsInitPak() Function Specification changes</h2>
+<h3>1. Patch_4 (and earlier) Issues</h3>
+
+With the previous  (Patch_4 / 8/28/98) osPfsInitPak() function and 
+osPfsRepairId() function, a PFS_ERR_ID_FATAL error would be returned when:
+
+<ul>
+<li>a RumblePak or other peripheral device was inserted into the Controller, or
+<li>when the contents of the ID area of the Controller Pak were overwritten.
+</ul>
+
+Because the error value was returned under various conditions, it was 
+difficult to determine the real cause of the error, making the programming 
+procedure extremely complicated.  This also led to a confusing series of 
+messages being displayed to the game player.
+
+<h3>2.  Patch_5 Corrections</h3>
+
+With Patch_5, the osPfsInitPak() function and the osPfsRepairId() function 
+now returns a PFS_ERR_DEVICE error rather than a PFS_ERR_ID_FATAL error, 
+when a peripheral device other than the Controller Pak (i.e., Rumble Pak or 
+64 Game Boy Pak) is inserted.
+
+<p>
+Internally, a read/write test is performed using a safe area in  the 
+Controller Pak RAM .  If there is a failure during the read/write test, 
+then it is assumed that there is no RAM and a PFS_ERR_DEVICE error is returned.
+
+<h3>3.  Procedure for Identifying Multiple Types of Peripheral Devices</h3>
+
+With the above noted changes, the procedure for identifying a specific 
+peripheral device when multiple devices are used, (for example, when an 
+application uses a Controller Pak and a Rumble Pak) is as follows.
+
+<p>
+<pre>
+                osMotorInit()
+                        |
+                        |
+        +-----------+
+        | ret=0 | ret=PFS_ERR_DEVICE
+        |               |
+        (               (
+  RumblePak   osPfsInitPak()
+                        |
+                        |
+        +-----------+-----------------------+
+        | ret=0 | ret=PFS_ERR_DEVICE    | ret=PFS_ERR_ID_FATAL
+        |               |                               |
+        (               (                               (
+  Controller  Other Device              Since ID area has been destroyed,
+     Pak         (64GB Pak, etc.)               after user confirmation, repair
+                                                with osPfsRepairId()
+</pre>
+
+<h3>4.  Precautions</h3>
+
+When using multiple peripheral devices, please be sure to  call the 
+osPfsRepairId() function immediately after executing osPfsInitPak().  
+Please note that even if osPfsInitPak() was called initially, the ID cannot 
+be repaired once the initialization function for another peripheral device, 
+such as the osMotorInit() function, has been called.
+
+<p>
+This is true not only for the osPfsRepairId() function, but for other pfs 
+functions as well.  A PFS_ERR_INVALID error will be generated when this 
+kind of call is performed.  This happens because the contents of the osPfs 
+structure is overwritten with Rumble Pak information when osMotorInit()is 
+called.  To avoid this error, call the osPfsInitPak() function again if a pfs 
+function is to be called after osMotorInit has been called.
+
+<p>
+Note: Initialization can be completed without initializing each device 
+separately by having an osPfs structure for each type of device and using 
+one for each of the various device functions. However, this method should not 
+be used because there may be situations in which unexpected operations are 
+performed.  <u>Please be sure to call the corresponding initialization 
+function each time a device is changed.</u>
+
+<p>
+<hr>
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

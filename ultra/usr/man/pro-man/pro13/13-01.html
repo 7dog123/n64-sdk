@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 13</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro12/index12.8.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro13/index13.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Texture Mapping</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Texture mapping, or texturing, is the process of applying an image to a polygonal surface. There are many graphics books that discuss this topic; this guide assumes that you are familiar with the basic principles of texture mapping. This chapter  explains the functionality of texture mapping as implemented in the Reality Display Processor (RDP).
+
+<P>
+<b>Figure 13.1.1</B> &nbsp;Texture Unit Block Diagram
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro13/gif/f13-01.gif"></tr></td></table>
+
+<P>
+The RDP contains an on-chip texture memory called Tmem, which buffers all source image data used for texturing. Tmem contains up to eight tiles (a tile is a rectangular region of an image). A tile is loaded into Tmem using the <i>LoadTile, LoadBlock,</i> or <i>LoadTlut</i> commands, and described using the <i>SetTile</i> and <i>SetTileSize</i> commands. If the image is too large to fit entirely in Tmem, primitives must be subdivided in object space based on their texture coordinate values so that each primitive references a tile that fits in Tmem.
+
+<P> 
+Texture coordinates (S,T) for each pixel are input to the texture coordinate unit and can be perspective corrected. Perspective correction is typically enabled for 3D geometry and disabled for 2D sprites (<i>tex_rect commands</i>). During this time, the texture coordinate unit calculates which tile descriptor to use for this primitive. The texture image coordinates are converted to tile-relative coordinates and wrapped, mirrored, and clamped. These tile coordinates are then used to generate an offset into Tmem. The texture unit can address 2x2 regions of texels in one or two cycle mode, or 4x1 regions in copy mode. Copy mode is typically used for blits (block copy of texels) with a 1:1 texel pixel relationship. In one or two cycle mode, filter or point-sample can also be selected. Typically, filter will result in a smoother image with less aliasing. The texture unit also generates  S,T and L-fraction values  that are used to bi-linearly or tri-linearly interpolate the texels.
+
+<P>
+The texture unit supports ten different combinations of texel size and format:
+<ul>
+<li>4-bit intensity (I)
+<P>
+<li>4-bit intensity w/alpha (I/A) (3/1)
+<P>
+<li>4-bit color index (CI)
+<p>
+<li>8-bit I
+<P>
+<li>8-bit IA (4/4)
+<p>
+<li>8-bit CI
+<P>
+<li>16-bit red, green, blue, alpha (RGBA) (5/5/5/1)
+<P>
+<li>16-bit IA (8/8)
+<P>
+<li>16-bit YUV (Luminance, Blue-Y, Red-Y)
+<P>
+<li>32-bit RGBA (8/8/8/8)
+</ul>
+
+<P>
+Significant memory savings can result from the smaller color-index textures or intensity textures over the more expensive 16-bit RGBA. It is a good idea to experiment with the different texel sizes. One can actually do 2-color textures using the intensity types. Also, the intensity-only textures place the texel value on the alpha channel as well where it can be used for blending or ignored.
+
+<P>
+<a name="01"></a>
+<b>Graphics Binary Interface for Texture</b>
+<br>
+The graphics binary interface (GBI) is a set of macros that create 64-bit commands that are read and parsed by the RSP microcode. Some of these commands cause actions or state changes in the RSP. Others are simply passed through the RSP to the RDP. Below is a list of GBI commands that control texture. See the corresponding reference (man) page for more details.
+<P>
+
+<a name="01.1"></a>
+<b>Primitive Commands</b>
+<ul>
+<li>g*SPTexture
+<li>g*SPTextureRectangle*
+</ul>
+
+<a name="01.2"></a>
+<b>Tile Related Commands</b>
+<ul>
+<li>g*DPSetTile
+<li>g*DPSetTileSize
+</ul>
+
+<a name="01.3"></a>
+<b>Load Commands</b>
+<ul>
+<li>g*DPLoadTile*
+<li>g*DPLoadTextureBlock*
+<li>g*DPLoadTLUT*
+<li>gDPSetTextureImage
+</ul>
+
+<a name="01.4"></a>
+<b>Sync Commands</b>
+<ul>
+<li>g*DPLoadSync
+<li>g*DPTileSync
+</ul>
+
+<a name="01.5"></a>
+<b>Mode Commands</b>
+<ul>
+<li>g*DPSetTextureLUT
+<li>g*DPSetTexturePersp
+<li>g*DPSetTextureDetail
+<li>g*DPSetTextureLOD
+<li>g*DPSetTextureFilter
+<li>g*DPSetTextureConvert
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

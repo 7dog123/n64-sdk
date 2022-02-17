@@ -1,0 +1,300 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+   <title>seg18-2</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-18. CamList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(2)Camエリア</font></h4>
+
+<center><table BORDER WIDTH="300" >
+<tr>
+<td>u32</td>
+
+<td>cam_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_cam_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_type</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_near_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_far_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_right_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_left_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_top_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_bottom_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_fovy</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_aspect</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_scale</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_lookat_obj</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_eye_obj</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_up_obj</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　Camエリアメモリマップ</font></b></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 cam_tag</td>
+
+<td><font size=+0>Tag indicating Cam</font>
+<pre>
+<b><font size=+0>TAG_CAM 0x000e0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_cam_index</td>
+
+<td><font size=+0>Index number of Cam</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_size</td>
+
+<td><font size=+0>Size of Cam</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_name_index</td>
+
+<td><font size=+0>Index number of camera name in NameList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#CAM_TYPE">u32 cam_type</a></td>
+
+<td><font size=+0>Specify camera type. The followings are currently defined.</font>
+<pre>
+<b><font size=+0>CAM_TYPE_PERSP&nbsp; 0x00000000
+CAM_TYPE_ORTHO&nbsp; 0x00000001</font></b>
+
+</pre>
+<font size=+0>CAM_TYPE_PERSP is perspective camera.</font>
+<br><font size=+0>CAM_TYPE_ORTHO is ortho camera.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_near_clip</td>
+
+<td><font size=+0>near clipping planeクリッピングプレーン</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_far_clip</td>
+
+<td><font size=+0>far clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_right_clip</td>
+
+<td><font size=+0>right clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_left_clip</td>
+
+<td><font size=+0>left clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_top_clip</td>
+
+<td><font size=+0>top clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_bottom_clip</td>
+
+<td><font size=+0>bottomクリッピングプレーン</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_fovy</td>
+
+<td><font size=+0>fovy値</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_aspect</td>
+
+<td><font size=+0>aspect値</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>flaot cam_scale</td>
+
+<td><font size=+0>scale値</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_lookat_obj</td>
+
+<td><font size=+0>Link point of fixation of camera to object. Describe
+index of ObjList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_eye_obj</td>
+
+<td><font size=+0>Link point of view to object. Describe index of ObjList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_up_obj</td>
+
+<td><font size=+0>Link camera's upward vector to object. Describe index
+of ObjList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>任天堂拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>ユーザー拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>任天堂拡張ブロック</font></td>
+</tr>
+
+<tr>
+<td nopwrap>UserExtensionBlock</td>
+
+<td><font size=+0>ユーザー拡張ブロック</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg19.htm">次へ</a></font><a href="seg19.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

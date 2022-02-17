@@ -1,0 +1,19 @@
+Function 
+-  Defines types associated with color
+
+Types 
+-  float type 	MvmColor3f
+  char type	MvmColor3c
+  short type	MvmColor3s
+  long type	MvmColor3l
+  3-dimensional vectors. 
+
+-  float type	MvmColor4f
+  char type 	MvmColor4c
+  short type	MvmColor4s
+  long type	MvmColor4l
+  4-dimensional vectors.
+
+History
+  1998/ 9/17 Takamitsu Hirata 
+    Color.h :  Initial version 

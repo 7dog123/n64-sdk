@@ -1,0 +1,112 @@
+<html>
+<title>
+CamNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+5. CamNode
+
+</h2>
+
+<hr size=3>
+
+<h3>
+<A NAME="camNodeD">(1) Cam Node Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 external_lookat_obj_file_name_index
+</td>
+<td>
+When the Obj linked to the Cam look-at point references an external file, that file name is specified with an ExternalNameList index number. In this case, please specify cam_lookat_obj = ExternalNameList index number. <p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_lookat_obj_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the external file reference Obj name.<p>
+In this case, please specify cam_lookat_obj = ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_eye_obj_file_name_index
+</td>
+<td>
+When the Obj linked to the Cam viewpoint references an external file, that file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+In this case, please specify cam_eye_obj = ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_eye_obj_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the external file reference Obj name.<p>
+In this case, please specify cam_eye_obj = ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_up_obj_file_name_index
+</td>
+<td>
+When the Obj linked to the upward Cam references an external file, that file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+In this case, please specify cam_up_obj = ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_up_obj_name_index
+</td>
+<td>
+Uses an ExternalNameList index number to describe the external file reference Obj name.<p>
+In this case, please specify cam_up_obj = ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+</table>
+
+<P><A HREF="cam_C.htm#camNodeC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

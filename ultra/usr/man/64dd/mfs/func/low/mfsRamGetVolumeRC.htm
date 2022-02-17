@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamGetVolumeRC</title>
+</head>
+
+<body>
+
+<h1>mfsRamGetVolumeRC</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamGetVolumeRC(void)
+Arguments:	None
+Return value:Update counter value (a negative value is an error)
+Function:	Obtains update counter value
+Description:	This function obtains the update counter value.
+The update counter is incremented when file, directory, or disk information has been changed in some way.
+Therefore, it can be used, for example, as a random number seed or to check whether or not the disk contents have been changed illegally.
+The update counter is a 16-bit value.
+
+The update counter only exists in the RAM area.
+
+Main errors:
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different. 
+	MFS_ERR_VERSION	Different version disk </pre>
+</body>
+</html>

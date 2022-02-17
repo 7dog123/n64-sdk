@@ -1,0 +1,81 @@
+<html>
+<body bgcolor="ffffff">
+<br>
+<!-- <hr size=3> -->
+<!-- <br> -->
+<h1>nvfview Previewer</h1>
+<br>
+<hr size=3>
+<br>
+<!-- <font size=5> --><h2>
+<ul>
+ <li> <a href=#MAP>Memory Map</a>
+ <li> <a href=#MAIN>Main Flow of the Program</a>
+ <li> <a href="./how2play.htm">Operating the Previewer</a>
+ <li> <a href="#LIMITATION">現在の制限</a>
+ <li> <a href="./history.htm">Revision History</a> 
+</ul>
+<!-- </font > --></h2>
+<hr size=3>
+<br>
+<a name="MAP"></a>
+<h2>Memory Map</h2>
+<p>
+<blockquote>
+  The memory map of the nvfview previewer is shown below:
+</blockquote>
+<p>
+
+<center>
+<img src="./memmap.gif">
+</center>
+<ul>
+ <li>It does not matter whether or not expanded memory is installed.
+ <li>Allocate both the frame buffer and the Z buffer inside DynamicHeap.
+</ul>
+
+<p>
+<hr size=3>
+<p>
+<a name="MAIN"></a>
+<h2>Main Flow of the Program</h2>
+<p>
+<blockquote>
+  When the previewer software plays graphics, the process flow is as described below: 
+</blockquote>
+<p>
+<ol>
+ <li>Initialize.
+ <li>Load the scene.
+<h4>For here on, the operations are repeated for each frame.</h4>
+ <li>Call back the game process.
+ <li>Evaluate the hierarchy.
+  <br>Resolve the dependency between nodes and generate drawing objects.
+ <li>Rearrange the drawing objects.
+  <br>Rearrange the drawing objects according to texture and light to improve drawing performance. 
+ <li>Generate Gfx.
+  <br>Convert the drawing objects to Gfx.
+</ol>
+<a name="LIMITATION"></a>
+<h2>現在の制限</h2>
+<p>
+<ul>
+ <li>点光源はサポートされません。
+ <li>頂点αとfogは併用できません。
+ <li>TriColorは反映しません。
+ <li>EnvelopeのMorph Partの動作は未確認です。
+ <li>IKは2関節のみサポートします。
+</ul>
+<p>
+
+<hr>
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./MONEGI CORPORATION All rights reserved.</font>
+
+<p align="right"><a href="../index.htm">
+Index
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+1998.1.30	1.08d
+	RESET,RESETDD,<GWRITE buttons were added.
+
+	For writing of leowrite/DDW command, the calculation of file size with other media than TYPEO was wrong, but that was fixed.
+
+A change/display command of a current directory (CD command) was added.
+	Format1 CD
+	Format2 CD <directory>
+With Format1, the current directory is displayed. With Format2, the current directory is changed.
+
+1997.12.19	1.08c
+A change was made for the gap portion to be filled with 0xff in case of leowrite/DDW command.  
+
+	In a dialogue for file load,  a change was made for *.sgi files to be displayed.   
+	"all the files (*.*)" can now be selected for a file type. 
+
+	If a file for debug information that is created on SGI is changed to have an extension of  .sgi, it becomes easy to control when file loading.  Also, if ROM image file has an extension of .rom, it would be easier to control.  
+	 
+		ex. simple  -> simple.sgi
+		ex. rom	    -> simple.rom
+
+Changed so that ROM specification can be set for settings of ROM SPEED/MONITOR SPEED in eptn64.cfg file.  
+
+	And,  also changed so that it is compatible with the user program which changes the speed of ROM area. (Processings of reading ROM speed in the program when breaking, and putting back the ROM speed to that ROM speed which was read when re-executing were added.) 
+	 
+	    ROM SPEED		ROM
+		By this setting, the access speed of ROM that is written in the head of ROM image file at the time of program loading can be set. 
+	    MONITOR SPEED	ROM
+		By this setting, the speed setting of ROM at the time BREAK is not done.  
+
+	In eptn64.cfg file, a disassemble display mode was added. 
+	    DISASM MODE		NORMAL
+		The same disassemble display as before.
+	    DISASM MODE		ALIAS
+In register display, using names used for MIPS assembler such as r1->v0 , r2->v1 ,,, r31->ra, a disassemble is displayed. 
+	FPU related register was changed from r0,r1,r,,,r31 to f0,f1,,,f31 for disassemble display.
+	 
+	ROM image file for which makemask was already done was changed not to process the makemask at the loading time again on   	PARTNER. 
+
+	The bug in IPL4ROM of RELOAD was fixed. 
+
+	IPL4ROM was updated to a newer version. (the file size is now 	1.1M approximately.)
+
+10/23/1997	1.07d
+	Modified so that it became possible to write in the emulation ROM space.
+	Specify using the fourth parameter of ZROM command.
+
+		>ZROM ,,, ON		Enabling to write in ROM space
+		>ZROM ,,, OFF 	Disabling to write in ROM space (initial value)
+
+	The bug, which returned the user program to the maximum size when loading even 
+	when the emulation ROM capacity was changed using ZROM command, was fixed.  
+
+09/26/1997	1.07b
+	It became possible to read the object which used the debug information compressing
+        	function, which was supported for exeGCC(N64) rel. 1.2.  
+
+	The ROM size of PARTNER-N64 Controller Deck is available for 64M/128M.
+
+	The IPL file (ipl4rom) of n64dd was changed so that it would search
+            %ROOT%¥usr¥lib¥PR directory first.  (If a user activates PARTNER-N64/Win by clicking  
+	the icon or by the start menu,  it is necessary to set a ROOT environmental parameter in
+	the autoexec.bat, for example, set ROOT=c: ¥ultra.)
+
+	The bug in the host_test sample of the n64 sample which caused the partial problem 
+  	(loading/writing of ROM) was fixed.
+
+07/05/1997		1.06
+		The bug that was found in the delta loading function of ROM image for Ver 1.05, 
+		which became available for Ver 1.04, was fixed.  
+
+05/29/1997		1.05
+		The delta loading function of N64DD became available. (refer readme.txt)
+
+Loading of debug information, executing of gwrite, and a series of operation of resetDD became automatic by L command,  and debugging became possible using the same operation as ROM program.
+
+		IPL4ROM is not re-loaded as much as possible.  Therefore,  the time for loading 
+		of resetDD and DISK program was shortened.  
+
+04/30/1997		1.04
+		".dld file" that specifies a segment of the delta loading became available.
+
+		"fs command" that displays the ROM segment range of the load file was added.
+
+		"-I <idfile> option" became available using leowrite command.
+
+		"-ID:<idfile> option" became available using ddw command.
+
+		The disk ID is now displayed by displaying the disk information of n64dd using 
+		leowrite -i or ddr/i commands.
+
+		The bug which destroyed the contents of the n64dd disk if n64dd data from 
+                         0 1ba is specified using ddr command, was fixed.
+
+		The contents of currently executing thread can be displayed using ps, THREAD
+		command.
+
+04/11/1997		1.03
+		Settings of 12, 20, 24, 28M was added using ZROM.
+		n64debl.seq (Ver 1.5) file was updated.
+
+03/19/1997		1.02
+		HOSTIO functions for PC version became available.
+                         (after N64OS Ver 2.0H'  (PC))
+
+Debug (WPTN64.EXE) was rewritten to be used for WIN32 codes, and only Windows 95 will be available as OS. (Therefore, Windows 3.1 is no longer available after this version.)
+
+03/12/97		1.01
+		The number of files to handle debugging information was changed from 4000 to
+		16000.
+
+02/14/1997		1.00
+		A final version for PC version
+
+		A setting to break with exceptions of Vr4300 CPU in etn64.cfg became possible.
+		(However, only available with versions after N64OS Ver 2.0G")
+
+		The problem with canceling hardware break was fixed. 
+
+02/08/1997		0.98
+		MAP specification of etn64.cfg at default was changed as follows:
+		 	MAP		00000000, 7FFFFFFF
+			MAP		80000000, 80FFFFFF
+			MAP		A0000000, A0FFFFFF
+			MAP		B0000000, BFFFFFFF
+
+		Therefore,  the occurrence of a hung up due to access to the wrong memory  
+                         when displaying things such as a pointer of non-initialized variables, could be
+                         decreased. 
+			
+  

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetVolumeAttr</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetVolumeAttr<br>
+mfsRamGetVolumeAttr</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetVolumeAttr(void)
+	s32 mfsRamGetVolumeAttr(void)
+Arguments:	None
+Return value:Volume attribute (a negative value is an error)
+Function:	Obtains volume attribute
+Description:	This function obtains and returns the volume attribute of the ROM or RAM area.
+The volume attribute, which is represented by u8-type bits, can have the following contents.
+
+	MFS_VOLUME_ATTR_VPROTECT_WRITE	0x20	Volume write protected
+	MFS_VOLUME_ATTR_VPROTECT_READ	0x40	Volume read protected
+	MFS_VOLUME_ATTR_WPROTECT 	0x80	Write protected
+
+When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsInit*() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.
+
+When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.
+
+
+Main errors:
+      MFS_ERR_NOTMFSDISK  Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different. 
+      MFS_ERR_VERSION     Different version disk </pre>
+</body>
+</html>

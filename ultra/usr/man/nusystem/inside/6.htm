@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="5"><b><img src="../../gif/nusystem2.gif"
+width="176" height="30"></b></font><a name="top"><font size="6"><strong> </strong></font><font
+size="5">&quot;INSIDE NuSystem&quot;</font></a></p>
+
+<p><font size="4"><strong><a href="#1">6.1 Overview of the SI Manager</a><br>
+<a href="#2">6.2 Composition of the SI Manager</a><br>
+<a href="#3">6.3 Initializing the Device Managers</a><br>
+<a href="#4">6.4 Device Manager Callback Functions</a></strong></font></p>
+
+<hr>
+
+<p><a name="1"><font size="5"><strong>6.1 Overview of the SI Manager</strong></font></a></p>
+
+<p>In NuSystem, all devices like the Controller, Controller Pak and Rumble Pak, that send and receive data via the serial interface (SI) are accessed from the SI Manager. </p>
+
+<p>Currently the only devices that connect via the SI are the Controller, Controller Pak, Rumble Pak and EEPROM, but in the future a variety of devices will be connected this way.  The control method differs for each device, and support is also required for devices that may come out in the future.</p>
+
+<p>To deal with this situation, NuSystem Version 1.1 comes with a separate SI Manager whose job it is to manage SI access and enable support for a variety of different devices.  A device control routine is prepared for each SI device, and the routines are then registered in the SI Manager for control of the SI devices.  In NuSystem, a routine that controls an SI device is known as a "device manager."</p>
+
+<p>When the SI Manager receives a message from the application or scheduler, one of the registered device managers is called.  The called device manager will then perform the necessary task, depending on the type of message that has been received.  The device managers in NuSystem include the Controller Manager, the Controller Pak Manager, the Rumble Pak Manager, and the EEPROM Manager.</p>
+
+<p>With this organization, SI access is performed solely by the device managers registered in the SI Manager.  This frees the application from SI management and realizes mutual exclusivity.  (See Figure 6.1) </p>
+
+<I><B>Figure 6.1</B> -- SI Device Manager Functional Diagram</I>
+<p align="center"><a name="f06-01"><img src="f06-01.gif"
+alt="f06-01.gif (5677 バイト)"></a></p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="2"><font size="5"><strong>6.2 Composition of the SI Manager</strong></font></a></p>
+
+<p>The SI Manager can be broadly divided into two parts: the initiator and the thread.</p>
+
+<p>The SI Manager initiator is the nuSiMgrInit function.  This function creates the SI message queue and allocates SI events.  Then the osContInit function is called to initialize all SI-related aspects of the N64OS.  After that, the SI Manager thread is created and started up. (See Figure 6.2) </p>
+
+<I><B>Figure 6.2</B> -- SI Manager Flow Diagram</I>
+<pre><a name="f06-02"><img src="f06-02.gif"
+alt="f06-02.gif (4011 バイト)"></a></pre>
+
+<p>The SI Manager thread is first registered as a client of the Scheduler, and then it waits for a message.  The SI Manager manages the device managers as a link list, and when it receives a message, it calls a device manager from the order on the list.  The message pointer is passed together at this time.  The device managers are, in actuality, callback functions, and the link list stores the pointers to the callback functions.</p>
+
+<p>The link list structure is defined as shown below.</p>
+
+<blockquote>
+  <pre>typdef struct st_CallBackList {
+	struct st_CallBackList*	next;
+	NUCallBackFunc	func;
+} NUCallBackList:</pre>
+</blockquote>
+
+<p>This structure is found in every device manager.</p>
+
+<p>The SI Manager's NUCallBackList structure is at the start of the link list.  The device managers are registered in the SI Manager with the nuSiCallBackAdd function.</p>
+
+<p>The nuSiCallBackAdd function appends argument-specified NUCallBackList structures to the end of the link list.  The final "next" of the link list is NULL.  When the SI Manager receives a message, it follows this link list and calls a device manager, that is to say, a func callback.  (See Figure 6.3)</p>
+
+<I><B>Figure 6.3</B> -- Linking all SI Managers</I>
+<p align="center"><a name="f06-03"><img src="f06-03.gif" width="475" height="292"
+alt="f06-03.gif (4456 バイト)"></a></p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="3"><font size="5"><strong>6.3 Initializing the Device Managers</strong></font></a></p>
+
+<p>Each device manager is also divided into to parts: an initiator and a callback function.</p>
+
+<p>The initiator initializes the variables used by the device manager and registers with the SI Manager.  A typical example is shown below.</p>
+
+<blockquote>
+  <pre>// Link list structure for each device manager
+NUCallBackList	devCallBack = {NULL, NULL};
+
+// Device manager initialization function
+// Arguments: none
+// Returned value: none
+
+void devMgrInit(void)
+{
+	// Next, check whether registration has been made in the SI Manager
+	if(devCallBack.func != NULL){
+		return;
+	}
+	//	This part is for initialization of variables
+
+	//	Registration of device managers
+	nuSiCallBackAdd(&amp;devCallBack, devMgr);}</pre>
+</blockquote>
+
+<p>See section 6.4 for details about the devMgr callback function.</p>
+
+<p>If the registered function is unnecessary it can be deleted.  For this purpose, a delete function has also been prepared.  A typical example is shown below.</p>
+
+<blockquote>
+  <pre>void devMgrRemove(void)
+{
+	nuSiCallBackRemove(&amp;devCallBack);
+}</pre>
+</blockquote>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="4"><font size="5"><strong>6.4  Device Manager Callback Functions</strong></font></a></p>
+
+<p>As explained previously, device manager callback functions are called from the SI Manager.  The argument at this time is a void-type pointer.  There is not set size for the buffer indicated by the pointer, but a NUScMsg type of message ID must be stored at the start of the buffer.  This message ID is a unique value for the device manager  (although in the case of retrace messages and other messages shared between device managers, the value is the same).  This message ID is checked by the callback function, and pertinent message IDs are processed.</p>
+
+<p>If the returned value of the callback function is NU_SI_CALLBACK_CONTINUE then the SI Manager will call the next callback function.  But if the value is NU_SI_CALLBACK_END then the process ends here and the SI Manager waits for the next message.  Thus, NU_SI_CALLBACK_END is returned if a message ID has been processed and that message does not need to be processed by another device manager.</p>
+
+<p>A typical example of a device manager callback function is shown below.</p>
+
+<blockquote>
+  <pre>// Device manager callback function
+// 	Register in the SI Manager using devMgrInit
+//  Arguments: *mesg	Message pointer from SI Manager
+//  Returned value: NU_SI_CALLBACK_END	End process
+//	NU_SI_CALLBACK_CONTINUE	Continue process
+
+s32 devMgr(void* mesg)
+{
+	NuScMsg* mesg_type;
+	mesg_type = (NUScMsg*)mesg;
+	switch(*mesg_type){
+	case DEV_XXX_MSG;
+		// Enter process code here
+		break;
+	default:
+		// Continue process if not pertinent message ID
+		return NU_SI_CALLBACK_CONTINUE;
+	}
+	// Message processing is completed, so end the process
+	return NU_SI_CALLBACK_END;
+}</pre>
+</blockquote>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

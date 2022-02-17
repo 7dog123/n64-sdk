@@ -1,0 +1,385 @@
+<html>
+<title>
+NIFF 2.0 Specification
+</title>
+<body bgcolor="ffffff">
+
+<h3><font color="ff0000"><i>Nintendo Confidential</i></font></h3>
+
+<hr size="3">
+
+<h2>NIFF 2.0 Specification</h2>
+
+<h4>
+Nintendo Co., Ltd.<br>
+Monegi Corporation
+</h4>
+</center>
+<hr size="3">
+
+<p><A HREF="../index_frame.htm" TARGET="_top"><img src="../../gif/index.gif" border="0" width="65" height="17"><BR><A HREF="../index_frame.htm" TARGET="_top">Back to NIFF Index</A>
+</A>
+<h2>
+Contents
+</h2>
+
+
+
+<ol>
+  <li>Revision History
+       <ul>
+	 <li><a href="./change_log_J.htm" target="contents">
+	      Japanese
+	      </a>
+	 <li><a href="./change_log_E.htm" target="contents">
+	      English
+	      </a>
+       </ul>
+
+  <li>Additional Nodes
+       <ul>
+	 <li><a href="./additional_node_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg1.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+
+  <li>File Header
+       <ul>
+	 <li><a href="./file_header_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./file_header_J.htm" target="contents"> 
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./file_header_E.htm" target="contents"> 
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg3.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+
+       </ul>
+       
+  <li>Scene Node
+       <ul>
+	 <li><a href="./scene_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./scene_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./scene_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg4.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+
+       </ul>
+       
+  <li>Cam Node
+       <ul>
+	 <li><a href="./cam_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./cam_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./cam_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg18-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+
+       </ul>
+
+  <li>Obj Node
+       <ul>
+	 <li><a href="./obj_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./obj_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./obj_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg5-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+
+       
+  <li>Shape Node
+       <ul>
+	 <li><a href="./shape_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./shape_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./shape_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg6-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+
+  <li>Part Node
+       <ul>
+	 <li><a href="./part_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./part_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./part_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg12-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+       
+  <li>Mat Node
+       <ul>
+	 <li><a href="./mat_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./mat_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./mat_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg13-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+
+  <li>Tex Node
+       <ul>
+	 <li><a href="./tex_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./tex_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./tex_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg14-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+       
+  <li>TexImg Node
+       <ul>
+	 <li><a href="tex_img_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./tex_img_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./tex_img_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg15-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+       
+  <li>Anim Node
+       <ul>
+	 <li><a href="./anim_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./anim_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./anim_E.htm" target="contents">
+	      Description (English)
+	      </a>
+	 <li><a href="../niff_spec/chapt3/seg16-2.htm" target="contents">
+	      See also NIFF 1.0 Specification
+	      </a>
+       </ul>
+       
+  <li>CiImg Node
+       <ul>
+	 <li><a href="./ci_img_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./ci_img_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./ci_img_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>ColorPalette Node
+       <ul>
+	 <li><a href="./color_palette_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./color_palette_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./color_palette_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>Envelope Node
+       <ul>
+	 <li><a href="./envelope_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./envelope_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./envelope_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>Cluster Node
+       <ul>
+	 <li><a href="./cluster_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./cluster_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./cluster_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>Weight Node
+       <ul>
+	 <li><a href="./weight_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./weight_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./weight_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>ChainRoot Node
+       <ul>
+	 <li><a href="./chain_root_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./chain_root_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./chain_root_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>Joint Node
+       <ul>
+	 <li><a href="./joint_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./joint_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./joint_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>Effector Node
+       <ul>
+	 <li><a href="./effector_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="effector_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="effector_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+  <li>ExternalName Node
+       <ul>
+	 <li><a href="./external_name_C.htm" target="contents">
+	      Data Chunk
+	      </a>
+	 <li><a href="./external_name_J.htm" target="contents">
+	      Description (Japanese)
+	      </a>
+	 <li><a href="./external_name_E.htm" target="contents">
+	      Description (English)
+	      </a>
+       </ul>
+       
+
+</ol>
+
+
+<h3>
+Appendix
+</h3>
+
+
+
+<ol>
+  <li><a href="./appendix/flag.htm" target="contents">
+       Flags
+       </a>
+  <li><a href="./appendix/tag.htm" target="contents">
+       Tags
+       </a>
+  <li>Unique Scale
+       <ul>
+	 <li><a href="./appendix/unique_scale_J.htm" target="contents">
+	      (Japanese)
+	      </a>
+	 <li><a href="./appendix/unique_scale_E.htm" target="contents">
+	      (English)
+	      </a>
+       </ul>
+  <li>Envelope System
+       <ul>
+	 <li><a href="./appendix/envelope_system_J.htm" target="contents">
+	      (Japanese)
+	      </a>
+	 <li><a href="./appendix/envelope_system_E.htm" target="contents">
+	      (English)
+	      </a>
+       </ul>
+  <li>IK System
+       <ul>
+	 <li><a href="./appendix/IK_system_J.htm" target="contents">
+	      (Japanese)
+	      </a>
+	 <li><a href="./appendix/IK_system_E.htm" target="contents">
+	      (English)
+	      </a>
+       </ul>
+  <li>Hermite
+       <ul>
+  <li><A HREF="appendix/hermite_J.htm" TARGET="contents">(Japanese)</A>
+  <li><A HREF="appendix/hermite_E.htm" TARGET="contents">(English)</A>
+       </ul>
+</ul>
+
+
+</b>
+
+<hr>
+
+<FONT SIZE=-1>Copyright 1998, 1999 NINTENDO Co., Ltd.<br>
+Copyright 1998, 1999 MONEGI CORPORATION <BR>All rights reserved.</FONT>
+       
+<p><A HREF="../index_frame.htm" TARGET="_top"><img src="../../gif/index.gif" border="0" width="65" height="17"><BR><A HREF="../index_frame.htm" TARGET="_top">Back to NIFF Index</A>
+</A>
+       
+</body>
+</html>

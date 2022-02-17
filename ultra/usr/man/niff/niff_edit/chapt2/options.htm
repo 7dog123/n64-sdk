@@ -1,0 +1,64 @@
+<html>
+<title>
+NIFFeditor 2.0 Conversion Options</title>
+<body bgcolor="ffffff">
+
+<H3>NIFFeditor for SGI</H3>
+<h2>9. Conversion Options (.niffcnvops File)</h2>
+
+<P><a href="../indexsgi.htm"><img src="../../../gif/index.gif" border="0" width="65" height="17"></a>
+<a href="./spec.htm"><img src="../../../gif/previous.gif" border="0" width="65" height="17"></a></P>
+
+<hr>
+<p>The NIFFeditor for SGI can call up the niff2gfx command from a menu. niff2gfx converts NIFF data into N64 graphics data. The niff2gfx command has a variety of switches for conversion purposes. Setting these switches will allow the output of graphics data under the required settings. For more details, see the <A HREF="../../niff2gfx/index.htm">niff2gfx Converter Manual</A>.<p>
+
+With NIFFeditor, these niff2gfx option switches can be set by overwriting the conversion options file. This file is named .niffcnvops .<p>
+
+These can be set using the [Convert to N64 DL]-[Set Options and Go] command, but can also be set by editing the .niffcnvops file with a text editor. This file is loaded when NIFFeditor starts.<p>
+
+<table border>
+<tr nowrap>
+<td><b>  Contents of the .niffcnvops File  </b></td>
+</tr>
+<tr>
+<td>
+../usr_data<br>
+default.c<br>
+-header default.h<br>
+-scale<br>
+-niffinfo<br>
+-regmask<br>
+-vtxshare<br>
+-vtxcache<br>
+-outobj<br>
+-outmask 0
+</td>
+</tr>
+</table>
+
+<p>
+This table above lists the contents of the file.<p>
+The first line indicates the directory from which the file will be output. This must be specified.<p>
+The second line specifies the file name that will output the DL. This also must be specified.<p>
+The option flags(-optionname) must be added to the third line and those that follow. The sequence is optional. The option flags are not required, but if they are not inserted, niff2gfx is executed without any options.
+Consequently, the options that are required by niff2gfx must be specified.<p>
+For more details, see the <A HREF="../../niff2gfx/index.htm">niff2gfx Converter Manual</A>.
+
+Starting with version 2.00, file names are specified with the [NIFF2tool]-[PreviewScript] and [NIFF2tool]-[PreviewFile] commands. The options set by these commands are written in the last two lines of the file.
+
+<hr>
+
+
+
+<font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION <BR>
+All rights reserved</font>
+
+</body>
+</html>
+
+
+
+
+
+

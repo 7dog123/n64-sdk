@@ -1,0 +1,260 @@
+<html>
+<basefont size=3>
+<body bgcolor="#ffffffff">
+<h2>第3章　バイナリフォーマット</h2>
+<br>
+<hr size=3>
+<br>
+<h3>3-20. EnvList</h3>
+<br>
+<hr size=3>
+<br>
+<h4>
+(1)EnvListエリア
+</h4>
+<p>
+<blockquote>
+　EnvListエリアはシーン内のEnvエリアを記述するエリアです。マッピングは以下のようになっています。
+</blockquote>
+<p>
+<center>
+<table border>
+
+<tr>
+<th rowspan="9">
+EnvListHeader
+</th>
+<td>
+u32
+</td>
+<td>
+env_list_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+env_list_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+env_list_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+env_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+env_num_byte(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+・・・
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+env_num_byte(env_num - 1)
+</td>
+</tr>
+
+<tr>
+<th rowspan="5">
+</th>
+<td colspan="2">
+<center>
+Env(0)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+・・・
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+Env(env_num - 1)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+NitnedoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+</table>
+<p>
+<b>
+図　EnvListエリアメモリマップ
+</b>
+<p>
+<table border width="600">
+<tr>
+<td nowrap>
+u32 env_list_tag
+</td>
+<td>
+<font size=3>
+EnvListエリアを示すタグを記述します。下記のタグを記述してください。
+<pre>
+<b>
+TAG_ENV_LIST&#9;0x00100000
+</b>
+</pre>
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 env_list_header_size
+</td>
+<td>
+<font size=3>
+EnvListHeaderエリアのバイト数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 env_list_size
+</td>
+<td>
+<font size=3>
+EnvListエリアのバイト数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 env_num
+</td>
+<td>
+<font size=3>
+env_numはEnvエリア数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 nintendo_extension_block_size
+</td>
+<td>
+<font size=3>
+任天堂拡張ブロックサイズ
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 user_extension_block_size
+</td>
+<td>
+<font size=3>
+ユーザー拡張ブロックサイズ
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 env_num_byte
+</td>
+<td>
+<font size=3>
+env_num_byteはそれぞれのEnvエリアのバイト数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="./seg20-2.htm">Env</a>
+</td>
+<td>
+<font size=3>
+Envエリアは実際にシーン上の環境設定を記述するためのエリアです。
+</td>
+</tr>
+<tr>
+<td nowrap>
+NintendoExtensionBlock
+</td>
+<td>
+<font size=3>
+任天堂拡張ブロック
+</td>
+</tr>
+<tr>
+<td nowrap>
+UserExtensionBlock
+</td>
+<td>
+<font size=3>
+ユーザー拡張ブロック
+</td>
+</tr>
+</table>
+</center>
+<p>
+
+
+<hr>
+<font size=-1>
+Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.
+</font>
+
+<p align="right"><a href="../index.htm">
+目次へ
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./seg20-2.htm">
+次へ
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a></p>
+
+</body>
+</html>
+
+

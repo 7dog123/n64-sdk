@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHResetRC</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHResetRC</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHResetRC(const u8* path)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Pathname</p>
+
+<p><strong>Return value:</strong>Error (when the value is negative)</p>
+
+<p><strong>Function:</strong>
+Resets update counter value</p>
+
+<p><strong>Description:</strong> This function sets the update counter value of the file or directory specified by path to 0.</p>
+<p>
+Immediately after a file or directory is created, the update counter is set to 0.
+Whenever data is written to a file or the attribute is changed, the update counter is incremented.  The maximum value is 255, and the value cannot be incremented above 255.
+The update counter of the directory one level up is incremented at the same time.
+The rewriting of a file by another drive can be detected by checking the update counter.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination 
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing. 
+MFS_ERR_PROTECT Write protected
+		The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+MFS_ERR_NOTFOUND File not found
+		The file was not found, or the directory was not found.</pre>
+
+<hr>
+</body>
+</html>

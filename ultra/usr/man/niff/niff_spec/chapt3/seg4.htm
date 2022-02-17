@@ -1,0 +1,334 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Data</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.4 SceneList</h3>
+
+<hr size=3>
+
+<blockquote>Only one Scene node can be used in a single NIFF file. The index numbers of the Obj node, Camera
+node, Light node, and Env node that are linked from the Scene node are described in a SceneList.
+</blockquote>
+
+<center>
+<table BORDER >
+<tr>
+<th ROWSPAN="11">SceneHeader</th>
+
+<td>u32</td>
+
+<td>scene_header_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_cfg</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_obj_link_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_env_link_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_cam_link_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_light_link_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<th ROWSPAN="14"></th>
+
+<td>u32</td>
+
+<td>scene_obj_link_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_obj_link_index(scene_obj_link_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_env_link_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_env_link_index(scene_env_link_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_cam_link_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_cam_link_index(scene_cam_link_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_light_link_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>scene_light_link_index(scene_light_link_num - 1)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">NintendoExtensionBlock</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">UserExtensionBlock</td>
+</tr>
+</table>
+</center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><a NAME="SCENE_MAP"><b>Scene Area Memory Map</b></a></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP><a href="../chapt5/seg2.htm#SCENE_HEADER_TAG">u32 scene_header_tag</a></td>
+
+<td>Tag indicating scene header. Set the following flag.
+<pre><b>TAG_SCENE_HEADER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00010000</b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_header_size</td>
+
+<td>Size of SceneHeader</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_size</td>
+
+<td>Size of SceneList</td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#SCENE_CFG">u32 scene_cfg</a></td>
+
+<td>Setting of drawing a whole scene. The following flags are currently
+defined.
+<pre><b>SCENE_CFG_VIDEO_NTSC&nbsp;&nbsp;&nbsp; 0x00000000
+SCENE_CFG_VIDEO_PAL&nbsp;&nbsp;&nbsp;&nbsp; 0x00000001
+SCENE_CFG_VIDEO_MPAL&nbsp;&nbsp;&nbsp; 0x00000002
+SCENE_CFG_GAMMA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000004
+SCENE_CFG_DITHER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000008
+SCENE_CFG_DIVOT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000010</b>
+
+</pre>
+Setting VI for converting scene to N64 data.
+<p>&nbsp;SCENE_CFG_VIDEO_NTSC:Pre-view by NTSC environment.
+<p>&nbsp;SCENE_CFG_VIDEO_PAL:Pre-view by PAL environment.
+<p>&nbsp;SCENE_CFG_VIDEO_MPAL: Pre-view by MPAL environment.
+<p>&nbsp;SCENE_CFG_GAMMA:Enable GAMMA correction.
+<p>&nbsp;SCENE_CFG_DITHER:Enable to use Dither filter.
+<p>&nbsp;SCENE_CFG_DIVOT:Enable Divot.
+<p>&nbsp;SCENE_CFG_VIDEO_*Flag should be defined one by one.
+<p>&nbsp;SCENE_CFG_GAMMA, SCENE_CFG_DITHER and SCENE_CFG_DIVOT&nbsp; can
+be set simultaneously. For example, when all of flags are used by the NTSC
+environment, set the following:&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<pre><b>SCENE_CFG_VIDEO_NTSC | SCENE_CFG_GAMMA&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | SCENE_CFG_DITHER | SCENE_CFG_DIVOT
+= 0x0000001c</b>
+
+</pre>
+&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_name_index</td>
+
+<td>Index number of scene name in NameList</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_obj_link_num</td>
+
+<td>Total number of Obj nodes linking directly from Scene node.&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_env_link_num</td>
+
+<td>Total number of Env nodes linking directly from Scene node.&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_cam_link_num</td>
+
+<td>Total number of Cam nodes linking directly from Scene node.&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_light_link_num</td>
+
+<td>Total number of Light nodes linking directly from Scene node.&nbsp;</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td>If extension data is created on the Nintendo 64 side, the extension data is
+stored in NintendoExtensionBlock. Specify the block size.
+<p>Set the following flag if extension data is not used (default).
+<pre><b>NINTENDO_EXT_BLOCK_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000</b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td>If extension data is created on the user side, the extension data is stored
+in UserExtensionBlock. Specify the block size.
+<p>Set the following flag if extension data is not used.
+<pre><b>USER_EXT_BLOCK_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000</b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_obj_link_index</td>
+
+<td>Index number of Obj node linked directly from Scene node.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_env_link_index</td>
+
+<td>Index number of Env node linked directly from Scene node.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_cam_link_index</td>
+
+<td>Index number of Cam node linked directly from Scene node.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 scene_light_link_index</td>
+
+<td>Index number of Light node linked directly from Scene node.</td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td>NintendoExtensionBlock</td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td>UserExtensionBlock</td>
+</tr>
+</table>
+</center>
+
+<hr>
+
+<A HREF="seg3.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg5.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

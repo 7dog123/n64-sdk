@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<HR>
+
+<Pre>
+<FONT size="6"><STRONG>nuVrsControlGain</STRONG></FONT>
+</Pre>
+
+<HR>
+
+<Pre>
+<STRONG>Syntax: </STRONG>
+</Pre>
+
+<Pre>
+s32 nuVrsControlGain(NUVrsHandle* handle, s32 analog, s32 digital)
+</Pre>
+
+<Pre>
+<STRONG>Arguments: </STRONG>
+</Pre>
+
+<PRE>
+handle  NUVrsHandle structure
+analog  Analog gain of voice transmission system
+digital Digital gain of voice transmission system
+</PRE>
+
+<Pre>
+<STRONG>Return Value: </STRONG>
+</Pre>
+
+<Pre>
+Error
+</Pre>
+
+<Pre>
+<STRONG>Description: </STRONG>
+</Pre>
+
+<P>
+<FONT color="#FF0000" size="2">Adjusts input gain</FONT>
+</P>
+
+<P>
+Adjusts the input gain of the Voice Recognition System. </p>
+
+<P>
+"handle" must be initilaized with the <A href="nuVrsOpen.htm">nuVrsOpen</A> function. 
+The return value is the return value of the <A target=main href="../../../pro-man/pro26/26-08.html#06.10">osVoiceControlGain</A> function. </P>
+
+<P>
+This function calls the osVoiceControlGain function via the SI manager. 
+</P>
+
+<P>
+<B>Error: </B>
+</P>
+
+<TABLE width="589" border="1">
+  <TR>
+    <TD>CONT_ERR_INVALID</TD>
+    <TD>There is an error in the way this function was called or in the argument.  This error will not occur if the correct calling method is used.  Please correct the problem so that this error does not occur when development is completed. </TD>
+  </TR>
+</TABLE>
+
+<HR>
+
+<P>
+Reference:  <A href="nuVrsOpen.htm">nuVrsOpen</A>, <A target=main href="../../../pro-man/pro26/26-08.html#06.10">osVoiceContrlGain</A>
+</P>
+
+<P>
+<A href="index.htm"><IMG src="../../../gif/index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

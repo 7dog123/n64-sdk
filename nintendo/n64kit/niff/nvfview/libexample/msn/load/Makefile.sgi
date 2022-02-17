@@ -1,0 +1,9 @@
+# Makefile for make on SGI
+#  Copyright (C) 1998, NINTENDO Co,Ltd, MONEGI CORPORATION.
+
+# In most cases, rewriting only TARGET and SRCS is enough.
+TARGET		=	load.N64
+SRCS		=	boot.c \
+			main.c
+
+include ../../../commonx.sgi

@@ -1,0 +1,15 @@
+
+Converting from AVI to HVQM
+
+1  As an option, you can change the compression rate, etc. Adjust this accordingly.
+   If you are converting actual film footage, note that it is not practical to set 
+   the value of the -q option below 200, since the compression process will take 
+   time and the compression ratio will decline. 
+   Also, you need to consider the frame rate for the original data being captured 
+   so frames are not dropped out on the N64.  Please use the -k option to match 
+   the key frame interval at compression time with the frame rate of the original 
+   data. 
+
+2  When getting actual film footage taken with a digital camera, etc. by capturing
+   it, you must set it up to only get odd or even frames in NTSC format or the 
+   quality will not be sufficient.

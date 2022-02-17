@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuAuSndPlayerGetState</strong></font><font face="arial" color="#0000A0"
+size="4"><b> (Macro)</font></pre></b>
+
+<hr>
+
+<P>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>s32 nuAuSndPlayerGetState(void)</pre></font>
+
+<P>
+<strong>Arguments</strong><br>
+None
+
+<P>
+<strong>Return Value</strong>
+<br>
+Playback condition(AL_PLAYING, AL_STOPPING and AL_STOPPED)
+
+<P>
+
+<strong>Explanation</strong>
+<br>
+Obtain present playback condition for a sound object.
+</p>
+
+<p>Set sound object by calling nuAuSndPlayerSetSound.
+		When nuAuSndPlayerSetSound is not called, the present playback
+		condition for the sound which was played back last using nuAuSndPlayerPlay is returned.
+</p>
+
+<p>There are three status conditions - AL_PLAYING, AL_STOPPING
+		and AL_STOPPED.
+		AL_PLAYING indicates that the sound is currently playing back,
+		AL_STOPPING indicates that the sound is in the release stage
+		and AL_STOPPED indicates that the sound is not being played back.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a target=top href="../../../n64man/al/alSndpGetState.html">alSndpGetState</a></pre>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+
+</BODY>
+</HTML>

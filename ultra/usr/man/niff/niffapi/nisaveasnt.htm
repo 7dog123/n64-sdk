@@ -1,0 +1,44 @@
+<html>
+<head>
+   <title>niSaveAsNt</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<BASEFONT SIZE=2>
+<h1>
+niSaveAsNt</h1>
+<font color="#FF0000">Outputs NIFF text to the specified file</font>
+
+<h3>
+Syntax</h3>
+
+<blockquote>#include&nbsp; "niffapi.h"
+<p>int niSaveAsNt(Nis *nis, char *filename);</blockquote>
+
+<h3>
+Arguments</h3>
+<b>nis</b>
+<blockquote>Pointer to the Nis structure holding the data to write</blockquote>
+<b>filename</b>
+<blockquote>Name of the file to write to</blockquote>
+
+<h3>
+Returned value</h3>
+TRUE(=1) if the data is written without error.  FALSE(=0) if an error occurs.
+<h3>
+Explanation</h3>
+&nbsp;
+The data held in the Nis structure is output to standard output in text form.  This output can be read with niOpenNt().<br>
+&nbsp;
+This function performs the processes which are appropriate for the given NIFF version.
+<h3>
+See also</h3>
+<a href="ninewnis.htm">niNewNis</a>, <a href="niopennb.htm">niOpenNb</a>, for the Nis structure see n64kit/niff/niffapi/nis.h
+<p>
+
+<P><A HREF="index.htm">Back to NIFFAPI Index</A></P>
+
+<P><font size=-1>Copyright 1998-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION All rights reserved.</P>
+
+</body>
+</html>

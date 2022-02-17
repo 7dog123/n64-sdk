@@ -1,0 +1,43 @@
+<html>
+<head>
+   <title>niNIFFver</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<BASEFONT SIZE=2>
+<h1>
+niNIFFver</h1>
+<font color="#FF0000">Returns the NIFF version</font>
+
+<h3>
+Syntax</h3>
+
+<blockquote>#include&nbsp; "niffapi.h"
+<p>int niNIFFver(NisFileHeader *fh);</blockquote>
+
+<h3>
+Arguments</h3>
+<b>fh</b>
+<blockquote>Pointer to the NisFileHeader structure holding the NIFF FileHeader</blockquote>
+
+<h3>
+Returned value</h3>
+Returns the NIFF version
+<h3>
+Explanation</h3>
+The NIFF version is returned.  More specifically, the fh->version low-order 16bits are returned.  In the case of NIFF 2.0, the value 0x0200 is returned.
+<br>
+When NIFF 2.0 data is not read, the pointer to the NIFF 2.0 data in the Nis structure is not initialized, so an error occurs when the data is accessed.
+When referencing reference NIFF 2.0 data, make sure to use this function to check the version.
+
+<h3>
+See also</h3>
+For the NisFileHeader structure see n64kit/niff/niffapi/nis.h
+<p>
+
+<P><A HREF="index.htm">Back to NIFFAPI Index</A></P>
+
+<P><font size=-1>Copyright 1998-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION All rights reserved.</P>
+
+</body>
+</html>

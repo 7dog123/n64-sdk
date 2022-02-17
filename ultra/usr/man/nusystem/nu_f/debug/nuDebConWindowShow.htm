@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuDebConWindowShow</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuDebConWindowShow(u32 wndNo, u32 flag)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>wndNo	is the window number
+<br>NU_DEB_CON_WINDOW0	&nbsp; Window 0
+<br>NU_DEB_CON_WINDOW1	&nbsp; Window 1
+<br>NU_DEB_CON_WINDOW2	&nbsp; Window 2
+<br>NU_DEB_CON_WINDOW3	&nbsp; Window 3
+<P>
+<li>flag	determines display on/off
+<br>NU_DEB_CON_WINDOW_ON	(default)
+<br>NU_DEB_CON_WINDOW_OFF</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Shows/hides the console window display.
+
+<p>Changes the setting for display of the console window.  To show the window, set the flag to NU_DEB_CON_WINDOW_ON.  To hide the window, set the flag to NU_DEB_CON_WINDOW_OFF.
+</p>
+
+<p>In the default setting, all windows are displayed.
+</p>
+
+<p>When the console window is off, the console display process runs faster.
+</p>
+
+<p>This function can also be used with the release-use library.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="../graphics/nuGfxInit.htm">nuGfxInit</a>
+<br><a href="../graphics/nuGfxTaskStart.htm">nuGfxTaskStart</a>
+<br><a href="../graphics/nuGfxSetUcode.htm">nuGfxSetUcode</a>
+<br><a href="nuDebConDisp.htm">nuDebConDisp</a>
+<br><a href="nuDebConWindowSize.htm">nuDebConWindowSize</a>
+<br><a href="nuDebConWindowPos.htm">nuDebConWindowPos</a>
+<br><a href="nuDebConScroll.htm">nuDebConScroll</a>
+<br><a href="nuDebConTextColor.htm">nuDebConTextColor</a>
+<br><a href="nuDebConTextAttr.htm">nuDebConTextAttr</a>
+<br><a href="nuDebConClear.htm">nuDebConClear</a>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.6 ShapeList</h3>
+
+<HR SIZE=3>
+
+<h4>1) ShapeList Area</h4>
+
+<blockquote>
+ShapeList describes parameters concerning shape data. ShapeList is mapped as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="9">
+<center>ShapeListHeader</center>
+</th>
+
+<td>u32</td>
+
+<td>shape_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_num_byte(shape_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>Shape(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Shape(shape_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table>
+</center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>ShapeList Area Memory Map</b></CAPTION>
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 shape_list_tag</td>
+
+<td><font size=+0>Tag indicating ShapeList. Set the following flag.</font>
+<pre><b><font size=+0>TAG_SHAPE_LIST&nbsp; 0x00030000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_list_header_size</td>
+
+<td><font size=+0>Size of ShapeListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_list_size</td>
+
+<td><font size=+0>Size of ShapeList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_num</td>
+
+<td><font size=+0>Number of shapes in ShapeList. In the case where the number of shape_num
+is equal to the number of SHAPE_NUM, shape_num_byte and shape would be equal
+to SHAPE_NUM.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to Shape</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg6-2.htm">Shape</a></td>
+
+<td><font size=+0>Area for one shape data</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table>
+</center>
+
+<HR>
+
+<A HREF="seg5-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg6-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<HTML>
+<!--
+**********************************************************************
+			  dptest Manual
+**********************************************************************
+-->
+<HEAD>
+<TITLE>dptest Manual</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<A HREF="../index.htm"><img src="../../gif/n64_logo2.gif" height="21" width="136" BORDER=0></A><br>
+<H2>dptest Manual Version 0.1</H2>
+
+<HR>
+<H2><FONT size="5" color="#0000FF">Summary</FONT></H2>
+<H3><FONT size="4" color="#009900">dptest is ...</FONT></H3>
+<P>
+... a program for adding several functions that are compatible with the ccbl program that runs on the N64. 
+</P>
+<P>
+Its main functions are:
+</P>
+<UL>
+  <LI>save and restore ccbl settings to an external memory device
+  <LI>display text of ccbl settings as a display list
+</UL>
+<H3><FONT size="4" color="#009900">ccbl is ...</FONT></H3>
+<P>
+... the name of a program that runs on the N64.  It was created as a simple tutorial for the ColorCombiner and Blender functions of RDP, a function program for the Nintendo 64. 
+</P>
+<P>
+In order to be compatible with dptest, the ccbl made by the command "make DPTEST=1" is stored, by default, as <KBD>dptest.n64</KBD> in [instal-dir]/ccbl/dptest.n64.  This can be changed by the user. 
+</P>
+<P>
+Please also refer to the <A href="../../sample/ccbl.html">ccbl Manual</A>. 
+</P>
+<H3><FONT size="4" color="#009900"> Operating Environment </FONT></H3>
+<CENTER>
+<TABLE width="80%" border="1" summary="Operating Environment">
+  <TR>
+    <TH>Platforms</TH>
+    <TD>Windows 95, Windows 98, Windows NT 4.0(SR3)</TD></TR>
+  <TR>
+    <TH>Targets</TH>
+    <TD>MSP-A, MSP-B, MSP-C<BR>
+Partner-N64PC<BR>
+IS-Viewer64</TD></TR>
+</TABLE>
+
+</CENTER>
+
+<P><B>Note:</B> dptest cannot be used on the Partner-N64PC under Windows NT with a Partner PCI I/F board.</P>
+
+<HR>
+<H2><FONT size="5" color="#0000FF">How to Use dptest</FONT></H2>
+<H3><FONT size="4" color="#009900">Required Files </FONT></H3>
+<P>
+The following files are included in the dptest package. 
+</P>
+<CENTER>
+<TABLE width="80%" border="1">
+  <TR>
+    <TH>dptest.exe</TH>
+    <TD>dptest executable file</TD></TR>
+  <TR>
+    <TH>TargetN64.dll</TH>
+    <TD>DLL for controlling the various target devices.</TD></TR>
+  <TR>
+    <TH>KMCCtrl.dll</TH>
+    <TD>DLL for controlling the Partner-N64PC.</TD></TR>
+  <TR>
+    <TH>dptest.n64</TH>
+    <TD>ccbl ROM image for dptest.</TD></TR>
+</TABLE>
+
+</CENTER>
+<P>
+Store these files in any directory.  However, make sure to store them all in the same directory. 
+</P>
+<H3><FONT size="4" color="#009900">Running dptest</FONT></H3>
+<P>
+Double click on <KBD>dptest.exe</KBD> in Windows Explorer. 
+</P>
+<P>
+The dptest main window will open, which is shown below. 
+</P>
+<CENTER>
+<IMG src="image/mainform.gif" alt="Main Window Graphic" height="83" width="442">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" summary="Main Window Menu Content" style="margin-top:10pt; margin-bottom:10pt;">
+  <CAPTION><B>dptest Main Menus</B></CAPTION>
+  <TR>
+    <TD><B>File</B></TD>
+    <TD>Save</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Restore</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Exit</TD></TR>
+  <TR>
+    <TD><B>Target</B></TD>
+    <TD>Initialize</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Sample Static DL Setup</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Sample Dynamic DL Setup</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Save</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Restore</TD></TR>
+  <TR>
+    <TD><B>Setup</B></TD>
+    <TD>Select Target</TD></TR>
+  <TR>
+    <TD><B>Help</B></TD>
+    <TD>About dptest</TD></TR>
+</TABLE>
+
+</CENTER>
+<H3><FONT size="4" color="#009900"> Setup </FONT></H3>
+<P>
+In order to use the dptest functions, you must specify the type of target to be used. 
+</P>
+<P>
+Choose [Select Target] from the [Setup] menu.  The "Select Target" dialog box will appear. 
+</P>
+<CENTER>
+<IMG src="image/tgtselform.gif" alt="Graphic of Select Target dialog box" height="194" width="366">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" summary="How to select a target" style="margin-top:10pt; margin-bottom:10pt;">
+  <CAPTION><B>Selecting a Target</B></CAPTION>
+  <TR>
+    <TD><B>To select any of MSP-A, MSP-B, or MSP-C</B></TD>
+    <TD>Select the [MSP] radio button. <BR>
+Then select the target to be used from the combo box on the right.</TD></TR>
+  <TR>
+    <TD><B>To select Partner-N64PC</B></TD>
+    <TD>Select the [PTR] radio button.<BR>
+In the edit box on the right, enter the full pathname of the directory in which Partner (debugger) is installed.</TD></TR>
+  <TR>
+    <TD><B>To select IS-Viewer64</B></TD>
+    <TD>Select the [ISV] radio button.<BR>
+Then select the connected IS-Viewer64s that will be used from the combo box on the right.<BR>
+The IS-Viewer64s are numbered from 0 (zero) in the order from the closest to the PC in the daisy chain.  Please note that they are not identified by their SCSI ID.</TD></TR>
+</TABLE>
+
+</CENTER>
+<P>
+When you are finished with your selection, click the OK button. Your selection will be validated and the N64 will be initialized. 
+</P>
+<H3><FONT size="4" color="#009900">dptest Functions</FONT></H3>
+<P>
+The main dptest functions are listed below. 
+</P>
+<CENTER>
+<TABLE width="80%" border="1" class="Function">
+  <TR>
+    <TH colspan="2">Initialize</TH></TR>
+  <TR>
+    <TD>Menu</TD>
+    <TD>[Target]-[Initialize]</TD></TR>
+  <TR>
+    <TD>Description</TD>
+    <TD>Initializes the N64 and transfers ccbl.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" class="Function">
+  <TR>
+    <TH colspan="2">Save As</TH></TR>
+  <TR>
+    <TD>Menu</TD>
+    <TD>[File]-[Save to File]</TD></TR>
+  <TR>
+    <TD>Description</TD>
+    <TD>Saves the content set by ccbl to a file.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" class="Function">
+  <TR>
+    <TH colspan="2">Restore settings from file</TH></TR>
+  <TR>
+    <TD>Menu</TD>
+    <TD>[File]-[Restore Settings]</TD></TR>
+  <TR>
+    <TD>Description</TD>
+    <TD>Reads and restores ccbl settings which have been saved in a file. </TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" class="Function">
+  <TR>
+    <TH colspan="2">Get sample settings for static display list</TH></TR>
+  <TR>
+    <TD>Menu</TD>
+    <TD>[Target]-[Sample Static DL Settings]</TD></TR>
+  <TR>
+    <TD>Description</TD>
+    <TD>Outputs ccbl settings to the GBI window as a static display list.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" class="Function">
+  <TR>
+    <TH colspan="2">Get sample settings for dynamic display list</TH></TR>
+  <TR>
+    <TD>Menu</TD>
+    <TD>[Target]-[Sample Dynamic DL Settings]</TD></TR>
+  <TR>
+    <TD>Description</TD>
+    <TD>Outputs ccbl settings to the GBI window as a dynamic display list.</TD></TR>
+</TABLE>
+
+</CENTER>
+<H3><FONT size="4" color="#009900"> GBI Window </FONT></H3>
+<P>
+When the "Get sample settings for static/dynamic display list" function is executed, the resulting text is displayed in the window illustrated below.  This window is called the GBI window. 
+</P>
+<CENTER>
+<IMG src="image/gbiviewform.gif" alt="Graphic of GBI window" height="456" width="479">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="1" summary="Menu contents in GBI window" style="margin-top:10pt; margin-bottom:10pt;">
+  <TR>
+    <TD><B>File</B></TD>
+    <TD>Save As</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Save</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Close</TD></TR>
+  <TR>
+    <TD><B>Edit</B></TD>
+    <TD>Copy</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Select All</TD></TR>
+  <TR>
+    <TD><B>Target</B></TD>
+    <TD>Sample Static DL Settings</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Sample Dynamic DL Settings</TD></TR>
+</TABLE>
+
+</CENTER>
+<P>
+In this window, you can view the output display list and save it to a file. 
+</P>
+<HR>
+<H2><FONT size="5" color="#0000FF">Error Messages</FONT></H2>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Write failure to file</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>Please make sure there is enough space available on the storage medium. <BR>
+Also check whether or not the file is write-protected. </TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Forced exit</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>User's operation was canceled while the target was being accessed. </TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Not a ccbl saved file. </TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>Attempted to restore ccbl settings from a file which was not saved in ccbl.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">ccbl saved file is wrong version</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>dptest version is older than that of the ccbl file which is being loaded.  Please use the latest version of dptest and the corresponding version of ccbl.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Cannot find DLL</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>The DLL required for each target cannot be found.  Check whether or not the software for the specified target has been properly installed.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Opening target failed. </TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>The target does not exist.  Check whether or not the hardware for the specified target has been properly installed. </TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Target does not exist</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>The target does not exist.  Check whether or not the hardware for the specified target has been properly installed. </TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Specified target is already in use</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>Two instances of dptest are running and an attempt has been made to use the same target as that being used by the dptest that was started first.</TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Failure on initializing target</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>Initialization of the target has failed. </TD></TR>
+</TABLE>
+
+</CENTER>
+<CENTER>
+
+<HR width="80%">
+</CENTER>
+<CENTER>
+<TABLE width="80%" border="0" class="ErrorMessage">
+  <TR>
+    <TH colspan="2" align="left">Program file (dptest.n64) not found on target side</TH></TR>
+  <TR>
+    <TD></TD>
+    <TD>Check whether or not dptest.n64 has been stored in the same directory as dptest.exe.</TD></TR>
+</TABLE>
+
+</CENTER>
+<HR>
+<H2><FONT size="5" color="#0000FF"> Registry </FONT></H2>
+<P>dptest settings are saved in a registry The next time dptest is started, the settings are loaded and applied to the program's operation.  
+
+<P>The key name of this registry is &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Monegi\DPTest&quot;. This file should not be edited. However, the key may be deleted by deleting &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Monegi\DPTest&quot;. 
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,651 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+
+<CENTER><H1>N64 Function List</H1></CENTER>
+
+<H1>Display List Control</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPSegment</SPAN> - Set the segment register and base address.<BR>
+<SPAN ID=mono>gSPBranchLessZ</SPAN> - Process the model's LOD.<BR>
+<SPAN ID=mono>gSPBranchList</SPAN> - Branch the display list.<BR>
+<SPAN ID=mono>gSPDisplayList</SPAN> - Branch execution with the current display list.<BR>
+<SPAN ID=mono>gSPEndDisplayList</SPAN> - Terminate the display list command.<BR>
+<SPAN ID=mono>gSPLoadUcode</SPAN> - Load specified microcode.<BR>
+<SPAN ID=mono>gSPLoadUcodeL</SPAN> - Load specified microcode.<BR>
+<SPAN ID=mono>gDPPipeSync</SPAN> - Synchronize the RDP attribute change which is on the primitive drawing.<BR>
+<SPAN ID=mono>gDPFullSync</SPAN> - Signal the end of a frame.<BR>
+<SPAN ID=mono>gDPLoadSync</SPAN> - Synchronize the texture load which is on the primitive drawing.<BR>
+<SPAN ID=mono>gDPTileSync</SPAN> - Synchronize the texture tile change which is on the primitive drawing.</P>
+
+
+<H1>Drawing Primitives</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPVertex</SPAN> - Load the vertex to the on-chip vertex cache.<BR>
+<SPAN ID=mono>gSPModifyVertex</SPAN> - Update the vertex data after the RSP accepts it.<BR>
+<SPAN ID=mono>gSP1Triangle</SPAN> - Draw a triangle.<BR>
+<SPAN ID=mono>gSPLine3D</SPAN> - Draw a line.<BR>
+<SPAN ID=mono>gSPLineW3D</SPAN> - Draw a line that includes a width specification.<BR>
+<SPAN ID=mono>gSP2Triangles</SPAN> - Draw two triangle surfaces.<BR>
+<SPAN ID=mono>gSPSprite2Draw</SPAN> - Specify the screen coordinate of the sprite and initiate the rendering.<BR>
+<SPAN ID=mono>gDPFillRectangle</SPAN>  - Draw a single-color rectangle using the screen coordinate.<BR>
+<SPAN ID=mono>gDPScisFillRectangle</SPAN> - Draw a single-color rectangle using the screen coordinate.<BR>
+<SPAN ID=mono>gSPTextureRectangle</SPAN> - Draw a textured 2D rectangle.<BR>
+<SPAN ID=mono>gSPTextureRectangleFlip</SPAN> - Draw a rectangle using the s/t inversion on the texture coordinate.<BR>
+<SPAN ID=mono>gSPScisTextureRectangle</SPAN> - Draw a rectangle using the scissoring on the texture coordinate.</P>
+
+
+<H1>Perspective Transformation, Clipping and Scissoring</H1>
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guFrustum</SPAN> - Calculate a perspective projection matrix.<BR>
+<SPAN ID=mono>guFrustumF</SPAN> - Calculate a perspective projection matrix.<BR>
+<SPAN ID=mono>guLookAt</SPAN> - Calculate a 'lookat' view matrix.<BR>
+<SPAN ID=mono>guLookatF</SPAN> - Calculate a 'lookat' view matrix.<BR>
+<SPAN ID=mono>guOrtho</SPAN> - Calculate a positive projection matrix.<BR>
+<SPAN ID=mono>guOrthoF</SPAN> - Calculate a positive projection matrix.<BR>
+<SPAN ID=mono>guPerspective</SPAN> - Calculate a perspective drawing projection matrix.<BR>
+<SPAN ID=mono>guPerspectiveF</SPAN> - Calculate a perspective drawing projection matrix.
+</P>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPViewport</SPAN> - Load the view port using the projection parameter.<BR>
+<SPAN ID=mono>gSPPerspNormalize</SPAN> - Normalize the perspective projection.<BR>
+<SPAN ID=mono>gSPClipRatio</SPAN>  - Specify the relative ratio between clipping and scissoring.<BR>
+<SPAN ID=mono>gDPSetScissor</SPAN> - Specify the scissoring box using the screen coordinate.<BR>
+<SPAN ID=mono>gdSPDefLookAt</SPAN> - Load the x and y screen space coordinate directions to the lookat structure.</P>
+
+
+<H1>Culling</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPSetGeometryMode</SPAN> - Set the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPClearGeometryMode</SPAN> - Clear the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPCullDisplayList</SPAN> - Cull volumes from the display list if they lie outside the screen.
+
+
+<H1>Lighting</H1>
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guPosLight</SPAN> - Pseudo-represent positional light.<BR>
+<SPAN ID=mono>guPosLightHilite</SPAN> - Pseudo-represent positional light.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPSetGeometryMode</SPAN> - Set the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPClearCeometryMode</SPAN> - Clear the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPLight</SPAN> - Load light to the RSP.<BR>
+<SPAN ID=mono>gSPLightColor</SPAN> - Change the light color of the RSP quickly.<BR>
+<SPAN ID=mono>gSPNumLights</SPAN> - Specify the number of the light structure that loads to RSP.<BR>
+<SPAN ID=mono>gSPSetLights</SPAN>  - Load the light structure to the RSP.<BR>
+<SPAN ID=mono>gdSPDefLights</SPAN> - Load the parameter that defines a light to the light structure.
+
+
+<H1>Specular Highlight</H1>
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guLookAtHilite</SPAN> and <SPAN ID=mono>guLookAtHiliteF</SPAN> - Calculate the lookat viewing matrix, and set the light structure that sets the default color and the viewing direction. Then calculate the texture offsets of two specular highlights.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPLookAt, gSPLookAtX</SPAN>, and <SPAN ID=mono>gSPLookAtY</SPAN> - Load the 'lookat' structure to the RSP for specular highlights or reflection mapping.<BR>  
+<SPAN ID=mono>gDPSetHilite1Tile</SPAN> and <SPAN ID=mono>gDPSetHilite2Tile</SPAN> - Set the texture parameter in the RDP to be used when rendering the specular highlight.
+
+
+<H1>Reflection Mapping</H1>
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guLookAtReflect</SPAN> and <SPAN ID=mono>guLookAtReflectF</SPAN> - Calculate the 'lookat' viewing matrix, and set up the 'lookat' structure for the reflection mapping.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPSetGeometryMode</SPAN> -  Set the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPClearGeometryMode</SPAN> - Clear the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPLookAt, gSPLookAtX</SPAN>, and <SPAN ID=mono>gSPLookAtY</SPAN> - Load the 'lookat' structure to the RSP for the specular 
+highlight or reflection mapping.
+
+
+<H1>Matrix Operations</H1>
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guAlign</SPAN> - Calculate vector alignment for the modeling matrix.<BR>
+<SPAN ID=mono>guAlignF</SPAN> - Calculate vector alignment for the modeling matrix.<BR>
+<SPAN ID=mono>guLookAtStereo</SPAN> - Calculate the lookat view matrix for the stereo graphics display.<BR>
+<SPAN ID=mono>guLookAtStereoF</SPAN> - Calculate lookat view matrix for the stereo graphics display.<BR>
+<SPAN ID=mono>guMtxCatF</SPAN> - Concatenate two 4x4 floating-point matrices using multiplication.<BR>
+<SPAN ID=mono>guMtxCatL</SPAN> - Concatenate two 4x4 fixed-point matrices using multiplication.<BR>
+<SPAN ID=mono>guMtxF2L</SPAN> - Convert the 4x4 floating-point matrix to the fixed-point matrix.<BR>
+<SPAN ID=mono>guMtxIdent</SPAN> - Create the 4x4 fixed-point identity matrix.<BR>
+<SPAN ID=mono>guMtxIdentF</SPAN> - Create the 4x4 floating-point matrix.<BR>
+<SPAN ID=mono>guMtxL2F</SPAN> - Create the 4x4 fixed-point matrix to the floating-point matrix.<BR>
+<SPAN ID=mono>guMtxXFMF</SPAN> - Provide the point coordinate transformation using the 4x4 floating-point matrix.<BR>
+<SPAN ID=mono>guMtxXFML</SPAN> - Provide the point coordinate transformation using the 4x4 fixed-point matrix.<BR>
+<SPAN ID=mono>guNormalize</SPAN> - Normalize the vector.<BR>
+<SPAN ID=mono>guPosition</SPAN>  - Calculate the modeling matrix.<BR>
+<SPAN ID=mono>guPositionF</SPAN> - Calculate the modeling matrix.<BR>
+<SPAN ID=mono>guRotate, guRotateRPY, guRotateRPYF</SPAN>, and <SPAN ID=mono>guRotateF</SPAN> - Rotate the modeling matrix.<BR>
+<SPAN ID=mono>guScale</SPAN> - Calculate the scaling matrix.<BR>
+<SPAN ID=mono>guScaleF</SPAN> - Calculate the scaling modeling matrix.<BR>
+<SPAN ID=mono>guTranslate</SPAN> - Calculate the conversion modeling matrix.<BR>
+<SPAN ID=mono>guTranslateF</SPAN> - Calculate the conversion modeling matrix.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPMatrix</SPAN> - Load the matrix, concatenate, and push the stack.<BR>
+<SPAN ID=mono>gSPPopMatrix</SPAN> - Pop the matrix stack.<BR>
+<SPAN ID=mono>gSPForceMatrix</SPAN> - Load the new MP matrix.<BR>
+<SPAN ID=mono>gSPInsertMatrix</SPAN> - Update the matrix element without using multiplication.
+
+
+
+<H1>RDP Setting</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gDPPipelineMode</SPAN> - Turn ON/OFF the coherent pipeline mode of the span cache buffer.<BR>
+<SPAN ID=mono>gDPSetCycleType</SPAN> - Set the RDP cycle type.<BR>
+<SPAN ID=mono>gDPSetDepthSource</SPAN> - Set the type of the source Z to use for comparing the depth buffer.<BR>
+<SPAN ID=mono>gDPSetColorImage</SPAN> - Set the color of the frame buffer area.<BR>
+<SPAN ID=mono>gDPSetDepthImage</SPAN> - Set the Z-Buffer area.<BR>
+<SPAN ID=mono>gSPSetOtherMode</SPAN> - Set or clear the RDP othermode.
+
+
+<H1>Textures</H1>
+
+<H2>Utility Functions</H2>
+
+<P><SPAN ID=mono>guLoadTextureBlockMipMap</SPAN> - Calculate the MIP-map pyramid from the original texture, and return the MIP-map texture with the required display list for drawing.
+
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPTexture</SPAN> - Make the texture effective and specify the scaling of the texture.<BR>
+<SPAN ID=mono>gDPLoadBlock</SPAN> - Load TMEM using this low-level TMEM load macro.<BR>
+<SPAN ID=mono>gDPLoadTLUT_pal16</SPAN> - Load the CI4 (16 colors) pallet to texture memory.<BR>
+<SPAN ID=mono>gDPLoadTLUT_pal256</SPAN> - Load the CI8 (256 colors) pallet to texture memory.<BR>
+<SPAN ID=mono>gDPLoadTextureBlock</SPAN> - Load the consecutive texture block to TMEM.<BR>
+<SPAN ID=mono>gDPLoadTextureBlock_4b</SPAN> - Load the consecutive 4-bit texture block to TMEM.<BR>
+<SPAN ID=mono>gDPLoadTextureTile</SPAN> - Load a part of a large texture image to TMEM.<BR>
+<SPAN ID=mono>gDPLoadTextureTile_4b</SPAN> - Load a part of a large 4-bit texture image to TMEM.<BR>
+<SPAN ID=mono>gDPSetTextureImage</SPAN> - Set the texture area.<BR>
+<SPAN ID=mono>gDPSetTextureConvert</SPAN> - Control and convert the color texture filter.<BR>
+<SPAN ID=mono>gDPSetTextureDetail</SPAN> - Turn ON/OFF the detail texture.<BR>
+<SPAN ID=mono>gDPSetTextureFilter</SPAN> - Set the filter type on the sampling of the texture tile.<BR>
+<SPAN ID=mono>gDPSetTextureLOD</SPAN> - Turn ON/OFF LOD for the MIP-map texture.<BR>
+<SPAN ID=mono>gDPSetTextureLUT</SPAN> - Set the full color texture.<BR>
+<SPAN ID=mono>gDPSetTexturePersp</SPAN> - Turn ON/OFF texture map perspective transformation correction.<BR>
+<SPAN ID=mono>gDPSetTile</SPAN> - Set the parameter for one of the eight tile descriptors.<BR>
+<SPAN ID=mono>gDPSetTileSize</SPAN> - Set the parameter for one of the eight tile descriptors.
+
+
+<H1>Using the Color Combiner</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gDPSetCombineMode</SPAN> - Set the color combine mode.<BR>
+<SPAN ID=mono>gDPSetPrimColor</SPAN> - Set the RDP primitive color.<BR>
+<SPAN ID=mono>gDPSetEnvColor</SPAN> - Set the RDP environment color.<BR>
+<SPAN ID=mono>gDPSetConvert</SPAN> - Set the matrix coefficient to convert the YUV pixel to RGB.
+
+
+
+<H1>Using the Chroma Key</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gDPSetCombineKey</SPAN> - Turn  ON/OFF chroma keying.<BR>
+<SPAN ID=mono>gDPSetKeyR</SPAN> and <SPAN ID=mono>gDPSetKeyGB</SPAN> - Select the color of the chroma key operation.
+
+
+<H1>Using the Blender</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gDPSetBlendColor</SPAN> - Set the RDP blend color.<BR>
+<SPAN ID=mono>gDPSetRenderMode</SPAN> - Set the rendering mode of the blender.<BR>
+<SPAN ID=mono>gDPSetAlphaCompare</SPAN> - Set the alpha compare mode of the writing condition to the frame buffer.<BR>
+<SPAN ID=mono>gDPSetAlphaDither</SPAN> - Turn ON/OFF the alpha dither.<BR>
+<SPAN ID=mono>gDPSetColorDither</SPAN>   - Turn ON/OFF the RGB color dither.<BR>
+<SPAN ID=mono>gDPSetprimDepth</SPAN> - Set the primitive depth.
+
+
+<H1>Using Fog</H1>
+
+<H2>GBI Commands</H2>
+
+<P><SPAN ID=mono>gSPSetGeometryMode</SPAN> - Set the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPClearGeometryMode</SPAN> - Clear the geometry pipeline mode.<BR>
+<SPAN ID=mono>gSPFogPosition</SPAN> - Specify the thickness of the fog.<BR>
+<SPAN ID=mono>gDPSetFogColor</SPAN> - Set the RDP fog color.
+
+
+<H1>Mathematical Calculation Utilities</H1>
+
+<P><SPAN ID=mono>sinf, sins</SPAN> - Calculate the sine of the angle using floating or fixed-point.<BR>
+<SPAN ID=mono>cosf, coss</SPAN> - Calculate the cosine of the angle using floating or fixed-point.<BR>
+<SPAN ID=mono>sqrtf</SPAN> - Calculate the square root.<BR>
+<SPAN ID=mono>guRandom</SPAN> - Calculate a 32-bit integer random number.
+
+
+<H1>N64 Operating System Initialization</H1>
+
+<P><SPAN ID=mono>osInitialize</SPAN> - Initialize the hardware and software.
+
+
+<H1>Threads</H1>
+
+<P><SPAN ID=mono>osCreateThread</SPAN> - Create a thread.<BR>
+<SPAN ID=mono>osDestroyThread</SPAN> - Delete a thread.<BR>
+<SPAN ID=mono>osGetThreadId</SPAN> - Get the debugger ID of a thread.<BR>
+<SPAN ID=mono>osGetThreadPri</SPAN> - Get the priority of a thread.<BR>
+<SPAN ID=mono>osSetThreadPri</SPAN> - Reset the priority of a thread.<BR>
+<SPAN ID=mono>osStartThread</SPAN> - Start or restart the execution of a thread.<BR>
+<SPAN ID=mono>osStopThread</SPAN>  - Stop a thread.<BR>
+<SPAN ID=mono>osYieldThread</SPAN> - Yield CPU access and activate the thread dispatcher.
+
+
+<H1>Messages</H1>
+
+<P><SPAN ID=mono>osCreateMesgQueue</SPAN> - Create a message queue.<BR>
+<SPAN ID=mono>osSendMesg</SPAN> - Send a message and synchronize.<BR>
+<SPAN ID=mono>osJamMesg</SPAN> - Send a message and synchronize.<BR>
+<SPAN ID=mono>osRecvMesg</SPAN> - Receive a message and synchronize.<BR>
+<SPAN ID=mono>osSetEventMesg</SPAN> - Register the message queue and message each time an event occurs.
+
+
+<H1>Scheduler</H1>
+
+<P><SPAN ID=mono>osCreateScheduler</SPAN> - Create the RCP task scheduler.<BR>
+<SPAN ID=mono>osScAddClient</SPAN> - Add the client to the RCP task scheduler.<BR>
+<SPAN ID=mono>osScGetTaskQ</SPAN> - Get the message queue used for the communication with the scheduler thread.<BR>
+<SPAN ID=mono>osScRemoveClient</SPAN> - Delete the client from the RCP task scheduler.
+
+
+<H1>Tasks</H1>
+
+<P><SPAN ID=mono>osSpTaskLoad</SPAN> - Load the received task to the SP.<BR>
+<SPAN ID=mono>osSpTaskStart</SPAN> - Start the SP task.<BR>
+<SPAN ID=mono>osSpTaskStartGo</SPAN> - Load and start the SP task.<BR>
+<SPAN ID=mono>osSpTaskYield</SPAN> - Request to yield the SP task.<BR>
+<SPAN ID=mono>osSpTaskYielded</SPAN> - Validate the break of the SP task.
+
+
+<H1>Display Processor</H1>
+
+<P><SPAN ID=mono>osDpGetCounters</SPAN> - Get the inside execution counter of the display processor (DP).<BR>
+<SPAN ID=mono>osDpGetStatus</SPAN> - Get the status of the display processor (DP).<BR>
+<SPAN ID=mono>osDpSetStatus</SPAN> - Set the status of the display processor (DP).<BR>
+<SPAN ID=mono>osDpSetNextBuffer</SPAN> - Set the DMA transfer of the display processor (DP).
+
+
+<H1>Controller</H1>
+
+<P><SPAN ID=mono>osContInit</SPAN> - Detect and initialize the Controller.<BR>
+<SPAN ID=mono>osContReset</SPAN> - Reset all Controllers.<BR>
+<SPAN ID=mono>osContSetCh</SPAN> - Set the number of accepting Controllers.<BR>
+<SPAN ID=mono>osContStartQuery</SPAN> - Issue the create command to acquire the status and type of the Controller.<BR>
+<SPAN ID=mono>osContGetQuery</SPAN> - Get the state and type of the Controller.<BR>
+<SPAN ID=mono>osContStartReadData</SPAN> - Issue the lead command to get the state of the Controller.<BR>
+<SPAN ID=mono>OsContGetReadData</SPAN> - Get the 3D stack and the button status.
+
+
+<H1>Controller Pak</H1>
+
+<P><SPAN ID=mono>osPfsAllocateFile</SPAN> - Create the specified file.<BR>
+<SPAN ID=mono>osPfsDeleteFile</SPAN> - Delete the specified file.<BR>
+<SPAN ID=mono>osPfsFindFile</SPAN> - Browse the specified file.<BR>
+<SPAN ID=mono>osPfsChecker</SPAN> - Check and repair the file system of the Controller Pak.<BR>
+<SPAN ID=mono>osPfsFileState</SPAN> - Get the file information of the Controller Pak.<BR>
+<SPAN ID=mono>osPfsNumfiles</SPAN> - Get the file number of the Controller Pak.<BR>
+<SPAN ID=mono>osPfsFreeBlocks</SPAN> - Get the space size (in number of bytes) of the Controller Pak.<BR>
+<SPAN ID=mono>osPfsIsPlug</SPAN> - Detect the Controller Pak.<BR>
+<SPAN ID=mono>osPfsReSizeFile</SPAN> - Make the file the specified length.<BR>
+<SPAN ID=mono>osPfsReadWriteFile</SPAN> - Read and write the file data.<BR>
+<SPAN ID=mono>osPfsSetLabel</SPAN> - Write the label of the Controller Pak.<BR>
+<SPAN ID=mono>osPfsGetLabel</SPAN> - Get the label of the Controller Pak.<BR>
+<SPAN ID=mono>osMotorInit</SPAN> - Initialize the Rumble Pak.<BR>
+<SPAN ID=mono>osMotorStart</SPAN> - Work the Rumble Pak.<BR>
+<SPAN ID=mono>osMotorStop</SPAN> - Stop the Rumble Pak.<BR>
+<SPAN ID=mono>osPfsInitPak</SPAN> - Initialize the file handle of the Controller Pak.<BR>
+<SPAN ID=mono>osPfsRepairId</SPAN> - Correct the ID area of the Controller Pak.
+
+
+<H1>EEPROM</H1>
+
+<P><SPAN ID=mono>osEepromLongRead</SPAN> - Read the data of several EEPROM blocks.<BR>
+<SPAN ID=mono>osEepromLongWrite</SPAN> - Write the data of several EEPROM blocks.<BR>
+<SPAN ID=mono>osEepromProbe</SPAN> - Detect EEPROM.<BR>
+<SPAN ID=mono>osEepromRead</SPAN> - Read one EEPROM block.<BR>
+<SPAN ID=mono>osEepromWrite</SPAN> - Write one EEPROM block.<BR>
+
+
+<H1>AI (Audio Interface)</H1>
+
+<P><SPAN ID=mono>osAiGetStatus</SPAN> - Get the status of the audio interface (AI).<BR>
+<SPAN ID=mono>osAiGetLength</SPAN> - Get the DMA remaining transfer amount of the audio interface (AI).<BR>
+<SPAN ID=mono>osAiSetFrequency</SPAN> - Get the frequency of the audio interface (AI).<BR>
+<SPAN ID=mono>osAiSetNextBuffer</SPAN> - Set the DMA transfer of the audio interface (AI).
+
+
+<H1>PI (Parallel Interface)</H1>
+
+<P><SPAN ID=mono>osPiRawStartDma</SPAN> - Set the DMA transfer of PI (low level).<BR>
+<SPAN ID=mono>osPiRawWriteIo</SPAN> - Write PI I/O (low level).<BR>
+<SPAN ID=mono>osPiRawReadIo</SPAN> - Read PI I/O (low level).<BR>
+<SPAN ID=mono>osPiGetStatus</SPAN> - Get the status of PI.<BR>
+<SPAN ID=mono>osPiStartDma</SPAN> - Set the DMA transfer of PI using the PI Manager.<BR>
+<SPAN ID=mono>osPiWriteIo</SPAN> - Write PI I/O using the PI Manager.<BR>
+<SPAN ID=mono>osPiReadIo</SPAN> - Read PI I/O using the PI Manager.<BR>
+<SPAN ID=mono>osCreatePiManager</SPAN> - Create the PI Manager.<BR>
+<SPAN ID=mono>osPiGetCmdQueue</SPAN> - Get the command queue of the PI Manager.<BR>
+<SPAN ID=mono>osCartRomInit</SPAN> - Return information about hardware setting that are required by the Game Pak.<BR>
+<SPAN ID=mono>osDriveRomInit</SPAN> - Return information about hardware setting that are required by the ROM in the N64 Disk Drive.<BR>
+<SPAN ID=mono>osEPiWriteIo</SPAN> - Provide "32bit IO Write" to the PI device address (devAddr), and store its value to "data".<BR>
+<SPAN ID=mono>osEPiReadIo</SPAN> - Provide "32 bit IO Read" from the PI device address (devAddr), and store the value in "data."<BR>
+<SPAN ID=mono>osEPiRawStartDma</SPAN> - Obtain low-level access to EPI without using the PI Manager.<BR>
+<SPAN ID=mono>osEPiStartDma</SPAN> - Obtain access to EPI by using the PI Manager.
+
+
+<H1>VI (Video Interface)</H1>
+
+<P><SPAN ID=mono>osTvType</SPAN> - Get the television system.<BR>
+<SPAN ID=mono>osViGetStatus</SPAN> - Get the VI status.<BR>
+<SPAN ID=mono>osViGetCurrentMode</SPAN> - Get the current VI mode.<BR>
+<SPAN ID=mono>osViGetCurrentLine</SPAN> - Get the VI half line.<BR>
+<SPAN ID=mono>osViGetCurrentField</SPAN> - Get the VI field number.<BR>
+<SPAN ID=mono>osViGetCurrentFramebuffer</SPAN> - Get the current frame buffet address.<BR>
+<SPAN ID=mono>osViGetNextFramebuffer</SPAN> - Get the next frame buffer address.<BR>
+<SPAN ID=mono>osViSetMode</SPAN> - Set the VI mode.<BR>
+<SPAN ID=mono>osViSetEvent</SPAN> - Register the vertical synchronization event message to the VI Manager.<BR>
+<SPAN ID=mono>osViSetSpecialFeatures</SPAN> - Set the VI special features.<BR>
+<SPAN ID=mono>osViSetXScale</SPAN> - Set the VI horizontal expanding ratio.<BR>
+<SPAN ID=mono>osViSetYScale</SPAN> - Set the VI vertical expanding ratio.<BR>
+<SPAN ID=mono>osViSwapBuffer</SPAN> - Register the frame buffer displayed in the next frame.<BR>
+<SPAN ID=mono>osViBlack</SPAN> - Black out the VI screen.<BR>
+<SPAN ID=mono>osViFade</SPAN> - Fade out the VI screen.<BR>
+<SPAN ID=mono>osViRepeatLine</SPAN> - Display the first scan line to all frames.<BR>
+<SPAN ID=mono>osCreateViManager</SPAN> - Create the VI Manager.
+
+
+<H1>Timer</H1>
+
+<P><SPAN ID=mono>OS_NSEC_TO_CYCLES</SPAN> - Convert nanoseconds (ns) to the cycle number of the CPU count register.<BR>
+<SPAN ID=mono>OS_USEC_TO_CYCLES</SPAN> - Convert microseconds (ms) to the cycle number of the CPU count register.<BR>
+<SPAN ID=mono>OS_CYCLES_TO_NSEC</SPAN> - Convert cycle number of the CPU count register to the time in nanoseconds (ns).<BR>
+<SPAN ID=mono>OS_CYCLES_TO_USEC</SPAN> - Convert the cycle number of the CPU count register to the time in microseconds (ms).<BR>
+<SPAN ID=mono>osGetTime</SPAN> - Get the real time counter value.<BR>
+<SPAN ID=mono>osSetTime</SPAN> - Set the real time counter value.<BR>
+<SPAN ID=mono>osSetTimer</SPAN> - Start the interval or count-down timer.<BR>
+<SPAN ID=mono>osStopTimer</SPAN> - Stop the interval or count-down timer.
+
+
+<H1>Administration of Virtual and Physical Addresses</H1>
+
+<P><SPAN ID=mono>OS_K0_TO_PHYSICAL</SPAN> - Convert the CPU virtual address (KSEG0), which is direct-mapped with cache, to the physical address.<BR>
+<SPAN ID=mono>OS_K1_TO_PHYSICAL</SPAN> - Convert the CPU virtual address (KSEG1), which is direct-mapped without cache, to the physical address.<BR>
+<SPAN ID=mono>OS_PHYSICAL_TO_KO</SPAN> - Convert the physical address to the direct-map CPU virtual address (KSEG0) with cache.<BR>
+<SPAN ID=mono>OS_PHYSICAL_TO_K1</SPAN> - Convert the physical address to the direct-map CPU virtual address (KSEG1) without cache.<BR>
+<SPAN ID=mono>osVirtualToPhysical</SPAN>  - Convert the CPU virtual address to the physical address.<BR>
+<SPAN ID=mono>osPhysicalToVirtual</SPAN>  - Convert the CPU physical address to the virtual address.<BR>
+<SPAN ID=mono>osMapTLB</SPAN> - Set up the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osUnmapTLB</SPAN> - Free the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osUnmapTLBAll</SPAN> - Free all the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osSetTLBASID</SPAN> - Set the ID setting of the CPU virtual address mapping.<BR>
+<SPAN ID=mono>osGetRegionBufSize</SPAN> - Get the size of the memory buffer.
+
+
+<H1>Cache Management</H1>
+
+<P><SPAN ID=mono>OS_DCACHE_ROUNDUP_ADDR</SPAN> and <SPAN ID=mono>OS_DCACHE_ROUNDUP_SIZE</SPAN> - Round up address or size values to adapt to the data cache line size, and make the address the physical address.<BR>
+<SPAN ID=mono>osInvalDCache</SPAN> - Nullify the CPU data cache line.<BR>
+<SPAN ID=mono>osInvalICache</SPAN> - Nullify the CPU instruction cache line.<BR>
+<SPAN ID=mono>osWritebackDCache</SPAN> - Write back the CPU data cache line to the physical memory.<BR>
+<SPAN ID=mono>osWritebackDCacheAll</SPAN> - Write back the CPU data cache line to the physical memory.
+
+
+<H1>Memory Region Library</H1>
+
+<P><SPAN ID=mono>osCreateRegion</SPAN> - Initialize the memory allocation region.<BR>
+<SPAN ID=mono>osMalloc</SPAN> - Allocate the memory region.<BR>
+<SPAN ID=mono>osFree</SPAN> - Free the memory region.<BR>
+<SPAN ID=mono>osGetRegionBufCount</SPAN> - Get the buffer count created in the region.<BR>
+<SPAN ID=mono>osGetRegionBufSize</SPAN>  - Get the size allocated to each buffer in the region.
+
+
+<H1>Emulator Board and Host Communications</H1>
+
+<P><SPAN ID=mono>osReadHost</SPAN> - Read data from the host.<BR>
+<SPAN ID=mono>osWriteHost</SPAN> - Write data to the host.<BR>
+<SPAN ID=mono>osTestHost</SPAN> - Get the data transfer state from the host.<BR>
+<SPAN ID=mono>uhCloseGame</SPAN> - Close the data communication facility between the host (Indy) and the emulator board.<BR>
+<SPAN ID=mono>uhOpenGame</SPAN> - Open the data communication facility between the host (Indy) and the emulator board.<BR> 
+<SPAN ID=mono>uhReadGame</SPAN> - Read data from the game to send it to the host (Indy).<BR>
+<SPAN ID=mono>uhReadRamrom</SPAN> - Read data from RAMROM.<BR>
+<SPAN ID=mono>uhWriteGame</SPAN> - Write data from the host (Indy) to the game.<BR>
+<SPAN ID=mono>uhWriteRamrom</SPAN> - Write data to RAMROM.
+
+
+<H1>Debugging</H1>
+
+<P><SPAN ID=mono>gDPNoOpTag</SPAN> - NO-OP command of the RDP.<BR>
+<SPAN ID=mono>gDPNoOp</SPAN> - NO-OP command of the RDP.<BR>
+<SPAN ID=mono>guParseGbiDL</SPAN> - Display using the decodable format of the GBI display list.<BR>
+<SPAN ID=mono>guParseRdpDL</SPAN> or <SPAN ID=mono>guDumpRawRdpDL</SPAN> -  Display using the decodable format of the low-level RDP display list.<BR>
+<SPAN ID=mono>osSyncPrintf</SPAN> - Output the formatted text to the debug board.
+
+
+<H1>Logging</H1>
+
+<P><SPAN ID=mono>osCreateLog</SPAN> - Initialize logging.<BR>
+<SPAN ID=mono>osLogEvent</SPAN> - Add the entry of logging.<BR>
+<SPAN ID=mono>osFlushLog</SPAN> - Output logged data to the host.
+
+
+<H1>Profiler</H1>
+
+<P><SPAN ID=mono>osProfileInit</SPAN> - Initialize the profiled segment count buffer.<BR>
+<SPAN ID=mono>osProfileStart</SPAN> - Start the counter between profilers.<BR>
+<SPAN ID=mono>osProfileStop</SPAN> - Stop the counter between profilers.<BR>
+<SPAN ID=mono>osProfileFlush</SPAN> - Transfer the profiler data to the host.<BR>
+<SPAN ID=mono>gperf</SPAN> - Analyze the profiler data.
+
+
+<H1>OS Global Variables</H1>
+
+<P><SPAN ID=mono>osTvType</SPAN> - Type configuration.<BR>
+<SPAN ID=mono>osMemSize</SPAN> - Size of the main memory (DRAM).<BR>
+<SPAN ID=mono>osResetType</SPAN> - Type of the system reboot.
+
+
+<H1>Manage CPU Registers and Error Handler</H1>
+
+<P><SPAN ID=mono>osGetCount</SPAN> - Get the count register of CPU.<BR>
+<SPAN ID=mono>osGetIntMask</SPAN> - Get the interrupt mask.<BR>
+<SPAN ID=mono>osSetIntMask</SPAN> - Set the interrupt mask.<BR>
+<SPAN ID=mono>osSetErrorHandler</SPAN> - Set the error handling routine of the debug library.
+
+
+<H1>Sprite Library</H1>
+
+<P><SPAN ID=mono>spColor</SPAN> - Set the sprite color.<BR>
+<SPAN ID=mono>spDraw</SPAN> - Create the display list to display the sprite on the screen.<BR>
+<SPAN ID=mono>spFinish</SPAN> - Reset the graphics mode to default at the end of the sprite drawing.<BR>
+<SPAN ID=mono>spInit</SPAN>  - Set the graphics mode required for the sprite drawing.<BR>
+<SPAN ID=mono>spIntro</SPAN> - Introduce the sprite library.<BR>
+<SPAN ID=mono>spMove</SPAN> - Specify the position of the top left-hand angle on the sprite screen.<BR>
+<SPAN ID=mono>spScale</SPAN> - Change the size and shape of the sprite.<BR>
+<SPAN ID=mono>spScissor</SPAN> - Set the border area drawn.<BR>
+<SPAN ID=mono>spSetAttribute</SPAN> - Set the designated attribute.<BR>
+<SPAN ID=mono>spClearAttribute</SPAN>  - Clear the designated attribute.<BR>
+<SPAN ID=mono>spSetZ</SPAN> - Set the depth value (the Z value) of the sprite.<BR>
+<SPAN ID=mono>mksprite, mksprite32</SPAN>, and <SPAN ID=mono>mkisprite</SPAN> - Convert RGB file to the sprite data structure of the C language.
+
+
+<H1>Audio Library</H1>
+
+<SPAN ID=mono>alAudioFrame</SPAN> - Creates an audio command list for one frame.<BR>
+<SPAN ID=mono>alBnkfNew</SPAN> - Initializes a bank file for use on the Nintendo 64.<BR>
+<SPAN ID=mono>alCents2Ratio</SPAN> - Converts an s32 cents value to an f32 ratio.<BR>
+<SPAN ID=mono>alClose</SPAN> - Shuts down the N64 Audio Library.<BR>
+<SPAN ID=mono>alCSeqGetLoc</SPAN> - Initializes a marker with the current sequence location for use with the compressed MIDI sequence player.<BR>
+<SPAN ID=mono>alCSeqGetTicks</SPAN> - Returns the number of MIDI clock ticks of the compressed MIDI sequence location.<BR>
+<SPAN ID=mono>alCSeqNew</SPAN> - Initializes an N64 compressed MIDI sequence structure.<BR>
+<SPAN ID=mono>alCSeqNewMarker</SPAN> - Initializes a sequence marker at a given location for use with the compressed MIDI sequence player.<BR>
+<SPAN ID=mono>alCSeqNextEvent</SPAN> - Returns the next MIDI event from the compressed MIDI sequence.<BR>
+<SPAN ID=mono>alCSeqPlayer</SPAN> - Nintendo 64 Compressed MIDI sequence player routines.<BR>
+<SPAN ID=mono>alCSeqSecToTicks</SPAN> - Converts from seconds to MIDI clock ticks.<BR>
+<SPAN ID=mono>alCSeqSetLoc</SPAN> - Sets the current sequence location within the compressed MIDI sequence.<BR>
+<SPAN ID=mono>alCSeqTicksToSec</SPAN> - Converts from MIDI clock ticks to seconds.<BR>
+<SPAN ID=mono>alCSPDelete</SPAN> - Deallocates a MIDI sequence player.<BR>
+<SPAN ID=mono>alCSPGetChlFXMix</SPAN> - Returns the effect mix for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPGetChlPan</SPAN> - Returns the pan position for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPGetChlPriority</SPAN> - Returns the priority for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPGetChlProgram</SPAN> - Returns the MIDI program number assigned to a MIDI channel.<BR>
+<SPAN ID=mono>alCSPGetChlVol</SPAN> - Returns the volume for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPGetSeq</SPAN> - Returns the sequence currently assigned to the compressed MIDI sequence player.<BR>
+<SPAN ID=mono>alCSPGetTempo</SPAN> - Returns the tempo of the current sequence.<BR>
+<SPAN ID=mono>alCSPGetVol</SPAN> - Returns the overall sequence volume.<BR>
+<SPAN ID=mono>alCSPNew</SPAN> - Initializes a compressed MIDI sequence player.<BR>
+<SPAN ID=mono>alCSPPlay</SPAN> - Starts the target sequence playing.<BR>
+<SPAN ID=mono>alCSPSendMidi</SPAN> - Sends the given MIDI message to the compressed sequence player.<BR>
+<SPAN ID=mono>alCSPSetBank</SPAN> - Specifies the instrument bank for the sequence player to use.<BR>
+<SPAN ID=mono>alCSPSetChlFXMix</SPAN> - Sets the effect mix on the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPSetChlPan</SPAN> - Sets the pan position for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPSetChlPriority</SPAN> - Sets the priority for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPSetChlProgram</SPAN> - Assigns a MIDI program to a MIDI channel.<BR>
+<SPAN ID=mono>alCSPSetChlVol</SPAN> - Sets the volume for the given MIDI channel.<BR>
+<SPAN ID=mono>alCSPSetSeq</SPAN> - Sets the compressed MIDI sequence player's target sequence.<BR>
+<SPAN ID=mono>alCSPSetTempo</SPAN> - Specifies the tempo for the sequence player to use.<BR>
+<SPAN ID=mono>alCSPSetVol</SPAN> - Sets the overall sequence volume.<BR>
+<SPAN ID=mono>alCSPStop</SPAN> - Stops the target compressed MIDI sequence.<BR>
+<SPAN ID=mono>alHeapAlloc</SPAN> - Allocates memory from an Nintendo 64 audio heap.<BR>
+<SPAN ID=mono>alHeapCheck</SPAN> - Checks the consistency of an N64 audio heap.<BR>
+<SPAN ID=mono>alHeapInit</SPAN> - Initializes an audio heap for use with the Nintendo 64 Audio Library.<BR>
+<SPAN ID=mono>alInit</SPAN> - Initializes the N64 Audio Library.<BR>
+<SPAN ID=mono>alParseAbiCL</SPAN> - Prints an ABI (audio binary interface) command list in human readable format.<BR>
+<SPAN ID=mono>alSeqFileNew</SPAN> - Initializes a Sequence Bank File for use on the N64.<BR>
+<SPAN ID=mono>alSeqGetLoc</SPAN> - Initializes a marker with the current sequence location.<BR>
+<SPAN ID=mono>alSeqGetTicks</SPAN> - Returns the number of MIDI clock ticks of the sequence location.<BR>
+<SPAN ID=mono>alSeqNew</SPAN> - Initializes an N64 MIDI sequence structure.<BR>
+<SPAN ID=mono>alSeqNewMarker</SPAN> - Initializes a sequence marker at a given location.<BR>
+<SPAN ID=mono>alSeqNextEvent</SPAN> - Returns the next MIDI event in the sequence.<BR>
+<SPAN ID=mono>alSeqPlayer</SPAN> - Nintendo 64 MIDI sequence player routines.<BR>
+<SPAN ID=mono>alSeqpDelete</SPAN> - Deallocates a MIDI sequence player.<BR>
+<SPAN ID=mono>alSeqpGetChlFXMix</SPAN> - Returns the effect mix for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpGetChlPan</SPAN> - Returns the pan position for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpGetChlPriority</SPAN> - Returns the priority for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpGetChlProgram</SPAN> - Returns the MIDI program number assigned to a MIDI.<BR>
+<SPAN ID=mono>alSeqpGetChlVol</SPAN> - Returns the volume for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpGetSeq</SPAN> - Returns the sequence currently assigned to the ALSeqPlayer.<BR>
+<SPAN ID=mono>alSeqpGetTempo</SPAN> - Returns the tempo of the current sequence.<BR>
+<SPAN ID=mono>alSeqpGetVol</SPAN> - Returns the overall sequence volume.<BR>
+<SPAN ID=mono>alSeqpLoop</SPAN> - Sets sequence loop points.<BR>
+<SPAN ID=mono>alSeqpNew</SPAN> - Initializes a Type 0 MIDI sequence player.<BR>
+<SPAN ID=mono>alSeqpPlay</SPAN> - Starts the target sequence playing.<BR>
+<SPAN ID=mono>alSeqpSendMidi</SPAN> - Sends the given MIDI message to the sequence player.<BR>
+<SPAN ID=mono>alSeqpSetBank</SPAN> - Specifies the instrument bank for the sequence player to use.<BR>
+<SPAN ID=mono>alSeqpSetChlFXMix</SPAN> - Sets the effect mix on the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpSetChlPan</SPAN> - Sets the pan position for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpSetChlPriority</SPAN> - Sets the priority for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpSetChlProgram</SPAN> - Assigns a MIDI program to a MIDI channel.<BR>
+<SPAN ID=mono>alSeqpSetChlVol</SPAN> - Set the volume for the given MIDI channel.<BR>
+<SPAN ID=mono>alSeqpSetSeq</SPAN> - Sets the sequence player's target sequence.<BR>
+<SPAN ID=mono>alSeqpSetTempo</SPAN> - Specifies the tempo for the sequence player to use.<BR>
+<SPAN ID=mono>alSeqpSetVol</SPAN> - Sets the overall sequence volume.<BR>
+<SPAN ID=mono>alSeqpStop</SPAN> - Stop the target sequence.<BR>
+<SPAN ID=mono>alSeqSecToTicks</SPAN> - Converts from seconds to MIDI clock ticks.<BR>
+<SPAN ID=mono>alSeqSetLoc</SPAN> - Sets the current sequence location.<BR>
+<SPAN ID=mono>alSeqTicksToSec</SPAN> - Converts from MIDI clock ticks to seconds.<BR>
+<SPAN ID=mono>alSndpAllocate</SPAN> - Allocates a sound to a sound player.<BR>
+<SPAN ID=mono>alSndpDeallocate</SPAN> - Deallocates a sound from a sound player.<BR>
+<SPAN ID=mono>alSndpDelete</SPAN> - Deallocates a sound player.<BR>
+<SPAN ID=mono>alSndpGetSound</SPAN> - Gets the identifier of the current target sound in a sound player.<BR>
+<SPAN ID=mono>alSndpGetState</SPAN> - Gets the state (playing, stopping, or stopped) of the current target sound.<BR>
+<SPAN ID=mono>alSndpNew</SPAN> - Initializes a sound player.<BR>
+<SPAN ID=mono>alSndpPlay</SPAN> - Starts playing the current target sound.<BR>
+<SPAN ID=mono>alSndpPlayAt</SPAN> - Starts playing the current target sound at a specified time.<BR>
+<SPAN ID=mono>alSndpSetFXMix</SPAN> - Sets the wet/dry mix of the current target sound.<BR>
+<SPAN ID=mono>alSndpSetPan</SPAN> - Sets the pan position of the current target sound.<BR>
+<SPAN ID=mono>alSndpSetPitch</SPAN> - Sets the pitch of the current target sound.<BR>
+<SPAN ID=mono>alSndpSetPriority</SPAN> - Sets the priority of a sound.<BR>
+<SPAN ID=mono>alSndpSetSound</SPAN> - Sets the current target sound in a sound player.<BR>
+<SPAN ID=mono>alSndpSetVol</SPAN> - Sets the volume of the current target sound.<BR>
+<SPAN ID=mono>alSndpStop</SPAN> - Stops playing the current target sound.<BR>
+<SPAN ID=mono>alSynAddPlayer</SPAN> - Adds a client player to the synthesizer.<BR>
+<SPAN ID=mono>alSynAllocFX</SPAN> - Allocates an audio effect processor.<BR>
+<SPAN ID=mono>alSynAllocVoice</SPAN> - Allocates a synthesizer voice.<BR>
+<SPAN ID=mono>alSynFreeVoice</SPAN> - Deallocates a synthesizer voice.<BR>
+<SPAN ID=mono>alSynGetFXRef</SPAN> - Gets the address of an effect.<BR>
+<SPAN ID=mono>alSynGetPriority</SPAN> - Requests the priority of a voice.<BR>
+<SPAN ID=mono>alSynNew</SPAN> - Allocates the specified synthesizer driver.<BR>
+<SPAN ID=mono>alSynRemovePlayer</SPAN> - Removes a player from the synthesizer driver.<BR>
+<SPAN ID=mono>alSynSetFXMix</SPAN> - Sets the wet/dry effect mix for a voice.<BR>
+<SPAN ID=mono>alSynSetFXParam</SPAN> - Sets an effect parameter to the specified value.<BR>
+<SPAN ID=mono>alSynSetPan</SPAN> - Sets the stereo pan position of the specified voice.<BR>
+<SPAN ID=mono>alSynSetPitch</SPAN> - Sets the pitch of the specified voice.<BR>
+<SPAN ID=mono>alSynSetPriority</SPAN> - Sets the priority of the specified voice.<BR>
+<SPAN ID=mono>alSynSetVol</SPAN> - Sets the target volume of the specified voice.<BR>
+<SPAN ID=mono>alSynStartVoice</SPAN> - Starts synthesizing audio samples with the specified voice.<BR>
+<SPAN ID=mono>alSynStartVoiceParams</SPAN> - Starts synthesizing audio samples with the specified voice using the specified parameters.<BR>
+<SPAN ID=mono>alSynStopVoice</SPAN> - Stops generating audio samples with the specified voice.<BR>
+
+
+
+<H1>64DD Leo Functions</H1>
+<SPAN ID=mono>LeoCreateLeoManager</SPAN> - Start (disk boot).<BR>
+<SPAN ID=mono>LeoCJCreateLeoManager</SPAN> - Start (Game Pak boot, Japanese version).<BR>
+<SPAN ID=mono>LeoCACreateLeoManager</SPAN> - Start (Game Pak boot, English version).<BR>
+<SPAN ID=mono>LeoSpdlMotor</SPAN> - Controls the 64DD motor and heads.<BR>
+<SPAN ID=mono>LeoReadWrite</SPAN> - Reads from and writes to 64DD.<BR>
+<SPAN ID=mono>LeoSeek</SPAN> - Executes the command to seek on 64DD.<BR>
+<SPAN ID=mono>LeoReadDiskID</SPAN> - Gets the disk ID.<BR>
+<SPAN ID=mono>LeoReadRTC</SPAN> - Reads the time of the built-in real-time clock.<BR>
+<SPAN ID=mono>LeoSetRTC</SPAN> - Sets the time of the built-in real-time clock.<BR>
+<SPAN ID=mono>LeoByteToLBA</SPAN> - Converts a byte size to an LBA number.<BR>
+<SPAN ID=mono>LeoLBAToByte</SPAN> - Converts an LBA number to a byte size.<BR>
+<SPAN ID=mono>LeoReadCapacity</SPAN> - Calculates the usable area of the disk.<BR>
+<SPAN ID=mono>LeoInquiry</SPAN> - Checks the version number of the hardware and the software.<BR>
+<SPAN ID=mono>LeoGetKAdr</SPAN> - Gets the kanji storage offset address from the Shift JIS code <SPAN ID=mono>sjis</SPAN>.<BR>
+<SPAN ID=mono>LeoGetAAdr</SPAN> - Gets the ASCII character storage offset address from the character code <SPAN ID=mono>code</SPAN>.<BR>
+<SPAN ID=mono>LeoGetAAdr2</SPAN> - Gets the ASCII character storage offset address from the character information data <SPAN ID=mono>ccode</SPAN>.<BR>
+<SPAN ID=mono>LeoReset</SPAN> - Stops any further execution of commands sent to Leo Manager and clears the command queue.<BR>
+<SPAN ID=mono>LeoResetClear</SPAN> - Releases 64DD from the Reset state.<BR>
+<SPAN ID=mono>LeoClearQueue</SPAN> - Clears the Leo Manager command queue.<BR>
+<SPAN ID=mono>LeoModeSelectAsync</SPAN> - Changes the time for switching between 64DD modes.<BR>
+<SPAN ID=mono>LeoRezero</SPAN> - Recalibrates the 64DD.<BR>
+<SPAN ID=mono>LeoTestUnitReady</SPAN> - Checks the 64DD status.<BR>
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+</body>
+</html>

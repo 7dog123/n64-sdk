@@ -1,0 +1,60 @@
+
+12/15 Release RELEASE NOTES                      64DD Development environment
+===============================                  (64dd.dev)
+
+Summary:
+-----
+	This release of N64 Disk Drive development environment (For RCP 2.0 version 2.0I) includes various patches which were released after version 2.0H.
+
+	The directory structure under /usr/src/PR was revised and the demo software is now installed in  /usr/src/PR/demos.  For the detailed structure of others,  refer to /usr/src/PR/README. For an explanation of each demo software, refer to /usr/src/PR/demos/README_DEMOS_64DD.
+
+	Sometimes a conflict could occur during the installation and the message "As the patch is dependent, the old version cannot be erased." is displayed.  If this occurs,  select "Erase the patch, too.".
+
+New Function:
+-----------
+
+New demo software:
+-----------------
+        ddspgame
+	A sample program for N64 Disk Drive.  It will call a Disk function displaying the screen, and display the error result and its error message using the ROM font which is built in N64 Disk Drive.  
+
+Modified demo software:
+---------------------
+	tile_rect3d.disk and  font were deleted.  For programming, refer to ddspgame.  
+
+Problems fixed:
+-------------
+	IPL(/usr/lib/PR/ipl4rom), which is exclusively for the development drives had a size of 4M bytes as it has included the wave data and the font data.  These were deleted and the size became smaller.  When accessing these data,  please use the one in the IPLROM Pak when developing. For details,  refer to Chapter 5 of the N64 Disk Drive Programming Manual.
+
+Version numbers:
+-----------------------
+	The version number for software which is acquired by the LeoInquiry() function will be 3 for this version (2.0I).  For details concerning this version number, refer to Chapter 7 of the N64 Disk Drive Programming Manual.   
+
+Expanded functions:
+---------------
+
+Functions no longer supported:
+-------------------------
+
+Tool
+------
+        For details, refer to the sections for each tool of the N64 Functions Reference(HTML) Manual.
+        ramstart
+	The new tool,  ramstart was added.   If the Disk type is given as an argument, the start LBA of the RAM area for the type will be displayed.
+
+        n64mdisk
+	The -m option was added.  This is used to create mwrite, mwrite.id from the master data.
+        
+Note:
+-------
+
+Documentation:
+-------------
+        Documents provide additional information and updates.
+
+	The modified item that needs to be noted in particular is how to handle RAM area when creating the master data.  For details, refer to Chapter 12 of the N64 Disk Drive Programming Manual.
+
+----------------------------------------------------------------------------
+Warning:
+---------------------------------------------------------------------------- 
+

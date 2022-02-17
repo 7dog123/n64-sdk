@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Programming Cautions (7) Master Data</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Master Data</h2>
+<ul>
+<li><a href="#1">7-1  ROM Size and ROM File Size (Required)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>7-1  ROM Size and ROM File Size (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that the size of the ROM file is exactly the same as the capacity of the ROM which will be used for production.
+
+<p>
+<b>Discussion</b><br>
+If the ROM file size is not matched exactly to the production ROM size, the mask ROM cannot be produced and the CRC cannot be calculated.  Use <a href="../../n64man/tools/makerom.html">makerom</a> from the N64 OS/Library with the following options.
+
+<p>
+<pre>
+  <b>-s &lt;romsize(Mbits)&gt;</b>
+       Creates a ROM image file with specified size
+
+  <b>-f &lt;filldata(0x00-0xff)&gt;</b>
+       Fills the blank area of ROM image with the specified data
+</pre>
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

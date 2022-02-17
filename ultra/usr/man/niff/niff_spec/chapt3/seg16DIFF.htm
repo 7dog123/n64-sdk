@@ -1,0 +1,188 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-16. AnimList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(1)AnimListエリア</font></h4>
+
+<blockquote><font size=+0>　AnimListはシーン内のアニメーションデータを記述するリストです。Animリストは以下のようにマッピングされています。</font></blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="9">AnimListHeader</th>
+
+<td>u32</td>
+
+<td>anim_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>anim_group_num_byte(anim_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>AnimGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>AnimGroup(anim_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　AnimListエリアメモリマップ</font></b></center>
+
+<center><table BORDER >
+<tr>
+<td NOWRAP>u32 anim_list_tag</td>
+
+<td><font size=+0>Tag indicating AnimList. Set the following flag.</font>
+<pre>
+<b><font size=+0>TAG_ANIM_LIST&nbsp;&nbsp; 0x000c0000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_list_header_size</td>
+
+<td><font size=+0>Size of AnimListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_list_size</td>
+
+<td><font size=+0>Size of AnimList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_group_num</td>
+
+<td><font size=+0>Total number of AnimGroup in AnimList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>任天堂拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>ユーザー拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 anim_group_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to AnimGroup</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg16-2.htm">AnimGroup&nbsp;</a></td>
+
+<td><font size=+0>Actual animation data</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>任天堂拡張ブロック</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>ユーザー拡張ブロック</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg16-2.htm">次へ</a></font><a href="seg16-2.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

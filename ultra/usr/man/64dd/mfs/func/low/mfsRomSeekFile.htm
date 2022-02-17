@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomSeekFile</title>
+</head>
+
+<body>
+
+<h1>mfsRomSeekFile<br>
+mfsRamSeekFile</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomSeekFile(MfsDirID dirID, s32 offset)
+	s32 mfsRamSeekFile(MfsDirID dirID, s32 offset)
+Arguments:	dirID	Directory ID of file
+	offset	Seek position
+Return value:Error
+Function:	Performs head seek
+Description:	This function performs a head seek from the beginning of the file specified by dirID to the offset position.
+
+Main errors:
+	MFS_ERR_NOTFOUND Specified file not found
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.</pre>
+</body>
+</html>

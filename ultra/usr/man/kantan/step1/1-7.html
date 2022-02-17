@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>1.1.7 Basic Terminology</H1>
+
+Please review the N64 glossary for a complete introduction to N64 terminology. The following list is a bare bones overview.
+
+
+<H2>Thread</H2>
+
+<P>A thread is a single processing unit operating in the CPU. A thread at any one time can have any one of the following four states:</P>
+
+<UL>
+<LI>execution state
+<LI>ready state
+<LI>halt state
+<LI>queued state
+</UL>
+
+<IMG SRC="../images/1-1-7-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=180 HEIGHT=233 BORDER=0>
+
+<P>All threads execute in RDRAM under the management of the CPU. In a standard game system, in addition to the threads created by game programmers, the following threads are reserved:</P>
+
+
+<UL>
+<LI>Threads used by the N64 Operating System (PI manager, SI manager, and so on)
+<LI>The idle thread
+</UL>
+
+
+<H2>Message</H2>
+
+<P>Messages are sent from and received by threads for the purpose of synchronizing information throughput between threads. Messages are managed by the message queue.</P>
+
+<IMG SRC="../images/1-1-7-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=371 HEIGHT=249 BORDER=0>
+
+
+<H2>Task</H2>
+
+<P>A task is a single processing unit operating in the RSP. The RSP in the RCP executes graphics and audio processes. Each process is called a task.</P>
+
+<IMG SRC="../images/1-1-7-3.gif" ALT="Illustration" ALIGN="bottom" WIDTH=180 HEIGHT=233 BORDER=0>
+
+
+<H2>Scheduler</H2>
+
+<P>The Scheduler is a high-priority thread that manages all the other threads. It sends messages to registered threads to coordinate their efforts in the CPU. It can also pass control to another thread that manages or decides how to allocate tasks executed on the RCP.</P>
+
+<IMG SRC="../images/1-1-7-4.gif" ALT="Illustration" ALIGN="bottom" WIDTH=226 HEIGHT=268 BORDER=0>
+
+
+
+<H2>Event</H2>
+
+<P>A hardware interrupt is called an event.  The application recognizes the event by sending messages to the threads to tell them which event has occurred.</P>
+
+<IMG SRC="../images/1-1-7-5.gif" ALT="Illustration" ALIGN="bottom" WIDTH=343 HEIGHT=244 BORDER=0>
+
+
+<H2>Microcode</H2>
+
+<P>Microcode is executed by RSP concurrently (simultaneously) with CPU processing. There are two basic types of microcode, graphics microcode and audio microcode. For an excellent introduction to the N64 graphics microcode please see the Microcode Introduction in the <I>N64 Function Reference Manual.</I></P>
+
+<P>Graphics microcde executes the graphics. There is graphics microcode for 2D and for 3D graphics.  Graphics microcode analyzes graphics instructions, GBI(Graphics Binary Interface) commands, in 64-bit format and executes them. Two graphics microcodes are provided for 3D. These are for polygon and for line types of graphics. They should be used as appropriate. It also depends uponhow precise the drawing is.</P>
+
+<UL>
+<LI>Fast3D microcode
+<LI>F3DEX microcode
+<LI>S2DEX microcode
+</UL>
+
+<P>Audio microcode executes the waveform synthesis. It analyzes audio instructions (ABI commands) in 64-bit format, and executes them. Here are two examples of audio microcode:</P>
+
+<UL>
+<LI>aspMain microcode
+<LI>n_aspMain microcode
+</UL>
+
+
+<H2>GBI Command</H2>
+
+<P>A GBI command is the pseudo-instruction code for drawing graphics.</P>
+
+
+<H2>Display List</H2>
+
+<P>The display list is just another name for the graphics command list. It is a string of GBI commands.</P>
+
+<IMG SRC="../images/1-1-7-6.gif" ALT="Illustration" ALIGN="bottom" WIDTH=297 HEIGHT=189 BORDER=0>
+
+
+<H2>ABI Command</H2>
+
+<P>An ABI command is the pseudo-instruction code for synthesizing waveforms.</P>
+
+
+<H2>Audio Command List</H2>
+
+<P>The audio command list is a string of ABI commands used to synthesize waveforms. (It is also called the ABI command list.)</P>
+
+<IMG SRC="../images/1-1-7-7.gif" ALT="Illustration" ALIGN="bottom" WIDTH=350 HEIGHT=187 BORDER=0>
+
+
+<H2>Z-Buffer</H2>
+
+<P>The Z-buffer stores the depth (z coordinate in an x,y,z coordinate system) information. By using the information in the Z-buffer, N64 can draw just those items that are in view; that is, all blocked views are not drawn. In N64, pixels are updated when the Z value is small. In the following illustration, because the Z value of the background is 9, the Z value of the letter B is 7, and the Z value of the letter A is 1, N64 knows that A is in front of (partially blocking) B.</P>
+
+<IMG SRC="../images/1-1-7-8.gif" ALT="Illustration" ALIGN="bottom" WIDTH=410 HEIGHT=246 BORDER=0><BR><BR><BR>
+
+<P>Note that this is just a conceptual illustration. In actual practice, the Z-buffer takes a value between -1.0 and 1.0.</P>
+
+
+<H2>Pixel</H2>
+
+<P>A pixel is a dot on the screen. It is the minimum unit of drawing. A set of these dots becomes image data (the visual image).</P>
+
+<IMG SRC="../images/1-1-7-9.gif" ALT="Illustration" ALIGN="bottom" WIDTH=410 HEIGHT=226 BORDER=0>
+
+
+<H2>DMA (Direct Memory Access)</H2>
+
+<P>DMA is used to directly transfer data from a device to memory (or from memory to a device) without using the CPU. It is an effective way to transfer a lot of data. The advantage of this is that after DMA starts, the CPU can do other processing until the data transfer ends.</P>
+
+<IMG SRC="../images/1-1-7-10.gif" ALT="Illustration" ALIGN="bottom" WIDTH=410 HEIGHT=183 BORDER=0>
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

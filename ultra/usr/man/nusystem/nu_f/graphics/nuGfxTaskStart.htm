@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuGfxTaskStart</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuGfxTaskStart(Gfx *gfxList_ptr, u32 gfxListSize, u32 ucode, u32 flag)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>*gfxList_ptr	is the pointer for the display list buffer
+<P>
+<li>gfxListSize	is the display list size
+<P>
+<li>ucode		is the microcode to be used
+<P>
+<li>flag		specifies flags for task manager and flags to be handed over to tasks
+<p>Flags specifeid for the task manager:
+<br>NU_SC_SWAPBUFFER    Switching of the frame buffer
+<br>NU_SC_NOSWAPBUFFER  No switching of the frame buffer
+<br>NU_SC_NORDP         Process only for RSP
+<br>NU_SC_UCODE_XBUS    XBUS microcode
+<P>
+Flags handed over to tasks (or when specifying multiple flags)
+<br>NU_SC_TASK_YIELDED
+<br>NU_SC_TASK_DP_WAIT
+<br>NU_SC_TASK_LODABLE
+<br>NU_SC_TASK_SP_ONLY</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Start the graphics task.
+
+<P>
+When this function is called, the graphics task structure is	created and the task message is sent to the graphics task	thread.
+	The ucode is the microcode to be used.  When the microcode registered by the nuGfxInit function is used, the following
+	macros are specified.
+</p>
+
+<table border="0">
+<tr>
+<th bgcolor="E487FC"><font face="arial" size="-1">Macro</th>
+<th bgcolor="E487FC"><font face="arial" size="-1">Microcode</th></tr>
+<tr><td bgcolor="CBCEF8"><font face="arial" size="-1">	NU_GFX_UCODE_F3DEX</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspF3DEX.fifo</td></tr>
+<tr><td bgcolor="CBCEF8"><font face="arial" size="-1">NU_GFX_UCODE_F3DEX_NON</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspF3DEX.NoN.fifo</td></tr>
+<tr><td bgcolor="CBCEF8"><font face="arial" size="-1">	NU_GFX_UCODE_F3DLX</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspF3DLX.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">	NU_GFX_UCODE_F3DLX_NON</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspF3DLXNoN.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">	NU_GFX_UCODE_F3DLX_REJ</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">  gspF3DLX.Rej.fifo</td></tr>
+<tr><td bgcolor="CBCEF8"><font face="arial" size="-1">	NU_GFX_UCODE_L3DLP_REJ</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">  gspL3DLP.Rej.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">NU_GFX_UCODE_S2DEX</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspS2DEX.fifo</td></tr>
+<tr><td bgcolor="CBCEF8"><font face="arial" size="-1">	NU_GFX_UCODE_S2DEX_D</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspS2DEX.fifo_d</td></tr></table>
+
+<P>
+
+<P>When using a microcode registered by the nuGfxInitEX2 function or when F3DEX_GBI_2 is defined, specify one of the following macros.</P>
+
+<table border="0">
+<tr>
+<th bgcolor="E487FC"><font face="arial" size="-1">Macro</th>
+<th bgcolor="E487FC"><font face="arial" size="-1">Microcode</th></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">
+NU_GFX_UCODE_F3DEX2</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspF3DEX2.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">
+NU_GFX_UCODE_F3DEX2_NON</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">	gspF3DEX2.NoN.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">NU_GFX_UCODE_F3DEX2_REJ</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">	gspF3DEX2.Rej.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">NU_GFX_UCODE_F3DLX2_REJ</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1"> gspF3DLX2.Rej.fifo</td></tr><BR>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">NU_GFX_UCODE_L3DEX2</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">	gspL3DEX2.fifo</td></tr>
+<tr>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">NU_GFX_UCODE_S2DEX2</td>
+<td bgcolor="CBCEF8"><font face="arial" size="-1">	gspS2DEX2.fifo</td></tr></table>
+
+<P>
+
+<p>When the microcode table is registered using the nuGfxSetUcode	function, the table number is specified.
+</p>
+
+<p>It is possible to specify whether or not the frame buffer is to be	transferred to the VI when completing the task using the flag.
+</p>
+
+<p>The call back function which is registered by the	nuGfxSwapCfbFuncSet function is executed when NU_SC_SWAPBUFFER	is specified.  
+Normally, as the nuGfxSwapCfb function is	registered by the nuGfxInit function, the frame buffer will be	displayed on the screen 
+at the next retrace.  Therefore, when	the multiple graphics tasks are to be started against one frame	buffer, specify NU_SC_SWAPBUFFER 
+for the last task.</p>
+
+<p>The call back function which is registered by the	nuGfxTaskEndFuncSet function is executed when NU_SC_NOSWAPBUFFER	is specified.  
+Normally, nothing is registered.</p>
+
+<p>NU_SC_NORDP is specified for microcode such as ZSort, which only uses the RSP.  In this case, it does not	wait for the 
+completion of the RDP event.	NU_SC_NORDP can be specified at the same time as	NU_SC_NOSWAPBUFFER or NU_SC_SWAPBUFFER.</p>
+
+<P>The flag which is to be handed over, when the graphics task has been executed, can be specified in the most significant 16 bits of the flag. Depending upon the type of microcode used and the microcode execution sequence, there are cases where flags are necessary. Normally, there is no need to specify flags when executing a task.</P>
+
+<P>
+<b>Example</b>
+<br>
+<pre><font face="courier" size="3">
+	Gfx	gfxList[0x100];		/* display list buffer */
+	Gfx*	gfxList_ptr;		/* pointer to display list buffer */
+
+	gfxList_ptr = gfxList;
+	gSPDisplayList(gfxList_ptr++, OS_K0_TO_PHYSICAL(rdpstateinit_dl));
+	gDPFullSync(gfxList_ptr++); gSPEndDisplayList(gfxList_ptr++);
+	nuGfxTaskStart(gfxList, (s32)(gfxList_ptr - gfxList) * sizeof (Gfx),
+		 NU_GFX_UCODE_F3DEX , NU_SC_NOSWAPBUFFER);
+</pre></font>
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="nuGfxInit.htm">nuGfxInit</a>
+<br><a href="nuGfxSetUcode.htm">nuGfxSetUcode</a>
+<br><a href="nuGfxSwapCfbFuncSet.htm">nuGfxSwapCfbFuncSet</a>
+<br><a href="nuGfxSwapCfb.htm">nuGfxSwapCfb</a>
+<br><a href="nuGfxTaskEndFuncSet.htm">nuGfxTaskEndFuncSet</a>
+
+<hr>
+
+<P>
+<b>Revision History</b>
+<br>
+2/1/1999 &nbsp; Added text regarding F3DEX2. Added text regarding flag.</P>
+
+<hr>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

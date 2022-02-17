@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body background="Lavender_SpeckledE3A5.gif" bgcolor="#FFFFFF">
+
+<p><img src="../nusystem2.gif" width="176" height="30"><font
+size="4"><strong>Audio (N64 Sound Tools) Related</strong></font></p>
+
+<hr>
+
+<p><font color="#FF0000" size="4"><strong>Functions</strong></font><font
+size="2"><strong> (M)=Macro</strong> </font></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="nuAuStlInit.htm"><strong>nuAuStlInit</strong></a><strong><img
+        src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Initialize the audio manager, activate the sequence player and 
+		the sound player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlMgrInit.htm"><strong>nuAuStlMgrInit</strong></a><strong><img
+        src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Initialize the audio manager</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlPtrBankInit.htm"><strong>nuAuStlPtrBankInit</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Initialize sound pointer bank</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlPtrBankSet.htm"><strong>nuAuStlPtrBankSet</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Register sound bank in player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlHeapAlloc.htm"><strong>nuAuStlHeapAlloc</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Reserve specified area from audio heap memory</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlHeapGetFree.htm"><strong>nuAuStlHeapGetFree</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Get size of available space in audio heap memory</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlHeapGetUsed.htm"><strong>nuAuStlHeapGetUsed</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Get size of used space in audio heap memory</font></td>
+    </tr>
+</table>
+
+<p><font color="#FF8040">* Sequences</font></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="nuAuStlSeqPlayerInit.htm"><strong>nuAuStlSeqPlayerInit</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Initialize sequence player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerDataSet.htm"><strong>nuAuStlSeqPlayerDataSet</strong></a><strong><img
+        src="../../../gif/new.gif" width="34" height="12"></strong></td>
+        <td><font size="2">Read song data</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerPlay.htm"><strong>nuAuStlSeqPlayerPlay</strong></a><strong><img
+        src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Play back sequence</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerGetState.htm"><strong>nuAuStlSeqPlayerGetState</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Return number of channels used by sequence player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerStop.htm"><strong>nuAuStlSeqPlayerStop</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Stop performance of all sequences</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerSetMasterVol.htm"><strong>nuAuStlSeqPlayerSetMasterVol</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Set overall volume of sequence player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerGetSeqState.htm"><strong>nuAuStlSeqPlayerGetSeqState</strong></a><font
+        size="2">(M)</font><img src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Return number of channels used by sequence specified by sequence handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerSeqStop.htm"><strong>nuAuStlSeqPlayerSeqStop</strong></a><font
+        size="2">(M)</font><img src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Stop performance of sequence specified by sequence handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerSetSeqTempo.htm"><strong>nuAuStlSeqPlayerSetSeqTempo</strong></a><font
+        size="2">(M)</font><img src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Change tempo of sequence specified by sequence handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerSetSeqVol.htm"><strong>nuAuStlSeqPlayerSetSeqVol</strong></a><font
+        size="2">(M)</font><img src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Set volume of sequence specified by sequence handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSeqPlayerSetSeqPan.htm"><strong>nuAuStlSeqPlayerSetSeqPan</strong></a><font
+        size="2">(M)</font><img src="../../../gif/update98.gif" width="48" height="12"></strong></td>
+        <td><font size="2">Set pan position of sequence specified by sequence handler</font></td>
+    </tr>
+</table>
+
+<p><font color="#FF8040">* Sounds</font></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="nuAuStlSndPlayerPlay.htm"><strong>nuAuStlSndPlayerPlay</strong></a></td>
+        <td><font size="2">Play back sound specified by sound number</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerPlay2.htm"><strong>nuAuStlSndPlayerPlay2</strong></a></td>
+        <td><font size="2">Play back sound specified by sound number</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerGetState.htm"><strong>nuAuStlSndPlayerGetState</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Return number of channels currently being used by sound player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerStop.htm"><strong>nuAuStlSndPlayerStop</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Stop all sounds</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerSetMasterVol.htm"><strong>nuAuStlSndPlayerSetMasterVol</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Set overall volume of sound player</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerGetSndState.htm"><strong>nuAuStlSndPlayerGetSndState</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Return number of channels used by sound specified by sound handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerSndStop.htm"><strong>nuAuStlSndPlayerSndStop</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Stop sound specified by sound handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerSetSndVol.htm"><strong>nuAuStlSndPlayerSetSndVol</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Set volume of sound specified by sound handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerSetSndPan.htm"><strong>nuAuStlSndPlayerSetSndPan</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Set pan position of sound specified by sound handler</font></td>
+    </tr>
+    <tr>
+        <td><a href="nuAuStlSndPlayerSetSndPitch.htm"><strong>nuAuStlSndPlayerSetSndPitch</strong></a><font
+        size="2">(M)</font></td>
+        <td><font size="2">Set pitch value of sound specified by sound handler</font></td>
+    </tr>
+</table>
+
+<p><font color="#FF8040">* Deleted Functions</font></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><strong>nuAuStlPlayerInit</strong></a></td>
+        <td><font size="2">Initialize audio manager</font></td>
+    </tr>
+    <tr>
+        <td><strong>nuAuStlBankSet</strong></a></td>
+        <td><font size="2">Register sound bank in player</font></td>
+    </tr>
+    <tr>
+        <td><strong>nuAuStlSeqPlayerSetData</strong></a></td>
+        <td><font size="2">Load MIDI sequence data to buffer in sequence player</font></td>
+    </tr>
+</table>
+
+<hr>
+</body>
+</html>

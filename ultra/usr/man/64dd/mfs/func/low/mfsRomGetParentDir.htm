@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetParentDir</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetParentDir<br>
+mfsRomGetParentDir</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileParentDir(MfsDirID dirID)
+	s32 mfsRamGetFileParentDir(MfsDirID dirID)
+Arguments:	dirID	Directory ID of file (directory)
+Return value:Directory ID of parent directory (a negative value is an error)
+Function:	Obtains parent directory
+Description:	This function obtains and returns the directory ID of the directory that is one level higher and to which the file (directory) specified by dirID belongs.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

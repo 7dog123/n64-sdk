@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsInitDiskRom</title>
+</head>
+
+<body>
+
+<h1>mfsInitDiskRom<br>
+mfsInitDiskRam<br>
+mfsInitDiskRomRam</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsInitDiskRom(u8* companyCode, u8* gameCode,u8 dest)
+	s32 mfsInitDiskRam(u8* companyCode, u8* gameCode,u8 dest)
+	s32 mfsInitDiskRomRam(u8* companyCode, u8* gameCode,u8 dest)
+Arguments:	*companyCode	Company code
+	*gameCode	Game code
+	dest		Destination code
+Return value:Error
+Function:	Performs initialization for disk booting
+Description:	This function initializes the Leo manager for disk booting and then calls mfsInit to initialize the MFS library.
+
+	mfsInitDiskRom calls mfsRomInit internally so that only the ROM area can be accessed.
+mfsInitDiskRam calls mfsRamInit internally so that only the RAM area can be accessed.
+mfsInitDiskRomRam calls both mfsRomInit and mfsRamInit internally so that the ROM area and RAM area can be accessed.
+
+Main errors:
+	MFS_ERR_NO		Normal termination
+	MFS_ERR_DEVICE		Device error
+</pre>
+
+<hr>
+</body>
+</html>

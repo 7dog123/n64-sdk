@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Programming Cautions (11) Rumble Pak</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Rumble Pak</h2>
+
+The following cautions should be observed when programming games that use the Rumble Pak.  For additional information on the Rumble Pak (including instructions on how to create a Rumble Pak Tester), please refer to Developer News 1.9:  <a href="../../developerNews/news-09.html">Recurring Problems with N64 Software Submissions</a>.
+
+<ul>
+<li><a href="#1">11-1  Operating Mode (Required)</a>
+<li><a href="#2">11-2  Rumble Pak Motor Start/Stop (Required)</a>
+<li><a href="#3">11-3  Rumble Pak Errors (Required)</a>
+<li><a href="#4">11-4  Rumble Pak Stop (Required)</a>
+<li><a href="#5">11-5  Avoiding Rumble Pak Failure (Recommended)</a>
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>11-1  Operating Mode (Required)</h3>
+
+<b>Caution</b><br>
+Ensure that there is no normal operating mode which causes the Rumble Pak to operate continuously.
+
+<p>
+<b>Discussion</b><br>
+Operation on a continuous basis resulting from the user pushing a button is not desirable for the user's health or the life span of products.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="2"></a><h3>11-2  Rumble Pak Motor Start/Stop (Required)</h3>
+
+<b>Caution</b><br>
+During Reset and when the game is paused, stop the Rumble Pak motor.  Do not start the Rumble Pak motor until an input is received from the Controller.
+
+<p>
+<b>Discussion</b><br>
+A rumbling Controller may not be in the hands of the user during Reset or when the game is paused.  If the Rumble Pak motor continues to run during these periods, the Controller and/or Rumble Pak may be damaged (such as a Controller rumbling off a table to the floor).  Please call <a href="../../n64man/os/osMotorInit.html">osMotorInit()</a> before calling <a href="../../n64man/os/osMotorStop.html">osMotorStop()</a> three times to ensure that the motor will be stopped (please refer to <a href="#4">11-4 Rumble Pak Stop</a>, below).</P>
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+
+<a name="3"></a><h3>11-3  Rumble Pak Errors (Required)</h3>
+
+<b>Caution</b><br>
+When an error occurs after entering <a href="../../n64man/os/osMotorInit.html">osMotorInit()</a>, do not execute <a href="../../n64man/os/osMotorStart.html">osMotorStart()</a> or <a href="../../n64man/os/osMotorStop.html">osMotorStop()</a>.
+
+<p>
+<b>Discussion</b><br>
+If an error occurs after entering osMotorInit(), something other than the Rumble Pak may be inserted into the Controller.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="4"></a><h3>11-4  Rumble Pak Stop (Required)</h3>
+
+<b>Caution</b><br>
+When turning off the Rumble Pak motor, execute <a href="../../n64man/os/osMotorStop.html">osMotorStop()</a> more than three times in a row per video frame.
+
+<p>
+<b>Discussion</b><br>
+This process will ensure that the Rumble Pak will stop.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+<hr>
+
+<a name="5"></a><h3>11-5  Avoiding Rumble Pak Failure (Recommended)</h3>
+
+<b>Caution</b><br>
+Call <a href="../../n64man/os/osMotorInit.html">osMotorInit()</a> at appropriate occasions, such as when changing to a new screen.
+
+<p>
+<b>Discussion</b><br>
+On occasion, a Rumble Pak may misfunction.  Calling osMototInit() at appropriate occasions, such as when changing to a new screen, will ensure that the Rumble Pak will start when <a href="../../n64man/os/osMotorStart.html">osMotorStart()</a> is called.
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.4.1 Co-ordinating Audio and Graphics</H1>
+
+<P>The CPU, RSP, and RDP processors each have a leading role in N64 when it comes to executing audio  and graphics. The CPU starts the task, and the RSP and RDP actually execute it.  These hardware processors take partial control of the work and can enhance processing efficiency dramatically  by making processes operate in parallel.  For efficient parallel processing, it is best to create a scheduler thread to manage and coordinate the execution of the audio and graphics threads.
+
+
+<H2>Thread Management with a Scheduler Thread</H2>
+
+<P>The audio command list and graphics display list are usually created just before the frame, but a problem occurs if the process does not end within one frame (1/60 second). In the case of audio, the sound may pause inappropriately or popping noises may occur. In the case of graphics, because the frame buffer is not updated, it continues to show the last image.
+
+<P>If the audio process does not end within one frame, you can avoid inappropriate pauses and noises by giving priority to the audio process even if you have to interrupt the graphics process.  Therefore, give audio threads a higher priority than graphics threads, and manage the thread by using a  scheduler. A scheduler is simply a thread that has a higher priority than both the audio and the graphics threads.
+
+<P><IMG SRC="../images/sample.gif" ALT="Illustration" ALIGN="bottom" WIDTH=166 HEIGHT=43 BORDER=0>
+
+<P>There is a sample program included on the same CD that holds this manual. It shows how to use the scheduler thread to manage the audio and graphics threads to avoid noises and jerky graphics. You'll find it in the following directory:
+
+<BLOCKQUOTE><PRE>\N64Manuals\pc\allman\samples\Mix</PRE></BLOCKQUOTE>
+
+
+<H2>Thread Priority</H2>
+
+<P>The following illustration shows thread priority:
+
+<P><IMG SRC="../images/2-4-1-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=100 BORDER=0>
+
+
+<H2>Scheduler Process Flow</H2>
+
+<P>The following illustration shows the scheduler process flow:
+
+<P><IMG SRC="../images/2-4-1-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=670 BORDER=0>
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

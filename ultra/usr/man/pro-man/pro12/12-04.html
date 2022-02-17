@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 12</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro12/index12.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro12/index12.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">TX: Texture Engine</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The Texture Engine takes s/w, t/w, 1/w, and lod values for a pixel and fetches the onboard texture memory for the four nearest texels to the screen pixel. The game application can manipulate TX states such as texture image types and formats, how and where to load texture images, and texture sampling attributes.
+
+<P>
+<b>Figure 12.4.1</B> &nbsp;TX State and Input/Output
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-05.gif"></tr></td></table>
+
+<P>
+<a name="01"></a>
+<b>Texture Tiles</b>
+<br>
+TX treats the 4 KB on-chip texture memory (TMEM) as general-purpose texture memory. The texture memory is divided into four simultaneous accessible banks, giving output of four texels per clock.
+<P>
+The game application can load varying-sized textures with different formats anywhere in the 4 KB texture map. There are eight texture tile descriptors that describe the location of texture images within the TMEM, the format of this texture, and the sampling parameters. Therefore, you can load many texture maps in the TMEM at one time, but there are only eight tiles that are accessible at any time.
+
+<P>
+<b>Figure 12.4.2</B> &nbsp;Tile Descriptors and TMEM
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-06.gif"></tr></td></table>
+<P>
+
+<b>Note: </b>There are some restrictions, depending on texel size and 64-bit alignment within the texture memory. Please see <a target="main" href="../pro13/13-11.html#02">Section 13.11.2, “Alignment”</a> for additional information.
+
+<P>
+<a name="02"></a>
+<b>Multiple Tile Textures</b>
+<br>
+Given the eight texture tiles, you can use two- cycle pipeline mode to cycle TX twice and access eight texels (four from each of two tiles). This functionality, coupled with the use of up to eight texture tiles, allows the TX to perform mipmapping and detailed textures. 
+<P>
+Furthermore, there are no explicit restrictions requiring power of two tile-sized decrements for mipmaps. Multi-tile texture map sizes are all independently programmable. Therefore, using these tiles and the color combiner block (please see <a target="_top" href="../pro12/index12.6.html">Section 12.6, “CC: Color Combiner”</a>), arithmetic logic can result in many special effects. For example, sliding two different frequency band tiles across a polygon surface while combining them with a blue polygon can give a nice ocean wave effect.
+
+<P>
+<a name="03"></a>
+<b>Texture Image Types and Format</b>
+<br>
+The table below shows the legal combinations of data types and pixel/texel sizes for the Color and Texture images. For RGBA types, the 16-bit format is 5/5/5/1, and the 32-bit format is 8/8/8/8. 
+<P>
+The Intensity Alpha type (IA) replicates the I value on the RGB channels and places the A value on the A channel. The IA 16-bit format is 8/8, the 8-bit format is 4/4, and the 4-bit format is 3/1.
+
+
+<P>
+<b>Table 1</b> &nbsp;Texture Format and Sizes
+<BR>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=25%><font face="arial" size="-1"><b>Type</td>
+<td width=20% align="center"><font face="arial" size="-1"><b>4b</td>
+<td width=20% align="center"><font face="arial"
+size="-1"><b>8b</b></td>
+<td width=20% align="center"><font face="arial" size="-1"><b>16b</td>
+<td width=15% align="center"><font face="arial" size="-1"><b>32b</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">RGBA</td>
+<td width=20% align="center"><font face="arial" size="-1">&nbsp;</td>
+<td width=20% align="center"><font face="arial"
+size="-1">&nbsp;</td>
+<td width=20% align="center"><font face="arial" size="-1">X</td>
+<td width=15% align="center"><font face="arial" size="-1">X</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">YUV</td>
+<td width=20% align="center"><font face="arial" size="-1">&nbsp;</td>
+<td width=20% align="center"><font face="arial"
+size="-1">&nbsp;</td>
+<td width=20% align="center"><font face="arial" size="-1">X</td>
+<td width=15% align="center"><font face="arial" size="-1">&nbsp;</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">Color Index</td>
+<td width=20% align="center"><font face="arial" size="-1">X</td>
+<td width=20% align="center"><font face="arial"
+size="-1">X</td>
+<td width=20% align="center"><font face="arial" size="-1">&nbsp;</td>
+<td width=15% align="center"><font face="arial" size="-1">&nbsp;</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">IA</td>
+<td width=20% align="center"><font face="arial" size="-1">X</td>
+<td width=20% align="center"><font face="arial"
+size="-1">X</td>
+<td width=20% align="center"><font face="arial" size="-1">X</td>
+<td width=15% align="center"><font face="arial" size="-1">&nbsp;</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">I</td>
+<td width=20% align="center"><font face="arial" size="-1">X</td>
+<td width=20% align="center"><font face="arial"
+size="-1">X</td>
+<td width=20% align="center"><font face="arial" size="-1">&nbsp;</td>
+<td width=15% align="center"><font face="arial" size="-1">&nbsp;</td>
+</tr>
+</table>
+
+<p>
+<a name="04"></a>
+<b>Texture Loading</b>
+<br>
+Several steps are necessary to load a texture map into the TMEM. You must block-load the texture map itself and set up the attributes for this tile. There are GBI macros that simplify all these steps into a single macro.
+<P>
+There are two ways of loading textures: block or tile mode. Block mode assumes that the texture map is a contiguous block of texels that represents the whole texture map. Tile mode can lift a subrectangle out of a larger image. The following tables list block and tile mode texture-loading GBI commands respectively.
+
+<P>
+<b>Table 2</b> &nbsp;gsDPLoadTextureTile(timg, fmt, siz, width, height, uls, ult, lrs, lrt, pal, cms, cmt, masks, maskt, shifts, shiftt)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">timg	</td>
+<td width=60%><font face="arial" size="-1">Texture dram address</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">fmt</td>
+<td width=60%><font face="arial" size="-1">G_IM_FMT_RGBA<br>
+G_IM_FMT_YUV<br>
+G_IM_FMT_CI<br>
+G_IM_FMT_I<br>
+G_IM_FMT_IA</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">siz</td>
+<td width=60%><font face="arial" size="-1">G_IM_SIZ_4b<br>
+G_IM_SIZ_8b<br>
+G_IM_SIZ_16b<br>
+G_IM_SIZ_32b</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">width, height</td>
+<td width=60%><font face="arial" size="-1">Texture tile width and height in texel space</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">pal</td>
+<td width=60%><font face="arial" size="-1">TLUT palette</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">cms, cmt</td>
+<td width=60%><font face="arial" size="-1">clamping/mirroring for s/t axis<br>
+G_TX_NOMIRROR<br>
+G_TX_MIRROR<br>
+G_TX_WRAP<br>
+G_TX_CLAMP</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">masks, maskt</td>
+<td width=60%><font face="arial" size="-1">Bit mask for wrapping<br>
+G_TX_NOMASK or a number: A wrapping bit mask is represented by 
+(1&#060&#060number) - 1.
+</tr>
+</table>
+
+
+
+<P>
+<b>Table 3</b> &nbsp;gsDPLoadTextureTile_4b(pkt, tmg, fmt, width, height, uls, lrs, lrt, pal, cms, cmt, masks, maskt, shifts, shift)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">shifts, shiftt</td>
+<td width=60%><font face="arial" size="-1">Shifts applied to s/t coordinate of each pixel. This is how you "sample" the lower levels of mipmap.
+<br>G_TX_NOLOD or a number: (s or t coord >> number) = s/t to sample other mipmap levels.</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">uls</td>
+<td width=60%><font face="arial" size="-1">upper left s index of the tile within the texture image</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">ult</td>
+<td width=60%><font face="arial" size="-1">upper left t</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">lrs</td>
+<td width=60%><font face="arial" size="-1">lower right s</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">lrt</td>
+<td width=60%><font face="arial" size="-1">lower right t</td>
+</tr></table>
+
+<P>
+<a name="05"></a>
+<b>Color-Indexed Textures</b>
+<br>
+There are some restrictions on the size and placement of CI texture maps within the TMEM. The TMEM is actually partitioned into two halves. Four texels are sampled from the first bank and fed into the second bank for texture/color/index table lookup (TLUT).
+
+<P>
+<b>Figure 12.4.3</B> &nbsp;CI TMEM Partition
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-07.gif"></tr></td></table>
+
+<P>
+Four texels from the texture images are sent from first half banks to the second half banks. The second half banks contain color index palettes. Each color map entry is replicated 4 times for four simultaneous bank lookups. Therefore, 8-bit CI textures all require 2 KB (256 x 64 bits per entry) second half banks to hold the TLUT, while 4-bit CI texture can have up to 16 separate TLUTs.
+<P>
+<b>Note:</b> TLUT must reside on the second half of TMEM; while CI texture cannot reside on the second half of TMEM. Non-CI texture can actually reside on the second half of TMEM in unused TLUT palette/entries.
+
+
+<P>
+<b>Table 4</b> &nbsp;gsLoadTLUT(count, tmemaddr, dramaddr)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">count</td>
+<td width=60%><font face="arial" size="-1">Number of entries in the TLUT. For example, a 4-bit texel TLUT would have 16 entries.</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">uls</td>
+<td width=60%><font face="arial" size="-1">upper left s index of the tile within the texture image</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">tmemaddr</td>
+<td width=60%><font face="arial" size="-1">Where the TLUT goes in TMEM</td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">dramaddr	</td>
+<td width=60%><font face="arial" size="-1">Where the TLUT is in DRAM</td>
+</tr></table>
+
+<P>
+<a name="06"></a>
+<b>Texture-Sampling Modes</b>
+</br>
+Software can enable and disable TX to perform the follow sampling modes: 
+<ul>
+<li>perspective correction
+<li>detail or sharpen textures 
+<li>LOD (mipmap) or bilinear textures 
+<li>RGBA or IA TLUT type
+</ul>
+
+<P>
+<b>Table 5</b> &nbsp;gsDPSetTexturePersp(mode)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode</td>
+<td width=60%><font face="arial" size="-1">G_TP_NONE<br>
+G_TP_PERSP</td>
+</tr></table>
+
+<P>
+<b>Table 6</b> &nbsp;gsDPSetTextureDetail(mode)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode</td>
+<td width=60%><font face="arial" size="-1">G_TD_CLAMP<br>
+G_TD_SHARPEN<br>
+G_TD_DETAIL
+</td></tr></table>
+
+
+<P>
+<P>
+<b>Table 7</b> &nbsp;gsDPSetTextureLOD(mode)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode</td>
+<td width=60%><font face="arial" size="-1">G_TL_TILE<br>
+G_TL_LOD
+</td>
+</tr></table>
+
+<P>
+<b>Table 8</b> &nbsp;gsSetTextureLUT(type)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">type</td>
+<td width=60%><font face="arial" size="-1">G_TT_NONE<br>
+G_TT_RGBA16<br>
+G_TT_IA16
+</td>
+</tr></table>
+
+<P>
+<a name="07"></a>
+<b>Synchronization</b>
+<br>
+With TMEM and tile descriptor states, TX also requires explicit synchronization to render primitives with the proper attribute state. Texture loads after primitive rendering must be preceded by a gsDPLoadSync(), and tile descriptor attribute changes should be preceded by a gsDPTileSync().
+<P>
+<b>Note:</B> If you use the high-level programming macros gsDPLoadTexture* or gsDPLoadTexture*_4b, then you don’t need to worry about load and tile syncs. They are embedded in the macro.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

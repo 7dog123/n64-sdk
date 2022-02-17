@@ -1,0 +1,9 @@
+# Makefile for gmake on win32
+#  Copyright (C) 1998, NINTENDO Co,Ltd, MONEGI CORPORATION.
+
+# Usually, modify values for MODULE ans SRCS
+MODULE		=	mgk
+SRCS		=	app.c \
+			obj.c
+
+include ../../common.win

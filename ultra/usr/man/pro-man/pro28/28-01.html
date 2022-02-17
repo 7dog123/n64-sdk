@@ -1,0 +1,422 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 28</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro27/index27.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro28/index28.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<a name="intro"></a>
+<b><font face="arial" color="#29296b">Introduction</font></b>
+<p>
+<font face="arial" size="-1" color="#000000">
+This chapter covers the new N_Audio Library which is an improved verison of the old SGI Audio Library. The new N-Audio Library provides faster audio processing. It is designed for use with the more recent versions of the N64 Operating System (versions 2.oh, 2.01, and above.).
+
+<P>
+<a name="improve"></a>
+<b>Improvements to the Previous Audio Library</b>
+<br>
+This chapter includes the following information about n_audio:
+
+<ul>
+<li>A description of the improvements to the audio library.
+<P>
+<li>A discussion of how the improvements to the library affect the application.
+<P>
+<li>A discussion of how to use the n_audio library, including a sample program for the purpose of demonstration.
+</ul>
+
+<P>
+Following is a discussion of the changes / additions to the previous library.
+
+<P>
+<a name="01"></a>
+<b>Players</b>
+<br>
+There are 2 types of players in the audio library.  One is a sequence player which performs the MIDI sequences, and the other is a sound player which replays the sound effects.  In the former audio library, the application could have any number of players, regardless of types.
+<P>
+In n_audio library, the game application is limited to having 2 sequence players and 1 sound player active (registered in the synthesizer driver) at any one time.  Therefore, audio processing is simplified and sped up by changing the process from indirect reference to direct reference.
+
+<P>
+<a name="02"></a>
+<b>The Envelope</b>
+<br>
+The former audio library used an exponential function for the envelope. This was changed to a linear function in n_audio, thereby minimizing the processing required by the audio driver, and speeding up audio processing.<P>
+
+<P>
+<b>Figure 28.1.1</B> &nbsp;Changes to the Envelope
+<p>
+<table border=0 align="center" width="90%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-01.gif"></tr></td></table>
+<P>
+
+<a name="03"></a>
+<b>Fixing the Minimum Unit of the Audio Process</b>
+<br>
+In the former audio library, the RSP could create the maximum number (160) of sample data at one time. (We will call the unit that the RSP processes at one time (160 samples) "1 sub-frame".)
+
+<P>However, as shown in the example below, the audio command list is split and the RSP cannot create the maximum number (160) of sample data at one time.  Therefore, the whole processing rate deteriorates.<P>
+<P>
+<b>Example 28-1</B> &nbsp;Partition of the Command List on the Former Audio Library 
+<p>
+<table border=0 align="center" width="90%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/e28-01.gif"></tr></td></table>
+<P>
+
+Therefore, in n_audio, we set up the minimum unit used by the audio process so that the audio command list is not split.  And, we fixed this minimum unit to the maximum number of sample data that RSP can process at one time.
+<P>
+If the maximum number of sample data is 160 (the same number as the former library’s), the envelope change of the previous example is processed as follows.
+
+<P>
+<b>Example 28-2</B> &nbsp;The Process for Partition of the Command List in the n_audio Library
+<p>
+<table border=0 align="center" width="90%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/e28-02.gif"></tr></td></table>
+
+<P>
+If the envelope change (Attack - Decay) occurs within 1 sub-frame, the transition point is forced to move to the next complete subframe. Therefore, the audio command list is not split and processing for the CPU and RSP are sped up. In this way, we have set the minimum unit for the audio process and fixed this value in n_audio.
+
+<P>
+<a name="04"></a>
+<b>Processing of Every 184 Samples</b>
+<br>
+When each player is used, the most common playback frequency is 32kHz. When the playback frequency is 32kHz, the required number of sample data for 1 frame becomes 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>32000 / 60 = 533.333 = 533</u> </TD></TR></table>
+<P>
+samples using the former library.  The maximum number of RSP sample data is 160 using the former library.  So, 533 samples are split into 4 sub-frames as illustrated in the following figure.<P>
+
+<P>
+<b>Figure 28.1.2</B> &nbsp;Partition of the Frame with the Former Audio Library
+<p>
+<table border=0 align="center" width="90%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-02.gif"></tr></td></table>
+<P>
+
+In this case, the last sub-frame needs to create only 53 samples.
+<P>
+On the other hand, in n_audio, we fixed the minimum unit of the audio process to the maximum number of sample data that the RSP could process at one time.  Therefore, we must set the data number created in 1 frame to a multiple integer of the maximum data number of the RSP in n_audio. If the maximum data number is 160 (which is the same number as the former library’s), n_audio must create 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>160x4 = 640</u></tr></td></table>
+<P>
+samples for 1 frame, as follows.
+
+<P>
+<b>Figure 28.1.3</B> &nbsp;Partition of the Frame in the n_audio Library (A)
+<p>
+<table border=0 align="center" width="90%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-03.gif"></tr></td></table>
+<P>
+
+At this moment,  the sample data 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>160 - 53 = 107</u></td></tr></table> 
+<P>
+is carried over to the next frame as the surplus sample data of this frame.  To adjust for this surplus data, you would prepare frames as in the following figure.<P>
+
+<P>
+<b>Figure 28.1.4</B> &nbsp;Partition of the Frame in the n_audio Library (B)
+<p>
+<table border=0 align="center" width="90%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-04.gif"></tr></td></table>
+<P>
+
+If you use Frame A and Frame B as in the Figure 28.1.5, as time passes it is possible to adjust the previous surplus data.
+
+<P>
+<b>Figure 28.1.5</B> &nbsp;Adjustment of the Surplus Sample Data in the n_audio Library
+<p>
+<table border=0 align="center" width="80%">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-05.gif"></tr></td></table>
+<P>
+
+The total output sample data of these 3 frames is 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>(160x4) + (160x3) + (160x3) = 1600</u></td></tr></table>
+<P>
+
+The actual required number of sample data among 3 frames is 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>533x3 = 1599</u></td></tr></table>
+<P>
+
+Thus, with this calculation it becomes possible to adjust the surplus data of the entire application by using the previous 3 frames repeatedly.<P>
+
+For example, we can make a table of the time frame, the number of samples, and the number of surplus samples, as follows.
+<P>
+
+<p>
+<b>Table 1</b> &nbsp;Used Frames and Surplus Sample Data in the n_audio Library
+<br>
+<table width=90% cellpadding=1 cellspacing=1 border=1>
+<tr><th align=center width=20%><font face="arial"size=-1>Time</th>
+<th align=center width=20%><font face="arial"size=-1>Frame</th>
+<th align=center width=20%><font face="arial"size=-1># of Samples</th>
+<th align=center width=40%><font face="arial"size=-1># of Surplus Samples</th></tr>
+
+<tr><td align=center><font face="arial"size=-1>1</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>107</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>2</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>54</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>3</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>1</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>4</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>108</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>5</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>55</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>6</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>2</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>8</td>
+<td align=center><font face="arial"size=-1>7</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>109</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>8</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>56</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>10</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>110</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>12</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>4</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>13</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>111</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>14</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>58</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>15</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>5</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>16</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>112</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>17</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>59</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>18</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>6</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>154</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>158</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>155</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>52</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>156</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>52</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>157</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>159</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>158</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>106</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>159</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>53</td></tr>
+<tr>
+<tr bgcolor="#939AF0"><td align=center><font face="arial"size=-1>160</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>0</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>161</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>107</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>162</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>54</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>163</td>
+<td align=center><font face="arial"size=-1>B</td>
+<td align=center><font face="arial"size=-1>480</td>
+<td align=center><font face="arial"size=-1>1</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>164</td>
+<td align=center><font face="arial"size=-1>A</td>
+<td align=center><font face="arial"size=-1>640</td>
+<td align=center><font face="arial"size=-1>108</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td></tr>
+<tr>
+<tr><td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td>
+<td align=center><font face="arial"size=-1>-</td></tr>
+</table>
+
+<P>
+At time "160" in the table above, the application uses frame A if following the original order.  However, because 1 surplus sample is produced by each frame A - frame B - frame B sequence, it uses frame B at time "160" to use the accumulated surplus samples.
+<P>
+This adjustment for the number of created data must be provided on the application side.  Also, the table above has been created using theoretical data.  The actual adjustment for surplus data does not always work exactly as represented here.
+<P> 
+In Frame A above, you must create 107 more data than the original required number of sample data for 1 frame.  Therefore, the processing time for Frame A increases.  Though it depends on each case, it is possible for Frame A only, that the increased processing time due to the required processing data, will exceed the processing time allowed by "n_audio." 
+<P>
+This problem is avoided as follows.
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>( 32000 / 60 ) x ( 1 / 3 ) = 177.777 = 178</u></td></tr></table>
+<P>
+
+The maximum number of sample data that the RSP can process at one time is 178.  Using this value, the number of surplus data which is produced at each frame is minimized.  However, the maximum number of sample data needs to be a multiple of 8 for convenience of the RSP process.  Therefore, we increased the maximum number of sample data from 160 to 184 in n_audio.<P>
+
+At this time, the previous frame A becomes:
+
+<P>
+<b>Figure 28.1.6</B> &nbsp;Partition of the Frame in the n_audio Library (A) - In the Case of 184
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-06.gif"></tr></td></table>
+<P>
+
+The number of output data in Frame A becomes: 
+<p>
+<table border=0 align="center">
+<tr><td><font face="arial" size="-1"><u>184x3 = 552</u></td></tr></table>
+
+<P>
+Thus, in Frame A: 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>552 - 533 = 19</u></td></tr></table>
+<P>
+surplus samples are produced for 1 frame.  To adjust these surplus samples for example, we prepare Frame B as follows.
+
+<P>
+<b>Figure 28.1.7</B> &nbsp;Partition of the Frame in the n_audio Library (B) - in the Case of 184
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-07.gif"></tr></td></table>
+<P>
+
+And it is possible to adjust the surplus data by combining Frame A and Frame B as time passes.
+
+<P>
+<b>Figure 28.1.8</B> &nbsp;Adjustment of Surplus Sample Data in the n_audio Library - in the Case of 184
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro28/gif/f28-08.gif"></tr></td></table>
+<P>
+
+The total of output sample data of these 10 frames is 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>(184x3x9)+(184x2)= 5336</u></td></tr></table>
+<P>
+and the actual number of required sample data among 10 frames is 
+<P>
+<table border=0  align="center"><tr><td><font face="arial" size="-1">
+<u>533x10 = 5330</u></td></tr></table>
+<P>
+Thus, it becomes possible to adjust the surplus data of the whole application by using the 10 frames above (see Figure 28.1.2) repeatedly.<P>
+
+Please refer to the sample program (playseq.naudio) for an example of the method used to adjust surplus sample data.  In the sample program, the application decides the frame to use dynamically, so it uses Frame B if the number of surplus sample data becomes the data number for 1 sub-frame (184) or more.
+<P>
+
+In this way, we changed the maximum number of sample data that the RSP can process at one time from 160 to 184 in n_audio, so that the minimum unit of the audio process is effective at a frequency of 32kHz.<p>
+<br>
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

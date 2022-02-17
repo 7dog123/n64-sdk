@@ -1,0 +1,94 @@
+#=======================================================================#
+#		NIFFprev						#
+#		Makefile.win						#
+#									#
+#		Copyright (C) 1997, NINTENDO Co,Ltd.			#
+#									#
+#-----------------------------------------------------------------------# 
+#
+
+# The directory which has the include file and library of NuSYSTEM
+#
+N64KITDIR    = c:\nintendo\n64kit
+NUSYSINCDIR  = $(N64KITDIR)\nusys\include
+NUSYSLIBDIR  = $(N64KITDIR)\nusys\lib
+NUSTDINC     = $(N64KITDIR)\nustd\include
+NUSTDLIB     = $(N64KITDIR)\nustd\lib
+
+N64GCC_PATH =	$(ROOT)\gcc\mipse
+N64GCC_BIN =	$(N64GCC_PATH)\bin
+N64GCC_INC =	$(ROOT)\usr\include
+USR_INC    =	.\include
+LIBDIR     =	.\lib
+CC =		$(N64GCC_BIN)\gcc
+AS =		$(N64GCC_BIN)\as
+LD =		$(N64GCC_BIN)\ld
+MAKEROM =	mild
+
+APP =		mirror_house.out
+
+AUDIO_CDEFS = -DNUALSGI -DN_AUDIO      # Compile options for the SGI Sound Library version
+NUAUDIOLIB = -lnualsgi -lgn_audio      # The SGI Sound Library
+GBI = -DF3DEX_GBI_2
+
+.c.o:
+		$(CC) -g -G 0 -c $(CC_INC) $(CC_DEF) $(AUDIO_CDEFS) $<
+
+CC_INC =	-I. -I$(NUSTDINC) -I$(N64GCC_INC)\pr -I$(N64GCC_INC) -I$(NUSYSINCDIR) -I$(USR_INC)
+CC_DEF =	$(GBI) -D_WIN32 -D_LANGUAGE_C -D_MIPS_SZLONG=32 -D_MIPS_SZINT=32
+
+OPTIMIZER =	-g
+
+TARGETS =	mirror_house.N64
+
+CODEFILES   =	main.c \
+		expad.c \
+		gfx.c \
+		om_camera.c \
+		om_eval_draw.c \
+		om_char_entry.c \
+		om_common.c \
+		om_func.c \
+		om_bg_entry.c \
+		om_cornfrake.c \
+		om_game_main.c \
+		om_mychar.c \
+		om_goal.c \
+		om_game_over.c \
+		om_audio.c \
+		om_select_chara.c \
+		om_title.c \
+		om_title_param.c \
+		om_rom_data_read.c
+
+DATAOBJECTS =	$(CODEFILES:.c=.o)
+CODEOBJECTS =	$(DATAOBJECTS) $(NUSYSLIBDIR)\nusys.o
+
+CODESEGMENT =	codesegment.o
+
+OBJECTS =	$(CODESEGMENT) $(DATAOBJECTS)
+
+USR_LIB =	-lreschar -lresbg -lnd
+
+LDFLAGS =	$(MKDEPOPT) -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) -L$(LIBDIR) $(USR_LIB) $(NUAUDIOLIB) -lnusys -lgultra -L$(NUSTDLIB) -lnustd -L$(GCCDIR)/mipse/lib -lkmc
+DEPENDFILE =    dependfile
+
+default:	$(TARGETS)
+
+$(CODESEGMENT) :	$(DATAOBJECTS)
+	$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+$(TARGETS) :	spec.nualsgi $(OBJECTS)
+	$(MAKEROM) -o -s 9 spec.nualsgi -r $(TARGETS) -I$(NUSYSINCDIR) -e $(APP)
+
+$(CODESEGMENT) : .\lib\libreschar.a .\lib\libnd.a .\lib\libresbg.a
+
+depend:
+	makedepnd -f$(DEPENDFILE) *.c
+
+clean:
+	del *.o
+	del *.out
+	del *.n64
+
+# DO NOT DELETE

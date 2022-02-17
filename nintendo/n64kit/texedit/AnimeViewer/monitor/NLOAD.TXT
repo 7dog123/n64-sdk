@@ -1,0 +1,164 @@
+                                                    	12/14/1998
+                                            		Intelligent Systems
+
+
+                         nload/nload.exe for DD
+                          User Manual
+
+Introduction
+______________________________________________________________________________
+
+With DD emulation, extension and options are added to the previous version of 
+nload.
+ 
+Arguments for application
+______________________________________________________________________________
+
+An application displays its usage by the addition of "-h" as an argument.
+Options (-d,-x,-y,-D) have been added for DD support.  The basic option used to 
+run the DD software is %nload -d.
+
+
+nload (IS-VIEWER64) ver1.20b [0108] Mem64MB
+Copyright (c) 1997 Intelligent Systems Co.,Ltd.
+
+nload [-s0x??] [-l0x??] [-r] [-h] [-v] [-n] [-b0x??] [-z0x??] [-w] [filename]
+-- Command -------------------- Default ------------
+-s : load start address(even) : 0x00000000
+-l : load length(even)        : file size
+-r : reset only               : off
+-v : verbose mode             : off
+-n : no debug mode(load only) : off
+-h : usage print              : off
+-w : NUS -> FILE              : FILE -> NUS
+-e : load only(no reset)      : off
+-b : Debug communicate address: 0xb1ff0000   (4KB segment)
+-z : Debug size               : 0x10000      (4KB segment,max 64KB)
+-i : host,id                  : auto search  (example -i04 host=0, id=4)
+-M : skip makemask            : makemask 6102
+-N : device name(irix/linux)  : off
+-d[0x****] : DD Emulation     : off
+  & DD Comunicate address     : 0xb1fe0000
+-x : DD Image File            : 'isvfile'
+-y : DDD Image Directory      : current dir
+-D : DDROM path & filename    : 'isvipl'
+-q : Quick Start Mode On      : off
+-R : Use Internal DD-ROM On   : off
+
+%
+
+The following is a description of the arguments. 
+
+-s  
+Specifies load (save) start address. Default is 0. The address must be an even 
+number.
+
+-l  
+Specifies load size. Default at the time of loading is file size, and there is 
+no need to specify.Default at the time of saving is 16MB. 
+
+-r  
+Specifies when you only want to reset in case downloading is done already. When 
+this command is specified,  any other command is invalid.
+
+-v  
+Mode for detailed display.  Displays the status of downloading, too.
+
+-n  
+If not specified, it will go to a debug print loop after downloading. If 
+specified, nload will end after downloading and execution. 
+
+-h  
+Displays usage.
+
+-w  
+Outputs the contents of NINTENDO64 to a file. If not specified, downloading from 
+a file will be executed. 
+
+-e  
+Resets after downloading.  If specified, reset will not be done.
+
+-b  
+Sets debug communication address. The address needs to be specified by 4KB unit. 
+(like being masked by 0xfffff000)  Default is 0xb1ff0000. (The last 64KB of 32MB)
+
+-z  
+Sets debug communication size.  The size needs to be specified by 4KB unit. 
+Default is 0x10000.  The debug communication address and the debug communication
+end address (the debug communication address and the debug communication size) 
+must not be over 64KB segment.  (For example,  0xble08000 ~ 0xble18000 must not 
+be specified.)
+
+-I
+Specifies SCSI host adapter and SCSI-ID to be used.  If default,  SCSI-ID will be 
+detected automatically from SCSI device which is connected, however, it is also 
+possible to specify SCSI-ID directly. (For example, if -i04, adapter=0 and ID=4) 
+
+-d
+Invokes DD emulation. Immediately following this option, the address of a buffer 
+for DD communications can be specified. The default buffer is 
+0xb1fe0000-0xb1feffff  (last 32 MB). This usually does not need to be changed. 
+
+-x  
+Specifies a 64MB disk image file.  The default is the current 'isvfile.'
+
+-y  
+Specifies the root directory when the host file system is used. 
+
+-M  
+IS-VIEWER64 automatically downloads a file used with makemask6102 when the 
+starting address is 0 (0xb0000000).  makemask is not used when this option is 
+specified. 
+
+-D  
+Specifies an IPL file for DD. The default is 'isvipl'. The file is transferred 
+from 0xb000000 of the Game Pak to the 0x400000 area.  Currently, DD + Game Pak 
+development is not supported.  Future improvements will allow the transfer 
+address to be specified.
+
+-N  
+Specifying a device name immediately following this option permits the device to 
+be used. If the device is not IS-VIEWER64, proper operation cannot be guaranteed.
+
+-q  
+Specifies the -d quick-start mode. Normally with DD emulation, the user program 
+is loaded when the N cube screen is displayed and the A Button pressed.  With 
+this option, the user program is executed at startup without waiting for the 
+N cube and A Button. Using this together with the -R option explained below can 
+further reduce startup time.
+
+-R  
+Use the internal DD-ROM (double-connector cartridge) for FONT and WAVE data 
+access.  This is intended to limit the IPL file read at startup to the minimum 
+necessary, thereby reducing startup time.  Note that the source file first must 
+be edited to change osEPiStartDmaEmu() to osEPiStartDma().  Using this option 
+together with the -q option allows faster startup of the user program.
+
+
+Examples of Usage
+______________________________________________________________________________
+
+nload -v -d         
+After the rom transfer, enter a loop for DD emulation and debugging.
+
+nload -d -x ../disk2/isvfile
+Same as above except that a disk image is specified.
+
+
+nload -v -d0xb3fe0000
+Same as the first example except that this sets the DD communication address to 
+0xb3fe0000.
+
+nload -v -d -q -R   
+Use internal DD-ROM.  Specifies that the user program is to be executed 
+immediately after startup.  This can be used to save time when the user 
+application is debugged repeatedly.
+
+Notes and Miscellaneous Items
+______________________________________________________________________________
+
+* The ISV Pak must be modified for DD emulation.  The previous Pak cannot be 
+used.
+
+* When the nload -d option is specified, isvipl (the IPL for DD) is read.  To 
+execute the application from the IPL, press the START Button.

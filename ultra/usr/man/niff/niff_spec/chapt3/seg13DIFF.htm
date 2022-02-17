@@ -1,0 +1,188 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-13. MatList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(1)MatListエリア</font></h4>
+
+<blockquote><font size=+0>　MatListはマテリアル情報を記述するためのリストです。シェープデータによって参照され、テクスチャを持っている場合はTexListへのリンクを持ちます。MatListは以下のようにマッピングされています。</font></blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="9">MatListHeader</th>
+
+<td>u32</td>
+
+<td>mat_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>mat_num_byte(mat_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>Mat(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Mat(mat_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　MatListエリアメモリマップ</font></b></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 mat_list_tag</td>
+
+<td><font size=+0>MatList Tag. Set the following flag</font>
+<pre>
+<b><font size=+0>TAG_MAT_LIST&nbsp;&nbsp;&nbsp; 0x000a0000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_list_header_size</td>
+
+<td><font size=+0>Size of this MatListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_list_size</td>
+
+<td><font size=+0>Size of this MatList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_num</td>
+
+<td><font size=+0>Total number of Mat contained in MatList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>任天堂拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>ユーザー拡張ブロックサイズ</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 mat_num_byte</td>
+
+<td><font size=+0>Size of corresponding Mat area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg13-2.htm">Mat</a></td>
+
+<td><font size=+0>Actual material</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>任天堂拡張ブロック</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensinoBlock</td>
+
+<td><font size=+0>ユーザー拡張ブロック</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg13-2.htm">次へ</a></font><a href="seg13-2.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

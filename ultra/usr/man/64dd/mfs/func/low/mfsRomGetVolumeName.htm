@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetVolumeName</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetVolumeName<br>
+mfsRamGetVolumeName</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetVolumeName(u8* name)
+	s32 mfsRamGetVolumeName(u8* name)
+Arguments:	*name		Buffer for obtaining name
+Return value:Error
+Function:	Obtains volume name
+Description:	This function obtains the volume name and stores it in name.  name must be a buffer of size MFS_VOLUME_NAME_SIZE.  A volume name consists of 20 characters.
+The termination of the character string that is entered in name is NULL.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk
+                          The disk ID's disk use is not 1, or the header is different. 
+	MFS_ERR_VERSION	Different version disk </pre>
+</body>
+</html>

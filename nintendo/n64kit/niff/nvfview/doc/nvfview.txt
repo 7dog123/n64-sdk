@@ -1,0 +1,45 @@
+[Directory Structure]
+nvfview
+  +-- libdoc (Library reference) 
+  +-- libsrc (Library)
+  |     +-- libmgi[_d].a (Application interface module)
+  |     +-- libmhc[_d].a (Hierarchy structure evaluation module)
+  |     +-- libmif[_d].a (IFF module) 
+  |     +-- libmis[_d].a (Input stream module) 
+  |     +-- libmrn[_d].a (Rendering module) 
+  |     +-- libmsn[_d].a (Standard node module) 
+  |     +-- libmso[_d].a (Standard object module) 
+  |     +-- libmvm[_d].a (Vector matrix module) 
+  |     +-- libnusys[_d].a (Updated version of NuSystem)
+  +-- src (nvfview source)
+
+[Contents of nvfview/src]
+*menu.c:      	Menu-related processing. 
+defscene.c:   	Manipulation of scene.nvf nodes.
+object.c:     	Manipulation of model.nvf nodes.
+viewerinfo.c: 	Load scenes. 
+mode.c:       	Management of nvfview set up. 
+main.c:       	Central portion of nvfview. 
+
+[main.c Functions]
+resetreg( ):
+    Initializes nvfview settings. 
+
+callback( ):
+    Callback to call each frame.  Primarily performs menu and mode control. 
+
+setup_allocator( ):
+    Initializes memory allocation.  The initialization method differs for 4M and 8M memories. 
+
+mainproc( ):
+    Initializes the system and enters the main loop. 
+
+[mainproc( ) Flow]
+  1. Initialize Allocator.  ( setup_allocator( ) )
+  2. Initialize application.  ( mgiAppInit( ) etc.)
+  3. Initialize rendering group.  (Currently, perform this the same as main.c.  In the future, there will be a 
+      greater variety of groups.) 
+  4. Load the scene.  ( LoadScene( ) )
+  5. Register the characters or jobs. 
+      Characters and jobs are used to generate call backs. 
+  6. Move to the main loop.  From this point on, only call backs are executed. 

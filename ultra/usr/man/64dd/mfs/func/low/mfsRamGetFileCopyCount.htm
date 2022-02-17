@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamGetFileCopyCount</title>
+</head>
+
+<body>
+
+<h1>mfsRamGetFileCopyCount</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamGetFileCopyCount(MfsDirID dirID)
+Arguments:	dirID	Directory ID of file (directory)
+Return value:Copy count limit of file (directory) (a negative value is an error)
+Function:	Obtains copy count limit of file (directory)
+Description:	This function obtains the copy count limit of the file (directory) specified by dirID.
+  This value should be referenced when MFS_FILE_ATTR_COPYLIMIT is specified by the attribute of the file (directory).
+The application must perform copy count processing.
+
+Main errors:
+	MFS_ERR_NO		Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found 	</pre>
+
+<hr>
+</body>
+</html>

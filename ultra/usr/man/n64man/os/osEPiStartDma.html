@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../os/os.html">
+            <IMG BORDER=0 SRC="../images/mh_os.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+osEPiStartDma<BR>
+osEPiWriteIo<BR>
+osEPiReadIo
+</FONT>
+</H2>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt;<BR>
+
+s32 osEPiStartDma(
+   OSPiHandle *phandle,
+   OSIoMesg *mb,
+   s32 direction);
+s32 osEPiWriteIo(
+   OSPiHandle *phandle,
+   u32 devAddr, u32 data);
+s32 osEPiReadIo(
+   OSPiHandle *phandle,
+   u32 devAddr, u32 *data);</PRE></FONT>
+
+<B>Explanation</B><BR>
+The <FONT FACE="COURIER NEW,COURIER">osEPiStartDma</FONT>, <FONT FACE="COURIER NEW,COURIER">osEPiWriteIo</FONT>, and <FONT FACE="COURIER NEW,COURIER">osEPiReadIo</FONT> routines gain access to the expanded peripheral interface (EPI) by using the PI manager. The expanded peripheral interface (EPI) transfers data between RDRAM and a bulk storage device (BSD) such as ROM, Drive ROM, and the N64 Disk Drive. EPI supports many devices sharing the PI domain, and it can switch among these devices dynamically.<BR>
+<BR>
+
+These functions manage the PI bus by using the PI manager, and they support 
+synchronization and independence when the PI is shared by peripheral IO utilities such as 
+debug, print, logging, and profiling. You need to initialize the PI 
+manager's system thread before using these EPI routines.  See <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osPiStartDma.html">osPiStartDma</A></FONT> for more information on how to do it.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">OSPiHandle</FONT> data structure acts as a handler so the EPI routines can reference each PI device.  The <FONT FACE="COURIER NEW,COURIER">OSPiHandle</FONT> structure is allocated and initialized 
+by each device's initialization routine, and it stores each device's 
+attributes.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osEPiStartDma</FONT> routine sets up a DMA transfer between RDRAM and the EPI device address space (<FONT FACE="COURIER NEW,COURIER">devAddr</FONT>), by sending an IO message block request (<FONT FACE="COURIER NEW,COURIER">mb</FONT>) to the 
+PI manager, based on the value of <FONT FACE="COURIER NEW,COURIER">direction</FONT> (<FONT FACE="COURIER NEW,COURIER">OS_READ</FONT> or <FONT FACE="COURIER NEW,COURIER">OS_WRITE</FONT>).<BR>
+<BR>
+
+The calling side specifies the following parameters in the request block:
+
+<UL><LI>The device address (<FONT FACE="COURIER NEW,COURIER">devAddr</FONT>)
+<LI>The RDRAM address (<FONT FACE="COURIER NEW,COURIER">dramAddr</FONT>)
+<LI>Transfer volume
+<LI>The message queue (<FONT FACE="COURIER NEW,COURIER">hdr.retQueue</FONT>) that is to receive the message from the PI manager that the IO operation has finished</UL>
+
+If the priority request (<FONT FACE="COURIER NEW,COURIER">hdr.pri</FONT>) is <FONT FACE="COURIER NEW,COURIER">OS_MESG_PRI_HIGH</FONT> (the default is 
+<FONT FACE="COURIER NEW,COURIER">OS_MESG_PRI_NORMAL</FONT>), the <FONT FACE="COURIER NEW,COURIER">osEPiStartDma</FONT> function pushes the message in front of the PI 
+manager's command queue. If it is not <FONT FACE="COURIER NEW,COURIER">OS_MESG_PRI_HIGH</FONT>, the message is added to the end of the 
+command queue.<BR>
+<BR>
+
+If the PI manager is not started, <FONT FACE="COURIER NEW,COURIER">osEPiStartDma</FONT> returns -1.  
+Otherwise, the status is returned to either the <FONT FACE="COURIER NEW,COURIER">osSendMesg</FONT> or the <FONT FACE="COURIER NEW,COURIER">osJamMesg</FONT> function.<BR>
+<BR>
+
+The transfer volume is a maximum of 16 megabytes, and it must be a multiple of two.  Two-byte alignment is required for the PI device address (<FONT FACE="COURIER NEW,COURIER">devAddr</FONT>), and eight-byte alignment is required for the RDRAM's virtual address (<FONT FACE="COURIER NEW,COURIER">dramAddr</FONT>). Nintendo recommends that you use a 16-byte alignment if the DMA operation is done with <FONT FACE="COURIER NEW,COURIER">OS_READ</FONT>. See <FONT FACE="COURIER NEW,COURIER"><A HREF="../os/OS_DCACHE_ROUNDUP_ADDR.html">OS_DCACHE_ROUNDUP_ADDR</A></FONT> for information about the problems that can occur when the address and 
+the transfer volume are not multiples of the cache line.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osEPiWriteIo</FONT> routine performs 32-bit IO Write operations to the PI device address (<FONT FACE="COURIER NEW,COURIER">devAddr</FONT>).<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">osEPiReadIo</FONT> routine performs 32-bit IO read operations from the PI device address (<FONT FACE="COURIER NEW,COURIER">devAddr</FONT>), and it stores the value to data.
+
+<BR><BR><B>Warning</B><BR>
+To gain access to the PI, Nintendo strongly recommends that you use these high-level, managed functions (<FONT FACE="COURIER NEW,COURIER">osEPiWriteIo</FONT>, <FONT FACE="COURIER NEW,COURIER">osEPiReadIo</FONT>, or <FONT FACE="COURIER NEW,COURIER">osEPiStartDma</FONT>).<BR>
+<BR>
+
+Caution is especially required when high-
+and low-level functions are mixed.  The PI can support only one IO at 
+a time, so an out of synchronization condition may cause an error to occur in the PI.  The
+<FONT FACE="COURIER NEW,COURIER">osEPiStartDma</FONT>, <FONT FACE="COURIER NEW,COURIER">osEPiWriteIo</FONT>, and <FONT FACE="COURIER NEW,COURIER">osEPiReadIo</FONT> routines reset the PI bus, if there is a 
+discrepancy between the PI bus setting specified by pihandle and the actual 
+PI bus setting when the function is called.  It is not necessary to call 
+<FONT FACE="COURIER NEW,COURIER">osCartRomInit</FONT> each time.
+
+<BR><BR><B>Example</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>void romCopy(const char *src,
+   const char *dest,
+   const int len)
+{
+   OSIoMesg dmaIoMesgBuf;
+   OSMesgQueue dmaMessageQ;
+   OSMesg dummyMesg;
+   osInvalDCache((void *)dest,
+      (s32) len);
+   dmaIoMesgBuf.hdr.pri =
+      OS_MESG_PRI_NORMAL;
+   dmaIoMesgBuf.hdr.retQueue =
+      dmaIoMesgBuf.dramAddr = dest;
+   dmaIoMesgBuf.devAddr = (u32)src;
+   dmaIoMesgBuf.size = len;
+   osEPiStartDma(carthandle,
+      (void) osRecvMesg(&dmaMessageQ,
+      &dummyMesg, OS_MESG_BLOCK
+}</PRE></FONT>
+
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER">
+<A HREF="../os/osPiRawStartDma.html">osPiRawStartDma</A><BR>
+<A HREF="../os/osPiStartDma.html">osPiStartDma</A><BR>
+<A HREF="../os/osEPiRawStartDma.html">osEPiRawStartDma</A><BR>
+<A HREF="../os/osCartRomInit.html">osCartRomInit</A><BR>
+<A HREF="../os/osSendMesg.html">osSendMesg</A><BR>
+<A HREF="../os/osJamMesg.html">osJamMesg</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

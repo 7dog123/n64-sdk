@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-8. ColorList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(2)TriColorGroupエリア</font></h4>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="5">TriColorGroupHeader</th>
+
+<td>u32</td>
+
+<td>tri_color_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_tri_color_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>TriColor(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>TriColor(tri_color_num - 1)</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　TriColorGroupエリアメモリマップ</font></b></center>
+
+<center><table BORDER >
+<tr>
+<td NOWRAP>u32 tri_color_group_tag</td>
+
+<td><font size=+0>Tag indicating TriColorGroup. Set the following Tag.</font>
+<pre>
+<b><font size=+0>TAG_TRI_COLOR_GROUP&nbsp;&nbsp;&nbsp;&nbsp; 0x00050100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_tri_color_group_index</td>
+
+<td><font size=+0>Index number of this TriColorGroup in ColorList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_group_header_size</td>
+
+<td><font size=+0>Size of this TriColorGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_group_size</td>
+
+<td><font size=+0>size of this TriColorGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_num</td>
+
+<td><font size=+0>Total number of this TriColor in TriColorGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg8-4.htm">TriColor</a></td>
+
+<td><font size=+0>Area for storing color data (one polygon)</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg8-3.htm">次へ</a></font><a href="seg8-3.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

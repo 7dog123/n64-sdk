@@ -1,0 +1,65 @@
+Function 
+(  Basic function of application program
+
+Functions 
+(  void mgiAppInit( const u32 frame_latency,
+                   	   const u32 gfx_length,
+                   	   const u32 frame_resource_size,
+                   	   const u32 instance_queue_size,
+                   	   const u32 max_modules,
+		   const u32 transform_buffer_size,
+                   	   void *user_data )
+  Initialize the application. 
+  - frame_latency is determined by Nusystem. 
+    Double buffer:  frame_latency = 2
+    Triple buffer:  frame_latency = 3
+  - gfx_length is the size of the gfx buffer, and the actual capacity of the gfx buffer is 
+    frame_latency * gfx_length * sizeof( Gfx ). 
+  - frame_resource_size sets the frame resource capacity of the scene. 
+    Frame resource is the temporary storage area used for rendering each frame, and is discarded when 
+    frame rendering is completed.  For example, it is for recording Mtx, and dynamically, Vtx. 
+  - instance_queue_size sets the maximum number of queues necessary during hierarchy evaluation. 
+  - max_modules sets the maximum number of modules used by the application. 
+  - transform_buffer_size sets the maximum capacity of the coordinate conversion buffer needed during 
+    hierarchy evaluation. 
+
+(  void mgiAppMainLoop( void )
+  Enters the main loop.  This loop does not end. 
+
+(  void mgiAppAddRenderJob( MgiJob *job_ptr )
+  Adds a render job.  A render job only executes the frame after rendering has been completed.  Render 
+  jobs are executed in the order that they were added. 
+
+(  void mgiAppInsertRenderJob( MgiJob *new_job_ptr, MgiJob *job_ptr )
+  Inserts a render job in front of a job which has already been added. 
+
+(  void mgiAppRemoveRenderJob( MgiJob *job_ptr )
+  Cancels a render job. 
+
+(  void mgiAppAddFrameJob( MgiJob *job_ptr )
+  Adds a frame job.  A frame job executes each frame even if rendering is not completed.  Frame jobs are
+  executed in the order that they were added. 
+
+(  void mgiAppInsertFrameJob( MgiJob *new_job_ptr, MgiJob *job_ptr )
+  Inserts a frame job in front of a job which has already been added. 
+
+(  void mgiAppRemoveFrameJob( MgiJob *job_ptr )
+  Cancels a frame job. 
+
+Global Variables 
+(  gMgiApp
+  This is the actual application itself.  A pointer to MgiApp is not specified in the argument of mgpApp*() because all functions access this global variable. 
+
+Macros 
+(  _mgiAppAddCharacter( char_ptr )
+  Adds an MgiCharacter job as a render job. 
+
+(  _mgiAppGetHierarchy( )
+  Returns a pointer to the scene hierarchy. 
+
+(  _mgiAppGetScene( )
+  Returns a pointer to the scene. 
+
+History 
+  1998/11/02 Takamitsu Hirata 
+    App.h, app.c:  Initial version

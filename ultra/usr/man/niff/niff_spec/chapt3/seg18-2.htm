@@ -1,0 +1,294 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.18 CamList</h3>
+
+<hr size=3>
+<h4>2) Cam Area</h4>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>cam_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_cam_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_type</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_near_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_far_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_right_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_left_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_top_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_bottom_clip</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_fovy</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_aspect</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>cam_scale</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_lookat_obj</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_eye_obj</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>cam_up_obj</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Cam Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 cam_tag</td>
+
+<td><font size=+0>Tag indicating Cam</font>
+<pre><b><font size=+0>TAG_CAM 0x000e0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_cam_index</td>
+
+<td><font size=+0>Index number of Cam</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_size</td>
+
+<td><font size=+0>Size of Cam</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_name_index</td>
+
+<td><font size=+0>Index number of camera name in NameList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#CAM_TYPE">u32 cam_type</a></td>
+
+<td><font size=+0>Specifies the camera type. The following are currently defined.</font>
+<pre><b><font size=+0>CAM_TYPE_PERSP&nbsp; 0x00000000
+CAM_TYPE_ORTHO&nbsp; 0x00000001</font></b>
+
+</pre>
+<font size=+0>CAM_TYPE_PERSP is a perspective camera.</font>
+<br><font size=+0>CAM_TYPE_ORTHO is an ortho camera.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_near_clip</td>
+
+<td><font size=+0>near clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_far_clip</td>
+
+<td><font size=+0>far clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_right_clip</td>
+
+<td><font size=+0>right clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_left_clip</td>
+
+<td><font size=+0>left clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_top_clip</td>
+
+<td><font size=+0>top clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_bottom_clip</td>
+
+<td><font size=+0>bottom clipping plane</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_fovy</td>
+
+<td><font size=+0>fovy value</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float cam_aspect</td>
+
+<td><font size=+0>aspect value</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>flaot cam_scale</td>
+
+<td><font size=+0>scale value</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_lookat_obj</td>
+
+<td>ObjList index of camera's close-up point of view Obj.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_eye_obj</td>
+
+<td>ObjList index of camera's point of view Obj.</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 cam_up_obj</td>
+
+<td><font size=+0>ObjList index of camera's upward-facing Obj.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td nopwrap>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg18.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg19.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

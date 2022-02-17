@@ -1,0 +1,499 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../ucode/ucode.html">
+            <IMG BORDER=0 SRC="../images/mh_ucode.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0"><H2>gspS2DEX Microcode</H2></FONT>
+
+The S2DEX microcode has been developed to use Super NES-like sprite and background (BG) functions on the Nintendo 64. Due to these functions, it is easier to create a game using sprites. Also, by treating drawing objects as sprites and BG, you can make your N64 programming similar to conventional sprite game programming.<BR>
+<BR>
+
+The S2DEX microcode is designed specifically for processing 2D expressions. Therefore, 3D primitive drawing for Fast3D and F3DEX is not supported.  However, the several primitives can be drawn using S2DEX Microcode. Please see the "S2DEX Microcode" section of your <I>N64 Programming Manual</I> for the details.<BR>
+<BR>
+
+There are not many similarities between S2DEX and the older Sprite2D microcode.  S2DEX is not an upgrade to Sprite2D; it is a brand new microcode.  Also, sprite libraries such as <FONT FACE="COURIER NEW,COURIER">spInit</FONT> cannot be used in combination with S2DEX because sprite libraries use 3D microcode.  The S2DEX library is completely different from the sprite library.<BR>
+<BR>
+
+As already mentioned, S2DEX is not capable of drawing 3D primitives.  However, S2DEX has a microcode self-loading function that is supported by F3DEX (release 1.20 or later).  Therefore, it is possible for S2DEX to draw 3D primitives by loading F3DEX microcode. However, to use S2DEX to draw 3D primitives by loading F3DEX microcode, you must be have Release version 1.22 or later of the F3DEX microcode and Release version 2.0i or later of the N64 Operating System Library.
+
+
+<H3>DEBUG Information Output Function</H3>
+
+
+There are two types of S2DEX microcode.  One is installed for master ROM, and the other is for debugging. Please see the "S2DEX Microcode" section of your <I>N64 Programming Manual</I> for the details.<BR>
+<BR>
+
+<H3>Passing Commands from RSP to RDP</H3>
+
+The S2DEX microcode supports only the fifo versions (as does the F3DEX series). However, a larger fifo buffer is required by S2DEX than is required by F3DEX.  While this buffer had to be 0x300 bytes or larger for the F3DEX series, it has to be at least 0x800 bytes for S2DEX.  Therefore, if you want the fifo buffer to be shared by the F3DEX series and S2DEX, it must be at least 0x800 bytes to fulfill the S2DEX requirements. The exact fifo size required varies depending on the microcode command. The minimum fifo size is 0x180 bytes for Fast3D.
+
+<H3>Compatibility with F3DEX</H3>
+
+The GBI of S2DEX was derived from F3DEX, so there is no compatibility with the GBI of Fast3D.  When you use S2DEX, you need to define F3DEX_GBI, as you do with F3DEX, before including <B>ultra64.h</B>.<BR>
+<BR>
+
+Also, to use the GBI of S2DEX, you need to include the header file gs2dex.h (in the PR subdirectory). Insert the #include directive after the #include directive for <B>ultra64.h</B>.
+
+<H3>S2DEX GBI Compared to F3DEX GBI</H3>
+
+
+Simply put, S2DEX does not support GBIs that deal with 3D primitives, 4x4 matrices, and light definition.<BR>
+<BR>
+
+The following list refers to the gSP* and gDP* macros only, but the same applies to the gsSP* and gsDP* macros.
+
+<H3>GBI Macros Used by Both S2DEX and F3DEX</H3>
+
+The following GBI macros are fully supported by both S2DEX and F3DEX:<BR>
+<BR>
+
+<B>DL Process Control</B>
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPDisplayList(*)
+<LI>gSPBranchList
+<LI>gSPEndDisplayList</UL></FONT>
+
+<B>Setting Up Segment</B>
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPSegment(*)</UL></FONT>
+
+<B>Loading Microcode</B>
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPLoadUcode*</UL></FONT>
+
+<B>Scissoring</B>
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gDPSetScissor
+<LI>gDPSetScissorFrac</UL></FONT>
+
+<B>Setting RDP Mode</B>
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPSetOtherMode
+<LI>gDPSetCycleType
+<LI>gDPSetTexturePersp
+<LI>gDPSetTextureDetail
+<LI>gDPSetTextureLOD
+<LI>gDPSetTextureLUT
+<LI>gDPSetTextureFilter
+<LI>gDPSetTextureConvert
+<LI>gDPSetCombineKey
+<LI>gDPSetColorDither
+<LI>gDPSetAlphaDither
+<LI>gDPSetBlendMask
+<LI>gDPSetAlphaCompare
+<LI>gDPSetDepthSource
+<LI>gDPSetRenderMode
+<LI>gDPSetColorImage
+<LI>gDPSetDepthImage
+<LI>gDPSetTextureImage
+<LI>gDPSetCombineMode</UL></FONT>
+
+<B>Setting Color Values</B>
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gDPSetEnvColor
+<LI>gDPSetBlendColor
+<LI>gDPSetFogColor
+<LI>gDPSetFillColor
+<LI>gDPSetPrimColor
+<LI>gDPSetPrimDepth
+<LI>gDPSetConvert
+<LI>gDPSetKeyR
+<LI>gDPSetKeyGB</UL></FONT>
+
+<B>Loading to TMEM</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gDPSetTileSize
+<LI>gDPLoadTile
+<LI>gDPSetTile
+<LI>gDPLoadTextureBlock*
+<LI>gDPLoadMultiBlock*
+<LI>gDPLoadTextureTile*
+<LI>gDPLoadMultiTile*
+<LI>gDPLoadTLUT_pal16
+<LI>gDPLoadTLUT_pal256</UL></FONT>
+
+<B>Primitives</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gDPFillRectangle
+<LI>gDPScisFillRectangle
+<LI>gSPTextureRectangle
+<LI>gSPScisTextureRectangle
+<LI>gsSPTextureRectangleFlip</UL></FONT>
+
+<B>Sync Processing</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gDPFullSync
+<LI>gDPTileSync
+<LI>gDPPipeSync
+<LI>gDPLoadSync</UL></FONT>
+
+<B>No-ops</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPNoOp
+<LI>gDPNoOp
+<LI>gDPNoOpTag</UL></FONT>
+
+Note that for S2DEX, the number of segments when using gSPSegment is 16 and the number of DL links when using gSPDisplayList is 18 (the same as F3DEX).
+
+<H3>GBI Macros Not Supported in S2DEX</H3>
+
+The following GBI macros are not supported in S2DEX:<BR>
+<BR>
+
+<B>Setting View</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPViewport
+<LI>gSPClipRatio
+<LI>gSPPerspNormalize</UL></FONT>
+
+<B>Matrix Operation</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPMatrix
+<LI>gSPPopMatrix
+<LI>gSPInsertMatrix
+<LI>gSPForceMatrix</UL></FONT>
+
+<B>Vertex Operation</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPVertex
+<LI>gSPModifyVertex</UL></FONT>
+
+<B>Conditional Branch</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPCullDisplayList
+<LI>gSPBranchLessZ*</UL></FONT>
+
+<B>Polygon Type Setting</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPSetGeometryMode
+<LI>gSPClearGeometryMode
+<LI>gSPTexture
+<LI>gSPTextureL</UL></FONT>
+
+<B>Primitives</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSP1Triangle
+<LI>gSP2Triangles
+<LI>gSP1Quadrangle
+<LI>gSPLine3D
+<LI>gSPLineW3D</UL></FONT>
+
+<B>Lighting</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPNumLights
+<LI>gSPLight
+<LI>gSPLightColor
+<LI>gSPSetLights[0-7]
+<LI>gSPLookAt*
+<LI>gDPSetHilite1Tile
+<LI>gDPSetHilite2Tile</UL></FONT>
+
+<B>Fog</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPFogFactor
+<LI>gSPFogPosition</UL></FONT>
+
+<B>For Old Sprite2D Use</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPSprite2DBase
+<LI>gSPSprite2DScaleFlip
+<LI>gSPSprite2DDraw</UL></FONT>
+
+<H3>GBI Macros New with S2DEX</H3>
+
+For detailed information on the following new macros and the data structures that they use, please see the "S2DEX Microcode" area of the <I>N64 Programming Manual</I>.<BR>
+<BR>
+
+<B>BG Drawing GBI Macros</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPBgRectCopy.html">gSPBgRectCopy</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPBgRect1Cyc.html">gSPBgRect1Cyc</A></FONT></UL></FONT>
+
+<B>Sprite Drawing GBI Macros</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI>gSPObjRectangle
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjRectangleR.html">gSPObjRectangleR</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjSprite.html">gSPObjSprite</A></FONT></UL></FONT>
+
+<B>2D Matrix Operation GBI Macros</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjMatrix.html">gSPObjMatrix</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjSubMatrix.html">gSPObjSubMatrix</A></FONT></UL></FONT>
+
+<B>Drawing Mode Setting GBI Macro</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjRenderMode.html">gSPObjRenderMode</A></FONT></UL></FONT>
+
+<B>Load Texture Processing GBI Macro</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjLoadTxtr.html">gSPObjLoadTxtr</A></FONT></UL></FONT>
+
+<B>Compound Commands GBI Macros</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjLoadTxRect.html">gSPObjLoadTxRect</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjLoadTxRectR.html">gSPObjLoadTxRectR</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPObjLoadTxSprite.html">gSPObjLoadTxSprite</A></FONT></UL></FONT>
+
+<B>Conditional Branching GBI Macros</B>
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPSetStatus.html">gSPSetStatus</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPSelectDL.html">gSPSelectDL</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gsp/gSPSelectBranchDL.html">gSPSelectBranchDL</A></FONT></UL></FONT>
+
+For information about precautions that should be taken when using the macros listed above, please see the "S2DEX Microcode" section of the <I>N64 Programming Manual</I>.<BR>
+<BR>
+
+<B>New Emulation Functions</B><BR>
+<BR>
+
+You can use the following functions to use the CPU to emulate S2DEX GBI macros.
+
+<FONT FACE="COURIER NEW,COURIER"><UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gu/guS2DEmuGBgRect1Cyc.html">guS2DEmuGBgRect1Cyc</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gu/guS2DEmuSetScissor.html">guS2DEmuSetScissor</A></FONT></UL></FONT>
+
+<B>Other Important New Functions</B><BR>
+Use the following function to initialize the S2DEX microcode's <FONT FACE="COURIER NEW,COURIER">uObjBg</FONT> structure (<FONT FACE="COURIER NEW,COURIER">uObjBg_t</FONT>)<BR>
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../gu/guS2DInitBg.html">guS2DInitBg</A></FONT></UL>
+ 
+<H3>Debugging with S2DEX_D Microcode</H3>
+There are two versions of S2DEX microcode; one version for debugging and another version for release. The relationship between the two microcodes is the same as the relationship between <B>libultra_rom.a</B> and <B>libultra_d.a</B>.<BR>
+<BR>
+
+The debug version of the microcode (S2DEX_D) is slower than the release version, and it has the following additional features:
+
+<UL><LI>It outputs the display list processing log.
+<LI>If bad input or undefined commands are encountered, it stops the RSP and reports the problem to the CPU.</UL>
+
+Investigation of problems, such as finding the cause of a runaway RSP, will become easier by checking the display list processing log.<BR>
+<BR>
+
+To use S2DEX_D, you must prepare an output buffer for the RSP display list processing log.  The size must be the same as the display list, and must be 8-byte aligned.
+Once the area is reserved, provide the pointer data of the first address of the area to <FONT FACE="COURIER NEW,COURIER">data_size</FONT>, which is a member variable of the <FONT FACE="COURIER NEW,COURIER">OSTask</FONT> structure.  This member variable is a remnant of the N64 Operating System Library version 1.0, it is used as a log output buffer. This address must not be the Segment address.  When <B>gspS2DEX.fifo_d.o</B> activates as microcode, it is stored in the address specified by the process log.
+For details concerning the processing log’s display methods, please refer to the function <FONT FACE="COURIER NEW,COURIER">ucDebugGfxLogPrint</FONT> in the sample program <B>uc_assert.c</B>.  Also, for details concerning the decision making process for stopping the RSP, please refer to <FONT FACE="COURIER NEW,COURIER">ucCheckAssert</FONT> in the same file.<BR>
+<BR>
+
+Note that the <FONT FACE="COURIER NEW,COURIER">OSTask</FONT> structure’s member variable <FONT FACE="COURIER NEW,COURIER">yield_data_size</FONT> was used to set the log buffer in S2DEX 0.75, but this was switched to <FONT FACE="COURIER NEW,COURIER">data_size</FONT> in S2DEX 0.76 and later.  Please note that the display function <FONT FACE="COURIER NEW,COURIER">ucDebugGfxLogPrint</FONT> has also been corrected.
+
+ 
+<H3>Installation</H3>
+For information on how to install S2DEX microcode, please see the "S2DEX Microcode" section of the <I>N64 Programming Manual</I>.
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+            <BR>
+               <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>

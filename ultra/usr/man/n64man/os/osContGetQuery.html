@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../os/os.html">
+            <IMG BORDER=0 SRC="../images/mh_os.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+osContStartQuery<br>
+osContGetQuery
+</FONT>
+</H2>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER">#include &lt;ultra64.h&gt;        /* <A HREF="../../header/os.htm">os.h</A> */
+s32 osContStartQuery(OSMesgqueue *mq);
+void osContGetQuery(OSContStatus *status);</FONT>
+
+<BR><BR><B>Explanation</B><BR>
+The <u>osContStartQuery</u> function starts to read the values for SI device status and type which is connected to the contoller port and the joyport connector. The <u>osContGetQuery</u> function returns those values to status. By calling these two functions, such status can be obtained that a standard controller is connected to the controller port or that a controller pack is inserted to the joyport connector. These two functions must be paried for use.
+</P>
+
+<P>
+The message queue, mq, must be the initialized message queue linked to OS_EVENT_SI. Pelase see <a href="../os/osSetEventMesg.html">osSetEventMesg</a> to learn how to create this link.
+</P>
+
+<P>
+The osContStartQuery function is called only to issue read command, and the message for completed data reading is returned to the message queue mq. Therefore, the sContGetQuery function should be called to obtain data after the osContStartQuery function is called, and <a href="osRecvMesg.html">osRecvMesg</a> receives a message indicating data reading is completed. The osContStartQuery function takes around 2 milliseconds to complete its data reading and for <a href="osRecvMesg.html">osRecvMesg</a> to receive a final message. Other process such as re-drawing the screen can be performed while you are waiting.
+</P>
+
+<P>
+You must supply a memory block large enough for MAXCONTROLLER structures of type osContStatus. Regarding the <a  href="osContSetCh.html">osContSetCh()</a> function, it is fine to set the number of direct-type SI devices to be used, to a value less than the value set for MAXCONTROLLERS, if the number of direct-type devices used will not be changed in the future.
+</P>
+
+<PRE><font face="courier" size="3">typedef struct {
+    u16     type; 	/* Controller Type */
+    u8      status;	/* Joyport Status */
+    u8      errno;	/* error from device */
+}OSContStatus;
+</font></PRE>
+
+<P>
+One of the following bit is set to 1 to the value for <B>status-&gt;type</B>, depending on which kind of direct- SI device is inserted to the controller port. 0 is returned when no device is inserted to the controller port.
+</P>
+
+<DL>
+  <DT><B>CONT_ABSOLUTE</B>
+  <DD>This bit is set to 1 when a Standard Controller is connected to the N64 Control Deck.  The connected device is judged to be a Controller if the device has a built-in absolute value counter for counting the amount of movement of the control stick as an absolute value from the origin.  As of December 1998, this bit is only set when the Controller is attached.
+  <BR><BR>
+  <DT><B>CONT_RELATIVE</B>
+  <DD>This bit is set to 1 when the mouse is attached.  The connected device is judged to be a mouse if the device has a built-in relative counter for counting the amount of movement of the mouse from the current coordinates.  As of December 1998, this bit is only set when the mouse is attached.
+  <BR><BR>
+  <DT><B>CONT_JOYPORT</B>
+  <DD>This bit is set to 1 when a joyport is attached to the direct-type SI device that is connected to the Controller Port.  As of December 1998, the only SI device with a joyport is the Standard Controller.
+  <BR><BR>
+</DL>
+
+<P>
+Confirm which kind of direct-type SI device is connected to the Controller Port in the following way: 
+<ul>
+<li>If the status->type value masked with CONT_TYPE_MASK is equal to CONT_TYPE_NORMAL, then a Standard Controller is connected.  (When a Standard Controller is connected, the bits are set to 1 for both CONT_ABSOLUTE and CONT_JOYPORT in status->type.  CONT_TYPE_NORMAL includes the bits for both CONT_ABSOLUTE and CONT_JOYPORT.)  
+<P>
+<li>If the masked value is equal to CONT_TYPE_MOUSE, that means a mouse is connected.  
+<P>
+<li>And if it is equal to CONT_TYPE_VOICE it means the Voice Recognition System is connected.
+</ul>
+
+<P>
+If the direct-type SI device connected to the Controller Port is a Standard Controller, then the status of that joyport can be checked with status->status.  The lower bit in status->status is set to 1.  If nothing is inserted in either the Controller Port or the joyport connector, or if a direct-type SI device that is not a Controller is inserted, then 0 is returned.
+</P>
+
+<DL>
+  <DT><B>CONT_CARD_ON</B>
+  <DD>This bit is set when a device has been inserted.
+  <BR><BR>
+  <DT><B>CONT_CARD_PULL</B>
+  <DD>This bit is set when the device has been removed. 
+  <BR><BR>
+</DL>
+
+<P>
+An Error value is set to <B>status-&gt;errno</B> when the function fails to read the status value of SI device. 0 is returned if the function was successful. One of the follwing values is returned should an error occur.
+</P>
+
+<DL>
+  <DT><B>CONT_NO_RESPONSE_ERROR</B>
+  <DD>There is no response from the Controller. The Controller is not inserted. 
+  <BR><BR>
+  <DT><B>CONT_OVERRUN_ERROR</B>
+  <DD>The controller sends data at a higher data transfer rate than the hardware can handle. In this case, you should ignore the data.
+  <BR><BR>
+</DL>
+
+<P>
+<b>Example</b>
+
+<PRE><font face="courier" size="3">void
+mainproc(void)
+{
+   OSMesgQueue  intMesgQueue;
+   OSMesg       intMesgBuf[1];
+   OSContStatus sdata[MAXCONTROLLERS];
+   u8           pattern;
+
+   osCreateMesgQueue(&amp;intMesgQueue, intMesgBuf, 1);
+   osSetEventMesg(OS_EVENT_SI, &amp;intMesgQueue, NULL);
+
+   /* Initialize SI device */
+   osContInit(&amp;intMesgQueue, &amp;pattern, &amp;sdata[0]);    
+   /* start reading SI device status and type */
+   <B>osContStartQuery</B>(&amp;intMesgQueue);
+            %
+            %
+   /* Confirm the end of reading */
+   osRecvMesg(&amp;intMesgQueue, NULL, OS_MESG_BLOCK);
+   /* Obtain SI device status and type */
+   <B>osContGetQuery</B>(&amp;sdata[0]);
+}
+</font></PRE>
+
+<P>
+<B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osContInit.html">osContInit</A><BR>
+<A HREF="../os/osContReset.html">osContReset</A><BR>
+<A HREF="../os/osContStartReadData.html">osContStartReadData</A><BR>
+<A HREF="../os/osContStartReadData.html">osContGetReadData</A><BR>
+<A HREF="../os/osContSetCh.html">osContSetCh</A><BR></FONT>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../os/osSetEventMesg.html">osSetEventMesg</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

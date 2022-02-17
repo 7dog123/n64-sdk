@@ -1,0 +1,234 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.21 SwitchList</h3>
+
+<hr size=3>
+<h4>2) Switch Area</h4>
+
+<blockquote>
+The Switch Area is the actual Switch Node. When compared with other nodes, the Switch Node
+has a slightly different nature. For example, there is occasionally a desire
+to change the link from node A to node C through a certain conditionality,
+when extending the link from node A to node B. In this case, it is possible
+to link node B as a default value and determine a constant for the u32
+type needed to switch to node C. The mapping is as follows.</font>
+<p><font color="#000000">The method specified when linking from each node
+to Switch Node is 0x80000000 | N, if the index of the Switch area in the
+SwitchList area being specified is N. By doing this, the index number is
+determined to be the index number in the SwitchList (and not in the list
+of nodes that should be indexed), when the highest bit of the field described
+on the NIFF converter side is 1. Therefore, it means that indexes of 0x80000000
+or more will not exist in each list. (Of course, a file having an index
+of that magnitude is not realistic.)
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>switch_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_switch_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>link_list_type</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>default_link_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>case_node_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_condition</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>case_val(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>case_val(case_node_num - 1)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>case_dest_index(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>cese_dest_index(case_node_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintedoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+
+<CAPTION ALIGN="top"><b>Switch Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 switch_tag</td>
+
+<td><font size=+0>Tag indicating Switch</font>
+<pre><b><font size=+0>TAG_SWITCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00130100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_switch_index</td>
+
+<td><font size=+0>Index number of this Switch</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_size</td>
+
+<td><font size=+0>Size of this Switch</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 link_list_type</td>
+
+<td><font size=+0>Index number of node to be linked to this Switch node</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 default_link_index</td>
+
+<td><font size=+0>Index number of node to be linked as default</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 case_node_num</td>
+
+<td><font size=+0>Number of nodes to be conditionally branched</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_condition</td>
+
+<td><font size=+0>Condition at branch</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 case_val</td>
+
+<td><font size=+0>Branching condition</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 case_dest_index</td>
+
+<td><font size=+0>Index number of conditional branch destination</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg21.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg22.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

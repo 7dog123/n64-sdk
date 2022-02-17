@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.1.3 Threads</H1>
+
+<P>A thread is a single control unit of a CPU process. Under the N64 operating system, the code for all threads exists and is processed in main memory (RDRAM).  A thread is like a small 
+sub-program.
+
+<P>N64 game programs use of threads, messages, events, and tasks. The priority of the thread determines thread execution order.
+
+
+<H2>Kinds of Threads</H2>
+
+<P>There are several kinds of threads. Each programmer is free to program each thread as is appropriate for a given game application. However, in most cases, a programmer creates the following kinds of threads:</P>
+
+<UL>
+<LI>Initializing thread
+<LI>Game thread
+<LI>Device thread
+<LI>Scheduler thread
+<LI>Graphics thread
+<LI>Audio thread
+<LI>Idle thread
+</UL>
+
+
+<H2>State of the Thread</H2>
+
+<P>At any specific moment in time, a thread is in one of the following states:</p>
+
+<UL>
+<LI><B>Execution state</B> - Only one thread in a game program can be executing at a given time. Therefore, among those threads in the "ready condition" state, the thread with the highest priority is executed.<BR>
+<BR>
+
+<LI><B>Ready condition</B> - A thread is in the ready condition if it is ready to begin executing as soon as it becomes the highest priority thread in the ready condition. A thread can move into the ready condition when its processing is interrupted by a higher priority thread or when it has been waiting (in the waiting condition) for resources and those resources become available.<BR>
+<BR>
+
+<LI><B>Queued state</B> - A thread is in the queued state when it is waiting for a message or event.  Upon receiving the message (or when the event occurs), the thread changes state to the execution state or the ready condition depending on its priority.<BR>
+<BR>
+
+<LI><B>Halt condition</B> - A thread in the halt condition has no standing in the execution schedule. That is, a halted thread doesn't automatically become a candidate for execution unless the program specifically places it in the ready condition. For example, a newly created thread is automatically placed in the halt condition.
+</UL>
+
+<P>Use the <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/os/osStopThread.html" TARGET="new">osStopThread</A></FONT> function to place a thread in halt condition, and use the <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/os/osStartThread.html" TARGET="new">osStartThread</A></FONT> function to place a thread in the ready condition.
+
+<P>The following illustration shows the relationships between the thread conditions:
+
+<P><IMG SRC="../images/2-1-3-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=526 BORDER=0>
+
+<P>Keep the following facts in mind in view of the fact that all threads share RDRAM:</P>
+
+<UL>
+<LI>If every thread accepts data from the same address, each thread has the same data content.
+<LI>Switching from thread to thread is a very fast process.
+<LI>You must strictly control addresses to prevent deadly consequences to other threads.
+<LI>A lower-priority thread is always suspended by a higher priority thread during execution.  Therefore, each thread must have a stack and its own control table so that it can be suspended at any time.
+</UL>
+
+<P>If you raise the optimization level by adding the -O option when you compile your code, it is possible that each thread variable won't be updated. Therefore, you have to use the volatile keyword when using a variable that is common to two threads (threads A and B for example).
+
+
+<H2>Idle Thread Is Necessary</H2>
+
+<P>The idle thread is the lowest priority thread. This thread is executed when the CPU doesn't have any other threads to process. If this thread didn't exist, the CPU couldn't do anything. So even an idle thread has important role. Make sure your game program creates an idle thread.
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

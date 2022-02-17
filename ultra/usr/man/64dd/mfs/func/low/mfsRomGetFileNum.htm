@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileNum</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileNum<br>
+mfsRamGetFileNum</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamGetFileNum(MfsDirID dirID,u16 attr)
+	s32 mfsRomGetFileNum(MfsDirID dirID,u16 attr)
+Arguments:	dirID		Directory ID of directory
+	attr		File or directory specification (logical OR can be taken)
+			MFS_FILE_ATTR_FILE		File
+			MFS_FILE_ATTR_DIRECTORY		Directory
+
+Return value:Number of files (a negative value is an error)
+Function:	Obtains the number of files belonging to the specified directory
+Description:	This function obtains the number of files or directory files in the directory specified by dirID.
+When MFS_ALL_FILES is specified for dirID, this function returns the total number of files or directories in the RAM or ROM area.
+
+Main errors:
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different. 
+	MFS_ERR_VERSION	Different version disk 
+	MFS_ERR_PROTECT	Write protected
+			The medium is volume protected. </pre>
+
+<hr>
+</body>
+</html>

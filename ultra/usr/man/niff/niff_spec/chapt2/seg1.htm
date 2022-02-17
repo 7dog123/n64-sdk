@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>NIFF 1.0: Nodes</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<H2>2.1 Nodes in NIFF</H2>
+
+NIFF uses nodes to link various types of data.  The nodes that comprise NIFF data are listed below.<BR>
+<BR>
+
+<FONT SIZE=3><B>Scene node</B></FONT><BLOCKQUOTE>This node shows the entire Scene.  One scene is described by the various nodes that are linked to the Scene node.</BLOCKQUOTE>
+<FONT SIZE=3><B>Obj node</B></FONT><BLOCKQUOTE>This node shows the Object.  An Obj node is linked to a Shape node, Mat node, Anim node, and Coll node, and represents one object. It can also define an object without any shape data as a NULL object for camera animation.</BLOCKQUOTE>
+<FONT SIZE=3><B>Shape node</B></FONT><BLOCKQUOTE>This node shows the Shape data.  The Shape node is the node for expressing the shape of an object, and expresses a single shape by linking a Vtx node, Tri node, Part node, and Mat node.</BLOCKQUOTE>
+<FONT SIZE=3><B>Vtx node</B></FONT><BLOCKQUOTE>This is the node for describing the vertex data of a polygon.</BLOCKQUOTE>
+<FONT SIZE=3><B>Tri node</B></FONT><BLOCKQUOTE>This is the node for constructing a polygon using vertex data described by Vtx.</BLOCKQUOTE>
+<FONT SIZE=3><B>Color node</B></FONT><BLOCKQUOTE>This is the node related to the color of a triangle or vertex.</BLOCKQUOTE>
+<FONT SIZE=3><B>Vector node</B></FONT><BLOCKQUOTE>This is the node related to the normal vector of a triangle or vertex.</BLOCKQUOTE>
+<FONT SIZE=3><B>St node</B></FONT><BLOCKQUOTE>This is the node related to the texture s, t coordinates of a vertex.</BLOCKQUOTE>
+<FONT SIZE=3><B>Part node</B></FONT><BLOCKQUOTE>This is the node for constructing parts using the triangle data described by Tri. This also holds the links to the Mat node used for that part.</BLOCKQUOTE>
+<FONT SIZE=3><B>Mat node</B></FONT><BLOCKQUOTE>This is the node for describing the material of Obj node, Shape node, Part node.  It has information related to lighting and geometry, and information related to color.  It can also contain user-defined material values.</BLOCKQUOTE>
+<FONT SIZE=3><B>Tex node</B></FONT><BLOCKQUOTE>This is the node that describes the Texture.  Besides the Texture image, it also describes the Texture format and type.</BLOCKQUOTE>
+<FONT SIZE=3><B>Anim node</B></FONT><BLOCKQUOTE>This is the node that describes information related to Animation.</BLOCKQUOTE>
+<FONT SIZE=3><B>Coll node</B></FONT><BLOCKQUOTE>This is the node that describes information related to collision data.</BLOCKQUOTE>
+<FONT SIZE=3><B>Cam node</B></FONT><BLOCKQUOTE>This is the node that describes data related to the Camera.</BLOCKQUOTE>
+<FONT SIZE=3><B>Light node</B></FONT><BLOCKQUOTE>This is the node that describes data related to the Light.</BLOCKQUOTE>
+<FONT SIZE=3><B>Env node</B></FONT><BLOCKQUOTE>This is the node that describes data related to the Environment.</BLOCKQUOTE>
+<FONT SIZE=3><B>Switch node</B></FONT><BLOCKQUOTE>This is a special node that is used to set up links between nodes for use by Previewer software. This node is replaced by the Switch command within the converter.</BLOCKQUOTE>
+<FONT SIZE=3><B>Name node</B></FONT><BLOCKQUOTE>All nodes can be named by linking to the Name node.</BLOCKQUOTE>
+
+<P><I><B>Figure 5</B> -- Links to Each Node a NIFF File</I><BR><BR>
+<IMG SRC="../img/NIFFspec-5.gif" ALT="Illustration" BORDER=0></P>
+
+<HR>
+
+<A HREF="../chapt1/seg4.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg2-1.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P>Copyright 1997-1999 Nintendo Co., Ltd. All rights reserved.</P>
+
+</BODY>
+</HTML>

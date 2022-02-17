@@ -1,0 +1,1076 @@
+<Html>
+<title>
+EnvelopeNode
+</title>
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+15. Envelope Node
+
+</h2>
+<hr size="3">
+<h3>
+
+<A NAME="envelopeListD">(1) EnvelopeList Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 envelope_list_tag
+</td>
+<td>
+Specifies the tags of EnvelopeList.  Please set the tags shown below.
+<pre>
+<b>
+TAG_ENVELOPE_LIST       0x00220000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_list_header_size
+</td>
+<td>
+Specifies the byte size of the EnvelopeListHeader.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_list_size
+</td>
+<td>
+Specifies the byte size of the EnvelopeList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_num
+</td>
+<td>
+Specifies the total number of Envelope.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_size
+</td>
+<td>
+Specifies the byte size of the envolpe Envelope.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+Envelope
+</td>
+<td>
+This is the Envelope area.
+</td>
+</tr>
+</table>
+
+<P><A HREF="envelope_C.htm#envelopeListC">See Data Chunk</A></P>
+
+</blockquote>
+
+<h3>
+
+<A NAME="envelopeD">(2) Envelope Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 envelope_tag
+</td>
+<td>
+Specifies the tags of Envelope.  Please set the tags shown below.
+<pre>
+<b>
+TAG_ENVELOPE            0x00220100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_envelope_index
+</td>
+<td>
+Specifies the Envelope index number.
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td nowrap>
+u32 envelope_header_size
+</td
+<td>
+Specifies the byte size of the EnvelopeHeader.
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td nowrap>
+u32 envelope_size
+</td>
+<td>
+Specifies the byte size of the Envelope.
+</td>
+</tr>
+
+<tr>
+<td  nowrap>
+u32 envelope_name_index
+</td>
+<td>
+Specifies the Envelope name with the index number in the NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_type
+</td>
+<td>
+0x0
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 full_weighted_part_num
+</td>
+<td>
+Specifies the total number of FullWeightedPart.
+</td>
+</tr>
+
+<tr>
+<td  nowrap>
+u32 weighted_part_num
+</td>
+<td>
+Specifies the total number of WeightedPart.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 morph_part_num
+</td>
+<td>
+Specifies the total number of MorphPart.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_tri_num
+</td>
+<td>
+Specifies the total number of EnvelopeTri.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+FullWeightedPart
+</td>
+<td>
+FullWeightPart is the group of vertices for which all Weight are 100% in the Envelope.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+WeightedPart
+</td>
+<td>
+WeightedPart is the group of vertices expressed in a normal Envelope.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+MorphPart
+</td>
+<td>
+MorphPart is the group of vertices affected only by single-axis rotation in the Envelope.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+EnvelopeTri
+</td>
+<td>
+Display 1 polygon using the vertices that belong to one of the parts in the Envelope.
+</td>
+</tr>
+</table>
+
+<P><A HREF="envelope_C.htm#envelopeC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+
+<A NAME="fullWeightedPartD">(3) FullWeightedPart Description (English)</A>
+</h3>
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 full_weighted_part_tag
+</td>
+<td>
+Specifies the tags of FullWeightedPart.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_FULL_WEIGHTED_PART  0x00220110
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_full_weighted_part_index
+</td>
+<td>
+Specifies the index number of the FullWeightedPart in this Envelope.
+</td>
+</tr>
+
+<tr>
+<td  nowrap>
+u32 full_weighted_part_size
+</td>
+<td>
+Specifies the byte size of the FullWeightedPart.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 full_weighted_part_name_index
+</td>
+<td>
+Specifies this FullWeightedPart name with a NameList index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_transform_node_full
+</td>
+<td>
+Use the tags below to specify the node type that affects the Part:
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+For an external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 transform_node_index_full
+</td>
+<td>
+Specifies the index number of the node that affects the Part.<p>
+For an external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_transform_obj_file_name_index
+</td>
+<td>
+When the Obj that affects the FullWeightedPart references an external file, that file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_transform_obj_name_index
+</td>
+<td>
+When the Obj that affects the FullWeightedPart references an external file, that Obj name is specified with an ExternalNameList index number.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 full_weighted_vtx_group_index
+</td>
+<td>
+Specifies the index number of the VtxGroup that specifies the vertex coordinates in this part.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 full_weighted_vtx_nv_group_index
+</td>
+<td>
+Specifies the index number of the VtxNvGroup that specifies the normal vectors of vertices in this part.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 full_weighted_tri_nv_group_index
+</td>
+<td>
+Specifies the index number of the TriNvGroup that specifies the normal vectors of the polygons in this part.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 full_weighted_vtx_color_group_index
+</td>
+<td>
+Specifies the index number of the VtxColorGroup that specifies the vertex color in this part.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 full_weighted_tri_color_group_index
+</td>
+<td>
+Specifies the index number of the TriNvGroup that specifies the polygon color in this part.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 full_weighted_st_group_index
+</td>
+<td>
+Specifies the index number of the StGroup that specifies the ST values of the vertices in this part.
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="envelope_C.htm#fullWeightedPartC">See Data Chunk</A></P>
+
+</blockquote>
+
+
+<h3>
+
+<A NAME="weightedPartD">(4) WeightedPart Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+
+<tr>
+<td nowrap>
+u32 weighted_part_tag
+</td>
+<td>
+Specifies the tags of WeightedPart.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_WEIGHTED_PART       0x00220120
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_weighted_part_index
+</td>
+<td>
+Specifies this WeightedPart index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weighted_part_size
+</td>
+<td>
+Specifies the byte size of the WeightedPart.
+</td>
+</tr>
+
+<tr>
+<td>
+u32 weighted_part_name_index
+</td>
+<td>
+Specifies the WeightedPart name with an index number in the NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 affected_node_num
+</td>
+<td>
+Specifies the total number of the node that affects the vertices in this part.
+</td>
+</tr>
+
+
+
+<tr>
+<td nowrap>
+u32 weight_st_group_index
+</td>
+<td>
+Specifies the StGroup index number indicating the vertices in this part.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_affected_obj_num
+</td>
+<td>
+Specifies the total number of the Obj that affects an external file reference WeightedPart.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 kind_of_affected_node
+</td>
+<td>
+Use the tags shown below to specify the node type that affects the vertices in this part.
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_CHAIN_ROOT_LIST     0x00240000
+TAG_JOINT_LIST          0x00250000
+TAG_EFFECTOR_LIST       0x00260000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 affected_node_index
+</td>
+<td>
+Specifies the node index number that affects the vertices in this part.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 external_affected_obj_file_name_index
+</td>
+<td>
+When the Obj that affects this WeightedPart references an external file, that file name is specified with an ExternalNameList index number.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference (external_affected_obj_num = 0), this field is not specified.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_affected_obj_name_index
+</td>
+<td>
+When the Obj that affects this WeightedPart references an external file, that Obj name is specified with an ExternalNameList index number.<p>
+If there is no external reference (external_affected_obj_num = 0), this field is not specified.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 weight_group_index
+</td>
+<td>
+Specifies the WeightGroup index number indicating the weight value of the effect to each vertex from the node.<p>
+Save the weight value such that the indexes are the same in each vertex pertaining to the corrresponding index.
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_vtx_group_index
+</td>
+<td>
+Specifies the index number of the VtxGroup that indicates the vertices in this part.<p>
+Save the vertex such that the indexes are the same in the various VtxGroup pertaining to the corresponding vertex.
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_vtx_nv_group_index
+</td>
+<td>
+Specifies the index number of the VtxNvGroup that indicates the vertices in this part.<p>
+Save vertex normal such that the indexes are the same in the various VtxNvGroup pertaining to the corresponding vertex.
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_tri_nv_group_index
+</td>
+<td>
+Specifies the index number of the TriNvGroup that indicates the vertices in this part.<p>
+Save triangle normal such that the indexes are the same in the various TriNvGroup pertaining to the corresponding triangle.
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_vtx_color_group_index
+</td>
+<td>
+Specifies the index number of the VtxColorGroup that indicates the vertices in this part.<p>
+Save vertex color such that the indexes are the same in the various VtxColorGroup pertaining to the corresponding vertex.
+
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 weight_tri_color_group_index
+</td>
+<td>
+Specifies the index number of the TriNvGroup that indicates the vertices in this part.<p>
+Save triangle color such that the indexes are the same in the various TriColorGroup pertaining to the corresponding triangle.
+
+
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="envelope_C.htm#weightedPartC">See Data Chunk</A></P>
+
+</blockquote>
+
+<h3>
+
+<A NAME="morphPartD">(5) MorphPart Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 morph_part_tag
+</td>
+<td>
+Specifies the tags of MorphPart.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_MORPH_PART          0x00220130
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_morph_part_index
+</td>
+<td>
+Specifies this MorphPart index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 morph_part_size
+</td>
+<td>
+Specifies the byte size of the MorphPart.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 morph_part_name_index
+</td>
+<td>
+Specifies the index number of the MorphPart name in the NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_node0<br>
+u32 kind_of_node1
+</td>
+<td>
+Use the tags below to specify the node type that affects this part:
+<pre>
+<b>
+TAG_OBJ_LIST            0x00020000
+TAG_JOINT_LIST          0x00250000
+</b>
+</pre>
+For an external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 node_index0<br>
+u32 node_index1
+</td>
+<td>
+Specifies the node index number that affects this part.<p>
+For an external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_obj0_file_name_index<br>
+u32 external_obj1_file_name_index
+</td>
+<td>
+When the Obj that affects this MorphPart references the index number of an external file, that file name is specified with an ExternalNameList.<p>
+Please do not include the directory name etc. when specifying this file name.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 external_obj0_name_index<br>
+u32 external_obj1_name_index
+</td>
+<td>
+When the Obj that affects this MorphPart references the index number of an external file, that Obj name is specified with an ExternalNameList.<p>
+If there is no external reference, please set it to 0xffffffff.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 morph_st_group_index
+</td>
+<td>
+Specifies the StGroup index number specified in this part in correspondence to the table.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 table_num
+</td>
+<td>
+This part divides the angle between two nodes by the specified number and makes a table from which vertices are affected.  The divisor is specified here.  Please specify either 9, 17, 33 or 65.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 morph_vtx_group_index
+</td>
+<td>
+Specifies the VtxGroup index number specified in this part in correspondence to the table.<p>
+The values in VtxGroup are the coordinate values of the node indicated by node_index0.
+
+
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 morph_vtx_nv_group_index
+</td>
+<td>
+Specifies the VtxNvGroup index number specified in this part in correspondence to the table.<p>
+The values in VtxNvGroup are the normal vector values of the node indicated by node_index0.
+
+
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 morph_tri_nv_group_index
+</td>
+<td>
+Specifies the TriNvGroup index number specified in this part in correspondence to the table.<p>
+The values in TriNvGroup are the normal vector values of the node indicated by node_index0.
+
+
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 morph_vtx_color_group_index
+</td>
+<td>
+Specifies the VtxColorGroup index number specified in this part in correspondence to the table.
+</td>
+</tr>
+
+
+
+
+
+<tr>
+<td nowrap>
+u32 morph_tri_color_group_index
+</td>
+<td>
+Specifies the TriColorGroup index number specified in this part in correspondence to the table.
+</td>
+</tr>
+
+</table>
+
+<P><A HREF="envelope_C.htm#morphPartC">See Data Chunk</A></P>
+
+</blockquote>
+
+
+<h3>
+
+<A NAME="envelopeTriD">(6) EnvelopeTri Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 envelope_tri_tag
+</td>
+<td>
+Specifies the tags of EnvelopeTri.  Please set the tags shown below.
+<pre>
+<b>
+TAG_ENVELOPE_TRI       0x00220180
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_envelope_tri_index
+</td>
+<td>
+Specifies the EnvelopeTri index number.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_tri_size
+</td>
+<td>
+Specifies the byte size of the EnvelopeTri.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 kind_of_envelope_for_tri
+</td>
+<td>
+The tags shown below describe the type of Envelope part that is used by tri_nv_index and tri_color_index.
+<pre>
+<b>
+TAG_FULL_WEIGHTED_PART  0x00220110
+TAG_WEIGHTED_PART       0x00220120
+TAG_MORPH_PART          0x00220130
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_part_index_for_tri
+</td>
+<td>
+Specifies the index number of the Envelope part used by tri_nv_index and tri_color_index.
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td nowrap>
+u32 envelope_tri_size
+</td
+<td>
+Specifies the byte size of the EnvelopeTri.
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td nowrap>
+u32 tri_nv_index
+</td>
+<td>
+Specifies the index number of the normal vector of this triangle.<p>
+
+If polygons with four or more sides are to be automatically divided with the CG tool, please output the data such that the same index is assigned for each triangle that is created.
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 tri_color_index
+</td>
+<td>
+Specifies this triangle's color.<p>
+
+If polygons with four or more sides are to be automatically divided with the CG tool, please output the data such that the same index is assigned for each triangle that is created.
+
+
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 weight_index_tri
+</td>
+<td>
+
+When this triangle is a WeightedPart, this specifies it with the index number of the WeightGroup that indicates the weight value. Specify 0xffffffff if this triangle is not a WeightedPart.
+
+<P>If polygons with four or more sides are to be automatically divided with the CG tool, please output the data such that the same index is assigned for each triangle that is created.</P>
+
+
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+EnvelopeVtx
+</td>
+<td>
+This is the EnvelopeVtx area.  Specifies the Vtx comprising this triangle.
+</td>
+</tr>
+
+</table>
+<P><A HREF="envelope_C.htm#envelopeTriC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+
+<A NAME="envelopeVtxD">(7) EnvelopeVtx Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<td nowrap>
+u32 kind_of_envelope
+</td
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/09/30
+..>
+
+<td nowrap>
+u32 kind_of_envelope_part
+</td>
+
+<!..
+-- ADD END --
+..>
+
+<td>
+The tags shown below describe the Envelope type of this vertex.
+<pre>
+<b>
+TAG_FULL_WEIGHTED_PART  0x00220110
+TAG_WEIGHTED_PART       0x00220120
+TAG_MORPH_PART          0x00220130
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 envelope_part_index
+</td>
+<td>
+Specifies the index number of the Envelope part.
+
+<!..
+-- ADD START --
+1998/09/30
+..>
+
+<p>
+The Envelope parts (FullWeightedPart, WeightedPart and MorphPart) indicate different types of part which differ in the way the vertices in the Envelope are weighted.
+
+<!..
+-- ADD END --
+..>
+
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 vtx_index
+</td>
+<td>
+Specifies the index number of the vertex.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 st_index
+</td>
+<td>
+Specifies the index number of the ST value of the vertex.
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 vtx_nv_index
+</td>
+<td>
+Specifies the index number of the normal vectors of the vertex.<p>
+Please output so it is identical to vtx_index.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 vtx_color_index
+</td>
+<td>
+Specifies the index number for the color of the vertex.<p>
+</td>
+</tr>
+
+
+<tr>
+<td nowrap>
+u32 weight_index
+</td>
+<td>
+
+When this vertex is a WeightedPart, this specifies it with the index number of the WeightGroup that indicates the weight value.<br><BR>
+Specify 0xffffffff if this triangle is not a WeightedPart.
+
+
+</td>
+</tr>
+
+
+</table>
+<P><A HREF="envelope_C.htm#envelopeVtxC">See Data Chunk</A></P>
+<P><A HREF="appendix/envelope_system_E.htm">See Appendix 4: Envelope System</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

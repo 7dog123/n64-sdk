@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="5"><b><img src="../../gif/nusystem2.gif"
+width="176" height="30"></b></font><a name="top"><font size="6"><strong> </strong></font><font
+size="5">&quot;INSIDE NuSystem&quot;</font></a></p>
+
+<p><a href="#1"><font size="4"><strong>3.1 How the Scheduler Works</strong></font></a><font
+size="4"><strong><br>
+</strong></font><a href="#2"><font size="4"><strong>3.2 Customizing the Scheduler</strong></font></a></p>
+
+<hr>
+
+<p><a name="1"><font size="5"><strong>3.1 How the Scheduler Works</strong></font></a></p>
+
+<p>The Scheduler directs high-priority system processes that manage other processes and resources. The role of the Scheduler is to decide how new processes should enter the system, in what order they should be executed, and how resources should be allocated to the processes.
+</p>
+
+<p>The NuSystem Scheduler has two primary roles. One is to send retrace and PRE-NMI event messages to threads registered as clients and set the timing for thread swapping. The other is to control the priority of graphics tasks and audio tasks.
+</p>
+
+<p>The first role is needed because the N64 OS has a preemptive multithread organization, and the timing of thread swapping is largely dependent on event messages.
+</p>
+
+<I><B>Figure 3.1</B> -- Thread Swapping</I>
+<p><img src="../../gif/nusys-6.gif"></p>
+
+<p>In Figure 3.1, thread B has higher priority than thread A and is waiting for a retrace message. When thread B receives a retrace message from the Scheduler, CPU control shifts from thread A to thread B, and thread B executes. Once thread B returns to a retrace wait state, processing of thread A begins again.</p>
+
+<p>In the N64 OS, hardware interrupts are also sent as event messages to threads for processing in this way. Every manager in NuSystem has this interrupt processing routine, and the sending of retrace and PRE-NMI event messages to the managers is related to the Scheduler's event handler thread.
+</p>
+
+<p>The Scheduler's other role of managing the reality serial processor (RSP) stack is related to the N64 architecture. N64 uses the RSP to process audio and graphics. Every single frame of audio must be processed, so audio processing must have precedence even in the middle of graphics processing. RSP scheduling is necessary in order to establish this priority.</p>
+
+<p>NuSystem uses two threads for RSP scheduling - the graphics task thread and the audio task thread. Processing is simplified by dividing threads between graphics and audio, so the groups are managed separately as a graphics task and an audio task. The audio task thread has higher priority than the graphics task thread. RSP tasks also have high priority, so if a graphics task is in the middle of execution, it will yield to the execution of an audio task, setting a flag so that another new graphics task does not start.
+</p>
+
+<I><B>Figure 3.2</B> -- RSP Stack Swapping</I>
+
+<p><img src="../../gif/nusys-7.gif"></p>
+
+<p>In Figure 3.2, an audio task request comes during the execution of graphics task 1. The audio task thread halts the graphics task and executes the audio task. After the audio task is finished, the graphics task begins again. When there is a request for a graphics task, the graphics task thread checks the state of the RSP, and if there is an audio task being executed, it waits until that task is finished.
+</p>
+
+<p>The initiator activates the Scheduler by calling the nuScCreateScheduler function. This function activates three Scheduler threads: the event thread, the graphics task thread, and the audio task thread. The retrace, signal processor (SP), display processor (DP), and PRE-NMI event messages are then assigned to the Scheduler's message queue. This initialization function also activates the Video Interface (VI) Manager and specifies the video mode.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="2"><font size="5"><strong>3.2 Customizing the Scheduler</strong></font></a></p>
+
+<p>Be very careful when customizing the Scheduler because it can destabilize the system.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0"
+width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

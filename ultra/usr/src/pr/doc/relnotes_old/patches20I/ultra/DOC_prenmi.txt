@@ -1,0 +1,30 @@
+
+       Regarding  osAfterPreNMI 
+
+
+1. The Situation
+
+   There was a bug that caused the application to stop when the Reset button was pressed when n_audio microcode was used in MPAL mode.
+
+
+2. The Correction
+
+        To correct the bug, the following functions were added:
+
+
+        NAME
+          osAfterPreNMI - Initializes the RSP program counter (PC).
+
+        SYNOPSIS
+          s32  osAfterPreNMI(void)
+
+        DESCRIPTION
+          When the application receives a pre-NMI, make sure to 
+          stop all RSP tasks and then call this function.  
+
+          If the function call succeeds, 0 is returned.
+          If it fails, -1 is returned.  
+
+          To play it safe, we recommend calling this function in modes 
+          other than MPAL (NTSC, etc.) as well.
+

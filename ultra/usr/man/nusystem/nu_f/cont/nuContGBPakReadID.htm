@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="5"><strong>nuContGBPakReadID</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContGBPakReadID(NUContPakFile* handle, OSGbpakId* id,
+u8* status)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>handle	GB Pak control structure (shared with Controller Pak structure)
+id	Pointer to stored registration area data in Game Boy Game Pak ROM 
+status	The detected status</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Checks the registration area in the Game Boy Game Pak ROM</strong></p>
+
+<p>Reads the registration area in the Game Boy Game Pak ROM and then checks the data.
+Internally calls the osGbpakGetStatus function and the osGbpakPower function, puts the obtained status information in "status," and turns power ON.
+   The return value is the value returned by the osGbpakReadId function.</p>
+
+<p><strong>Errors:</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td>PFS_ERR_NOPACK</td>
+        <td>Nothing is inserted in the specified Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_DEVICE</td>
+        <td>Some device other than a GB Pak is inserted in the Controller.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_CONTRFAIL</td>
+        <td>Data transfer with Controller has failed.  Either the Controller is not connected properly, or there may be some problem with the GB Pak or the Controller connector.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NO_GBCART</td>
+        <td>Game Boy Game Pak is not inserted in the GB Pak.</td>
+    </tr>
+    <tr>
+        <td>PFS_ERR_NEW_GBCART</td>
+        <td>Game Boy Game Pak has been removed and reinserted.</td>
+    </tr>
+</table>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

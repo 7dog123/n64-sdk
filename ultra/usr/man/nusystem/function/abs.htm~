@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>標準関数</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1><img src="../../gif/nusystem2.gif" width="176" height="30">標準関数</h1>
+
+<hr>
+
+<h2>abs</h2>
+
+<hr>
+
+<h3>書式：</h3>
+
+<blockquote>
+    <pre>#include &lt;math.h&gt;
+int abs(int n);</pre>
+</blockquote>
+
+<h3>引数：</h3>
+
+<dl>
+    <dt><strong>n</strong></dt>
+    <dd>整数の値<br>
+        <br>
+        </dd>
+</dl>
+
+<h3>戻り値：</h3>
+
+<p>n の絶対値</p>
+
+<h3>説明：</h3>
+
+<p>引数 n の絶対値を返す。</p>
+
+<hr>
+</body>
+</html>

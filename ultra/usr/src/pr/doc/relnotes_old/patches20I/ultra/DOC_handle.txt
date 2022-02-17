@@ -1,0 +1,59 @@
+
+        Correction of Bug in Which osCartRomInit Could Not be Properly 
+	  Handled by the Handler
+
+					Nintendo Development Dept. 3,   
+							Takayoshi Hashida
+
+1. Problems Corrected 
+
+	There was a problem in which there would be a failure in the 
+	handlers operation if the first call of the osCartRomInit function 
+	was executed after the 64DD manager was started up.  This bug has
+      been corrected. 
+
+	Now, this problem occurred only with 64DD compatible cartridge 
+	games (cartridge-started games).  It would not occur with disk-
+	started games or cartridge-dedicated games which were not compatible
+      with 64DD. 
+
+
+2. Precautions when Using the Function
+
+	When calling osCartRomInit or osDriveRomInit for the first time, 
+	the P1 bus is internally accessed in either case (it is not 
+      accessed on the second and subsequent calls).  Consequently, please
+      prevent these functions from being executed for the first time during
+      disk access.  If it is unclear whether or not the disk is being accessed,
+      it is recommended that you move the execution point to a location at 
+      which it is clear that disk access is not being performed.  
+
+	With this bug fix, an osCartRomInit call will operate normally as 
+	long as it is not during disk access, even if it is performed after the
+      64DD manager has been started up, but it is still better to execute it
+      prior to starting up the 64DD manager (because it is clear that there
+      is no disk access occurring). 
+
+	If changes to software which is currently in development are not 
+	simple, it is acceptable simply to add two lines for osCartRomInit 
+	and OsDriveRomInit immediately after osInitialize.  Since the P1 
+	bus will not be accessed when osCartRomInit and OsDriveRomInit are 
+      executed for the second time, doing this will just have the first
+      call taken care of.  There is normally no need to execute these
+      functions a second time, but this method allows you to easily 
+      avoid any trouble. 
+
+
+3. Other Changes 
+
+	The names of global variables which are used in those parts inside 
+	the OS in which the PI handler is operated so that they start with 
+	"__" (two underbars). 
+
+	In the past, the handler address was used to determine whether or 
+	not the handler had been switched (see the Notes at the bottom of 
+	P.3 in the 97/8/25 version of Chapter 27 in the N64 Programming 
+	Manual), but this is now determined by the type in the handler. 
+
+	osCartRomInit and osDriveRomInit only get the handler, and do not change the value of the actual PI bus access speed setting.  (The developer does not need to worry about this setting, because the osEPi function automatically switches the value when ROM is accessed.  However, because the osPi function does not switch the value, operations can go haywire if the same game has both osEPi and osPi.  Please never mix these two functions in one game. Try to unify with osEPi as much as possible.) 
+

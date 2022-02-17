@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>4.2.2 64DD On-Board ROM</H1>
+
+<P>The commercial version of the 64DD (the consumer-use drive) contains built-in mask ROM. This mask ROM is called DDROM.
+
+<P>DDROM contains the following data:</P>
+
+<UL>
+   <LI>IPL
+   <LI>Font data
+   <LI>Wave data
+</UL>
+
+<P><IMG SRC="../images/4-2-2-1.gif" ALIGN="bottom" WIDTH=277 HEIGHT=215>
+
+<P>The development-use 64DD does not have built-in DDROM, but font data and wave data are supplied on the IPL ROM Cartridge.</P>
+
+<P>The IPL program is used to transfer special development IPL to the emulation ROM and to write to the N64 Flash ROM cartridge. In addition, when emulating the 64DD on the hard disk, DDROM can be used when there is no IPL ROM cartridge since the 64DD emulation application supports DDROM.</P>
+
+
+<H2>IPL</H2>
+
+<P>IPL is the program for booting a game from the 64DD disk. This program executes when power is supplied to the N64 Control Deck if a Game Pak is not inserted in the Control Deck at that time.</P>
+
+<P>The main roles of the IPL program are listed below:</P>
+
+<UL>
+   <LI>Checks for expanded memory
+   <LI>Displays a message prompting the user to insert a disk
+   <LI>Displays and sets the clock
+   <LI>Boots a game after a disk is inserted
+   <LI>Stores the ID of the booted disk to RDRAM
+</UL>
+
+<P>All these processes must be performed on the application side when a ROM cartridge is inserted in the N64 since the N64 is started with a non-IPL ROM cartridge.</P>
+
+
+<H2>Font Data</H2>
+
+<P>Font data for both alphabetic characters and kanji characters is prepared in DDROM for the display of error messages. Three functions are available to help determine which address each font starts from.
+
+<P>The start address 0x000A_0000 for font data in DDROM is defined as DDROM_FONT_START in the header file <SPAN ID=mono>leo.h</SPAN>.
+
+
+<H2>Wave Data</H2>
+
+<P>Both 32KHzADPCM and 16KHzADPCM compression format data (.aifc) is available as waveformd data for sounds.
+
+<P>The start address 0x0014_0000 for wave data in DDROM is defined as DDROM_WAVETABLE_START in the header file <SPAN ID=mono>leo.h</SPAN>.
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

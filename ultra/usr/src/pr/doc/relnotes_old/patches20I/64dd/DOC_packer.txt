@@ -1,0 +1,15 @@
+
+        Change of mild
+
+
+1. Re-starting 
+
+        Re-starting means, for example, starting up a different game that is saved in a Disk from a Game Pak game.
+
+        Game that re-starts is called "start up game", and game that is re-started up is called "to-be-started game".   In order to make a start-up game and a to-be-started game", you must add an option to mild and run it.  
+
+2. Option to make games for re-starting.   
+
+        Two options to make games for re-starting are added this time.    They are -B 0 option and -B 1 option.  
+
+        When making a start-up game, use -B 0.  When making a to-be-started game, use -B 1. A to-be-started game must be saved in a Disk all the time.  Therefore, be sure to always use -B 1 option with -DD64 option.  

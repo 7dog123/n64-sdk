@@ -1,0 +1,715 @@
+<html>
+<body bgcolor="FFFFFF">
+<title>
+ObjNode
+</title>
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+6. Obj Node
+
+</h2>
+<hr size=2>
+<h3>
+<A NAME="objNodeC">(1) Obj Node Data Chunk</A>
+</h3>
+<blockquote>
+The following data will be added to Obj Node.
+<p>
+
+<table border>
+<tr>
+<th rowspan="31">
+</th>
+<td>
+u32
+</td>
+<td>
+obj_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_obj_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_state
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_group
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_pri
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_render_cycle_type
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_render_pri
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_render_type0
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_render_type1
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+have_link_billboard
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_lod_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_child_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_parent_link
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_shape_link
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_mat_link
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_anim_link
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_coll_link
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+obj_lod_dist(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+obj_lod_dist(obj_lod_num - 1)
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_lod_link(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_lod_link(obj_lod_num - 1)
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_child_link(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+obj_child_link(obj_child_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<th rowspan="26">
+NintendoExtensionBlock
+</th>
+<td>
+u32
+</td>
+<td>
+obj_render_cycle_type_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_render_pri_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_render_type0_for_fog
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_render_type1_for_fog
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_chain_root_link_num
+</td>
+</tr>
+
+
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_num
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+external_obj_lod_num
+
+<!..
+-- ADD END --
+..>
+
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_num
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_chain_root_link(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+obj_chain_root_link(obj_chain_root_link_num - 1)
+</td>
+</tr>
+
+
+
+
+
+<tr bgcolor="ffc0c0">
+<td>
+
+<!..
+-- DELETE START --
+1998/10/05
+
+u32
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+float
+
+<!..
+-- ADD END --
+..>
+
+</td>
+<td>
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_dist(0)
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+enternal_obj_lod_dist(0)
+
+<!..
+-- ADD END --
+..>
+
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+
+<!..
+-- DELETE START --
+1998/10/05
+
+u32
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+float
+
+<!..
+-- ADD END --
+..>
+
+</td>
+<td>
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_dist(external_lod_obj_num - 1)
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+enternal_obj_lod_dist(external_obj_lod_num - 1)
+
+<!..
+-- ADD END --
+..>
+
+
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_file_name_index(0)
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+external_obj_lod_file_name_index(0)
+
+<!..
+-- ADD END --
+..>
+
+
+
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_file_name_index(external_lod_obj_num - 1)
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+external_obj_lod_file_name_index(external_obj_lod_num - 1)
+
+<!..
+-- ADD END --
+..>
+
+
+
+
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_name_index(0)
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+external_obj_lod_name_index(0)
+
+<!..
+-- ADD END --
+..>
+
+
+
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+
+
+<!..
+-- DELETE START --
+1998/10/05
+
+external_lod_obj_name_index(external_lod_obj_num - 1)
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/10/05
+..>
+
+external_obj_lod_name_index(external_obj_lod_num - 1)
+
+<!..
+-- ADD END --
+..>
+
+
+
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_file_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_file_name_index(external_obj_num - 1)
+</td>
+</tr>
+
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_name_index(0)
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr bgcolor="ffc0c0">
+<td>
+u32
+</td>
+<td>
+external_obj_name_index(external_obj_num - 1)
+</td>
+</tr>
+
+
+<tr bgcolor="ffc0c0">
+<td colspan="2">
+<center>
+--- other extension data ---
+</center>
+</td>
+</tr>
+
+<tr>
+<th rowspan="1">
+
+</th>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</td>
+</tr>
+</table>
+
+<P><A HREF="obj_E.htm#objNodeD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

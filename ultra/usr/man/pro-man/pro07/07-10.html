@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 7</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro07/index7.9.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro07/index7.11.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Non-maskable Interrupts and PRENMI</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+When the console RESET switch is pushed, the hardware generates a HW2 interrupt to the R4300 CPU. The interrupt is serviced by the OS event handler which sends a message of type OS_EVENT_PRENMI to the message queue associated with that event.
+<P>
+The HW2 interrupt will be followed in 0.5 seconds by a non-maskable interrupt (NMI) to the R4300 CPU (unless the RESET switch is pushed and held for more than 0.5 seconds, in which case the NMI will occur when the switch is released).
+<P>
+After the NMI occurs, the hardware is reinitialized, and:
+<ul>
+<li>The first Meg of the game in ROM is copied into the first  megabyte of RAM after the boot address
+<p>
+<li>The BSS for the boot segment is cleared
+<P>
+<li>The boot procedure is called</ul>
+<P>
+
+<b>Note:</b> There are some minor differences between power on reset and NMI reset. After power on reset, the caches are invalidated. After NMI reset, the caches are flushed and then invalidated. Also, the power on reset configures the RAM, while NMI reset leaves RAM alone.
+<P>
+After NMI reset, the contents of memory, except for the 1 Meg that is copied in, are the same as before the NMI occurred.  The global variable, osResetType, is set to 0 on a power up reset and to 1 on a NMI.
+<P>
+If your game does not use the scheduler (please see <a target="_top" href="../pro22/index22.1.html"> Section 22, “Scheduling Audio and Graphics”</a>), it should set up to respond to the OS_EVENT_PRENMI event by associating a message queue with the event early in the game code. This is accomplished as follows:<P>
+
+<font face="courier" size="-1">
+&nbsp;&nbsp;&nbsp;
+osSetEventMesg(OS_EVENT_PRENMI, &#060some_message_queue&#062 )</font>
+
+<P>
+<font face="arial" size="-1">
+If your game does use the scheduler, it needs only to test for a message of type PRE_NMI_MSG on its client message queue. The scheduler performs the event initialization, and forwards the OS_EVENT_PRENMI message to the client message queue as soon as it is received.
+<P>
+Exactly how a game should behave when it receives OS_EVENT_PRENMI is addressed in Nintendo's policies on game consistency (such as fading the screen to black or ramping the audio volume down), but from a technical standpoint, when the game receives the OS_EVENT_PRENMI message it should do the following:
+<ul>
+<li>Stop issuing graphics tasks to prevent the RDP from being stopped in a non-restartable state.
+<P>
+<li>Stop issuing audio tasks to prevent audio “pops”
+<P>
+<li>Stop issuing ROM (PI) DMAs</ul>
+<P>
+To test this, you can generate an NMI on the development board by running the following program <i>on the Indy</i>. This is equivalent to pushing the RESET switch on the Nintendo 64 machine.</font>
+
+<font face="courier" size="3">
+<pre>
+/*
+ * Program to simulate pressing and releasing the RESET
+ * switch on the Ultra 64.
+ *
+ * Copy this code to resetu64.c and type “make resetu64”
+ *
+ */
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <sys/mman.h>
+#include <sys/u64gio.h>
+#include <PR/R4300.h>
+
+#define GIOBUS_BASE     0x1f400000
+#define GIOBUS_SIZE     0x200000        /* 2 MB */
+
+main() 
+{
+    int mmemFd;
+    unsigned char *mapbase;
+    struct u64_board *pBoard;
+
+    if ((mmemFd = open(“/dev/mmem”, 2)) &#060 0) {
+        perror(“open of /dev/mmem failed”);
+        return(1);
+    }
+
+    if ((mapbase = (unsigned char *)mmap(0, GIOBUS_SIZE,
+                    PROT_READ|PROT_WRITE,(MAP_PRIVATE),
+                    mmemFd, PHYS_TO_K1(GIOBUS_BASE))) ==
+                   (unsigned char *)-1) {
+        perror(“mmap”);
+        return(1);
+    }
+
+    pBoard = (struct u64_board *)(mapbase);
+    pBoard->reset_control = _U64_RESET_CONTROL_NMI;
+    sginap(10);
+    pBoard->reset_control = 0;
+}</pre></font>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

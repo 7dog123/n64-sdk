@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuGfxTaskEndFuncSet</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuGfxTaskEndFuncSet(NUGfxTaskEndFunc func)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>func	is the call back function</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Register the call back function which is executed when the graphics task is	completed.
+<P>
+Register the call back function which is executed when the graphics task is	completed.
+ When NU_SC_NOSWAPBUFFER is specified by the nuGfxTaskStart	function, the registered call back 
+function is executed when	completing the graphics task.  The argument of the call back
+		function which is specified by the func file is the pointer for	the NUScTask structure.
+		Nothing is registered by default.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a href="nuGfxTaskEndFuncRemove.htm">nuGfxTaskEndFuncRemove</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

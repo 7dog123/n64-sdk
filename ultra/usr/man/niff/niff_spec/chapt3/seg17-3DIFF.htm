@@ -1,0 +1,149 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-17. CollList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(3)Collエリア</font></h4>
+
+<blockquote><font size=+0>　CollエリアはオブジェクトにリンクするCollisionデータを格納するエリアです。メモリマップは以下のようになっています。</font></blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="6">CollHeader</th>
+
+<td>u32</td>
+
+<td>coll_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_type</td>
+</tr>
+
+<tr>
+<th></th>
+
+<td COLSPAN="2">
+<center>CollData</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　Collエリアメモリマップ</font></b></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 coll_tag</td>
+
+<td><font size=+0>Tag indicating Coll</font>
+<pre>
+<b><font size=+0>TAG_COLL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x000d0100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_index</td>
+
+<td><font size=+0>Index number of this Coll</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_header_size</td>
+
+<td><font size=+0>Size of this CollHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_size</td>
+
+<td><font size=+0>Size of this Coll</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_name_index</td>
+
+<td><font size=+0>Specify Coll name by index number&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="../chapt5/seg1.htm#COLL_TYPE">u32 coll_type</a></td>
+
+<td><font size=+0>Specify Collision type. The following s are current defined
+Collision type.</font>
+<pre>
+<b><font size=+0>COLL_TYPE_NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000000
+COLL_TYPE_TERRAIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000010
+COLL_TYPE_POINT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000020
+COLL_TYPE_CIRCLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000021
+COLL_TYPE_SPHERE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000022
+COLL_TYPE_CYLINDER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000023
+COLL_TYPE_BOX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00000024</font></b>
+
+</pre>
+<font size=+0>COLL_TYPE_NONE: Specify when not Collision. This is (temporarily)
+used when having some CollData. Do not link Coll node to Obj which doesn't
+contain any Collision.</font>
+<br><font size=+0>COLL_TYPE_TERRAIN: Specify Collision as terrain data.</font>
+<br><font size=+0>COLL_TYPE_POINT: Piont Collision</font>
+<br><font size=+0>COLL_TYPE_CIRCLE: Circle Collision</font>
+<br><font size=+0>COLL_TYPE_SPHERE: Sphere Collision</font>
+<br><font size=+0>COLL_TYPE_CYLINDER: Cylinder Collision</font>
+<br><font size=+0>COLL_TYPE_BOX: Box Collision</font>
+<br><font size=+0>Contents of CollData can be modified by the above flag.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg17-4.htm">CollData</a></td>
+
+<td><font size=+0>Storing actual Collision data</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg17-4.htm">次へ</a></font><a href="seg17-4.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

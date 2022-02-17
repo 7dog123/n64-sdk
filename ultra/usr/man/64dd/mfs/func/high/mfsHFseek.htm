@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFseek</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFseek</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHFseek(MfsFile handle, s32
+offset, s32 fromwhere)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>handle		File handle
+offset		Amount to move
+fromwhere	Origin of move</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong> Performs head seek</p>
+
+<p><strong>Description:</strong> This function moves the file position of the file specified by handle.</p>
+
+<p>Also, it moves the read/write head to the file position.
+The new position is located at a distance of offset bytes from the position specified by fromwhere.</p>
+
+<p>The following values can be specified for fromwhere.</p>
+
+<pre>MFS_SEEK_SET 0 Beginning of file
+MFS_SEEK_CUR 1 Current file pointer position
+MFS_SEEK_END 2 End of file</pre>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination
+MFS_ERR_FATAL	File open error
+		The file is not opened.
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_HEADER	Header error
+		The header area is corrupted.  If it is the RAM area, try to repair it.</pre>
+
+<hr>
+</body>
+</html>

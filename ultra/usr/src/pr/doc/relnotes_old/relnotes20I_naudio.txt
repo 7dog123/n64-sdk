@@ -1,0 +1,58 @@
+
+12/15 Release  RELEASE NOTES                            n_audio
+===============================                          (naudio.dev)
+
+Summary:
+-------
+        n_audio library which was released as a patch for 2.0H was contained in Version 2.0I for RCP 2.0. 
+         
+         The directory structure under /usr/src/PR was changed completely and demo software is supposed to be installed in /usr/src/PR/demos.  Refer to /usr/src/PR/README.jp for other detailed structure.  Refer to /usr/src/PR/demos/README_DEMOS_NAUDIO.jp for description of each demo software. 
+
+New functions:
+-------------
+         Refer to "Chapter 28 n_audio library" of the programming manual for details such as how to use n_audio library. 
+
+New demo software:
+-----------------
+        playseq.naudio
+        This is a sample program playseq which was changed to be compatible with n_audio.
+        As a change from playseq_naudio, which was attached as a patch when released, a bug that Partner stops due to a large amount of error outputs when Partner is used, was fixed.              
+         Other than that, this is same as the previous sample program playseq_naudio.   
+
+Modified demo software:
+----------------------
+
+Modifications:
+-------------
+          The following changes were made to the header file, n_libaudio.h.    
+
+        1.extern declaration related with n_audio micro code was included. Specifically, following two lines were added. 
+
+        extern long long int    n_aspMainTextStart[], n_aspMainTextEnd[];
+        extern long long int    n_aspMainDataStart[], n_aspMainDataEnd[];
+
+        2.  A declaration of the function n_alSynFreeFX() was added.  However, it is not implemented like SGI audio library.            
+
+        3.  A declaration of the function n_alSynSetFXtype() was deleted.  This is because the SGI audio library function alSynSetFXtype() which corresponds to this function does not exist, and also this function itself is incomplete.          
+         
+         Due to the above changes, the following changes were made to the header file, n_libaudio_s_to_n.h.  
+
+        1.  A macro to convert the SGI audio library function alSynFreeFX() into n_audio library function n_alSynFreeFX() was added.  
+
+        2.  A macro to convert the SGI audio library function alSynSetFXtype() into n_audio library function n_alSynSetFXtype() was deleted.  
+
+Expanded function:
+-----------------
+
+Functions which will no longer be supported:
+-------------------------------------------
+
+Caution:
+-------
+
+Documents:
+---------
+          Documents provide additional information and updates.  
+----------------------------------------------------------------------------
+Warning:
+---------------------------------------------------------------------------- 

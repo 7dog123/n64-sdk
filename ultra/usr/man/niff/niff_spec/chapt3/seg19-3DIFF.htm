@@ -1,0 +1,356 @@
+<html>
+<basefont size=3>
+<body bgcolor="#ffffffff">
+<h2>第3章　バイナリフォーマット</h2>
+<br>
+<hr size=3>
+<br>
+<h3>3-19. LightList</h3>
+<br>
+<hr size=3>
+<br>
+<h4>
+(3)DirLightエリア
+</h4>
+<p>
+<blockquote>
+　DirLightエリアは1つの方向付きライトに関するデータを記述するエリアです。下記のようにマッピングされています。
+</blockquote>
+<p>
+<center>
+<table border width="300">
+
+<tr>
+<td>
+u32
+</td>
+<td>
+dir_light_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_dir_light_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+dir_light_size
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_color_r
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_color_g
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_color_b
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_z
+</td>
+</tr>
+
+</table>
+<p>
+<b>
+図　DirLightエリアメモリマップ(LIGHT_TYPE_DIRECTION指定時)
+</b>
+<p>
+<table border width="300">
+
+<tr>
+<td>
+u32
+</td>
+<td>
+dir_light_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_dir_light_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+dir_light_size
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_color_r
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_color_g
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_color_b
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+pos_x
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+pos_y
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+pos_z
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_a1
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+dir_a2
+</td>
+</tr>
+
+</table>
+<p>
+<b>
+図　DirLightエリアメモリマップ(LIGHT_TYPE_POSITION指定時)
+</b>
+<p>
+<center>
+<table border width="600">
+<tr>
+<td nowrap>
+u32 dir_light_tag
+</td>
+<td>
+<font size=3>
+DirLightエリアを示すタグです。DirLightのタイプによって下記のタイプを設定してください。
+<pre>
+<b>
+TAG_DIR_LIGHT_DIRECTION&#9;0x000f0101
+TAG_DIR_LIGHT_POSITION&#9;0x000f0102
+</b>
+</pre>
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 this_dir_light_index
+</td>
+<td>
+<font size=3>
+このDirLightエリアのインデックス番号を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 dir_light_size
+</td>
+<td>
+<font size=3>
+このDirLightエリアのバイト数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_color_r
+</td>
+<td>
+<font size=3>
+方向付きライトカラーのRed成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_color_g
+</td>
+<td>
+<font size=3>
+方向付きライトカラーのGreen成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_color_b
+</td>
+<td>
+<font size=3>
+方向付きライトカラーのBlue成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_x
+</td>
+<td>
+<font size=3>
+DiffuseライトのX成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_y
+</td>
+<td>
+<font size=3>
+DiffuseライトのY成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_z
+</td>
+<td>
+<font size=3>
+DiffuseライトのZ成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float pos_x
+</td>
+<td>
+<font size=3>
+PositionalライトのX座標(絶対座標)
+</td>
+</tr>
+<tr>
+<td nowrap>
+float pos_y
+</td>
+<td>
+<font size=3>
+PositionalライトのY座標(絶対座標)
+</td>
+</tr>
+<tr>
+<td nowrap>
+float pos_z
+</td>
+<td>
+<font size=3>
+PositionalライトのZ座標(絶対座標)
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_a1
+</td>
+<td>
+<font size=3>
+Positionalライトの減衰率１
+</td>
+</tr>
+<tr>
+<td nowrap>
+float dir_a2
+</td>
+<td>
+<font size=3>
+Positionalライトの減衰率２
+</td>
+</tr>
+</table>
+</center>
+</center>
+
+<p>
+
+<hr>
+<font size=-1>
+Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.
+</font>
+
+<p align="right"><a href="../index.htm">
+目次へ
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./seg20.htm">
+次へ
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a></p>
+
+</body>
+</html>
+
+

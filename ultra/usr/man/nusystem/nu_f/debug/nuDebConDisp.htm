@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuDebConDisp
+nuDebConDispEX2</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuDebConDisp(u32 flag)
+void nuDebConDispEX2(u32 flag)</pre></font>
+
+<P>
+<font face="arial" size="-1">
+<strong>Arguments</strong>
+<ul>
+<li>flag determines whether or not to swap frame buffer when the task is completed
+<br>NU_SC_SWAPBUFFER	&nbsp; Swap frame buffer
+<br>NU_SC_NOSWAPBUFFER	&nbsp; Do not swap frame buffer</pre>
+</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Displays the console window.
+
+<p>Displays the console output on the screen.  All ASCII characters can be output.</p>
+
+<p>This function internally creates a display list and starts the graphics task.</p>
+
+<p>"flag" is the frame buffer swap flag passed to the argument of the nuGfxTaskStart function.</p>
+
+<p>NuSystem can display up to four console windows.  The settings that can be made for the console window include the window display position, window size, show/hide the window, and scroll on/off.  The character attributes that can be set are the color and blink on/off.</p>
+
+<p>The functions for these various settings are shown below.</p>
+
+<table border="1" bgcolor="#CBCEF8">
+    <tr>
+        <th bgcolor="#E487FC"><font face="arial" size="-1">Function Name</td>
+        <th bgcolor="#E487FC"><font face="arial" size="-1">Function</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConWindowSet</td>
+        <td><font face="arial" size="-1">Set window position and size</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConWindowPos</td>
+        <td><font face="arial" size="-1">Set window position</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConWindowSize</td>
+        <td><font face="arial" size="-1">Set window size</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConWindowShow</td>
+        <td><font face="arial" size="-1">Show/hide window</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConScroll</td>
+        <td><font face="arial" size="-1">Scroll on/off</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConTextColor</td>
+        <td><font face="arial" size="-1">Change text color</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConTextAttr</td>
+        <td><font face="arial" size="-1">Set text attributes</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConTextPos</td>
+        <td><font face="arial" size="-1">Text display position</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">nuDebConClear</td>
+        <td><font face="arial" size="-1">Clear the console window</td>
+    </tr>
+</table>
+
+<p>These functions can also be used with the release-use library.</p>
+
+<p>Please note that when the nuGfxInit function is not used, then the 0th microcode in the microcode structure array defined by the nuGfxSetUcode function is used.</p>
+
+<p>High resolution has been supported since Ver 1.1.
+   nuDebTaskPerfBar0EX2() supporting F3DEX2 was added from Ver 1.2.  It is used when F3DEX_GBI_2 is declared with #define.</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="../graphics/nuGfxInit.htm">nuGfxInit</a>
+<br><a href="../graphics/nuGfxTaskStart.htm">nuGfxTaskStart</a>
+<br><a href="../graphics/nuGfxSetUcode.htm">nuGfxSetUcode</a>
+<br><a href="nuDebConWindowSet.htm">nuDebConWindowSet</a>
+<br><a href="nuDebConWindowPos.htm">nuDebConWindowPos</a>
+<br><a href="nuDebConWindowSize.htm">nuDebConWindowSize</a>
+<br><a href="nuDebConWindowShow.htm">nuDebConWindowShow</a>
+<br><a href="nuDebConScroll.htm">nuDebConScroll</a>
+<br><a href="nuDebConTextColor.htm">nuDebConTextColor</a>
+<br><a href="nuDebConTextAttr.htm">nuDebConTextAttr</a>
+<br><a href="nuDebConClear.htm">nuDebConClear</a>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

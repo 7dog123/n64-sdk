@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.7 VtxList</h3>
+
+<hr size=3>
+<h4>2) VtxGroup Area</h4>
+
+<center>
+<table BORDER>
+<tr>
+<th ROWSPAN="6">VtxGroupHeader</th>
+
+<td>u32</td>
+
+<td>vtx_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_vtx_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_group_name_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>vtx_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>Vtx(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Vtx(vtx_num - 1)</center>
+</td>
+</tr>
+</table>
+</center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>VtxGroup Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 vtx_group_tag</td>
+
+<td><font size=+0>Tag indicating VtxGroup. Set the following flag.</font>
+<pre><b><font size=+0>TAG_VTX_GROUP&nbsp;&nbsp; 0x00040100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_vtx_group_index</td>
+
+<td><font size=+0>Index number of this VtxGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_group_header_size</td>
+
+<td><font size=+0>Size of this VtxGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_group_size</td>
+
+<td><font size=+0>Size of this VtxGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_group_name_index</td>
+
+<td><font size=+0>Index number of VtxGroup name in NameList.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 vtx_num</td>
+
+<td><font size=+0>Total number of Vtx contained in this VtxGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg7-3.htm">Vtx</a></td>
+
+<td><font size=+0>Area for one vertex data</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg7.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg7-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

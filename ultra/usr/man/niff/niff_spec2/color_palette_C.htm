@@ -1,0 +1,349 @@
+<html>
+<body bgcolor="ffffff">
+<title>
+ColorPaletteNode
+</title>
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+14. ColorPalette Node
+</h2>
+<hr size="3">
+<h3>
+<A NAME="colorPaletteListC">(1) ColorPaletteList Data Chunk</A>
+</h3>
+<blockquote>
+ColorPaletteList contains color palette data for Nintendo 64.
+
+
+<table border bgcolor="ffc0c0"> 
+
+<tr>
+<th rowspan="9">
+ColorPaletteListHeader
+</th>
+<td>
+u32
+</td>
+<td>
+color_palette_list_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_list_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_list_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintnedo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_num_byte(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_num_byte(color_palette_num - 1)
+</td>
+</tr>
+
+<tr>
+<th rowspan="5">
+</th>
+<td colspan="2">
+<center>
+ColorPalette(0)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+ColorPalette(color_palette_num - 1)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensiobBlock
+</center>
+</td>
+</tr>
+
+</table>
+<P><A HREF="color_palette_E.htm#colorPaletteListD">See Description</A></P>
+</blockquote>
+
+<h3>
+<A NAME="colorPaletteC">(2) ColorPalette Data Chunk</A>
+</h3>
+
+<blockquote>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<table border bgcolor="ffc0c0"
+
+-- DELETE END --
+..>
+
+<!..
+-- ADD START --
+1998/09/30
+..>
+
+<table border width="300" bgcolor="ffc0c0">
+
+<!..
+-- ADD END --
+..>
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<th rowspan="11"
+ColorPaletteHeader
+</th
+
+-- DELETE END --
+..>
+
+<td>
+u32
+</td>
+<td>
+color_palette_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_color_palette_index
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td
+u32
+</td
+<td
+color_palette_header_size
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_palette_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_type
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+reserved(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+reserved(12)
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<th rowspan="5"
+</th
+
+-- DELETE END --
+..>
+
+<td>
+u32
+</td>
+<td>
+color_array(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+color_array(color_array_num - 1)
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+</table>
+<P><A HREF="color_palette_E.htm#colorPaletteD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

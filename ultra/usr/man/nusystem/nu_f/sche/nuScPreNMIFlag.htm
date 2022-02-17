@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><b><img src="../nusystem2.gif" width="176"
+height="30"></b></font><font  FACE="ARIAL" size="4"><b>Global Variable</b></font></p>
+
+<HR>
+<font face="arial">
+<Pre>
+<font color="#408080" size="6"><b>nuScPreNMIFlag</b></FONT>
+</Pre></font>
+
+<HR>
+<font face="arial" size="-1">
+<b>Syntax</b><br>
+<font face="courier" size="3"><PRE>u8 nuScPrNMIFlag
+</PRE></font>
+
+<P>
+<b>Explanation</b>
+<br>
+PRE NMI Flag.
+<P>
+This is a flag indicating whether or not a PRE NMI has been received.  The following bits are set to 1 by the scheduler. 
+</P>
+
+<ul>
+<li>NU_SC_PRENMI_YET     
+<br>All bits are 0 when no PRE NMI event has occurred.
+<P>
+<li>NU_SC_PRENMI_GET     
+<br>When a PRE NMI event has been received
+<P>
+<li>NU_SC_BEFORE_RESET   
+<br>This bit is set during a 0.5 second interval after  a PRE NMI event has been received. The bit must be set 2 frames before the end of this 0.5 second interval. Once this bit has been set, graphics tasks and audio tasks can no longer be executed. 
+</ul>
+
+<HR>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

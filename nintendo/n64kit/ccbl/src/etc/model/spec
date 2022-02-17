@@ -1,0 +1,23 @@
+#include "../../mysys.h"
+
+beginseg
+	name "code"
+	flags BOOT OBJECT
+	entry _codeSegmentTextStart
+	address 0x0
+	include "dummy.o"
+endseg
+
+beginseg
+        name "model"
+      	flags OBJECT
+	address MODEL_LOAD_ADDR
+        include "model.o"
+endseg
+
+beginwave
+	name    "dummy"
+        include "code"
+	include "model"
+endwave
+

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuGfxSwapCfb</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuGfxSwapCfb(NUScTask* gfxTask)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>gfxTask		is the pointer for the NUScTask structure</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Register the frame buffer which is displayed at the next	retrace.
+
+<p>Register the frame buffer which is displayed next.	The gfxTask is the graphics task structure when the graphics
+	task is executed by the nuGfxTaskStart function and includes the	pointer for the frame buffer.
+	Normally, it is not necessary to call	this function since it is registered in the Graphics Manager by the
+	nuGfxInit function and is executed from the Graphics Manager at	the completion of the graphics task.</p>
+
+<p>The frame buffer which will be displayed at the	next retrace can	be set using this function when registering the original function
+	with the nuGfxSwapCfbFuncSet function.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a href="nuGfxInit.htm">nuGfxInit</a>
+<br><a href="nuGfxSwapCfbFuncSet.htm">nuGfxSwapCfbFuncSet</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

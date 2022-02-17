@@ -1,0 +1,673 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.17 CollList</h3>
+
+<hr size=3>
+<h4>4) CollData Area</h4>
+
+<blockquote>
+The CollData area stores the actual collision data. The CollData area is mapped depending on the coll_type specified in the Call area. Mappings for each type follow.
+</blockquote>
+
+<b>When COLL_TYPE_TERRAIN is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>coll_data_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_data_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_data_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>x_subdivide</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>z_subdivide</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>shape_list_index</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>CollData Area Memory Map</b></CAPTION>
+
+<TABLE BORDER=1 WIDTH=75%>
+<tr>
+<td NOWRAP>u32 coll_data_tag</td>
+
+<td><font size=+0>Tag indicating CollData</font>
+<pre><b><font size=+0>TAG_COLL_DATA_TERRAIN&nbsp;&nbsp; 0x000d0101</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_data_index</td>
+
+<td><font size=+0>Index number of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_data_size</td>
+
+<td><font size=+0>Size of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 x_subdivide</td>
+
+<td><font size=+0>Number of divisions of the whole terrain data in the X direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 z_subdivide</td>
+
+<td><font size=+0>Number of divisions of the whole terrain data in the Z direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 shape_list_index</td>
+
+<td><font size=+0>Index number of Shape data used for terrain data</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When COLL_TYPE_POINT is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>coll_data_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_data_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_data_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>coll_point_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>coll_point_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>coll_point_z</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>CollData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 coll_data_tag</td>
+
+<td><font size=+0>Tag indicating CollData</font>
+<pre><b><font size=+0>TAG_COLL_DATA_POINT&nbsp;&nbsp;&nbsp;&nbsp; 0x000d0102</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_data_index</td>
+
+<td><font size=+0>Index number of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_data_size</td>
+
+<td><font size=+0>Size of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float coll_point_x</td>
+
+<td><font size=+0>X coordinate of Collision point</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float coll_point_y</td>
+
+<td><font size=+0>Y coordinate of Collision point</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float coll_point_z</td>
+
+<td><font size=+0>Z coordinate of Collision point</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When COLL_TYPE_CIRCLE is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>coll_data_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_data_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_data_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>normal_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>normal_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>normal_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>radius</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>CollData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 coll_data_tag</td>
+
+<td><font size=+0>Tag indicating CollData. Set the following tag.</font>
+<pre><b><font size=+0>TAG_COLL_DATA_CIRCLE&nbsp;&nbsp;&nbsp; 0x000d0103</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_data_index</td>
+
+<td><font size=+0>Index number of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_data_size</td>
+
+<td><font size=+0>Size of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_x</td>
+
+<td><font size=+0>X coordinate of the center of the circle</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_y</td>
+
+<td><font size=+0>Y coordinate of the center of the circle</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_z</td>
+
+<td><font size=+0>Z coordinate of the center of the circle</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float normal_x</td>
+
+<td><font size=+0>X component of normal vector of the circle</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float normal_y</td>
+
+<td><font size=+0>Y component of normal vector of the circle</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float normal_z</td>
+
+<td><font size=+0>Z component of normal vector of the circle</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float radius</td>
+
+<td><font size=+0>Radius&nbsp;</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When COLL_TYPE_SPHERE is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>coll_data_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_data_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_data_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>radius</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>CollData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 coll_data_tag</td>
+
+<td><font size=+0>Tag indicating CollData</font>
+<pre><b><font size=+0>TAG_COLL_DATA_SPHERE&nbsp;&nbsp;&nbsp; 0x000d0104</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_data_index</td>
+
+<td><font size=+0>Index number of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_data_size</td>
+
+<td><font size=+0>Size of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_x</td>
+
+<td><font size=+0>X coordinate of sphere's center</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_y</td>
+
+<td><font size=+0>Y coordinate of sphere's center</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_z</td>
+
+<td><font size=+0>Z coordinate of sphere's center</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float radius</td>
+
+<td><font size=+0>Radius</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When COLL_TYPE_CYLINDER is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>coll_data_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_data_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_data_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>radius</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>height</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>CollData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 coll_data_tag</td>
+
+<td><font size=+0>Tag indicating CollData</font>
+<pre><b><font size=+0>TAG_COLL_DATA_CYLINDER&nbsp; 0x000d0105</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_data_index</td>
+
+<td><font size=+0>Index number of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_data_size</td>
+
+<td><font size=+0>Size of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_x</td>
+
+<td><font size=+0>X coordinate of the center (bottom)&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_y</td>
+
+<td><font size=+0>Y coordinate of the center (bottom)</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_z</td>
+
+<td><font size=+0>Z coordinate of the center (bottom)</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float radius</td>
+
+<td><font size=+0>Radius</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float height</td>
+
+<td><font size=+0>Height of cylinder</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When COLL_TYPE_BOX is specified</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>coll_data_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_coll_data_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>coll_data_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>center_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>length_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>length_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>length_z</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>CollData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 coll_data_tag</td>
+
+<td><font size=+0>Tag indicating CollData</font>
+<pre><b><font size=+0>TAG_COLL_DATA_BOX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x000d0106</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_coll_data_index</td>
+
+<td><font size=+0>Index number of CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 coll_data_size</td>
+
+<td><font size=+0>Size of this CollData</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_x</td>
+
+<td><font size=+0>X coordinate of cube's center</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_y</td>
+
+<td><font size=+0>Y coordinate of cube's center</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float center_z</td>
+
+<td><font size=+0>Z coordinate of cube's center</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float length_x</td>
+
+<td><font size=+0>Length of X axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float length_y</td>
+
+<td><font size=+0>Length of Y axial direction</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float length_z</td>
+
+<td><font size=+0>Length of Z axial direction</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg17-3.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg18.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

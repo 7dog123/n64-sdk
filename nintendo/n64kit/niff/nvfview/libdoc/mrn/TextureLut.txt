@@ -1,0 +1,20 @@
+Function 
+-  Defines the texture palette. 
+
+Functions 
+-  void mrnTextureLutInit( MrnTexture *texture_ptr );
+  Initializes mrnTextureLut. 
+
+-  Gfx *mrnTextureLutDrawObjects( MrnTexture *texture_ptr,
+				   MrnContext *context_ptr,
+				   Gfx *gfx_ptr );
+  Renders objects using the texture palette. 
+
+-  Gfx *mrnTextureLutGenerateGfx( MrnTexture *texture_ptr,
+				   MrnContext *context_ptr,
+				   Gfx *gfx_ptr );
+  Generates a gfx which sets the texture palette. 
+
+History
+  1998/10/13 Takamitsu Hirata 
+    TextureLut.h, texturelut.c :  Initial version 

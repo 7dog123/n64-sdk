@@ -1,0 +1,239 @@
+<html>
+<head>
+<title>niff2nvf: NIFF to NVF Converter</title>
+</head>
+<BODY BGCOLOR="#FFFFFF">
+
+<h2>niff2nvf: NIFF to NVF Converter</h2>
+
+<hr>
+<h3>Index</h3>
+<dl>
+<dt><a href=#one><b>1. Introduction to niff2nvf</b></a>
+<dt><a href=#two><b>2. How to use niff2nvf</b></a>
+<dt><a href=#three><b>3. Explanation of converter options</b></a>
+<dt><a href=#four><b>4. Notes</b></a>
+<dd><a href=#4-1><b>(1) The conversion of NIFF 1.0 data</b></a>
+<dd><a href=#4-2><b>(2) Set color combiner (TRI, TRI_ALPHA)</b></a>
+<dd><a href=#4-3><b>(3) Converting textures </b></a>
+<dd><a href=#4-4><b>(4) Textures that are larger than TMEM</b></a>
+<dd><a href=#4-5><b>(5) Converting Global Light </b></a>
+<dt><a href=#five><b>5. Presently unsupported items and limitations</b></a><IMG SRC="../../gif/update.gif" ALIGN="bottom" WIDTH=48 HEIGHT=12 BORDER=0>
+<dt><A HREF="change.htm"><b>6. Revision history</b></A><IMG SRC="../../gif/update.gif" ALIGN="bottom" WIDTH=48 HEIGHT=12 BORDER=0>
+<dt><P><A HREF="convert.htm"><B>Reference: Compatibility of NIFF and NVF data</B></A></P>
+</dl>
+
+<hr>
+<a name="one" >
+<h3>1. Introduction to niff2nvf Converter</h3>
+niff2nvf is the converter used to change NIFF formated data into NVF formated data.  It supports both NIFF version 1.0 and version 2.0 (henceforth NIFF 1.0 and NIFF 2.0).
+However, when NIFF-formatted data created with NIFF 1.0 is converted to NVF format, some data is lost, such as material settings.  Accordingly, niff2nvf outputs supplemental data for this.   
+<p>
+The <a href="../nvf/index.htm" >NVF</a> format was created to make the utmost use of the NIFF 2.0 functions, so numerous functions were added, as shown below.  But because of this, the <a href="../nd/index.htm" >nd</a> structure is in binary format, which is significantly different from the C source file format used with NIFF 1.0.
+<p>
+
+<b>---  Main functions added with niff2nvf & NVF  ---</b>
+<p>
+( NIFF 2.0 data )
+<ul>
+<li>Envelope
+<li>IK
+<li>Animation expansion (Constraint, Hermite interpolation)
+<li>CI texture
+<li>MIP map
+<li>Settings for FOG
+<li>PrimitiveColor Animation
+</ul>
+( NIFF 1.0 data )
+<ul>
+<li>Texture animation
+<li>LOD
+<li>Specular highlight
+</ul>
+
+<!--------------------------------------------------------->
+<p align="right"><a href="index.htm">
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+<!--------------------------------------------------------->
+<hr>
+<a name="two" >
+<h3>2.0 How to use niff2nvf </h3>
+To use niff2nvf, make an entry using the following syntax on the command line. 
+<p>
+<b><i> niff2nvf [options] < input_niff_file > < output_nvf_file > </i></b>
+<p>
+ 
+<p>
+For example, to set the scale at 5.0 and convert the file input.niff into the file output.nvf, you would input the following line. 
+ 
+<p>
+ <b><i>niff2nvf -scale 5.0 input.niff output.nvf</i></b>
+<p>
+ 
+
+<!--------------------------------------------------------->
+<p align="right"><a href="index.htm">
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+<!--------------------------------------------------------->
+
+<hr>
+<a name="three" >
+<h3>3. Explanation of converter options</h3>
+For "val," write the value you want to set for the particular option.
+<dl>
+<dt><b>   -scale val      ( default 20.0 ) </b>
+<dd>         Sets the scale at conversion time.
+<p>
+      In N64, the vertex values are described as signed 16 bit integers in the Vtx table.  The numerics that make up the original model data are rounded off, so the original shape is sometimes destroyed.  If this happens, specify this option.  The default setting is 20x scale.    
+<p>
+<dt><b>   -vtxcache val ( default 32 ) </b>
+<dd>      Changes the microcode's vertex cache.
+<p>
+      In gspF3DEX, the vertex cache is 32, but this can be increased to 64 for gspF3DLX.Rej and to 80 for gspF3DLP.  If you are going to use these microcodes, then increase the vertex cache with this option for conversion.  The default is 32.
+       
+<p>
+<dt><b> -vtxload val     ( default 32 ) </b>
+<dd>   Specifies the number of vertices that can be transferred at once with gsSPVertex.
+<p>
+<dt><b> -vtxseg val  ( default 5 ) </b>
+<dd>   Specifies the segment number for the vertex buffer used by Triangle.
+<p>
+<dt><b> -envgseg val  ( default 5 ) </b>
+<dd>   Specifies the segment number for the vertex buffer used by Envelope, Cluster.
+<p>
+<dt><b> -imgseg val   ( default 6 ) </b>
+<dd>   Specifies the Texture Image segment number.
+<p>
+<dt><b> -tlutseg val  ( default 7 ) </b>
+<dd>   Specifies the Texture LUT  segment number.
+<p>
+<dt><b>    -noreduct   </b>
+<dd>   Stops the Color Reduction process.
+<p>
+      If you are using colors attached to palettes and you exceed the number of palettes for which bit map color is specified, then similar colors will be selected by default by the color reduction process.  You can stop this process by using this option.  However, if there are more bit map colors than palettes, then a message will be output and the conversion will stop.  Thus, if you are going to use this option, confirm that you have reduced colors as much as possible for textures on your own. 
+<p>
+<dt><b> -fog_off </b>
+<dd>   FOG is not output.
+<p>
+       If your data includes a FOG node, the FOG settings will be used.  If those settings have not been set appropriately, you will not be able to preview images as expected.  When the FOG settings are not correct and you cannot preview, use this option to eliminate the FOG so previewing becomes possible.
+<p>
+<dt><b>     -mark_off </b>
+<dd>   NVF's MRKR Chunk is not output.
+<p>
+       MRKR Chunk is output in order to preview the Effector's ICON.  This is not needed for game-use model data, so you can use this option when you want to remove an unnecessary MRKR Chunk.
+
+<p>
+<dt><b> -flot_off </b>
+<dd>    By default, two FLOT Chunks are output: a FLOT for animation time management and a FLOT for Function management.  This option stops these FLOT Chunks from being output.
+<p>
+<dt><b> -use_obj_group </b>
+<dd>    Specifies use of the NIFF obj node's obj_group as the NVF group.
+<p>
+        "group" is used in NVF to control the rendering order, and it has various important roles, such as toggling CAMERA drawing ON/OFF.  With NIFF data, the order for drawing is specified by the 7-step rendering priority of obj_render_pri.  By default, these 7 steps are set as 0-6 in group.  (So an opaque OBJECT is rendered first, for example.)
+ 
+<p>
+        With NVF, group can support 32 steps (0-31) for finer settings.  If you want to set group with detailed specifications, then raise this flag and you can directly specify the NVF group with the NIFF data obj_group.
+ 
+<p>
+<dt><b> -?, -h, -help   </b>
+<dd>    Outputs a simple description of niff2nvf along with the version information.
+</dl>
+
+<!--------------------------------------------------------->
+<p align="right"><a href="index.htm">
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+<!--------------------------------------------------------->
+
+<hr>
+
+<a name="four" >
+<h3>4. Notes</h3>
+<a name="4-1" >
+<h4>(1) The conversion of NIFF 1.0 data </h4>
+     NVF data is designed to function with NIFF 2.0, so when NIFF 1.0 data is converted some data is lacking.   Because of this, niff2nvf converts the following default values to supplement the data.<p>
+<ul>
+<li><b>Material</b>
+<table border=0>
+<tr><td> <td> <td> <td>Red<td>Green<td>Blue<td>Alpha<td>
+<tr><td>Ambient Color <td>=<td>( <td>0xff,<td>0xff,<td>0xff,<td>0xff<td>)
+<tr><td>Emission Color <td>=<td>( <td>0x00,<td>0x00,<td>0x00,<td>0x00<td>)
+<tr><td>Diffuse Color <td>=<td>( <td>0xff,<td>0xff,<td>0xff,<td>0xff<td>)
+</table>
+<p>
+<li><b>FOG settings</b> (Assuming the NIFF1.0 data is 1 cycle)
+<table border=0>
+<tr><td>Cycle Type for fog<td>:<td>2 cycle
+<tr><td>Render Mode for fog<td>:<td>< cycle1 > Specifies G_RM_FOG_SHADE_A 
+<tr><td>           <td>:<td>< cycle2 > Uses the NIFF 1.0 data's Render Mode
+<tr><td>CC Mode for fog<td>:<td>< cycle1 > Uses the NIFF 1.0 data's CC settings
+<tr><td>       <td> <td>           (However, SHADE_ALPHA is replaced by 1)
+<tr><td>       <td>:<td>< cycle2 > [ 0, 0, 0, combined ] 
+<tr><td>       <td> <td>          (cycle 1 results are used) 
+<tr><td>PrimColor for fog<td>:<td>Uses the NIFF 1.0 data's PrimColor
+</table>
+</ul>
+<a name="4-2" >
+<h4>(2) Set color combiner (TRI, TRI_ALPHA)</h4>
+    When MAT_TYPE_NIFF is specified for mat_type, the MAT_CC_NIFF_TRI and MAT_CC_NIFF_TRI_ALPHA flags are present as a type_flag.  This is for Triangle Color combining and has nothing to do with lighting, etc.  In niff2gfx, Triangle Color is assigned to the Env register and ENV is specified in the color combiner settings.  However, NVF does not support use of the Env register in this way, so please do not use MAT_CC_NIFF_TRI.  (If you do use this, 0xffffffff will be entered into the Env register, so the color will be white or opaque.)
+
+<a name="4-3" >
+<h4>(3) Converting textures</h4>
+     In order for NVF to load textures quickly, bank division and swapping processes are carried out on the combiner side, and NVF uses the bit map which has been converted to the format for TMEM.  For this reason, please be careful when independently processing the NVF data bit maps.
+<p>
+     Furthermore, although niff2nvf was made to support all NIFF texture formats, at the present time YUV format textures cannot be previewed correctly.  When a YUV format texture is met, conversion stops as if the format is not supported.
+
+<a name="4-4" >
+<h4>(4) Textures that are larger than TMEM</h4>
+    With niff2gfx, when a texture is larger in size than TMEM, tiles are created from triangle units, and gDPLoadMultiTile is used to load part of the large texture.  But NVF, in order to operate faster, loads the texture after it has been converted into the format for TMEM.  Accordingly, textures that are larger in size than TMEM cannot be used as they are.  To handle this, the niff2nvf converter divides the texture into triangle units and then converts them.  Take care at this time, since the location of the triangles can make for inefficient texture division.
+
+<a name="4-5" >
+<h4>(5) Converting Global Light</h4>
+Sometimes when NIFF data is created with the CG tool the light is output with 0 Color.  When an OBJECT is rendered using light with zero color, the image will be completely black and you will not see anything.  For this reason, niff2nvf will not convert GlobalLight into NVF data format if GlobalLight is comprised solely of Ambient Light with 0 Color.  In these cases, the previewer's default light is used.
+
+<!--------------------------------------------------------->
+<p align="right"><a href="index.htm">
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+<!--------------------------------------------------------->
+
+<hr>
+<a name="five"><h3>5. Presently unsupported items and limitations</h3></a>
+
+<h4>(1)  External references</h4>
+At the present time, there is no support for any external references inside the NIFF data.
+
+<H4>(2) Texture</H4>
+<P>Currently, texture animation is not compatible with the CI format (palettes cannot be switched).</P>
+
+<P>Two textures can be used at the same time for the NIFF material mode, but the second texture cannot currently be converted.</P>
+
+<H4>(3) Texture Format</H4>
+
+<P>The following texture formats are currently compatible:</P>
+
+<UL>
+<LI>RGBA (32bit, 16bit)
+<LI>CI (8bit, 4bit)
+<LI>IA (16bit, 8bit, 4bit)
+<LI>I (8bit, 4bit)
+</UL>
+
+<P><B>Note:</B> The RGB format is converted as RGBA and is not compatible with the YUV format.</P>
+
+<!--------------------------------------------------------->
+<p align="right"><a href="index.htm">
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+<!--------------------------------------------------------->
+
+<hr>
+
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+</body>
+</html>

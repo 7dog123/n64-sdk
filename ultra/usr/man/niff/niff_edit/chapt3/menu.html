@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>Menus</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>Menus</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="Index" border="0"></a>
+<a href="operation.html"><img src="images/previous.gif" alt="Previous page" border="0"></a>
+<a href="popupmenu.html"><img src="images/next.gif" alt="Next page" border="0"></a>
+
+<hr>
+
+<p>The following menu is displayed at the top of the NIFF Editor window:</p>
+
+<img src="images/menu.gif" alt="メニュー">
+
+<p>When these menu items are selected, the following sub menus are displayed:</p>
+
+<table>
+<tr>
+<td nowrap><font size=-1><a href="#file">File menu</a></font></td>
+<td nowrap><font size=-1><a href="#edit">Edit menu</a></font></td>
+<td nowrap><font size=-1><a href="#view">View menu</a></font></td>
+<td nowrap><font size=-1><a href="#tool">Tools menu</a></font></td>
+<td nowrap><font size=-1><a href="#help">Help menu</a></font></td>
+</tr>
+<tr>
+<td valign=top><a href="#file"><img src="images/filemenu.gif" alt="ファイルメニュー" border="0"></a></td>
+<td valign=top><a href="#edit"><img src="images/editmenu.gif" alt="編集メニュー" border="0"></a></td>
+<td valign=top><a href="#view"><img src="images/viewmenu.gif" alt="表示メニュー" border="0"></a></td>
+<td valign=top><a href="#tool"><img src="images/toolmenu.gif" alt="ツールメニュー" border="0"></a></td>
+<td valign=top><a href="#help"><img src="images/helpmenu.gif" alt="ヘルプメニュー" border="0"></a></td>
+</tr>
+</table>
+
+<h3><a name="file">File menu</a></h3>
+
+<p>The following commands are available in the File menu:</p>
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr>
+<td valign="top" nowrap width="30%">New...</td>
+<td>Create a new NIFF file.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Open...</td>
+<td>Open a NIFF file in NIFF Editor.  When this command is selected, the File dialog appears, enabling you to select a file or input the name of a NIFF file to open.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Save</td>
+<td>Save the current contents of NIFF Editor by overwriting to the file with the same file name.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Save As...</td>
+<td>Save the current contents of NIFF Editor to the file with the specified name.  When this command is selected, the File dialog appears, enabling the user to select a file or input a file name to save the NIFF file.</td>
+</tr>
+<tr>
+<td valign="top" nowrap><a href="property.html">Properties</a></td>
+<td>Display the dialog window to view node names and flag information.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Recent files</td>
+<td>Display the names of the 10 most recent files opened by NIFF Editor.  Nothing is displayed if no files have been opened since NIFF Editor was set up.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Exit</td>
+<td>Quit out of NIFF Editor.</td>
+</tr>
+</table>
+
+<h3><a name="edit">Edit menu</a></h3>
+
+<p>The following commands are available in the Edit menu:</p>
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr>
+<td valign="top" nowrap width="30%">Cut</td>
+<td>Cut the node and copy it to the clipboard.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Copy</td>
+<td>Copy the node to the clipboard.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Paste</td>
+<td>Paste the node that has been copied to the clipboard.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Delete</td>
+<td>Delete the selected node.  At this time, the node's links are deleted, and then if other nodes do not link to it, the node itself is deleted.  After that, the node's child nodes are also deleted, providing no nodes other than the parent node link to them.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Change node name</td>
+<td>Change the name of the node in the window.<br>
+To change the node name, edit the node name that is displayed in the dialog window.  If you want to set a new node name for a node that is not linked to the Name area, simply delete "Unknown" and input the desired name.  Conversely, if you want to delete a node name, simply delete the name that is displayed.<br>
+     The characters that can be used for node names are the ASCII characters "!" (0x21) to "~" (0x7e).  Note that the name cannot contain a space nor any Japanese characters.</td>
+</tr>
+</table>
+
+<h3><a name="view">View menu</a></h3>
+
+<p>The following commands are available in the View menu:</p>
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr>
+<td valign="top" nowrap width="30%">[<a href="toolbar.html">Tool bar</a>]</td>
+<td>Show/hide the tool bar</td>
+</tr>
+<tr>
+<td valign="top" nowrap>[<a href="statusbar.html">Status bar</a>]</td>
+<td>Show/hide the status bar</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Split</td>
+<td>Move the split bar to divide the NIFF Editor window into left and right halves.   When this menu item is selected, the mouse cursor automatically moves to the top of the split bar, making it easy to move the split bar.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Large icons</td>
+<td>Show large icons in the list displayed on the right side of the NIFF Editor window.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Small icons</td>
+<td>Show small icons in the list displayed on the right side of the NIFF Editor window.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>List</td>
+<td>Display the list as a simple list on the left side of the NIFF Editor window.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>Details</td>
+<td>Include information about each item in the list displayed on the left side of the NIFF Editor window.</td>
+</tr>
+</table>
+
+<h3><a name="tool">Tools menu</a></h3>
+
+<p>The following commands are available in the Tools menu:</p>
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr>
+<td valign="top" nowrap width="30%">[<a href="operation.html#convert">Convert</a>]</td>
+<td>Convert the loaded NIFF file into a display list.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>[<a href="operation.html#preview">Preview</a>]</td>
+<td>Convert and compile the loaded NIFF file and transfer the created file to IS-VIEWER64 for previewing.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>[<a href="operation.html#quickpreview">Quick Preview</a>]</td>
+<td>Send the loaded NIFF file to IS-VIEWER64 for previewing without compiling.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>[<a href="option.html">Options...</a>]</td>
+<td>Specify the name for the file to be used for converting and previewing.</td>
+</tr>
+</table>
+
+<h3><a name="help">Help menu</a></h3>
+
+<p>The following commands are available in the Help menu:</p>
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr>
+<td valign="top" nowrap width="30%">Topic search</td>
+<td>Display NIFF Editor Help.  The Help files are in HTML format, so when this command is selected, the browser is activated and  NIFF Editor Help is displayed.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>[<a href="support.html">Online support</a>]</td>
+<td>The NIFF Editor online support home page <a href="https://ntsc.nintendo.co.jp" target="_blank">NTSC-ONLINE</a> is displayed in the browser.</td>
+</tr>
+<tr>
+<td valign="top" nowrap>About NIFF Editor</td>
+<td>Display NIFF Editor version information.</td>
+</tr>
+</table>
+
+<hr>
+
+</body>
+</html>

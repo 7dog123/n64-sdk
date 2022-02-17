@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetDirListFirst</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetDirListFirst<br>
+mfsRamGetDirListFirst</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetDirListFirst(MfsDirID upDirID, MfsDirList* dirList, u16 attr)
+	s32 mfsRamGetDirListFirst(MfsDirID upDirID, MfsDirList* dirList, u16 attr)
+Arguments:	upDirID		Directory ID of directory
+	dirList		MfsDirList structure buffer
+	attr		Attribute
+Return value:Directory ID (a negative value is an error)
+Function:	Obtains contents of directory
+Description:	This function searches the contents of the directory specified by upDirID and returns the directory ID of a directory or file having an attribute that matches the attribute specified by attr.
+The following values can be specified for attr.
+
+	MFS_FILE_ATTR_FORBID_W	0x2000	Write protected
+	MFS_FILE_ATTR_FORBID_R	0x1000	Read protected
+	MFS_FILE_ATTR_HIDDEN	0x0800	Hidden file
+	MFS_FILE_ATTR_ENCODE	0x0400	Encoded file
+	MFS_FILE_ATTR_COPYLIMIT	0x0200	Copy limited
+
+	When the return value is MFS_ERR_SEARCHEND, no directory contents were found.  
+When the return value is not an error, the next contents can be obtained by using the mfsR*mGetDirListNext function.
+
+Main errors:
+	MFS_ERR_SEARCHEND	Content not in directory </pre>
+</body>
+</html>

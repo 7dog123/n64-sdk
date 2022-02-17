@@ -1,0 +1,20 @@
+Function 
+-  Define the rendering state of an object. 
+
+Function 
+-  void mrnObjectStateInit( MrnObjectState *state_ptr )
+  Initializes mrnObjectState. 
+
+-  Gfx *mrnObjectStateSetupGeometry( MrnObjectState *state_ptr,
+				    MrnContext *context_ptr,
+				    Gfx *gfx_ptr )
+  Generates a gfx which sets geometry mode. 
+
+-  Gfx *mrnObjectStateSetupBlender( MrnObjectState *ObjectState_ptr,
+				   MrnContext *context_ptr,
+				   Gfx *gfx_ptr )
+  Generates a gfx which sets the render mode. 
+
+History
+  1998/10/12 Takamitsu Hirata 
+    ObjectState.h, objectstate.c :  Initial version 

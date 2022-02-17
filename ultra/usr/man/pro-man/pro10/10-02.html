@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 10</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro10/index10.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro10/index10.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Mixing CPU and SP Data</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+In the previous chapter it was implied that CPU and SP data should be in separate segments as they are addressed differently. This is not mandatory, however, as the addressing can be easily reconciled. Suppose the application defines a display list and includes it in a segment given a CPU addressable KSEG0 address. 
+<P>
+The physical address of this display list can be easily determined with the <i>OS_K0_TO_PHYSICAL</i> (3P) macro or the <i>osVirtualToPhysical</i> (3P) routine. The resulting physical address corresponds to an SP address with segment number if 0, and a segment offset equal to the physical address. This is because the encoding of the SP segment address is as follows:
+
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro10/gif/f10-00-00.gif"></tr></td></table>
+<P>
+
+If the application creates a mapping using segment 0 to a beginning physical address of 0x0, the SP can correctly access objects in DRAM when given a physical address.
+This simplifies the situation somewhat, but the SP microcode takes it a step further: Since the upper four bits of a segment address are not used, they are ignored. Thus an implicit mapping is done from a KSEG0 address to a physical address, and no explicit conversion need be done by the application.
+<P>
+To summarize, as long as an SP segment table mapping is done from segment number 0 to offset 0, CPU KSEG0 addresses can be interpreted correctly by the SP.
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

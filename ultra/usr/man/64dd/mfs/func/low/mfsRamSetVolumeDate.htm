@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamSetVolumeDate</title>
+</head>
+
+<body>
+
+<h1>mfsRamSetVolumeDate</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamSetVolumeDate(LEODiskTime time)
+Arguments:	time	LEODiskTime structure buffer
+Return value:Error
+Function:	Sets volume date
+Description:	This function sets the volume date.
+It changes the volume date to the date specified by time.
+Since the volume date is set when the volume is formatted, normally this function should not be used.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTMFSDISK	Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different.
+	MFS_ERR_VERSION	Different version MFS-format disk
+			The version is an unsupported version.
+	MFS_ERR_PROTECT	Write protected
+			The medium is volume protected. </pre>
+</body>
+</html>

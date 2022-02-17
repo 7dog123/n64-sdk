@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.6.2 3D Transformation</H1>
+
+<P>In general, a matrix like the following is used for three-dimensional coordinate transformations:</P>
+
+<P><IMG SRC="../images/3-6-2-1.gif" ALIGN="bottom" WIDTH=178 HEIGHT=96 BORDER=0>
+
+<P>The coordinate vector that specifies the vertex to be transformed is given as:</P>
+
+<P><IMG SRC="../images/3-6-2-18.gif" ALIGN="bottom" WIDTH=20 HEIGHT=17 BORDER=0>: <IMG SRC="../images/3-6-2-2.gif" ALIGN="bottom" WIDTH=98 HEIGHT=24 BORDER=0>
+
+<P>before the transformation and as:</P>
+
+<P><IMG SRC="../images/3-6-2-19.gif" ALIGN="bottom" WIDTH=20 HEIGHT=17 BORDER=0>: <IMG SRC="../images/3-6-2-3.gif" ALIGN="bottom" WIDTH=98 HEIGHT=24 BORDER=0>
+
+<P>after the transformation.
+
+<P>During the transformation process three different variations of the conversion matrix are created to apply scaling information, movement translation information, and rotational information.</P>
+
+<UL>
+<LI><B>Scaling matrix to specify enlargements or reductions</B><BR>
+<BR>
+
+The matrix that holds the scaling information looks like this:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-2-4.gif" ALIGN="bottom" WIDTH=148 HEIGHT=97 BORDER=0><BR>
+<BR>
+
+The expanded matrix calculation looks like this:<BR>
+<BR>
+<IMG SRC="../images/3-6-2-5.gif" ALIGN="bottom" WIDTH=60 HEIGHT=73 BORDER=0><BR>
+<BR>
+
+As you can see, each coordinate (x, y, and z) is given scaling information (sx, sy, and sz).  Note that if a scaling factor is negative, it reverses the direction of the axis as it did with in the 2D scaling transformation.<BR>
+<BR>
+
+Use the following N64 functions to apply scaling:<BR>
+<BR>
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guScale.html" TARGET="new">guScale</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guScaleF.html" TARGET="new">guScaleF</A></FONT></UL><BR>
+
+
+Obviously when you multiply a matrix where <IMG SRC="../images/3-6-2-6.gif" ALIGN="bottom" WIDTH=98 HEIGHT=22 BORDER=0> by any vector, the vector does not change at all. This type of matrix  is called an identity matrix. The N64 function <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guMtxIdent.html" TARGET="new">guMtxIdent</A></FONT> is used as an example.<BR>
+<BR>
+
+
+<LI><B>Translation matrix to specify movement</B><BR>
+<BR>
+
+The three-dimensional translation matrix looks like this:<BR>
+<BR>
+<IMG SRC="../images/3-6-2-7.gif" ALIGN="bottom" WIDTH=146 HEIGHT=99 BORDER=0><BR><BR>
+
+The translation matrix is used to translate; it translates the coordinates of an object to move it to a new location. When you multiply this matrix by a vector and expand it, you get this result:<BR>
+<BR>
+<IMG SRC="../images/3-6-2-8.gif" ALIGN="bottom" WIDTH=74 HEIGHT=72 BORDER=0><BR><BR>
+
+The translation factors move the specified vertex to a new location, as you can see here:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-2-9.gif" ALIGN="bottom" WIDTH=297 HEIGHT=264 BORDER=0><BR><BR>
+
+You can use the following N64 functions to translate an object's vertex to a new location:<BR>
+<BR>
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guTranslate.html" TARGET="new">guTranslate</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guTranslateF.html" TARGET="new">guTranslateF</A></FONT></UL><BR>
+
+
+<LI><B>Rotation matrix to specify rotation around an axis of origin</B><BR>
+<BR>
+
+Three-dimensional rotational conversion is more difficult than two-dimensional because there are an infinite number of possibilities for the axis of origin.<BR>
+<BR>
+
+However, in most cases, you will specify the rotation of each coordinate axis by using the synthesis method instead of using arbitrary axis rotation (see section 3.6.4, <I>Coordinate System Transformation</I>).<BR>
+<BR>
+
+<IMG SRC="../images/3-6-2-10.gif" ALIGN="bottom" WIDTH=408 HEIGHT=160 BORDER=0><BR><BR> 
+
+X-axis rotation is specified by this matrix:<BR>
+<BR>
+<IMG SRC="../images/3-6-2-11.gif" ALIGN="bottom" WIDTH=197 HEIGHT=97 BORDER=0><BR><BR> 
+
+When you expand the multiplication of a vector with this matrix, each coordinate component becomes:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-2-12.gif" ALIGN="bottom" WIDTH=346 HEIGHT=22 BORDER=0><BR><BR>
+
+As you can see, the X component has not changed.<BR>
+<BR>
+
+Y-axis rotation is specified by this matrix:<BR>
+<BR>
+<IMG SRC="../images/3-6-2-13.gif" ALIGN="bottom" WIDTH=198 HEIGHT=96 BORDER=0><BR><BR>
+
+When you expand the multiplication of a vector with this matrix, each coordinate component becomes:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-2-14.gif" ALIGN="bottom" WIDTH=372 HEIGHT=27 BORDER=0><BR><BR>
+
+As you can see, the Y component has not changed.<BR>
+<BR>
+
+Z-axis rotation is specified by this matrix:<BR>
+<BR>
+<IMG SRC="../images/3-6-2-15.gif" ALIGN="bottom" WIDTH=196 HEIGHT=97 BORDER=0><BR><BR>
+
+When you expand the multiplication of a vector with this matrix, each coordinate component becomes:<BR>
+<BR>
+
+<IMG SRC="../images/3-6-2-16.gif" ALIGN="bottom" WIDTH=348 HEIGHT=22 BORDER=0><BR><BR>
+
+As you can see, the Z component has not changed.<BR>
+<BR>
+
+The following N64 functions provide for rotation:<BR>
+<BR>
+
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guRotate.html" TARGET="new">guRotate</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guRotateF.html" TARGET="new">guRotateF</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guRotateRPY.html" TARGET="new">guRotateRPY</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guRotateRPYF.html" TARGET="new">guRotateRPYF</A></FONT></UL><BR>
+</UL>
+
+
+<H2>Rotational Direction of Each Axis Rotation</H2>
+
+<P>As explained previously, N64 uses the right-handed coordinate system (see section 3.3.1, <I>Right/Left Hand Co-ordinate System</I>). In this system, the positive rotation of an axis is counter clockwise as you directly face the oncoming vector, so the positive direction of each coordinate axis rotation looks like this:</P>
+
+<P><IMG SRC="../images/3-6-2-17.gif" ALIGN="bottom" WIDTH=166 HEIGHT=154 BORDER=0>
+
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

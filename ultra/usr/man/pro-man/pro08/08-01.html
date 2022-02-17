@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 8</title>
+</head>
+<body bgcolor="#FFFFFF">
+<a name="top"></a><table border=0><tr><td><a target="_top" href="../pro07/index7.11.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro08/index8.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<a name="top"></a>
+<font face="arial" color="#29296b"><b>Overview</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The Input/Output (I/O) subsystem exists on most operating systems for three main reasons:
+<ol> 
+<li>to hide device-specific details in device drivers through which the operating system transfers data and control
+<P>
+<li>to provide a fair and safe access scheme to the devices, since most of them are shared resources
+<P>
+<li>to provide a consistent, uniform, and flexible interface to all devices, allowing programs to reference devices by name and perform high-level operations without knowing the device configuration.</ol>
+<P>
+Usually, the I/O software is structured in layers:
+
+<ul>
+<li>device-independent system interface
+<li>device drivers
+<li>interrupt handlers
+</ul>
+<P>
+The interrupt handler is mainly responsible for waking up a device driver after an I/O operation completes. The device driver performs device-specific operations, such as setting up registers for DMA and checking device status. The device-independent system interface provides a uniform interface to user-level software and common I/O functions (that is, protection, blocking, buffering) that can be performed across different devices. 
+<P>
+For the RCP, there are two modes of I/O operations:
+<ul>
+<li>DMA provides a minimum of 64-bit transfer between the RDRAM and any of the devices
+<P>
+<li>IO provides a 32-bit transfer between the CPU and any of the devices</ul>
+
+<P>
+The RCP consists of the following major devices and interfaces (see <a target="main" href="../pro08/08-01.html#fig8.1">Figure 8.1.1 below</a>):
+<ul>
+<li>Reality Signal Processor (RSP)
+<br>This internal processor supports both DMA and IO operations between RDRAM and I/Dmem addresses.
+<P>
+<li>Reality Display Processor (RDP)
+<br>This internal processor supports only DMA from either RDRAM or Dmem addresses to its internal buffer.
+<P>
+<li>Video Interface (VI)
+<br>This write-only interface connects to the video DAC. It supports only DMA from RDRAM to a specific video buffer address and allows you to change video modes and configurations.
+<P>
+<li>Audio Interface (AI)
+<br>This write-only interface connects to the audio DAC. It supports only DMA from RDRAM to a specific audio buffer address and allows you to set the audio frequency.
+<P>
+<li>Peripheral Interface (PI)
+<br>This read-write interface connects to the ROM cartridge and other mass storage devices. It supports DMA as well as IO Read/Write to ROM addresses.
+<P>
+<li>Serial Interface (SI)
+<br>This read-write module interfaces to the PIF, which connects to the game controller and modem devices. It supports DMA as well as IO Read/Write to PIF RAM addresses.
+
+<P>
+<a name="fig8.1"></a>
+<b>Figure 8.1.1</B> &nbsp;Logical View of RCP Internal Major Devices and Interface Modules
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro08/gif/f08-01.gif"></tr></td></table>
+
+<P>
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

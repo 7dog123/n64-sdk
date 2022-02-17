@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 17</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro17/overindex.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro17/index17.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+
+<b><font face="arial" color="#29296b">Generating Audio Output</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The basic process for generating, and playing audio can be summed up by the following steps.
+
+<ol>
+<li>Create and initialize the necessary resources. (Typically, an audio heap, a synthesizer, and a player)
+<P>
+<li>Repeatedly make calls to alAudioFrame to generate the audio task lists.
+<P>
+<li>Execute these audio tasks lists on the RSP.
+<P>
+<li>Set the output DAC’s to point to the audio output, with a call to osAiSetNextBuffer().
+</ol>
+
+<P>
+The creation and initialization of the necessary resources is somewhat dependent on your applications needs, but typically you will need to take the following steps.
+<ol>
+<li>Create an audio heap with a call to alHeapInit.
+<P>
+<li>Set the hardware output frequency with a call to osAiSetFrequency.
+<P>
+<li>Create a synthesizer with a call to alInit(). (alInit will require that you have a callback routine to initialize the audio dma structures)
+<P>
+<li>Create message queues for receiving signals that allow you to time your audio processing.
+<P>
+<li>Create a player, (such as a sound player or sequence player) to sign into the synthesizer. 
+<P>
+<li>Initialize the resources specific to the player(s) that you have created.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamResetFileRC</title>
+</head>
+
+<body>
+
+<h1>mfsRamResetFileRC</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamResetFileRC(MfsDirID dirID)
+Arguments:	dirID	Directory ID of file (directory)
+Return value:Error
+Function:	Resets update counter value of file (directory)
+Description:	This function sets the update counter value of the file (directory) specified by dirID to 0.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found 	
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

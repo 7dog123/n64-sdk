@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContPakFileState</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>s32 nuContPakFileState(NUContPakFile* file, OSPfsState* state)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>*file	Controller Pak structure
+*state	OSPfsState structure pointer</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Error</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Gets Controller Pak game note information</strong></p>
+
+<p>Gets information from the specified game note of the Controller Pak.
+   "file" specifies the Controller Pak structure in the game note opened by the nuContPakFileOpen function in the device opened by the nuContPakOpen function.</p>
+
+<p>To get all of the game note information from inside the Controller Pak, call the nuContPakFileState function 16 times, specifying the values 0 to 15 in order in file.file_no.</p>
+
+<p>The OSPfsState structure indicated by "state" has the following contents.</p>
+
+<pre>typedef struct {
+	u32	file_size;	// Note size (in bytes)
+	u32	game_code;	// Game code
+	u16	company_code;	// Company code
+	char	ext_name[4];	// Note extension
+	char	game_name[16];	// Note name
+}</pre>
+
+<p>The value returned by the osPfsFileState function is stored in file.error.</p>
+
+<p><strong>Errors:</strong></p>
+
+<p>PFS_ERR_NOPACK </p>
+
+<p>Nothing is inserted in the specified Controller.</p>
+
+<p>PFS_ERR_NEW_PACK</p>
+
+<p>The Controller Pak may have been changed.  Please perform the Open process again.</p>
+
+<p>PFS_ERR_INCONSISTENT</p>
+
+<p>There is an inconsistency in the file system management area.</p>
+
+<p>PFS_ERR_CONTRFAIL</p>
+
+<p>Data transfer with Controller has failed.</p>
+
+<p>PFS_ERR_INVALID</p>
+
+<p>Invalid parameter or the game note does not exist.</p>
+
+<hr>
+
+<pre>Reference: <a href="nuContPakOpen.htm">nuContPakOpen</a>, <a href="nuContPakFileOpen.htm">nuContPakFileOpen</a>, <a
+href="nuContPakFileOpenJis.htm">nuContPakFileOpenJis</a><br>
+</pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

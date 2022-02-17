@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuAuSndPlayerPlay</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>ALSndId nuAuSndPlayerPlay(u32 sndNo)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>sndNo		is the number for play back sound</ul>
+
+<P>
+<strong>Return Value</strong><br>
+ID for sound, value is -1 when unable to play back.
+
+<P>
+<strong>Explanation</strong>
+<br>
+Play back the sound which is specified by sound number.
+		Return ID when allocating the specified sound using 
+		alSndpAllocate. Return -1 if the allocation fails
+		and sound cannot be played.
+</p>
+
+<p>After this function is executed, the sound which is specified
+		by an argument remains as the sound object until this function
+		is called again or another sound is specified by
+		nuAuSndPlayerSetSound.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a href="nuAuSndPlayerSetSound.htm">nuAuSndPlayerSetSound</a></pre>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+
+</BODY>
+</HTML>
+

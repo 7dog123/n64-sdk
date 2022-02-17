@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFgetAttr</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFgetAttr</h1>
+
+<hr>
+
+<p><strong>Format</strong></p>
+
+<dl>
+    <dd>s32 mfsHFgetAttr(MfsFile handle)</dd>
+</dl>
+
+<p><strong>Arguments</strong></p>
+
+<dl>
+    <dd><pre>handle File handle</pre>
+    </dd>
+</dl>
+
+<p><strong>Return value</strong></p>
+
+<dl>
+    <dd>Attribute (a negative value is an error)</dd>
+</dl>
+
+<p><strong>Function</strong></p>
+
+<dl>
+    <dd>Obtains file attribute</dd>
+</dl>
+
+<p><strong>Description</strong></p>
+
+<p>This function obtains the attribute of the file specified by handle.
+The file attribute, which is represented by u16-type bits, can have the following contents.</p>
+
+<pre>MFS_FILE_ATTR_DIRECTORY	0x8000 Directory
+MFS_FILE_ATTR_FILE	0x4000 File
+MFS_FILE_ATTR_FORBID_W	0x2000 Write protected
+MFS_FILE_ATTR_FORBID_R	0x1000 Read protected
+MFS_FILE_ATTR_HIDDEN	0x0800 Hidden file
+MFS_FILE_ATTR_ENCODE	0x0400 Encoded file
+MFS_FILE_ATTR_COPYLIMIT	0x0200 Copy limited</pre>
+
+<p><strong>Main errors</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination</pre>
+
+<pre>MFS_ERR_FATAL	File open error
+		The file is not opened.</pre>
+
+<hr>
+</body>
+</html>

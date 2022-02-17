@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Display List Processing</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Understanding the basics of the RSP display list processing is necessary to construct efficient, compact display lists for an application.
+<P>
+The display list (or command list) can be thought of as a hierarchical structure, up to 10 levels deep. A display list may contain a pointer to another display list, and so on. The RSP processes the display list using a stack, pushing and popping the current display list pointer.
+<P>
+For animation, it will be desirable to “double-buffer” parts of the display list; rendering one frame while the data for the next frame is updated. In this case, only the minimum amount of data need be duplicated; only the data which will change for each frame. Swapping between doubled buffers is efficiently done by changing the segment base addresses (and organizing your display list appropriately).
+<P>
+During computation by the RSP, all display lists and their data must remain in the same location until the RSP is finished. This sounds obvious, but is a very common bug, usually the result of incorrect usage of double-buffering techniques. In addition, if the RSP task is interrupted (please see <a target="main" href="../pro08/08-08.html#01">“Section 8.8, "Signal Processor (SP) Functions”</a>), all of the data must remain in the same location when/if the task is restarted.
+<P>
+<a name="01"></a>
+<b>Connecting Display Lists</b>
+<br>
+Hierarchical display list connection can be made with the <i>gsSPDisplayList()</i>  macro. The current display list location is pushed on the display list stack and processing begins with the new display list.
+
+<P>
+<b>Table 1</b> &nbsp;gsSPDisplayList(Gfx *dl)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">dl</td>
+<td width=70%><font face="arial" size="-1">pointer to the display list to attach</td>
+</tr></table>
+
+<p>
+<P>
+<a name="02"></a>
+<b>Branching Display Lists</b>
+<br>
+A display list branch without a push allows you to “chain” together fragments of display lists for more efficient memory utilization.
+<P>
+<b>Table 2</b> &nbsp;gsSPBranchList(Gfx *dl)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">dl</td>
+<td width=70%><font face="arial" size="-1">pointer to the display list to attach</td>
+</tr></table>
+
+<p>
+<P>
+<a name="03"></a>
+<b>Ending Display Lists</b>
+<br>
+All display lists must terminate with an “end” command.
+<P>
+<b>Table 3</b> &nbsp;gsSPEndDisplayList(void)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">none</td>
+<td width=70%><font face="arial" size="-1">none</td>
+</tr></table>
+ 
+<P>
+<a name="04"></a>
+<b>A Few Words About Optimal Display Lists</b>
+<br>
+The display list processor running on the RSP caches display list commands in groups of about 32. This means the optimal display list size is a multiple of 32. A display list of 33 commands (or 65, etc.) would require the display list cache to be refilled during processing, possibly causing a wait state (depending on the DMA engine activity). Obviously not all display lists can keep the list processor running 100% optimally, but it is something to keep in mind when tuning your application.
+<P>
+Another form of display lists which cause less than optimal processing are display lists that look like the following:
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro11/gif/f11-01-00.gif"></tr></td></table>
+<P>
+Since the display list engine is stack-based, a display list that has lots of unnecessary indirect pointers will cause lots of unnecessary pushes and pops, which do have a cost.
+<P>
+Constructs like this are unavoidable at times, for example, when sharing geometries among objects. Therefore, when you have a choice try not to group indirect display list pointers together.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

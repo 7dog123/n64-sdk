@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 7</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro07/index7.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro07/index7.8.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Exceptions and Interrupts</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The R4300 CPU used in the Nintendo64 processes a number of exception types. Most share a common vector, where the operating system receives them, reads the CAUSE register, and determines which of the 16 legal causes occurred. With the exception of the Interrupt cause (which may be either internal or external), all exceptions are internally generated within the CPU. For example, an attempt to fetch a word from an odd address will generate an address error exception.
+<P>
+The operating system has exception handlers for Coprocessor Unusable, Breakpoint, and Interrupt exceptions. All other exceptions are considered to be faults and are passed to the fault handler. The fault handler stops the faulted thread, sends a message to any thread (i.e., rmon) registered for the OS_EVENT_FAULT event, and dispatches the next runnable thread from the system run queue. If the debugger is present, a message is sent from the target to the host and the debugger can show you exactly where the fault occurred. Breakpoint exceptions are also handled in this way. The debugger will stop all user threads in the event of a breakpoint or a fault.
+<P>
+When an interrupt occurs, the CAUSE register is examined to see which interrupt caused the exception. The R4300 supports eight interrupts described in the table below.
+<P>
+<b>Table 1</b> &nbsp;R4300 CPU Interrupts
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=25%><font face="arial" size="-1"><b>Name</td>
+<td width=25%><font face="arial" size="-1"><b>Cause </td>
+<td width=50%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">Software 1</td>
+<td width=25%><font face="arial" size="-1">CAUSE_SW1</td>
+<td width=50%><font face="arial" size="-1">Software generated interrupt 1</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">Software 2</td>
+<td width=25%><font face="arial" size="-1">CAUSE_SW2</td>
+<td width=50%><font face="arial" size="-1">Software generated interrupt 2</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">RCP</td>
+<td width=25%><font face="arial" size="-1">CAUSE_IP3</td>
+<td width=50%><font face="arial" size="-1">RCP interrupt asserted</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">Cartridge</td>
+<td width=25%><font face="arial" size="-1">CAUSE_IP4</td>
+<td width=50%><font face="arial" size="-1">A peripheral has generated an interrupt</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">Pre-nmi</td>
+<td width=25%><font face="arial" size="-1">CAUSE_IP5</td>
+<td width=50%><font face="arial" size="-1">User has pushed reset button on console</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">RDB Read</td>
+<td width=25%><font face="arial" size="-1">CAUSE_IP6</td>
+<td width=50%><font face="arial" size="-1">Indy has read the value in the RDB port</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">RDB Write</td>
+<td width=25%><font face="arial" size="-1">CAUSE_IP7</td>
+<td width=50%><font face="arial" size="-1">Indy has written a value to the RDB port</td></tr>
+<tr>
+<td width=25%><font face="arial" size="-1">Counter</td>
+<td width=25%><font face="arial" size="-1">CAUSE_IP8</td>
+<td width=50%><font face="arial" size="-1">Internal counter has reached its terminal count
+</td></tr>
+</table>
+<P>
+If the RCP interrupts the R4300, then an RCP register is read to see which of the RCP interrupts is being asserted. Thus, processing RCP interrupts is a two stage process - first the cause of the CPU interrupt is determined, then the cause of the RCP interrupt is isolated.
+<p>
+Normally, the Nintendo 64 game threads run with all interrupts enabled. It is possible to change the interrupt masks of the R4300 and RCP via a system call. Clearly, this must be used with great caution, as disabling a critical interrupt can cause the system to lock up or prevent real time response.		
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

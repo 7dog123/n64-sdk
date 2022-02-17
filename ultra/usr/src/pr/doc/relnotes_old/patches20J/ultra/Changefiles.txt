@@ -1,0 +1,33 @@
+
+The following files will be changed when this patch (OS 2.0J Patch 1) is installed.
+<Changed/New files from 2.0J>
+        (Changed)
+        /usr/include/PR/os_internal_reg.h
+        /usr/include/PR/os_version.h
+        (New)
+        /usr/lib/libultra.a: getwatchlo.o
+        /usr/lib/libultra.a: initialize.o
+        /usr/lib/libultra.a: setwatchlo.o
+        /usr/lib/libultra_d.a: getwatchlo.o
+        /usr/lib/libultra_d.a: initialize.o
+        /usr/lib/libultra_d.a: setwatchlo.o
+        /usr/lib/libultra_rom.a: getwatchlo.o
+        /usr/lib/libultra_rom.a: initialize.o
+        /usr/lib/libultra_rom.a: setwatchlo.o
+
+<Chagned/New files from previous patch>
+99/03/19
+        (Changed)
+        /usr/include/PR/os_internal_reg.h
+        /usr/include/PR/os_version.h
+        (New)
+        /usr/lib/libultra.a: getwatchlo.o
+        /usr/lib/libultra.a: initialize.o
+        /usr/lib/libultra.a: setwatchlo.o
+        /usr/lib/libultra_d.a: getwatchlo.o
+        /usr/lib/libultra_d.a: initialize.o
+        /usr/lib/libultra_d.a: setwatchlo.o
+        /usr/lib/libultra_rom.a: getwatchlo.o
+        /usr/lib/libultra_rom.a: initialize.o
+        /usr/lib/libultra_rom.a: setwatchlo.o
+

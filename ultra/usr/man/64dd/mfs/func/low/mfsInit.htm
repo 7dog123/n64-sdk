@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsInit</title>
+</head>
+
+<body>
+
+<h1>mfsInit</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsInit(u8* companyCode, u8* gameCode, s32 dest)
+Arguments:	*companyCode	Company code
+	*gameCode	Game code
+	dest		Destination code
+Return value: Error
+Function:	Initializes internal variables
+Description:	This function initializes the MFS library.  The destination code is specified as an argument.  The leo manager is not started.  The leo manager should be started by the application.
+
+	The Nintendo-issued company code and game code (initial codes) are specified for company and game.  Besides being recorded as file attributes, these are used to restrict file access.
+
+	dest, which is the destination code, is used as disk information when the RAM area is formatted.  The following values can be specified.
+
+		MFS_DESTINATION_JAPAN	0	Japan-oriented
+		MFS_DESITNATION_US	1	US-oriented
+Main errors:
+	MFS_ERR_NO		Normal termination</pre>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHGetStat</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHGetStat</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHGetStat(const u8* path,
+MfsStat* stat)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>*path	Pathname
+*stat	File information structure pointer</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Obtains file or directory information</p>
+
+<p><strong>Description:</strong> This function obtains information related to the file or directory specified by path and returns it to the MfsStat structure specified by stat.  The MfsStat structure consists of the following members.</p>
+
+<pre>typedef struct st_stat{
+	u32 size;		// File size
+	LEODiskTime time;	// Latest update date and time of file
+	u16 attribute;		// Attribute
+	u16 dirID;		// Directory ID
+	u16 upDirID;		// Directory ID of parent directory
+	u8 gameCode[4];		// Game code
+	u8 companyCode[2];	// Company code
+	u8 copyCounter;		// Copy counter
+	u8 renewalCounter; 	// Update counter
+} MfsStat;</pre>
+
+<p>However, the structure for a directory does not have the file size or copy counter members.</p>
+
+<pre>MFS_ERR_NO	Normal termination 
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_NOTFOUND File not found
+		The file was not found, or the directory was not found. </pre>
+
+<hr>
+</body>
+</html>

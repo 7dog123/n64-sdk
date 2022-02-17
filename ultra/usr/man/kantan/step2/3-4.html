@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.3.4 Audio Data Development Process</H1>
+
+<H2>Developing Audio Data</H2>
+
+<P>To develop audio for your games, use the following processes in combination with sound development tools like N64 Sound Tools for the PC.
+
+<P><IMG SRC="../images/2-3-4-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=77 HEIGHT=43 BORDER=0>
+
+<H3>How to Make Wave Table Audio Data (SGI)</H3>
+
+<OL>
+<LI>Sample the voice source data by using any of the many available third-party tools to make the AIFF format file.
+
+<LI>Make a code book (a predictive coefficient table) used for the ADPCM encode by using the N64 <FONT FACE="COURIER NEW,COURIER">tabledesign</FONT> audio development tool.
+
+<LI>Compress the AIFF format file to the AIFC (ADPCM) format by using the N64 <FONT FACE="COURIER NEW,COURIER">vadpcm_enc</FONT> audio development tool.
+
+<LI>Make the source file (.inst file) used by the N64 <FONT FACE="COURIER NEW,COURIER">ic</FONT> audio development tool. The ic source file has defined objects that compose the bank by using a language similar to the C language.
+
+<LI>Make the bank files (<B><FONT FACE="COURIER NEW,COURIER">.tbl</FONT></B>, <B><FONT FACE="COURIER NEW,COURIER">.ctl</FONT></B>, and <B><FONT FACE="COURIER NEW,COURIER">.sym</FONT></B> files) by using the N64 <FONT FACE="COURIER NEW,COURIER">ic</FONT> audio development tool.  The bank files are the informational data files used for audio synthesis by the audio library.
+</OL>
+
+<P><IMG SRC="../images/2-3-4-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=80 HEIGHT=45 BORDER=0>
+
+<H3>How to Make MIDI Sequence Audio Data (SGI)</H3>
+
+<OL>
+<LI>Make the MIDI file by using any of the many available third-party tools.
+
+<LI>If the MIDI file is Type 1, convert it to Type 0 by using the N64 <FONT FACE="COURIER NEW,COURIER">midicvt</FONT> audio development tool.
+
+<LI>When you generate the compact MIDI data generally used for a game program, convert the Type 0 MIDI file to the compact MIDI file by using the N64 <FONT FACE="COURIER NEW,COURIER">midicomp</FONT> audio development tool.
+
+<LI>Make the sequence bank file (<B><FONT FACE="COURIER NEW,COURIER">.sbk</FONT></B> file) by using the N64 audio development tools.
+
+<LI>Pass the bank files (<B><FONT FACE="COURIER NEW,COURIER">.tbl</FONT></B>, <B><FONT FACE="COURIER NEW,COURIER">.ctl</FONT></B>, and <B><FONT FACE="COURIER NEW,COURIER">.sym</FONT></B> files) to the programmer.
+</OL>
+
+<H3>Setting the Sampling Rate</H3>
+
+<P><IMG SRC="../images/2-3-4-3.gif" ALT="Illustration" ALIGN="bottom" WIDTH=77 HEIGHT=43 BORDER=0>
+
+<P>Establish the standard output rate for your game between 22.05kHz and 44.1kHz. In N64, if the rate is too high, the processing time in the RSP takes longer. If you establish a low rate, the processing time in the RSP is shortened, and you can increase the number of voices.
+
+<P>An output rate greater than 32kHz has little effect on human hearing, and a rate less than 22.05kHz produces sampling noise that significantly reduces sound quality.
+
+<P>Develop the audio data using a sampling rate that is as close as possible to the N64 reproduction output rate to ensure good sound quality. If you cannot decide on the exact output rate in advance, develop the audio using a higher sampling rate first, and then convert it to a lower rate if necessary. This will minimize any decline in sound quality.
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

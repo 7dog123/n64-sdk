@@ -1,0 +1,253 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.19 LightList</h3>
+
+<hr size=3>
+<h4>3) DirLight Area</h4>
+
+<blockquote>
+The DirLight area describes data related to one type of directional light. The DirLight area is mapped as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>dir_light_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_dir_light_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>dir_light_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_color_r</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_color_g</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_color_b</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_z</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>DirLight Area Memory Map<BR>(when LIGHT_TYPE_DIRECTION is specified)</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td>u32</td>
+
+<td>dir_light_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_dir_light_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>dir_light_size</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_color_r</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_color_g</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_color_b</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>pos_x</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>pos_y</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>pos_z</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_a1</td>
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>dir_a2</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>DirLight Area Memory Map <BR>(when LIGHT_TYPE_POSITION is specified)</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 dir_light_tag</td>
+
+<td><font size=+0>Tag indicating DirLight. Set the following, depending on the type of light specified.</font>
+
+<pre><b><font size=+0>TAG_DIR_LIGHT_DIRECTION 0x000f0101
+TAG_DIR_LIGHT_POSITION&nbsp; 0x000f0102</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_dir_light_index</td>
+
+<td><font size=+0>Index number of this DirLight</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 dir_light_size</td>
+
+<td><font size=+0>Size of this DirLight</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_color_r</td>
+
+<td><font size=+0>Red component of directional light color</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_color_g</td>
+
+<td><font size=+0>Green component of directional light color</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_color_b</td>
+
+<td><font size=+0>Blue component of directional light color</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_x</td>
+
+<td><font size=+0>X component of Diffuse light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_y</td>
+
+<td><font size=+0>Y component of Diffuse light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_z</td>
+
+<td><font size=+0>Z component of Diffuse light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float pos_x</td>
+
+<td><font size=+0>X coordinate (absolute coordinate) of Positional light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float pos_y</td>
+
+<td><font size=+0>Y coordinate (absolute coordinate) of Positional light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float pos_z</td>
+
+<td><font size=+0>Z coordinate (absolute coordinate) of Positional light</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_a1</td>
+
+<td><font size=+0>Decrement of Positional light 1</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>float dir_a2</td>
+
+<td><font size=+0>Decrement of Positional light 2</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg19-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg20.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

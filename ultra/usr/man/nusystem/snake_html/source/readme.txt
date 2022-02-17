@@ -1,0 +1,12 @@
+font.c
+gamemain.c
+gametitle.c
+gameover.c
+gamepakerr.c
+gfxinit.c
+graphic.c
+hitchk.c
+main.c
+map.c
+math.c
+view.c

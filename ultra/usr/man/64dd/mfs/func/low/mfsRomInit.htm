@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomInit</title>
+</head>
+
+<body>
+
+<h1>mfsRomInit</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomInit(void* buff)
+Arguments:	*buff		Buffer
+Return value:Error
+Function:	Initializes ROM area library
+Description:	This function initializes the ROM area library so the ROM area can be accessed.
+A buffer having the size of MAX_BLK_SIZE is specified for *buff.
+This buffer must be aligned at a 16-byte boundary.
+
+Main errors:
+	MFS_ERR_NO		Normal termination</pre>
+</body>
+</html>

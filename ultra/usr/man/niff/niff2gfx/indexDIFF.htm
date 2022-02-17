@@ -1,0 +1,1946 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+   <title>niff2gfxコンバータ&lt;/h1>
+</title>
+</head>
+<body bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<h1>
+niff2gfxコンバータ</h1>
+
+<hr>
+<ol>
+<li>
+<a href="#niff2gfx">niff2gfxの使い方</a></li>
+
+<dl>
+<dt>
+<a href="#tokuchou">特徴</a></dt>
+
+<dt>
+<a href="#usage">使い方</a><!--     <img src="../../gif/update.gif" width="48" height="12"> --></dt>
+
+<dt>
+<a href="#option">オプション解説</a><!--     <img src="../../gif/update.gif" width="48" height="12"> --></dt>
+
+<dt>
+<a href="#filespec">インダイレクトファイル仕様</a></dt>
+</dl>
+
+<li>
+<a href="#output">出力仕様</a></li>
+
+<dt>
+<a href="#gbi">ＧＢＩ出力仕様</a></dt>
+
+<dt>
+<a href="#seigen">制限</a></dt>
+
+<dt>
+<a href="#typecc">mat_type が MAT_TYPE_NIFF の時のＣＣ設定の仕様</a></dt>
+
+<li>
+<a href="#bugs">現在わかっているバグ、または制限</a></li>
+
+<li>
+<a href="history.htm">変更履歴</a><img SRC="update.gif" height=12 width=48></li>
+</ol>
+
+<hr>
+<p><a NAME="niff2gfx"></a>
+<h2>
+１．niff2gfxの使い方</h2>
+<a NAME="tokuchou"></a>
+<h3>
+特徴：</h3>
+<!-- <blockquote> -->
+<ul>
+<li>
+NIFF形式のデータフォーマットをGBIディスプレイリスト形式のＣソースファイルにコンバートするコンバーターです。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+ディスプレイリストで最もパフォーマンスに影響するテクスチャのロードを、ポリゴンソートの最上位に置いてパフォーマンスの向上を図っています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+高度な頂点キャッシュアルゴリズムを適用して、NINTENDO<sup>64</sup>で、よりパフォーマンスの高いディスプレイリストを出力します。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+複数のオブジェクト、階層構造をもったオブジェクトをコンバートする為、オブジェクトの管理情報も出力します。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+オブジェクト管理情報は、添付のビューワーキットに含まれるプログラムによって解析され、正常にオブジェクトの表示（ディスプレイリスト呼び出し）を行います。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+対応するマイクロコードは、gspF3DEX をベースで作成されます。よって、関連するマイクロコード（spF3DLX,
+gspF3DLX.Rej, gspF3DLP.Rej, gspL3DEX）で転用可能です。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+頂点バッファ数もオプション(-vtxcache)で設定出来るため、各マイクロコードのパフォーマンスを、より生かしたデータを出力できます。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+オブジェクト構造体＋実機用表示ドライバで、obj_render_pri に合わせた表示順でオブジェクトを表示するため、半透明、デカールマップといったＮ６４の機能を生かしたデータを矛盾無く表示することが可能です。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+出力する Gfx は、Gfx 内部で使用するリソースに関して、アニメーションなど、
+外からのリソースを操作する場合もあるので、セグメント分割されています。
+セグメントによる参照は、Vtx, Texture Imge, TLUT の４つのタイプにそれぞれ一
+つずつ割り振っています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+Binary files can be outputted for <a href="../n64prev/quickprev.htm">Qick
+Pre-view.</a></li>
+
+<br>&nbsp;
+<p>&nbsp;</ul>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a NAME="usage"></a>
+<h2>
+使い方：</h2>
+
+<blockquote>コマンドラインから、niff2gfx -h と実行すると、次のように表示されます。
+<pre>
+<font size=+1>NIFF to N64 GBI format convertor. version 1.3.6
+supported format revisions: NIFF 1.0
+usage: niff2gfx [option] infile outfile
+&nbsp; infile&nbsp; ... NIFF format file.
+&nbsp; outfile ... N64 Displaylist C source file.
+option:
+&nbsp; -q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quiet mode.
+&nbsp; -verbose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; verbose mode.
+&nbsp; -header fname, -d fname
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set output header filename.
+&nbsp; -label str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set label string.(label string = str)
+&nbsp; -scale fval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set convert scale.(scale = (float)fval)
+&nbsp; -niffinfo fname&nbsp; NIFF information onto file fname.
+&nbsp; -nocomdef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; common define,typedef block no output.
+&nbsp; -regmask val&nbsp;&nbsp;&nbsp;&nbsp; prevent RDP register assignment.
+&nbsp; -vtxshare val&nbsp;&nbsp;&nbsp; vertex share on set minimum match length.
+&nbsp; -vtxcache val&nbsp;&nbsp;&nbsp; vertex cache size(default 32).
+&nbsp; -vtxload val&nbsp;&nbsp;&nbsp;&nbsp; vertex cache load limit(default 32).
+&nbsp; -strictflat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flat normal output to 3 vertices at all times.
+&nbsp; -noalignpad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prevent alignment of 8-byte order no padding.
+&nbsp; -outobj name&nbsp;&nbsp;&nbsp;&nbsp; output object by name.(default: all objects)
+&nbsp; -outmask val&nbsp;&nbsp;&nbsp;&nbsp; prevent output dataclass assignment.
+&nbsp; -nogeomclr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; geometry mode no clear.
+&nbsp; -preview val&nbsp;&nbsp;&nbsp;&nbsp; preview type value.(default: 0x1c)
+&nbsp; -binary, -b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output gfx in binary file.
+&nbsp; -rotorder val&nbsp;&nbsp;&nbsp; default rotation order.(default: 0x010203)
+&nbsp; -vtxseg val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vtx segment number.(default: 5)
+&nbsp; -imgseg val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; image data segment number.(default: 6)
+&nbsp; -tlutseg val&nbsp;&nbsp;&nbsp;&nbsp; TLUT data segment number.(default: 7)
+&nbsp; -nomodify&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disable modify vertex.
+&nbsp; -strictcidx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIDX pixel/bits follow 'tex_type'.
+&nbsp; -noreduct&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIDX no color reduction.
+&nbsp; -nullanim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output null animation data.
+&nbsp; -?, -h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; help
+&nbsp; @fname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; indirect option file.</font>
+
+</pre>
+</blockquote>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a NAME="option"></a>
+<h2>
+オプション解説：</h2>
+
+<dl>
+<pre>
+<font size=+1>-header fname&nbsp;&nbsp;&nbsp; set output header filename.</font>
+
+</pre>
+
+<dd>
+#define, typedef などの定義部分を、別なヘッダファイルとして出力するスイッチです。
+-header に続いて、ヘッダ部分を出力するファイル名を指定してください。</dd>
+
+<pre>
+<font size=+1>-label str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set label string.(label string = str)</font>
+
+</pre>
+
+<dd>
+コンバータは入力として与えられたファイルに含まれるすべてのオブジェクトを出力します。
+これらはリスト化されテーブルとして出力され、実機側へのインターフェイスとなります。
+また、同時に指定されたスケール値、オブジェクト総数などのデファインマクロ名にも使われます。
+そのベースのラベル名を与えます。</dd>
+
+<pre>
+<font size=+1>-scale fval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set convert scale.(svale = (float)fval)</font>
+
+</pre>
+
+<dd>
+コンバート時のスケール値を指定します。</dd>
+
+<p><br>&nbsp;Ｎ６４では頂点値は符合付き１６ビット整数として、Vtx テーブルに
+記述されるため、元になるモデルデータによっては、数値の丸めによって 元の形状が壊されてしまう場合があります。そのとき指定してください。
+デフォルトでは２０倍に設定されています。<!-- 	また、niffdraw.c では、ヘッダにて出力されたスケール値をもとに、 --><!-- 	逆スケーリングを行うので、付属のビューワーを使用する場合、 --><!-- 	表示される形状のスケールには影響はでません。 -->
+<pre>
+<font size=+1>-niffinfo fname　NIFF infomation on to file fname.</font>
+
+</pre>
+
+<dd>
+NIFFファイルを読み込んだ時のインフォメーション情報を 出力します。ファイル名として、ハイフン('-')を指定すると
+標準出力へ書き出します。</dd>
+
+<pre>
+<font size=+1>-nocomdef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; common define,typedef block no output.</font>
+
+</pre>
+
+<dd>
+コンバーターは数々のヘッダ情報を、出力ファイルの先頭（もしくは、-header
+オプションによって指定された出力ヘッダファイル）に出力しますが、これらのうち、モデルデータに関わらず共通の部分の出力を抑制します。</dd>
+
+<p><br>&nbsp;複数のコンバートファイルを１つのコンパイル環境などで利用する場合などに便利です。
+<pre>
+<font size=+1>-regmask val&nbsp;&nbsp;&nbsp;&nbsp; prevent RDP register assignment.</font>
+
+</pre>
+
+<dd>
+出力するディスプレイリストにおいて、ＲＤＰのレジスタ設定の出力を 抑制します。パラメータのvalはビットアサインされた6ビットの
+整数を取り込みます。各ビットは次のような機能があります。</dd>
+
+<br>&nbsp;
+<p>&nbsp;
+<blockquote>bit0 ... CycleMode設定を抑制します。
+<br>bit1 ... RenderMode設定を抑制します。
+<br>bit2 ... ColorCombinerMode設定を抑制します。
+<br>bit3 ... Primitive color register への設定を抑制します。
+<br>bit4 ... Environment color register への設定を抑制します。
+<br>bit5 ... オブジェクトの先頭に来るレジスタ設定を抑制します。</blockquote>
+
+<pre>
+<font size=+1>-vtxshare val&nbsp;&nbsp;&nbsp; vertex shar on set minimum match length.</font>
+
+</pre>
+
+<dd>
+頂点バッファの最低使い回し数を指定します。</dd>
+
+<p><br>&nbsp;niff2gfx では、コンバート時、ＲＣＰでの頂点計算のパフォーマンスを向上させるため、出来るだけ頂点バッファを連続して転送させるようにします。
+そのため、頂点テーブルには、同じ頂点情報が複数出力されます。 そのとき、既に出力した頂点バッファを見て、同じ連続する部分を使い回す評価を行うようにします。
+<p>&nbsp;たとえば、これから１０頂点を頂点テーブルとして出力しようとする場合、
+通常このまま１０個のVtx を出力しますが、-vtxshare 5 としておくと、 過去に遡ってこの１０頂点のうち、５頂点まで連続している部分があれば、
+過去の頂点バッファを利用して、頂点の転送命令(gsSPVertex)を発行します。
+このとき、頂点の転送命令が２つに増えていることにご注意下さい。
+<pre>
+<font size=+1>-vtxcache val&nbsp;&nbsp;&nbsp; vertex cache size(default 32).</font>
+
+</pre>
+
+<dd>
+マイクロコードの頂点キャッシュを変更します。</dd>
+
+<p><br>&nbsp;gspF3DEX では頂点キャッシュが３２個ですが、gspF3DLX.Rej では６４、
+gspF3DLP では８０個まで、頂点キャッシュが増えます。それらのマイクロ コードを利用する場合、このオプションで頂点キャッシュを増やして
+コンバートして下さい。デフォルトでは３２になっています。
+<pre>
+<font size=+1>-vtxload val&nbsp;&nbsp;&nbsp;&nbsp; set vertex cache load limit(default 32).</font>
+
+</pre>
+
+<dd>
+gsSPVertex で一度に転送できる頂点数を指定します。</dd>
+
+<p><br><!--       gspFast3D 対応の為に用意したものですが、現バージョンのコンバータでは gSPModifyVertex 命令の抑制が行えないため、このオプションは使用しないでください。 -->
+<pre>
+<font size=+1>-strictflat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flat normal output to 3 vertices at all times.</font>
+
+</pre>
+
+<dd>
+通常コンバータは、面法線を持った頂点を一つ出力し、他の２頂点に 関しては、頂点毎の法線をそのまま出力します。</dd>
+
+<p><br>&nbsp;マイクロコードの仕様では、フラットシェーディング時、３頂点のうち、
+法線を表す頂点は１つでいいのですが、反射マッピングなどのＳＴ値 自動生成は、３頂点それぞれ別個におこなわれます。
+<p>&nbsp;そのため、フラットシェードで反射マッピングを行う場合、法線を 厳密に３頂点に設定する必要があります。このオプションは
+これらの設定を有効にします。
+<pre>
+<font size=+1>-noalignpad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prevent alignment of 8-byte order no padding.</font>
+
+</pre>
+
+<dd>
+通常コンバータは、データを出力する際６４ビットアライメントを維持 するため、u64
+サイズのダミーワードを挿入します。 このオプションはこのダミーワードの出力を抑制します。</dd>
+
+<pre>
+<font size=+1>-outobj name&nbsp;&nbsp;&nbsp;&nbsp; output object by name.(default: all objects)</font>
+
+</pre>
+
+<dd>
+特定のオブジェクトのみの出力を得たい場合、得たいオブジェクト名 を指定することで、特定のオブジェクトのみを出力対象に出来ます。
+また、このオプションは、複数指定出来ます。</dd>
+
+<pre>
+<font size=+1>-outmask val&nbsp;&nbsp;&nbsp;&nbsp; prevent output dataclass assignment.</font>
+
+</pre>
+
+<dd>
+出力するデータの種類を限定します。このスイッチのパラメータ valも ビットアサインされた８ビットの整数を取り込みます。各ビットは
+次のようにマッピングされています</dd>
+
+<blockquote><!-- 	  bit0(0x01) ... ヘッダ<br> --><!-- 	  bit1(0x02) ... TLUT<br> --><!-- 	  bit2(0x04) ... ビットマップパターン<br> --><!-- 	  bit3(0x08) ... 頂点リスト(Vtx 構造体配列）<br> --><!-- 	  bit4(0x10) ... ディスプレイリスト(Gfx 構造体配列）<br> --><!-- 	  bit5(0x20) ... オブジェクト構造体<br> --><!-- 	  bit6(0x40) ... アニメーション構造体<br> --><!-- 	  bit7(0x80) ... シーン構造体<br> -->bit0(0x001)
+... ヘッダ
+<br>bit1(0x002) ... TLUT
+<br>bit2(0x004) ... ビットマップパターン
+<br>bit3(0x008) ... デフォーム関係データ
+<br>bit4(0x010) ... シェープ
+<br>bit5(0x020) ... 頂点リスト(Vtx 構造体配列）
+<br>bit6(0x040) ... ディスプレイリスト(Gfx 構造体配列）
+<br>bit7(0x080) ... オブジェクト構造体
+<br>bit8(0x100) ... アニメーション構造体
+<br>bit9(0x200) ... シーン構造体</blockquote>
+各ビットが１の状態の時、そのデータクラスは出力が「抑制」されます。 また、bit4
+が１の場合、bit5,6は、常に１扱いとなります。
+<pre>
+<font size=+1>-nogeomclr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; geometry mode no clear.</font>
+
+</pre>
+
+<dd>
+コンバータは、Shape 単位にGfx を作りますが、デフォルトでは、それらの 先頭で、必ず、gSPClearGeomMode(-1)
+とし、ジオメトリーモードを 初期化しています。この初期化コードの出力を抑制します。</dd>
+
+<pre>
+<font size=+1>-binary, -b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output gfx in binary file.</font>
+
+</pre>
+
+<dd>
+コンバータはデフォルトで、outfile で指定されたファイルには、 C のソースファイルを出力しますが、このオプションを指定すると、
+クイックプレビュー用のバイナリファイルを出力します。</dd>
+
+<pre>
+<font size=+1>-preview val&nbsp;&nbsp;&nbsp;&nbsp; preview type value.(default: 0)</font>
+
+</pre>
+
+<dd>
+これは、プレビューワーでのビュータイプを変更するために 使用していましたが、1.3.0以降ではプレビューア側でこの値を参照しな
+くなったので現在は意味がありません。<!-- 	ヘッダファイルを出力する際に、マクロ PREVIEW_TYPE に設定される --><!-- 	数値を指定します。標準の 'n64prev' では、ビットアサインされた --><!-- 	５ビットの整数値を取得します。内訳は次のようになっています。 --><!-- <blockquote> --><!-- 	  bit0(0x01) ... 一緒にNDR_OBJ のアニメーションリンクを設定する<br> --><!-- 	  bit1(0x02) ... シーン構造体からエントリーする<br> --><!-- 	  bit2(0x04) ... 頂点デフォームをエントリーする<br> --><!-- 	  bit3(0x08) ... 頂点カラーデフォームをエントリーする<br> --><!-- 	  bit4(0x10) ... 頂点法線デフォームをエントリーする<br> --><!-- </blockquote> --><!-- 	bit1 == 0 の場合、オブジェクトリストの１番（０番ではない）を --><!-- 	エントリーします。 --></dd>
+
+<pre>
+<font size=+1>-rotorder val&nbsp;&nbsp;&nbsp; default rotation order.(default: 0x010203)</font>
+
+</pre>
+
+<dd>
+NIFFでは、アニメーションリンクがない場合、アニメーションの オーダーが決定されません。そのため、オブジェクトごとに
+ローテーションオーダーが変化してしまうことがあり、アプリケーション プログラミングの際の大きな制限になってしまいます。
+このオプションでは、それらアニメーションを保持しないオブジェクトの ローテーションオーダーを設定します。</dd>
+
+<pre>
+<font size=+1>-vtxseg val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vtx segment number.(default: 5)</font>
+
+</pre>
+
+<dd>
+出力される Gfx で参照する頂点バッファのセグメント番号を指定します。 デフォルトでは、5
+になっています。</dd>
+
+<pre>
+<font size=+1>-imgseg val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; image data segment number.(default: 6)</font>
+
+</pre>
+
+<dd>
+出力される Gfx で参照するテクスチャイメージのセグメント番号を指定 します。デフォルトでは、6
+になっています。</dd>
+
+<pre>
+<font size=+1>&nbsp; -tlutseg val&nbsp;&nbsp;&nbsp;&nbsp; TLUT data segment number.(default: 7)</font>
+
+</pre>
+
+<dd>
+出力される Gfx で参照するテクスチャＬＵＴのセグメント番号を指定 します。
+デフォルトでは、7 になっています。</dd>
+
+<pre>
+<font size=+1>-nomodify&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disable modify vertex.</font>
+
+</pre>
+
+<dd>
+gsSPModifyVertexによる頂点バッファの再利用を阻止します。 デフォームを有効にする場合必ず指定する必要があります。</dd>
+
+<pre>
+<font size=+1>-strictcidx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIDX pixel/bits follow 'tex_type'.</font>
+
+</pre>
+
+<dd>
+コンバート時、８ビットカラーインデックステクスチャとして指定された イメージが１６色以内である場合、通常４ビットテクスチャとして最適化を
+はかるのですが、このオプションを指定することで、最適化を阻止し、 NIFFで指定した通りのビット幅でテクスチャパターンを出力します。</dd>
+
+<pre>
+<font size=+1>-noreduct&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIDX no color reduction.</font>
+
+</pre>
+
+<dd>
+コンバート時、８ビットカラーインデックステクスチャとして指定された イメージが２５６色以上である場合と４ビットカラーインデックステクスチャ
+として指定されたイメージが１６色以上である場合はカラーリダクションを 行いますが,このオプションを指定するとリダクションを行いません。</dd>
+
+<pre><a NAME="NULLANIM"></a>
+<font size=+1>-nullanim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output null animation data.</font>
+
+</pre>
+
+<dd>
+オブジェクトが有効なアニメーションデータを持たないときに、Animation List
+にNULLを出力し、オブジェクトからはそのNULLを参照することでアニメー ションへのリンクを作成します。
+別のファイルなどからアニメーションデータを持ってくる場合に利用すること
+ができますが、nd は Animation List のNULLをサポートしていないので、nd からはそのまま使用することはできません。</dd>
+
+<pre>
+<font size=+1>@fname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; indirect option file.</font>
+
+</pre>
+
+<dd>
+fnameをインダイレクトファイル名として受けとり、コマンドライン パラメータが記述されているものとして解釈します。
+インダイレクトファイルの詳しい仕様は下記のインダイレクトファイル仕様 を参照して下さい。</dd>
+
+<pre>
+<font size=+1>-?, -h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; help</font>
+
+</pre>
+
+<dd>
+コマンドラインの指定とオプションの簡単な説明を出力します。</dd>
+</dl>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a NAME="filespec"></a>
+<h2>
+インダイレクトファイル仕様</h2>
+
+<ul>
+<li>
+ファイルは各処理系のテキストファイルとして認識されます。</li>
+
+<li>
+ファイルに記述されたオプションスイッチは、１文字以上のホワイトスペース（スペース、タブ、改行、改頁）で区切られた１単語を１ワードとして受け付けます。</li>
+
+<li>
+オプションは、コマンドラインに指定する場合と同じ用に解釈されるので、 ワードの先頭にハイフンをつけるとオプションとして解釈されます。</li>
+
+<li>
+インダイレクトファイルは、コマンドラインに指定された場所に、 パラメータと同じように展開され解釈されます。</li>
+
+<li>
+インダイレクトファイルは複数指定できます。</li>
+
+<li>
+ワードの先頭として'#' を検出した場合、その文字を含む、行末（改行文字）まで、注釈として読み飛ばします。</li>
+</ul>
+
+<blockquote>
+<pre>（例１）
+command line:
+&nbsp; % niff2gfx @ind cube.niff mdl_a.c
+
+"ind" file:
+&nbsp; -header a.h -strictflat
+
+converter parsing...:
+&nbsp; % niff2gfx -header a.h -strictflat cube.niff mdl_a.c
+
+（例２）
+command line:
+&nbsp; % niff2gfx @ind
+
+"ind" file:
+&nbsp; # option
+&nbsp; -header model.h
+&nbsp; -regmask 0x5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # no CycleMode &amp; CC mode
+&nbsp; # input file
+&nbsp; cube.niff
+&nbsp; # output file
+&nbsp; model.c
+
+converter parsing...:
+&nbsp; % niff2gfx -header model.h -regmask 0x5 cube.niff model.c
+
+（例３）
+command line:
+&nbsp; % niff2gfx @opt @file
+
+"opt" file:
+&nbsp; # option
+&nbsp; -header model.h
+&nbsp; -regmask 0x5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # no CycleMode &amp; CC mode
+
+"file" file:
+&nbsp; cube.niff model.c
+
+converter parsing...:
+&nbsp; （例２）と同じ</pre>
+</blockquote>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a NAME="output"></a>
+<hr>
+<h2>
+2.出力仕様</h2>
+<a NAME="gbi"></a>
+<h3>
+ＧＢＩ出力仕様:</h3>
+
+<ul><!--  <li>１つのNIFFファイルから出力されるＧＢＩは、タイル設定Ｇｆｘ、 --><!--   テクスチャパターンテーブル、ＣＬＵＴテーブルにおいて、共用が図られます。<p> --><!--  <li>Shape 毎に、Ｖｔｘ、Ｇｆｘを生成評価します。<p> -->
+<li>
+1つのNIFFファイルから出力されるＧＢＩは、Shape 単位で、Ｖｔｘ、 Ｇｆｘを生成し、全ての
+Shape によって使われる、テクスチャイメージ、 ＴＬＵＴは、単一のバッファに格納され、共用されます。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+NIFFの、TexDataAreaと、テクスチャの張られる面のＳＴ値によって、 テクスチャの読み込みコードを作成しています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+StData は、Ｎ６４では使用するタイル情報に依存するため、コンバート時は、
+適用するテクスチャの大きさに合わせて、ＳＴ値をスケーリングして、Ｖｔｘ
+バッファを形成しています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+Tri, Prim のカラーを両方生かす場面があるため、Triのカラーは、Environment
+Color Register を使用して設定されます。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+PrimColReg. EnvColReg. 共に、マテリアルの指定で使われる使われないに 関わらず、カラー値の変更が行われます。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+テクスチャイメージの種類は、RGBA(32ビット,16ビット)、 インデックスカラー(8ビット,4ビット)、
+IA(16ビット,8ビット,4ビット)、I(8ビット,4ビット)の計9種類に対応しています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+階層化オブジェクトを実現するため、'nd'という独自のデータ構造と定数値を
+利用してオブジェクトのトランスフォームマトリクス情報、リンク情報を格納しています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+Animノードは、ANIM_TYPE_STATIC の場合のみ、オブジェクト構造体の トランスフォームデータとして取り込むようになっています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+トランスフォームのローテーション情報をコンバーター出力する際、 NIFFからは、ラジアン値として渡されるものとして、Radian
+to Degree の コンバートを行って出力しています。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+Objエリアの obj_pri は、下位８ビットのみ評価され、オブジェクト構造体の
+プライオリティレジスタに格納されます。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+TexエリアのテクスチャタイプがCIの時に、 イメージで使われている色数が8ビットで256色、4ビットで16色を超える場合は、
+自動的にカラーリダクション(減色)を行います。</li>
+
+<p><br>&nbsp;まず、イメージで使用されている色を16ビット(RGBA5551)にリダクションを
+行い、その色で使用回数の多い順にソートして8ビットなら前から256色、4ビットなら
+16色をパレットに設定しています。 αは１ビットしか有効になりませんので元のデータが0で透明、
+0以外で不透明としています。
+<p>&nbsp;このパレットの色の中にに一致するものがない場合、RGBそれぞれの成分の差の自乗の和が最も小さいものを選択しています。
+<p>&nbsp;-noreduct を指定した場合は色数が多いとコンバートを中止します。
+<br>&nbsp;
+<br>&nbsp;</ul>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a NAME="seigen"></a>
+<h2>
+制限：</h2>
+
+<ul>
+<li>
+出力されるディスプレイリストはマイクロコード gspFast3D には対応していません。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+ディスプレイリスト内で、RenderMode, ColorCombinerMode, を設定しているため
+これらのＲＤＰレジスタをユーザーが操作してのオブジェクト表示には、 オプション
+regmask を使用して、レジスタ設定のみをマスクする形で、 コンバートを行い、オブジェクトマネージャ側で、Gfx
+展開時に、マスクした レジスタの設定を行って下さい。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+ObjArea の obj_render_pri が、OBJ_RENDER_FLAG_NIFF = 1 で、 OBJ_RENDER_NIFF_*_INTER,
+OBJ_RENDER_NIFF_*_DECAL 時、ShapeArea の shape_type で SHAPE_TYPE_ZB =
+0 なら、強制的に、SHAPE_TYPE_ZB = 1 に置き換えられます。 これは、RenderMode
+に、Zバッファ無効の INTER, DECAL が存在しない為です。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+NIFFで定義されるシンボル名は、そのままの文字列で、コンバート後の シンボルに使用する場合もあります。コンバート後のデータが、うまくコンパイル
+出来ない場合、NIFFデータ内のシンボル情報に注意してください。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+キーフレームアニメーションの補間方法は LINEAR のみ対応しています。 LINEAR
+以外のデータは出力もされません。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+ライト情報はローカルライトは出力されません。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+Matエリアの mat_type で MAT_SHADE_USE_HILGHT = 1 または、 MAT_SHADE_USE_REFLECT
+= 1のとき、ライティングがONの扱いにしている。 ONにしないとハイライト、リフレクト設定効果が出ないのでそちらを優先しました。</li>
+
+<br>&nbsp;
+<p>&nbsp;</ul>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!--------------------------------------------------------->
+<p><a NAME="typecc"></a>
+<hr size=1>
+<h2>
+mat_type が MAT_TYPE_NIFF の時のＣＣ設定の仕様:</h2>
+
+<blockquote><!-- 当コンバーターでは、mat_type == MAT_TYPE_NIFF にのみ、対応しています。 -->
+<h3>
+リソースの使用規則：</h3>
+
+<blockquote>コンバータは、NIFFデータを解析して、幾つかのＲＤＰレジスタを
+使用します。
+<p>&nbsp;PrimColor に、ＲＤＰのレジスタの Prim Color レジスタを、TriColor
+に、 Environment Color レジスタを、それぞれ割り当てて、カラーの変更は レジスタに割り付けられます。</blockquote>
+
+<h3>
+カラーコンバイナモードの決定：</h3>
+
+<blockquote>カラーコンバイナのモードは、 mat_shade_type の MAT_SHADE_LIGHT_*
+と、mat_color_type0 の以下のビットによって決定されます。
+<pre>
+<font size=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_VTX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0x00000001
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TRI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0x00000002
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_PRIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0x00000004
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0x00000008
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0x00000010
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TRI_ALPHA&nbsp; = 0x00020000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_PRIM_ALPHA = 0x00040000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX0_ALPHA = 0x00080000</font>
+
+</pre>
+以下のビットは、参照されません。
+<pre>
+<font size=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_VTX_ALPHA&nbsp; = 0x00010000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX1_ALPHA = 0x00100000</font>
+
+</pre>
+それぞれビットアサインされているため、さまざまなモードが考えられます。
+それは、以下のように決定されます。
+<p>&nbsp;まず、カラーコンバイナ式ですが、以下のような計算式として評価します。
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Wch - Xch) * Ych + Zch</pre>
+Wch, Xch, Ych, Zch は仮想カラーチャンネルで、これらは mat_color_type0 の
+他のビットによって決定されます。
+<p>まず、MAT_CC_NIFF_VTX, _TEX0_ALPHA, _PRIM_ALPHA,_TRI_ALPHA,_VTX_ALPHA
+によって、Ych が決定されます。
+<center><table BORDER >
+<tr nowrap>
+<td>VTX_A</td>
+
+<td>TRI_A</td>
+
+<td>PRIM_A</td>
+
+<td>TEX0_A</td>
+
+<td>VTX</td>
+
+<td>
+<center>Ych</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Shade color(※)</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Vertex color</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Texel0 alpha</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Primitive alpha</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Env alpha</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Shade alpha</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">Vertex alpha</td>
+</tr>
+</table></center>
+
+<p>上記 (*) の部分は不定値です。要するに、_VTX_ALPHA,_TRI_ALPHA,_PRIM_ALPHA,
+_TEX0_ALPHA,_VTX の順に評価され、上記のいずれかのモードに設定されます。
+<p>Shade color はライティングの設定とモデルのシェードから、ＳＰが計算で
+割り出すカラー値をあらわします。
+<p>&nbsp;Vertex color は、GeometryMode の設定で、G_LIGHTING を off としたとき、
+Vtx 構造体の法線部分を利用したカラー値を抽出したものです。
+<p>（※）Ych が Shade Colorで、mat_shade_type の MAT_SHADE_LIGHT_* の 設定が、LOCAL,
+GLOBAL 共に０（照明が無効）の時、カラーコンバイナ式は、 以下の様に変更されます。
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1.0 - Xch) * Wch + Zch</pre>
+尚、２サイクルモードの時の ２サイクル目に対しては、この特殊ルールは 適用されません。
+<p>&nbsp;Wch, Xch, Zch は、MAT_CC_NIFF_TRI/_PRIM/_TEX0/_TEX1 によって、決定されます。
+<center><table BORDER >
+<tr nowrap>
+<td>TRI</td>
+
+<td>T1/PRIM</td>
+
+<td>TEX0</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Wch</center>
+</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Xch</center>
+</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Zch</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>1.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+</table></center>
+
+<p>Tex0 は、Texel0 カラーを示します。
+<p>&nbsp;Prim は、Primitive Color Register を示します。
+<p>&nbsp;Env は、Environment Color Register を示します。
+<p>&nbsp;T1/Prim は、TEXEL1/PRIMITIVE のどちらかで、 以下の様な規則によって
+決定されます。
+<br>&nbsp;
+<br>&nbsp;
+<center><table BORDER >
+<tr nowrap>
+<td>TEXEL1</td>
+
+<td>PRIM</td>
+
+<td>T1/Prim</td>
+
+<td>内容</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>----</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Prim</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>TEXEL1</center>
+</td>
+</tr>
+</table></center>
+
+<p>１サイクルモードの場合、以上の設定が、パイプライン２にも適用されます。
+<br>２サイクルモード時は、以上同様の評価を、mat_color_type1 に対して行ない、出力値の、
+<br>&nbsp;
+<br>&nbsp;
+<dd>
+Shade color が Combine color に、</dd>
+
+<dd>
+Shade Alpha が Combine Alpha に、</dd>
+
+<p><br>&nbsp;それぞれ置き換えられて出力されます。</blockquote>
+
+<h3>
+アルファコンバイナモードの決定：</h3>
+
+<blockquote>アルファコンバイナモードは、 mat_alpha_type0 の以下のビットによって
+決定されます。
+<pre>
+<font size=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_VTX_ALPHA&nbsp; = 0x00010000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TRI_ALPHA&nbsp; = 0x00020000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_PRIM_ALPHA = 0x00040000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX0_ALPHA = 0x00080000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX1_ALPHA = 0x00100000</font>
+
+</pre>
+以下のビットは、参照されません。
+<pre>
+<font size=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_VTX&nbsp; = 0x00000001
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TRI&nbsp; = 0x00000002
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_PRIM = 0x00000004
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX0 = 0x00000008
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAT_CC_NIFF_TEX1 = 0x00000010</font>
+
+</pre>
+アルファコンバイナ式も、カラーコンバイナ式と同様に定義されます。
+<pre>
+<font size=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Wch - Xch) * Ych + Zch</font>
+
+</pre>
+Wch, Xch, Ych, Zch の各チャンネルは、上記の有効な５つのフラグによって、以下のような法則で決定されます。
+<br>&nbsp;
+<br>&nbsp;
+<center><table BORDER >
+<tr nowrap>
+<td>
+<center>VTX_A</center>
+</td>
+
+<td>
+<center>TRI_A</center>
+</td>
+
+<td>
+<center>T1/PRIM</center>
+</td>
+
+<td>
+<center>TEX0_A</center>
+</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Wch</center>
+</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Xch</center>
+</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Ych</center>
+</td>
+
+<td BGCOLOR="#FFFFFF">
+<center>Zch</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>1.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Shade</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>T1/Prim</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Tex0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Env</center>
+</td>
+</tr>
+</table></center>
+
+<p>VTX_ALPHA が、ShadeColor の制御フラグになっています。
+<p>T1/Prim は、TEXEL1/PRIMITIVE のどちらかで、 以下の様な規則によって 決定されます。
+<br>&nbsp;
+<br>&nbsp;
+<center><table BORDER >
+<tr nowrap>
+<td>TEXEL1_A</td>
+
+<td>PRIM_A</td>
+
+<td>T1/Prim</td>
+
+<td>内容</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>0</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>----</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>0</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>Prim</center>
+</td>
+</tr>
+
+<tr nowrap>
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>*</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>1</center>
+</td>
+
+<td BGCOLOR="#FFFF77">
+<center>TEXEL1</center>
+</td>
+</tr>
+</table></center>
+
+<p>１サイクルモードの場合、以上の設定が、パイプライン２にも適用されます。
+<br>２サイクルモード時は、以上同様の評価を、mat_color_type1 に対して行ない、
+出力値の、 Shade Alpha が Combine Alpha に、置き換えられて出力されます。
+<br>&nbsp;
+<br>&nbsp;</blockquote>
+</blockquote>
+<!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a NAME="bugs"></a>
+<hr>
+<h2>
+3.現在わかっているバグ（または制限）</h2>
+
+<ul>
+<li>
+Ｎ６４では、ＴＭＥＭサイズに収まらないテクスチャパターンを、いくつかに
+分割してロード、描画を繰り返す、タイル定義が出来るため、このコンバータでも
+大きなテクスチャパターンを大きいまま扱います。 そのため、一部しか用いられないテクスチャパターンも、全体を出力してしまいます。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+大きなテクスチャを分割して張る場合、テクスチャラッピング（繰り返し）を行なうことが出来なくなります。
+これは、テクスチャパターンの境界部分のテクスチャロードが１描画タイルを作成するために、４回タイルロードが必要になる場合があり、描画タイル設定も非常に複雑になります。
+これらのタイルロードとタイル設定は、それだけでかなりのディスプレイリストを消費してしまうため、４ＫバイトのＴＭＥＭをうまく配置するためにする処理としてはコストがかかり過ぎます。
+このコンバーターでは、４ＫバイトのＴＭＥＭサイズに収まり切らないテクスチャをうまくポリゴン分割してあれば、ちゃんと張ることが出来る代償として、ラッピングが行なわれない、と考えて下さい。</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<li>
+タイルの設定において、テクスチャの読み込み範囲である、uls, ult, lrs, lrt
+は、 ポリゴンのテクスチャ座標値(S、T)から決定されます。この時、lrs, lrt
+は右下 ＳＴ値から求められますが、コンバーターではバイリニア補間が行われる事を前提に
+している為、右下ＳＴ値の存在するテクセルより１テクセル広い範囲を、一度に
+ＴＭＥＭに読み込むようにする為、ユーザーが任意で、ＴＭＥＭの容量を超える
+テクスチャをポリゴン分割し、分割した範囲それぞれがＴＭＥＭ限界の範囲でＳＴを
+マップした場合、１回のテクスチャの読み込み範囲がＴＭＥＭの範囲を超えて
+しまい、テクスチャが崩れて表示されてしまいます。</li>
+
+<p><br><!-- タイルの設定において、ＳＴの定義から、タイルに設定する uls, ulr, lrs, lrt --><!--  を決定する時、Ｔ値から lrs,lrt を作成するが、Ｔ値の存在するテクセルまでを読み込み範囲に含もうとするため、４Ｋに収まらないテクスチャを張る場合、ギリギリの範囲で、ＳＴをマップするとうまく張られないことがあります。 -->ex.)
+<blockquote>ＴＭＥＭに収まらない64x32 のテクスチャを、バイリニア補間が有効なままで正方形のポリゴンに張り付けようとした場合、中央で２分割して32x32
+の２つの四角ポリゴンとして張ろうと考えます。
+<p>&nbsp;左側の四角ポリゴンで０ピクセル目から３１ピクセル目までを、隣り合うポリゴンで３２ピクセルから６３ピクセルまでを描こうと考えるわけですが、この時左側の３１ピクセル目から３２ピクセル目へのバイリニア補間が必要なため、テクスチャとしては、33x33ピクセルをロードしなければなりません。
+コンバータでは、そこまでを評価に入れますが、そのテクスチャタイルが４ＫのＴＭＥＭに収まるかまでは評価しません。
+<p>&nbsp;よって、「ＴＭＥＭにピッタリ収まる」つもりで用意すると、時にテクスチャのパターンが崩れてしまう場合があります。</blockquote>
+
+<li>
+ビルボードオブジェクトは評価しているが、テストされていません。また、 LookAt関数の特徴として、上方向のベクトルと、注視点方向が一致（又は
+正反対）の場合ハングアップするという問題を解決していません。</li>
+
+<br>&nbsp;
+<p>&nbsp;</ul>
+<!----------End of Document----------------------------------------------->
+<hr><font size=-1>Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI
+CORPORATION All rights reserved.</font><!--------------------------------------------------------->
+<div align=right>
+<p><a href="#top"><img SRC="index.gif" BORDER=0 height=17 width=65></a></div>
+<!---------------------------------------------------------><a href="../index.htm">目次に戻る</a>
+</body>
+</html>

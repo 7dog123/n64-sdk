@@ -1,0 +1,482 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="macros, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookopen.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../gsp/gsp.html">
+            <IMG BORDER=0 SRC="../images/mh_gsp.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<H2><FONT COLOR="0000A0">
+gSPObjRectangle [macro]
+</FONT>
+</H2>
+
+<P>Draws a sprite.
+
+<P><B>Syntax</B>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>#include &lt;ultra64.h&gt; /* <A HREF="../../header/gs2dex.htm">gs2dex.h</A> */
+gSPObjRectangle(Gfx *gdl, uObjSprite *sp)
+gsSPObjRectangle(uObjSprite *sp)</PRE></FONT>
+
+<P><B>Arguments</B>
+<ul>
+<li>gdl is the pointer to the graphics display list.
+<P>
+<li>sp is the pointer to the sprite drawing data structure
+</ul>
+
+
+<P><B>Explanation</B>
+<br>
+Draws a non-rotating sprite.  The data of the specified uObjSprite structure (see the Comment section below) is processed inside the RSP to create a TextureRectangle command which is sent to the RDP.  For information about sprites, see <a target="new" href="../../pro-man/pro25/index25.5.html">"Sprite Drawing GBIs"</a> in the latest version of the readme file of the S2DEX microcode.
+</P>
+
+
+<P><B>Notes</B>
+<br>
+This macro can be used in 1-cycle and 2-cycle mode, and in copy mode.  When it is used in copy mode, the drawing speed is faster than in the other modes.  However, bilinear interpolation, subpixel processing and x-direction enlargement/reduction processing are not supported.  (Operation is not guaranteed if these functions are used, and in the worst case, RDP runaway may occur.)  You should use the proper mode that corresponds to the needed functions.
+</P>
+
+<P>
+The result of drawing with this macro varies, depending on the use of bilinear interpolation and the other render mode settings.  For details, refer to the ReadMe file of the latest version of the S2DEX microcode.  For information about modes, see Section 2.2.7, "Drawing Cycle Modes" in the <A HREF="../../kantan/index.html">N64 Introductory Manual</A>.  For information about setting the cycle type, see <A HREF="../gdp/gDPSetCycleType.html"><FONT FACE="Courier,Courier New">gDPSetCycleType</FONT></A>.
+</P>
+<P>
+Also, please note that operation is not currently guaranteed for G_IM_FMT_YUV (YUV format).
+</P>
+
+
+<P><B>Cautions</B>
+<br>
+The uObjSprite structure is shown below:
+</P>
+
+<PRE><FONT FACE="Courier,Courier New" size="3">typedef struct {
+  s16 objX;        /* x-coordinate of upper-left corner of OBJ (s10.2) */
+  u16 scaleW;      /* Width-direction scaling (u5.10) */
+  u16 imageW;      /* Texture width (length in s direction, u10.5)  */
+  u16 paddingX;    /* Unused (always 0) */
+  s16 objY;        /* y-coordinate of upper-left corner of OBJ (s10.2) */
+  u16 scaleH;      /* Height-direction scaling (u5.10) */
+  u16 imageH;      /* Texture height (length in t direction, u10.5)  */
+  u16 paddingY;    /* Unused (always 0) */
+  u16 imageStride; /* Texel wrapping width (In units of 64-bit words) */
+  u16 imageAdrs;   /* Texture starting position in TMEM (In units of 64-bit words) */
+  u8  imageFmt;    /* Texel format
+                      G_IM_FMT_RGBA (RGBA format)
+                      G_IM_FMT_YUV (YUV format)
+                      G_IM_FMT_CI (CI format)
+                      G_IM_FMT_IA (IA format)
+                      G_IM_FMT_I  (I format) */
+  u8  imageSiz;    /* Texel size
+                      G_IM_SIZ_4b (4 bits/texel)
+                      G_IM_SIZ_8b (8 bits/texel)
+                      G_IM_SIZ_16b (16 bits/texel)
+                      G_IM_SIZ_32b (32 bits/texel) */
+  u16 imagePal;    /* Position of palette for 4-bit color index texture  (4-bit precision, 0~7)  */
+  u8  imageFlags;  /* Display flag
+                (*) More than one of the following flags can be specified as the bit sum of the flags: 
+                      0 (Normal display (no inversion))
+                      G_OBJ_FLAG_FLIPS (s-direction (x) inversion)
+                      G_OBJ_FLAG_FLIPT (t-direction (y) inversion)  */
+} uObjSprite_t;    /* 24 bytes */
+
+typedef union {
+  uObjSprite_t    s;
+  long long int   force_structure_alignment;
+} uObjSprite;</FONT>
+</PRE>
+
+<P>
+This macro draws a texture in the rectangular area with the upper-left corner screen coordinates (<B>objX</B>, <B>objY</B>) and the lower-right corner screen coordinates (<B>objX</B>+<B>imageW</B>/<B>scaleW</B>-1, <B>objY</B>+<B>imageH</B>/<B>scaleH</B>-1).  (See the figure below.)  The drawn texture region has its upper-left corner at (0, 0) and its lower-right corner at (<B>imageW</B>-1, <B>imageH</B>-1).  When <B>scaleW</B> and <B>scaleH</B> are 1&lt;&lt;10, the texture will be drawn to the same proportions, without scaling.
+</P>
+
+<P><IMG SRC="gSPObjRectangle00.gif" ALIGN="bottom" WIDTH=529 HEIGHT=253 BORDER=0></P>
+
+<DL>
+<DT>Concerning the <B>objX</B> and <B>objY</B> elements:
+<DD><P>When a sprite is drawn, the scissoring box set by <A HREF="../gdp/gDPSetScissor.html"><FONT FACE="Courier,Courier New">gDPSetScissor</FONT></A> is referenced and the drawing area is clipped automatically.  Therefore, negative values can also be set for <B>objX</B> and <B>objY</B>.
+</DL>
+
+<DL>
+<DT>Concerning the <B>imageAdrs</B> element:
+<DD><P>You can use <B>imageAdrs</B> to specify the texture memory (TMEM) address that corresponds to the origin (0,0) of the texture region.  Normally, <B>imageAdrs</B> is set to the start load position in TMEM specified by the texture load macro.  It is convenient to use GS_PIX2TMEM when specifying this value.  GS_PIX2TMEM, which is the macro that converts pixel units (a numeric value) into TMEM address units, is defined in <A HREF="../../header/gs2dex.htm">gs2dex.h</A>:
+<DD><P><FONT FACE="Courier,Courier New">GS_PIX2TMEM(u16 pix, u8 siz)</FONT>
+<DL>
+<DT><P>The above arguments are explained below:
+<DT><P><B>pix</B>
+<DD>The numeric value (pixel units) to be converted to TMEM address units
+    <DT><B>siz</B>
+    <DD>The size of one texel, specified by G_IM_SIZ_*
+    <DD><B>G_IM_SIZ_4b</B> (4 bits/texel)
+    <DD><B>G_IM_SIZ_8b</B> (8 bits/texel)
+    <DD><B>G_IM_SIZ_16b</B> (16 bits/texel)
+    <DD><B>G_IM_SIZ_32b</B> (32 bits/texel)
+</DL>
+</DL>
+
+<DL>
+<DT>Concerning the <B>imageStride</B> element:
+<DD><P>Sets the horizontal width (wrapping width) to be used when loading a texture.  This is set because the texture width when the texture is loaded may differ from the <B>imageW</B> value of the actual drawn sprite.  Since this is specified in TMEM address units, the above-mentioned GS_PIX2TMEM macro can be used.
+</DL>
+
+<P>
+You can select the texture to be drawn by using the <B>imageAdrs</B> and <B>imageStride</B> specifications.  To do this, load a number of small textures (sub-textures) in TMEM and set the following value for <B>imageAdrs</B>:
+</P>
+
+<PRE><FONT FACE="Courier,Courier New"><B>imageW</B> = Sub-texture width
+<B>imageH</B> = Sub-texture height
+<B>imageAdrs</B> = GS_PIX2TMEM((s-coordinate in TMEM) + (t-coordinate in TMEM) * (texture width at the time of loading, G_IM_SIZ_*))
+<B>imageStride</B> = GS_PIX2TMEM(texture width at the time of loading, G_IM_SIZ_*)</FONT>
+</PRE>
+
+<P>
+To give a specific example, first prepare a large texture that combines four textures, like that shown in the figure below.  Load this as a 64x32 texture, and when actually drawing a sprite, specify each texture as follows:
+</P>
+
+<P><IMG SRC="gSPObjRectangle01.gif" ALIGN="bottom" WIDTH=414 HEIGHT=235 BORDER=0></P>
+
+<PRE><FONT FACE="Courier,Courier New" size="3">Sub-texture A:
+  imageW = 32;
+  imageH = 32;
+  imageAdrs = GS_PIX2TMEM(0+0*64, G_IM_SIZ_16b)
+  imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+Sub-texture B:
+  imageW = 16;
+  imageH = 16;
+  imageAdrs = GS_PIX2TMEM(32+0*64, G_IM_SIZ_16b)
+  imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+Sub-texture C:
+  imageW = 16;
+  imageH = 16;
+  imageAdrs = GS_PIX2TMEM(48+0*64, G_IM_SIZ_16b)
+  imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+Sub-texture D:
+  imageW = 32;
+  imageH = 16;
+  imageAdrs = GS_PIX2TMEM(32+16*64, G_IM_SIZ_16b)
+  imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);</FONT>
+</PRE>
+
+<P>
+There is one restriction on this method of specification, however.  Because the storage format for texture data in TMEM differs for odd-numbered lines and even-numbered lines, you cannot specify for <B>imageAdrs</B> a TMEM address that corresponds to an odd-number line when the texture was loaded.  In other words, you cannot set an odd number for (t-coordinate in TMEM) in the <B>imageAdrs</B> calculation formula shown above.
+</P>
+
+<DL>
+  <DT>Concerning the <B>imageFmt</B> element:
+  <DL>
+   <DT><P><B>G_IM_FMT_RGBA</B>
+    <DD>Each texel comprises four elements of information: RGB (red, green, blue) and alpha (opacity).
+    <DT><B>G_IM_FMT_YUV</B>
+    <DD>Each texel comprises a Y (intensity) component and a UV (color difference) component.
+    <DT><B>G_IM_FMT_CI</B>
+    <DD>Each texel is comprised of index information specifying palette data.
+    <DT><B>G_IM_FMT_IA</B>
+    <DD>Each texel is comprised of I (intensity) information and alpha information.
+    <DT><B>G_IM_FMT_I</B>
+    <DD>Each texel is a texture with only I information.  Since this is extremely compact, it is useful when only a few colors are being used.
+  <DT><P>Specify the texture format and size by assigning G_IM_FMT_* and G_IM_SIZ_* for <B>imageFmt</B> and <B>imageSiz</B>, respectively.  The texture image format can be selected from among eight types.  Refer to the following table for valid combinations of format and size, and select the most suitable format for the texture compression method and type.  Also, to use a 4-bit color index texture, specify a TLUT number in <B>imagePal</B>.
+</P>
+<P><TABLE BORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+<TD COLSPAN=2 ROWSPAN=2><br></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle" COLSPAN=4><font face="arial" size="-1"><B>G_IM_SIZ_</B> (size) </TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>4b</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>8b</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>16b</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>32b</B></TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle" ROWSPAN=5><font face="arial" size="-1"><B>G_IM_FMT_<BR></B> (format) </TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>RGBA</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (5/5/5/1)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (8/8/8/8)</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>YUV</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>CI</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>IA</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (3/1)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (4/4)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X<BR> (8/8)</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+</TR><TR>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1"><B>I</B></TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">X</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+<TD NOWRAP ALIGN="center" VALIGN="middle"><font face="arial" size="-1">&nbsp;</TD>
+</TR></TABLE>
+</P>
+  </DL>
+  </DL>
+
+<P>
+This macro does not reference 2D matrix settings.  For this reason, 2D matrix settings do not affect the drawing result of this macro.  To reference 2D matrix settings and change the screen coordinate values for drawing, use <FONT FACE="Courier,Courier New">g*SPObjRectangleR</FONT>.  Also, to rotate a sprite, use <FONT FACE="Courier,Courier New">g*SPObjSprite</FONT>.
+</P>
+
+
+<P><B>See Also</B>
+<br>
+<A HREF="gSPObjMatrix.html"><FONT FACE="Courier,Courier New">gSPObjMatrix</FONT></A><BR>
+<A HREF="gSPObjRectangleR.html"><FONT FACE="Courier,Courier New">gSPObjRectangleR</FONT></A><BR>
+<A HREF="gSPObjSprite.html"><FONT FACE="Courier,Courier New">gSPObjSprite</FONT></A><BR>
+<A HREF="gSPObjSubMatrix.html"><FONT FACE="Courier,Courier New">gSPObjSubMatrix</FONT></A>
+</P>
+
+
+
+<P><B>Revision History</B>
+<br>
+2/1/1999 Completely rewritten
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998-1999<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+
+
+

@@ -1,0 +1,55 @@
+Function 
+(  Ring buffer for use by the input stream. 
+
+Functions 
+(  void misBufferInit( MisBuffer *buffer_ptr )
+  Initializes misBuffer. 
+
+(  void misBufferAllocate( MisBuffer *buffer_ptr, const u32 size,
+			  MsoAllocator *allocator_ptr )
+  Allocate the number of bytes of memory specified by size to misBuffer.  MsoAllocator specified by 
+  allocator_ptr is used at this time, if NULL is specified, the default allocator is used. 
+
+(  void misBufferAttach( MisBuffer *buffer_ptr, const u32 size, void *mem_ptr )
+  Gives the number of bytes of memory specified by size to misBuffer. 
+
+(  misBufferDestroy( MisBuffer *buffer_ptr )
+  Destroys misBuffer. 
+
+Macros 
+(  _misBufferGetCapacity( MisBuffer *buffer_ptr )
+  Returns the number of bytes which can be acquired from misBuffer
+
+(  _misBufferPutCapacity( MisBuffer *buffer_ptr )
+  Returns the number of bytes which can be written to from misBuffer
+
+(  _misBufferIsEmpty( MisBuffer *buffer_ptr )
+  Returns a value other than 0 [zero] if misBuffer is empty. 
+
+(  _misBufferIsFull( MisBuffer *buffer_ptr )
+  Returns a value other than 0 [zero] if misBuffer is full. 
+
+(  _misBufferGetCursor( MisBuffer *buffer_ptr )
+  Returns the position of the get cursor in misBuffer. 
+
+(  _misBufferPutCursor( MisBuffer *buffer_ptr )
+  Returns the position of the put cursor in misBuffer. 
+
+(  _misBufferGetPtr( MisBuffer *buffer_ptr )
+  Returns the pointer for the position of the get cursor in misBuffer. 
+
+(  _misBufferPutPtr( MisBuffer *buffer_ptr )
+  Returns the pointer for the position of the put cursor in misBuffer. 
+
+(  _misBufferPeek( MisBuffer *buffer_ptr )
+  Gets the byte at the position of the get cursor. 
+
+(  _misBufferMoveGetCursor( MisBuffer *buffer_ptr, u32 count )
+  Advances the get cursor by count. 
+
+(  (  _misBufferMovePutCursor( MisBuffer *buffer_ptr, u32 count )
+  Advances the put cursor by count. 
+
+History 
+  1998/ 9/25 Takamitsu Hirata 
+    Buffer.h, buffer.c :  Initial version 

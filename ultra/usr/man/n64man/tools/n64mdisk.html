@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../tools/tools.html">
+            <IMG BORDER=0 SRC="../images/mh_tools.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<FONT COLOR="0000A0"><H2>n64mdisk</H2></FONT>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" size="3"><pre>n64mdisk [config file]
+n64mdisk -m [master data file name]</FONT></pre>
+
+<P>
+<B>Explanation</B><BR>
+It creates the game program’s master data. The master data is used by the developer when submitting an N64 Disk Drive game program to Nintendo after debugging.  The data follows a certain fixed format.  A disk is created from the master data using a batch file called <B>mwrite</B> for final checking of the game. The <B>n64mdisk</B> tool creates this batch file when it is producing the master data.<BR>
+<BR>
+
+Note: When presenting the master data, please also provide NCC, the code used for checking the data.  Use the <FONT FACE="COURIER NEW,COURIER">calcncc</FONT> tool to calculate the NCC.
+
+The first form of the command (<FONT FACE="COURIER NEW,COURIER">n64mdisk [config file]</FONT>) creates master data by following the specification in the <FONT FACE="COURIER NEW,COURIER">config</FONT> file.<BR>
+<BR>
+
+The second form of the command (<FONT FACE="COURIER NEW,COURIER">n64mdisk -m [master data file name]</FONT>) creates the <B>mwrite</B> and <B>mwrite.id</B> files from the master data already created. If the master data file name is left off, the <B>master.d64</B> file is used.<BR> This form of the command also checks to make sure the master data file specified (or <B>master.d64</B>) is in fact proper master data. If it isn't, the tool displays the following message and terminates:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>******** This is not master data!! **********</PRE></FONT>
+
+Also, when the extension of the file is not <B>.d64</B> the following confirmation is requested:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>** This file name does not end with .d64,
+   so it may not be master data OK? (y/n) [y]</PRE></FONT>
+
+If you want to use the specified file, input "y" or "Y" or press the <B>Enter</B> key. If you press any other key, the tool terminates without doing anything.
+<BR>
+<BR>
+<B>More Information</B><BR>
+
+When you enter the following command line, the file <B>n64mdisk.cfg</B> (the default config file) is read and its contents used to create the master data file.  
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+% n64mdisk        [for Partner-N64NW]	
+C> n64mdisk       [for Partner-N64PC]</PRE></FONT>
+
+Three files are produced at the time the master data is created:
+<UL>
+<LI><B>master.64</B> The master data file.
+<LI><B>mwrite</B> The batch file that writes the master data to a disk.  A disk for final checking can be created by entering <FONT FACE="COURIER NEW,COURIER">&lt;mwrite</FONT> in the Partner command window. The less than symbol is the Partner command for executing a batch file. Please be sure to complete final debugging before creating the master data for submission.
+<LI><B>mwrite.id</B> The ID file used by <B>mwrite</B>.  This is a 32-byte file and it is copied as-is into the ID region when <B>mwrite</B> is executed.  The information includes the "factory line number" and the "production time" of the machine on which <B>mwrite</B> was run. For more details about the ID region, see Chapter 6 of the <I>N64 Disk Drive Programmer's Guide</I>.
+</UL>
+
+<B>Notes and Examples</B><BR>
+
+When creating the master data, be sure to use the <B>libleo.a</B> and <B>libultra_rom.a</B> libraries for linking.  (The libraries <B>libleo_d.a</B> and <B>libultra_d.a</B> are for debugging.)  Please create a disk for final checking using master data linked to <B>libleo.a</B> and <B>libultra_rom.a</B>, and conduct sufficient debugging with this disk before submitting the master.<BR>
+<BR>
+
+A master production config file can be specified as follows (here named <B>n64mdisk.yes</B>):
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>% n64mdisk n64mdisk.yes	  [for Partner-N64NW]
+C> n64mdisk n64mdisk.yes  [for Partner-N64PC]</PRE></FONT>
+
+Following is an example of such a config file followed by details about each line:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+USE GWRITE gwrite
+DISK TYPE AUTO
+IPL LOAD ADDRESS 0x80000400
+RAM START LBA AUTO
+RAM END LBA AUTO
+INITIAL CODE NINT
+GAME VERSION 11
+DISK NUMBER 22
+DISK USE 0
+DESTINATION CODE JAPAN
+COMPANY CODE 1
+FREE AREA 0x123456789abc</PRE></FONT>
+
+<FONT FACE="COURIER NEW,COURIER">USE GWRITE</FONT><BR>
+Specifies <FONT FACE="COURIER NEW,COURIER">NO</FONT> or <FONT FACE="COURIER NEW,COURIER">gwrite</FONT>.  When <FONT FACE="COURIER NEW,COURIER">NO</FONT> is specified, the <FONT FACE="COURIER NEW,COURIER">ROM INIT. FILE</FONT> line must also be specified (see below). When <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> is specified, the master’s ROM region data is created based on the contents of the <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> file. If the RAM region data is specified in the <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> file, then RAM region data is also created.<BR>
+<BR>
+
+Example:  <FONT FACE="COURIER NEW,COURIER">USE GWRITE gwrite</FONT><BR>
+Example:  <FONT FACE="COURIER NEW,COURIER">USE GWRITE NO</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">DISK TYPE</FONT><BR>
+Specifies the disk type.  Numerical values of 0 to 6 can be specified.  For details, see Chapter 11 of the <I>N64 Disk Drive Programmer's Guide</I>.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">DISK TYPE 0</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">IPL LOAD ADDRESS</FONT><BR>
+Specifies the IPL load address. Refer to Chapter 11 of the <I>N64 Disk Drive Programmer's Guide</I> for the load address. When an address is specified in <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> with the <FONT FACE="COURIER NEW,COURIER">leowrite -a xxxxxx</FONT> command, it is given priority.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">IPL LOAD ADDRESS 0x80000400</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">IPL LOAD SIZE</FONT><BR>
+Specifies the IPL load size.  When data is created with <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> this data is not needed (it is ignored). Refer to Chapter 11 of the <I>N64 Disk Drive Programmer's Guide</I> for information about IPL size.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">IPL LOAD SIZE 8</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">ROM INIT. FILE</FONT><BR>
+Specifies the image file for ROM region data.  This must be specified when no data is created using <FONT FACE="COURIER NEW,COURIER">gwrite</FONT>.  Conversely, when <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> is used to create data, this cannot be specified.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">ROM INIT. FILE romimage</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">RAM START LBA</FONT><BR>
+Specifies the start LBA for RAM region data.  When AUTO is specified, the RAM region start LBA is set according to the disk type specified by DISK TYPE.  Specify AUTO even if a RAM region is not being used.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">RAM START LBA AUTO</FONT><BR>
+Example: <FONT FACE="COURIER NEW,COURIER">RAM START LBA 1500</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">RAM END LBA</FONT><BR>
+Specifies the end LBA for RAM region data.  When AUTO is specified, the end LBA is automatically set from the RAM region image file size specified by <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> or <FONT FACE="COURIER NEW,COURIER">RAM INIT. FILE</FONT>.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">RAM END LBA AUTO</FONT><BR>
+Example: <FONT FACE="COURIER NEW,COURIER">RAM END LBA 2000</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">RAM INIT. FILE</FONT><BR>
+Specifies the image file for RAM region data.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">RAM INIT. FILE ramimage</FONT><BR>
+<BR>
+
+Note: When there is a clearly specified value for <FONT FACE="COURIER NEW,COURIER">RAM END LBA</FONT>, the RAM region from the start LBA to the specified end LBA is secured.  But at that time, the portions of data where initial values are not specified by <FONT FACE="COURIER NEW,COURIER">gwrite</FONT> or <FONT FACE="COURIER NEW,COURIER">RAM INIT. FILE</FONT> are enclosed by <FONT FACE="COURIER NEW,COURIER">0xFF</FONT> markers.<BR>
+<BR>
+
+For details concerning all of the following specifications, see Chapter 6 of the <I>N64 Disk Drive Programmer's Guide</I>.<BR>
+<BR>
+
+<FONT FACE="COURIER NEW,COURIER">INITAL CODE</FONT><BR>
+Specifies the initial code, which must contain at least four ASCII characters.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">INITIAL CODE NINT</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">GAME VERSION</FONT><BR>
+Specifies the game version, which must be at most a two-digit decimal number.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">GAME VERSION 1</FONT><BR>
+Example: <FONT FACE="COURIER NEW,COURIER">GAME VERSION 99</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">DISK NUMBER</FONT><BR>
+Specifies the disk number, which must be at most a two-digit decimal number.<BR>
+<BR>
+Example: <FONT FACE="COURIER NEW,COURIER">DISK NUMBER 0</FONT><BR>
+Example: <FONT FACE="COURIER NEW,COURIER">DISK NUMBER 99</FONT>
+
+<P>
+<FONT FACE="COURIER NEW,COURIER">RAM USE</FONT>
+<BR>
+Specifies RAM usage (no greater than 2-digit hexadecimal).  1 indicates use of Nintendo's recommended file system.  Specify 0 when no special format is used.
+<P>
+Example: <FONT FACE="COURIER NEW,COURIER">RAM USE 0x0</FONT><BR>
+
+<BR>
+<FONT FACE="COURIER NEW,COURIER">DISK USE</FONT><BR>
+Specifies the disk use code. 0 is normally specifiec.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">DISK USE 0</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">DESTINATION CODE</FONT><BR>
+Specifies the destination or the destination code.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">DESTINATION CODE JAPAN</FONT><BR>
+Example: <FONT FACE="COURIER NEW,COURIER">DESTINATION CODE 1</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">COMPANY CODE</FONT><BR>
+Specifies the company code (ASCII two-byte code) of the producer of the game.<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">COMPANY CODE 12</FONT>
+
+<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">FREE AREA</FONT><BR>
+An area to freely write data (at most a 12-digit hexadecimal)<BR>
+<BR>
+
+Example: <FONT FACE="COURIER NEW,COURIER">FREE AREA 0x123456789abc</FONT>
+
+<BR><BR><B>See Also</B><BR>
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../tools/calcncc.html">calcncc</A></FONT> 
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+            <BR>
+               <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

@@ -1,0 +1,228 @@
+<html>
+<body bgcolor="ffffff">
+
+<H3>NIFFeditor for SGI</H3>
+<h2>4. Menus <img src="../../../gif/update.gif" width="48" height="12"></h2>
+
+<P><a href="../indexsgi.htm"><img src="../../../gif/index.gif" border="0" width="65" height="17"></a>
+<a href="./whattodo.htm"><img src="../../../gif/previous.gif" border="0" width="65" height="17"></a>
+<a href="./mouse.htm"><img src="../../../gif/next.gif" border="0" width="65" height="17"></a></P>
+
+<hr>
+
+<blockquote>
+<P>The following menus are available in NIFFeditor.</P>
+
+<P><I><B>Figure 2:</B> NIFFeditor Main Menu</I></P>
+
+<IMG SRC="main-menu.gif" ALT="Main Menu" ALIGN="bottom" WIDTH=499 HEIGHT=34>
+
+<P><b>[File]-[New] Command</b></P>
+<blockquote>
+This command clears the tree display in the main window.
+</blockquote>
+<p>
+<b>[File]-[Open] Command</b><p>
+<blockquote>
+<P>This command loads a new file and displays its tree. You can select the file to be loaded from a dialog box or enter its name.</P>
+
+<P><I><B>Figure 3:</B> Load File Dialog Box</I></P>
+
+<img src="./fileselect.gif">
+
+</blockquote>
+<a name="save">
+<b>[File]-[Save] Command</b></a>
+<blockquote>
+<P>This command saves (overwrites) the loaded file. When you are asked, "Overwrite OK," click the OK button to save (overwrite) the file. If you do not wish the existing file to be overwritten, click the Cancel button.</P>
+
+<P><I><B>Figure 4:</B> Overwirte and Save Warning Dialog Box</I></P>
+
+<img src="./Overwrite_OK.gif">
+
+</blockquote>
+<b>[File]-[Save As ...] Command</b><p>
+<blockquote>
+This command saves the data under a new file name. As with the Open command, you enter the file name  in a File Specification dialog box. 
+</blockquote>
+<p>
+<a name="editmode"><b>[Edit]-[Edit Mode] Command</b></a>
+<p>
+<blockquote>
+When this is ON (when the ON mark is colored), it is possible to modify (add, delete) links, and change node names and node flag settings. This is a toggle setting.<p>
+</blockquote>
+<p>
+<b><a name="deletelink">[Edit]-[Delete Link] Command</a></b><p>
+<blockquote>
+This deletes the link that has been selected with the mouse.  A warning will be displayed if you have selected a link that cannot be deleted.
+</blockquote>
+<p>
+<b>[View]-[Default] Command</b><p>
+<blockquote>
+Resets tree view to the default setting. At present, Display Texture Image (texture display) is OFF.
+</blockquote>
+<p>
+<a name="dispteximg">
+<b>[View]-[Display Texture Image] Command</b><p>
+</a>
+<blockquote>
+When ON, the texture image is displayed on the Tex node. The default is "OFF."
+<p>
+If the node is presently displayed, the node view does not change, even if this Command is set to ON. Either reopen the file or hide and then show the text node again. To do this, right-click the Tex node top open the menu, then select Hide. Right-click the Parent node of the hidden Tex node and select Expand or Show Immediate Children.
+</blockquote>
+<p>
+
+<b>[N64 tool] menu </b><p>
+<blockquote>
+Since commands in this menu are not compatible with NIFF 2.0, the menu is disabled when a NIFF 2.0 file is loaded.
+</blockquote>
+<p>
+
+<a name="preview">
+<b>[N64 tool]-[N64 Quick Preview(IS-VIEWER)] Command
+</b><p>
+</a>
+<blockquote>
+Use the IS-Viewer 64 to perform a <a href="../../n64prev/quickprev.htm">Quick Preview</a> on the N64 Control Deck.
+</blockquote>
+<p>
+<b>
+[N64 tool]-[N64 Quick Preview(Emu-Board)] Command
+</b>
+<p>
+<blockquote>
+Use Emu-Board to perform a <a href="../../n64prev/quickprev.htm">Quick Preview</a> on the N64 Control Deck.
+</blockquote>
+<p>
+<b>[N64 tool]-[Nintendo64 Preview(IS-VIEWER)] Command</b><p>
+</a>
+<blockquote>
+Use the IS-Viewer64 to preview on the N64 Control Deck.
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Nintendo64 Preview(Emu-Board)] Command
+</b>
+<p>
+<blockquote>
+Use the Emulator Board to preview on the N64 Control Deck.
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Convert to N64 DL]-[Set Options and Go] Command
+</b>
+<p>
+<blockquote>
+This command starts the converter for outputting N64 graphics data. You can set the converter options.
+The options that have been set are reflected in the <B><FONT FACE="COURIER NEW,COURIER">.niffcnvops</FONT></B> file stored in the user's <B><FONT FACE="COURIER NEW,COURIER">/home</FONT></B> directory, and are valid until the next conversion.
+The options set here are also valid with the Preview commands.<p>
+
+For additional information, please refer to the <a href="../../niff2gfx/index.htm"> niff2gfx Converter Manual.
+			  </a>
+
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Convert to N64 DL]-[Set Output Directory] Command
+</b>
+<p>
+<blockquote>
+This command allows you to specify the directory where you want to store N64 graphics data output. When the dialog box for specifying the output destination is displayed, select the disired directory. This directory specification is also saved in the .niffcnvops file.
+</blockquote>
+<p>
+<b>
+[N64 tool]-[Kill [gn]load]
+</b>
+<p>
+<blockquote>
+This cancels the gload (for the Emulator Board) and nload (for the IS-Viewer64) process performed during preview.
+</blockquote>
+<p>
+<!-- NIFF2 tool ----------------------------------------- -->
+<b>[NIFF2 tool]-[Preview(IS-VIEWER)] Command
+<img src="../../../gif/new.gif"> </b>
+</b><p>
+</a>
+<blockquote>
+Use IS-Viewer64 to perform a preview on the N64 Control Deck with nvfview.
+</blockquote>
+<p>
+<b>
+[NIFF2 tool]-[Preview(Emu-Board)] Command
+<img src="../../../gif/new.gif"> </b>
+</b>
+<p>
+<blockquote>
+Use Emu-Board to perform a preview on the N64 Control Deck with nvfview.
+</blockquote>
+
+<p>
+<b>
+[NIFF2 tool]-[Convert to NVF]-[Set Options and Go] Command
+<img src="../../../gif/new.gif"> </b>
+</b>
+<p>
+<blockquote>
+This command starts up the niff2nvf converter to output NVF data and allows you set up the conversion options.
+<p>
+These option settings are saved in the <B>.niffcnvops</B> file (stored in the user's <B>/home</B> directory) and are applied the next time the user does a conversion with this command or a preview with any of the NIFFeditor preview commands. The <B>.niffcnvops</B> file also stores the settings specified by the [N64 tool]-[Convert to N64 DL]-[Set Options and Go] command. The options stored in the file apply to both commands. 
+<p>
+
+Refer to <a href="../../niff2nvf/index.htm#three"> niff2nvf Converter Manual</a> for details about these options.
+
+</blockquote>
+<p>
+<b>
+[NIFF2 tool]-[Convert to N64 DL]-[Set Output Directory] Command
+<img src="../../../gif/new.gif"> </b>
+</b>
+<p>
+<blockquote>
+Allows you to specify the directory where you want Nintendo 64 graphics data to be output. Select the directory from the displayed dialog box. The specified directory is saved in the <B>.niffcnvops</B> file.
+</blockquote>
+
+<b> [NIFF2 tool]-[Execute Script]
+<img src="../../../gif/new.gif"> </b>
+<blockquote>
+Outputs NIFF data to the file specified by the [NIFF2 tool]-[Preview File] command and executes the script file specified by the [NIFF2 tool]-[PreviewScript] command.    
+<p>
+By default, output is to <B>/usr/local/n64kit/nvfview/model.niff</B>, and the script file is <B>/usr/local/n64kit/nvfview/nvfview</B>.   
+<p>
+Since anything can be specified as the script file as long as it is executable, it is possible to have an optional process performed other than previewing by specifying an appropriate script file. 
+</blockquote>
+<b> [NIFF2 tool]-[PreviewScript]
+<img src="../../../gif/new.gif"></b>
+<blockquote>
+Allows you to specify the script file that is executed by the [NIFF2 tool]-[Execute Script] command.
+</blockquote>
+<b> [NIFF2 tool]-[PreviewFile]
+<img src="../../../gif/new.gif"></b>
+<blockquote>
+Allows you to specify the file that NIFF data is output to with the [NIFF2 tool]-[Execute Script] command. 
+</blockquote>
+<b>
+[HELP]-[Product Information] Command
+</b>
+<p>
+<blockquote>
+This command displays the NIFFeditor version information.
+</blockquote>
+</blockquote>
+</blockquote>
+<p align="right">
+</blockquote>
+
+<hr>
+
+<P><a href="../indexsgi.htm"><img src="../../../gif/index.gif" border="0" width="65" height="17"></a>
+<a href="./whattodo.htm"><img src="../../../gif/previous.gif" border="0" width="65" height="17"></a>
+<a href="./mouse.htm"><img src="../../../gif/next.gif" border="0" width="65" height="17"></a></P>
+
+<font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION <BR>
+All rights reserved.</font>
+
+
+
+</body>
+</html>

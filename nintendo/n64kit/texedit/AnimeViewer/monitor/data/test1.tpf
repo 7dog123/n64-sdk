@@ -1,0 +1,7 @@
+TPF_DIR	=	c:\nintendo\n64kit\texedit\AnimeViewer\monitor\data\
+TMF_DIR	=	$(TPF_DIR)
+TLF_DIR	=	$(TPF_DIR)
+PICT_NUM	=	3
+PICT.0	=	Picture0,tex1.tmf,pal.tlf,0
+PICT.1	=	Picture1,tex2.tmf,pal.tlf,0
+PICT.2	=	Picture2,tex3.tmf,pal.tlf,0

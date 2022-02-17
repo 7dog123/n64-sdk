@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomReadFile</title>
+</head>
+
+<body>
+
+<h1>mfsRomReadFile<br>
+mfsRamReadFile</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomReadFile(MfsDirID dirID, void* buf, s32 offset,u32 len)
+	s32 mfsRamReadFile(MfsDirID dirID, void* buf, s32 offset,u32 len)
+Arguments:	dirID	Directory ID of file
+	*buf	Buffer for storing data
+	offset	Read starting position
+	len	Size to be read
+Return value:Size of data that was read (a negative value is an error)
+Function:	Reads data
+Description:	This function reads data of the file specified by dirID.
+If the address specified by buf is not at a 16-byte boundary, the speed will decrease somewhat because the data is read to an internal buffer and copied.
+If the offset or len value is greater than the file size, an error will occur.
+An error will also occur if offset+len exceeds the file size.
+
+Main errors:
+	MFS_ERR_NOTFOUND Specified file not found 
+	MFS_ERR_DEVICE	Device error
+                        An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.</pre>
+</body>
+</html>

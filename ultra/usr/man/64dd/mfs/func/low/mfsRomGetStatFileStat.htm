@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetStatFileStat</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetStatFileStat<br>
+mfsRamGetStatFileStat</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileStat(MfsDirID dirID,MfsStat* stat)
+	s32 mfsRamGetFileStat(MfsDirID dirID,MfsStat* stat)
+Arguments:	dirID		Directory ID of file (directory)
+	*stat		MfsStat structure buffer for storing information
+Return value:Error
+Function:	Obtains information
+Description:	This function obtains information about the file (directory) specified by dirID and returns it in the MfsStat structure specified by stat.  The MfsStat structure consists of the following members.
+
+	typedef struct st_stat{
+	    u32	size;			// File size
+	    LEODiskTime	time;		// Latest update date of file
+	    u16	attribute;		// Attribute
+	    u16	dirID;			// Directory ID
+	    u16	upDirID;		// Directory ID of parent directory
+	    u8	gameCode[4];		// Game code
+	    u8	companyCode[2];		// Company code
+	    u8	copyCounter;		// Copy counter
+	    u8	renewalCounter;		// update counter
+	} MfsStat;
+
+	However, the structure for a directory does not have the file size and copy counter members.
+
+Main errors:
+	MFS_ERR_NO	Normal termination	
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+	MFS_ERR_NOTFOUND File not found
+			The file was not found, or the directory was not found.</pre>
+</body>
+</html>

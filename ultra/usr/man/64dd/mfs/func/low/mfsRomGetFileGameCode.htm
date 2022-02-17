@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileGameCode</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileGameCode<br>
+mfsRamGetFileGameCode</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileGameCode(MfsDirID dirID, u8* companyCode, u8* gameCode)
+	s32 mfsRamGetFileGameCode(MfsDirID dirID, u8* companyCode, u8* gameCode)
+Arguments:	dirID	Directory ID of file (directory)
+	*companyCode	Buffer for storing company code
+	*gameCode	Buffer for storing game code
+Return value:Error
+Function:	Obtains company code and game code of file (directory)
+Description:	his function obtains the company code and game code of the file (directory).
+A two-byte buffer is required for the company code and a four-byte buffer is required for the game code.
+To obtain only the company code or only the game code, specify NULL for the buffer corresponding to the code that is not to be obtained.
+
+Main errors:
+	MFS_ERR_NO		Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

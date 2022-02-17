@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsDiskIdCheck</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsDiskIdCheck</h1>
+
+<hr>
+
+<pre><strong>Format:</strong></pre>
+
+<pre>s32 mfsDiskIdCheck(void)</pre>
+
+<pre><strong>Arguments:</strong>None</pre>
+
+<pre><strong>Return value:</strong>Error</pre>
+
+<pre><strong>Function:</strong>	Reads and checks disk ID
+</pre>
+
+<pre><strong>Description:</strong>	This function reads the disk ID and compares it with the previously read disk ID.
+If the disk has been exchanged, MFS_ERR_DISKCHANGE is returned.
+The disk ID that was read is stored in the global variable mfsDiskInfo structure.  Please reference this global variable is necessary.</pre>
+
+<hr>
+</body>
+</html>

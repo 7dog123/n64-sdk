@@ -1,0 +1,11 @@
+関数名：nuAuSeqPlayerGetChlProgram（マクロ）
+──────────────────────────────────────
+書式： 	s32 nuAuSeqPlayerGetChlProgram(u32 player_no, u8 chan)		
+引数：	player_no	シーケンスプレイヤー番号	
+	chan		MIDIチャンネル			
+戻り値：プログラム番号
+説明：	シーケンスプレイヤー番号で指定したプレイヤーの
+	指定MIDIチャンネルのプログラム番号を取得します。
+	プログラム番号が割り当てられていなければ、-１を返します。
+
+参照：	alCSPGetChlProgram

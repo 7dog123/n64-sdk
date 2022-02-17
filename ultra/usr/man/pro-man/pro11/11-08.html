@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.7.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.9.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Vertex Fog State</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Fog alters the color of objects based on their distance from the eye position.  Fog can be used to make objects blend into the background color as they get farther away.  One problem which can be fixed by fog is that when an object goes beyond the far clipping boundary and is clipped away it  suddenly dissapears.  If fog is enabled the object can be made to look more and more like the background color until, when the object reaches the far clipping plane, the object is exactly the same color as the background and no one notices when it dissappears.
+<P>
+The use of fog requires that the following steps be taken:
+<ol>
+<li>run in two cycle mode.
+<P>
+<li>Set the render mode to blend the fog color with the primitive color.
+<P>
+<li>Set the fog position.
+<P>
+<li>Enable fog.
+<P>
+<li>Set the Fog Color.</ol>
+
+<P>
+For example:
+<P>
+<pre><font face="courier" size="3">   /* 2 cycle mode */
+   gsDPSetCycleType(G_CYC_2CYCLE),
+   /* blend fog in AA ZB mode */
+   gsDPSetRenderMode(G_RM_FOG_SHADE_A,G_RM_AA_ZB_OPA_SURF2),
+   /* set fog position and enable fog */
+   gsSPFogPosition(FOG_MIN, FOG_MAX)
+   gsSPSetGeometryMode(G_FOG),
+   /* set the fog color */
+   gsDPSetFogColor(RED,GREEN,BLUE, ALPHA),
+   FOG_MIN specifies the position where fog begins and FOG_MAX</pre></font>
+<P>
+represents where fog is thickest.  Both values are integers and are mapped linearly such that 0={at the near clipping plane}, and 1000={at the far clipping plane}.  FOG_MAX is generally set to 1000 so that objects are completely “fogged out” when they hit the far plane, but not before then.  FOG_MIN is set to the position where fog starts.  A value of 0 will make the object slowly change to fog color as it retreats from the viewer, while a larger value (eg 800) will make the object clearly visible until it gets 80% of the way to the far plane where it will finally begin to “fog out.”   
+
+<P>
+Note that perspective makes distant objects look *much* farther away than nearby objects.  Because of this some objects which don’t appear to be very far away may be more affected by fog than expected even though the FOG_MIN value is fairly high.  To remedy this problem simply increase the FOG_MIN value until you get the desired effect.  For example if you set FOG_MIN to 500, but objects which are about midway between the far and near planes look foggier than they should, just increase the value of FOG_MIN until they look better.
+
+<p>
+Fog works well when the horizon is a constant color (the same as the fog color).  When the horizon color is complicated (eg clouds, gradient colors, etc), you can make objects become transparent when they are distant.  To do this don’t set the G_RM_FOG_SHADE_A render mode or the Fog color.  Just enable fog, use a transparent render mode, and swap FOG_MAX and FOG_MIN.  FOG_MIN should be set to 1000 to make the object completely transparent when it is at the far clipping plane.  FOG_MAX should be a large enough value that fog has no effect until the object is farther away than any other objects are likely to be (ie beyond mountains and other terrain, etc.).
+<P>
+Because transparency is used, the z-buffer will not keep things behind the transparent-fogged object from being hidden, so it should only be enabled for objects which are already fairly far from the viewer.  This special transparent-fog mode should be used with caution (as compared with the regular fog effect described in the preceding paragraphs which should work consistantly).
+
+<P>
+Fog is independant of lighting and texture mapping so it may be used in conjunction with any, all, or none of these other effects.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

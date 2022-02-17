@@ -1,0 +1,124 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-9. VectorList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(2)TriNvGroupエリア</font></h4>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="5">TriNvGroupHeader</th>
+
+<td>u32</td>
+
+<td>tri_nv_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_tri_nv_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>TriNv(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">TriNv(tri_nv_num - 1)</td>
+</tr>
+</table></center>
+
+<center>
+<p><b><font size=+0>図　TriNvGroupエリアメモリマップ</font></b></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 tri_nv_group_tag</td>
+
+<td><font size=+0>Tag indicating TriNvGroup. Set the following Tag.</font>
+<pre>
+<b><font size=+0>TAG_TRI_NV_GROUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00060100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_tri_nv_group_index</td>
+
+<td><font size=+0>Index number of this TriNvGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_group_header_size</td>
+
+<td><font size=+0>Size of thisTriNvGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_group_size</td>
+
+<td><font size=+0>Size of this TriNvGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_num</td>
+
+<td><font size=+0>Total number of TriNv.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg9-4.htm">TriNv</a></td>
+
+<td><font size=+0>Area for one normal vector data.</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right>
+<p><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg9-3.htm">次へ</a></font><a href="seg9-3.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

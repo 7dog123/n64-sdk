@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 5</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro04/index4.8.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro05/index5.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Database Modeling</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This chapter describes the flow of tools required to go from 3D model design and music composition to cutting the ROM cartridge. In addition to the standard C compiler suite, the Nintendo 64 software release supplies a number of other tools particular to the Nintendo 64 software development environment. The source code to some of these tools is provided as an example to help you create your own customized tools - giving your game an advantage in the marketplace. This chapter includes the following sections:<ol>
+
+<li>database modeling
+<li>model space to render space database conversion
+<li>music composition
+<li>wavetable construction
+<li>building ROM images
+<li>host side functionality
+</ol>
+
+<P>
+To produce real-time 3D graphics, you need modeling tools to create geometry. Because many off-the-shelf modeling tools are available, there is no modeling package in the Nintendo 64 development kit from Silicon Graphics. Nintendo has contracted two top modeling package companies (MultiGen and Alias) to provide the database modeling solution.
+<P>
+For texture-map images and traditional 2D sprite-type games, you may desire image conversion, editing, and paint software. These are not provided as part of the Nintendo 64 development kit.
+<P>
+All of the example applications and source code, including sample image conversion programs, use the popular SGI RGB image format. Additional related, but unsupported software, may be obtained from SGI via the 4Dgifts product, anonymous ftp via <font face="courier" size="-1">sgi.com</font>, or from the user community on the internet (see <font face="courier" size="-1">comp.graphics</font> or the <font face="courier" size="-1">comp.sys.sgi</font> hierarchy). One of the more popular publicly available packages containing image conversion and manipulation software is PBMPLUS, widely available on the internet.
+<P>
+<a name="01"></a>
+<b>NinGen</b>
+<br>
+NinGen is a 3D modeling package from MultiGen. It is a derivative of their traditional 3D modeling software, together with a Nintendo 64 database format convertor. The key strength of MultiGen has been their ability to provide 3D modeling tools for the real-time commercial and military flight/vehicle simulation market.
+<P>
+For this market, many database techniques developed for a real-time flight simulator are available in NinGen. Some basic features include:
+<ul>
+<li>Geometric level of detail.
+<li>Binary separating planes for depth-ordered rendering. This is required if you don’t use the z-buffer.
+<li>Many polygon count reduction tools. The goal is the best model with the lowest polygon count.</ul>
+<P>
+<a name="02"></a>
+<b>Alias</b>
+<br>
+Historically, Alias has provided 3D animation and modeling tools for the computer-generated film and animation market segment. Beautiful models, sophisticated motion paths, and fast development time are all vital to success in this marketplace. Some of the strong features of the Alias software package include:
+<ul>
+<li>NURBs based modeler provides smooth surfaces on models.
+<li>Motion paths and inverse kinematics provide complex motion.
+<li>Special effects such as particle systems, a large variety of lights, and texturing capabilities improve picture quality.</ul>
+
+<P>
+<a name="03"></a>
+<b>Other Modeling Tools</b>
+<br>
+In addition to Alias and MultiGen, there are other modeling packages on the market. SoftImage and Nichimen Graphics are also traditional film and animation market tool suppliers. For PC users, Autodesk's 3DStudio has recently entered the animation market on the low end of the price spectrum.
+<P>
+Film and animation tools have many features that can be extracted for real-time animation. Figuring out how to extract the special features out of theses tools can help you give your game application an advantage. For example, you might be able to use particle system tools to generate texture maps. Flipping this texture book on some morphing geometry can approximate the group motion of a system of particles - enabling you to create fire, water, and other interesting objects.
+<P>
+<a name="04"</a>
+<b>Custom Modeling Tools</b>
+<br>
+For special game application requirements, you may need to create your own custom modeling packages. Obviously, it is time-consuming to build such a software package in house. The advantage, however, is that you can customize the databases to the requirements of your game. For example, you might be able to gain rendering display performance if you are able to give hints to your modeler about how to order geometry.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

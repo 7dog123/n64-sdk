@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 14</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro14/index14.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro15/index15.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Z-Buffering Texture Rectangles</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Normally, sprites are rendered in a  Z sorted list and rendered from back to front.  The Z of each sprite must be maintained by the application and the application must do the sort each frame.  Another technique is to use the z-buffer to determine priority.
+
+<p>
+<a name="01"></a>
+<b>Primitive Z</b>
+<br>
+The texture rectangle has no Z value associated with it directly, however you can use the primitive Z register <i>(g*DPSetPrimDepth( )</i>).  To force the z-buffer logic to use primitive Z rather than pixel Z, you must use the following command:
+<pre>
+gsDPSetDepthSource(G_ZS_PRIM)
+</pre>
+
+<P>
+You must also use a RenderMode that enables z-buffering, such as G_RM_ZB_OPA_SURF.  To z-buffer sprites, you would have to insert a g*DPSetPrimDepth() command before the rectangle command of each sprite.  Because the primitive Z is explicitly buffered in the pipeline, it is not necessary to insert pipe sync commands before setting the register.
+
+<P>
+Note that z-buffering can only be used in 1 and 2-cycle mode.  In copy and fill mode, you should use the RenderMode G_RM_NOOP to effectively disable z-buffering and put the pipeline logic in a safe state.
+
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

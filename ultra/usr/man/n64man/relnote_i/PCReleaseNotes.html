@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Functions</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Functions</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+<IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+     <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=160 ALIGN="center">
+         <TR>
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=20 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+         </TD>
+         </TR>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif"></A>
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif"></A>
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif"></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=400 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=350>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0"><H2>N64<SUP>&reg;</SUP> OS/Library 2.0i for the PC</H2></FONT>
+
+<H3>Summary</H3>
+
+This release of the N64 OS/Library (version 2.0i for RCP 2.0) includes various patches that were released after version 2.0b.<BR>
+<BR>
+
+Also included is a new version of the HTML online <I>N64 Function Reference Manual</I> also known as man pages. The format has been redesigned and the content edited. A comprehensive index with a summary of each function or macro is also included. There is now only one version of the HTML online <I>N64 Function Reference Manual</I>; it can be used for both the PC and SGI versions.<BR>
+<BR>
+ 
+The directory structure under /usr/src/PR was completely revised, and 
+ demo software is now installed in /usr/src/PR/demos. For the detailed structure,
+ see the /usr/src/PR/README file.  For an explanation of each demo, see  
+ the /usr/src/PR/demos/README_DEMOS file. Nintendo recommends that you erase the 
+ entire /usr/src/PR directory before installation.  By doing this, you ensure that
+ the old directory won't be mixed up with the newly installed directory.<BR>
+<BR>
+
+ A description of "to execute gload" is found in a README in the directories of some 
+ sample demos under /usr/src/PR/demos/README_DEMOS and /usr/src/PR/demos/.  This description explains how to execute a program in the development environment of the Indy plus a development
+  board. For Partner users, please execute programs by following the procedures for 
+ Partner.<BR>
+<BR>
+
+ The N64 Disk Drive development environment was included in Version 2.0h of the N64 OS/Library. For Version 2.0i, the N64 Disk Drive development environment is included as a separate package on the CD. You can choose to install both Release 2.0i of the N64 OS/Library and the N64 Disk Drive development environment if you want.<BR>
+<BR>
+   
+ A batch file (<B>setup.bat</B>), used to set an environmental parameter, was changed.  A batch file for the library (<B>setuplib.bat</B>) and a batch file for exeGCC (<B>setupgcc.bat</B>) are now run from <B>setup.bat</B>.<BR>
+<BR>
+
+ The format of the Makefile demo software was changed. It is now similar to the
+ format for the SGI. It is also compatible with the compression functions used in 
+ exeGCC version 1.2. Accordingly, files under ultra/include/make were completely revised.<BR>
+<BR>
+ 
+A header file (<B>ultra/usr/include/assert.h</B>) was also changed.<BR>
+<BR>
+
+The following header files that used to be under ultra/usr/include were deleted:
+
+<B><UL><LI>bstring.h
+<LI>math.h
+<LI>svr4_math.h
+<LI>tinymon.h</UL></B>
+
+<H3>New Functions</H3>
+
+A new sprite microcode (S2DEX) was added.  This is the same as Release 1.06 of S2DEX microcode that was distributed as a patch for version 2.0h.  Please note that this is not compatible with Sprite2D microcode. 
+
+<H3>New Demo Software</H3>
+
+The following new demos are available:
+
+<UL><LI><B>gs2dex</B> - A sample program for S2DEX microcode. Controller 1 is used.
+<LI><B>eeptest</B> - A test program for EEPROM.  This reads from and writes to EEPROM, checking to see if EEPROM can read from and written to correctly. This works with 16K-EEPROM.
+<LI><B>sramtest</B> - A sample program for SRAM. It requires a 256K SRAM board. The result is returned to a terminal by using <FONT FACE="COURIER NEW,COURIER">osSyncPrintf</FONT>.</UL>
+
+<H3>Modified Demo Software</H3>
+
+The following demos have been modified:
+
+<UL><LI><B>motortest</B> - When stopping the Rumble Pak, the demo has been changed to call <FONT FACE="COURIER NEW,COURIER">osMotorStop</FONT> three times.  
+<LI><B>nosPak</B> - A sample library (libnos_jpn.a or libnos.a) for the Controller Pak menu program was provided in its entirety for the previous version. It was changed so that by executing the <B>make</B> program using lib/, a library is created. With this modification, a sample library in ultra/usr/lib (libnos*.a) and the header file in ultra/usr/include/PR (lisnos.h or ncode.h) were deleted.   Also,  in the previous Controller Pak menu program, the setting for screen mode was designed only for NTSC within a menu, so it could not be used for other modes (such as PAL). To make the Controller Pak menu usable with other modes, we changed this so that the screen mode is no longer set within a menu. Now, you must set a screen mode before calling the Controller Pak menu.<BR>
+<BR>
+It was also changed so that a version of the Controller Pak Library is now displayed by the Controller Pak menu.  If your own Controller Pak menu is used, please display a version number.
+<LI><B>overlay</B> - As this is not presently used with Multi Wave in the PC version, it was deleted.
+<LI><B>pfs</B> - The error in the characters of the screen display was corrected, and the specifications were modified to be consistent with the Controller Pak guidelines.  The function used to change the number of pages of a game note with the L and R 
+ buttons was deleted.
+<LI><B>nnsample1,2</B> - An error in the RDP FIFO buffer size was corrected. Also, in case rmon is used, it now specifies <FONT FACE="COURIER NEW,COURIER">USE_RMON</FONT>.
+</UL>
+
+<H3>Corrected Problems</H3>
+
+<B>Audio</B><BR>
+<BR>
+
+ The <FONT FACE="COURIER NEW,COURIER">osAiSetNextBuffer</FONT> function was modified. 
+ Previously, a bug was considered to be found if the last address of DMA source was 
+ <FONT FACE="COURIER NEW,COURIER">bXX10 0000 0000 0000</FONT>.  It is now considered that a bug when the last address is <FONT FACE="COURIER NEW,COURIER">bXXX0 0000 0000 0000</FONT>.<BR>
+<BR>
+ 
+<B>Graphics</B><BR>
+<BR>
+
+ Yield processing could not be done for Sprite2D microcode in the previous version.  
+ This has been corrected.  Previously, this occurred when Sprite2D microcode was combined with naudio microcode.<BR>
+<BR>
+
+ When flat shading was used for the <FONT FACE="COURIER NEW,COURIER">gSP1Quadrangle</FONT> macro of F3DEX microcode, occasionally the 
+ outcome was not as expected.  The <B>gbi.h</B> file was modified to make this macro more reliable.<BR>
+<BR>
+ 
+<B>Operating System</B><BR><BR>
+
+ With the previous release of the OS, operation became unstable if the <FONT FACE="COURIER NEW,COURIER">osMotorStart</FONT> or <FONT FACE="COURIER NEW,COURIER">osMotorStop</FONT> function was
+ called without first calling <FONT FACE="COURIER NEW,COURIER">osMotorInit</FONT>. Now, instead of operation becoming unstable, an error such as <FONT FACE="COURIER NEW,COURIER">PFS_ERR_INVALID</FONT> is returned.<BR>
+<BR>
+
+ With the <FONT FACE="COURIER NEW,COURIER">osContGetReadData</FONT> function, sometimes correct data could not be read because the data of the P-Controller was destroyed.  This problem has been corrected.<BR>
+<BR>
+
+ The portion of code in which a 15ms wait occurred for each read using the CPU timer 
+ within the <FONT FACE="COURIER NEW,COURIER">osEepromLongRead</FONT> function was deleted. Now, only writing requires a 15ms wait.<BR>
+<BR>
+
+ In the previous version, when a Controller Pak was removed and re-inserted 
+ <FONT FACE="COURIER NEW,COURIER">PFS_ERR_NEW_PACK</FONT> was not returned. This has been corrected.   Similarly, 
+ if a Controller Pak was removed and re-inserted for a different Controller port,
+ <FONT FACE="COURIER NEW,COURIER">PFS_ERR_NEW_PACK</FONT> was not returned. This has also been corrected.<BR>
+<BR>
+
+ In the previous release, when you deleted a game note by using the <FONT FACE="COURIER NEW,COURIER">osPfsDeleteFile</FONT> function when the 1M Controller Pak 
+ (under development) was in use, another game note was deleted as well.  This problem 
+ has been corrected.   When a 256K Controller Pak was used, this problem never occurred.<BR>
+<BR>
+ 
+ To ensure that the corrected Controller Pak library is used, new functionality was added. Now the <FONT FACE="COURIER NEW,COURIER">OS_PFS_VERSION</FONT> value indicates the version of Controller Pak library that was added.  Please be sure to display this "latest version" in the Controller Pak menu for each game application.  The <FONT FACE="COURIER NEW,COURIER">OS_PFS_VERSION</FONT> value is a 16-bit value.  The upper 8 bits contain the integer part of the version number. The lower 8 bits contain the decimal part. For example, if the value of <FONT FACE="COURIER NEW,COURIER">OS_PFS_VERSION</FONT> is <FONT FACE="COURIER NEW,COURIER">0x0200</FONT>, the version of Controller Pak library is 2.0. For further examples, see the nosPak demo.<BR>
+<BR>
+  
+The <FONT FACE="COURIER NEW,COURIER">osEPiReadIo</FONT>, <FONT FACE="COURIER NEW,COURIER">osEPiRawReadIo</FONT>, <FONT FACE="COURIER NEW,COURIER">osEPiWriteIo</FONT>, and <FONT FACE="COURIER NEW,COURIER">osEPiRawWriteIo</FONT> functions did not change the value of the PI bus according to the handler given by an argument.  This has been corrected.<BR>
+<BR>
+    
+The missing parenthesis in a macro definition was corrected.<BR>
+<BR>
+
+ The definitions for <FONT FACE="COURIER NEW,COURIER">OS_CYCLES_TO_*SEC</FONT> and <FONT FACE="COURIER NEW,COURIER">OS_*SEC_TO_CYCLES</FONT> were changed to make  
+ overflow unlikely.<BR>
+<BR>
+ 
+ The extern declaration of the <FONT FACE="COURIER NEW,COURIER">osViRepeatLine</FONT> function in the header file <B>os.h</B> was <FONT FACE="COURIER NEW,COURIER">osRepeatLine</FONT> by mistake.  This has been corrected.<BR>
+<BR>
+
+ The value of <FONT FACE="COURIER NEW,COURIER">SEGMENT_NUMBER</FONT> was the upper 8 bits of the address.  It was changed so that the upper 4 bits will be ignored.  Therefore, a malfunction will not occur when the address of <FONT FACE="COURIER NEW,COURIER">KSEG0,1</FONT> is entered.<BR>
+<BR>
+ 
+ When hostio is used for Partner, a thread was made to wait by polling to see if the data was not received. This has been corrected.<BR>
+<BR>
+  
+ The <FONT FACE="COURIER NEW,COURIER">osUnmapTLBAll</FONT> function had unmapped entries from 1-31 instead of the correct range of from 0-30. Entry 31 is used by the system. This has been corrected.<BR>
+<BR>
+  
+ An exception handler of Version 2.0h would overwrite a global variable area to be 
+ used for N64 Disk Drive programs in the previous version. This has been corrected.<BR>
+<BR>
+
+ In release 2.0h, when an <FONT FACE="COURIER NEW,COURIER">osDestroyThread</FONT> function specifies a thread that does not exist (such as a destroyed thread), unexpected results would occur. This has been corrected. If this happens now, it returns without doing anything.
+
+<H3>Expanded Functions</H3>
+
+<B>Operating System</B><BR>
+<BR>
+<UL>
+<LI>The EEPROM functions (<FONT FACE="COURIER NEW,COURIER">osEepromProbe</FONT>, <FONT FACE="COURIER NEW,COURIER">osEepromWrite</FONT>, <FONT FACE="COURIER NEW,COURIER">osEepromRead</FONT>, <FONT FACE="COURIER NEW,COURIER">osEepromLongWrite</FONT>, and <FONT FACE="COURIER NEW,COURIER">osEepromLongRead</FONT>) were expanded for 16K-EEPROM. 
+
+<LI>The <FONT FACE="COURIER NEW,COURIER">OsGetMemSize</FONT> function was added. You can use it to verify that a Memory Pak is inserted  by accessing part of the expanded memory area of RDRAM.  Please use this function for N64 Disk Drive games. It differs from osMemSize, which is a variable where the size of RDRAM acquired at the time of activation is stored. The osGetMemSize function checks if it is possible to gain access to memory right now. 
+
+<LI>The <FONT FACE="COURIER NEW,COURIER">osEPiLinkHandle</FONT> function was added.  Use this function when a custom handler acquisition function is created. For details, see the sramtest sample demo. 
+</UL>
+
+<B>Functions No Longer Available</B><BR><BR>
+
+The  <FONT FACE="COURIER NEW,COURIER">osPfsReSizeFile</FONT> function was deleted.
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=400>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=400>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=400>
+            <TD>
+<FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR><BR><B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT>
+            <FONT FACE="arial" SIZE=-2 COLOR=0000A0>
+            <B><BR>
+               Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

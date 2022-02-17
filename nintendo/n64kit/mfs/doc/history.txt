@@ -1,0 +1,73 @@
+History of Revisions
+
+
+990727 Ver1.16
+* When a non-MFS format disk is used with mfsMediaCheck, fixed so 
+  MFS_ERR_NOTMFSDISK error is returned instead of MFS_ERR_HEADER error.
+	  
+
+990123 Ver1.15
+
+* Modified so that mfsSeekLBA(0) is used to check the Disk ID to determine 
+  whether a Disk has been replaced.  This had been done by mfsDiskIDCheck().  
+  MFS_ERR_DISKCHANE is returned even if the same medium is removed and 
+  reinserted. 
+
+
+980908 Ver1.14
+
+* Fixed so that when the Disk is full, MFS_ERR_FULL is returned rather than 
+  MFS_ERR_HEADER. 
+
+
+980904 Version 1.13
+
+* Completed the incomplete fix of Version 1.11. 
+
+
+980904 Version 1.12
+
+* Fixed a problem that caused the change counter of the parent directory to not 
+  count. 
+
+
+980904 Version 1.11
+
+* Fixed a problem that prevented more than half of the file size specified with 
+  mfsRamWriteFile() from being saved. 
+
+
+980903 Version 1.10
+
+* Fixed a problem of compatibility with Nintendo software. 
+	
+* Fixed a problem with mfsRamGetFileName().
+
+* Fixed a problem that prevented mfsHRename() from changing names in the same 
+  directory.
+	
+* Modified so that use of the ID area of the development drive as RAM area is 
+  checked.  Previously it was not. 
+
+980708 Version 1.00
+
+* Upgraded to 1.00 as official version.
+
+
+980618 Version 0.65
+
+* Divided the "volume protect" attribute of the volume ID, changing it into 
+  "volume read protect" and "volume write protect" attributes.
+* Fixed the EmfsHSetVolumeAttr() bug.
+* Changed the GNU-C compiler library file names to libgmfs.a,libgmfs_d.a
+* Changed the internal buffer size MAX_BLK_SIZE to a multiple of 16 
+  (MAX_BLK_SIZE+8)
+	
+
+980520 Version 0.64
+
+* Consolidated the revision history (this file)
+* Callback function is now called when asynchronous LEO function is called.
+* Callback function is now called on an asynchronous LEO function error.
+* Moved the asynchronous LEO function list from local header file to global 
+  header file so the list can be changed.

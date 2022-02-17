@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="5"><b><img src="../../gif/nusystem2.gif"
+width="176" height="30"></b></font><a name="top"><font size="6"><strong> </strong></font><font
+size="5">&quot;INSIDE NuSystem&quot;</font></a></p>
+
+<p><a href="#1"><font size="4"><strong>2.1 The Initiator Component</strong></font></a><font
+size="4"><strong><br>
+</strong></font><a href="#2"><font size="4"><strong>2.2 How to Customize the Initiator</strong></font></a></p>
+
+<hr>
+
+<p><strong><a name="1"><font size="5">2.1  The Initiator Component</font><font size="5"> </font></a></strong></p>
+
+<p>The initiator comprises the initialization portion of the NuSystem boot that was diagrammed in Figure 2.1. It executes everything from the nuBoot function up to the application's mainproc function. The flow of the NuSystem initiator is diagrammed in Figure 5. By the time mainproc is executed, the video interface (VI) and peripheral interface (PI) are usable and the Scheduler has been started.</p>
+
+<I><B>Figure 2.1</B> -- Initiator Process Flow</I>
+
+<p><img src="../../gif/nusys-5.gif"></p>
+
+<p>In addition to these functions, the initiator can also register a callback function in the idle loop in the idle thread. This callback function is executed only when there is no executable thread. Its priority is OS_PRIORITY_IDLE, which is the lowest priority state. The callback is registered in the idle loop by the nuIdleFuncSet function.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<p><a name="2"><font size="5"><strong>2.2 How to Customize the Initiator</strong></font></a></p>
+
+<p>Customizing the initiator involves setting the video mode and the retrace cycle (arguments used at Scheduler start-up time) and changing the video interface (VI) feature settings. The video mode setting and the VI feature settings can be changed with the application, but the retrace cycle cannot. If you want to change the retrace cycle, you need to change the nuScCreateScheduler function's call argument in the nuboot.c source code file.
+</p>
+
+<p>You can change the default memory map shown in Figure 4 by rewriting the spec file, which sets the default code region. For example, the default maps the Z-Buffer between the system region and the code region. To change the location of the Z-Buffer, you must also simultaneously change the code region. Here is an example code region: 
+</p>
+
+<pre><font size="4">beginseg
+	name &quot;code&quot;
+	flags BOOT OBJECT
+	entry nuBoot
+	address NU_SPEC_BOOT_ADDR
+	stack NU_SPEC_BOOT_STACK
+	....
+	(omitted)
+	....
+endseg</font></pre>
+
+<p>With this segment setting, the NU_SPEC_BOOT_ADDR address entry is defined as 0x80025c00 in the nusys.h header file. If you want to move the code region to the front, specify the address entry as 0x80000400 and change the Z-Buffer to a suitable location by using the nuGfxSetZBuffer function.
+</p>
+
+<p><a href="#top"><img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

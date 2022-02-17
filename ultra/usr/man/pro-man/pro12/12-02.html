@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 12</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro12/index12.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro12/index12.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">RDP Global State</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Several state are global to the RDP, usually to specify pipeline configuration and synchronization.
+<P>
+<a name="01"></a>
+<b>Cycle Type</b>
+<br>
+To configure the pipeline for rendering, choose one of the cycle types that offers the functionality required at peak performance.
+<P>
+<b>Table 1</b> &nbsp;gsDPSetCycleType(type)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">type</td>
+<td width=60%><font face="arial" size="-1">G_CYC_1CYCLE<br>
+G_CYC_2CYCLE<br>
+G_CYC_COPY<br>
+G_CYC_FILL</td>
+</tr></table>
+
+<P>
+<a name="02"></a>
+<b>Synchronization</b>
+<br>
+You might ask “How does the primitive rendering pipeline synchronize with all of the different attribute states that the programmer can set?” Imagine that the last few pixels are being processed in the RDP pipeline when it receives a new attribute command, and this command affects the pixel currently being processed. You would not want the last few pixels of a primitive to have the attributes of a following primitive. You really want to have the attribute state only to modify the pixels of the primitive following the attribute state change. This synchronization is not implicit within the pipeline; the application must explicitly insert proper synchronization between attribute state changes and primitives.
+
+<P>
+<b>Table 2</b> &nbsp;gsDPPipeSync()
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">none</td>
+<td width=60%><font face="arial" size="-1">none</td>
+</tr></table>
+
+<P>
+This command synchronizes the attribute update with respect to primitive rendering. It ensures that the last pixels of a primitive are rendered prior to the attribute taking effect. Insert this in between an RDP primitive followed by an RDP attribute:
+<pre><font face="courier" size="3">gDPSetCycleType(glistp++, G_CYC_FILL);
+gDPFillRectangle(glistp++, 0, 0, 127, 127);
+gDPPipeSync(glistp++);
+gDPSetCycleType(glistp++, G_CYC_1CYCLE);
+</pre></font>
+<br>
+<P>
+<b>Note:</b> After a primitive (eg. gSPTriangle, gDPFillRectangle, gDPTextureRectangle) and before an RDP attributes (eg. gDPSet*), you need to insert a gDPPipeSync.
+<P>
+After processing all of the RDP display list, the host processor must be interrupted and notified.
+
+<P>
+<b>Table 3</b> &nbsp;gsDPFullSync()
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=40%><font face="arial" size="-1">none</td>
+<td width=60%><font face="arial" size="-1">none</td>
+</tr></table>
+
+<P>
+gDPFullSync() also shuts down the RDP until given a new DP DL to eliminate excessive power consumption.
+
+<P>
+<a name="03"></a>
+<b>Span Buffer Coherency</b>
+<br>
+For RMW cycles, the RDP is smart enough to prefetch a row of pixels as soon as the X, Y coordinates of the span are determined. The RDP preloads the framebuffer content of this span into an RDP onchip span buffer. The RDP then waits for the pipeline to process the parameters for the outgoing pixels. When the outgoing pixels are computed, they are “combined” with the preloaded framebuffer pixels before writing back to the framebuffer. 
+<P>
+An example of this operation is z-buffer and transparency blending. (This was not shown in the logical pipeline description, to simplify the understanding of the pipeline.)
+<P>
+The RDP has enough onchip RAM to hold several span buffers. Therefore, if two spans in sequence happened to overlap the same screen area, the RDP would prefetch the first span into a span buffer while the pipeline starts processing this span. Then it would prefetch the next span into another span buffer. 
+<P>
+This is where the problems occur: the pixel data for the next span is not yet computed. The RDP does have span buffer coherency, at the cost of some performance. If errors are objectionable in your animation, use gsDPPipelineMode(G_PM_1PRIMITIVE) to cause all primitives to add between 30 to 40 null cycles after the last span of a primitive is rendered.  These dead cycles can be expensive in terms of fill rate so it is recommended not to use the 1PRIMITIVE mode be used unless absolutely necessary.
+<P>
+
+<P>
+<b>Table 4</b> &nbsp;gsDPPipelineMode(mode)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">mode	</td>
+<td width=60%><font face="arial" size="-1">G_PM_1PRIMITIVE<br>
+G_PM_NPRIMITIVE</td>
+</tr></table>
+<P>
+These dead cycles can be expensive in terms of fill rate so it is recommended not to use the 1PRIMITIVE mode be used unless absolutely necessary.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

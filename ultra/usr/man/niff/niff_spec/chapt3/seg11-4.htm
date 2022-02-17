@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.11 TriList</font></h3>
+
+<hr size=3>
+<h4>4) ReferenceTriColorData Area</h4>
+
+<hr size=1>
+<br><b>When TRI_ANIM_TRI_COLOR_FULL is specified</b><BR><BR>
+<center><table BORDER
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_index(tri_anim_frame_num)</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Reference TriColorData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tri_color_group_index</td>
+
+<td><font size=+0>Index number of TriColorGroup to be referred</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When TRI_ANIM_TRI_COLOR_KEY is specified</b><BR><BR>
+<center><table BORDER >
+<tr>
+<td>u32</td>
+
+<td>tri_color_anim_key_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_anim_key(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_anim_key(tri_color_anim_key_num - 1)</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_index(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_index(tri_color_anim_key_num - 1)</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>Reference TriColorData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tri_color_anim_key_num</td>
+
+<td><font size=+0>Total number of key frame animation keys.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_anim_key</td>
+
+<td><font size=+0>Key frame value</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_color_group_index</td>
+
+<td><font size=+0>Index number of TriColorGroup to be referred</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr size=1>
+<br><b>When Tri Color Animation is not performed</b><BR><BR>
+<center><table BORDER>
+<tr>
+<td>u32</td>
+
+<td>tri_color_group_index</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>ReferenceTriColorData Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tri_color_group_index</td>
+
+<td><font size=+0>Index number of TriColorGroup to be referenced</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg11-3.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg11-5.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

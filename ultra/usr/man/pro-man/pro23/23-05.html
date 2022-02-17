@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 23</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro23/index23.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro24/index24.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Using the Debugger</font></b>
+<P>
+<font face="arial" size="-1" color="#000000">
+Once you have all the required software installed on your system, you can modify your application to include rmon. Since rmon is rather passive, it does not require you to run the debugger. It just waits for incoming requests and does not interfere with the game operation unless requests arrive. An include file, rmon.h, is provided as part of the distribution. It should be included by the file that creates and starts the rmon thread.
+<P>
+Once you have built your application, you are ready to debug it. 
+
+<ol>
+<li>Start dbgif in a window of its own. 
+<P>
+<li>Download your application with gload. 
+<P>
+<li>You may now start gvd itself. 
+</ol>
+
+<P>
+For the Nintendo 64, it is required that gvd be started with the name of your executable (the boot executable, if there is more than one) on the command line. For example, if your executable is named sample, you would enter:
+<pre><font face="courier" size="3">gvd sample &
+</pre></font>
+
+<P>
+The debugger starts. It makes no attempt to contact the target system yet.
+<P>
+You should have a source window and a small status window (which may be minimized if desired). Now you must establish a link to the target. 
+
+<ol start="4">
+<li>Select the Admin pulldown menu and click Switch Thread. 
+<P>You will be prompted for the ID of the thread to which you wish to connect. Under the OS, threads do not really have small integer ID’s; instead, they are referenced by the address of their thread control blocks. When you created the thread initially, you assigned it an ID for the debugger to use. 
+<P>
+<li>Specify the ID you assigned to the thread to which you will be attaching. 
+<P>
+You may only attach to a thread that is in a stopped state. If you start the application with all threads stopped as recommended above, you will not have any problems attaching. 
+</ol>
+
+<P>
+Once you have successfully attached, the host and target will communicate to pass information about the system state back and forth. This takes a few seconds, or even longer if you have many threads. Once completed, you may bring up other views as appropriate to your debug session. Open views by selecting the Views pulldown menu and then clicking on the view you wish to see. The most frequently used of these are:
+<ul>
+<li>register view
+<P>
+This is where you may examine or modify the contents of all R4300 registers (except for some system control registers). Note that these registers apply to the thread to which you are currently attached. Switching threads with this view open refreshes it with the register contents for the new thread. You can only examine and modify the registers of a thread that is stopped. 
+
+<P>
+<li>memory view
+<P>
+As you would expect, this is where you examine and modify memory contents. You may specify the window origin by address or symbol. This window has two modes. In single-word mode, it displays and modifies exactly one memory word without touching any other locations. This is the mode you would use for dealing with memory-mapped registers. In block mode, it displays a block of memory from the specified starting address. The size of the block is mostly determined by the size of the window on your screen. Stretching the window gives you more memory to look at. Shrinking it gives you less. You may specify the base in which you wish memory to be displayed.
+
+<P>
+<li>disassembly view
+<P>
+This view shows you memory contents as disassembled code based on the current PC value, or else disassembled from some address you specify. The source line corresponding to the disassembled memory is also displayed. There are a number of configuration options for this window that let you customize it to the display that you find most useful. 
+<P>
+<li>trap manager 
+<P>
+This view shows you all breakpoints that are set. Breakpoints also show up in the source and disassembly windows as pink lines. The current PC shows up as a green line.
+</ul>
+
+<P>
+The source view, which is the main view of gvd, consists of a set of control buttons for running and stopping the selected thread, plus two other windows. The source window (the middle portion of the view) displays the source at the current PC (by default), and tracks the program counter to keep it on screen whenever possible. You may set breakpoints here by clicking in the margin to the left of the line at which you wish to set the breakpoint.
+
+<P>
+The bottom of the source view is a small command line window where you may enter commands and see the results. The mouse cursor must be in this window to use it. This window is usually used to examine data objects like structures. For example, if you wish to look at a message queue called audioMQ, you can enter <font face="courier" size="-1">print audioMQ,</font>  and the contents of the structure (including all its members) will be printed. Since the compiler and debugger were designed to work together, the debugger has quite good type information for displaying complex structures like this. 
+
+<P>
+If you plan to use this window much, it is probably a good idea to move the debugger higher on the screen and stretch the bottom down to enlarge the command portion of the view. The default size is a bit small. This window accepts most dbx commands, for those of you familiar with this popular UNIX debugger.
+
+<P>
+The command window is also useful for setting breakpoints in functions that are not on screen because they are in a different source file. While you can always change source files and set a breakpoint, it is more convenient (providing you wish to stop at the start of a function) to use the “stop in” command. If you know that you are trying to isolate a problem in a function called sendDisplayList, then it is probably best to type <font face="courier">stop in sendDisplayList</font> in the command window, then click Continue. This will run your application until any thread enters the specified function. 
+
+<P>
+<b>Note:</b> Encountering a breakpoint stops all threads with priorities in the user range (1 through 127). In general, coprocessor interrupts are blocked while rmon is running, and CPU interrupts are enabled.
+
+<P>
+The Admin pulldown menu also contains a few other useful items. First, this is how you exit the debugger. You may also change to a different executable here, but you should then do another <i>Switch Thread</i>  command. There is a multithread view in this menu, which is useful to have opened if you use more than one thread. It allows you to start and stop threads as a group, and indicates whether a given thread is running or stopped. If stopped, it shows you which function it was executing. It also shows you the name of the thread data structure used in thread system calls.
+
+<P>
+You will probably find gvd to be fairly intuitive, especially if you have used other source level debuggers. The online help should answer most questions that arise in debugger operation.

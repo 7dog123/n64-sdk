@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuSiMgrInit</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<p>u8 nuSiMgrInit(void)</p>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<p>None</p>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<p>Bit pattern of Controller</p>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><font color="#FF0000">Initializes and starts the SI Manager</font></p>
+
+<p>Initializes and starts the SI Manager, which controls access to the SI. Initilization involves calling the 
+osContInit function to initialize the N64OS SI. SI events are registered in the SI Manager.</p>
+
+<p>The SI Manager can register numerous device managers that use SI events. The SI can be accessed only via device 
+managers registered in the SI Manager. This provides exclusive control of the SI.</p>  
+
+<P>
+The nuSiCallBackAdd function is used to register device managers in the SI manager.  The nuSiCallBackremove function is used to remove them.  The actual form of a device manager is an array of function pointers to callback functions. 
+</P>
+<P>
+A unique major number is assigned to each device.  When this number and the index of the function pointer array are sent to the SI manager as a message number, the SI manager calls the device manager's callback function which corresponds with the message. 
+</P>
+<P>
+The device managers which can be registered in the SI manager are the Controller manager, Controller Pak manager, Rumble Pak manager, EEPROM manager, GB Pak manager, and Voice Recognition manager.  
+</P>
+<P>
+<STRONG>* Controller Manager</STRONG>
+</P>
+<P>
+Gets the status of buttons and keys on a standard Controller.  Register with the nuContMgrInit function. 
+</P>
+<P>
+<STRONG>* Controller Pak Manager</STRONG>
+</P>
+<P>
+Performs read/write and note manipulation for Controller Pak.  Register with the nuContPakMgrInit function. 
+</P>
+<P>
+<STRONG>* Rumble Pak Manager</STRONG>
+</P>
+<P>
+Controls Rumble Pak.  Register with the nuContRmbMgrInit function. 
+</P>
+<P>
+<STRONG>* EEPROM Manager</STRONG>
+</P>
+<P>
+Identifies the EEPROM type and performs read/write.  Register with the nuEepromMgrInit function.
+</P>
+<P>
+<STRONG>* GB Pak Manager</STRONG>
+</P>
+<P>
+Performs read/write for GB Pak.  Register with the nuContGBPakMgrInit function. 
+</P>
+<P>
+<STRONG>* Voice Recognition System</STRONG>
+</P>
+<P>
+Controls the Voice Recognition System.  Register with the nuVrsMgrInit function. 
+</P>
+
+<p>The return value is the bit pattern of the connected Controller</p>
+
+<table border="0" cellpadding="6">
+    <tr>
+        <td> </td>
+        <td><strong>7</strong></td>
+        <td><strong>6</strong></td>
+        <td><strong>5</strong></td>
+        <td><strong>4</strong></td>
+        <td><strong>3</strong></td>
+        <td><strong>2</strong></td>
+        <td><strong>1</strong></td>
+        <td><strong>0</strong></td>
+        <td><strong>bit</strong></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFF80"><strong>Bit pattern</strong></td>
+        <td bgcolor="#FFFF80"><strong>-</strong></td>
+        <td bgcolor="#FFFF80"><strong>-</strong></td>
+        <td bgcolor="#FFFF80"><strong>-</strong></td>
+        <td bgcolor="#FFFF80"><strong>-</strong></td>
+        <td bgcolor="#FFFF80"><strong>4</strong></td>
+        <td bgcolor="#FFFF80"><strong>3</strong></td>
+        <td bgcolor="#FFFF80"><strong>2</strong></td>
+        <td bgcolor="#FFFF80"><strong>1</strong></td>
+        <td> </td>
+    </tr>
+</table>
+
+<p>If the Controller is connected, the bit is 1</p>
+
+<p>Since this function is called by the nuContInit function, in most cases this function does not need to be called.</p>
+
+<hr>
+
+<p>Reference: <a href="nuSiCallBackAdd.htm">nuSiCallBackAdd</a>, <a
+href="nuSiCallBackRemove.htm">nuSiCallBackRemove</a>, <a
+href="nuContInit.htm">nuContInit</a></p>
+
+<hr>
+<P>- Revision History</p>
+<p>
+1999/2/1 Rewrote content with changes in SI manager internal processing.  Added descriptions regarding GB Pak and Voice Recognition System.
+</P>
+
+<p><a href="index.htm"><img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+Function 
+-  Defines screen. 
+  The screen is the view which can be displayed on N64 hardware. 
+
+Functions 
+-  int mrnScreenInit( MrnScreen *screen_ptr,
+		     const u32 resolution,
+		     const u32 number_of_frame_buffers,
+		     const u32 frame_buffer_depth,
+		     const u32 z_buffer )
+  Initializes mrnScreen. 
+  - resolution
+    Select from the following. 
+      MRN_SCREEN_RES_NTSC_320_240
+      MRN_SCREEN_RES_NTSC_320_240D
+      MRN_SCREEN_RES_NTSC_640_480I
+      MRN_SCREEN_RES_NTSC_640_480
+    Those with a D on the end indicate deflicker mode. 
+    Those with an I on the end indicate interlace rendering mode.  
+  - number_of_frame_buffers
+    Specify 2 for double buffer, 3 for triple buffer. 
+  - frame_buffer_depth
+    Specify the bit width of a pixel.  (16 or 32). 
+  - z_buffer
+    Specify 1 if the Z buffer will be used.  Specify 0 if it will not be used. 
+
+-  int mrnScreenSetMode( MrnScreen *screen_ptr,
+			const u32 resolution,
+			const u32 number_of_frame_buffers,
+			const u32 frame_buffer_depth,
+			const u32 z_buffer )
+  Switch the screen resolution.  The argument is the same as for mrnScreenInit(). 
+
+History
+  1998/11/16 Takamitsu Hirata 
+    Screen.h, screen.c :  Initial version 

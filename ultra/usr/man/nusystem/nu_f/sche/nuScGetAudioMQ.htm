@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><b><img src="../nusystem2.gif" width="176"
+height="30"></b></font><font  FACE="ARIAL" size="4"><b>Function</b></font></p>
+
+<hr>
+<font face="arial">
+<pre><font color="#0000A0" size="6"><b>nuScGetAudioMQ</b></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<b>Syntax</b><br>
+<font face="courier" size="3"><pre>OSMesgQueue* nuScGetAudioMQ(void)</pre></font>
+
+<P>
+<b>Arguments</b>
+<br>
+None
+
+<P>
+<b>Return Value</b>
+<br>
+The pointer for the message queue of the audio task thread
+
+<P>
+<b>Explanation</b>
+<br>
+Pointer for the message queue of the audio task thread.
+
+<p>
+When the audio task message is sent to the obtained message	queue, the audio task thread executes the audio task.
+	Normally, since the audio task is created and executed by the	Audio Manager, it is not necessary to call this function from
+	the application directly.
+</p>
+
+<hr>
+<P>
+<b>See Also</b>
+<br>
+<a href="nuScCreateScheduler.htm">nuScCreateScheduler</a></pre>
+
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

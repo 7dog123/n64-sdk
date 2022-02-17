@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IBM//DTD HPB HTML//EN">
+<HTML>
+<HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<p><font size="6"><b><img src="../nusystem2.gif" width="176"
+height="30"></b></font><font  FACE="ARIAL" size="4"><b>Function</b></font></p>
+
+<HR>
+<font face="arial">
+<Pre>
+<font color="#0000A0" size="6"><b>nuScSetFrameBufferNum</b></FONT>
+</Pre>
+
+<HR>
+<font face="arial" size="-1">
+<b>Syntax</b>
+<br>
+<font face="courier" sixe="3"><pre>void nuScSetFrameBufferNum(u8 frameBufferNum)</Pre></font>
+
+<P>
+<b>Argument</b>
+<ul>
+<li>frameBufferNum is the number of frame buffers
+</ul>
+
+<P>
+<b>Return Value</b>
+<br>
+None
+
+<P>
+<b>Explanation</b>
+<br>
+Sets number of frame buffers
+</P>
+
+<P>
+Sets the number of color frame buffers in the scheduler.  When the value set is 1, (in the case of a single frame buffer), the graphics task will not execute a wait for empty frame buffers. 
+When not using a single frame buffer, there is no particular need to set this. 
+</P>
+
+<P>
+When using the <a href="../graphics/nuGfxSetCfb.htm">nuGfxSetCfb</a> function, call this function inside the function and set an appropriate value. 
+</P>
+
+<HR>
+
+<P>
+<A href="index.htm"><IMG src="../index.gif" height="17" width="65" border="0"></A>
+</P>
+</BODY>
+</HTML>

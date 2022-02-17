@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 2</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro02/index2.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro02/index2.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+
+<P>
+<b><font face="arial" color="#29296b">Graphics</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>There is no picture on the screen, but the drawing loop is running</b>
+<br>
+You are probably handing a bad segment address to the RSP graphics pipeline. This problem is easy to overlook, as there are no warnings. Make sure you thoroughly understand how a MIPS family processor performs addressing and how KSEG0 works (most games run in KSEG0). It allows cached access with no TLB translation. All CPU registers are accessible. KSEG addresses use the most significant bits of the address to indicate the addressing modes.
+
+
+<P>
+<b>Figure 2.2.1</B> &nbsp;CPU KSEG0-3 Addresses
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro02/gif/f02-01.gif"></tr></td></table>
+
+<P>
+The RSP uses a segment addressing scheme with base pointers. It is very easy to hand a CPU KSEG0 address to the RSP by mistake and spend hours locating a simple error. Note that KSEG0 CPU address would reference a invalid segment if decoded as an RSP address.
+
+<P>
+<b>Figure 2.2.2</B> &nbsp;RSP Addresses
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro02/gif/f02-02.gif"></tr></td></table>
+<P>
+
+For example, if you have the following code, the RSP/RDP pipeline will receive garbage:
+<P>
+<font face="courier" size="-1">
+Mtx matrix;
+<br>
+gSPMatrix(gdl++, &matrix, G_MTX_.....);
+</font>
+<P>
+<font face="courier" size="-1">matrix</font> is a KSEG0 CPU address 0x8xxxxxxx. When this is handed to RSP, it fetches garbage. Below is a list of common commands with pointers:
+
+<ul>
+<li>gDPSetColorImage
+<P>
+<li>gDPSetTextureImage
+<P>
+<li>gDPSetMaskImage
+<P>
+<li>gSPMatrix
+<P>
+<li>gSPViewport
+<P>
+<li>gSPVertex
+<P>
+<li>gSPDisplayList
+</ul>
+
+<P>
+Keep in mind that CPU addresses and RSP/RDP addresses uses different addressing schemes and are not interchangeable.
+
+<P>
+One useful way to debug possible display list problems is to link with the GBI dumping routines in libgu, and print out the display list. This will immediately show bad pointers and garbage matrices. See the man page for <i>guParseGbiDL (3P)</i> and <i>guParseRdpDL (3P).</i>
+
+<P>
+<a name="02"></a>
+<b>Ending a Display List</b>
+<br>
+Make sure that your recent gbi display edit has <i>gSPEndDisplayList</i> in each display list. Without this, the RSP will probably hang. The RDP requires a <i>gDPFullSync</i> at the end of the entire display list sequence to make the DP interrupt the CPU for notification.
+
+<P>
+<a name="03"></a>
+<b>Flaky Video</b>
+<br>
+The beginning of the framebuffer and z-buffer addresses must be 64 byte aligned.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

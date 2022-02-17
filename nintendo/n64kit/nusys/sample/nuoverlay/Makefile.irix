@@ -1,0 +1,72 @@
+#!smake -k
+# 	NuSYSTEM samples nuoverlay Makefile
+#       Copyright (C) 1997-1999, NINTENDO Co,Ltd.
+
+include $(ROOT)/usr/include/make/PRdefs
+
+# The directory which has the include file and library of NuSYSTEM
+#
+N64KITDIR    = /usr/local/n64kit
+NUSYSINCDIR  = $(N64KITDIR)/nusys/include
+NUSYSLIBDIR  = $(N64KITDIR)/nusys/lib
+
+NUAUDIOLIB = -lnualsgi_n_d -ln_audio_d
+
+APP =		nuoverlay
+
+OPTIMIZER =	-g
+
+TARGETS =	all 
+
+HFILES =	main.h graphic.h segment.h
+
+CODEFILES   = 	main.c graphic.c gfxinit.c
+
+CODEOBJECTS =	$(CODEFILES:.c=.o)  $(NUSYSLIBDIR)/nusys.o
+
+STAGE00FILES	= stage00.c
+
+STAGE00OBJECTS	= $(STAGE00FILES:.c=.o)
+
+STAGE01FILES	= stage01.c
+
+STAGE01OBJECTS	= $(STAGE01FILES:.c=.o)
+
+DATAFILES   =	
+
+DATAOBJECTS =	$(DATAFILES:.c=.o)
+
+CODESEGMENT =	codesegment.o
+
+OBJECTS =	$(CODESEGMENT) $(DATAOBJECTS)
+
+FORCELINK =	-u guOrtho \
+		-u guRotate \
+		-u guTranslate \
+		-u nuContDataGetEx \
+		-u nuDebConCPuts \
+		-u nuDebConDispEX2 \
+		-u nuDebConTextPos \
+		-u nuDebTaskPerfBar0EX2 \
+		-u sprintf
+
+LCDEFS = -DN_AUDIO  -DF3DEX_GBI_2
+
+LCINCS =	-I$(NUSYSINCDIR) -I$(ROOT)/usr/include/PR
+LCOPTS =	-Xcpluscomm -fullwarn -wlint,-f -woff 813,819,826,827,852 -non_shared -G 0
+LDFLAGS =	$(MKDEPOPT) -nostdlib -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) $(NUAUDIOLIB) -lnusys_d -lultra_d
+
+LDIRT  =	$(APP)
+
+default:	$(TARGETS)
+
+
+include $(COMMONRULES)
+
+all: rom
+
+$(CODESEGMENT):	$(CODEOBJECTS) Makefile
+		$(LD) $(FORCELINK) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+rom $(APP):	spec $(OBJECTS) $(STAGE00OBJECTS) $(STAGE01OBJECTS) $(MAKEROM)
+		$(MAKEROM) -o -r rom -I$(NUSYSINCDIR) spec

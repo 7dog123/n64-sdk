@@ -1,0 +1,223 @@
+<html>
+<body bgcolor="ffffff">
+<title>
+ColorPaletteNode
+</title>
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+14. ColorPalette Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="colorPaletteListD">(1) ColorPaletteList Description (English)</A>
+</h3>
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 color_palette_list_tag
+</td>
+<td>
+Specifies the tags that indicate the ColorPaletteList.  Please set the tags shown below.
+<pre>
+<b>
+TAG_COLOR_PALETTE_LIST  0x00210000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_palette_list_header_size
+</td>
+<td>
+Specifies the byte size of the ColorPaletteListHeader.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_palette_list_size
+</td>
+<td>
+Specifies the byte size of the ColorPaletteList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_palette_num
+</td>
+<td>
+Specifies the total number of ColorPalette.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_palette_num_byte
+</td>
+<td>
+Specifies the byte size of the ColorPalette.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+ColorPalette
+</td>
+<td>
+This is the ColorPalette area.
+</td>
+</tr>
+
+
+</table>
+
+<P><A HREF="color_palette_C.htm#colorPaletteListC">See Data Chunk</A></P>
+
+</blockquote>
+
+
+<h3>
+<A NAME="colorPaletteD">(2) ColorPalette Description (English)</A>
+</h3>
+
+<blockquote>
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 color_palette_tag
+</td>
+<td>
+Specifies the tags that indicate the color palette.  Please specify the tags shown below.
+<pre>
+<b>
+TAG_COLOR_PALETTE       0x00210100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_color_palette_index
+</td>
+<td>
+Specifies the index number of the ColorPalette.
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td nowrap>
+u32 color_palette_header_size
+</td
+<td>
+Specifies the byte size of the ColorPaletteHeader.
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td nowrap>
+u32 color_palette_size
+</td>
+<td>
+Specifies the byte size of the ColorPalette.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_palette_name_index
+</td>
+<td>
+Specifies the ColorPalette name by using the index number of the NameList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_num
+</td>
+<td>
+Specifies the color number of ColorPalette.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_PALETTE_COLOR_16&#9;&#9;0x00000010
+NIFF2_PALETTE_COLOR_256&#9;&#9;0x00000100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_type
+</td>
+<td>
+If a palette color is 16-bit, it is possible to specify either IA16 or RGBA16. IA refers to Intensity Alpha data, and it is used as 8-bit intensity and 8-bit alpha. RGBA is used as 5-bit red, 5-bit green, 5-bit blue, and 1-bit alpha.  The following flags have been defined:
+<pre>
+<b>
+NIFF2_PALETTE_RGBA16&#9;&#9;0x00000000
+NIFF2_PALETTE_IA16&#9;&#9;0x00000001
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 reserved
+</td>
+<td>
+Please set it to 0x0 as the default.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 color_array
+</td>
+<td>
+The actual data in a palette.<p>
+Actual color values are stored in order from palette number 0.<p>
+Since each color value is a 16-bit value, they are stored in color_array using the big endian method in pairs.<p>
+Since, in the case of color_num = NIFF2_PALETTE_COLOR_NUM_16, the total number of colors in the palette is 16, color_array has 8 sets of data from 0 to 7. In other words, color_array_num = 8.<p>
+Since, in the case of color_num = NIFF2_PALETTE_COLOR_NUM_256, the total number of colors in the palette is 256, color_array has 128 sets of data from 0 to 127. In other words, color_array_num = 128.
+</td>
+</tr>
+
+
+
+</table>
+<P><A HREF="color_palette_C.htm#colorPaletteD">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

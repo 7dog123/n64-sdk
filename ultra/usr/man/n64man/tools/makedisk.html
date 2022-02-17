@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../tools/tools.html">
+            <IMG BORDER=0 SRC="../images/mh_tools.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+<FONT COLOR="0000A0">
+<H2>makedisk</H2>
+</FONT>
+
+<B>Syntax</B><BR>
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+makedisk [-D name[=def]] [-l dir] [-U name]
+         [-d] [-m] [-o] [-b bootstrap filename]
+         [-h header filename] [-s romsize]
+         [-f filldata] [-C clockrate] [-t type]
+         [-p pif2 bootstrap filename]
+         [-f romfile] specfile</PRE></FONT>
+
+
+
+<P>
+<B>Explanation</B><BR>
+It creates the N64 Disk Drive disk image and its related ELF object file. Specifically, <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> is used in place of <FONT FACE="COURIER NEW,COURIER">makerom</FONT> when you are creating disk games instead of Game Paks.<BR>
+<BR>
+
+The <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> tool performs the following operations:
+
+<UL>
+<LI>Specifies the media for each segment in the spec file
+<li>Links segments based on the <B>spec</B> file specifications 
+<LI>Creates the <B>gwrite</B> batch file
+<LI>Generates the disk-use symbols
+<li>Segment mapping
+</UL>
+
+These operations are explained in detail below.
+<P>
+<ol>
+<li>Media Specification
+<P>
+The media specification specifies the media for each segment in the spec file, defining whether that segment is stored on the disk or in the game pak.
+<p>
+A segment specified as 
+<BLOCKQUOTE>
+media CART
+</BLOCKQUOTE>
+<P>
+is stored in the game pak, while a segment specified as 
+</P>
+<BLOCKQUOTE>
+media DISK
+</BLOCKQUOTE>
+<P>
+is stored on the disk.  When no media is specified, it is assumed that that segment is stored on the disk.
+<P>
+Segments with the game pak specification are packaged by default in the file with the name "rom."  That file is called the "ROM image."  The name "rom" can be changed using the -r option.  In the same way, segments with the disk specification are packaged by default in the file with the name "disk."  That file is called the "disk image."   The name "disk" can be changed using the -R option. 
+<P>
+If all segments are specified in the game pak, then makedisk operates just like makerom.  That is, you can use makedisk to package the game as a game pak game.  If all segments are specified on the disk, or if nothing is specified for any of the segments, then the game is packaged as a disk-boot game.  If some segments are specified on the game pack and the rest are specified on the disk, then the game is packaged as a disk game that boots from a game pak.  In this last case, the boot segment must be located on the game pak side.
+
+
+
+
+<P>
+<li>Linking Segments Based on the spec File Specifications
+<BR>
+The <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> tool differs from <FONT FACE="COURIER NEW,COURIER">makerom</FONT> in two ways concerning the <B>spec</B> file specifications:
+
+<UL><LI>In <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> there is no <FONT FACE="COURIER NEW,COURIER">romAlign</FONT> to specify the alignment of the storage address in the ROM image.
+<LI>In <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> there is an lba specification to specify the disk LBA in which the segment is stored.</UL>
+
+Otherwise, <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> is the same as <FONT FACE="COURIER NEW,COURIER">makerom</FONT> in terms of both the <B>spec</B> file specifications and the command actions.<BR>
+<BR>
+
+The following example shows how the lba specification is used.
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>…..
+beginseg
+	name "road"
+	lba 100
+	flags OBJECT
+	number TEXTURE_SEGMENT
+	include "road.o"
+endseg
+…..</PRE></FONT>
+
+The lba specification only specifies segments stored on the disk.  A  "segment stored on the disk" is a segment of non-zero size in the ROM image.  For example, segments from the color frame buffer and the Z-Buffer are only maintained in RDRAM, so no space is secured in ROM.  Therefore, if this type of segment were specified with lba an error would be returned.  Conversely, an error would arise if a ROM image segment of non-zero size were not specified with lba.<BR>
+<BR>
+
+The lba specification specifies which LBA to write the segment to on the disk.  The format can be any of these:
+</ol>
+<UL>
+<LI><B><FONT FACE="COURIER NEW,COURIER">lba (number)</FONT></B> Writes the segment beginning from the LBA number specified by number.
+<P>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>lba RAMSTART [ + (number)]</B></FONT> Writes the segment beginning from the LBA number expressed by the disk’s RAM region header + number.  The number of LBAs in the RAM region header differs depending on the disk type, so this notation is convenient to use.   For details about RAM regions and disk types, please see Chapter 11, "Hardware Specifications," in the <I>N64 Disk Drive Programmer's Guide</I>. Be sure you put one space on either side of the plus (+) symbol.
+<P>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>lba after (segment name)</B></FONT> Writes the segment after the segment specified by <FONT FACE="COURIER NEW,COURIER">segment name</FONT>. For example, if the formula reads ‘lba after code’ and ‘code’ is a segment written using LBA 0 to LBA 100, then the segment in question is written from LBA 101.  The segment specified with segment name must be defined in advance.
+<P>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>lba none The segment will not be located anywhere on the disk.</B></FONT> 
+</UL>
+
+<ol start="3">
+<li>Creating the gwrite Batch File<BR>
+The <B>gwrite</B> file is the batch file for writing games to the disk.  It can be executed using the <FONT FACE="COURIER NEW,COURIER">&lt;</FONT> instruction in the Partner command window. (The <FONT FACE="COURIER NEW,COURIER">&lt;</FONT> instruction executes the commands written in a specified file.)
+
+<BR>
+<BR>
+<li>Generating Disk-Use Symbols<BR>
+makedisk outputs a number of symbols so that it is possible on the program side to find out which block in a disk a given segment is stored.<P>
+For example, to know the storage LBA for the texture segment on the disk, write the following into the program to have <FONT FACE="COURIER NEW,COURIER">makedisk</FONT> resolve the symbols:<BR>
+<BR>
+<FONT FACE="COURIER NEW,COURIER">extern char_textureSegmentRomStart[ ], _textureSegmentRomEnd[]</FONT>
+<BR>
+<BR>
+
+These will be displayed respectively as [texture segment starting LBA] and [texture segment ending LBA + 1].
+
+<P>
+<li>Segment Mapping<BR>
+makedisk will output the information on which segment was located in where on the disk, to the standard error output.  The format is as follows:
+<P>
+<table border=0>
+<tr><td><PRE><font face="courier" size="3">
+                DISK IMAGE MAP
+
+Segment   Size(bytes)  Lba usage    Occupied(bytes) Rest(bytes)
+code        341216      18(0-17)        354960        13744
+dummy       742544      46(1418-1463)   750720         817    
+dummy2      223600       none
+_____________________________________________________________
+Total      1307360       64 blocks             21920
+
+</td></tr></font></pre></table>
+<P><font face="arial" size="-1" color="#000000">
+From left-to right, the format represents a segment name, segment size, the number of blocks that are used (none is a segment that specified lba NONE, and numbers in parentheses are LBA that are used), and the capacity of the block used (the number of bytes in the area the segment occupies).  The column at far right is the capacity of empty area that was calculated by (Occupies - Size).
+<P>
+The above example shows that the code segment has a byte size of 341216, and uses 18 blocks of LBA 0 - 17. LBA 17 has a capacity of 13744 bytes, as the capacity of these 18 blocks is 354960 bytes. (all areas of LBA 0 - 16 are used.) 
+ </ol>
+
+<B>Command Line Options</B><BR>
+The meaning of each option is explained below.
+<P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-t type</B></FONT> Specifies the disk type
+<P>
+<LI><FONT FACE="COURIER NEW,COURIER"><B>-i idfile</B></FONT> Specifies an ID file. When this is specified, makedisk will output gwrite (which writes the first 32 bytes of idfile on the disk as the ID.)
+<P> 
+<li><FONT FACE="COURIER NEW,COURIER"><B>-B 0</B></FONT> Creates an "activating" game.
+<P>
+<li><FONT FACE="COURIER NEW,COURIER"><B>-B 0</B></FONT> Creates an "activated" game.  For details about activating and activated games, see Chapter 15.1 "Reboot" in the N64 Disk Drive Programming Manual.
+<P>
+<li><FONT FACE="COURIER NEW,COURIER"><B>-R name</B></FONT> Specifies the file name of the disk image.  The default name is "disk."  To change the ROM image file name, please use the -r option.  For details about disk images and ROM images, see "Media Specification," below.
+<P>
+<li><FONT FACE="COURIER NEW,COURIER"><B>-S name</B></FONT> Specifies the name of the virtual file for writing the disk image to the disk.  The default name is "gwrite."
+</ul>
+<P>
+The other options are the same as for <a href="../tools/makerom.html">makerom.</a>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<b>Notes</b>
+<br>
+makedisk does not have romAlign, which specifies the alignment of storage addresses in a ROM image.
+<P>
+In Partner, the "l" command does not work well if there is no file named "rom" in the current directory.  Therefore, when you create a disk-boot game with makedisk, please use the -R option to change the name of the disk image file to "rom" (i.e., -R rom).
+<P>
+In Partner, the "l" command switches between operating for use with a disk or for use with a game pak depending on whether or not a file named "gwrite" resides in the current directory.  Accordingly, it is best not to change the name of gwrite with the -S option when creating disk-boot games.  Conversely, you should use the -S option and change the name of gwrite when creating games that use both game paks and disks.
+
+
+<BR><BR><B>Revision History</B>
+<br>
+1/22/99
+<br>Made major changes to explanations in 1 ~ 5<BR>
+Added "Notes"
+<P>
+1/21/99
+<br>Deleted the -C option
+<p>
+10/27/98
+<br>In "Generating Disk-use Symbols" changed  RomStart[],RomEnd[] to DiskStart[],DiskEnd[].
+
+
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+            <BR>
+               <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1999
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

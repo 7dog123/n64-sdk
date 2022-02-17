@@ -1,0 +1,99 @@
+
+CAM_ANIM	=	1
+NIFF_DIR	=	c:\nintendo\n64kit\texedit\AnimeViewer\monitor\data
+TPF_DIR		=	$(NIFF_DIR)
+#TAF_PREV_DIR	=	$(NIFF_DIR)/taf_prev
+TPF.NUM		=	1
+TPF.0.FILE	=	$(TPF_DIR)/test0.tpf
+#TPF.1.FILE	=	$(TPF_DIR)/test1.tpf
+CAM_Y_NUM	=	2
+CAM_XZ_NUM	=	2
+FRAME_ANIM	=	1
+FRAME_LENGTH	=	36
+FRAME_KEY	=	12
+FRAME_KEY0	=	0,0,Picture0
+FRAME_KEY1	=	3,0,Picture1
+FRAME_KEY2	=	6,0,Picture2
+FRAME_KEY3	=	9,0,Picture3
+FRAME_KEY4	=	12,0,Picture2
+FRAME_KEY5	=	15,0,Picture1
+FRAME_KEY6	=	18,0,Picture0
+FRAME_KEY7	=	21,0,Picture4
+FRAME_KEY8	=	24,0,Picture5
+FRAME_KEY9	=	27,0,Picture6
+FRAME_KEY10	=	30,0,Picture5
+FRAME_KEY11	=	33,0,Picture4
+
+
+CAM.0.0		=	0,cam0
+CAM.1.0		=	0,cam1
+CAM.2.0		=	0,cam2
+CAM.3.0		=	0,cam3
+CAM.4.0		=	0,cam4
+CAM.5.0		=	0,cam5
+CAM.6.0		=	0,cam6
+CAM.7.0		=	0,cam7
+
+CAM.0.1		=	0,cam01
+CAM.1.1		=	0,cam11
+CAM.2.1		=	0,cam21
+CAM.3.1		=	0,cam31
+CAM.4.1		=	0,cam41
+CAM.5.1		=	0,cam51
+CAM.6.1		=	0,cam61
+CAM.7.1		=	0,cam71
+
+CAM.0.2		=	0,cam02
+CAM.1.2		=	0,cam12
+CAM.2.2		=	0,cam22
+CAM.3.2		=	0,cam32
+CAM.4.2		=	0,cam42
+CAM.5.2		=	0,cam52
+CAM.6.2		=	0,cam62
+CAM.7.2		=	0,cam72
+
+CAM.0.3		=	0,cam03
+CAM.1.3		=	0,cam13
+CAM.2.3		=	0,cam23
+CAM.3.3		=	0,cam33
+CAM.4.3		=	0,cam43
+CAM.5.3		=	0,cam53
+CAM.6.3		=	0,cam63
+CAM.7.3		=	0,cam73
+
+CAM.0.4		=	0,cam04
+CAM.1.4		=	0,cam14
+CAM.2.4		=	0,cam24
+CAM.3.4		=	0,cam34
+CAM.4.4		=	0,cam44
+CAM.5.4		=	0,cam54
+CAM.6.4		=	0,cam64
+CAM.7.4		=	0,cam74
+
+CAM.0.5		=	0,cam05
+CAM.1.5		=	0,cam15
+CAM.2.5		=	0,cam25
+CAM.3.5		=	0,cam35
+CAM.4.5		=	0,cam45
+CAM.5.5		=	0,cam55
+CAM.6.5		=	0,cam65
+CAM.7.5		=	0,cam75
+
+CAM.0.6		=	0,cam06
+CAM.1.6		=	0,cam16
+CAM.2.6		=	0,cam26
+CAM.3.6		=	0,cam36
+CAM.4.6		=	0,cam46
+CAM.5.6		=	0,cam56
+CAM.6.6		=	0,cam66
+CAM.7.6		=	0,cam76
+
+CAM.0.7		=	0,cam07
+CAM.1.7		=	0,cam17
+CAM.2.7		=	0,cam27
+CAM.3.7		=	0,cam37
+CAM.4.7		=	0,cam47
+CAM.5.7		=	0,cam57
+CAM.6.7		=	0,cam67
+CAM.7.7		=	0,cam77
+

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileParentDir</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileParentDir<br>
+mfsRamGetFileParentDir</h1>
+
+<hr>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯"><strong>Format:</strong></font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">s32
+mfsRomGetFileParentDir(MfsDirID dirID)</font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">s32
+mfsRamGetFileParentDir(MfsDirID dirID)</font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯"><strong>Arguments:</strong></font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">dirID
+Directory ID of file (directory)</font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯"><strong>Return value:</strong></font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">Directory ID of directory to which target belongs (a negative value is an error)</font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯"><strong>Function: </strong></font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">Obtains directory ID of directory to which target belongs</font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯"><strong>Description: </strong></font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">This function obtains and returns the directory ID of the directory to which the file (directory) specified by dirID belongs.</font></p>
+
+<p>¡¡</p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯"><strong>Main errors:</strong></font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">MFS_ERR_NO
+Normal termination</font></p>
+
+<p><font size="1" face="£Í£Ó ¥´¥·¥Ã¥¯">MFS_ERR_NOTFOUND
+Specified directory not found</font></p>
+</body>
+</html>

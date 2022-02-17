@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHMediaFormat</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHMediaFormat</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHMediaFormat(s32 drive, s32
+mode, u8* name, u8 attr)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>drive	Name of drive to be formatted ('A' or 'B')
+mode	Format mode
+*name	Volume name
+attr	Volume attribute</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong> Formats medium</p>
+
+<p><strong>Description:</strong> This function formats the medium to MFS format.  The portion of the medium that can be formatted is the RAM area on a disk for which the disk ID's RAM area use is 1.
+Also, a disk having disk type 6 cannot be formatted.</p>
+
+<p>The following format modes can be specified for mode.</p>
+
+<dl>
+    <dd><pre>MFS_FORMAT_NORMAL	0	Normal format
+MFS_FORMAT_FORCE	1	Forced format</pre>
+    </dd>
+</dl>
+
+<p>When MFS_FORMAT_NORMAL is specified, a check is performed to determine whether or not the disk is an MFS-format disk.  If it is an MFS-format disk, the volume attribute is checked.  
+If the volume attribute indicates that the disk is protected, the disk cannot be formatted.
+When MFS_FORMAT_FORCE is specified, the disk is formatted without checking whether or not it is an MFS-format disk and checking its attribute.</p>
+
+<p>A volume name character string not exceeding 20 bytes is specified for name.</p>
+
+<p>The following volume attributes can be specified for attr.</p>
+
+<dl>
+    <dd><pre>MFS_VOLUME_ATTR_VPROTECT	0x40	Volume protected
+MFS_VOLUME_ATTR_WPROTECT	0x80	Write protected</pre>
+    </dd>
+</dl>
+
+<p>When the MFS_VOLUME_ATTR_VPROTECT_WRITE bit is 1, it indicates that the disk is write protected from other games.
+The disk can be written to only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.</p>
+
+<p>When the MFS_VOLUME_ATTR_VPROTECT_READ bit is 1, it indicates that the disk is read protected from other games.
+The disk can be read from only when the company code and game code specified by the mfsHInit*Boot() or mfsSetGameCode() function match the company code and game code written in the system ID area of the disk.</p>
+
+<p>When MFS_VOLUME_ATTR_WPROTECT is specified, the disk is write protected from all games.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination
+MFS_ERR_NOTMFSDISK	Not an MFS-format disk 
+			The disk ID's disk use is not 1. 
+MFS_ERR_VERSION		Different version MFS-format disk
+			The version is an unsupported version. 
+MFS_ERR_PROTECT		Write protected disk
+			The volume attribute is write protected.  No error occurs in the case of MFS_FORMAT_FORCE.
+MFS_ERR_REFUSE An attempt was made to format a non-RAM area</pre>
+
+<hr>
+</body>
+</html>

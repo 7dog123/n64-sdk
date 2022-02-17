@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>Developers News 1.3</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>N64 Audio Tuning Guide</h2>
+<h3>Speed Upgrades</h3>
+<p>
+Please optimize CPU to minimize the RSP task list.
+<p>
+
+<u>Step 1. Basics</u>
+<ol type=A>
+<li>Reduce pitch conversion as much as possible. Although no one method is 
+preferred over another, where necessary, convert in a manner that will 
+change the pitch slowly.
+<li>Improve cache effectiveness by increasing the size of the DMA buffer. 
+Reducing the number of revolutions in a large DMA is decidedly more effective 
+than using numerous smaller DMAs.
+<li>The effects should not be too elaborate (e.g., echo filter processing, 
+reverb).
+</ol>
+
+<u>Step 2. Using SGI sound and sequence players</u>
+<ol type=A>
+<li>Do not use pitch bends very often, and do not use them close together.
+<li>Do not use detailed fade-ins and fade-outs.
+<li>Do not sound a continuous string of short musical tones. These three 
+(A~C) involve numerous pitch and volume conversions that require many task 
+lists and lengthy RSP processing.
+<li>Make the release time as short as possible. This pertains to B. above. 
+A short release time is preferred to avoid wasting physical voices.
+<li>Do not create the percussion installment using a key map. Searching for 
+waveform data allocated in the map takes too much time.
+</ol>
+
+<u>Step 3. Using customized players</u>
+<p>
+Creating Synthesizer Drivers
+<ol type=A>
+<li>Do not rewrite unchanged parameters. This will reduce calculation time. 
+However, enough additional RAM is necessary.
+<li>Synchronize the timing of parameter changes. This shortens the task lists.
+<li>Make the callback intervals uniform. (Sacrifice the time base.)
+<li>Select a value that does not cause variance in the number of a player's 
+callback revolutions during 1 frame. Perform C and D to avoid detailed 
+processing during a short time.
+<li>To the greatest extent possible, execute voice management yourself. Make 
+the CPU, not the driver, execute voice allocation from virtual to physical 
+voices.
+</ol>
+
+<u>Step 4. Acceleration through coordinated operation with graphics</u>
+<ol type=A>
+<li>By using a RDRAM FIFO buffered microcode, the RSP wait time is used more 
+effectively. Usually, the RSP processing time is shorter than the RDP 
+processing time.
+<li>Create Audio using 2 frames. If there are 30 game frames per second or 
+less, audio processing time is reduced by doubling all of the buffers.
+</ol>
+
+
+<h3>Required RAM upgrades</h3>
+
+<u>Step 1. Make reductions to current state</u>
+<ol type=A>
+<li>Reduce the waveform cache (DMA buffer) to its minimum. This reduces CPU 
+speed.
+<li>Reduce the number of ADPCM prediction factors. Do this when using the 
+<a target=top href="../n64man/tools/tabledesign.html">tabledesign</a> tool.
+<li>Minimize the amount of RAM used by loading the minimum required data at 
+each frame instead of loading the data for several frames at one time.
+</ol>
+
+<u>Step 2. When creating player types yourself</u>
+<ol type=A>
+<li>Customize bank file formats. As long as the ALWave Table structure exists 
+in the synthesizer driver, any format will do.
+<li>Customize the sequence format. Compressing the SGI compact sequence 
+player format is best.
+<li>Convert two players' functions into one. Separate sound and sequence 
+players are not necessary.
+</ol>
+
+<u>Step 3. Selecting optimum sampling rate</u>
+<p>
+The RSP can process a maximum of 160 samples per frame. If the maximum number 
+of samples to be processed per frame is slightly smaller than a multiple of 
+160, the command list can be shortened and the overhead that is needed by 
+RSP processing may be kept to a minimum.
+<p>
+If, for example, 640 samples are required to be processed, the command list 
+is divided into 4 processes (frames) of 160 samples each (160 x 4 = 640). 
+Therefore, the RSP processes 4 times and there is no waste in the process.
+<p>
+If on the other hand 650 samples are required and the command list is divided 
+into 5 processes of 160, 160, 160, 160, and 10 samples, the RSP must process 
+5 times. The last process occurs for only 10 samples. This is a waste of 
+processing time.
+<p>
+For example, when RSP processing uses three subframes, the following results are obtained.
+<p>
+<blockquote>
+    160[samples] x 3[subframes] x 60[frames] = 28800[Hz]
+</blockquote>
+<p>
+If approximately 27 KHz is selected, the RSP performs 3 processes of 160, 
+160, and 131 samples. The command list buffer can be shortened and the waste 
+of processing time is held to a minimum. However, the user must customize the 
+audio player and adjust the callback interval.
+
+<p align="right">
+<a href="news-03.html"><IMG src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuDebConTextColor</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuDebConTextColor(u32 wndNo, u32 color)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>wndNo	is the window number
+<br>NU_DEB_CON_WINDOW0	&nbsp; Window 0
+<br>NU_DEB_CON_WINDOW1	&nbsp; Window 1
+<br>NU_DEB_CON_WINDOW2	&nbsp; Window 2
+<br>NU_DEB_CON_WINDOW3	&nbsp; Window 3
+<P>
+<li>color	is the text color (0-15)</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Changes the color of text displayed in the console window.
+
+<p>
+The settings affect the color of text output after the function is called.  The text color can be specified with any value from 0 to 15.  The definition for each color value is shown below.
+</p>
+
+<table border="1" bgcolor="#CBCEF8">
+    <tr>
+        <th bgcolor="#E487FC"><font face="arial" size="-1">Value</th>
+        <th bgcolor="#E487FC"><font face="arial" size="-1">Macro</th>
+        <th bgcolor="#E487FC"><font face="arial" size="-1">Color</th>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">0</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_BLACK</td>
+        <td><font face="arial" size="-1">Black</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">1</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_BLUE</td>
+        <td><font face="arial" size="-1">Blue</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">2</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_GREEN</td>
+        <td><font face="arial" size="-1">Green</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">3</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_CYAN</td>
+        <td><font face="arial" size="-1">Cyan</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">4</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_RED</td>
+        <td><font face="arial" size="-1">Red</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">5</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_MAGENTA</td>
+        <td><font face="arial" size="-1">Magenta</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">6</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_YELLOW</td>
+        <td><font face="arial" size="-1">Yellow</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">7</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_WHITE</td>
+        <td><font face="arial" size="-1">White</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">8</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTBLACK</td>
+        <td><font face="arial" size="-1">Gray</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">9</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGTHBLUE</td>
+        <td><font face="arial" size="-1">Light Blue</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">10</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTGREEN</td>
+        <td><font face="arial" size="-1">Light Green</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">11</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTCYAN</td>
+        <td><font face="arial" size="-1">Light Cyan</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">12</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTRED</td>
+        <td><font face="arial" size="-1">Light Red</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">13</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTMAGENTA</td>
+        <td><font face="arial" size="-1">Light Magenta</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">14</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTYELLOW</td>
+        <td><font face="arial" size="-1">Light Yellow</td>
+    </tr>
+    <tr>
+        <td><font face="arial" size="-1">15</td>
+        <td><font face="arial" size="-1">NU_DEB_CON_TEXT_LIGHTWHITE</td>
+        <td><font face="arial" size="-1">White</td>
+    </tr>
+</table>
+
+<p>The larger the window number, the higher the priority.  The windows are stacked with the highest priority window displayed on top.
+</p>
+
+<p>This function can also be used with the release-use library.
+</p>
+
+<hr>
+
+<P>
+<b>See Also</b>
+<br><a href="../graphics/nuGfxInit.htm">nuGfxInit</a>
+<br><a href="../graphics/nuGfxTaskStart.htm">nuGfxTaskStart</a>
+<br><a href="../graphics/nuGfxSetUcode.htm">nuGfxSetUcode</a>
+<br><a href="nuDebConDisp.htm">nuDebConDisp</a>
+<br><a href="nuDebConWindowSize.htm">nuDebConWindowSize</a>
+<br><a href="nuDebConWindowPos.htm">nuDebConWindowPos</a>
+<br><a href="nuDebConWindowShow.htm">nuDebConWindowShow</a>
+<br><a href="nuDebConScroll.htm">nuDebConScroll</a>
+<br><a href="nuDebConTextAttr.htm">nuDebConTextAttr</a>
+<br><a href="nuDebConClear.htm">nuDebConClear</a>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

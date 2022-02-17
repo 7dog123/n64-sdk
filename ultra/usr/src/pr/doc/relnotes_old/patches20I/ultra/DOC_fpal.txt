@@ -1,0 +1,67 @@
+
+This document discusses new specifications for the image display in PAL mode. 
+
+1. Purpose of this patch
+
+	Because televisions based on PAL format have higher resolution than 
+	NTSC televisions, game images do not fill the entire screen. This patch
+ 	is designed to realize full screen display on PAL televisions. 
+ 
+2. FPAL mode
+
+	A new FPAL mode (FULL SCREEN PAL mode) has been added making it possible
+ 	to display full screen images on  PAL televisions.In order to utilize 
+	FPAL mode, replace the PAL setting in osViSetMode with FPAL as follows: 
+
+	Example:	Old:	osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
+			New:	osViSetMode(&osViModeTable[OS_VI_FPAL_LAN1]);
+
+			Old:	osViSetMode(&osViModePalLpn1);
+			New:	osViSetMode(&osViModeFpalLpn1);
+
+	FPAL mode adds an additional 48 scan lines (not available in PAL mode) 
+	to adjust for the difference in resolution between PAL and NTSC 
+	television screens. As a result, when an NTSC program that has not been
+ 	modified is displayed using FPAL mode, the bottom of the screen 
+	displays a region outside of the frame buffer.  There are two ways to 
+	get around this problem.
+
+	(A) Expand the size of the frame buffer
+		Draw the full screen by preparing a standard frame buffer with 
+		48 additional lines (320 x 288) for low resolution, and a frame
+		buffer with 96 additional lines (640 x 576) for high resolution.		This provides for even higher resolution images than NTSC. 
+		However, changing the frame buffer size may require that you 
+		also change the program and graphic data.
+
+	(B) Use osViSetYScale
+		Fill the entire screen by stretching the image vertically using 		osViSetYScale.In FPAL mode, executing osViSetMode followed by 
+			osViSetYScale(0.833) 
+		will result in a display that fills the entire screen region. 
+		With this method, you don't need to change the frame buffer 
+		size, and changes from NTSC are simple. The drawback to this 
+		method is that the overall image becomes blurred. Thus, if you 
+		use osViSetYScale, it must also return YScale to 1 when 
+		generating preNMI and executing osViBlack(1).
+
+3. osViExtendVStart
+
+	If you choose to expand frame buffer size, understand that the addition
+ 	of 48 more scan lines may place too big a processing burden on some 
+	programs. If this is the case, trim back the display region and frame 
+	buffer sizes to achieve the appropriate results.
+
+		void osViExendVStart(u32 value) 
+
+	is a newly added function which can be used to add a specified number of
+ 	scan lines to the conventional PAL mode. You will need to use a value 
+	between 0 and 48 in the argument. When 
+
+		osViExtendVStart(48)
+
+	is specified, PAL mode displays the image in the same size region as 
+	FPAL mode.  Specifying either 24 or 32 lines results in an image that 
+	fills nearly the entire screen, without a drop in processing speed.
+	OsViExtendVStart is strictly for adding scan lines in PAL mode. It 
+	cannot be used with NTSC, MPAL, or FPAL modes.
+
+

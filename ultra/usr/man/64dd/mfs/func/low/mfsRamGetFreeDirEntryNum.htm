@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamGetFreeDirEntryNum</title>
+</head>
+
+<body>
+
+<h1>mfsRamGetFreeDirEntryNum</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRamGetFreeDirEntryNum(void)
+Arguments:	None
+Return value:Remaining number of files (directories) that can be recorded (a negative value is an error)
+Function:	Obtains number of files (directories) that can be recorded
+Description:	MFS has an upper limit for the number of files (directories) that can be recorded.
+	This upper limit value differs as follows according to the disk type.
+
+	          +------------+----------------+
+	          | Disk type  | Number of files|
+	          +================+============+
+	          |      0     |       899      |
+	          |      1     |       814      |
+	          |      2     |       729      |
+	          |      3     |       644      |
+	          |      4     |       559      |
+	          |      5     |       474      |
+	          |      6     |        -       |
+	          +------------+----------------+
+
+	This function obtains the remaining number of files (directories) that can be recorded.  Note that this number of files cannot be exceeded when recording data even if the disk has free space.
+
+Main errors:
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk
+			The disk ID's disk use is not 1, or the header is different.
+	MFS_ERR_VERSION	Different version disk
+	MFS_ERR_PROTECT	Write protected
+			The medium is volume protected. </pre>
+</body>
+</html>

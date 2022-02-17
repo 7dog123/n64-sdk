@@ -1,0 +1,487 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 25</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro25/index25.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro25/index25.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">F3DEX Microcode</font></b>
+<P>
+<font face="arial" size="-1">
+<a name="01"></a>
+<b>F3DEX Microcode Series Functions</b>
+<br>
+The following provides information on functions added or changed in <font face="courier" size="-1">F3DEX(.NoN), F3DLX(.NoN), F3DLX.Rej, F3DLP.Rej,</font> and <font face="courier" size="-1">L3DEX</font>.
+<pre><font face="courier" size="3">gSPVertex (Gfx *pkt, Vtx *v, u32 n, u32 v0)
+gsSPVertex (Vtx *v, u32 n, u32 v0)</pre></font>
+
+<P>
+Changing the vertex cache size changed the range of values for n and v0. However, the maximum number of vertices that can be loaded at one time is 32. To load more vertices, loading must be performed two or more times.
+
+<P>
+<b>Table 1</b> &nbsp;Vertex Cache Size for Each Microcode Version
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="90%">
+<tr>
+<td width=25% align="center" valign="top"><font face="arial" size="-1"><b>Microcode</td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1"><b>Vertex Cache Size</td>
+<td width=25%  align="center" valign="top"><font face="arial"
+size="-1"><b>Range of n</b></td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1"><b>Range of v0</td>
+</tr>
+<tr>
+<td width=25%  align="center"  align="center" valign="top"><font face="arial" size="-1">F3DEX/F3DEX.NoN</td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">32</td>
+<td width=25%  align="center" valign="top"><font face="arial"
+size="-1">1 ~ 32</b></td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">0 ~ 31</td>
+</tr>
+<tr>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">F3DLX/F3DLX.NoN</td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">	32</td>
+<td width=25%  align="center" valign="top"><font face="arial"
+size="-1">1 ~ 32</b></td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">0 ~ 31</td>
+</tr>
+<tr>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">F3DLX.Rej</td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">64</td>
+<td width=25%  align="center" valign="top"><font face="arial"
+size="-1">1 ~ 32(*)</b></td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">0 ~ 63</td>
+</tr>
+<tr>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">F3DLP.Rej</td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">80</td>
+<td width=25%  align="center" valign="top"><font face="arial"
+size="-1">1 ~ 32(*)</b></td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">	0 ~ 79</td>
+</tr>
+<tr>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">L3DEX</td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">32</td>
+<td width=25%  align="center" valign="top"><font face="arial"
+size="-1">1 ~ 32</b></td>
+<td width=25%  align="center" valign="top"><font face="arial" size="-1">0 ~ 31</td>
+</tr></table>
+
+<P>
+(*) If loading 33 or more vertices is desired, use gSPVertex multiple times.
+
+
+<P>
+<b>gSP2Traingles</b>
+<pre><font face="courier" size="3">gSP2Triangles (pkt, v00, v01, v02, flag0, v10, v11, v12, flag1)
+gsSP2Triangles (v00, v01, v02, flag0, v10, v11, v12, flag1)
+</pre></font>
+
+<P>
+The <font face="courier" size="-1">gsP2Triangles</font> functions perform processing equivalent to the following: 
+<pre><font face="courier" size="3">gSP1Triangle (pkt++, v00, v01, v02, flag0);
+
+gSP1Triangle (pkt++, v10, v11, v12, flag1);
+</pre></font>
+
+<P>
+That is, they render two triangles. By processing two g*SP1Triangle commands with one DL command, the DL size in memory can be reduced. 
+
+<P>
+An improvement in performance can be achieved with <font face="courier" size="-1">F3DLP.Rej</font> and <font face="courier" size="-1">F3DLX.Rej </font> if the <font face="courier" size="-1">gSP2Triangles</font> functions are used. Use of these microcode versions provides an advantage where speed is concerned. 
+<P>
+
+<b>gSP1Quadrangl</b>
+<pre><font face="courier" size="3">gSP1Quadrangle (pkt, v0, v1, v2, v3, flag)
+
+gsSP1Quadrangle (v0, v1, v2, v3, flag)
+</pre></font>
+
+<P>
+These functions render rectangles {v0, v1, v2, v3}. “flag” is used for flat-shading. The specified rectangle is actually partitioned into 2 triangles. The direction of the partitioning is fixed. The possibility of having the SP dynamically compute the partitioning direction was examined, but this was not implemented because the obtained increase in DP rendering performance relative to the SP overhead was not as great as expected. 
+
+<P>
+Beginning with Release 0.96, <font face="courier" size="-1">
+g*SP1Quadrangle</font> is emulated by <font face="courier" size="-1">g*SP2Triangles.</font>
+
+<P>
+<b>G_CLIPPING</b>
+<P>
+<font face="courier" size="-1">G_CLIPPING</font> has been added as a mode. This flag is valid only in <font face="courier" size="-1">F3DLX </font> and <font face="courier" size="-1">F3DLX.NoN</font>. It is ignored by other microcode versions. 
+<P>
+If this flag is cleared, clipping is not performed. This is expected to increase speed.    
+
+<P>
+Specifically, in the <font face="courier" size="-1">gSPVertex</font> function after clearing <font face="courier" size="-1">G_CLIPPING</font>, data necessary for clipping is not calculated. 
+<P>
+Moreover, with commands such as <font face="courier" size="-1">gSP*Triangle</font> and <font face="courier" size="-1">gSP1Quadrangle</font>, clipping is not performed. 
+<P>
+Therefore, please note that with the DLs listed below, the data necessary for clipping cannot be acquired, so the operation of <font face="courier" size="-1">gsSP1Triangle</font> cannot be guaranteed.
+<pre><font face="courier" size="3">gsSPClearGeometryMode
+(G_CLIPPING),	// clipping off
+gsSPVertex(v, 3, 0),              // load 3 vertices
+gsSPSetGeometryMode(G_CLIPPING), // clipping on
+gsSP1Triangle(0,1,2,0),	// TRI rendering
+</pre></font>
+
+<P>
+Similarly, please note that when clipping is OFF, normal operation will not occur even if the loaded vertices are specified by <font face="courier" size="-1">gSPCullDisplayList</font>. 
+<P>
+The default condition is <font face="courier" size="-1">G_CLIPPING</font> ON.
+
+<P>
+<b>gSPCullDisplayList</b>
+<pre><font face="courier" size="3">gSPCullDisplaylist (Gfx *gdl, unsigned int v0, unsigned int vn)
+gsSPCullDisplaylist(unsigned int v0, unsigned int vn)
+</pre></font>
+
+<P>
+Due to the increase in size of the vertex cache, the ranges of v0 and vn have been changed. They are the same size as v0 in gSPVertex. A requirement, however, is v0 &#060= vn.
+
+<P>
+Although these functions operate the same in <font face="courier" size="-1">F3DEX(.NoN), F3DLX(.NoN),</font> and <font face="courier" size="-1">L3DEX</font> as in <font face="courier" size="-1">Fast3D</font>, caution is required because they behave differently in <font face="courier" size="-1">F3DLX.Rej</font> and <font face="courier" size="-1">F3DLP.Rej</font> than in <font face="courier" size="-1">Fast3D</font>.
+
+<P>
+<b>gSPClipRatio</b>
+<pre><font face="courier" size="3">gSPClipRatio (Gfx *gdl, r)
+gsSPClipRatio(r)
+</pre></font>
+
+<P>
+The operation of <font face="courier" size="-1">gSPClipRatio( )</font> in <font face="courier" size="-1">F3DEX(.NoN)</font> and <font face="courier" size="-1">F3DLX(.NoN)</font> is the same as in <font face="courier" size="-1">Fast3D</font>. However, it is different from <font face="courier" size="-1">Fast3D</font> in <font face="courier" size="-1">F3DL*.Rej</font>, where it is used to modify the size of the reject box. The initial value of <font face="courier" size="-1">gSPClipRatio( )</font> in <font face="courier" size="-1">F3DL*.Rej</font> is <font face="courier" size="-1">FRUSTRATIO_2.</font>
+
+<P>
+<b>gSPModifyVertex</b>
+<pre><font face="courier" size="3">gSPModifyVertex (Gfx *gdl, 
+   unsigned int vtx, unsigned int where, unsigned int val)
+gsSPModifyVertex(unsigned int vtx, unsigned int where, unsigned
+   int val)
+</pre></font>
+
+<P>
+Due to the increase in size of the vertex cache, the range of vtx has been changed. It is the same size as v0 in <font face="courier" size="-1">gSPVertex</font>. 
+
+<P>
+<b>gSPBranchLessZ</b>
+<pre><font face="courier" size="3">gSPBranchLessZ (Gfx *gdl, Gfx *branchdl, unsigned int vtx,
+         float zval, float near, float far, int flag)
+gsSPBranchLessZ(Gfx *branchdl, unsigned int vtx,
+         float zval, float near, float far, int flag)
+</pre></font>
+
+<P>
+If the depth of the vertex specified by vtx is less than or equal to zval, <font face="courier" sixe="-1">BranchDisplayList</font> is executed for the DL indicated by branchdl. If it is greater than zval, nothing is done. This allows easy model LOD processing. The following is a model with three LODs.
+<pre><font face="courier" size="3">Gfx model_near[] = {		//model for distance of 32 - 200
+	....
+	gsSPEndDisplayList(),
+};
+Gfx model_mid[] = {		// model for distance of 201 - 800
+	.....
+	gsSPEndDisplayList(),
+};
+Gfx model_far[] = {		// model for distance of 801 - 1600
+	.....
+	gsSPEndDisplayList(),
+};
+Gfx model[] = {
+	gsSPVertex(testvtx, 1, 0),
+	gsSPBranchLessZ(model_near, 0,  200, 32, 2000, G_BZ_PERSP),
+	gsSPBranchLessZ(model_mid,  0,  800, 32, 2000, G_BZ_PERSP),
+	gsSPBranchLessZ(model_far,  0, 1600, 32, 2000, G_BZ_PERSP),
+	gsSPEndDisplayList(),	// no rendering for distance of 1601
+		or greater
+};
+</pre></font>
+
+<P>
+These commands require the perspective parameters indicated below.
+
+<p>
+<b>Table 2</b> &nbsp;g[s]SPBranchLessZ Parameters
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">near</td>
+<td width=60%><font face="arial" size="-1">Near plane location (value specified by <font face="courier" size="-1">guPerspective/guOrtho)</font></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">far</td>
+<td width=60%><font face="arial" size="-1">Far plane location(value specified by <font face="courier" size="-1">guPerspective/guOrtho)</font></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">flag</td>
+<td width=60%><font face="arial" size="-1"><font face="courier" size="-1">G_BZ_PERSP</font> specified for perspective projections;
+<br><font face="courier" size="-1">G_BZ_ORTHO</font> specified for orthogonal projections</td>
+</tr>
+</table>
+<P>
+
+These commands assume that the values of the viewport Z-direction parameters <font face="courier" size="-1">vp.vscale[2]</font> and <font face="courier" size="-1">vp.vtrans[2]</font> are both <font face="courier" size="-1">G_MAXZ/2</font>. In this case, the depth value is greater than or equal to 0 and less than or equal to <font face="courier" size="-1">G_MAXZ</font>. In general, it is not necessary to change the range of the depth value in the application. However, if this value must be changed, please use <font face="courier" size="-1">g*SPBranchLessZrg</font> instead. 
+
+<P>
+This GBI is supported beginning with F3DEX xxRelease 1.02xx and can be used in the same manner with F3DEX/LX/LX.Rej/LP.Rej/ and L3DEX.
+
+<P>
+<b>gSPBranchLessZrg</b>
+<pre><font face="courier" size="3">gSPBranchLessZrg (Gfx *gdl, Gfx *branchdl, unsigned int vtx,
+float zval, float near, float far, int flag,
+int zmin, int zmax)
+
+gsSPBranchLessZrg(Gfx *branchdl, unsigned int vtx,
+float zval, float near, float far, int flag,
+int zmin, int zmax)
+</pre></font>
+
+<P>
+In most applications, a depth greater than or equal to 0 and less than or equal to <font face="courier" size="-1">G_MAXZ</font> is used. However, if circumstances make changing this range desirable, use <font face="courier" size="-1">g[s]SPBranchLessZrg</font> instead of <font face="courier" size="-1">g[s]SPBranchLessZ</font>. With <font face="courier" size="-1">g[s]SPBranchLessZrg,</font> the parameters shown below must be provided in addition to the <font face="courier" size="-1">g[s]SPBranchLessZ</font> parameters near, far, and flag. 
+
+<P>
+<b>Table 3</b> &nbsp;g[s]SPBranchLessZrg Parameters
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">zmin</td>
+<td width=60%><font face="arial" size="-1">minimum depth <font face="courier" size="-1">(= vp.vtrans[2] - vp.vscale[2])</font></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">zmax</td>
+<td width=60%><font face="arial" size="-1">maximum depth (= <font face="courier" size="-1">vp.vtrans[2] + vp.vscale[2])</font></td>
+</tr></table>
+
+<P>	
+The remaining parameters are the same. This GBI is supported and can be used in the same manner in F3DEX/LX/LX.Rej/LP.Rej, and F3DEX.
+
+<P>
+<b>gSPLoadUcode</b>
+<pre><font face="courier" size="3">gSPLoadUcode(Gfx *gdl, u64 *uc_start, u64 *uc_dstart)
+gsSPLoadUcode(u64 *uc_start, u64 *uc_dstart)
+</pre></font>
+
+
+<P>
+<b>Table 4</b> &nbsp;gSPLoadUcode Parameters
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">uc_start</td>
+<td width=60%><font face="arial" size="-1">Start of the microcode text section (physical address)</td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">uc_dstart</td>
+<td width=60%><font face="arial" size="-1">Start of the microcode data section (physical address)</td>
+</tr></table>
+
+<P>
+<a name="02"></a>
+<b>Rejection Processing</b>
+<br>
+The rejection processing described below allows only rendering of triangles whose 3 vertices fall within a fixed range. If even 1 vertex falls outside this range, no part of the triangle is rendered.
+<P>
+This range is called the “reject box.”   Although the size of the reject box varies depending on the conditions, in the X and Y directions it is roughly twice the size of a 320 x 240 image (if the screen size is 320 x 240) in the initial state, as illustrated in the figure below. 
+<P>
+The range can be changed using g*SPClipRatio. Values from <font face="courier" size="-1">FRUSTRATIO_2</font> to <font face="courier" size="-1">FRUSTRATIO_6</font> can be specified. 
+<P>
+In the Z direction (the depth direction of the screen), rejection is performed according to the Far plane. No rejection is performed according to the Near plane.
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-00.gif"></tr></td></table>
+
+Because of reject processing, a large triangle may not be rendered if one of its vertices falls outside the screen, even though it should appear in the screen. 
+<P>
+In this case, the triangle must be partitioned into  smaller triangles, and steps must be taken to prevent the occurrence of unnatural “polygon fragmentation.” 
+<P>
+Reject processing with <font face="courier" size="-1">F3DLX.Rej</font> and <font face="courier" size="-1">F3DLP.Rej</font> can allow faster processing of “2 Triangles” commands. When making DL, it is advantageous to use <font face="courier" size="-1">g*SP2Triangles</font>, if possible.
+
+<P>
+The <font face="courier" size="-1">gspF3DLX.fifo.o</font>  version provides texture perspective correction, while <font face="courier" size="-1">gspF3DLP.Rej.o</font> version does not. <font face="courier" size="-1">F3DLP.Rej</font> is slightly faster than <font face="courier" size="-1">F3DLX.Rej</font>. This lightens SP processing, but because there are no changes in DP itself, DP often is not fast enough in parallel with SP. In such cases, consideration must be given to setting the render mode to a mode such as RA mode <font face="courier" size="-1">(G_RM_RA_ZB_OPA_SURF)</font>. 
+
+<P>
+This microcode does not support <font face="courier" size="-1">G_CULL_BOTH.</font>
+
+
+
+<P>
+<a name="03"></a>
+<b>GBI Compatibility</b>
+<br>
+The GBI (Graphics Binary Interface) for the microcode in this package and the GBI for the previous Fast3D microcode are not compatible at the binary level. However, the package has been created so that these differences are eliminated by gbi.h. Using a compile option, the appropriate GBI can be assigned for each case even with the same DL.   
+<P> 
+Specifically, the GBI for the microcode in this package is outputted by defining the keyword <font face="courier" size="-1">&quot;F3DEX_GBI&quot;</font> before including <font face="courier" size="-1">gbi.h</font> (usually gbi.h is included if <font face="courier" size="-1">ultra64.h</font> is included).
+
+<P> 
+For example, if the DL is described in the file static_ex.c, add <font face="courier" size="-1">#define F3DEX_GBI</font> to the file before the include for <font face="courier" size="-1">ultra64.h</font>, as shown below.
+<pre><font face="courier" size="3">static_ex.c:
+|
+|#define F3DEX_GBI
+|#include &#060ultra64.h&#062
+|
+</pre></font>
+
+<P>
+The microcode for <font face="courier" size="-1">F3DEX, F3DLX, F3DLX.Rej</font>, and <font face="courier" size="-1">F3DLP.Rej</font> are compatible at the GBI binary level. Consequently, the same DL can be used with each microcode. However, due to the reject processing described in the previous section, the operation of these versions varies slightly even with the same command. Consequently, the same image may not necessarily be rendered even with the same DL, so care is necessary in this regard.
+
+
+
+
+
+
+<P>
+<a name="04"></a>
+<b>Latest Version README for F3DEX Microcode</b>
+<p>
+README / Release 1.23	&nbsp;&nbsp;06/09/97
+<P>
+This archive includes the following microcodes:
+<ol>
+<li>gspF3DEX.fifo.o / gspF3DEX.NoN.fifo.o
+<P>
+gspF3DEX.fifo.o and gspF3DEX.NoN.fifo.o are based on the Fast3D microcode. These codes support 32 vertices cache, 2 triangles' instruction, and additional DL links (10->18).
+<P>
+gspF3DEX.fifo.o includes near clipping, however, gspF3DEX.NoN.fifo.o does not. 
+<P>
+<li>gspF3DLX.fifo.o / gspF3DLX.NoN.fifo.o
+<P>
+gspF3DLX.fifo.o and gspF3DLX.NoN.fifo.o do not have the y screen subpixel calculation which enables better performance. As such, some wrinkling may appear in the texture.
+<P>
+F3DLX supports all of F3DEX's GBI. In addtion, with F3DLX you can control the clipping enable/disable functions. Disabling clipping allows for greater performance.  
+<P>
+gspF3DLX.fifo.o includes near clipping, while gspF3DLX.NoN.fifo.o does not. 
+<P>
+   
+The following microcodes are supported in release 0.94 and later.
+<P>
+<li>gspF3DLX.Rej.fifo.o / gspF3DLP.Rej.fifo.o
+<P>
+gspF3DLX.Rej.fifo.o  and gspF3DLP.Rej.fifo.o do not support clipping. However, they do support triangle rejecting.
+</ol>
+
+<u>Triangle Rejecting Process</u>
+<ul>
+<li>Triangles which are <u>entirely</u> inside the rejecting rectangle are drawn. 
+<P>
+<li>Triangles which stretch from inside the rejecting rectangle to outside, or those that are entirely outside the rectangle, are rejected.
+<P>
+<li>The rejecting box is 2-6 times the size of the screen rectangle. By default, the rejecting box is 2 times the size of the screen rectangle.  The range can be changed using g*SPClipRatio. Values from FRUSTRATIO_2 to FRUSTRATIO_6 can be specified. In the Z direction (the depth direction of the screen), rejection is performed according to the Far plane. No rejection is performed according to the Near plane. 
+<P>
+Please see "Rejection Processing" below, for additional information.
+<P>             
+<li>Because of reject processing, a large triangle may not be rendered if one of its vertices falls outside the screen, even though it
+should appear in the screen. 
+<P>
+<li>Reject processing with F3DLX.Rej and F3DLP.Rej can allow faster processing of “2 Triangles” commands. When making
+DL, it is advantageous to use g*SP2Triangles, if possible. 
+<P>
+<li>The gspF3DLX.Rej.o version provides texture perspective correction, while gspF3DLP.Rej.o version does not. F3DLP.Rej is slightly faster than F3DLX.Rej. 
+<P>
+<li>Both F3DLX.Rej and F3DLP.Rej do not support G_CULL_BOTH.
+</ul>
+
+<P>
+The following microcode is supported in release 0.96 and later.
+<ol start="4">
+<li>gspL3DEX.fifo.o
+<P>
+gspL3DEX.fifo.o is based on the Line3D microcode. gspL3DEX.fifo.o supports 32 vertices cache. It may be used to draw wireframe objects specified by 1Triangle, 2Triangles and 1Quadrangle.
+</ol>
+
+<P>
+<u>Header Files</u>
+<ul>
+<li>headers-2.0e/*.h	Header files for U64 Dev 2.0e
+<br>
+<li>headers-2.0f/*.h	Header files for U64 Dev 2.0f
+<br>
+<li>headers-2.0g/*.h	Header files for U64 Dev 2.0g
+</ul>
+<P>
+Copy one of these to /usr/include/PR.
+
+<P>
+<a name="05"></a>
+<B>Loading F3DEX Series Microcode</B><BR>
+You can use gSPLoadUcode or gSPlLoadUcode to load any of the seven microcodes included in this package.
+<p>
+<PRE><FONT FACE="courier" sixe="3">gSPLoadUcode (Gfx *gdl, u64 *uc_start, u64 *uc_dstart)
+gSPLoadUcode (u64 *uc_start, u64 *uc_dstart)
+</pre></font>
+<ul>
+<li>uc_start points to the start of the microcode text section (physical address).
+<li>uc_dstart points to the start of the microcode data section (physical address).
+</ul>
+<P>
+
+<P>
+Because microcode loading increases overhead, discretion in loading is recommended to obtain good performance.   For practical purposes, this means intermittently switching between the microcode types used for rendering. As an example, a clip-capable microcode such as <font face="courier" size="-1">F3DLX</font> would be used for rendering landscapes and fast microcode such as <font face="courier" size="-1">F3DLX.Rej</font> used for rendering characters. As with previous releases, switching between <font face="courier" size="-1">F3DEX</font> and <font face="courier" size="-1">L3DEX</font> when rendering lines can be done without CPU involvement. 
+
+<P>
+<b>Note:</b> When microcode is loaded with this GBI, the internal state of the RSP is initialized (segment address, viewport, geometry mode, matrix, link information of display).   Thus, RSP-related settings must be reset immediately after microcode loading. Furthermore, the DL linking information is initialized. Caution is therefore recommended when using these commands in a DL called using <font face="courier" size="-1">g[s]SPDisplayList></font>, because control will not return to the calling DL. This is unavoidable due to the implementation of the specification.
+
+<P>
+To enable use of the <font face="courier" size="-1">g*SPLoadUcode</font> function of these commands, t.flag, which is a member of the OSTask structure, must be set to <font face="courier" size="-1">OS_TASK_LOADABLE</font> as shown below.
+<Pre><font face="courier" size="3">		OSTask *tp;
+		tp->t.flag = OS_TASK_LOADABLE | OS_TASK_DP_WAIT;
+</pre></font>
+
+<P>
+To make this flag valid, a patch must be applied to the OS. Please see the <a target="main" href="../pro25/25-03.html#patches">“OS Patches”</a> section of the README file for information on applying the patch. Applying the patch makes the OS upward/host compatible. This patch is already contained in OS's using the N64 Software Library 2.0H or later. 
+
+<P>
+These functions allow easy handling of <font face="courier" size="-1">g*SPLoadUcode</font>. 
+<P>
+Commands (a) and (b) below are equivalent. 
+<P>
+(a) gsSPLoadUcode(OS_K0_TO_PHYSICAL(&gspF3DEX_fifoTextStart),
+<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; OS_K0_TO_PHYSICAL(&gspF3DEX_fifoDataStart))
+<P>
+(b)	&nbsp;gsSPLoadUcodeL(gspF3DEX_fifo)
+
+
+
+<P>
+<a name="06"></a><a name="patches"></a>
+<b>OS Patch Installation</b>
+<br>
+The directory os_patches/, contains patches for libultra which support g*SPLoadUcode GBI. If you use g*SPLoadUcode GBI, then you should install libultra*.a.
+<P>
+To use libultra*.a, type the following:
+<pre><font face="courier" size="3">    % cd os_patches
+    % make
+</pre></font>
+
+<P>
+After `make', libultra.a, libultra_rom.a and, libultra_d.a can be found in the os_patches/ directory. To use them , move them to /usr/lib.
+<P>
+
+
+
+
+<P>
+<br>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

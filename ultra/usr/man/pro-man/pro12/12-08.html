@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 12</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro12/index12.7.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro13/index13.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">MI: Memory Interface</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Memory Interface (MI) simply interfaces to the framebuffer memory. It has programmable color and z-buffer pointers, a 32-bit fill color value used in the FILL cycle type (see Chapter 14, “Fill Mode”), and an enable for color dither.
+
+<P>
+<b>Figure 12.8.1</B> &nbsp;Memory Interface State and Input/Output
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-15.gif"></tr></td></table>
+<P>
+
+<a name="01"></a>
+<b>Image Location and Format</b>
+<br>
+The framebuffer is row-ordered, starting at the upper left. The color and z-buffer image pointers must be 64-byte aligned. The DRAM has dual banks, one on each 1 MB. By keeping the color and z-buffers on different banks, you can improve the DRAM access latency when the RDP is seeking DRAM bandwidth for rendering.
+<P>
+The Nintendo 64 system actually uses 9-bit DRAMs rather than 8-bit DRAMs, to gain two extra bits per color or z pixel. The color and z image pixel format are illustrated below.
+<P>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-15a.gif"></tr></td></table>
+<P>
+
+<a name="02"></a>
+<b>Fill Color</b>
+<br>
+The MI has a 32-bit fill color register that is used in FILL cycle type. Fill color is typically programmed to a constant value to fill background color and z-buffers. Since two framebuffer pixels are 18x2=36 bits, while fill color register is 32 bits, a few of the bits are replicated. 
+<P>
+<b>Figure 12.8.2</b> &nbsp;Fill Color Register LSB Replication
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro12/gif/f12-16.gif"></tr></td></table>
+<P>
+<P>
+<b>Table 1</b> &nbsp;gsSetFillColor(data32bits)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Parameter</td>
+<td width=60%><font face="arial" size="-1"><b>Value</b></td>
+</tr>
+<tr>
+<td width=40% valign="top"><font face="arial" size="-1">data32bits</td>
+<td width=60%><font face="arial" size="-1">2 different macros, one each for color and z. each generate 16 bits. so do x &#060 &#060 16 | x to get 32 bits<br>
+GPACK_RGBA5551(r, g, b, a), a=1 is full coverage. (Typical)<br>
+GPACK_ZDZ(z, dz), z=G_MAXFBZ, dz=0. (Typical)</td>
+</tr></table>
+	
+<P>
+<a name="03"></a>
+<b>Dithering</b>
+<br>
+The RDP pipeline keeps full, 8-bit per RGB component precision throughout. Dithering can be enabled or disabled to write to the 5-bit per RGB component dram framebuffer format. Dithering is recommended since it can significantly reduce Mach banding effect.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

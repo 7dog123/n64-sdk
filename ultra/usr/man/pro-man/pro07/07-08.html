@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 7</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro07/index7.7.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro07/index7.9.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>Events</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Once the cause of the interrupt (or other exception) has been determined, it is mapped to one of 14 events defined for the Nintendo 64 system. Table 1 shows the events, why they occur, and who normally registers to receive a message when each event occurs.
+<P>
+<b>Table 1</b> &nbsp;Events Defined for the Nintendo 64 System
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=25%><font face="arial" size="-1"><b>Event Name</td>
+<td width=50%><font face="arial" size="-1"><b>Event Description </td>
+<td width=25%><font face="arial" size="-1"><b>Owner</b></td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">SW1</td>
+<td width=50%><font face="arial" size="-1">System software interrupt 1 asserted</td>
+<td width=25%><font face="arial" size="-1">&nbsp;</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">SW2	</td>
+<td width=50%><font face="arial" size="-1">System software interrupt 2 asserted	</td>
+<td width=25%><font face="arial" size="-1">&nbsp;</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">SW2</td>
+<td width=50%><font face="arial" size="-1">Peripheral has generated an interrupt</td>
+<td width=25%><font face="arial" size="-1">OS</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">COUNTER</td>
+<td width=50%><font face="arial" size="-1">Internal counter reached terminal count	</td>
+<td width=25%><font face="arial" size="-1">VI/Timer manager</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">SP</td>
+<td width=50%><font face="arial" size="-1">RCP SP interrupt; Task Done/Task Yield</td>
+<td width=25%><font face="arial" size="-1">Game</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">SI</td>
+<td width=50%><font face="arial" size="-1">RCP SI interrupt; controller input available</td>
+<td width=25%><font face="arial" size="-1">Game</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">AI</td>
+<td width=50%><font face="arial" size="-1">RCP AI interrupt; audio buffer swap</td>
+<td width=25%><font face="arial" size="-1">Game</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">VI</td>
+<td width=50%><font face="arial" size="-1">RCP VI interrupt; vertical retrace</td>
+<td width=25%><font face="arial" size="-1">VI/Timer manager</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">PI</td>
+<td width=50%><font face="arial" size="-1">RCP PI interrupt; ROM to RAM DMA done</td>
+<td width=25%><font face="arial" size="-1">PI manager</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">DP</td>
+<td width=50%><font face="arial" size="-1">RCP DP interrupt; RDP processing done</td>
+<td width=25%><font face="arial" size="-1">Game</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">PRENMI</td>
+<td width=50%><font face="arial" size="-1">NMI requested, will occur in 0.5 seconds</td>
+<td width=25%><font face="arial" size="-1">Game</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">CPU_BREAK</td>
+<td width=50%><font face="arial" size="-1">R4300 has hit a breakpoint</td>
+<td width=25%><font face="arial" size="-1">Rmon</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">SP_BREAK</td>
+<td width=50%><font face="arial" size="-1">RCP SP interrupt; RCP has hit a breakpoint</td>
+<td width=25%><font face="arial" size="-1">Rmon</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">FAULT</td>
+<td width=50%><font face="arial" size="-1">R4300 has faulted</td>
+<td width=25%><font face="arial" size="-1">Rmon</td>
+</tr>
+<tr>
+<td width=25%><font face="arial" size="-1">THREAD_STATUS</td>
+<td width=50%><font face="arial" size="-1">Thread created or destroyed</td>
+<td width=25%><font face="arial" size="-1">Rmon</td>
+</tr>
+</table>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

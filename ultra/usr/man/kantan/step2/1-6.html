@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.1.6 Tasks</H1>
+
+<P>In the N64 operating system, a "task" is a process control unit provided by the RSP in the RCP. A task is for the RCP similar to what a thread is for the CPU. However, the addressing scheme and the access methods for tasks processed by the RCP are different from the addressing scheme and access methods for threads processed by the CPU. There are basically two kinds of tasks, an audio task and a graphics task.
+
+<P>To execute a task, you need to set the necessary information for the task execution in the <FONT FACE="COURIER NEW,COURIER">OSTask</FONT> data structure defined in the N64 operating system.  When you execute the task, the process follows these steps:</P>
+
+<OL>
+<LI> The CPU stops the RSP.
+<LI> The CPU transfers boot microcode to IMEM in the RSP.
+<LI> The CPU transfers the task header to DMEM in the RSP.
+<LI> The CPU initializes the RSP program counter to zero (0) and releases the RSP stop.
+<LI> The boot microcode operates on the RSP, transfers the microcode to IMEM, and transfers the necessary data to DMEM.
+<LI> Execution begins at the GBI or ABI command list pointed to by the data pointer written in the task header.
+</OL>
+
+<P>The following illustration summarizes RCP task processing:
+
+<P><IMG SRC="../images/2-1-6-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=168 HEIGHT=192 BORDER=0><BR><BR>
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<HTML>
+<HEAD>
+   <TITLE>niff2gfx Converter Revision History</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<H2>niff2gfx Revision History</H2>
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr bgcolor="#939AF0"> <font face="arial" size="-1">
+<th nowrap><font face="arial" size="-1"  color="#000000">Version</font></th>
+<th nowrap><font face="arial" size="-1" color="#000000">  Date</font></th>
+<th nowrap colspan="2"><font face="arial" size="-1"  color="#000000">Changes</font></th>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="6"><font face="Arial" size="-1" color="000000">1.3.7</td>
+<td valign="top" nowrap rowspan="6"><font face="Arial" size="-1" color="000000">1999/1/11</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">When attempting to perform a color reduction with the CI format, the program is now capable of handling this even if 0 is assigned to the alpha value.</td></tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">"obj_group" can be valid in any "obj" category.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">When modifying a default light setting with version 1.3.0, the difference between "index" and "light" is now handled properly.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">The drawing priority sequence is now fully compatible with n64prev Previewer and Quick Previewer.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">The problem where having "-nullanim" without having an "anim" link in "obj" shut down the program is now fixed.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">MAT_CC_NIFF_NONE is now handled properly in NIFF CC mode.</td>
+</tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top"><font face="Arial" size="-1" color="000000">1.3.6</td>
+<td valign="top"><font face="Arial" size="-1" color="000000">1998/12/21</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Compatible with ST (texture co-ordinates) ShapeAnimation.</td></tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1.3.5</td>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1998/10/19</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports CI Texture</td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1.3.4</td>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1998/10/9</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed the bug in reducing the vertex.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Added the process to reduce the output number of the vertex with the smooth shading without lighting.</td>
+</tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap rowspan="10"><font face="Arial" size="-1" color="000000">1.3.3</td>
+<td valign="top" nowrap rowspan="10"><font face="Arial" size="-1" color="000000">1998/9/30</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports camera animation.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Modified so that there is no difference in the output result between the SGI and the PC version of the software. 
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Reviewed Quick Start.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Reviewed the calculation of the vertex coordinates.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed a bug where the ST value was not always accurate.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">The pointer to the scene will not be output in the NDR_RESINFO when the scene is masked by -outmask.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed a bug where shape animation by reflection mapping and flat shading did not occur even when the -strictflat option was attached. </td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Added the -nullanim option.</td>
+</tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Vertex cache usage was partially changed.</td>
+</tr>
+
+
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="9"><font face="Arial" size="-1" color="000000">1.3.2</td>
+<td valign="top" nowrap rowspan="9"><font face="Arial" size="-1" color="000000">1998/8/25</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+<tr>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports Quick Preview.</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a CI format texture color reduction function.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Reduced the number of output vertices (Vtx).</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Optimized the animation data (reduced the data).</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Data with 3D objects that do not have "shape" can now be converted.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed messages to standard output in the Windows version.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The data was changed to become static.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The geomode of NDR_OBJ was changed to be output as a macro character string.  This was done because the macro value was changed by F3DEX2.</td></tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="1"><font face="Arial" size="-1" color="000000">1.31.</td>
+<td valign="top" nowrap rowspan="1"><font face="Arial" size="-1" color="000000">1998/7/22</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed the problem of a conversion error when the number of shape nodes was greater than the number of mat nodes.</td></tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1.30</td>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1998/7/15</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports IA texture (4, 8, 16 bit).</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">When no directional light is set, the default parallel light source is now set only when the ambient is completely black.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed a problem with gSPSetGeometryMode performing intermittently when there were several shapes. </td></tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1.2.6</td>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1998/3/23</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Registered on BBS and NTSC-ONLINE.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added -vtxseg, -imgseg and -TLUTseg options.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added the -strictcidx option.</td></tr>
+
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Since the conversion scale output to the header is reflected in the object translation value and the animation translation value, it was changed so it no longer output.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The Gfx and Vtx included in NDR_OBJ are now stored in the newly established NDR_SHAPE structure and output.  The shape animation information is now also included in the NDR_SHAPE structure, as is the segment number output to the NDR_SHAPE header.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Because large changes were made to the output data class, the bit assignment of the switch "outmask" was changed.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">To solve the problem with symbol names, the NDR_RESINFO structure was newly established, and now there is one output per file.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">With the establishment of NDR_RESINFO, now only the NDR_RESINFO symbol is externally declared at conversion time.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports 4bit CI and 32bit RGBA texture.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Expanded so NIFF obj_group is passed to the NDR_OBJ structure.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">gSP2Triangles are now used as much as possible for polygon output.</td></tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1.1.0</td>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1997/12/24</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Principal Revisions</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">* Developer's Kit Second Release</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added the options -noalignpad, -outobj, -outmask, -nogeomclr, -preview, -rotorder and @fname.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed the method of evaluating material.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed the problems that sometimes occurred when OBJ_RENDER_NIFF_TEX_EDGE was specified for obj_render_pri in the Obj area.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed the problem with the Shape area's shape_type sometimes not being correctly reflected.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed a problem of bad partitioning when placing textures that could not  be held in TMEM.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">It is now possible to share the GBI parts of objects whose materials are different.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed mat_color_type* and mat_alpha_type* TEX1 flag to total view.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a process for when mat_color_type* and mat_alpha_type* have the value MAT_CC_NIFF_NONE.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed problems with the order of evaluation in the method for rotating in directions other than XYZ and YZX.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Vtx, Gfx, Bitmap and TLUT are now have segment address locations.</td></tr>
+
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1.00</td>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1997/10/9</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Developer's Kit first release.</td></tr>
+</table>
+
+
+<HR>
+<FONT SIZE=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION <BR>
+All rights reserved.</FONT>
+
+<!--------------------------------------------------------->
+<P><A HREF="index.htm"><IMG SRC="index.gif" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></P></A>
+<!--------------------------------------------------------->
+</BODY>
+</HTML>

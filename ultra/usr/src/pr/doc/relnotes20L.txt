@@ -1,0 +1,133 @@
+07/03/00  OS2.0L RELEASE NOTES
+------------------------------------------------------------------
+
+Summary:
+--------
+This release of NINTENDO64 OS2.0L contains corrections of several 
+bugs that were discovered since the previous release, and the 
+additional new features and upgrades to the OS.
+
+See /usr/src/PR/README.txt for the detailed structure of OS2.0L.
+See /usr/src/PR/demos/README_DEMOS.txt for descriptions of each 
+software demos.
+
+It is also recommended that you delete or back up all of 
+/usr/src/PR before installing the new release.  This will allow 
+you to avoid mixing the old directories with the newly installed 
+directories and making them difficult to tell from one another.
+
+/usr/src/PR/demos/README_DEMOS.txt and the README files in several 
+of the sample program directories under /usr/src/PR/demos/
+state to execute "gload", but this is the method for running 
+programs in the Indy + development board development environment.
+Developers using the PARTNER development environment, the Monegi 
+Smart Pak development environment or the IS development 
+environment should run programs according to the methods listed 
+in the corresponding manuals.
+        
+
+
+New Features:
+-------------
+
+    OS 
+	Is now compatible with 1M Flash ROM.
+
+
+New Sample Program:
+-------------------
+
+    flash
+	This is a sample program that utilizes 1M Flash Library.
+
+
+Revised Sample Program:
+-----------------------
+
+    fogworld
+	When compiling in Monegi Smart Pack environment, 
+	misalignment occurred.  Since this may lead to the 
+	problems with operation, rgb2c converter was fixed.		
+
+
+Changed Features:
+-----------------
+
+
+
+Corrected Bugs:
+-----------------
+
+      OS
+	Corrected bug in which osThreadProfileStop function 
+	calling __osError function when interrupt is disabled.
+
+
+Expanded Features:
+---------------
+
+      AUDIO
+      GRAPHICS
+      OS
+      64DD
+
+
+Sample Programs No Longer Supported:
+------------------------------------
+
+
+
+Features No Longer Supported:
+-----------------------------
+
+	Deleted gsDPSetHilite1Tile and gsDPSetHilite2Tile macro.
+
+
+Precautions:
+------------
+
+
+
+Document:
+-------------
+
+
+
+------------------------------------------------------------------
+Warning:
+------------------------------------------------------------------
+
+
+Graphics:
+---------
+
+
+
+Audio:
+------
+
+
+
+OS:
+---
+
+
+
+Demo:
+-----
+
+
+
+Tool:
+-----
+
+
+
+Debugger:
+---------
+
+
+
+------------------------------------------------------------------
+Appendix A
+------------------------------------------------------------------

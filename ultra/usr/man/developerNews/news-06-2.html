@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Developers News 1.6</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Controller Pak Write Enable Pin</h2>
+
+If the Controller Pak RAM chip has a damaged WRITE ENABLE pin, data cannot 
+be written to the Controller Pak.  This error condition will not be detected 
+by <a target=top href="../n64man/os/osPfsInit.html">osPfsInit()</a>, <a target=top href="../n64man/os/osPfsChecker.html">osPfsChecker()</a>, or <a target=top href="../n64man/os/osPfsAllocateFile.html">osPfsAllocateFile()</a>.  It will return a value of 
+PFS_ERR_INVALID from <a target=top href="../n64man/os/osPfsFindFile.html">osPfsFindFile()</a>.  So developers must verify that all osPfsFindFile() calls are successful.
+
+<p>
+The verification of a successful osPfsFindFile() should be performed during 
+initial power-up, or whenever osPfsInit() is called. Waiting until data is 
+actually written to the Controller Pak may be too late for the consumer 
+(i.e., the consumer has already played the game up to the save point and 
+THEN finds out that the Controller Pak is defective). If this verification is 
+unsuccessful, the message "Damaged Controller Pak.  Game cannot be saved." 
+must be displayed on the screen before game play begins.
+
+<p>
+The developer may modify a standard Controller Pak, if desired, in order to 
+test this function.  Cut the trace from pin 27 of U2 (SRAM) in the Controller 
+Pak to be used for testing.
+
+<p align="right">
+<a href="news-06.html"><IMG src="../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContMgrInit</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>u8  nuContMgrInit(void)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>Bit pattern of the connected Controller</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><font color="#FF0000">Initilializes and registers the Controller Manager</font></p>
+
+<p>Initializes the Controller Manager and registers it in the SI Manager. Use the nuContMgrRemove function to remove 
+the Controller Manager from the SI manager.
+</p>
+
+<pre>		  7   6   5   4   3   2   1   0   bit
+		 -------------------------------
+Bit pattern	| - | - | - | - | 4 | 3 | 2 | 1 |
+		 -------------------------------
+	Bit is 1 if the Controller is connected.</pre>
+
+<p>If you want to execute some function after the Controller data has been read, you can register that function as a callback function in the Controller Manager.  The registration is made with the nuContReadFuncSet function and removed with the nuContReadFuncRemove function.</p>
+
+<p>Since this function is called by the nuContInit function, in most cases this function does not need to be called.</p>
+
+<hr>
+
+<pre>Reference:<a href="nuSiMgrInit.htm">nuSiMgrInit</a>, <a
+href="nuContInit.htm">nuContInit</a>, <a
+href="nuContReadFuncSet.htm">nuContReadFuncSet</a>, <a
+href="nuContReadFuncRemove.htm">nuContReadFuncRemove</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

@@ -1,0 +1,1827 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 25</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro25/index25.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro25/index25.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Sprite Microcode</font></b>
+
+<P>
+<font face="arial" size="-1">
+<P>
+<a name="01"></a>
+<b>S3DEX Overview</b>
+<br>
+The S2DEX microcode has been developed to use Super NES-like sprite and BG functions on the Nintendo 64 (N64).  Due to these functions, it is easier to create a game using sprites.  Also, by treating drawing objects as sprites and BG, N64 programming is similar to the conventional sprite game programming.
+
+<P>
+<a name="02"></a>
+<b>Features of S2DEX</b>
+<P>
+<a name="02.1"></a>
+<b>The Drawing Primitive</b>
+<br>
+Since S2DEX is designed specifically for processing 2D expressions, 3D primitive drawing for Fast3D and F3DEX is not supported.  However, the following primitives can be drawn using S2DEX Microcode.
+<ul>
+<li>Rectangle A -- <a target="main" href="../pro25/25-05.html#04.2.3">gSPObjRectangle,</a> gSPObjRectangleR (Copy Mode)
+<br>
+Size is fixed.  Texture flipping (vertical / horizontal) and drawing in the copy mode is possible.  Scale change (magnifying / shrinking) and rotation are not possible  Texture interpolation display and subpixel movement are not possible.  Antialiasing processing is not possible.  The texture must be loaded to TMEM before drawing.
+<P>
+<li>Rectangle B -- gSPObjRectangle, <a target="main" href="../pro25/25-05.html#04.2.4">gSPObjRectangleR(1, 2 Cycle Mode)</a>
+<br>
+Texture flipping is possible (vertical / horizontal).  Drawing in 1, 2 cycle mode is possible.  Texture interpolation display and subpixel movement are possible.  AntiAlias processing is possible.  Scale change (magnifying / shrinking) is possible, but rotation can not be done.  Texture must always be loaded to TMEM.
+<P>
+<li>Sprite -- <a target="main" href="../pro25/25-05.html#04.2.5">gSPObjSprite</a>
+<br>
+Scale change (magnifying / shrinking) and rotation are possible.  Texture flipping is possible (vertical / horizontal).  Texture interpolation display and subpixel movement are possible.  AntiAlias processing is possible.  Drawing in copy mode is not possible.  Texture must always be loaded to TMEM.
+<P>
+<li>BackGround (BG) A -- <a target="main" href="../pro25/25-05.html#04.1.2">gSPBgRectCopy</a>
+<br>
+Scrolling in closed region (vertical / horizontal loop) is possible.  Horizontal texture flipping is possible (not vertical texture flipping).  Drawing is possible in copy mode only.  Scale change (magnifying / shrinking) is not possible.  Texture interpolation display and subpixel movement are not possible.  AntiAlias processing is not possible.  Drawing is done by loading the texture on DRAM to TMEM as necessary.
+<P>
+<li>BackGround (BG) B -- <a target="main" href="../pro25/25-05.html#04.1.3">gSPBgRect1Cyc</a>
+<br>
+A CPU-based emulation routine is available.  Scale change (magnifying / shrinking) is possible.  Scrolling in closed region (vertical / horizontal loop) is possible.  Horizontal texture flipping is possible (not vertical texture flipping).  Drawing can be performed in 1 cycle mode only.  Texture interpolation display is possible. Subpixel movement is possible in the horizontal direction only.  AntiAlias processing is not possible.  Drawing is done by loading the texture on DRAM to TMEM as necessary.
+</ul>
+
+<P>
+The following functions can be used from the old graphics binary interface (GBI).
+<ul>
+<li>FillRectangle
+<li>TextureRectangle
+<li>TextureRectangleFlip
+</ul>
+
+<P>
+The following functions can not be used from the old GBI. 
+<ul>
+<li>1Triangle
+<li>2Triangle
+<li>1Quadrangle
+</ul>
+
+<P>
+There are few similarities between S2DEX and old Sprite2D Microcode.  S2DEX is not an upgrade to Sprite2D, but it is rather a new microcode.  Also, sprite libraries such as spInit() can not be used in combination with S2DEX because sprite libraries use 3D microcode.  The S2DEX library is completely different from the sprite library.
+
+<P>
+<a name="02.2"></a>
+<b>Self Loading Function</b>
+<br>
+As mentioned above, S2DEX is not capable of drawing 3D primitives.  However, S2DEX has a microcode self loading function which is supported by F3DEX (Release 1.20 or later).  Therefore, it is possible for S2DEX to draw 3D primitives by loading F3DEX microcode.
+<P>
+<b>Note:</b> Use of S2DEX to draw 3D primitives by loading F3DEX microcode requires Release Version 1.22 and later versions of F3DEX Microcode, and N64 OS/Library Version 2.0I or later.
+
+<P>
+<a name="02.3"></a>
+<b>DEBUG Information Output Function</b>
+<br>
+There are two types of S2DEX Microcode.  One is installed for master ROM, and the other is for debugging.  The Microcode for debugging is equipped with the following features.
+<ul>
+<li>Output display list processing log
+<P>
+<li>If illegal input value or illegal command detected, stops RSP, and send the report to CPU
+</ul>
+
+<P>
+These functions are fully described later in this chapter.
+
+<P>
+<a name="02.4"></a>
+<b>Passing Commands from RSP to RDP</b>
+<br>
+S2DEX only supports fifo versions (same as F3DEX series).
+However, a larger FIFO buffer is required by S2DEX than for F3DEX.  While this buffer had to be 0(300 bytes or larger for the F3DEX series, it has to be at least 0(800 bytes for S2DEX.  Please be aware that If you want the FIFO buffer to be shared by the F3DEX series and S2DEX, it must be at least 0(800 bytes to fulfill the S2DEX requirements.
+<P>
+<b>Note:</b> On some of the on-line "Functional Reference Manual" (HTML) pages, the minimum FIFO size in _fifo microcode commands is stated to be 0(100 bytes. This is incorrect.  The FIFO size required varies depending on the microcode command.  These are as noted above for the F3DEX series and S2DEX, while 0(180 bytes are necessary for Fast3D.
+
+<P>
+<a name="03"></a>
+<b>Compatibility with F3DEX</b>
+<br>
+The GBI of S2DEX was derived from F3DEX.  So, there is no compatibility with the GBI of Fast3D.  When you use S2DEX, you need to define F3DEX_GBI like F3DEX before ultra64.h is included.
+<P>
+Also, to use the GBI of S2DEX, you need to include the header file &#060PR/gs2dex.h&#062.  Insert this include specification after the include specification of &#060ultra64.h&#062.
+<p>
+Next, let's compare the GBI of S2DEX and the GBI of F3DEX.  Simply put, you can consider that S2DEX does not support GBIs which deal with 3D primitives, 4x4 matrices, and light definition.
+<p>
+The following refers to gSP* and gDP* only, but the same applies to gsSP* and gsDP*.
+
+<p>
+<a name="03.1"></a>
+<b>GBIs Supported by Both S2DEX and F3DEX</b>
+<br>
+The following GBIs are fully supported by both S2DEX and F3DEX, except as noted.
+<P>
+<table border=0 cellspacing="1" cellpadding="3" width=70%>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">DL Process Control:</td>
+<td width=33%><font face="arial" size="-1">gSPDisplayList(*)<br>gSPEndDisplayList</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPBranchList</td></tr>
+<tr>
+<td width=33%></td><td width=33%><font face="arial" size="-1"></td><td width=33%></td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Setting Up Segment:</td>
+<td width=33%><font face="arial" size="-1">gSPSegment(*)</td><td width=33%></td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Loading Microcode:</td>
+<td width=33%><font face="arial" size="-1">gSPLoadUcode*</td><td width=33%></td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Scissoring:</td>
+<td width=33%><font face="arial" size="-1">gDPSetScissor</td><td width=33%><font face="arial" size="-1">gDPSetScissorFrac</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Setting RDP Mode:</td>
+<td width=33%><font face="arial" size="-1">gSPSetOtherMode
+<br>gDPSetTexturePersp<br>gDPSetTextureLOD<br>gDPSetTextureFilter<br>gDPSetCombineKey<br>gDPSetAlphaDither<br>gDPSetAlphaCompare<br>gDPSetRenderMode
+<br>gDPSetDepthImage<br>gDPSetCombineMode</td>
+<td width=33%><font face="arial" size="-1">gDPSetCycleType
+<br>gDPSetTextureDetailg<br>gDPSetTextureLUT<br>gDPSetTextureConvert<br>gDPSetColorDither<br>gDPSetBlendMask<br>gDPSetDepthSource<br>gDPSetColorImage<br>gDPSetTextureImage</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Setting Color Value, etc.:</td>
+<td width=33%><font face="arial" size="-1">gDPSetEnvColor
+<br>gDPSetFogColor<br>gDPSetPrimColor<br>gDPSetConvert<br>	gDPSetKeyGB</td>
+<td width=33% valign="top"><font face="arial" size="-1">gDPSetBlendColor<br>gDPSetFillColor<br>gDPSetPrimDepth<br>	gDPSetKeyR</td></tr>
+
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Loading to TMEM:</td>
+<td width=33%><font face="arial" size="-1">gDPSetTileSize
+<br>gDPSetTile<br>gDPLoadMultiBlock*<br>gDPLoadMultiTile*<br>gDPLoadTLUT_pal256</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gDPLoadTile<br>gDPLoadTextureBlock*<br>gDPLoadTextureTile*<br>gDPLoadTLUT_pal16</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Primitives:</td>
+<td width=33%><font face="arial" size="-1">gDPFillRectangle<br>gSPTextureRectangle<br>gsSPTextureRectangleFlip</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gDPScisFillRectangle<br>	gSPScisTextureRectangle</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Sync Processing:</td>
+<td width=33%><font face="arial" size="-1">gDPFullSync<br>gDPPipeSync</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gDPTileSync<br>gDPLoadSync</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">NOOP:</td>
+<td width=33%><font face="arial" size="-1">gSPNoOp<br>gDPNoOpTag</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gDPNoOp</td></tr>
+</table>
+
+<P>			
+<b>Note:</b> For S2DEX, the number of segments when using gSPSegment is 16 and the number of DL links when using gSPDisplayList is 18 (same as F3DEX).
+
+<P>
+<a name="03.2"></a>
+<b>GBIs Not Supported in S2DEX</b>
+<br>
+The following GBIs are not supported by S2DEX.
+<P>
+<table border=0 cellspacing="1" cellpadding="3" width=70%>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Setting View:	</td>
+<td width=33%><font face="arial" size="-1">gSPViewport<br>gSPPerspNormalize</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPClipRatio</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Matrix Operation:	</td>
+<td width=33%><font face="arial" size="-1">gSPMatrix<br>gSPInsertMatrix</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPPopMatrix<br>gSPForceMatrix</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Vertex Operation:	</td>
+<td width=33%><font face="arial" size="-1">gSPVertex</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPModifyVertex</td></tr>
+					
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Conditional Branch:	</td>
+<td width=33%><font face="arial" size="-1">gSPCullDisplayList</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPBranchLessZ*</td></tr>
+									
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Polygon Type Setting:</td>
+<td width=33%><font face="arial" size="-1">gSPSetGeometryMode<br>gSPTexture</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPClearGeometryMode<br>gSPTextureL</td></tr>
+												
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Primitives:</td>
+<td width=33%><font face="arial" size="-1">gSP1Triangle<br>gSP1Quadrangle<br>gSPLineW3D</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSP2Triangles<br>gSPLine3D</td></tr>
+												
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Lighting:</td>
+<td width=33%><font face="arial" size="-1">gSPNumLights<br>gSPLightColor<br>gSPLookAt*<br>gDPSetHilite2Tile</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPLight<br>gSPSetLights[0-7]<br>gDPSetHilite1Tile</td></tr>		
+				
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Fog:</td>
+<td width=33%><font face="arial" size="-1">gSPFogFactor</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPFogPosition</td></tr>		
+		
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">For Old Sprite2D Use:</td>
+<td width=33%><font face="arial" size="-1">gSPSprite2DBase<br>gSPSprite2DDraw</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPSprite2DScaleFlip</td></tr></table>
+
+<P>
+<a name="03.3"></a>
+<b>New GBIs</b>
+<br>
+The following GBIs have been added to S2DEX.
+<P>
+<table border=0 cellspacing="1" cellpadding="3" width=70%>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">BG Drawing:</td>
+<td width=33%><font face="arial" size="-1">gSPBgRectCopy</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gSPBgRect1Cyc</td></tr>
+
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Sprite Drawing:</td>
+<td width=33%><font face="arial" size="-1">gSPObjRectangle<br>gSPObjSprite</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gSPObjRectangleR</td></tr>
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">2D Matrix Operation:</td>
+<td width=33%><font face="arial" size="-1">gSPObjMatrix</td>
+<td width=33% valign="top"><font face="arial" size="-1">	gSPObjSubMatrix</td></tr>		
+				
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Drawing Mode Setting:</td>
+<td width=33%><font face="arial" size="-1">gSPObjRenderMode</td>
+<td width=33% valign="top"><font face="arial" size="-1"></td></tr>
+				
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Load Texture Processing:</td>
+<td width=33%><font face="arial" size="-1">gSPObjLoadTxtr</td>
+<td width=33% valign="top"><font face="arial" size="-1"></td></tr>
+				
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Compound Commands:</td>
+<td width=33%><font face="arial" size="-1">gSPObjLoadTxRect<br>gSPObjLoadTxSprite</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPObjLoadTxRectR</td></tr>
+
+<P>
+<tr>
+<td width=33% valign="top"><font face="arial" size="-1">Conditional Branch:</td>
+<td width=33%><font face="arial" size="-1">gSPSelectDL</td>
+<td width=33% valign="top"><font face="arial" size="-1">gSPSelectBranchDL</td></tr></table>
+
+<P>
+<br>
+<a name="03.4"></a>
+<b>Precautions Regarding GBIs</b>
+<P>
+<a name="03.4.1"></a>
+<b>Changing Mode Using OtherMode</b>
+<br>
+When changing the mode in F3DEX with g[s]SPSetOtherMode, no more than 31 bits could be set with a single g[s]SPSetOtherMode command.  This has been restructured in S2DEX so that you can change 32 bits worth of parameters at once with a single command.
+<P>
+In addition, combining the g[s]DSPSetOtherMode command with a g*SPSetOtherMode-type command when changing modes resulted in a malfunction with F3DEX.  (Normal setting by g*SPSetOtherMode could not be accomplished)  This has been corrected in S2DEX so that they can be combined.
+
+<P>
+<a name="04"></a>
+<b>S2DEX GBIs</b>
+<br>
+Following are detailed descriptions of the GBIs available in S2DEX.
+
+<P>
+<a name="04.1"></a>
+<b>BG Drawing GBI</b>
+<br>
+S2DEX can easily create vertical and horizontal scroll surfaces in a closed area (this function was included in the Super NES).  Developing scroll games such as 2D Mario will be easier using this feature.
+
+<P>
+<a name="04.1.1"></a>
+<b>uObjBg Structure</b>
+<br>
+uObjBg structures hold the drawing information of BG.  The pointer to this structure is given as the BG drawing GBI parameter.
+uObjBg structures can be precisely divided into 3 common structures.  The first is for aligning the structure with the 8 byte boundary and does not require attention.  The remaining 2 have data structures which adapt for the two BG drawing GBI structures described below.
+The structure that adapts for the BG drawing GBI resulting from the Copy Mode is uObjBg_t and the structure that adapts for the BG drawing GBI resulting from the 1 Cycle Mode is uOBjScaleBg_t.
+<pre><font face="courier" size="3">typedef union {
+      uObjBg_t        b;
+      uObjScaleBg_t   s;
+      long long int   force_structure_alignment;
+      } uObjBg;
+</pre></font>
+
+<p>
+<a name="04.1.1.1"></a>
+<b>uObjBg_t Structure</b>
+<br>
+Members of the uObjBg_t structure can be divided into two groups (first half and second half).
+<P>
+The first half consists of the member variables to be set by the user. BG drawing can be controlled by changing these variables.  This first half can be shared with the uObjScaleBg_t structure. 
+<P>
+The second half consists of the variables to be calculated and stored by the CPU to help the Microcode.  These member variables are set by calling the function guS2DInitBg(), using the uObjBg structure's pointer as the parameter.  However, there is no need to call guS2DInitBg every time.
+<P>
+Since the second half's member variables can be derived from the first half variables (imageLoad, imageFmt, imageSiz, imageW, and frameW), guS2DInitBg needs to be called only immediately after these variables are changed.
+<P>
+Using uObjBg as BG plane, these variables don't normally change very often.  Therefore, it is usually sufficient to call guS2DInitBg once before using BG plane.
+<P>
+However, when the uObjScaleBg_t structure's member variables scaleW, scaleH, imagYorig have changed the uObjBg_t second half's member variables may be changed.  In this situation, it will probably be necessary to call guS2DInitBg again.
+<P>
+Following is the definition section of uObjBg in gs2dex.h.  uObjBg's size is 40 bytes; and uObjBg must be aligned to 8 bytes.
+<P>
+The first half member variables will be explained in the GBI section.  
+Please understand that the arrangement of member variables is somewhat complicated to optimize RSP operation.
+<P>
+<b>Note:</b> In S2DEX Version 1.00 and later, the format of member variables imagePal and imageFlip has changed from u8 to u16.
+<pre><font face="courier" size="3">typedef struct	{
+	u16	imageX;	// The x-coordinate of the upper-left position of BG image (u10.5)
+	u16	imageW;	// The width of BG image(u10.2)
+	s16	frameX;	// The upper-left position of the transfer frame(s10.2)
+	u16	frameW;	// The width of the transfer frame (u10.2)
+
+	u16	imageY;	// The y-coordinate of the upper-left position of BG image (u10.5)
+	u16	imageH;	// The height of BG image (u10.2)
+	s16	frameY;	// The upper-left position of the transfer frame (s10.2)
+	u16	frameH;	// The height of the transfer frame (u10.2)
+  
+	u64	*imagePtr;	// The texture address of the upper-left position of BG image
+	u16	imageLoad;	// Which to use, LoadBlock and LoadTile 
+	u8	imageFmt;	// The format of BG image G_IM_FMT_*
+	u8	imageSiz;	// The size of BG image G_IM_SIZ_* 
+	u16	imagePal;	// The pallet number                        
+	u16	imageFlip;	// Image horizontal flip. Flip using G_BG_FLAG_FLIPS.
+// All of the above are common with uObjScaleBg_t 
+  
+// The user doesn't have to set the following since they are
+// set within the initialization routine, guS2DInitBG().
+	u16	tmemW;	// The width of TMEM for 1 line's worth of the frame.
+			// The width is the Word size.
+			// At LoadBlock, GS_PIX2TMEM(imageW/4,imageSiz)
+			// At LoadTile,  GS_PIX2TMEM(frameW/4,imageSiz)+1
+	u16	tmemH;	// The width of loadable TMEM at a time. (s13.2) 
+			// The height is 4 times value 
+			// At the normal texture,    512/tmemW*4
+			// At the CI texture, 256/tmemW*4
+	u16	tmemLoadSH;	// The SH value
+			// At LoadBlock, tmemSize/2-1
+			// At LoadTile,   tmemW*16-1       
+	u16	tmemLoadTH;	// The TH value or the Stride value
+			// At LoadBlock,  GS_CALC_DXT(tmemW)
+			// At LoadTile,   tmemH-1
+	u16	tmemSizeW;	// The skip value of imagePtr for 1 line's worth of the image.
+			// At LoadBlock, tmemW*2
+			// At LoadTile,  GS_PIX2TMEM(imageW/4,imageSiz)*2
+	u16	tmemSize;	// The skip value of imagePtr for one loading. 
+			// = tmemSizeW*tmemH
+	} uObjBg_t;		// 40 bytes
+</pre></font>
+
+<P>
+The following structure defines the initialization function guS2DInitBg.
+<P>
+<table border=0 cellspacing="1" cellpadding="3" width=70%>
+<tr>
+<td><font face="arial" size="-1">Void </td><td><font face="arial" size="-1"> guS2DInitBg(uObjBg *bg);</td></tr></table>
+	
+<P>
+This function is used for initializing the uObjBg structure (uObjBg_t).  If the uObjBg data structure is used as the parameter without initialization, the S2DEX Microcode's GBI may not function properly.
+<P>
+Parameter:	&nbsp;&nbsp; bg &nbsp;&nbsp; &nbsp;The pointer to the uObjBg structure.
+
+<P>
+<a name="04.1.1.2"></a>
+<b>uObjScaleBg_t Structure</b>
+<br>
+There is no member argument required to calculate the value by the CPU in advance like uObjBg_t in members of the uObjScaleBg_t structure.  All member arguments are directly set by the user, and BG plane drawing is then controlled accordingly.
+<P>
+In addition, when shared by the uObjBg structure, the uObjScaleBg_t structure's member variables from imageX to imageFlip are shared with the uObjBg_t structure.
+<pre><font face="courier" size="3">typedef struct  {
+	u16	imageX;	// The x-coordinate of the upper-left position of BG image (u10.5)
+	u16	imageW;	// The width of BG image (u10.2)
+	s16	frameX;	// The upper-left position of the transfer frame (s10.2)
+	u16	frameW;	// The width of the transfer frame     (u10.2)
+
+	u16	imageY;	// The y-coordinate of the upper-left position of BG image (u10.5)
+	u16	imageH;	// The height of BG image (u10.2)
+	s16	frameY;	// The upper-left position of the transfer frame (s10.2)
+	u16	frameH;	// The height of the transfer frame   (u10.2)
+  
+	u64	*imagePtr;	// The texture address of the upper-left position of BG image   
+	u16	imageLoad;	// Which to use, LoadBlock and LoadTile 
+	u8	imageFmt;	// The format of BG image     G_IM_FMT_*
+	u8	imageSiz;	// The size of BG image       G_IM_SIZ_*
+	u16	imagePal;	// The pallet number                        
+	u16	imageFlip;	// Image horizontal flip.  Flipped using G_BG_FLAG_FLIPS.
+	// All of the above are common with uObjBg_t 
+	u16	scaleW;	// The scale value of the x-direction  (u5.10)
+	u16	scaleH;	// The scale value of the y-direction  (u5.10)
+	s32	imageYorig;	// The drawing start-point on image    (s20.5)
+    
+	u8	padding[4];
+	} uObjScaleBg_t;		// 40 bytes
+</pre></font>
+
+<P>
+<a name="04.1.2"></a>
+<b>gSPBgRectCopy</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPBgRectCopy(Gfx *gdl, uObjBg *bg)<br>gsSPBgRectCopy(uObjBg *bg)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjBg</td>
+<td><font face="arial" size="-1" valign="top">*bg;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the 
+<br>drawing data structure of BG</td></tr></table>
+
+<P>
+g[s]SPBgRectCopy is the simplest BG drawing GBIs supplied by S2DEX.  This GBI has the following features.
+<ul>
+<li>Scale change (magnifying / shrinking) is not possible.
+<P>
+<li>Scrolling in a closed region (making vertical / horizontal loop) is possible.
+<P>
+<li>
+Horizontal texture flipping is possible (not vertical texture flipping).
+<P>
+<li>Drawing is possible in copy mode only.
+<P>
+<li>Texture interpolation display and subpixel movement are not possible.
+<P>
+<li>Anti-aliasing is not possible.
+<P>
+<li>The GBI loads the texture data from DRAM to TMEM as necessary, then draws.
+</ul>
+
+<P>
+Designed for drawing in the copy mode, the biggest advantage of g[s]SPBgRectCopy is that it has the fastest drawing speed.  When using the GBI, CycleType must be set to the Copy mode.
+<P>
+S2DEX sends data from the BG image buffer to the actual frame buffer's rectangle region, shown below.  Scrolling becomes possible by establishing the relationship between the upper left hand corner of the frame buffer rectangle region (transfer frame) and a point in the BG image buffer, specified by imageX and imageY.  imageX, imageY can be specified in the (u10.5) format, but due to restrictions when using the Copy mode, the values for imageX, imageY are limited to integer values.
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-01.gif"></tr></td></table>
+
+<P>
+<font face="arial" aize="-1">
+The size of the BG image is set by imageW and imageH.  The beginning address (the top left hand corner) is specified by imagePtr.  That is, you can consider the BG image to be a large texture data having width (imageW) and height (imageH) starting from imagePtr.
+<P>
+BG image's width, imageW must be aligned to 8 bytes.  Since the actual values used for imageW and imageH are in (u10.2) format, the values to be assigned must be multiplied by 4.  The following chart shows the imageW's value constraints, taking (u10.2) format into consideration and multiplying by 4. There is no need to align imageH values.
+<ul>
+<table border=0 cellpadding="2">
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_4b:</td><td><font face="arial" size="-1">imageW is a multiple of 64</td></tr>
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_8b:</td><td><font face="arial" size="-1">imageW is a multiple of 32</td></tr>
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_16b:</td><td><font face="arial" size="-1">imageW is a multiple of 16</td></tr>
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_32b:</td><td><font face="arial" size="-1">W is a multiple of  8</td></tr></table>
+</ul>
+
+<P>
+For horizontal scrolling, imageW must be larger than frameW.  The following values take the (u10.2) format into consideration.  When G_IM_SIZ_16b, imageW must be 4 pixels larger than frameW.
+<ul>
+<table border=0 cellpadding="2">
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_4b:</td><td><font face="arial" size="-1">frameW+64 &#060= imageW</td></tr>
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_8b:</td><td><font face="arial" size="-1">frameW+32 &#060= imageW</td></tr>
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_16b:</td><td><font face="arial" size="-1">frameW+16 &#060= imageW</td></tr>
+<tr><td><font face="arial" size="-1"><li>When G_IM_SIZ_32b:</td><td><font face="arial" size="-1">frameW+ 8 &#060= imageW</td></tr></table>
+</ul>
+
+<P>
+The size of the transfer frame is specified by frameW and frameH, and the position of the upper left hand corner of the transfer frame on the screen is specified by frameX and frameY.  The parameters of frameW and frameH are in (u10.2) format.  It is possible to specify negative values for frameX and frameY.  If the transfer frame projects out of the scissors box specified by g[s]DPSetScissor, the microcode will clip the excess portion.
+<P>
+A problem is not created when the BG frame is bigger than the transfer frame; however, if the transfer frame is bigger than the BG frame, proper operation may not occur.  Please be sure to keep a transfer frame smaller than a BG image.
+<P>
+In addition, the right and left ends of BG image are offset in the Y direction by 1.  Specifically, a BG image's right end pixel is at (imageW-1, n), and one pixel to the right is (0, n+1).  This arrangement is necessary to improve RDRAM access efficiency for loading texture.  It is very important for application developers to keep this in mind.
+<P>
+Texture format and size for a BG image will be set by specifying imageFmt and imageSiz using the macros: G_IM_FMT_*, and G_IM_SIZ_*, respectively.  Also, when using CI4 texture, assign TLUT number to imagePal.
+<P>
+There are two ways to load texture for a BG image--using LoadBlock and using LoadTile.  Since there are advantages and disadvantages for each method, S2DEX's GBI design allows the user to select the proper method by setting a member variable (imageLoad).  Depending on the situation, the user can assign an appropriate value (G_BGLT_*) to imageLoad to use LoadBlock or LoadTile.
+<P>
+<table border=0 cellspacing="1" cellpadding="2" width=50%>
+<tr><td><font face="arial" size="-1"><b>The value of imageLoad</td>
+<td><font face="arial" size="-1"><b>Meanings</b></td></tr>
+<tr><td><font face="arial" size="-1">G_BGLT_LOADBLOCK</td>
+<td><font face="arial" size="-1">Use LoadBlock</td></tr>
+<tr><td><font face="arial" size="-1">G_BGLT_LOADTILE</td>
+<td><font face="arial" size="-1">Use LoadTile</td></tr></table>
+
+<P>
+When using LoadBlock, maximum performance can be gained under certain circumstances.  However, when certain conditions are not satisfied, LoadBlock can not be used because processing overhead will become too large.  On the other hand, LoadTile can always perform at a certain level.
+
+<P>
+We recommend using LoadBlock when the maximum benefit is expected, and use LoadTile in other cases.
+LoadBlock's use is limited by the width of BG.  When imageSiz is 16 bit, the possible values of imageW usable for LoadBlock are the following:
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;4,  8, 12, 16, 20, 24, 28, 32, 36, 40,<br>
+&nbsp;&nbsp;48, 64, 72, 76,100,108,128,144,152,164,<br>
+&nbsp;200,216,228,256,304,328,432,456,512,684,<br>
+820,912</pre>
+
+<P>
+When imageSiz is 8 bit long, the usable set of numbers for imageW can be obtained by doubling each of the numbers above.  Similarly, multiply each number by 4 when imageSiz is 4 bit, and multiply each number by 1/2 when imageSiz is 32 bit.  If the width of the BG image does not allow the use of LoadBlock, LoadTile must be used.
+<P>
+In order to draw a transfer frame line by line, LoadBlock reads the entire line of the corresponding BG image.  Since scrolling BG requires a larger BG image for BG refresh, imageW must be greater than frameW.  For this reason, excess data will be loaded when using LoadBlock.
+<P>
+On the other hand, LoadTile loads necessary data only.  Since the processing speed of LoadBlock is faster than that of LoadTile, using LoadBlock is advantageous when the difference of loaded data is only a few pixels.  However, when imageW is much larger than frameW, the processing overhead could become too high.  The use of LoadTile is advantageous in this case.  The user should choose the command best suited for the given application.
+<P>
+As an example, let's assume we are using BG to cover the entire screen (320 X 240).
+<P>
+Since the transfer frame is the entire screen, frameW becomes 320 pixels.  Reserving 8 pixels for the BG refresh area, imageW is 328 pixels.  In this case, the difference between frameW and imageW is small; and using LoadBlock at 328 pixels is the best solution.
+<P>
+The GBI supports BG image flipping for the horizontal direction only.  A texture image can be flipped by assigning G_BG_FLAG_FLIPS to imageFlip.  Assign 0 for normal display (no flipping).
+
+<P>
+<a name="04.1.3"></a>
+<b>gSPBgRect1Cyc</b>
+<p>
+<table border=0  width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPBgRect1Cyc(Gfx *gdl, uObjBg *bg)<br>gsSPBgRect1Cyc(uObjBg *bg)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjBg</td>
+<td><font face="arial" size="-1" valign="top">*bg;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the 
+<br>drawing data structure of BG</td></tr></table>
+
+<P> 
+g[s]SPBgRect1Cyc is one of the BG drawing GBIs provided by S2DEX, whereby the BG screen can be enlarged or reduced.  
+
+<P>
+<u>Features of this GBI include:</u>
+<ul>
+<li>Scale change (magnifying / shrinking) is possible.
+<P>
+<li>Scrolling in a closed region (making vertical / horizontal loop) is possible.
+<P>
+<li>Horizontal texture flipping is possible (not vertical texture flipping).
+<P>
+<li>Drawing in 1 Cycle mode only.
+<P>
+<li>Texture interpolation display is possible, subpixel movement is possible only in the horizontal direction.
+<P>
+<li>Anti-aliasing is not possible.
+<P>
+<li>The GBI loads the texture data from DRAM to TMEM, then draws.
+</ul>
+<P>
+<b>Note:</b> This GBI can not be used in Copy mode.
+
+<P>
+The parameters necessary for drawing with g[s]SPBgRect1Cyc are the parameters required when using g[s]SPBgRectCopy, discussed previously, plus the parameters scaleW, scaleH, and imageYorig.  The additional parameters will be explained here.
+<P>
+The biggest difference between g[s]SPBgRect1Cyc and g[s]SPBgRectCopy is that it supports BG scaling.  BG scaling is controlled by the uObjScaleBg_t structure's member variables scaleW and scaleH.  This scaling is centered at the BG image's (imageX, imageY).
+<P>
+In other words, even when scaling has been performed, BG image's (imageX, imageY) are drawn at the position of (frameX, frameY) in the frame buffer, just as if scaling had not been done.  (However, if horizontal flipping has been performed, they are drawn at the position, (frameX+frameW-1, frameY).
+<P>
+In addition, when magnifying, the image is clipped by the frame size.  Conversely, when shrinking, the frame is sometimes clipped by image size.  Refer to the <a target="_top" href="../pro29/index.html">S2DEX sample program</a> for more about this.
+<P>
+However, frame clipping during shrinking can sometimes be slightly greater or lesser depending on calculation error.  When a precise size is required, calculate and set the values for frameW and frameH on the CPU side.
+<P>
+Bilinear interpolation display is supported by g[s]SPBgRect1Cyc.  When using bilinear interpolation display, jagged lines in texels become less apparent in magnification compared with normal point sampling display, giving a smoother appearance.  However, this effect is less apparent in images which are scaled down in size.
+<P>
+When bilinear interpolation is used, the RDP drawing performance decreases compared to when it is not used.  The rate of this decrease in performance is greater when a smaller number of image lines are loaded in TMEM at one time.  When drawing a 320X240 image in a 320X240 frame with no scaling is compared to drawing a 640x480 image at 1/2 reduction, the share of overhead taken by using bilinear interpolation will be greater when shrinking the 640x480 image.  This causes a substantial drop in performance when a 640x480 image is similarly reduced and displayed using point sampling.  Considering that the effects of bilinear interpolation diminish when used in reducing images, as discussed above, you should probably consider switching to point sampling display when reducing an image.
+<P>
+<a target="main" href="../pro25/25-05.html#04.1.3">g[s]SPBgRect1Cyc</a> draws an image by automatically dividing it into several subplanes, but it is possible that the drawing result will unexpectedly develop unnatural wrinkles during the division process if the division is done carelessly.  This is especially noticeable when the image is scrolled.  The member variable imageYorig has been provided for uObjScaleBg_t to prevent these wrinkles.  The value of imageYorig refers to the Y coordinate of the origin for scaling, but it also describes the division origin of a subplane.  It is thus possible to prevent the wrinkles described above.  
+
+<P>
+Typically, imageYorig is used in the following situations.
+<ul>
+<li>At initialization:
+<br>
+Set the value of imageY to imageYorig.
+<P>
+<li>When the value of scaleH changes:
+<br>Set the value of imageY to imageYorig.
+<P>
+<li>When imageX and imageY have been wrap processed:
+<br>Perform the same processing that was performed in imageY on imageYorig.
+<P>
+<li>When changing only imageY (change not accompanying wrap processing):
+<br>
+Do not change imageYorig.
+</ul>
+
+<P>
+Based on the above, processing for an image which is being scrolled by dx and dy would be as follows.
+<pre><font face="courier" size="3">/*Addition of scroll values. */
+	  bg->s.imageX += dx;
+	  bg->s.imageY += dy;
+
+	  /* Wrap processing of the screen edge. */
+	  if (bg->s.imageX < 0){
+	    bg->s.imageX += bg->s.imageW;
+	    bg->s.imageY     -= 32;
+	    bg->s.imageYorig -= 32;
+	  }
+	  if (bg->s.imageX >= bg->s.imageW){
+	    bg->s.imageX     -= bg->s.imageW;
+	    bg->s.imageY     += 32;
+	    bg->s.imageYorig += 32;
+	  }
+	  if (bg->s.imageY < 0){
+	    bg->s.imageY     += bg->s.imageH;
+	    bg->s.imageYorig += bg->s.imageH;
+	  }
+	  if (bg->s.imageY >= bg->s.imageH){
+	    bg->s.imageY     -= bg->s.imageH;
+	    bg->s.imageYorig -= bg->s.imageH;
+	  }
+</pre></font>
+
+<P>
+BG images can be flipped in the horizontal direction only with this GBI and functions just like it does in the COPY mode.  The texture image can be flipped by substituting G_BG_FLAG_FLIPS for the member variable imageFlip.  For normal display (no flipping) substitute 0.
+
+<P>
+When using this GBI, there are limitations on the value of the uObjScaleBg_t structure's member variable, imagePtr.  Any position from the head of RDRAM to the 4096 byte position cannot be specified as the value for imagePtr.  This represents physical addresses 0x00000000 to 0x00000fff, in which range imagePtr (after segment conversion) cannot be placed.  Please keep this in mind.
+<P>
+This GBI is built into S2DEX Version 1.00 and later.
+<P>
+In addition, the function guS2DEmuBgRect1Cyc has been added, beginning with S2DEX Version 0.75.  This function emulates processing which is equivalent to gSPBgRect1Cyc by combining several GBIs, such as gSPTextureRectangle, etc.  This can also be used for performing scaleable BG drawing. 
+
+<P>
+<a name="04.2"></a>
+<b>The Sprite Drawing GBI</b>
+<br>
+The sprite mentioned here corresponds to OBJECTs in Super NES programming.  Sprites have been used for drawing areas smaller than BG, and historically they have been used as "player characters" quite often.  In S2DEX, magnifying / reducing, and rotation of sprites are all possible.  Also using sprites, more natural expression is possible due to the use of bilinear interpolation processing.
+<P>
+To support a sprite's rotation, a two dimensional coordinate conversion matrix is used.  By setting the matrix's elements, a sprite can be rotated freely.  The matrix must be set before drawing a sprite.  Also, unlike the matrix for Fast3D or F3DEX, there is no matrix stack; so Push/Pop operation can not be performed.  Matrix multiplication can not be done either. Only the load operation is possible.  
+
+<P>
+S2DEX specifications call for using separate GBIs for TMEM loading and sprite drawing.  In other words, before drawing a sprite, the texture used for the sprite must already be loaded using the texture load GBI (Please refer to, Section 25.4.5, <a target="main" href="../pro25/25-05.html#04.5">"The Texture Load GBI."</a> 
+
+<P>
+The sprite drawing mode can be divided into two categories, rotating sprites and non-rotating sprites.  For each respective case, the corresponding GBI will do the processing.
+<P>
+<table border=0 cellpacing="1" celelpadding="3" width=60%>
+<tr><td><font face="arial" size="-1"><b>The Drawing Mode</td>
+<td><font face="arial" size="-1"><b>Corresponding GBI</b></td></tr>
+<tr><td><font face="arial" size="-1">No Rotation</td><td><font face="arial" size="-1">g[s]SPObjRectangle, g[s]SPObjRectangleR</td></tr>
+<tr><td><font face="arial" size="-1">Rotation</td><td><font face="arial" size="-1">g[s]SPObjSprite</td></tr></table>
+
+<P>
+<a name="04.2.1"></a>
+<b>uObjSprite Structure</b>
+<br>
+The uObjSprite data structure holds a sprite's information.  The pointer to the data structure will be given to the sprite drawing GBI as a parameter.
+<pre><font face="courier" size="3">typedef struct {
+	s16	objX;	// The x-coordinate of the upper-left end of OBJ. (s10.2)
+	u16	scaleW;	// The width of direction scaling. (u5.10)
+	u16	imageW;	// The width of the texture.(The length of the S direction.) (u10.5)
+	u16	 paddingX;	// Unused.  Always 0.
+	s16	objY;	// The y-coordinate of the upper-left end of OBJ. (s10.2)
+	u16	scaleH;	// Scaling of the height direction. (u5.10)
+	u16	imageH;	// The height of the texture. (The length of the T
+			// direction.) (u10.5)
+	u16	paddingY;	// Unused.  Always 0.  
+
+	u16	imageStride;	// The folding width of the texel.  (In units of 64-bit word.)   
+	u16	imageAdrs;	// The texture starting position in TMEM. (In units of 64-bit word.) 
+	u8	imageFmt;	// The format of the texel.  G_IM_FMT_*
+	u8	imageSiz;	// The size of the texel.         G_IM_SIZ_*
+	u8	imagePal;	// The pallet number.  
+	u8	imageFlags;	// The display flag.  
+
+	} uObjSprite_t;	// 24 bytes
+
+typedef union      {
+	uObjSprite_t	s;
+	long long int	force_structure_alignment;
+	} uObjSprite;
+</pre></font>
+
+<P>
+Although the sequence of member variables is somewhat complicated, this is unavoidable to optimize RSP processing (same as with uObjBg).
+
+<P>
+<a name="04.2.2"></a>
+<b>uObjMtx/uObjSubMtx Structures</b>
+<br>
+S2DEX Microcode has the area to hold a 2D matrix for controlling a Sprite's rotation.  There are eight parameters (A, B, C, D, X, Y, BaseScaleX, and BaseScaleY).
+<P>
+uObjMtx data structure has one-to-one correspondence to this 2D matrix area, and the structure is used for modifying the whole 2D matrix.  Rotation operation using the 2D matrix is explained in <a target="main" href="../pro25/25-05.html#04.2.5">"gSPObjSprite".</a>
+<pre><font face="courier" size="3">typedef struct {
+	s32	A, B, C, D;	/* s15.16 */
+	s16	X, Y;	/* s10.2  */
+	u16	BaseScaleX;	/* u5.10  */
+	u16	BaseScaleY;	/* u5.10  */
+	} uObjMtx_t;		/* 24 bytes */
+
+typedef union {
+	uObjMtx_t  m;
+	long long int force_structure_alignment;
+	} uObjMtx;
+</pre></font>
+
+<P>
+uObjSubMtx is a subset of uObjMtx, and is used for changing X, Y, BaseScaleX, and BaseScaleY.  The main use for uObjSubMtx is drawing a sprite using g[s]SPObjRectangleR.  Please refer to <a target="main" href="../pro25/25-05.html#04.2.4">"gSPObjRectangleR"</a> for details.
+<pre><font face="courier" size="3">typedef struct {
+	s16	X, Y;	/* s10.2  */
+	u16	BaseScaleX;	/* u5.10  */
+	u16	BaseScaleY;	/* u5.10  */
+	} uObjSubMtx_t;		/* 8 bytes */
+
+typedef union {
+	uObjSubMtx_t  m;
+	long long int force_structure_alignment;
+	} uObjSubMtx;
+</pre></font>
+
+<P>
+The eight elements of a 2D matrix (A, B, C, D, X,Y, BaseScaleX, and BaseScaleY) can be referenced by g[s]SPObjSprite and g[s]SPRectangleR.  However, not all 8 elements are actually referenced (please refer to the illustration below).  X, and Y are referenced by both.
+<P>
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-02.gif"></tr></td></table>
+
+<font face="arial" size="-1">
+<P>
+<a name="04.2.3"></a>
+<b>gSPObjRectangle</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjRectangle(Gfx *gdl, uObjSprite *sp)<br>gsSPObjRectangle(uObjSprite *sp)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjSprite</td>
+<td><font face="arial" size="-1" valign="top">*sp;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the structure of the sprite drawing data.</td></tr></table>
+
+
+<P>
+g[s]SPObjRectangle is one of the sprite drawing GBIs supplied by S2DEX and used for non-rotating sprite drawing.  The process inside the RSP is to create the TextureRectangle command from the input uObjSprite structure data and send it to the RDP.
+<P>
+The g[s]SPObjRectangle GBI draws texture for the rectangle area defined by the upper left hand corner screen coordinate (objX, objY), and lower right hand corner screen coordinate (objX+imageW/scaleW-1, objY+imageH/scaleH-1).  The drawn texture region will be defined by upper left hand corner (0,0) and lower right hand corner (imageW-1, imageH-1).  If scaleW and scaleH are 1 &#060&#060 10, texture will be drawn with equal proportions, without scaling. 
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-03.gif"></tr></td></table>
+
+<P>
+<font face="arial" size="-1">
+Also, when a sprite is drawn, the scissors box defined by gDPSetScissor is referenced, and automatic drawing area clipping is done.  Therefore, it is possible to set negative values for objX and objY.
+<P>
+The TMEM address corresponding to the origin of texture region (0,0) can be specified by imageAdrs.  Normally, imageAdrs is set as the beginning of the TMEM loading location specified by the texture load GBI.  It is convenient to use the GS_PIX2TMEM() macro for this operation.  GS_PIX2TMEM(), which is defined in gs2dex.h, is the macro used to convert a pixel unit number to a TMEM address number.
+<P>
+GS_PIX2TMEM(pix,siz)
+<table border=0>
+<tr><td><font face="arial" size="-1">pix:</td><td></td>
+<td><font face="arial" size="-1">The number of pixels</td></tr>
+<tr><td><font face="arial" size="-1">siz:</td><td></td>
+<td><font face="arial" size="-1">The size of 1 texel.  Specified by G_IM_SIZ_*</td></tr></table>
+
+<P>
+The horizontal width (folding width) at the time of texture load is assigned to imageStride.  The reason for this is that sometimes the loaded texture width and the imageW of the actual sprite drawn are different.  Since this is also specified in the TMEM address unit, GS_PIX2TMEM() can be used.
+<P>
+An application using imageAdrs and imageStride is introduced, as follows.  Load the multiple of small texture (subtexture) in TMEM first.  Now the user can choose the appropriate drawing texture by setting the imageAdrs as shown below.
+<pre><font face="courier" size="3">imageW      = (sub-texture width);
+imageH      = (sub-texture height);
+imageAdrs   = GS_PIX2TMEM((S-coordinate in TMEM)+(T-coordinate in TMEM)*(texture width at load time),G_IM_SIZ_*);
+imageStride = GS_PIX2TMEM(texture width at load time);
+</pre></font>
+
+<P>
+More specifically, prepare a large texture consisting of 4 textures, as follows:
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-04.gif"></tr></td></table>
+
+
+<P>
+<font face="arial" size="-1">
+Load this composite texture as a 64 x 32 texture; and when drawing a sprite, specify each texture as follows:
+<pre><font face="courier" size="3">
+  Sub-texture A:      imageW = 32;
+		imageH = 32;
+		imageAdrs   = GS_PIX2TMEM(0*64+0, G_IM_SIZ_16b);
+		imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+
+  Sub-texture B: 	imageW = 16;
+		imageH = 16;
+		imageAdrs   = GS_PIX2TMEM(0*64+32, G_IM_SIZ_16b);
+		imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+
+  Sub-texture C: 	imageW = 16;
+		imageH = 16;
+		imageAdrs   = GS_PIX2TMEM(0*64+48, G_IM_SIZ_16b);
+		imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+
+  Sub-texture D: 	imageW = 32;
+		imageH = 16;
+		imageAdrs   = GS_PIX2TMEM(16*64+32, G_IM_SIZ_16b);
+		imageStride = GS_PIX2TMEM(64, G_IM_SIZ_16b);
+</pre></font>
+
+<P>
+There is a limitation to this method however.  The format for storing data at TMEM is different for an odd numbered line and an even numbered line.  In the calculation formula for imageAdrs (T coordinate in TMEM), you can not specify an odd number value.
+<P>
+When using g[s]SPObjRectangle, the format and size of the texture is specified by setting imageFmt and imageSiz using the macros G_IM_FMT_*, and G_IM_SIZ_*.  Also, if CI4 texture is used, specify imagePal using TLUT number.
+<P>
+g[s]SPObjRectangle supports texture pattern flipping in the S and T directions.  The drawing direction can be changed by setting the following values.
+<P>
+<table border="0" cellpadidng="3" cellspacing="3">
+<tr><td><font face="arial" size="-1"><b>Value of imageFlags</td><td><font face="arial" size="-1"><b>Drawing Effect</b></td></tr>
+<tr><td><font face="arial" size="-1">0</td><td><font face="arial" size="-1">	No flipping</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJ_FLAG_FLIPS</td><td><font face="arial" size="-1">	The inversion of the S direction (X)</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJ_FLAG_FLIPT</td><td><font face="arial" size="-1">The inversion of the T direction (Y)</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJ_FLAG_FLIPS|G_OBJ_FLAG_FLIPT </td><td><font face="arial" size="-1">	 The inversion of the S (X) and T (Y) directions</td></tr></table>
+
+<P>	
+g[s]SPObjRectangle can be used for 1 cycle, 2 cycle, and copy modes.  Drawing speed using copy mode is faster than other modes; however, there are more drawing restrictions using copy mode.
+<P>
+Copy mode does not support bilinear interpolation, subpixel processing, and enlarging/reducing in the X direction.  If these operations are attempted in copy mode, they may not be performed properly.  In the worst case, the RDP may become uncontrollable.  We recommend selecting the proper mode to perform necessary functions.
+<P>
+The drawing result using g[s]SPObjRectangle will vary depending on the render mode, such as; bilinear interpolation, etc.  Please refer to, <a target="main" href="../pro25/25-05.html#04.4">"Setting the Object Render Mode,"</a> for details.
+<P>
+g[s]SPObjRectangle does not reference the 2D matrix setting.  For this reason, the 2D matrix setting does not affect this GBI's drawing result.
+
+<P>
+<a name="04.2.4"></a>
+<b>gSPObjRectangleR</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjRectangleR(Gfx *gdl, uObjSprite *sp)<br>gsSPObjRectangleR(uObjSprite *sp)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjSprite</td>
+<td><font face="arial" size="-1" valign="top">*sp;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the structure of the sprite drawing data</td></tr></table>
+
+<P>
+g[s]SPObjRectangleR is one of the sprite drawing GBIs provided by S2DEX.  Like g[s]SPObjRectangle, g[s]SPObjRectangleR is used for drawing non-rotating Sprites. Unlike g[s]SPObjRectangle however, g[s]SPObjRectangleR changes drawing screen coordinates by referring to the 2 D matrix.
+<P>
+G[s]SPObjRectangleR refers to X, Y, BaseScaleX, and BaseScaleY in the 2D matrix, and determines the vertex coordinates of a sprite using the following formula.
+<pre><font face="courier" size="3">Upper-left hand coordinate  
+( X + objX / BaseScaleX, 
+                              Y+objY/BaseScaleY )
+Lower-right hand coordinate ( X + (objX + imageW / scaleW) / 
+                              BaseScaleX - 1,
+      	                       Y + (objY + imageH / scaleH) / 
+                              BaseScaleY - 1 )
+</pre></font>
+
+<P>
+To change the values in {X, Y, BaseScaleX, BaseScaleY}, use the g[s]SPObjSubMatrix GBI.  When X = Y = 0 and BaseScaleX = BaseScaleY = 1.0, the result is the same as using g[s]SPObjRectangle.
+By changing the values in {X, Y, BaseScale X, BaseScale Y} of the 2D matrix, multiple Sprites can be moved or their scale changed, as if they were one sprite.
+<P>
+For example, consider the arrangement of the three Sprites A, B, and C in the following example:
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-05.gif"></tr></td></table>
+
+<P>
+<font face="arial" size="-1">
+and set the (objX, objY) data as follows.
+<pre><font face="courier" size="3">A: (objX, objY) = ( 0<<2, 0<<2)
+      B: (objX, objY) = (32<<2, 0<<2)
+      C: (objX, objY) = (64<<2, 0<<2)
+</pre></font>
+
+<P>
+Now, by changing X and Y in this example, the three Sprites will move as one sprite.
+<P>
+However, because of a calculation error (performing multiplication for example) sometimes gaps are created between A and B or between B and C.  To solve this problem, the adjacent Sprites are slightly overlapped (see below). 
+<pre><font face="courier" size="3">B: (objX, objY) = ((32<<2)-2, 0<<2)
+    C: (objX, objY) = ((64<<2)-4, 0<<2)
+</pre></font>
+
+<P>
+This completes the explanation of the differences between g[s]SPObjRectangleR and g[s]SPObjRectangle.  For other features of g[s]SPObjRectangleR, please refer to "g[s]SPObjRectangle".
+
+<P>
+<br>
+<a name="04.2.5"></a>
+<b>gSPObjSprite</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjSprite(Gfx *gdl, uObjSprite *sp)<br>gsSPObjSprite(uObjSprite *sp)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjSprite</td>
+<td><font face="arial" size="-1" valign="top">*sp;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the structure of the sprite drawing data</td></tr></table>
+
+<P>
+g[s]SPObjSprite is one of the sprite drawing GBIs provided by S2DEX.  This GBI is used for drawing rotating sprites.  To rotate a sprite, use {A, B, C, D, X, Y} of the 2D matrix.  g[s]SPObjMatrix is used for setting these elements of the 2D matrix.  (Please refer to <a target="main" href="../pro25/25-05.html#04.3.1">"gSPObjMatrix".</a>)
+<P>
+A point (x, y) on a non-rotating sprite will move to the point (x', y') by performing 2D matrix multiplication as follows.
+<P>
+<table border=0 align="center">
+<tr><td><font face="arial" size="-1">x' = A *x + B *y = X</td></tr>
+<tr><td><font face="arial" size="-1">y' = C * + D * y + Y</td></tr></table>
+<P>
+
+Each vertex of the sprite will move, and the sprite is drawn in the new 
+region defined by the new vertices.
+<P>
+If the 2D matrix {A, B, C, D}is defined by the rotation matrix as follows, a sprite will make a T rotation.
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-06.gif"></tr></td></table>
+
+
+<P>
+In this case, a sprite will rotate centering around the screen coordinate (X,Y).  If scaling is to be added, multiply each element {A, B, C, D} by the scale value.
+<P>
+By changing (objX, objY), the rotation center of a sprite (X,Y) can be changed.  If objX=objY=0, a Sprite's rotation center will be the upper left hand vertex.  If you wish to rotate a sprite about its center, set objX, and objY as follows.
+<pre><font face="courier" size="3">ObjX = -(imageW/scaleW)/2;
+objY = -(imageH/scaleH)/2;
+</pre></font>
+
+<P>
+Also, similar to g[s]SPObjRectangleR, by adjusting the values of objX and objY, multiple Sprites can be rotated as if they were one sprite.  Here, as with g[s]SPObjRectangleR, we recommend drawing Sprites in a slightly overlapping fashion to eliminate gaps caused by calculation errors.
+<P>
+By setting (A = D = 1.0, B = C = 0.0), a non-rotating sprite's location will coincide with a sprite drawn with g[s]SPObjRectangleR by setting BaseScaleX = BaseScaleY = 1.0.  We recommend drawing a non-rotating sprite with g[s]SPObjRectangle, and using g[s]SPObjSprite for rotating Sprites.  
+Since g[s]SPObjSprite uses two polygons in combination for drawing, it requires more RSP/RDP processing than using g[s]SPObjRectangleR.
+<P>
+Also, when using g[s]SPObjSprite for a non-rotating sprite, a magnified sprite drawing may not coincide with the drawing done by g[s]SPObjRectangle.  This is unavoidable since the drawing methods are different (polygon combination vs. rectangle drawing).
+<P>
+The setting for the texture to be placed on a sprite is the same as <a target="main" href="../pro25/25-05.html#04.2.3">g[s]SPObjRectangle.</a> 
+
+<P>
+<a name="04.3"></a>
+<b>2D Matrix Operation</b>
+<br>
+As mentioned above, S2DEX Microcode uses a 2D matrix as the drawing parameter.  Several GBIs are provided for the purpose of modifying this 2D matrix.
+
+<P>
+<a name="04.3.1"></a>
+<b>gSPObjMatrix</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjMatrix(Gfx *gdl, uObjMtx *mtx)<br>gsSPObjMatrix(uObjMtx *mtx)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjMtx</td>
+<td><font face="arial" size="-1" valign="top"> *mtx;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the 2D matrix structure</td></tr></table>
+
+<P>	
+Load the 2D matrix parameter in the uObjMtx structure to the 2D matrix area in the RSP.  Usually, this GBI is used for a rotating sprite.
+<P>
+Since only 6 matrix elements (A, B, C, D, X, Y) are needed for rotation processing, it appears that there is no need to transfer the entire 2D matrix.  However, 24 bytes including {BaseScaleX, BaseScaleY} are transferred, because an 8 byte unit must be maintained for transfer from main memory to the RSP matrix region.
+<P>
+For this reason, the values of BaseScaleX and BaseScaleY are always overwritten.  If you are not using these parameters (not using g[s]SPObjRectangleR immediately after calling gSPObjMatrix), we recommend assigning the default value of 1024 (1.0 for s5.10 format) to BaseScaleX and BaseScaleY.
+
+<P>
+<a name="04.3.2"></a>
+<b>gSPObjSubMatrix</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjSubMatrix(Gfx *gdl, uObjMtx *mtx)<br>gsSPObjSubMatrix(uObjMtx *mtx)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjSubMtx</td>
+<td><font face="arial" size="-1" valign="top">*mtx;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the 2D matrix structure</td></tr></table>
+
+<P>
+g[s]SPObjSubMatrix loads the data in the uObjSubMtx structure to the 2D matrix region of the RSP.  However, the uObjSubMtx structure is a subset of uObjMtx, and holds the values of 2D matrix elements {X, Y, BaseScaleX, BaseScaleY} used by g[s]SPObjRectangleR.
+<P>
+This GBI changes 2D matrix elements {X, Y, BaseScaleX, BaseScaleY} corresponding to the variable of uObjSubMtx structure only, and it does not affect the values in {A, B, C, D}.
+<P>
+This GBI is used mainly in conjunction with g[s]SPObjRectangleR.
+
+<P>
+<a name="04.4"></a>
+<b>Setting the Object Render Mode</b>
+<br>
+Many drawing parameters exist in the RDP, which control sprite/BG drawing. Depending on the RDP mode, polygon drawing and rectangle drawing processes are affected in some subtle ways.  For example, by setting bilinear interpolation on and off, texture coordinates will vary by 0.5.  S2DEX Microcode has been designed to correct these effects at the RSP to minimize the user's efforts to get around these problems.  The RSP's correction process corresponds to the RDP's mode.  We call the RSP's correction mode "Object render mode" (or OBJ render mode).
+<P>
+Automatic selection of this mode will increase the processing overhead of the RSP; so currently Copy Mode and 1,2CycleMode have the benefit of automatic operation.  For other modes, it is necessary to let the RSP know in the form of the GBI.  The current Object render mode has an independent rendering function, in addition to the capability to correct the effects caused by changing the RDP's mode.  
+
+<P>
+<a name="04.4.1"></a>
+<b>gSPObjRenderMode</b>
+<p>
+<table border=1 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjRenderMode(Gfx *gdl, u32 mode)<br>gsSPObjRenderMode(u32 mode)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">u32</td>
+<td><font face="arial" size="-1" valign="top">mode;</td>
+<td><font face="arial" size="-1"  valign="top">The Object render mode</td></tr></table>
+
+<P>	 	
+g[s]SPObjRenderMode is used for changing the Object render mode of the RSP.  Usually, Object render mode is set based on the display mode.
+<P>
+The flags used are shown below.  If multiple settings are required, connect the conditions using the OR operator.  However, G_OBJRM_SHRINKSIZE_1 and G_OBJRM_SHRINKSIZE_2 can not be used at the same time.
+
+<P>
+<table border=0 cellspacing="3" cellpadding="3" width=80%>
+<tr><td><font face="arial" size="-1"><b>Macro Name</td><td><font face="arial" size="-1"><b>Function</b></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_NOTXCLAMP</td><td><font face="arial" size="-1">Does not perform clamp operation for peripheral part of the texture</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_ANTIALIAS</td><td><font face="arial" size="-1">Sets to ON for Antialias / Reduce antialias</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_BILERP</td><td><font face="arial" size="-1">Switches to on for bilinear interpolation</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_SHRINKSIZE_1</td><td><font face="arial" size="-1">Cut 0.5 texel around the image</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_SHRINKSIZE_2</td><td><font face="arial" size="-1">Cut 1.0 texel around the image</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_WIDEN</td><td><font face="arial" size="-1">Expand the image by 3/8 texel</td></tr>
+<tr><td><font face="arial" size="-1">G_OBJRM_XLU</td><td><font face="arial" size="-1">Renders semi-transparent objects.</td></tr>
+</table>
+
+<P>
+Each flag is explained in detail below.
+<P>
+<b>G_OBJRM_NOTXCLAMP</b>
+<br>
+To place texture on a sprite, the following relationships exist among texture size (imageW and imageH), scale values (scaleW and scaleH), sprite size, (objW and objH).
+<pre><font face="courier" size="3">objW = imageW / scaleW;
+  objH = imageH / scaleH
+</pre></font>
+
+<P>
+When placing texture on the sprite, the region (0,0)-(imageW-1, imageH-1) in the texture coordinates will be displayed on the sprite.  However, sometimes texture slightly outside of this region may be displayed, exceeding the outermost edge of the sprite.
+<P>
+To prevent this from occurring, the RSP performs a clamping operation for the excess texture outside of the defined region.  For details on this clamping operation, please refer to Section 13.1, <a target="_top" href="../pro13/index.html">"Texture Mapping".</a>
+<P>
+The flag G_OBJRM_NOTXCLAMP causes the RSP not to perform this clamping operation.  Normally it is not necessary to set this flag to "ON".
+
+<P>
+<b>Note:</b> The following flag is NOT currently supported.
+
+<P>
+<b>G_OBJRM_ANTIALIAS</b>
+<br>
+This flag is used to set ON/OFF Anti alias process in render mode for the RDP. This flag is set ON when AntiAlias(G_RM_AA_*) and ReducedAlias(G_RM_RA_*) are used in render mode for the RDP. When this flag is ON, sub pixel calculation for the external edge is enabled. The external edge is the most peripheral part of rendered area in Sprite. This flag is useless for the Sprite where all of the most peripheral part  is transparent.
+
+<P>
+<b>G_OBJRM_BILERP</b>
+<br>
+This flag is set when using texture bilinear interpolation.  As we have explained above, the texture discrepancy of 0.5 due to bilinear interpolation will be corrected by setting this flag.
+<P>
+Also, when this flag is ON, the RSP supports internal image movement by subpixel units, using bilinear interpolation.  As a result, a sprite can be moved by 1/4 pixel units.
+<P>
+
+<b>G_OBJRM_SHRINKSIZE_1</b>
+<br>
+When combining multiple bilinear interpolated Sprites and treating them as one large bilinear interpolated sprite, care must be taken to assure continuity of the images at boundary lines.  To maintain the continuity between the images, it is necessary to overlap each Sprite's texture by one line.  If this is done, 0.5 texel (denoted by # in the chart below) from outer edge will become unnecessary, since this portion will be covered by the adjacent sprite.
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-07.gif"></tr></td></table>
+
+
+<P>
+When the flag G_OBJRM_SHRINKSIZE_1 is ON, the RSP will shrink the Sprite's drawing image by eliminating 0.5 texel, and draw the texture image.  The texture image will shrink by 0.5, but the upper left hand corner coordinate will not change.  The resultant drawing becomes:
+
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro25/gif/f25-00-08.gif"></tr></td></table>
+
+<P>
+<font face="arial" size="-1">
+
+<b>G_OBJRM_SHRINKSIZE_2</b>
+<br>
+This is similar to G_OBJRM_SHRINKSIZE_1.  The only difference is that the amount of image shrinkage is doubled (1 texel from the outer edge).
+<P>
+This flag is used for overlapping adjacent Sprites' texels by two lines for better continuity for subpixel processing.
+
+<P>
+<b>G_OBJRM_WIDEN</b>
+<br>
+This is adventageous when rendering  objects with combined visible Sprite. It is not necessary to use this flag when using visible Sprite because blender process fills blank spaces at the seams.
+
+<P>
+<b>Note:</b> The following flag is NOT currently supported.
+<P>
+<b>G_OBJRM_XLU</b>
+<br>
+This flag is set to render semi-transparent Sprites. G_RM_XLU_SPRITE in render mode for the RDP is specified to render visible objects.
+This flag is supported in S2DEX 1.02 or later. Therefore, seams become less obvious when multiple semi-transparent Sprites are combined to render.
+
+<P>
+<b>About RenderMode When Rendering a Sprite</b>
+<br>
+The RDP RenderMode which should be set when rendering a sprite is defined in the header file gs2dex.h.  Please use this when rendering a sprite. 
+<ul>
+<li>When AntiAlias off 
+<br>Opaque sprite		G_RM_SPRITE*
+<br>Semitranslucent sprite	G_RM_XLU_SPRITE*
+<P>
+<li>When AntiAlias on  
+<br>Opaque sprite		G_RM_AA_SPRITE* (G_RM_RA_SPRITE*)
+<br>Semitranslucent sprite	G_RM_AA_XLU_SPRITE*
+</ul>
+<P>
+However, when AntiAlias is ON, if two sprites are overlaid by using semitranslucent sprites, the edges of the bottom sprite may affect the edges of the top sprite.  Since this cannot be avoided, please keep this in mind when using G_RM_XLU_SPRITE. 
+
+
+<P>
+<a name="04.5"></a>
+<b>The Texture Load GBI</b>
+<br>
+The sprite drawing process for S2DEX was described in the sprite GBI section.  Here, we will describe the TMEM load process, which is another important operation.
+
+<P>
+<a name="04.5.1"></a>
+<b>uObjTxtr Structure</b>
+<br>
+In the Texture Load GBI, three different texture types are processed by the same GBI.  These three different types (methods) are distinguished by uObjTxtr structure's member variable type, which is provided to the GBI.  These three methods are shown below.
+<ol>
+<li>Texture load using LoadBlock
+<P>
+<li>Texture load using LoadTile
+<P>
+<li>TLUT load
+</ol>
+<P>
+Texture load using LoadBlock can be faster than texture load using LoadTile; however, there is a limitation to loadable texture width.  Since this limitation is the same as "LoadBlock."
+<P>
+Corresponding to the three different methods, three different data structures are defined.  These data structures are constructed the same way, having different member variable names.  These data structures are combined into a union (uObjTxtr structure).
+
+<ol>
+<li>Texture load structure uObjTxtrBlock_t for using Loadblock
+<pre><font face="courier" size="3">typedef struct		{
+  u32		type;	 // by type G_OBJLT_TXTRBLOCK
+  u64		*image;		 // texture source address on DRAM
+  u16		tmem;		 // TMEM word address of loading destination (8byteWORD)
+  u16		tsize;		 // texture size specified by macro GS_TB_TSIZE()
+  u16		tline;		 // texture width specified by macro GS_TB_TLINE()
+  u16		sid;		 // Status ID  { 0, 4, 8, or 12 } 
+  u32		flag;		 // Status flag
+  u32		mask;		 // Status mask
+	} uObjTxtrBlock_t;	 	 // 24 bytes
+</pre></font>
+
+<P>
+<li>Texture load structure uObjTxtrTile_t for using LoadTile
+<pre><font face="courier" size="3">typedef struct		{
+  u32		type;		// by type G_OBJLT_TXTRTILE
+  u64		*image;	// texture source address on DRAM
+  u16		tmem;		// TMEM word address of loading destination (8byteWORD)
+  u16		twidth;	// Texture width specified by macro GS_TT_TWIDTH()
+  u16		theight;	// Texture height specified by macro GS_TT_THEIGHT()
+  u16		sid;		// Status ID  { 0, 4, 8, or 12 } 
+  u32		flag;		// Status flag
+  u32		mask;		// Status mask
+	} uObjTxtrTile_t;		// 24 bytes
+</pre></font>
+</ol>
+
+<P>
+<ul>
+<li>TLUT load structure uObjTLUT_t
+<pre><font face="courier" size="3">typedef struct		{
+  u32		type;		// by type G_OBJLT_TLUT
+  u64		*image;	// texture source address on DRAM
+  u16		phead;		// first TLUT area number 256 ( phead ( 511
+  u16		pnum;		// number of TLUT to be loaded - 1
+  u16		 zero;		// always 0
+  u16		sid;		// Status ID  { 0, 4, 8, or 12 } 
+  u32		flag;		// Status flag
+  u32		mask;		// Status mask
+	} uObjTxtrTLUT_t;		// 24 bytes
+</pre></font>
+</ul>
+
+<P>
+<b>The shared structure, uObjTxtr union</b>
+<pre><font face="courier" size="3">typedef union		{
+  uObjTxtrBlock_t		block;	// texture load parameter using LoadBlock
+  uObjTxtrTile_t		tile;	// texture load parameter using LoadTile
+  uObjTxtrTLUT_t		tlut;	// TLUT load parameter	 
+  long long int		force_structure_alignment;
+	} uObjTxtr;
+</pre></font>
+
+<P>
+<a name="04.5.2"></a>
+<b>gSPObjLoadTxtr</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjLoadTxtr(Gfx *gdl, uObjTxtr *tx)<br>gsSPObjLoadTxtr(uObjTxtr *tx)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjTxtr</td>
+<td><font face="arial" size="-1" valign="top">*tx;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the texture load data structure</td></tr></table>
+
+<P>
+gSPObjLoadTxtr performs each loading operation by referring to the texture loading parameters which are held by the above-mentioned three structures.
+<P> 
+The three structures have the common member variables type, image, sid, flag, and mask.  First, we will explain these five common member variables.
+
+<ul>
+<li>type
+<br>
+gSPObjLoadTxtr distinguishes each structure using the value of type, the structure's member variable.  Each value of type and corresponding structure, and each operation is shown below.
+
+<P>
+<table border=0 cellpadding="2" cellspacing="3">
+<tr><td><font face="arial" size="-1"><b>Type Value</td><td><font face="arial" size="-1"><b>Structure</td><td><font face="arial" size="-1"><b>Operation</b></td></tr>
+<tr><td><font face="arial" size="-1">G_OBJLT_TXTRBLOCK </td><td><font face="arial" size="-1"> uObjTxtrBlock_t</td> <td><font face="arial" size="-1"> texture load using LoadBlock</td></tr>
+<tr><td><font face="arial" size="-1"> G_OBJLT_TXTRTILE</td><td><font face="arial" size="-1"> uObjTxtrTile_t</td><td><font face="arial" size="-1"> texture load using LoadTile</td></tr>
+<tr><td><font face="arial" size="-1"> G_OBJLT_TLUT</td><td><font face="arial" size="-1"> uObjTLUT_t</td><td><font face="arial" size="-1"> loading of TLUT</td></tr></table>
+
+<P>
+<li>image
+<br>
+image, the member variable, specifies the texture data in the main memory to be loaded, or TLUT data address.  This texture data must be 8 byte aligned.
+
+<P>
+<li>sid, flag, and mask
+<br>
+These three member variables are used for bypassing the reloading operation if the texture in question is already loaded.  If the requested texture is already loaded, g[s]SPObjLoadTxtr will not perform the load operation.
+</ul>
+
+<P>
+To determine the existence of the texture in question in TMEM using the RSP, the RSP must analyze the loading destination area for each texture load operation.  This is time consuming, and not a very good option.
+<P>
+In S2DEX, the loading destination area data are included in texture data structure.  Therefore, rather than performing analysis using the RSP, simple calculation will determine whether or not the loading operation needs to be performed.
+<P>
+For example, when texture data are loaded to TMEM, an ID which corresponds to the loaded texture can be written to a status area.  By simply comparing the IDs when the next TMEM loading operation is performed, the loading question can be resolved rather easily.
+<P>
+The loading decision method used by S2DEX is an extension of the above concept.  When partial loading by dividing TMEM is performed, S2DEX can also make loading decisions for different parts of TMEM using two 32 bit variables (flag and mask); this makes partial loading possible.
+<P>
+The RSP provides four 32 bit status variables in the status region.  When the microcode starts up, these variables are set to 0.  sid will determine which status value to use.  sid can assign one of the values {0, 4, 8, 12}.
+
+<P>
+g[s]ObjLoadTxtr actually makes the loading decision using the steps below.
+
+<ol>
+<li>Check the condition of (Status[sid] & mask == flag).
+<P>
+<li>If the result is true, assume that the texture is already loaded and terminate the loading operation.
+<P>
+<li>If the result is false, load the texture, and change Status[sid] to:
+
+<pre><font face="courier" size="3">Status[sid] = (Status[sid] & ~mask) | (flag & mask);
+</pre></font>
+</ol>
+
+<P>
+The easiest way to use flag is to assign -1 (=0xffffffff) to mask, and texture's source data address (= the value of the member variable "image") to flag.  If there is no texture data starting from the same address, this will act as a texture cache.
+<P>
+Also, when (flag & ~mask) != 0,  the condition will always be false, and texture will always be loaded.
+<P>
+The next example will divide TMEM into two areas and control each area.  Here, assign Status[0]'s bits 31~16 to the first half of TMEM, and assign bits 15~0 to the last half of TMEM.  Assign the sequence number to each texture.  The value of sid is always 0.
+<br>
+<table border="0" cellpadding="4">
+<tr><td><font face="courier" size="-2"></td><td><font face="courier" size="-2">Load Area</td><td><font face="courier" size="-2">Flag</td><td><font face="courier" size="-2">Mask</td></tr>
+<tr><td><font face="courier" size="-2">A: texture 1</td><td><font face="courier" size="-2">0	to	255</td><td><font face="courier" size="-2">0x00010000</td><td><font face="courier" size="-2">0xffff0000</td></tr>
+<tr><td><font face="courier" size="-2">B: texture 2</td><td><font face="courier" size="-2">256	to	511</td><td><font face="courier" size="-2">0x00000002	</td><td><font face="courier" size="-2">0x0000ffff</td></tr>
+<tr><td><font face="courier" size="-2">C: texture 3</td><td><font face="courier" size="-2">0	to	511</td><td><font face="courier" size="-2">0x00030003	</td><td><font face="courier" size="-2">0xffffffff</td></tr>	                            
+<tr><td><font face="courier" size="-2">D: texture 3 (last half only)</td><td><font face="courier" size="-2">256	to	511</td><td><font face="courier" size="-2">0x00000003</td><td><font face="courier" size="-2">0x0000ffff</td></tr></table>	  	       	  
+
+<P>
+At C, the entire texture 3 is loaded.  Even though the loading operation of A changes the first half, since the TMEM's last half retains texture 3 data.  The request for loading texture 3 at D to the last half will not require actual loading.
+<P>
+Similar to this example, S2DEX has GBI gSPSelectDL / gSPSelectBranchDL, which performs a DL branching operation, using the same principle as the operation using Status.
+<P>
+The member variables of other structures are explained in the following paragraphs.
+
+<ol>
+<li>Texture load using LoadBlock (uObjTxtrBlock_t structure)
+<P>
+tmem
+<br>
+The texture's loading destination TMEM address is assigned to tmem in DoubleWord units.  Normally, this loading address is used as the value of imageAdrs of uObjSprite structure.  If this value is to be specified in pixel units, the macro GS_PIX2TMEM(), described earlier, will become useful.
+<P>
+tsize
+<br>
+The size information of the texture to be loaded is assigned to tsize.  To obtain this value from texture size, the macro GB_TB_TSIZE() is used.
+<pre><font face="courier" size="3">GS_TB_TSIZE(pix,siz): tsize setting
+ pix:		the number of texels to be loaded (=width of texture X height of     texture)
+ siz:		1 texel size, specify G_IM_SIZ_*
+ 
+</pre></font>
+
+<P>
+tline
+<br>
+The width information of the texture to be loaded is assigned to tline.  Use the macro GS_TB_TLINE() for obtaining the value from the texture width.
+<pre><font face="courier" size="3">GS_TB_TLINE(pix,siz): setting of tline
+	 pix:	the number of texel of texture width
+	 siz:	1 texel size, specified by G_IM_SIZ_*
+</pre></font>
+
+<P>
+<li>Texture load by LoadTile (uObjTxtrTile_t structure)
+<P>
+tmem
+<br>
+This member variable is common to the load operations using LoadBlock.  The TMEM texture load destination address is assigned to tmem in DoubleWord units.
+<P>
+twidth
+<br>
+The load texture width information is assigned to twidth.  Use the macro GS_TT_TWIDTH() to obtain the value from texture width.
+<pre><font face="courier" size="3">GS_TT_TWIDTH(pix,siz): setting of twidth 
+	 pix:	texture width 
+	 siz:	1 texel size specified by G_IM_SIZ_*
+</pre></font>
+
+<P>
+theight
+<br>
+The height information of the texture to be loaded is assigned to theight. Use the macro GS_TT_THEIGHT() to obtain the value from texture height.
+<pre><font face="courier" size="3">GS_TT_THEIGHT(pix,siz): setting of theight
+	 pix:	texture height
+	 siz:	1 texel size, specified by G_IM_SIZ_*
+</pre></font>
+
+<P>
+<li>TLUT load (uObjTLUT_t structure)
+<P>
+phead
+<br>
+The first TLUT area number is assigned to phead.  The palette number can be obtained by adding 256 to the normal palette ID.  Therefore, the value ranges from 256 to 511.  Use the GS_PAL_HEAD() macro for this setting.
+<pre><font face="courier" size="3">GS_PAL_HEAD(head): setting of phead (add 256 to head)
+	 head: first ID of TLUT to be loaded
+</pre></font>
+
+<P>
+pnum
+<br>
+A value representing "(the-number-of-colors-of-the-loaded-TLUT) -1" is assigned to pnum.  Use the GS_PAL_NUM() macro for this setting.
+<pre><font face="courier" size="3">GS_PAL_NUM(num): setting of pnum (num -1)
+	 num: the number of TLUT to be loaded
+</pre></font>
+
+<P>
+zero
+<br>
+This member is not used in uObjTLUT_t.  However, to maintain compatibility with other structures, always assign 0 to zero.
+</ol>
+
+<P>
+The following illustrates an example of the set-up for the three structures.
+<ol>
+<li>RGBA16 Texture load using LoadBlock
+<pre><font face="courier" size="3">uObjTxtr objTxtrBlock_RGBA16 = {
+	  G_OBJLT_TXTRBLOCK,                    /* type    */
+	  (u64 *)textureRGBA16,                 /* image   */
+	  GS_PIX2TMEM(0,     G_IM_SIZ_16b),     /* tmem    */
+	  GS_TB_TSIZE(32*32, G_IM_SIZ_16b),     /* tsize   */
+	  GS_TB_TLINE(32,    G_IM_SIZ_16b),     /* tline   */
+	  0,                                    /* sid     */
+	  (u32)textureRGBA16,                   /* flag    */
+	  -1                                    /* mask    */
+	};
+
+</pre></font>
+
+<P>
+<li>CI4 Texture load using LoadTile
+<pre><font face="courier" size="3">uObjTxtr objTxtrTile_CI4 = {
+	  G_OBJLT_TXTRTILE,                     /* type    */
+	  (u64 *)textureCI4,                    /* image   */
+	  GS_PIX2TMEM  (0,  G_IM_SIZ_4b),	      /* tmem    */
+	  GS_TT_TWIDTH (32, G_IM_SIZ_4b),	      /* twidth  */
+	  GS_TT_THEIGHT(32, G_IM_SIZ_4b),	      /* theight */
+	  0,                                    /* sid     */
+	  (u32)textureCI4,                      /* flag    */
+	  -1                                    /* mask    */
+	};
+</pre></font>
+
+<P>
+<li>TLUT load
+<pre><font face="courier" size="3">uObjTxtr objTLUT_CI4 = {
+	  G_OBJLT_TLUT,                         /* type    */
+	  (u64 *)textureCI4pal,                 /* image   */
+	  GS_PAL_HEAD(0),                       /* phead   */
+	  GS_PAL_NUM(16),                       /* pnum    */
+	  0,                                    /* zero    */
+	  0,                                    /* sid     */
+	  (u32)textureCI4pal,                   /* flag    */
+	  -1                                    /* mask    */
+	};
+</pre></font>
+</ol>
+
+<P>
+<a name="04.6"></a>
+<b>Compound Processing GBI</b>
+<br>
+In actual game development, combining the Texture Load GBI and the sprite Drawing GBI is sometimes advantageous for controlling Sprites.  S2DEX provides the mechanism to control the two GBIs with one GBI.  The following is an explanation of compound processing of the GBIs.
+
+<P>
+<a name="04.6.1"></a>
+<b>uObjTxSprite Structure</b>
+<br>
+uObjTxSprite structure, which is shown below, has been constructed by combining uObjTxtr structure and uObjSprite structure.  The pointer to uObjTxSprite structure is provided to the compound processing GBI as the parameter.
+<pre><font face="courier" size="3">typedef struct	{
+	   uObjTxtr	txtr;
+	   uObjSprite	sprite;
+	 } uObjTxSprite;		/* 48 bytes */
+</pre></font>
+
+<P>
+<a name="04.6.2"></a>
+<b>gSPObjLoadTxRect</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjLoadTxRect(Gfx *gdl, uObjTxSprite *txsp)<br>gsSPObjLoadTxRect(uObjTxSprite *txsp)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">UObjTxSprite</td>
+<td><font face="arial" size="-1" valign="top">*txsp;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to texture load and sprite draw data structure</td></tr></table>
+
+<P>
+The g[s]SPObjLoadTxRect GBI performs the Texture Load operation, and then draws a non-rotating sprite.
+<P>
+Essentially, this command performs two GBI operations g[s]SPObjLoadTxtr and g[s]SPObjRectangle with one GBI.  The results of (A) and (B) shown below are identical.
+<pre><font face="courier" size="3">(A) gsSPObjLoadTxRectR(txsp);
+<P>
+(B) gsSPObjLoadTxtr(&(txsp->txtr));
+	   gsSPObjRectangleR(&(txsp->sprite));
+</pre></font>
+
+
+<P>
+<a name="04.6.3"></a>
+<b>gSPObjLoadTxRectR</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjLoadTxRectR(Gfx *gdl, uObjTxSprite *txsp)<br>gsSPObjLoadTxRectR(uObjTxSprite *txsp)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjTxSprite</td>
+<td><font face="arial" size="-1" valign="top">*txsp;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the texture load and the sprite drawing data structure</td></tr></table>
+
+<P>
+The g[s]SPObjLoadTxRectR GBI performs the Texture Load operation, and then draws a non-rotating sprite referencing a 2D matrix.
+<P>
+Essentially, this command performs two GBI operations, g[s]SPObjLoadTxtr and g[s]SPObjRectangleR with one GBI.  The results of (A) and (B) shown below are identical.
+<pre><font face="courier" size="3">
+ (A) gsSPObjLoadTxRectR(txsp);
+	(B) gsSPObjLoadTxtr(&(txsp->txtr));
+	    gsSPObjRectangleR(&(txsp->sprite));
+</pre></font>
+
+<P>
+<a name="04.6.4"></a>
+<b>gSPObjLoadTxSprite</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPObjLoadTxSprite(Gfx *gdl, uObjTxSprite *txsp)<br>gsSPObjLoadTxSprite(uObjTxSprite *txsp)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">uObjTxSprite</td>
+<td><font face="arial" size="-1" valign="top">*txsp;</td>
+<td><font face="arial" size="-1"  valign="top">The pointer to the texture load and the sprite drawing data structure </td></tr></table>
+
+<P>
+The g[s]SPObjLoadTxSprite GBI performs the Texture Load operation, and then draws a rotating sprite.
+<P>
+Essentially, this command performs two GBI operations, g[s]SPObjLoadTxtr and g[s]SPObjSprite with one GBI.  The results of (A) and (B) shown below are identical.
+<pre><font face="courier" size="3">
+	(A) gsSPObjLoadTxSprite(txsp);
+	(B) gsSPObjLoadTxtr(&(txsp->txtr));
+	    gsSPObjSprite(&(txsp->sprite));
+</pre></font>
+
+<P>
+<a name="04.7"></a>
+<b>Conditional Branching GBI</b>
+<br>
+We have explained that S2DEX is using the RSP's Status for making a loading decision.  Here, we will explain the GBI which uses Status for DL branching and linking.
+
+<P>
+<a name="04.7.1"></a>
+<b>gSPSetStatus</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPSetStatus(Gfx *gdl, u8 sid, u32 val)<br>gsSPSetStatus(u8 sid, u32 val)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1">u8</td>
+<td><font face="arial" size="-1" valign="top">sid;</td>
+<td><font face="arial" size="-1"  valign="top">Status ID { 0, 4, 8, or 12 }</td></tr>
+<tr><td><font face="arial" size="-1">u32</td>
+<td><font face="arial" size="-1" valign="top">val;</td>
+<td><font face="arial" size="-1"  valign="top">A value the user desires to set</td></tr></table>
+
+<P>
+g[s]SPSetStatus assigns the value of val to the Status area (Status[sid]) specified by sid.  The Status value is referenced for Texture Loading and making conditional branching decisions.
+
+<P>
+<a name="04.7.2"></a>
+<b>gSPSelectDL</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPSelectDL(Gfx *gdl, Gfx *ldl, u8 sid, u32 flag, u32 mask)<br>gsSPSelectDL(Gfx *ldl, u8 sid, u32 flag, u32 mask)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*ldl;</td>
+<td><font face="arial" size="-1">Display list to be linked</td></tr>
+<tr><td><font face="arial" size="-1">u8</td>
+<td><font face="arial" size="-1" valign="top">sid;</td>
+<td><font face="arial" size="-1"  valign="top">Status ID { 0, 4, 8, or 12 }</td></tr>
+<tr><td><font face="arial" size="-1">u32</td>
+<td><font face="arial" size="-1" valign="top">flag;</td>
+<td><font face="arial" size="-1"  valign="top">Status flag</td></tr>
+<tr><td><font face="arial" size="-1">u32</td>
+<td><font face="arial" size="-1" valign="top">mask;</td>
+<td><font face="arial" size="-1"  valign="top">Status mask</td></tr></table>
+
+<P> 		
+g[s]SPSelectDL inspects Status[sid] using the same method used for texture load decision making.  Depending on the True/False result, other display lists are called.
+<P>
+g[s]SPSelectDL determines whether or not to call the display list by going through the following steps.
+
+<ul>
+<li>Check the condition of (Status[sid] & mask) == flag
+<P>
+<li>If the result is true, finish GBI without doing anything.
+<P>
+<li>If the result is false, change the Status[sid] by performing:
+
+<pre><font face="courier" size="3">Status[sid] = (Status[sid] & ~mask) | (flag & mask);
+</pre></font>
+and call display list "ldl".
+</ul>
+
+<P>
+<a name="04.7.3"></a>
+<b>gSPSelectBranchDL</b>
+<p>
+<table border=0 width="60%>
+<tr><td><font face="arial" size="-1"><b>gSPSelectBranchDL(Gfx *gdl, Gfx *bdl, u8 sid, u32 flag, u32 mask)<br>gsSPSelectBranchDL(Gfx *bdl, u8 sid, u32 flag, u32 mask)</b></td></tr>
+<P>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*gdl;</td>
+<td><font face="arial" size="-1">The display list pointer.</td></tr>
+<tr><td><font face="arial" size="-1" valign="top">Gfx</td>
+<td><font face="arial" size="-1" valign="top">*link;</td>
+<td><font face="arial" size="-1">Display list to be linked</td></tr>
+<tr><td><font face="arial" size="-1">u8</td>
+<td><font face="arial" size="-1" valign="top">sid;</td>
+<td><font face="arial" size="-1"  valign="top">Status ID { 0, 4, 8, or 12 }</td></tr>
+<tr><td><font face="arial" size="-1">u32</td>
+<td><font face="arial" size="-1" valign="top">flag;</td>
+<td><font face="arial" size="-1"  valign="top">Status flag</td></tr>
+<tr><td><font face="arial" size="-1">u32</td>
+<td><font face="arial" size="-1" valign="top">mask;</td>
+<td><font face="arial" size="-1"  valign="top">Status mask</td></tr></table>
+
+<P>
+g[s]SPSelectBranchDL examines Status[sid] using the same method used for texture load decision making, and depending on the True/False result branches out to other display lists.
+<P>
+g[s]SPSelectBranchDL determines whether or not to call the display list using the following steps.
+<ul>
+<li>Check the condition of (Status[sid] & mask) == flag
+<P>
+<li>If the result is true, finish GBI without doing anything.
+<P>
+<li>If the result is false, change the Status[sid] by performing:
+
+<pre><font face="courier" size="3">Status[sid] = (Status[sid] & ~mask) | (flag & mask);
+</pre></font>
+and branch out to display list "ldl".
+</ul>
+
+<P>
+<a name="05"></a>
+<b>Emulation Functions</b>
+<br>
+These are functions for using the CPU to emulate S2DEX GBI functions.
+
+<P>
+<a name="05.1"></a>
+<b>guS2DEmuGBgRect1Cyc</b>
+<p>
+<table border=0 cellpadding="2" cellspacing="2">
+<tr><td><font face="arial" size="-1">void </td><td><font face="arial" size="-1"> guS2DEmuGBgRect1Cyc (Gfx **gdl_p, uObjBg *bg);</td></tr></table>
+ 
+<P>
+This function uses the CPU to emulate the action of S2DEX function gSPBgRect1Cyc by combining other GBI's.
+
+<P>
+<table border=0 cellpadding="2" cellspacing="2">
+<tr><td valign="top"><font face="arial" size="-1">Parameters:</td>
+<td valign="top"><font face="arial" size="-1"> gdl_p</td>
+<td><font face="arial" size="-1"> Pointer to pointer to display list
+<br> *The value for gdl_p is automatically calculated.</td></tr>
+<tr><td></td><td valing="top"><font face="arial" size="-1"> bg</td>
+<td><font face="arial" size="-1"> Pointer to uObjBg structure</td></tr></table>
+
+<P>
+Calling gSPBgRect1Cyc (gdl ++, bg) can be replaced by guS2DEmuGBgRect1Cyc (&gdl, bg).  Refer to <a target="main" href="../pro25/25-05.html#04.1.3">"gSPBgRect1Cyc"</a> for an explanation of the parameter bg.
+<P>
+In addition, in order to notify the main routine that a scissoring box setting and Texture Filter setting, the function guS2DEmuSetScissor, discussed below, must be called before guS2DEmuBgRect1Cyc.
+<P>
+This function produces GBI's which are functional not only in S2DEX, but in the F3DEX series as well.  Because of this, one microcode can be processed when displaying a scaled scrolling BG screen and a 3D model at the same time.
+
+<P>
+<a name="05.2"></a>
+<b>guS2DEmuSetScissor</b>
+<br>
+<table border=0 cellpadding="2" cellspacing="2">
+<tr><td><font face="arial" size="-1">void</td><td><font face="arial" size="-1">guS2DEmuSetScissor (u32 ulx, u32 uly, u32 lrx, u32 lry, u8 bilerp);</td></tr></table>
+
+<P>
+This function sets the scissoring parameters and Texture Filter referred when the function guS2DEmuBgRect1Cyc is processed.
+<P>
+<table border=0 cellpadding="2" cellspacing="2">
+<tr><td><font face="arial" size="-1">Parameters:</td><td><font face="arial" size="-1">ulx</td><td><font face="arial" size="-1">upper left X coordinate of scissor box (u10.0)</td></tr>
+<tr><td><font face="arial" size="-1"></td><td><font face="arial" size="-1">uly</td><td><font face="arial" size="-1">upper left Y coordinate of scissor box (u10.0)</td></tr>
+<tr><td><font face="arial" size="-1"></td><td><font face="arial" size="-1">lrx</td><td><font face="arial" size="-1">lower right X coordinate of scissor box (u10.0)</td></tr>	
+<tr><td><font face="arial" size="-1"></td><td><font face="arial" size="-1">lry</td><td><font face="arial" size="-1">lower right Y coordinate of scissor box (u10.0)</td></tr>		
+<tr><td><font face="arial" size="-1"></td><td valign="top"><font face="arial" size="-1">bilerp</td><td><font face="arial" size="-1">set to value other than 0 to perform Bilerp interpolation processing on the image, or set to 0 for PointSample</td></tr></table>
+
+<P>
+Normally, the range of the scissor box set by g[s]DPSetScissor is handled by this function as parameters.  In addition, the initial values for ulx, uly, lrx, lry, and bilerp are 0, 0, 320, 340, 0, respectively, which are settings that draw to a 320x240 pixel frame buffer with PointSample.
+<P>
+This function only needs to be called once before guS2DEmuBgRect1Cyc is called.  As long as there is no change in the scissor box and Texture Filter, it only needs to be called once during game initialization, and doesn't need to be called every time a frame is drawn.
+
+<P>
+<a name="06"></a>
+<b>DEBUG Information Output Function</b>
+<br>
+There are 2 versions of S2DEX Microcode; one version for debugging and another version for release.  The relationship between the two microcodes is the same as the relationship between libultra_rom.a and libultra_d.a.
+<P>
+Although the debug version microcode, S2DEX_D is slower than the release version of the microcode, it has the following additional features.
+<ul>
+<li>Outputs the display list processing log.
+<P>
+<li>In the event of bad input or encountering undefined commands, stops RSP and reports the problem to the CPU.
+</ul>
+
+<P>
+Investigation of problems, such as finding the cause of a runaway RSP, will become easier by checking the display list processing log.
+To use S2DEX_D, it is necessary to prepare an output buffer for the RSP display list processing log.  The size must be the same as the display list, and must be 8 byte aligned.
+<P>
+Once the area is reserved, provide the pointer data of the first address of the area to data_size, which is a member variable of the OSTask structure.  This member variable is not used in the S2DEX and F3DEX series to mean the size of the DL is the essential meaning.  A remnant of N64 OS/Library Version 1.0, it is used as a log output buffer.
+<P>
+This address must not be the Segment address.  When gspS2DEX.fifo_d.o activates as microcode, it is stored in the address specified by the process log.
+<P>
+For details concerning the processing log's display methods, please refer to the function ucDebugGfxLogPrint() in the sample program uc_assert.c.  Also, for details concerning the decision making process for stopping the RSP, please refer to ucCheckAssert() in the same file.
+
+<P>
+<b>Note:</b> The OSTask structure's member variable yield_data_size was used to set the log buffer in S2DEX Release 0.75 and older, but this was switched to data_size in Release 0.76 and later.  Please note that the display function ucDebugGfxLogPrint() has also been corrected.
+
+<P>
+<a name="07"></a>
+<b>Installing the S2DEX Package</b>
+<br>
+The description here applies to S2DEX Microcode when it is received as a patch.  If the package is included in the N64 OS/Library that you received, the work described here is not necessary.
+
+<P>
+The S2DEX Microcode consists of the following files:
+<p>
+<table border=0 cellpadding="2" cellspacing="2">
+<tr><td><font face="arial" size="-1">README</td><td><font face="arial" size="-1">This section (25.5.7)</td></tr>
+<tr><td><font face="arial" size="-1">gspS2DEX.fifo.o</td><td><font face="arial" size="-1"> S2DEX Microcode</td></tr>
+<tr><td><font face="arial" size="-1">gspS2DEX.fifo_d.o</td><td><font face="arial" size="-1"> S2DEX Microcode (for Debugging)</td></tr>
+<tr><td><font face="arial" size="-1">include/gs2dex.h	</td><td><font face="arial" size="-1"> Include files for S2DEX</td></tr>
+<tr><td><font face="arial" size="-1">libultra/Makefile</td><td><font face="arial" size="-1"> Makefile for updating libultra</td></tr>	
+<tr><td><font face="arial" size="-1">libultra/us2dex.o</td><td><font face="arial" size="-1"> Initialization routine for BG structure</td></tr>		
+<tr><td><font face="arial" size="-1">libultra/us2dex_emu.o</td><td><font face="arial" size="-1"> Scaleable BG drawing routine</td></tr>	
+<tr><td><font face="arial" size="-1">sample/*</td><td><font face="arial" size="-1"> S2DEX Sample programs</td></tr></table>			
+
+<P>
+libultra*.a is created by executing the make command in the libultra directory.  Copy libultra*.a files to /usr/lib.  
+<P>
+Copy gspS2DEX.fifo.o and gspS2DEX.fifo_d.o to /usr/lib/PR, and copy include/gs2dex.h to /usr/include/PR.
+<P>
+In addition, perl is necessary to compile affiliated sample programs. 
+
+<P>
+Please install the following packages from the IRIX 5.3/6.x CD.
+<P>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eoe2.sw.gifts_perl
+
+
+<P>
+<a name="08"></a>
+<b>History of Revisions</b>
+<P>
+<ul>
+<li>03/26/97 - Release 0.70 (beta 1)
+<br>Initial version 
+<P>
+<li>03/28/97 - Release 0.71 (beta 2)
+<br>Added libultra patch 
+<br>Revised installation data
+<P>
+<li>04/01/97 - Release 0.72 (beta 3)
+<br>Corrected improper S flipping operation in BG rendering 
+<br>Changed part of sample program
+<P>
+<li>04/10/97 - Release 0.73 (beta 4)
+<br>Defined new RenderMode
+<br>Added new function G_OBJRM_WIDEN to gSPObjRenderMode
+<br>Modified sample program so that CI8 textures can be used on semitranslucent sprites and BG
+<P>
+<li>04/21/97 - Release 0.74 (beta 5)
+<br>Corrected inadequate checks on buffer status when using small FIFO buffer
+<br>Corrected the fact that member variables imageX and imageY of the uObjBg structure were installed in (u10.2) format so that they are (u10.5) 
+<br>Changed frameX and frameY member variables of uObjBg structure to signed
+<P>
+<li>05/09/97 - Release 0.75 (beta6)
+<br>Created guS2DEmuBgRect1Cyc() and guSDEmuSetScissor() functions which create a DL for scalable BG screens using the CPU
+<br>Distributed as a patch, and section was added to README regarding this. 
+<br>No change from 0.74 microcode
+<br>Added section on perl installation method
+<P>
+<li>05/16/97 - Release 0.80 (beta7)
+<br>Changed log output buffer setting method (yield_data_size -> data_size)
+<br>Corrected bug in yield processing
+<br>Added text pertaining to FIFO buffer size to section 2.4 in README file
+<br>Corrected Sync processing in BG rendering GBI / emulation functions
+<P>
+<li>06/03/97 - Release 1.00
+<br>Installed g[s]SPBgRect1Cyc, a GBI which renders scalable BG
+<br>Changed formats of imagePal and imageFlip member variables in uObjBg_t structure and uObjScaleBg_t structure from u8 to u16 for alignment
+<br>Added 3.4  Precautions Regarding GBI to documentation
+<br>Changed BaseScaleX and BaseScaleY in uObjMtx structure, and scaleW and scaleH in uObjSprite structure to unsigned
+<P>
+<li>06/13/97 - Release 1.01
+<br>Corrected bug in g[s]SPBgRect1Cyc in which unnecessary texture loading processing was sometimes performed, vastly increasing RDP processing time
+<P>
+<li>07/03/97 - Release 1.02
+<br>Corrected problem in which, when multiple semitranslucent sprites were joined together, the seam line would be blended twice, and along with this, added G_OBJRM_XLU as ObjRenderMode
+<br>Reduced actual rendered size differences when the same sprite data were rendered by g[s]SPObjRectangle and g[s]SPObjSprite 
+<P>
+<li>07/04/97 - Release 1.03
+<br>Corrected bug in G_OBJRM_XLU mode
+<br>Added processing example (render ball) to sample program of when an object is realized by combining multiple sprites while Bilerp in effect. 
+<P>
+<li>07/31/97 - Release 1.04
+<br>Due to inadequate processing of the line at the seam during semitransparent display with Release 1.02, to measures to eradicate the problem.  Concretely, increased the accuracy of sprite rendering processing.  As a result, the G_OBJRM_XLU mode and G_OBJRM_ANTIALIAS 
+mode became unnecessary. 
+<br>Adjusted definition of RDP RenderMode.  In particular, isolated the modes during display of semi-translucent sprites according to when AntiAlias is ON and OFF.
+<P>
+<li>08/07/97 - Release 1.05
+<br>Corrected problem in which texture which shift when rendering long, thin sprites by further increasing sprite rendering precision. 
+<br>Increase Rectangle calculation accuracy.  This eliminated the gaps that would develop when aligning rectangles using the RectR commands.  (This was obstructed in the past by G_OBJRM_WIDEN in the ObjRenderMode.)
+<br>Added ball using RectR to the sample program.  Also revised program so that G_OBJRM_WIDEN is not used. 
+<P>
+<li>10/29/97 - Release 1.06 (N64 Dev Env. 2.0i)
+<br>Corrected errors in g[s]SPSelectDL and g[s]SPSelectBranchDL macro definitions. 
+<br>Corrected improper operation of gSPObjLoadTxRectR after processing gSPBgRect1Cyc. 
+<br>Corrected improper operation of gSPObjLoadTxRect. 
+<br>Reduced size of microcode data area.  This somewhat increased the RAM area available to the user. 
+<P>
+<li>12/25/97 - Release 1.06+
+<br>Corrected errors and difficult to understand points in this README.txt file. 
+<P>
+<li>04/10/98 - Release 1.07
+<br>Corrected abnormal functioning in the rendering processing of frames with narrow widths by gSPBgRectCopy command. 
+</ul>
+
+<P>
+<br>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

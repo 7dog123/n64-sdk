@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<!-- <link rev=made href="mailto:"> -->
+<title>Limitations</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<h2>Limitations</h2>
+
+<a href="index.html"><img src="images/index.gif" alt="Index" border="0"></a>
+<a href="history.html"><img src="images/previous.gif" alt="Previous page" border="0"></a>
+<a href="environment.html"><img src="images/next.gif" alt="Next page" border="0"></a>
+
+<hr>
+
+<p>Please not the following items when using NIFF Editor:</p>
+
+<ul>
+<li>When you open a NIFF file with NIFF Editor and then save the file, sometimes the original NIFF file and the saved NIFF file are different, even if you have not done any editing to the link information and the flag information.  This is because when NIFF Editor saves a NIFF file it adjusts the index number linked to each node.  However, this process does not change the link information and the flag information, so continuing to use this saved NIFF file poses no problems to the user. 
+<li>Note that NIFF Editor assumes that different nodes in the NIFF file do not have indexes to the same Name area.  Thus, if the name to such a node is changed, then on the screen all node names with indexes to that name will change.  Furthermore, NIFF Editor then cannot change the nodes so they have different names.
+</ul>
+
+<p>Following is a description of known bugs and unincorporated functions in the current version of NIFF Editor.  These limitations will be resolved in successive version updates.</p>
+
+<ul>
+<li>When a node name is changed, or when Drag & Drop is used to paste a node link, then focus will shift to the Scene node when a heretofore unopened node is opened in the left-side Tree View.
+<li>NIFF Editor does not support scrolling with IntelliMouse wheel under Windows 95.
+<li>A function to "scroll while dragging" is not included.
+</ul>
+
+<hr>
+
+</body>
+</html>

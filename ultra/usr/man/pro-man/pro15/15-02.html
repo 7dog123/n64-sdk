@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 15</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro15/index15.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro15/index15.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Antialiasing</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Antialiasing is an algorithm that attempts to minimize sampling errors that occur when an edge of a primitive is displayed on a raster image.  Visually, these errors cause the edge to be <i>stair-cased</i>  or look <i>jaggy</i>. For scenes with moderate complexity and/or animation, these jaggies are the source of high-frequency noise, which is annoying and distracting to users.
+
+<P>
+<b>Figure 15.2.1</B> &nbsp;Edge With and Without Antialiasing
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro15/gif/f15-01.gif"></tr></td></table>
+<P>
+
+
+In Figure 15.2.2, “Unweighted Area Sampling,” antialiasing is achieved by weighting the intensity of the pixel  in proportion to the area of the pixel covered by the edge.  In signal-processing terms, this is called unweighted area sampling.
+
+<P>
+<b>Figure 15.2.2</B> &nbsp;Unweighted Area Sampling
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro15/gif/f15-02.gif"></tr></td></table>
+<P>
+
+High-end graphics machines typically use an antialiasing  technique known as <i>super-sampling</i>,  in which the pixel is divided into a grid of sub-pixels.  A color is computed for each subpixel and the subpixels that are covered by a primitive are averaged to produce the final pixel color.  In the case where more than one primitive covers a pixel, each primitive’s color is weighted by the number of subpixels it covers.  Also, depth (Z) can be found for each subpixel which allows  antialiased  <i>interpenetrations</i>  between primitives.  While super-sampling is straightforward and effective, it is also expensive in terms of memory and memory bandwidth.  For a 4x4 subpixel grid, 16 color and Z values must be stored for each pixel.  In addition, to achieve required fill rates, each of these values must be accessed every clock.  
+
+<P>
+Because the Nintendo 64 machine has very severe cost and memory requirements, a new and novel technique for antialiasing that avoided (as much as possible) the storage requirements of super-sampling but yet provided satisfactory antialiasing was needed.  This method relies heavily on the notion that different <i>objects</i>  have different antialiasing needs, and that the hardware can be simplified by requiring that different <i>RenderModes</i>  are configured as appropriate for a particular object.  As well, there are display-order restrictions for rendering certain types of objects.  For example, transparent objects must be rendered after all the opaque objects.  Finally, it was recognized that antialiasing of <i>silhouettes</i>  could be done as a post process during video output.  A data flow diagram of the analogizing algorithm is shown in Figure 15.2.3,
+below. 
+
+<P>Note that this method requires, in addition to the pixel color and Z value, three bits of coverage and four bits of deltaZ per pixel, quite small when compared with super-sampling methods.
+
+
+<P>
+<b>Figure 15.2.3</B> &nbsp;Antialiasing Data Flow
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro15/gif/f15-03.gif"></tr></td></table>
+<P>
+
+The antialiasing data flow shows the most general case for  z-buffered and antialiased primitives.  Other techniques are possible.  For example, if the database is sorted and rendered in  back to front order, non-z-buffered antialiasing can be used.  All of the various types of antialiasing are discussed in detail in <a target="_top" href="../pro15/index15.7.html">Section 15.7, “Blender Modes and Assumptions."</a>
+
+<P>
+For each pixel, a subpixel mask is computed.  This mask is a 4x4 grid of bits where the bit is one if the subpixel is covered by the primitive and zero if the subpixel is not covered.  The mask is converted to a coverage value by adding all the bits of the mask together.  Since we only have three bits of coverage, the sixteen subpixels must be dithered to eight.  The coverage value is optionally combined with the pixel’s alpha value.  This is useful for antialiasing edges created by a texture cut-out.  
+
+<P>
+In the blender, the pixel color and the last value  stored for the pixel in memory are combined.  The blender also combines the pixel coverage and memory coverage and does z-buffering.  The blender typically performs operations such as antialiasing the interior edges of objects and transparency.  The new pixel’s color, coverage, and Z are stored in the frame buffer.  The Video Interface (VI) reads the pixel color and coverage and antialiases the silhouettes of objects. 
+
+<P>
+In the next section we discuss each hardware unit in the antialiasing data path in isolation, before considering how these units work together to render a complete image.
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

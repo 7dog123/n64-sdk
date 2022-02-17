@@ -1,0 +1,67 @@
+Function 
+-  Defines the rendering context. 
+  The rendering context is used during scene rendering and is not directly used by the application 
+  program. 
+
+Functions 
+-  Gfx *mrnContextSetView( MrnContext *context_ptr,
+			  MrnView *view_ptr,
+			  Gfx *gfx_ptr )
+  Sets mrnView.  Sets gfx if mrnView has been changed. 
+
+-  Gfx *mrnContextSetCamera( MrnContext *context_ptr,
+			    MrnCamera *camera_ptr,
+			    Gfx *gfx_ptr )
+  Sets mrnCamera.  Sets gfx if mrnCamera has been changed. 
+
+-  Gfx *mrnContextSetTextureImage( MrnContext *context_ptr,
+				  MrnTextureImage *image_ptr,
+				  Gfx *gfx_ptr )
+  Sets mrnTextureImage.  Sets gfx if mrnTextureImage has been changed. 
+
+-  Gfx *mrnContextSetTextureLut( MrnContext *context_ptr,
+				MrnTextureLut *lut_ptr,
+				Gfx *gfx_ptr )
+  Sets mrnTextureLut.  Sets gfx if mrnTextureLut has been changed. 
+
+-  Gfx *mrnContextSetTexture( MrnContext *context_ptr,
+			     MrnTexture *texture_ptr,
+			     Gfx *gfx_ptr )
+  Sets mrnTexture.  Sets gfx if mrnTexture has been changed. 
+
+-  Gfx *mrnContextSetLightSet( MrnContext *context_ptr,
+			      MrnLightSet *light_set_ptr,
+			      Gfx *gfx_ptr )
+  Sets mrnLightSet.  Sets gfx if mrnLightSet has been changed. 
+
+-  Gfx *mrnContextSetMaterial( MrnContext *context_ptr,
+			      MrnMaterial *material,
+			      Gfx *gfx_ptr )
+  Sets mrnMaterial.  Sets gfx if mrnMaterial has been changed. 
+
+-  Gfx *mrnContextSetBlenderMode( MrnContext *context_ptr,
+				 MrnBlenderMode blender_mode_array[ 2 ],
+				 Gfx *gfx_ptr )
+  Sets mrnBlenderMode.  Sets gfx if mrnBlenderMode has been changed. 
+
+-  Gfx *mrnContextSetFogColor( MrnContext *context_ptr,
+			      const u32 fog_color,
+			      Gfx *gfx_ptr )
+  Sets the fog color. 
+
+
+Macros
+-  _mrnContextInit(context_ptr,scn_ptr)
+  Initializes mrnContext. 
+
+-  _mrnContextPipeSync(context_ptr,gfx_ptr)
+  Inserts gDPPipeSync if necessary.  gfx_ptr is updated at this time. 
+
+-  _mrnContextSetGeometryMode(context_ptr,mode,gfx_ptr)
+  Sets the geometry mode if necessary.  gfx_ptr is updated at this time. 
+
+History 
+  1998/10/28 Takamitsu Hirata 
+    Context.h, context.c :  Initial version 
+  1999/01/22 Takamitsu Hirata
+    Support point light source

@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.2.7 3D Drawing Cycle Modes</H1>
+
+<P>The N64's RDP has four main configurations where individual process units in the pipeline work together to generate the pixels needed to render drawings. These main configurations are called "drawing cycle modes" because they indicate how many pixels are drawn per clock cycle.
+
+<P>Here are the four N64 drawing cycle modes:</P>
+
+<UL>
+<LI><B>Fill mode (FILL)</B><BR> 
+In FILL mode, the RDP writes pixels into the frame buffer using the color specified in the fill color register. At maximum speed (usually only attained with rectangles), two 32-bit pixels or four 16-bit pixels are written per cycle. In FILL mode, you cannot use polygon drawing functions such as <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSP1Triangle.html" TARGET="new">gSP1Triangle</A></FONT>.<BR>
+<BR>
+
+
+<LI><B>Copy mode (COPY)</B><BR>
+In COPY mode, the RDP transfers the accepted textured pixels in TMEM to the frame buffer. At maximum speed (usually only attained with rectangles), two 32-bit pixels or four 16-bit pixels are copied per cycle. In COPY mode, you cannot use polygon drawing functions such as the <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSP1Triangle.html" TARGET="new">gSP1Triangle</A></FONT> function. However, you can use texturing functions such as the <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSPTextureRectangle.html" TARGET="new">gSPTextureRectangle</A></FONT> function.<BR>
+<BR>
+
+
+<LI><B>One-cycle mode (1CYCLE)</B><BR>
+In 1CYCLE mode, the RDP fills a maximum of one pixel per clock cycle. In this mode, the RDP can fill a fairly high-quality pixel. Using 1CYCLE mode, you can generate pixels that are perspective corrected, bilinear filtered, modulate/decal textured, transparent, and z-buffered at a maximum bandwidth of one pixel per cycle. This mode uses each process unit in the RDP pipeline (RS, TX, TF, CC, BL, and MI) once. Note that maximum bandwidth is rarely attained except with rectangles because the frame buffer is organized in row order.<BR>
+<BR>
+
+
+<LI><B>Two-cycle mode (2CYCLE)</B><BR>
+In 2CYCLE mode, the RDP pipeline's process units are reconfigured for additional functionality at a slower maximum speed of one pixel per two clocks. Each process unit in the RDP pipeline is used  twice except the RS (the rasterizer). Using 2CYCLE mode, you can generate high-quality pixels that have all the qualities of 1CYCLE mode pixels with the addition of MIP-mapping and fog.
+</UL>
+
+<P>Use the <FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gdp/gDPSetCycleType.html" TARGET="new">gDPSetCycleType</A></FONT> function to set the drawing cycle mode for your game application.
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

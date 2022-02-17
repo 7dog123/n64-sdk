@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 4</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro04/index4.1.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro04/index4.3.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>CPU Access</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>Message Passing Priority Scheduled Threads</b>
+<br>
+To provide access to CPU compute cycles, Silicon Graphics provides a simple CPU scheduler to help the game manage multiple threads of control. Following are the attributes of this scheduling scheme:
+<ul>
+<li>Non-preemptive execution: The currently running thread will continue to run on the CPU until it wishes to yield. Preemption occurs if there is a need to service another  higher-priority thread awakened by an interrupt event. The interrupt service thread must not consume extensive CPU cycles. In other words, preemption is only caused by interrupts.  Preemption can also occur explicitly with a yield, or implicitly while waiting to receive a message.
+<li>
+Priority scheduling: A simple numerical priority determines which thread runs when a currently executing thread yields or an interrupt causes rescheduling.
+<li>
+Message passing: Threads communicate with each other through messages. One thread writes a message into a queue for another thread to retrieve.
+<li>
+Interrupt messages: An application can associate a message to a particular thread with an interrupt.</ul>
+
+<P>
+<a name="02"></a>
+<b>CPU Data Cache</b>
+<br>
+The R4300 has a write back data cache to improve CPU performance.  When the CPU reads data, the cache may satisfy the read request eliminating the extra cycles needed to access main memory.  When the CPU writes data, the data is written to the cache first and then flushed to main memory at some point in the future.  Therefore, when the CPU modifies data for the RCP’s or IO DMA engine’s consumption via memory, the software must perform explicit cache flushing. The application can choose to flush the entire cache or a particular memory segment.  If the cache is not flushed, the RCP or DMA may get stale data from main memory.
+<P>
+Before the RCP or IO DMA engines produce data for the CPU to process, the internal CPU caches must be explicitly invalidated. This is to avoid the CPU from examining old data in the cache.  The invalidation must occur before the RCP or DMA engine place the data in main memory.  Otherwise, there is a chance that a write back of data in the cache will destroy the new data in main memory.
+Since the software is responsible for cache coherency, keeping data regions on cache line boundaries is a good idea. A single cache line containing multiple data produced by multiple processors can be difficult to keep coherent.
+<P>
+<a name="03"></a>
+<b>No Default Memory Management</b>
+<br>
+As described above, the Nintendo 64 operating system provides <a target="main" href="../pro04/04-02.html#01">multi-threaded message-passing execution control</a>. The operating system does not impose a default memory management model. It does provide a generic Translation Lookaside Buffer (TLB) access. The application can use the TLB to provide for a variety of operations such as virtual contiguous memory or memory protection. For example, an application can use TLBs to protect against stack overflows.
+<P>
+<a name="04"></a>
+<b>Timers</b>
+<br>
+Simple timer facilities are provided, useful for performance profiling, real-time scheduling, or game timing. See the man page for <i>osGetTime (3P)</i> for more information.
+<P>
+<a name="05"></a>
+<b>Variable TLB Page Sizes</b>
+<br>
+The R4300 also has variable translation lookaside buffer (TLB) page size capability. This can provide additional, useful functionality such as the “poorman’s two-way set-associative cache,” because the data cache is 8 KB of direct-mapped memory and TLB pages size can be set to 4 KB. The application can roll a 4 KB cache window through a contiguous chunk of memory without wiping out the other 4 KB in cache.
+<P>
+<a name="06"></a>
+<b>MIPS Coprocesser 0 Access</b>
+<br>
+A set of application programming interfaces (APIs) are also provided for co-processor 0 register access, including CPU cycle accurate timer, cause of exception, and status.
+<P>
+<a name="07"></a>
+<b>I/O Access and Management</b>
+<br>
+The I/O subsystem provides functional access to the individual I/O hardware subcomponents. Most functions provide for logical translation to raw physical access to the I/O device.
+<P>
+<b>Figure 4.2.1</B> &nbsp;I/O Access and Management Software Components
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro04/gif/f04-02.gif"></tr></td></table>
+<P>
+<a name="08"></a>
+<b>PI Manager</b>
+<br>
+Nintendo 64 also provides a peripheral interface (PI) device manager for multiple threads to access the peripheral device. For example, the audio thread may want to page in the next set of audio samples, while the graphics thread needs to page in a future database.  The PI manager is a thread that waits for commands to be placed in a message queue.  At the completion of the command, a message is sent to the thread that requested the DMA. Also refer to <a target="_top" href="../pro27/index27.1.html">Section 27,  “EPI Manager and Extension Devices.”</a>
+<P>
+<a name="09"></a>
+<b>VI Manager</b>
+<br>
+A simple video interface (VI) device manager keeps track of when vertical retrace and graphics rendering is complete. It also updates the proper video modes for the new video field. The VI manager can send a message to the game application on a vertical retrace.  The game can use this to synchronize rendering the next frame.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

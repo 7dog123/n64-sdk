@@ -1,0 +1,20 @@
+Function 
+-  Allocates heap memory for multi-thread applications. 
+
+Functions 
+-  void msoHeapAllocatorInit( MsoHeapAllocator *allocator_ptr, void *heap_ptr,
+                             const u32 size );
+  Initializes MsoHeapAllocator.  heap_ptr is the head of the heap area and size is its size. 
+
+Precautions 
+-  Thread ID
+  The Thread ID must be unique for the system.  This is because MsoHeapAllocator identifies the thread 
+  which is requesting memory allocation by its ID. 
+
+-  Ownership of allocated memory
+  Memory is owned by the thread that requested that allocation.  It may be accessed by other threads, but 
+  that memory can be released only by the thread that owns it. 
+
+History
+  1998/10/05 Takamitsu Hirata 
+    HeapAllocator.h, heapallocator.c :  Initial version 

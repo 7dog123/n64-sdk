@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 19</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro18/index18.7.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro19/index19.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+
+<b><font face="arial" color="#29296b">Bank Files</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This chapter describes the file formats used for Nintendo 64 audio development.
+<P>
+The first section details the bank format used by the Sequence Player. The second section provides information about the Standard MIDI File format as it relates to Project Reality.
+<P>
+<b>Note:</b> All multi-byte data types (short, long, and so on) are stored with the high byte first. This is the opposite of the Intel ordering found in PCs.
+
+<P>
+<b>Bank Files</b>
+<br>
+Bank files store the audio and control information needed to create audio from sequencer MIDI events. On the Nintendo 64, this information is encapsulated in two files: the bank file and the wavetable file.
+<P>
+The Bank (.bnk) file contains control information such as program number to instrument assignment, key mapping, tuning, and envelope descriptions. It is loaded into the Nintendo 64 DRAM during playback. 
+<P>
+The Wavetable (.tbl) file contains ADPCM compressed audio data. Because of the size of the data, it is streamed into DRAM (and then to the RCP) only when it is needed.
+<P>
+The formats for both files are optimized for the Nintendo 64 to be efficiently used with the Sequence Player and the Sound Player. They are not intended to be interchange file formats, and contain no textual information or other data not directly related to playing back audio. Many features commonly found in standard patch and wavetable formats (for example, AIFF files) were sacrificed in favor of smaller files in ROM.
+<P>
+<b>Note:</b> References to objects are stored as offsets in the Bank files, but the alBnkfNew() call converts the offsets to pointers.
+
+<P>
+<a name="01.1"></a>
+<b>ALBankFile</b>
+<br>
+Bank files must begin with an ALBankFile structure. This structure allows the software to locate data for a specific bank.
+<pre><font face="courier" size="3">typedef struct {
+	s16	revision; 
+	s16	bankCount; 	
+	s32	bankArray[1]; 
+} ALBankFile;
+</pre></font>
+
+<P>
+The ALBankFile fields are summarized in the following table.
+
+<p>
+<b>Table 1</b> &nbsp;ALBankFile Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">revision</td>
+<td width=60%><font face="arial" size="-1">File format revision number.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">bankCount</td>
+<td width=60%><font face="arial" size="-1">Number of banks contained in the Bank file.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">bankArray</td>
+<td width=60%><font face="arial" size="-1">Array of offsets of the ALBank structures in the bank file.</td>
+</tr></table>
+
+<P>
+<a name="01.2"></a>
+<b>ALBank</b>
+<br>
+The ALBank structure specifies the instruments that make up the bank, as well as the default sample rate and percussion instrument. Banks may contain any number of programs. 
+<P>
+<b>Note:</b> The percussion field specifies an instrument for the Sequence Player to use as a default MIDI channel 10 (drum channel) instrument.
+<pre><font face="courier" size="3">typedef struct { 
+	s16	instCount; 
+	u8	flags;
+	u8	pad;
+	s32	sampleRate;
+	s32	percussion;
+	s32	instArray[1]; 
+} ALBank;
+</pre></font>
+
+<p>
+<b>Table 2</b> &nbsp;ALBank Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">instCount</td>
+<td width=60%><font face="arial" size="-1">Number of programs (instruments) in the bank.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">flags</td>
+<td width=60%><font face="arial" size="-1">=0 if instArray contains offset, and =1 if instArray contains pointers.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">pad</td>
+<td width=60%><font face="arial" size="-1">Currently unused byte.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">sampleRate</td>
+<td width=60%><font face="arial" size="-1">The sample rate at which this bank is inteded to be played.
+percussion	The offset (or pointer) to the default percussion instrument.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">instArray</td>
+<td width=60%><font face="arial" size="-1">Array of offsets (or pointers) to ALInstrument structures that make up this bank.</td>
+</tr></table>
+	
+	
+<P>
+<a name="01.3"></a>
+<b>ALInstrument</b>
+<br>
+The ALInstrument structure contains performance information. 
+<pre><font face="courier" size="3">typedef struct { 
+	u8	volume;
+	u8	pan;
+	u8	priority;
+	u8	flags;
+	u8	tremType;
+	u8	tremRate;
+	u8	tremDepth;
+	u8	tremDelay;
+	u8	vibType;
+	u8	vibRate;
+	u8	vibDepth;
+	u8	vibDelay;
+	s16	bendRange;
+	s16	soundCount;
+	s32	soundArray[1];
+} ALInstrument;
+</pre></font>
+
+<p>
+<b>Table 3</b> &nbsp;ALInstrument Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">volume</td>
+<td width=60%><font face="arial" size="-1">Overall instrument playback volume. 0x0 = off, 0x7f = full scale
+pan	Pan position. 0 = left, 64 = center, 127 = right.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">priority</td>
+<td width=60%><font face="arial" size="-1">The priority for voices for this instrument. 0 = lowest priority, 10 = highest priority.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">flags</td>
+<td width=60%><font face="arial" size="-1">If soundArray values are offsets, flags = 0. If they are pointers, flags = 1.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">bandRange</td>
+<td width=60%><font face="arial" size="-1">Pitch bend range in cents.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">soundCount</td>
+<td width=60%><font face="arial" size="-1">Number of sounds in the soundArray array.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">soundArray</td>
+<td width=60%><font face="arial" size="-1">Offsets of (or pointers to) the ALSound objects in the instrument.</td></tr></table>
+	
+<P>
+<a name="01.4"></a>	
+<b>ALSound</b>
+<br>
+The ALSound structure contains information about the individual sounds that make up an instrument. 
+<pre><font face="courier" size="3">typedef struct Sound_s { 
+	s32	envelope; 
+	s32	keyMap; 
+	s32	wavetable;
+	u8	samplePan; 
+	u8	sampleVolume; 
+	u8	flags
+} ALSound;
+</pre></font>
+
+<p>
+<b>Table 4</b> &nbsp;ALSound Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">envelope</td>
+<td width=60%><font face="arial" size="-1">Offset of (or pointer to ) the ALEnvelope object assigned to the sound.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">keyMap</td>
+<td width=60%><font face="arial" size="-1">Offset of (or pointer to) the ALKeyMap object assigned to this sound.
+wavetable	Offset of (or pointer to) ALWavetable objects assigned to the sound.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">samplePan</td>
+<td width=60%><font face="arial" size="-1">Pan position of the sound in the stereo field: 0 = full left, 0x7f = full right
+sampleVolume	Overall sample volume. 0 = off, 0x7f = full scale.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">flags</td>
+<td width=60%><font face="arial" size="-1">If envelope, keyMap, and wavetable are specified as offsets, flags = 0. If they are pointers, flags = 1.</td></tr></table>
+
+<P>	
+<a name="01.5"></a>	
+<b>ALEnvelope</b>
+<br>
+The ALEnvelope structure describes the attack-decay-sustain-release (ADSR) envelope for a sound.
+<P>
+<b>Note:</b> Release volume is assumed to be 0.
+<pre><font face="courier" size="3">typedef struct { 
+	s32 attackTime; 
+	s32 decayTime; 
+	s32 releaseTime; 
+	s16 attackVolume; 
+	s16 decayVolume; 
+} ALEnvelope;
+</pre></font>
+
+
+
+<p>
+<b>Table 5</b> &nbsp;ALEnvelope Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">attackTime</td>
+<td width=60%><font face="arial" size="-1">Time, in microseconds, to ramp from zero gain to attackVolume.
+attackVolume	Target volume for the attack segment of the envelope.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">decayTime</td>
+<td width=60%><font face="arial" size="-1">Time, in microseconds, to ramp from the attackVolume to the decayVolume.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">decayVolume</td>
+<td width=60%><font face="arial" size="-1">Target volume for the decay segment of the envelope. The sustain loop holds at the decayVolume.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">releaseTime</td>
+<td width=60%><font face="arial" size="-1">Time, in microseconds, to ramp to zero volume.</td></tr></table>
+
+<P>
+<a name="01.6"></a>
+<b>ALKeyMap</b>
+<br>
+The ALKeyMap describes how the sound is mapped to the keyboard. It allows the sequencer to determine at what pitch to play a sound, given its MIDI key number and note on velocity.
+
+<P>
+<b>Note:</b> C4 is considered to be middle C (MIDI note number 60).
+Bank files may not contain keymaps that have overlapping key or 
+velocity ranges.
+<pre><font face="courier" size="3">typedef struct { 
+	u8 velocityMin; 
+	u8 velocityMax; 
+	u8 keyMin; 
+	u8 keyMax; 
+	u8 keyBase; 
+	u8 detune; 
+} ALKeyMap;
+</pre></font>
+
+<p>
+<b>Table 6</b> &nbsp;ALKeyMap Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">velocityMin</td>
+<td width=60%><font face="arial" size="-1">Minimum note on velocity for this map. 0 = off, 0x7f = full scale.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">velocityMax</td>
+<td width=60%><font face="arial" size="-1">Maxumum note on velocity for this map. 0 = off, 0x7f = full scale.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">keyMin</td>
+<td width=60%><font face="arial" size="-1">Lowest note in this key map. Notes are defines as in the MIDI specification.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">keyMax</td>
+<td width=60%><font face="arial" size="-1">Highest note in this key map. Notes are defined as in the MIDI specification.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">keyBase</td>
+<td width=60%><font face="arial" size="-1">The MIDI note equivalent to the sound played at unity pitch.
+detune	Amount, in cents, to fine-tune this sample. Range is -50 to +50.
+</td></tr></table>
+
+<P>
+<a name="01.7"></a>
+<b>ALWavetable</b>
+<br>
+The ALWavetable structure describes the sample data to be played for the given sound. It is described in detail below, along with the structures it contains.
+<pre><font face="courier" size="3">enum    {AL_ADPCM_WAVE = 0,
+         AL_RAW16_WAVE};
+
+typedef struct {
+    s32 order;
+    s32 npredictors;
+    s16 book[1];        /* Must be 8-byte aligned */
+} ALADPCMBook;
+
+typedef struct {
+    u32         start;
+    u32         end;
+    u32         count;
+    ADPCM_STATE state;
+} ALADPCMloop;
+
+typedef struct {
+    u32         start;
+    u32         end;
+    u32         count;
+} ALRawLoop;
+
+typedef struct {
+    ALADPCMloop *loop;
+    ALADPCMBook *book;
+} ALADPCMWaveInfo;
+
+typedef struct {
+    ALRawLoop *loop;
+} ALRAWWaveInfo;
+
+typedef struct { 
+	s32	base; 
+	s32	len;*/
+	u8	type;
+	u8	flags;
+	union {
+		ALADPCMWaveInfo adpcmWave;
+		ALRAWWaveInfo   rawWave;
+	} waveInfo;
+} ALWaveTable;
+</pre></font>
+
+
+<p>
+<b>Table 7</b> &nbsp;ALWavetable Structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">base</td>
+<td width=60%><font face="arial" size="-1">Offset of (or pointer to) the start of the raw or ADPCM compressed wavetable in the table (.tbl) file.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">len</td>
+<td width=60%><font face="arial" size="-1">Length, in bytes, of the wavetable.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">type</td>
+<td width=60%><font face="arial" size="-1">The type (AL_ADPCM_WAVE or AL_RAW16_WAVE) of the wavetable structure.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">flags</td>
+<td width=60%><font face="arial" size="-1">If the base field contains an offset, flags =0. If it contains a pointer, flags = 1.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">waveInfo</td>
+<td width=60%><font face="arial" size="-1">Wavetable type specific information.</td></tr></table>
+	
+<br>	
+	
+<p>
+<b>Table 8</b> &nbsp;ALADPCMWaveInfo structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">loop</td>
+<td width=60%><font face="arial" size="-1">Offset or pointer to the ADPCM-specific loop structure.</td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">book</td>
+<td width=60%><font face="arial" size="-1">Offset or pointer to the ADPCM-specific code book.</td></tr></table>
+<br>	
+	
+
+
+<p>
+<b>Table 9</b> &nbsp;ALRawWaveInfo structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">loop</td>
+<td width=60%><font face="arial" size="-1">Offset or pointer to the raw sound loop structure.</td></tr></table>
+<br>
+
+<p>
+<b>Table 10</b> &nbsp;ALADPCMLoop structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">start</td>
+<td width=60%><font face="arial" size="-1">Sample offset of the loop start point.</td></tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">end</td>
+<td width=60%><font face="arial" size="-1">Sample offset of the loop end point count	Number of times the wavetable is to loop. A value of -1 means loop forever.</td></tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">state</td>
+<td width=60%><font face="arial" size="-1">ADPCM decoder state information.</td></tr></table>
+<br>
+	
+
+<p>
+<b>Table 11</b> &nbsp;ALADPCMBook structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">order</td>
+<td width=60%><font face="arial" size="-1">Order of the ADPCM predictor.</td></tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">npredictors</td>
+<td width=60%><font face="arial" size="-1">Number of ADPCM predictors.</td></tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">book</td>
+<td width=60%><font face="arial" size="-1">Array of code book data.</td></tr></table>
+<br>
+	
+
+<p>
+<b>Table 12</b> &nbsp;ALRawLoop structure
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="80%">
+<tr>
+<td width=40%><font face="arial" size="-1"><b>Field</td>
+<td width=60%><font face="arial" size="-1"><b>Description</b></td>
+</tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">start</td>
+<td width=60%><font face="arial" size="-1">Sample offset of loop start point.</td></tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">end</td>
+<td width=60%><font face="arial" size="-1">Sample offset of loop end point.</td></tr>
+<tr>
+<td width=40% valing="top"><font face="arial" size="-1">count</td>
+<td width=60%><font face="arial" size="-1">Number of times the wavetable is to loop. A value of -1 means loop forever.</td></tr>
+</table>
+		
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

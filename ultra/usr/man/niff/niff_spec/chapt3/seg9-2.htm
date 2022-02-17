@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.9 VectorList</h3>
+
+<hr size=3>
+<h4>2) TriNvGroup Area</h4>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="5">TriNvGroupHeader</th>
+
+<td>u32</td>
+
+<td>tri_nv_group_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>this_tri_nv_group_index</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_group_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_nv_num</td>
+</tr>
+
+<tr>
+<th ROWSPAN="3"></th>
+
+<td COLSPAN="2">
+<center>TriNv(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">TriNv(tri_nv_num - 1)</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>TriNvGroup Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tri_nv_group_tag</td>
+
+<td><font size=+0>Tag indicating TriNvGroup. Set the following Tag.</font>
+<pre><b><font size=+0>TAG_TRI_NV_GROUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x00060100</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 this_tri_nv_group_index</td>
+
+<td><font size=+0>Index number of this TriNvGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_group_header_size</td>
+
+<td><font size=+0>Size of thisTriNvGroupHeader.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_group_size</td>
+
+<td><font size=+0>Size of this TriNvGroup.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_nv_num</td>
+
+<td><font size=+0>Total number of TriNv.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg9-4.htm">TriNv</a></td>
+
+<td><font size=+0>Area for one normal vector data.</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg9.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg9-3.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

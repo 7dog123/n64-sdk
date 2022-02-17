@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro10/index10.6.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.2.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">RSP Overview</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+This document describes the graphics state machine of the RCP, with a particular focus on the RSP (please see <a target="main" href="../pro03/03-03.html">Section 3.3, "RSP: Reality Signal Processor”</a>).
+<P>
+The RSP is an R4000-like CPU with an 8-element vector unit, featuring a small instruction memory, IMEM (4K bytes or 1K instructions) and small data memory, DMEM (4K bytes). Software running on this processor implements a large portion of the geometry display pipeline.
+<P>
+In addition, the RSP provides visibility for all of the RCP functionality, through a variety of software conventions and hardware exposure. All “display lists” for the RCP graphics features must pass through the RSP. There are several important features which require the application programmer to be consciously aware of the distinctions between the RSP and the RDP (and program each of them separately), but for the most part, the RSP serves as the single interface between the application program and the graphics pipeline:
+<P>
+<b>Figure 11.1.1</B> &nbsp;Nintendo 64 Graphics Pipeline
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro11/gif/f11-01.gif"></tr></td></table>
+<P>
+Topics covered in this document include:
+<ul>
+<li>RSP overview
+<li>display list processing
+<li>matrix state
+<li>vertex state
+<li>vertex lighting state
+<li>texture state
+<li>clipping and culling
+<li>primitives
+<li>controlling the RDP state
+</ul>
+
+<P>
+<a name="01"></a>
+<b>RSP Overview</b><br>
+A program which runs on the RSP is called a <i>task</i>; the application is completely responsible for scheduling and invoking tasks on the RSP.
+<P>
+The interface between the application and the RSP task is accomplished with a series of operating system calls, and a structure called the <i>task list</i> (or task header) which is type <i>OSTask</i> (defined in <i>sptask.h</i>). The task list contains all the information necessary to begin task execution, including pointers to the microcode to run. This structure is filled in by the application program.
+<P>
+A detailed description of invocation of a task on the RSP is beyond the scope of this section (please see <a target="main" href="../pro04/04-07.html">Section 4.7, “RCP Task Management”</a>), but the essential procedure is straightforward:
+<ul>
+<li>the RSP is assumed to be halted (or the R4300 halts it).
+<li>the R4300 DMA’s the boot microcode into the RSP IMEM.
+<li>the R4300 DMA’s the ‘task header’ into the RSP DMEM.
+<li>the R4300 sets the RSP PC to 0.
+<li>the R4300 clears the RSP halt status (allowing it to run).</ul>
+<P>
+From this point, the boot microcode takes over, loading the task microcode (and data) specified in the task list, and jumping to the beginning of the task.
+<P>
+One item in the task header is a pointer to the initial data to process (in the case of a graphics task, this is a display list pointer).
+<P>
+
+<a name="01"></a>
+<b>Display List Format</b>
+<br>
+The display list which the <i>gspFast3D, gspF3DNoN, or gspLine3D</i>  microcode running on the RCP interprets is defined as a stream of 64-bit commands.
+<P>
+Applications written in C will usually use the interface from the file <i>gbi.h.</i>, which will be included via inclusion of  <i>ultra64.h</i>.  Although the construction of display lists looks like a familiar series of function calls, they are actually just bit-packing macros. These macros are described in detail in their individual man pages.
+<P>
+Each macro has two forms, i.e. <i>gSPTexture()</i>  and <i>gsSPTexture()</i>.  The difference between <i>‘g’</i> and <i>‘gs’</i>,  is that the <i>‘g’</i>  form is an in-line form which requires an additional argument (pointer of the display list being constructed). The display list pointer must be of the form <i>“ptr++”</i>,  in order for the macros to work properly.
+<P>
+The <i>‘gs’</i>  form is for static declarations, and generates the appropriate C structure initialization sequence.
+<P>
+Throughout this document, only the <i>‘gs’</i>  form is mentioned, however the <i>‘g’</i>  form also applies, and could always be substituted.
+<P>
+All of the display list building macros also embed an <i>‘SP’</i>  or a <i>‘DP’</i>  to describe the functional unit of the RCP which will operate on this command. This is certainly confusing, especially to application programmers familiar with higher-level graphics API’s such as OpenGL. In order to achieve maximum performance, it is necessary to expose the two major units of the RCP to the application programmer. The primary reason for this is resource constraints; there is simply not enough RSP IMEM to build a display list processor that is rich enough to hide these details from the application programmer. In addition, given the dedicated application of the RCP (video games), any CPU cycles spent “gift-wrapping” the graphics API are a waste of time. The binary encoding of most of the display list commands is the lowest possible level: they <i>are</i>  the bits that control the hardware. 
+<P>
+Exposing the two functional units of the RCP also limits the amount of state shared between them. The major drawback of this design decision is that you must often tell the same thing to the RSP and the RDP. For example, in order to “turn on texture mapping” you must turn it on in the RSP and <i>turn</i>  it on in the RDP. This may seem clumsy at first, and indeed this is a common source of display list bugs, but the parallel execution of the RSP and RDP, plus the lean display list processing machine make this trade-off worthwhile.
+
+<P>
+<a name="02"></a>
+<b>Segmented Memory and the RSP Memory Map</b>
+<br>
+All DRAM addresses in the display list are segmented addresses. The mapping of segments and their base addresses is provided using the <font face="courier">gsSPSegment()</font> macro. It is the responsibility of the application to maintain this mapping and inform the RSP via the display list.
+<P>
+The RSP maintains an associative table of up to 16 segment ID’s and their base addresses. Any DRAM address in the display list is ‘physical-ized’ using this table.
+<P>
+The RDP only uses physical addresses, and one of the chores of the RSP is to do the address translation necessary for the RDP.
+<P>
+<b>Note:</b> By convention, segment table entry 0 is reserved for physical addressing, and should be set to 0x0.
+<P>
+The RSP software can only access DMEM. All data must first be transferred into DMEM using DMA operations, which must be 64-bit aligned. Invocation of the DMA engine is handled by the RSP software, but the application programmer needs to be aware of the boundary requirements. Any data structure that is to be passed to the RSP must be aligned to a 64-bit boundary. The structures in <i>gbi.h</i> use C unions to guarantee this.
+<P>
+Since the DMA engine is shared between the R4300 and the RSP, the application program should also avoid unnecessary DMA activity while the RSP is running.
+<P>
+<a name="03"></a>
+<b>Interaction Between the RSP and R4300 Memory Caching</b>
+<br>
+The most prevalent example of communication between the CPU and the RSP is that of the CPU creating a display list in DRAM for eventual interpretation by the RSP. The display list data is read from DRAM via a DMA mechanism. Unfortunately, DRAM locations may be “stale” with respect to newer data being held in the R4300’s data cache. The R4300 cache mechanism implements a “write-back” caching policy which means individual stores to memory are not immediately written to memory. To update the memory contents with more recent cached data, the CPU must first write back cached data to the DRAM. Then, and only then, will the RSP be able to DMA the correct data for display list processing.
+<P>
+Conversely, the contents of memory may be more recent than cached data in some situations when the RSP modifies memory (an obvious example is updating the color frame buffer). In this case, the CPU’s cache may contain stale data and the CPU should invalidate the cached data to force an access directly to DRAM and get the most recent data.
+As a practical note, this second scenario only arises in advanced applications.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

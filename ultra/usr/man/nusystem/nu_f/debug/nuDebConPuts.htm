@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+
+<hr>
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuDebConPuts</strong></font> (Macro)</pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuDebConPuts(u32 wndNo, const char *s)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>wndNo	is the window number
+<br>NU_DEB_CON_WINDOW0	&nbsp; Window 0
+<br>NU_DEB_CON_WINDOW1	&nbsp; Window 1
+<br>NU_DEB_CON_WINDOW2	&nbsp; Window 2
+<br>NU_DEB_CON_WINDOW3	&nbsp; Window 3
+<P>
+<li>s	is the pointer to character string</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Outputs the character string "s" to the console window.
+
+<p>Outputs the character string "s" to the console window specified by wndNo.
+   In this case, the null character ("/0") at the end of the string is replaced with the line feed character ("/n").
+</p>
+
+<P>
+This function is a macro for nuDebConCPuts.
+
+<hr>
+<P>
+<b>See Also</b>
+<br><a href="nuDebConCPuts.htm">nuDebConCPuts</a>
+<br><a href="nuDebConPutc.htm">nuDebConPutc</a>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

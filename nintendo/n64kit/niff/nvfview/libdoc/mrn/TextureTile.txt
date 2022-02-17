@@ -1,0 +1,12 @@
+Function 
+-  Defines the texture tile. 
+
+Functions 
+-  Gfx *mrnTextureTileGenerateGfx( MrnTexture *texture_ptr,
+				   MrnContext *context_ptr,
+				   Gfx *gfx_ptr );
+  Generates a gfx which sets the texture tile. 
+
+History
+  1998/ 9/10 Takamitsu Hirata 
+    TextureTile.h, texturetile.c :  Initial version 

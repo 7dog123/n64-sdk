@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<title>Monegi Multi Viewer 64: Converter</title>
+</head>
+
+<body>
+
+<p><A HREF="../index.htm"><img src="images/Title.gif" width="180" height="80" alt="Title.gif (17509 bytes)"
+align="center" border="0"></a></p>
+
+<p>&nbsp;&nbsp;&nbsp; <a href="purpose.htm">Purpose</a>&nbsp;&nbsp;&nbsp; <a href="flow.htm">Processing Flow</a>&nbsp;&nbsp;&nbsp; <a href="operation.htm">Operation Method</a> 
+&nbsp;&nbsp;&nbsp; <font color="#800080">Converter</font>&nbsp;&nbsp;&nbsp; <font color="#0000FF"><a href="default.htm">Default Settings</a>&nbsp;&nbsp;&nbsp; </font><a href="attention.htm">Precautions</a></p>
+
+<hr>
+
+<p><big><big><strong><font color="#008000">Converter</font></strong></big></big></p>
+
+<hr>
+
+<blockquote>
+  <p>MMV64 can convert a file to a format readable by the N64 by using the converter associated with the file's extension.</p>
+  <p><font color="#0000FF"><big><strong>1. Creating a Converter</strong></big></font></p>
+  <blockquote>
+    <p>When developing a converter for MMV64, please allow input files and output files to be specified.</p>
+    <p>Example:  In the case of texmmv.exe (converter for texture viewer for MMV64)<br><BR>
+    &nbsp;&nbsp;&nbsp; texmmv <font color="#0080FF">INFILE1</font> <font color="#0080FF">INFILE2</font> 
+    -o <font color="#FF80C0">OUTFILE<br>
+    </font><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#0080FF">INFILE1</font><font color="#000000"> , </font><font color="#0080FF">INFILE2</font><font color="#000000">&nbsp;&nbsp;&nbsp; ... Specify the input file<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#FF80C0">OUTFILE</font><font color="#000000"> 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    ...  Specify the output file</font></p>
+
+    <p><B>Multiple input files can be specified, but they must be contiguous as in the above example. Only one output file may be specified.</B>
+
+<P><B>Specify the input file and output file in double-quotes and use the full pathname.</B></p>
+    
+<p><B>In addition, design the converter so that it returns a 0 (zero) when it terminates normally.</B></p>
+  </blockquote>
+
+  <p><big><font color="#0000FF"><strong>2.  Converter File Association</strong></font></big></p>
+  <blockquote>
+    <p>Once you have finished creating your converter, you must associate file types with it. <br>
+    Click the <img src="images/FileSetting.gif" alt="FileSetting.bmp (630 bytes)" border="1" align="center" hspace="8" vspace="8" WIDTH="32" HEIGHT="32"><!--span    style="line-height: normal; margin-top: auto"--> 
+    button to open the "File Setting window" shown below. <br>
+    <img src="images/Converter.gif" alt="Converter.bmp (682134 bytes)" WIDTH="559" HEIGHT="406"><ul>
+      <li>Select the &quot;Use Converter&quot; check box.</li>
+      <li>Specify the converter program, using its full pathname, in &quot;Converter&quot;. You may also locate the converter using the Browse button. If the converter is stored in a sub-directory of the directory <KBD>MMV64.exe</KBD> is in, the pathname will be changed to a relative pathname as in the example above.</li>
+      <li>Specify the index number to be given to the converter in &quot;Options for converter&quot;. &quot;&gt;&quot; indicates the output file and &quot;&lt;&quot; indicates the input file.)</li>
+      <li>Select the &quot;Allow multi files&quot; checkbox when the converter supports multiple input files. </li>
+    </ul>
+  </blockquote>
+
+</blockquote>
+</body>
+</html>

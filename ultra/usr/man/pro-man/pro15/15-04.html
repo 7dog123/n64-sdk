@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 15</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro15/index15.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro15/index15.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Z Stepper</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The Z-stepper calculates an 18-bit fixed point depth value (Z) for each pixel of a primitive.  The value is of Z is normally zero at the near plane and maximum at the far plane, assuming a proper g*SPViewport() command.  By manipulating the <i>g*SPViewport( )</i>   command, it is possible to split the z-buffer into separate Z-planes, as shown in the following figure.
+
+<P>
+<b>Figure 15.4.1</B> &nbsp;Z-Buffer Planes
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro15/gif/f15-06.gif"></tr></td></table>
+<P>
+<br>
+No attempt will be made to justify why one would do this, only that it is possible.  Also, note that the <i>g*SPPerspNormalize( )</i>  command can be used to maximize Z precision.  Please see  <a target="main" href="../pro11/11-03.html#fig11-2">Figure 11.3.1, “Perspective Normalization Calculation,”</a> for further details about <i>g*SPPerspNormalize( )</i>.
+
+<P>
+There is also a source of constant Z (from a register) that can set using the <i>g*DPSetPrimDepth( )</i>  command.  To select the constant depth, use the <i>g*DPSetDepthSource( )</i>  command.  This may be useful when z-buffering sprites, for example.
+
+<P>
+The Z value is subpixel corrected so that it is always calculated on the primitive.  To see why this is necessary, consider the following figure.
+
+
+<P>
+<b>Figure 15.4.2</B> &nbsp;Subpixel Correction of Z
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro15/gif/f15-07.gif"></tr></td></table>
+<P>
+
+In this case, if you calculate Z at the center of the pixel, the Z value will be negative because Z will be projected behind the viewpoint.  A better solution is to calculate the Z value at the subpixel, below the center of the pixel in this case, which intersects the primitive.
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

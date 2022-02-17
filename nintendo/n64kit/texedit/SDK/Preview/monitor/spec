@@ -1,0 +1,54 @@
+/*
+	ROM spec file
+
+	Main memory map
+
+  	0x80000000  exception vectors, ...
+  	0x80000400  zbuffer (size 320*240*2)
+  	0x80025c00  codesegment
+	      :  
+	0xb0200000  teSEGMENT_INFO
+	0xb0200200	teSEGMENT_TLUT
+	0xb0200400	teSEGMENT_TLUT (+0x80000)
+  	0x8038F800  cfb 16b 3buffer (size 320*240*2*3)
+
+  Notice: <<<...>>> is same comment in Japanese (SHIFT JIS code).
+*/
+
+#include <nusys.h>
+#include "teapi.h"
+
+/* Make use of all the graphic microcode */
+/* <<<全てのグラフィックマイクロコードを使用>>> */
+beginseg
+	name	"code"
+	flags	BOOT OBJECT
+	entry 	nuBoot
+	address NU_SPEC_BOOT_ADDR
+        stack   NU_SPEC_BOOT_STACK
+	include "codesegment.o"
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+#ifdef F3DEX_GBI
+        include "$(ROOT)/usr/lib/PR/gspF3DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspL3DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLP.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo_d.o"
+#else
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspL3DEX2.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
+        include "$(ROOT)/usr/lib/PR/gspS2DEX2.fifo.o"
+#endif
+endseg
+
+beginwave
+	name	"nu2"
+	include	"code"
+endwave

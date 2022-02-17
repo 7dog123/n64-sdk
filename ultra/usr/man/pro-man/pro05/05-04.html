@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 5</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro05/index5.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro05/index5.5.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Music Composition</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Music composition involves creating midi sequences and then importing them into the game. Midi sequences can be created using any of a variety of sequencer applications such as:  Performer, Vision, Cubase, and MasterTracks, to name a few.
+<P>
+After the sequences are saved as midi files, they should  be converted before being included in the game. If you are planning to use the compact Midi sequence player, the sequences should be run through midicmp. If you are using the regular sequence player, the sequences are run through midicvt. After the sequences are converted, they can be assembled into sequence banks with the sbk tool. This is optional, since midi sequences can be used without being part of a sequence bank. To include the sequences in the game, a segment containing the sequence data should added to the spec file. (See the demo application "simple" for an example of this.)
+<P>
+To learn more about using sequences in a game, please see <a target="_top" href="../pro17/overindex.html"> Section 17, "Audio Library.”</a>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>4.3.6 Booting the Game Pak When Connected to the 64DD</H1>
+
+
+<H2>Disk Boot</H2>
+
+<P><B>1. Initialization</B>
+
+<P>Please note that the initialization function for a disk boot is different from that for a Game Pak boot.
+
+<P><B>Special Start-up Methods:</B><BR>
+With a multiple-disk configuration, only the second and subsequent disks can be used for normal game data, although it is possible to restart a separate program stored on these disks by calling a special function. However, separate settings are required for each program and the programs cannot both be restarted.</P>
+
+<P><B>Disk ID Storage Method:</B><BR>
+The disk ID of the startup disk is automatically saved to RDRAM.</P>
+
+
+<H2>Game Pak Boot</H2>
+
+<P><B>1. Initialization</B>
+
+<P>Please note that the initialization function for a disk boot is different from that for a Game Pak boot.
+
+<P><B>2. System reset immediately after initialization</B>
+
+<P>Immediately after the initialization function has been executed, the system enters the Reset state. In this state, the execution of any other function will generate an error. To return to the normal state, a function to cancel the Reset state must be executed.
+
+<P><B>3. Check the RTC after initialization</B>
+
+<P>When using the Real-time Clock (RTC) from a Game Pak boot, the RTC must be checked after initialization.
+
+<P><B>4. Check the Memory Expansion Pak</B>
+
+<P>Use the program on the ROM cartridge to check whether the Memory Expansion Pak has been inserted. If it has not been inserted, display a message prompting the user to insert the Pak.
+
+<P><B>Special Start-up Methods</B><BR>
+In the case of a configuration with a ROM Game Pak and a disk, the disk can be used only for normal game data, although it is possible to restart a separate program stored on the disk by calling a special function. However, separate settings are required for each program and the programs cannot both be restarted.
+
+<P><B>Disk ID Storage Method:</B><BR>
+All disk IDs must be stored on the application side.
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

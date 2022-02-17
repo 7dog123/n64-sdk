@@ -1,0 +1,82 @@
+<html>
+<body bgcolor="ffffff">
+<br>
+<!-- <hr size=3> -->
+<!-- <br> -->
+<h1>n64prevプレビューア</h1>
+<br>
+<hr size=3>
+<br>
+<!-- <font size=5> --><h2>
+<ul>
+ <li> <a href=#MAP>メモリマップ</a>
+ <li> <a href=#MAIN>プログラムメインフロー</a>
+ <li> <a href=#HRC>階層構造と描画用リンク</a>
+ <li> <a href="./how2play.htm">プレビューアの操作方法</a>
+ <li> <a href="./history.htm">変更履歴</a>
+</ul>
+<!-- </font > --></h2>
+<hr size=3>
+<br>
+<a name="MAP"></a>
+<h2>メモリマップ</h2>
+<p>
+<blockquote>
+　n64prev内のプレビューアソフトウェアのメモリマップは下記のようになっています。
+</blockquote>
+<p>
+<center>
+<img src="./mem_map.gif">
+</center>
+<p>
+<hr size=3>
+<p>
+<a name="MAIN"></a>
+<h2>プログラムメインフロー</h2>
+<p>
+<blockquote>
+　プレビューアソフトウェアのグラフィクス再生フローは下図のようになっています。
+</blockquote>
+<p>
+<center>
+<img src="./prog_flow.gif">
+</center>
+<p>
+<hr size=3>
+<p>
+<a name="HRC"></a>
+<h2>階層構造と描画用リンク</h2>
+<p>
+<blockquote>
+　まず、下記のような車の階層構造を考えてみます。
+</blockquote>
+<p>
+<center>
+<img src="./car_hrc0.gif">
+</center>
+<p>
+<blockquote>
+　このような階層構造のオブジェクトを、ndEntryObject()すると、以下のように２つのリンクが構成されます。
+</blockquote>
+<p>
+<center>
+<img src="./car_hrc1.gif">
+</center>
+<p>
+<blockquote>
+　このように処理することによって、NINTENDO64上で正確な描画を行うことができます。
+</blockquote>
+<p>
+
+<hr>
+<font size=-1>
+Copyright 1997-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.</font>
+</font>
+
+<p align="right"><a href="../index.htm">
+目次へ
+<img src="../../gif/index.gif"
+border="0" width="65" height="17"></a>
+
+</body>
+</html>

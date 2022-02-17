@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 16</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro16/index16.3.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro17/overindex.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Examples</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+A sample sprite library demonstration program is provided in under /usr/src/PR/demos/spgame. The demo shows how to use sprite library to do backgrounds, texts and a simple animation.
+
+<P>
+<a name="01"></a>
+<b>Backgrounds</b>
+<br>
+Setting up copy mode. Using TLUTs to animate it.
+<br>
+Scrolling Background example (up/down, left/right)
+
+
+<P>
+<a name="02"></a>
+<b>Text (Fonts)</b>
+<br>
+void text_sprite(Sprite *txt, char *str, Font *fnt, int xlen, int ylen)
+<br>
+This creates the appropriate bitmap to render the specified string in the indicated sprite. You can use a two-pass approach to render a larger number of characters.
+
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+  Regarding changes to the osPfsInitPak() function specification
+
+
+1. The former problem
+
+   The osPfsInitPak() function and the osPfsRepairId() function returned the error PFS_ERR_ID_FATAL when a Rumble Pak was inserted.  However, this same PFS_ERR_ID_FATAL error also occurs when the contents in the Controller Pak ID area are destroyed.  It was thus impossible to determine which situation caused the error to arise.  This made programming difficult, and was also confusing to the game player.
+
+
+2. The present modification
+
+   The present modification changes the osPfsInitPak() function and the osPfsRepairId() function so they return the error PFS_ERR_DEVICE, and not the error PFS_ERR_ID_FATAL, when the Rumble Pak or the 64GB Pak or some other device other than the Controller Pak is inserted.  
+
+   Internally, the read/write test is performed in a part of the system area of the Controller Pak RAM where reading and writing causes no problems.  When the read/write test fails, it is assumed that RAM does not exist, and the PFS_ERR_DEVICE error is returned.
+
+
+
+3. The procedure for recognizing multiple types of paks
+
+   The procedure for recognizing paks when more than one type of pak is used (for example when both the Controller Pak and the Rumble Pak are used in a game) has been changed.  The modified procedure is shown below: 
+
+                   osMotorInit()
+                        |
+                        |
+          +-------------+
+          |ret = 0      |ret = PFS_ERR_DEVICE
+          |             |
+          |             |                                
+      Rumble Pak   osPfsInitPak()
+                        |
+                        |
+          +-------------+-----------------------+
+          |ret = 0      |ret = PFS_ERR_DEVICE   |ret = PFS_ERR_ID_FATAL
+          |             |                       |
+          |             |                       |
+     Controller     Other device          Since the ID area is destroyed,
+        Pak       (64GB Pak, etc.)        repair after checking with the user
+                                                  osPfsRepairId() 
+
+
+4. Caution
+
+  When multiple paks are used, be sure to repair the ID area with the osPfsRepairId() function right after calling osPfsInitPak().  Even if osPfsInitPak() is called first, the ID cannot be repaired once osMotorInit()or some other function is called to initialize some other pak.
+
+   Incidentally, the same holds true for other pfs functions, and not just for the osPfsRepairId() function. A PFS_ERR_INVALID error will occur because the contents of the OSPfs structure will be rewritten for the Rumble Pak once the osMotorInit() function is called.  If a pfs function is called after osMotorInit() has been called, please call osPfsInitPak()again.  
+        
+  (Note) You might figure you could eliminate the need to initialize each time by giving every pak type an osPfs structure for use with those pak functions.  But please do not do this, because it could have unexpected effects.  Please make sure to call the corresponding initialization function every time the pak is changed.

@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Programming Cautions (12) Capacity of the RDRAM</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<A name="top"></A><h2>Capacity of the RDRAM</h2>
+<ul>
+<li><a href="#1">12-1  RDRAM Capacity (Required)</a>&nbsp;<IMG src="../../gif/update98.gif">
+</ul>
+
+<hr>
+
+<a name="1"></a><h3>12-1  RDRAM Capacity (Required)&nbsp;<IMG src="../../gif/update98.gif"></h3>
+
+<b>Caution</b><br>
+Game software using the Memory Pak must use the osGetMemSize() function to determine the size (in bytes) of the installed main memory (DRAM). Games must only attempt to read or write within the boundary specified by this function.
+
+<p>
+<b>Discussion</b><br>
+The default N64 main memory size is 4 MB. However, with the Memory Pak, the N64 can have 8 MB of main memory.  The osGetMemSize() function alters the expansion area but does not alter the original 4 MB N64 area. Therefore, the expansion area should not be used until this function is called to confirm that a Memory Pak is present.
+
+<p>
+<b>Note: Games which do not use the 4 MB Memory Pak must still operate when the 4 MB Memory Pak is installed in the Control Deck.</b>
+
+<p align="right">
+<a href="#top"><img src="../../gif/index.gif" height="17" width="65" border="0"></a>
+</p>
+
+<hr>
+&copy; 1999 Nintendo of America Inc.
+<br>Release Date: March 1999
+
+</body>
+</html>

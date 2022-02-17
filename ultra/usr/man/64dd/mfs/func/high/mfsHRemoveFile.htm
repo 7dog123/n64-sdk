@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHRemoveFile</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHRemoveFile</h1>
+
+<hr>
+
+<p><strong>Format:</strong> mfsHRemoveFile(const u8* path)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Path name</p>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong> Deletes file</p>
+
+<p><strong>Description:</strong> This function deletes the file specified by path.  If the file is opened, it must be closed before it is deleted.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO		Normal termination 
+MFS_ERR_DEVICE		Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT		Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.
+MFS_ERR_NOTFOUND	File not found
+			The file was not found, or the directory was not found.</pre>
+
+<hr>
+</body>
+</html>

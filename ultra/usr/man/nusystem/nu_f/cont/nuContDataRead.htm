@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContDataRead</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContDataRead(void)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Reads the Controller data</strong></p>
+
+<p>Reads the Controller data from the application via the Controller Manager.
+</p>
+
+<p>For NuSystem, the Controller Manager reads the Controller data at retrace time, but this function can be used to read the data from the application at any arbitrary time.
+</p>
+
+<p>The program does not return from this function until all of the Controller data has been read.  It takes around 2ms to read the Controller data.  The data is read into the internal buffer of the Controller Manager.  The application obtains the data with the nuContDataGet function.  If you want to perform an asynchrounous read, please use the nuContDataReadStart function.
+</p>
+
+<hr>
+
+<pre>Reference:	<a href="nuContDataGet.htm">nuContDataGet</a>, <a
+href="nuContDataReadStart.htm">nuContDataReadStart</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

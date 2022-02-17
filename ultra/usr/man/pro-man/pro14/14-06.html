@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 14</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro14/index14.5.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro14/index14.7.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Color Index Frame Buffer</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+You might have noticed that one of the <I>color</I>  image types that is available is the 8-bit I type.  You can use this mode to render color index images into the framebuffer.  Before displaying the 8-bit image, however, you must read the 8-bit image into Tmem and dereference into a 16-bit RGBA image.  Note that the 8-bit frame buffer can share the same memory as the 16-bit frame buffer by placing the 8-bit buffer in the high half of the 16-bit buffer.This technique can give better performance than rendering directly to a 16-bit framebuffer because the memory accesses are more efficient.  Also, the initial clear of the framebuffer is faster because the buffer is half the size.
+
+<p>
+There are, however, restrictions when using this technique.  Since we are rendering an 8-bit CI image, you must texture map objects with 8-bit CI textures (but don’t dereference yet) and use shade colors that fit into your palette. You cannot filter the textures since the texture values in the pipeline are indices.  You also cannot blend with memory colors (unless your palette is laid out specifically to allow this), although you can achieve cut-out type transparency.  Antialiasing is also not available for this framebuffer type, because no coverage is stored. 
+
+<p>
+These restrictions sound severe, but may be practical for some sprite games, especially those that use sort priority and can render totally in copy mode.  In copy mode (and 1 or 2-cycle mode)  you can get cut-out transparency by using the alpha compare logic and reserving an index (0 is a good choice) that indicates transparency.  If the index 0 means transparent, then setting the blend alpha to 1 and enabling alpha compare (G_AC_THRESHOLD) would allow all pixel with any index greater than or equal to 1 to be written to the framebuffer but pixels with index 0 would not be written.
+
+
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

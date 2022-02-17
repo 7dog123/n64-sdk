@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 11</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro11/index11.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro11/index11.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Matrix State</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+The “geometry engine” in the RSP implements a fixed-point matrix engine with the following matrix state:
+<ul>
+<li>A 10-deep modeling matrix stack. New matrices can be loaded onto the stack, multiplied with the top of the stack, popped off of the stack, etc.  This matrix stack is primarily used for manipulating objects within the world coordinate system (often combinations of rotations, translations, and sometimes scales).
+<P>
+<li>A 1-deep projection and viewing matrix “stack”. New matrices can be loaded onto the stack, multiplied with the top of the stack, but cannot be pushed or popped.  This matrix “stack” is primarily used for the projection matrix and the viewing matrix.  The projection matrix (often created with the guPerspective or the guOrtho functions) is loaded onto the stack, and then the viewing matrix (often created with the guLookAt function) is multiplied on top of it.
+<P>
+<li>A “perspective normalization” factor. This is used to improve precision of the fixed-point perspective computation.</ul>
+<P>
+When a group of vertices is loaded, they are first transformed by the matrix MP (the current top of the modeling stack multiplied by the projection matrix). All vertex transformations are done only when they are loaded; sending a new matrix down later will not change any points already in the points buffer.
+<P>
+The modeling matrix stack resides in DRAM. It is the application’s responsibility to allocate enough memory for this stack and provide a pointer to this stack area in the task list.
+<P>
+The format of a matrix is a bit unusual. It is optimized for the RSP’s vector unit (used during the multiplies and transformations.) This format groups all of the integer parts of the elements, followed by all of the fractional parts of the elements. This unusual format is not exposed to the user, unless he/she chooses not to use the matrix utilities in the libraries.
+<P>
+<a name="01"></a>
+<b>Insert a Matrix</b>
+<br>
+Inserts a new matrix into the display list.
+<P>
+<b>Table 1</b> &nbsp;gsSPMatrix(Mtx *m, unsigned int p)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">m</td>
+<td width=70% valign="top"><font face="arial" size="-1">pointer to the new matrix</td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">p</td>
+<td width=70%><font face="arial" size="-1">G_MTX_MODELVIEW or G_MTX_PROJECTION,<br>
+G_MTX_MUL or G_MTX_LOAD,<br>
+G_MTX_PUSH or G_MTX_NOPUSH</td>
+</tr>
+</table>
+ 
+
+<P>
+<a name="02"></a>
+<b>Pop a Matrix</b>
+<br>
+This command pops the matrix stack.
+<P>
+<b>Table 2</b> &nbsp;gsSPPopMatrix(unsigned int n)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30%><font face="arial" size="-1">n	 </td>
+<td width=70%><font face="arial" size="-1">unused</td>
+</tr>
+</table>
+<P>
+
+<a name="03"></a>
+<b>Perspective Normalization</b>
+<br>
+This scale value is used to scale the transformed <i>w</i> coordinate down, prior to dividing out <i>w</i> to compute the screen coordinates (which are similarly scaled). The effect of this is to maximize the precision of this divide.
+<P>
+The library function <i>guPerspective( )</i>&nbsp;returns one approximation for this scale value, which is a good estimate for most cases:
+
+<P>
+<a name="fig11-2"></a>
+<b>Figure 11.3.1</B> &nbsp;Perspective Normalization Calculation
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro11/gif/f11-02.gif"></tr></td></table>
+<P>
+
+<b>Table 3</b>&nbsp;gsSPPerspNormalize(unsigned short int s)
+<br>
+<table border=1 cellspacing="3" cellpadding="3" width="60%">
+<tr>
+<td width=30%><font face="arial" size="-1"><b>Parameter</td>
+<td width=70%><font face="arial" size="-1"><b>Values</b></td>
+</tr>
+<tr>
+<td width=30% valign="top"><font face="arial" size="-1">s</td>
+<td width=70%><font face="arial" size="-1">16-bit unsigned fractional perspective normalization scale</td>
+</tr>
+</table>
+<P>
+ 
+
+<a name="04"></a>
+<b>Note on Coordinate Systems and Big Numbers</b>
+<br>
+The RSP is a fixed point machine, so keeping coordinate systems within a certain range is important.  If numbers in the final coordinate system (or intermediate coordinate systems) are too big, then the geometry of objects can be distorted, textures can shift erratically, and clipping can fail to work correctly.  In order to avoid these problems keep the following notes in mind:
+<ol>
+<li>No coordinate componant (x, y, z, or w) should ever be greater  than 32767.0 or less than -32767.0
+<P>
+<li>The difference between any 2 vertices of a triangle should not have any componants greater  than 32767.0
+<P>
+<li>The sum of the difference of w’s of any 2 vertices plus the sum of the differneces of any  of the x, y, or z componants should be less than 32767.0.  In other words for any 2 vertices in a triangle, v1=(x1,y1,z1,w1), and v2=(x2,y2,z2,w2), these should all be true:</ol>
+<pre><font face="courier" size=3>              abs(x1-x2) + abs(w1-w2) &#060 32767.0
+              abs(y1-y2) + abs(w1-w2) &#060 32767.0
+              abs(z1-z2) + abs(w1-w2) &#060 32767.0</pre></font>
+<P>
+<br>
+One way to check this is to take the largest vertices that you have and run them throught the largest matrices you are likely to have, then check to make sure that these conditions are met.
+<P>
+A reccommended way of avoiding trouble is to never allow any componant to get larger than 16383.0 or smaller than -16383.0.  To ensure this find:<ul>
+<li>M = the largest componant (x, y, or z) of the largest model in your database.
+<P>
+<li>S = The largest scale  (ie number in the upper 3 rows of the matrix) in the matrix made up of the concatenation of the largest modeling matrix, the largest LookAt matrix, and the largest Perspective matrix you will use.
+<P>
+<li>T = the largest translation (ie number in the 4th row of the matrix) in the matrix made up of the concatenation of the largest modeling matrix, the largest LookAt matrix, and the largest Perspective matrix you will use.</ul>
+
+<P>
+Now  M * S + T &#060 16383.0 should be true.  If you experience textures wobbling or shifting over a surface, clipping not working correctly, or geometry behaving erratically, this is a good place to check.
+<P>
+<a name="05"></a>
+<b>A Few Words About Matrix Precision</b>
+<br>
+The RSP uses fixed-point 32-bit multiplies during matrix operations. Since the product of two 32-bit numbers is a 64-bit number, only the middle 32 bits of the answer is retained. Overflow of intermediate terms is possible, especially in large coordinate systems or unusual projection matrices.
+<p>
+In order to avoid fixed-point precision problems, in some cases it may be desirable to compute the matrix in floating point on the R4300 and just load it.
+<P>
+Matrix multiplies are very fast on the RSP, but they are not free. If possible, reduce matrix operations by pre-multiplying the matrices at modeling time or compile time.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+ Volume in drive C is KAY DAYSS  
+ Volume Serial Number is 2347-0ED2
+ Directory of C:\0_Nintendo\ManPages\gdp
+
+GDPLOA~5 HTM         1,696  05-13-97 11:08p gDPLoadTLUT_palGROUP.html
+GDPSE~27 HTM         1,490  05-13-97 11:14p gDPSetHiliteGROUP.html
+GDPLOA~7 HTM         7,366  05-13-97 11:09p gDPLoadTexGROUP.html
+GDPSE~30 HTM         2,690  05-13-97 11:14p gDPSetGROUP.html
+SYNCGR~1 HTM         2,278  05-13-97 11:16p SyncGROUP.html
+GDPCOL~2 HTM         6,182  05-13-97 11:12p gDPColorGROUP.html
+         6 file(s)         21,702 bytes
+         0 dir(s)      80,379,904 bytes free

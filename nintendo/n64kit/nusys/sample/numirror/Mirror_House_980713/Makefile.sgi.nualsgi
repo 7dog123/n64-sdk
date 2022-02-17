@@ -1,0 +1,92 @@
+#!smake -k
+#=======================================================================#
+#		Mirror_House						#
+#		Makefile						#
+#									#
+#		Copyright (C) 1997,1998, NINTENDO Co,Ltd.		#
+#									#
+#-----------------------------------------------------------------------#
+
+include $(ROOT)/usr/include/make/PRdefs
+
+# The directory which has include files and library of NuSYSTEM
+#
+N64KITDIR    = /usr/local/n64kit
+NUSYSINCDIR  = $(N64KITDIR)/nusys/include
+NUSYSLIBDIR  = $(N64KITDIR)/nusys/lib
+NUSTDINCDIR  = $(N64KITDIR)/nustd/include
+NUSTDLIBDIR  = $(N64KITDIR)/nustd/lib
+INCLUDEPR    = $(ROOT)/usr/include/PR
+LIBDIR       = ./Lib
+USR_INC      = ./Include
+
+APP =		prev
+
+NUAUDIOLIB   = -lnualsgi_n -ln_audio
+
+OPTIMIZER =	-g
+
+TARGETS =	rom
+
+CODEFILES   =	main.c \
+		expad.c \
+		gfx.c \
+		om_camera.c \
+		om_eval_draw.c \
+		om_char_entry.c \
+		om_common.c \
+		om_func.c \
+		om_bg_entry.c \
+		om_cornfrake.c \
+		om_game_main.c \
+		om_mychar.c \
+		om_goal.c \
+		om_game_over.c \
+		om_audio.c \
+		om_title.c \
+		om_title_param.c \
+		om_rom_data_read.c \
+		om_select_chara.c \
+
+CODEOBJECTS =	$(CODEFILES:.c=.o) $(NUSYSLIBDIR)/nusys.o
+
+CODESEGMENT =	codesegment.o
+
+OBJECTS =	$(CODESEGMENT)
+
+AUDIODEFS =	-DNUALSGI -DN_AUDIO
+
+LCDEFS =	-DF3DEX_GBI_2 $(AUDIODEFS)
+
+LCINCS =	-I$(INCLUDEPR) -I$(NUSYSINCDIR) -I$(NUSTDINCDIR) -I$(USRINCDIR) -I$(USR_INC)
+LCOPTS =	-fullwarn -wlint,-f -woff 813,819,826,827,852 -non_shared -G 0
+
+USR_LIB = -lreschar -lresbg -lnd
+
+LDFLAGS =	$(MKDEPOPT) -nostdlib -L$(LIBDIR) -L$(ROOT)/usr/lib -L$(NUSYSLIBDIR) -L$(NUSTDLIBDIR) $(USR_LIB) $(NUAUDIOLIB) -lnusys -lnustd -lultra_d
+
+LDIRT  =	$(APP)
+
+DEPENDFILE =    Makedepend
+
+default:	$(TARGETS)
+
+#include $(COMMONRULES)
+
+$(CODESEGMENT):	$(CODEOBJECTS)
+	$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
+
+rom $(APP):	spec.nualsgi $(OBJECTS) $(MAKEROM)
+	$(MAKEROM) -o -r rom -I$(NUSYSINCDIR) spec.nualsgi
+#	$(MAKEROM) -o -s 9 -r rom -I$(NUSYSINCDIR) spec
+#	makemask rom
+
+clean:
+	rm -f *.o
+	rm -f rom
+	rm -f overlay
+
+depend:
+	makedepnd -f$(DEPENDFILE) *.c
+
+# DO NOT DELETE

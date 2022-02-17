@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetDestination</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetDestination<br>
+mfsRamGetDestination</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetDestination(void)
+	s32 mfsRamGetDestination(void)
+Arguments:	None
+Return value:Destination code (a negative value is an error)
+Function:	Obtains destination code
+Description:	This function obtains the destination code.
+The destination codes are as follows.
+
+	MFS_DESTINATION_JAPAN	0	Japan-oriented
+	MFS_DESTINATION_US	1	US-oriented
+
+Main errors:
+	MFS_ERR_NOTMFSDISK Not an MFS-format disk 
+                          The disk ID's disk use is not 1, or the header is different. 
+	MFS_ERR_VERSION	Different version disk </pre>
+</body>
+</html>

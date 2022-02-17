@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 4</title>
+</head>
+<body bgcolor="#FFFFFF">
+<table border=0><tr><td><a target="_top" href="../pro04/index4.7.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro05/index.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+<font face="arial" color="#29296b"><b>GameShop Debugger</font></b>
+
+<P>
+<a name="01"></a>
+<font face="arial" size="-1" color="#000000">
+<b>WorkShop Debugger Heritage</b>
+<BR>
+The GameShop debugger (gvd) derived its heritage from the Silicon Graphics WorkShop application development tools. It is a source level windowing debugger environment that enables debugging of both the CPU and RSP software.
+<P>
+<a name="02"></a>
+<b>Debugger Components</b>
+<br>
+The debugger is actually composed of several different components shown in Figure 4.8.1, below.
+<P>
+There are two debugging paths. The first path is a C source level windowing debugger, gvd, which has most of the features of common multi-threaded debuggers. It talks to dbgif, which interfaces to the rmon debug thread through the Nintendo 64 device driver in IRIX.
+<P>
+The second path is the popular printf traces within the application. rmonPrintf() display the messages in the shell that executed dbgif.
+
+<P>
+<b>Figure 4.8.1</B> &nbsp;Debugger Components
+<p>
+<table border=0 align="center">
+<tr><td>
+<img border=0 align="center" src="../pro04/gif/f04-05.gif"></tr></td></table>
+<P>
+
+The rmon debugger thread is actually a high-priority thread in the game application and uses many operating system resources. Therefore, the debugger and rmonPrintf cannot be used to debug system-level code.
+<P>
+For information on using GameShop Debugger please see <a target="_top" href="../pro23/index23.1.html"> Section 23, “GameShop Debugger.”</a>
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

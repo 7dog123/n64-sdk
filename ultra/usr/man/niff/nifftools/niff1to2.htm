@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="Author" content="Yoshino Hiroshi">
+   <title>niff1to2</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B"
+alink="#FF0000">
+
+<h1>niff1to2</h1>
+
+<p><font color="#FF0000">Converts NIFF text to binary
+</font></p>
+
+<h3>Syntax</h3>
+
+<blockquote>
+    niff1to2 input-file output-file
+</blockquote>
+
+<h3>Explanation</h3>
+
+Reads the NIFF1.0 file input-file and outputs it to the NIFF2.0 file output-file.
+NIFF1.0 files can be converted to NIFF2.0 files.
+<p>The expanded data and the newly established List of NIFF2.0 are supplemented.  Unnecessary elements among the data are left blank, while important elements are made the appropriate default values.  The supplemented List comprises just the header part and contains no node data.
+
+<p>NIFF2 tools like <a href=../niff2nvf/index.htm>niff2nvf</a> can handle NIFF1.0 data as well as NIFF2.0 data, so this conversion process is not necessary.  However, if you do not have a tool that can output NIFF2.0, you can use this command when you create test data by hand from NIFF1.0 data.
+
+<h3>Notes</h3>
+If there are errors in the data list, sometimes the conversion cannot be performed.<br>
+
+<h3>See also</h3>
+<a href="nb2nt.htm">nb2nt</a>
+
+<hr>
+<font size=-1>
+Copyright 1998-1999 NINTENDO Co.,Ltd./1998-1999 MONEGI CORPORATION All rights reserved.
+</font>
+
+<div align=right><a href="index.htm"><img SRC="../../gif/index.gif" BORDER=0></a></div>
+</body>
+</html>

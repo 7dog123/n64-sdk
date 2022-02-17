@@ -1,0 +1,720 @@
+<html>
+<title>NIFF Editor 2.01 for SGI</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+
+<h3>NIFFeditor 2.01 for SGI</h3>
+
+<h2>1. Revision History</h2>
+
+<P><A HREF="../indexsgi.htm"><IMG SRC="../../../gif/index.gif" ALT="Index" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+<A HREF="../indexsgi.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+<A HREF="start.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A></P>
+
+
+<FONT SIZE=-1 FACE="Arial,Helvetica"><P>In order to expand functionality in the future, development is ongoing. Consequently, when a newer version appears, an online HTML manual and a revision history will be provided to facilitate a smooth transition to the new functions.</P>
+
+<P>When NIFFeditor is upgraded, view the Revision History first. The Revision History describes new functions added to NIFFeditor and important changes in operation.</P>
+
+<P>Below is an outline of all the functions that have been added and the issues that have been resolved through the present version of NIFFeditor.</P></FONT>
+
+
+<table width="100%" cellspacing="0" cellpadding="2">
+<tr bgcolor="#939AF0"> <font face="arial" size="-1">
+<th nowrap><font face="arial" size="-1"  color="#000000">Version</font></th>
+<th nowrap><font face="arial" size="-1" color="#000000">  Date</font></th>
+<th nowrap colspan="2"><font face="arial" size="-1"  color="#000000">Changes</font></th>
+</tr>
+
+<TR VALIGN=TOP>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">2.01</FONT></TD>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">1999/1/20</FONT></TD>
+<td valign="top" nowrap> - </td>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">Settings for mat_type and mat_type_for_fog can be set separately using the Mat node.</FONT></TD>
+</TR>
+
+<TR VALIGN=TOP>
+<TD ROWSPAN=6><FONT SIZE=-1 FACE="Arial,Helvetica">2.0</FONT></TD>
+<TD ROWSPAN=6><FONT SIZE=-1 FACE="Arial,Helvetica">1999/1/15</FONT></TD>
+<td valign="top" nowrap> - </td>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">Support for NIFF 2.0</FONT></TD>
+</TR>
+
+<TR VALIGN=TOP>
+<TD> - </TD>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">The startup script filename has been changed from "ne" to "ne2", and the NIFFeditor program filename has been changed from "niffeditor" to "niffeditor2". NIFF 1.0 files are compatible with versions of NIFFeditor up to and including version 1.35, and may be used with the old startup script ("ne") and program ("niffeditor").</FONT></TD>
+</TR>
+
+<TR VALIGN=TOP>
+<TD> - </TD>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">New NIFF2tool menu has been added.</FONT></TD>
+</TR>
+
+<TR VALIGN=TOP>
+<TD> - </TD>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">The number of displaying nodes has been increased to support the nodes added in NIFF 2.0.</FONT></TD>
+</TR>
+
+<TR VALIGN=TOP>
+<TD> - </TD>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">The node setting dialogue box has been modified to support the nodes added in NIFF 2.0.</FONT></TD>
+</TR>
+
+<TR VALIGN=TOP>
+<TD> - </TD>
+<TD><FONT SIZE=-1 FACE="Arial,Helvetica">The N64 menu is disabled while reading a NIFF 2.0 file.</FONT></TD>
+</TR>
+
+<tr>
+<td valign="top" nowrap rowspan="5"><font face="Arial" size="-1" color="000000">1.3.5</td>
+<td valign="top" nowrap rowspan="5"><font face="Arial" size="-1" color="000000">1998/10/19</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem with the texture animation process where a NIFF file could not be read.</td></tr>
+
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The version of niff2gfx/n64prev became 1.3.5</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Updated the NIFF Editor Online Manual to reflect changes/additions to the software.</tr></td>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Set DITHER_FILTER_ON as the initial-value by the video mode.</tr></td>
+
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000"><b>Note:</b> The Previewer supports F3DEX2, but NIFFeditor and the converter do not.  Since NuSystem needs to be re-compiled, it is not realistic to switch between microcodes.  When this release version is installed, it is set for F3DEX as the default.  If you want to preview for F3DEX2 from NIFFeditor, compile NuSystem for F3DEX2 and change GBI = F3DEX_GBI to GBI = F3DEX_GBI_2 in Makefile and Makefile.win in the n64prev directory.</td></tr>
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1.3.4</td>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1998/10/9</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The version of niff2gfx/n64prev became 1.3.4</td></tr>
+
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Resolved an issue where Quick Preview didn't always operate properly.</tr></td>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The error in the description of the spec file regarding F3DEX2 was fixed.</tr></td>
+
+
+
+
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1.3.3</td>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1998/10/1</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The version of niff2gfx/n64prev became 1.3.3</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports camera animation.</tr></td>
+
+
+<tr>
+<td colspan=4></td>
+</tr>
+
+
+
+<tr>
+<td valign="top" nowrap rowspan="1"><font face="Arial" size="-1" color="000000">1.32.2</td>
+<td valign="top" nowrap rowspan="1"><font face="Arial" size="-1" color="000000">1998/9/9</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Replaced the [Preview] tab with [Quick Preview] under the [Option] selection for the English version of NIFF Editor.</td>
+</tr>
+
+
+<tr>
+<td colspan=4 bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1.32.1</td>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1998/9/7</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem with the exception error occurring when Quick Preview is used with multiple start up, but not with the the original start up.</td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">When Quick Preview is used continuously, IS_VIEWER64 is no longer recognized. The problem was corrected so that the NIFF Editor processing is delayed until the Quick Preview process is completed.</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">NIFF Editor cannot be controlled until a file is completely sent to IS-VIEWER 64  (which takes only a few seconds.)</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed the error on how to exit, from the "STARTING AND EXITING" Help file.</td>
+</tr>
+
+<tr>
+<td colspan=4 bgcolor="gray"></td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap rowspan="7"><font face="Arial" size="-1" color="000000">1.32</td>
+<td valign="top" nowrap rowspan="7"><font face="Arial" size="-1" color="000000">1998/8/28</td>
+<td valign="top"> - </td>
+<td><font face="Arial" size="-1" color="000000">Support for Quick Preview</td>
+</tr>
+
+<tr><td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000"><b>Note:</b> If using IS-VIEWER, please obtain the new version of nload that does not require makemask.</td></tr>
+
+<tr><td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">niff2gfx/n64prev version changed to 1.32.</td></tr>
+
+<tr><td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Supports the -noreduct option of niffgfx.</td></tr>
+
+<tr><td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">To support the new version of nload on IS-VIEWER, makemask is not performed during a the standard preview.
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Divided installer into NIFF Editor and N64 Previewer, and enabled specification of the install directory for each.</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Checks for the presence of a file when a new file is opened.</td>
+</tr>
+
+<tr>
+<td colspan=4 bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="1" color="000000"><font face="Arial" size="-1">1.31</td>
+<td valign="top" nowrap rowspan="1" color="000000"><font face="Arial" size="-1">1998/7/16</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.3.1.  NIFF Editor does not differ from ver. 1.30B except in version number.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1.30B</td>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1998/7/3</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that caused mat_color_type0, mat_color_type1  mat_alpha_type0, and mat_alpha_type1 to be checked despite MAT_CC_NIFF_NONE, when the "Use NIFF color combiner" box was checked in the "Type" tag, in the "Material Node Properties" dialog.  Also corrected a problem where MAT_CC_NIFF_NONE was not set when all the items were unchecked.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem where MAT_CC_NIFF_NONE was not set when the "Use NINTENDO64 color combiner" box was checked in the "Type" tag in the "Material Node Properties" dialog, when "None" was set for the color combiner.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1.30A</td>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1998/7/2</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed a problem which caused the system to reference local_light_index link destinations when MAT_SHADE_LIGHT_LOCAL was set in mat_shade_type in the Mat node.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed the software so that when a NIFF file with a wrong Name area size is read, the size is automatically recalculated without first displaying a warning message and prompting whether it is OK to recalculate.  The warning message has also been deleted from the manual.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed the software so that when a link cannot be found, an error message is displayed and the read process continues. Prior to this change, when a link could not be found, it was treated as an error and the read process was interrupted.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1.30</td>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1998/6/30</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented niffkit version 1.3.0</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The editor no longer terminates when a file write error occurs.</td></tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The Preview Type setting is gone. Manipulations are now done on the Previewer.</td></tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="5"><font face="Arial" size="-1" color="000000">1.23</td>
+<td valign="top" nowrap rowspan="5"><font face="Arial" size="-1" color="000000">1998/6/29</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem so that a Part node is now correctly pasted into a Shape node.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added help for the Collision node.</td>
+</tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Since the list displays (located in the left-side pane of NIFF Editor and in the "LOD" tab of the LOD Node Properties dialog) cannot be sorted, the column headers of these lists now cannot be clicked.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The position of the tool bar can now be saved.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">When clicking Browse in the Options dialog box, the Open File dialog now displays the files in the directory that was specified in the Option dialog.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1.22</td>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1998/4/1</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected inability to save NIFF files containing Collision data.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Help is now displayed using the F1 key. Prior to this change, selecting F1 resulted in a Windows Help error being displayed.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="5"><font face="Arial" size="-1" color="000000">1.21</td>
+<td valign="top" nowrap rowspan="5"><font face="Arial" size="-1" color="000000">1998/3/17</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a FAQ to Help</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Established an online support address for the English version of NIFF Editor.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a Light Type tab to the Light Node Properties dialog.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added tabs for Animation Type and Frame Rate to the Animation Node Properties dialog.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem so that when a node is deleted the child nodes can be deleted.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="16"><font face="Arial" size="-1" color="000000">1.20</td>
+<td valign="top" nowrap rowspan="16"><font face="Arial" size="-1" color="000000">1998/3/10</td>
+
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added support for Cut & Paste, and Drag & Drop of nodes between NIFF Editors.</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added the menu (View-->Display Texture Image) to view texture data on the Tex node.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The View-->Default menu is now effective.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Support for changes in niff2gfx options (-vtxseg, -imgseg, -tlutseg, -strictcidx, -outmask, -preview)</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">OD data can now be viewed</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected problem that occurred when a link was added from Mat to Tex.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem with incorrect saving of light data when there were multiple DirLight in one Light area.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Object node LOD levels are now displayed under the LOD node and LOD values can be edited.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Unlinked nodes are displayed under Free Nodes.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Same child nodes cannot link to parent node.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">When a NIFF file with an incorrect Name area size is read, a warning message is displayed asking whether the size should be recalculated.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that prevented a right-click selection of nodes other than the currently selected node in Tree View.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that caused an error to occur when attempting to read a nonexistent file, and an exception error to occur when an second attempt was made.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">When a read failure occurs for a NIFF file, a new file document is prepared, but no redrawing is performed at that time.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">An error is displayed when a NIFF file is read but a linked node does not exist.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.2.6</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1.11</td>
+<td valign="top" nowrap rowspan="3"><font face="Arial" size="-1" color="000000">1997/12/25</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed icons. However, large icons are just small icons enlarged. These will be changed later.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added Convert and Preview buttons to the Tool Bar.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem of information protruding past the desktop when Maximized.</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="18"><font face="Arial" size="-1" color="000000">1.10</td>
+<td valign="top" nowrap rowspan="18"><font face="Arial" size="-1" color="000000">1997/12/19</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem so that when Object node links are changed, the new node index is stored in obj_parent_link of the CObj area.</td>
+</tr>
+
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Editing is now possible for cam, env, light, anim, and part nodes.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Editing is now possible for name of scene, obj, shape, mat, and tex.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">New links can now be created.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Made host-side transfers possible with obj-shape, obj-anim, obj-mat, part-mat, scene-obj, obj-obj, and mat-tex links.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Supported the increase in niff2gfx options.  However, @frame is not supported.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added [Edit]-[Delete Link] menu.  It is now possible to delete links.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Made it impossible to change scene-cam, scene-env, and shape-part links.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed a problem with other node settings being changed when numerous node dialogs are opened and some setting is changed.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">A Busy Dialog now appears when the preview command is input. However, it will take time to preview.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">A Warning Dialog now appears when an error occurs during preview.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The [Edit]-[EditFlags] menu has been eliminated.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that allowed Property selection even when nothing is displayed in the right-side window.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Removed IS-VIEWER64 NLOAD.EXE, (used when previewing) from the Setup file and changed NIFFPREV.BAT so that it references the NLOAD.EXE already set in the user's environment.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Updated Help</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed Menu characters.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added support for "Change Node Name" in the Pop-Up Menu.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.1.0</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1.05</td>
+<td valign="top" nowrap rowspan="4"><font face="Arial" size="-1" color="000000">1997/12/8</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added support for the Properties "Help" button.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a Set Loop Number item to the Animation Node Properties dialog.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">NIFF Editor now starts when a file with the .nif extension is double-clicked in Explorer.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.0.4c</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="8"><font face="Arial" size="-1" color="000000">1.04</td>
+<td valign="top" nowrap rowspan="8"><font face="Arial" size="-1" color="000000">1997/12/1</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a function to check size of each node when a NIFF file is read.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that caused a window to be displayed in the default size at startup, but resized every time after that.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added functions to save and restore to the location of the divider bar and the List View style. </td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added Help.  Cannot be used for Properties help and situation-dependent help.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added Environment Node, Camera Node and Light Node properties. Also changed the messages for some of the other properties. </td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that caused the incorrect display of Material primitive colors and other "float"-type data.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem so that input numeric values are now accurately reflected in the Property data.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.0.4</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1.03</td>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1997/11/18</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem so that Highlight and Reflect can now be deleted together in the Material property settings.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.0.4</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1.02</td>
+<td valign="top" nowrap rowspan="12"><font face="Arial" size="-1" color="000000">1997/11/17</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed the Preview's work file settings dialog.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem that caused the program to crash when something from some other Drag & Drop application was dropped into NIFF Editor.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">The NIFF file's update status is displayed in the Status Bar.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">A message box is displayed when a NIFF file is updated and when the New, Save, and Save As commands are executed from the File menu.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem with the program crashing when using the IntelliMouse wheel with NIFF Editor running under the Windows 95 environment.  The current version does not support the IntelliMouse.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added function to add and delete node names.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Check node name character input range.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Check numeric input range for primitive colors in the material properties.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Corrected a problem so that the NIFF Editor window is redrawn at the time of Convert and Preview.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Deleted the Preview File specification from the Preview Options, as data transfers to IS-VIEWER64 for preview have been made separate process.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added functions to save and restore window positions and tool options.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.0.3b</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="8"><font face="Arial" size="-1" color="000000">1.01</td>
+<td valign="top" nowrap rowspan="8"><font face="Arial" size="-1" color="000000">1997/10/9</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added an Options command to the Tool Menu, enabling file settings for Convert and Preview.</td>
+</tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Registered to BBS.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Fixed problem with links "dropping" when double-clicked.</td></tr>
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Designed the Select File dialog for SGI.</td></tr>
+
+
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added functions to check version and tags when a NIFF file is read.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added a function to create a new NIFF file.  However, there is no support for Drag & Drop from other NIFF files, so the user cannot edit from the new file into a NIFF file being used.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Countered the problem of the screen image remaining after a file read failure, such as an attempt to open a nonexistent file.</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Implemented convkit version 1.0.3</td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1.00A</td>
+<td valign="top" nowrap rowspan="2"><font face="Arial" size="-1" color="000000">1997/10/6</td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Changed the default directory for preview files to c:\nintendo\n64kit\niff\n64prev</td>
+</tr>
+<tr>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Added niffconv.bat and niffprev.bat to c:\nintendo\n64kit\niff\n64prev</font></td>
+</tr>
+
+<tr>
+<td colspan="4" bgcolor="gray"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap><font face="Arial" size="-1" color="000000">1.00</font></td>
+<td valign="top" nowrap><font face="Arial" size="-1" color="000000">1997/10/6</font></td>
+<td valign="top" nowrap> - </td>
+<td><font face="Arial" size="-1" color="000000">Released first version.</font></td>
+</tr>
+</table>
+
+<hr>
+
+<P><A HREF="../indexsgi.htm"><IMG SRC="../../../gif/index.gif" ALT="Index" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+<A HREF="../indexsgi.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+<A HREF="start.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A></P>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION <BR>
+All rights reserved.</font></P>
+
+
+
+</body>
+</html>

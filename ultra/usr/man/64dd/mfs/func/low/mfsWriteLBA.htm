@@ -1,0 +1,16 @@
+Function name:mfsWriteLBA
+──────────────────────────────────────
+Format:	s32 mfsWriteLBA(u32 startLBA, u32 nLBAs, void* buf)
+Arguments:	startLBA	Starting block address
+	nLBAs		Number of blocks
+	*buf		Buffer
+Return value: Error
+Function:	Writes to disk
+Description:	This function writes data to disk in units of LBAs.
+This is an mfsReadWriteLBA macro.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.

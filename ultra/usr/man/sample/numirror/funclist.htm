@@ -1,0 +1,599 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=x-sjis">
+<title>FUNCTION LIST</title>
+
+
+<meta name="Microsoft Theme" content="none"><meta name="Microsoft Border" content="tl, default"></head>
+
+<body style="color: rgb(0,0,0)"text="#000000" bgcolor="#FFFFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%">
+
+</td><td valign="top" width="24"></td><!--msnavigation--><td valign="top">
+
+<p></p>
+
+<p></p>
+
+<p align="center"><big><strong>SAMPLE GAME FUNCTION LIST</strong></big></p>
+
+<p align="left"><big><strong>main.c</strong></big></p>
+
+<p align="left"><big><strong>Primarily, the game title, character select, and game main call-back functions are set in this source file in the order of the program sequence.  </strong></big></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="25%">om_game_main()</td>
+    <td width="50%">Main game processing call-back function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_system_reset()</td>
+    <td width="50%">Processing call-back function on game reset</td>
+  </tr>
+  <tr>
+    <td width="25%">om_game_data_entry()</td>
+    <td width="50%">Game data (3D model maps, etc.) registration processing</td>
+  </tr>
+  <tr>
+    <td width="25%">om_system_heap_memory_init</td>
+    <td width="50%">System heap memory maintenance and initialization processing</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_game_main.c</strong></p>
+
+<p><strong>Primarily, the game's main control functions are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_game_init()</td>
+    <td width="50%">Game data initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_main_end()</td>
+    <td width="50%">Game main end processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_main_control()</td>
+    <td width="50%">Game main processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_cleartime_over_check()</td>
+    <td width="50%">Stage clear time over check function. </td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_clear_time_and_help_num_display()</td>
+    <td width="50%">Stage clear time and help count screen display processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_stage_clear()</td>
+    <td width="50%">Stage clear (goal time) processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_game_over_procedure_and_init()</td>
+    <td width="50%">Function for game's game-over processing and processing to initialize global variables, etc. used in the game</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_mychar.c</strong></p>
+
+<p><strong>The control functions for the main character registered in the game are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_mycharacter_main()</td>
+    <td width="50%">Main character control main processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_mycharacter_init()</td>
+    <td width="50%">Main character data structure initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_myshadowst_init()</td>
+    <td width="50%">Main character's shadow data structure initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_on_walk()</td>
+    <td width="50%">Function for animation processing when main character is walking</td>
+  </tr>
+  <tr>
+    <td width="50%">om_off_walk()</td>
+    <td width="50%">Function for animation off processing when main character stops</td>
+  </tr>
+  <tr>
+    <td width="50%">om_character_cornfrake_get()</td>
+    <td width="50%">Function for collision check between main character and corn flake on map and for taking corn flake </td>
+  </tr>
+  <tr>
+    <td width="50%">om_character_shadow_move()</td>
+    <td width="50%">Main character's shadow movement processing function</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_game_over.c</strong></p>
+
+<p><strong>The processing functions on game over are defined in this source file.</strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_game_over_begin()</td>
+    <td width="50%">Start game over processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_over_main()</td>
+    <td width="50%">Game over main processing function<br>
+    Performs animation processing for main character falling over</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_goal.c</strong></p>
+
+<p><strong>The processing functions for when a game stage is cleared are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_goal_plate_init()</td>
+    <td width="50%">Function to initialize goal plate data near goal on map</td>
+  </tr>
+  <tr>
+    <td width="50%">om_goal_goal_plate_main()</td>
+    <td width="50%">Goal plate rotation processing function</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_rom_data_read.c</strong></p>
+
+<p><strong>The processing functions for loading sprite data displayed in the game title and character selection screens are defined in this source file.</strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_dma_start()</td>
+    <td width="50%">Function to load data from ROM to any RDRAM segment</td>
+  </tr>
+  <tr>
+    <td width="50%">om_select_chara_bg_data_read()</td>
+    <td width="50%">Function to load BG sprite data for character select screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_opening_bg_data_read()</td>
+    <td width="50%">Function to load BG sprite data for opening screen</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_cornfrake.c</strong></p>
+
+<p><strong>The control functions for corn flakes registered in the game are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_cornfrake_main()</td>
+    <td width="50%">Corn flake control main function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_cornfrake_data_init()</td>
+    <td width="50%">Corn flake data structure initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_cornfrake_animation()</td>
+    <td width="50%">Corn flake animation processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_cornfrake_display_check()</td>
+    <td width="50%">Corn flake display/don't display check function</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_eval_draw.c</strong></p>
+
+<p><strong>The functions which perform 3D object frame evaluation and the RSP and RDP initialization functions are defined in this source file.</strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_setup_SP_DP()</td>
+    <td width="50%">RSP/RDP initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_eval()</td>
+    <td width="50%">3D model frame evaluation processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_game_draw3d()</td>
+    <td width="50%">3D model drawing (DL building) processing function</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_char_entry.c</strong></p>
+
+<p><strong>Functions to generate character instance data and to build character control data are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_chara_anim_entry()</td>
+    <td width="50%">Character animation data registration processing main function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_characterst_init()</td>
+    <td width="50%">Character data structure initialization processing</td>
+  </tr>
+  <tr>
+    <td width="50%">om_animation_entry()</td>
+    <td width="50%">Character animation registration processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_characterst_header_init()</td>
+    <td width="50%">Character structure header initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_character_entry()</td>
+    <td width="50%">Character data registration processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_global_resource_list_save()</td>
+    <td width="50%">Processing function to save character resource data to character data structure</td>
+  </tr>
+  <tr>
+    <td width="50%">om_global_instance_list_save()</td>
+    <td width="50%">Processing function to save character instance data to character data structure </td>
+  </tr>
+  <tr>
+    <td width="50%">om_resource_entry()</td>
+    <td width="50%">Character resource data registration processing function</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_bg_entry.c</strong></p>
+
+<p><strong>The functions to display the maze during the game and for collision checks are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_bg_stage_entry()</td>
+    <td width="50%">Game map drawing (DL building) processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_stage_entry_delete()</td>
+    <td width="50%">Delete game map data processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_character_wall_hit_check()</td>
+    <td width="50%">Main processing function for collision check between wall and character on map</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_zone_cordinate_get()</td>
+    <td width="50%">Processing function to get zone coordinates of character on map</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_xz_zone_wall_hit_check()</td>
+    <td width="50%">Function to perform collision check for zone located at XZ coordinates on map.</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_hwall_up_hit_check()</td>
+    <td width="50%">Collision check function for wall located at top of grid</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_hwall_down_hit_check()</td>
+    <td width="50%">Collision check function for wall located at bottom of grid</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_vwall_left_hit_check()</td>
+    <td width="50%">Collision check function for wall located at left of grid</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_vwall_right_hit_check()</td>
+    <td width="50%">Collision check function for wall located at right of grid</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_map_area_culling()</td>
+    <td width="50%">Culling processing function for map divided in area units</td>
+  </tr>
+  <tr>
+    <td width="50%">om_bg_map_zone_culling()</td>
+    <td width="50%">Culling processing function for map divided in zone units</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_audio.c</strong></p>
+
+<p><strong>The audio control processing functions are defined in this source file, divided into the Mus library and the SGI sound library.</strong></p>
+
+<table border="1" width="100%" height="164">
+  <tr>
+    <td width="50%" height="16">om_audio_music_start()</td>
+    <td width="50%" height="16">Audio initialization function (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="16">om_audio_se_start()</td>
+    <td width="50%" height="16">Sound effect playback function</td>
+  </tr>
+  <tr>
+    <td width="50%" height="32">om_stage_cleartime_check_and_music_tempo_change()</td>
+    <td width="50%" height="32">Function to check the stage clear time and change the sequence playback tempo according to the time (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="16">om_audio_seq_palyer_play()</td>
+    <td width="50%" height="16">Sequence player playback function (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="16">om_audio_seq_bank_set()</td>
+    <td width="50%" height="16">Audio data registration function (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_seq_player_seq_stop()</td>
+    <td width="50%" height="10">Stop sequence player function (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_snd_player_snd_stop()</td>
+    <td width="50%" height="10">Stop sound player (sound effect) function (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_snd_player_stop()</td>
+    <td width="50%" height="10">Function to stop all sound players currently playing back (Mus)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_music_start()</td>
+    <td width="50%" height="10">Audio initialization function (SGI)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_se_start()</td>
+    <td width="50%" height="10">Stop sound player (sound effect) function (SGI)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_stage_cleartime_check_and_music_tempo_change()</td>
+    <td width="50%" height="10">Function to check the stage clear time and change the sequence playback tempo according to the time (SGI)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_seq_player_play()</td>
+    <td width="50%" height="10">Sequence player playback function (SGI)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_seq_bank_set()</td>
+    <td width="50%" height="10">Audio data registration function (SGI)</td>
+  </tr>
+  <tr>
+    <td width="50%" height="10">om_audio_seq_player_seq_stop()</td>
+    <td width="50%" height="10">Stop sequence player function (SGI)</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_title.c</strong></p>
+
+<p><strong>The game title control functions are defined in this source file.</strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_title_main()</td>
+    <td width="50%">Title screen call-back function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_init()</td>
+    <td width="50%">Title screen frame buffer initialization function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_end()</td>
+    <td width="50%">Title screen end function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_title_init()</td>
+    <td width="50%">Feed in title screen and read title data processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_title()</td>
+    <td width="50%">Title screen main function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_display()</td>
+    <td width="50%">Draw title screen function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_display_PushStart()</td>
+    <td width="50%">Function to display "Push Start" message in title screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_stream_PushStart()</td>
+    <td width="50%">Effect processing function 1 for "Push Start" message in title screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_stream_PushStart2()</td>
+    <td width="50%">Effect processing function 2 for "Push Start" message in title screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_stream_PushStart3()</td>
+    <td width="50%">Effect processing function 3 for "Push Start" message in title screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_blink_PushStart()</td>
+    <td width="50%">Blink processing function for "Push Start" message in title screen</td>
+  </tr>
+  <tr>
+    <td width="50%">m_title_display_background()</td>
+    <td width="50%">Function to build DL for background sprite drawing in title screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_logo_init()</td>
+    <td width="50%">Logo screen initialization and logo data read processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_logo()</td>
+    <td width="50%">Logo screen main function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_logo_display()</td>
+    <td width="50%">Function to build DL for sprite drawing in logo screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_title_display_texture()</td>
+    <td width="50%">Function to build DL for transparent texture</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_select_chara.c</strong></p>
+
+<p><strong>The Select Character screen control functions are defined in this source file.</strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_select_character_main()</td>
+    <td width="50%">Select Character screen call-back function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_Init()</td>
+    <td width="50%">Select Character screen initialization processing function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_SetCharacterDsp()</td>
+    <td width="50%">Display only character used in Select Character screen flag ON</td>
+  </tr>
+  <tr>
+    <td width="50%">om_EvalPad()</td>
+    <td width="50%">Function for pad IO evaluation processing in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_AnimChara()</td>
+    <td width="50%">Function for character animation processing in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_AttachDeform()</td>
+    <td width="50%">Function for character deformation animation processing in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_CheckAButton()</td>
+    <td width="50%">Function for pad A button evaluation in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_TurnOffCharacter()</td>
+    <td width="50%">Processing function not to display characters other than selected character in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_SetKimeCharacter()</td>
+    <td width="50%">Function for decision pose animation processing for selected character in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_AnimationWait()</td>
+    <td width="50%">Function to set animation time for decision pose animation of selected character in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_AnimationEndWait()</td>
+    <td width="50%">Function to end decision pose animation processing for selected character in Select Character screen</td>
+  </tr>
+  <tr>
+    <td width="50%">om_DrawBG()</td>
+    <td width="50%">Function to build DL for drawing background sprites displayed in Select Character screen</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_camera.c</strong></p>
+
+<p><strong>The camera control functions are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_camera_init()</td>
+    <td width="50%">Set camera data function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_entry()</td>
+    <td width="50%">Function for processing to secure heap area for setting camera data and to set camera data</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_entry_delete()</td>
+    <td width="50%">Release heap area in which camera data have been set</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_perspective_draw()</td>
+    <td width="50%">Function to build scene with perspective projection</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_game_camera_action()</td>
+    <td width="50%">Camera operation function in game main (Camera tracks when main character moves)</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_mode_check()</td>
+    <td width="50%">Evaluate whether camera mode is game mode or help mode</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_ortho_draw()</td>
+    <td width="50%">Function to build scene with orthogonal view</td>
+  </tr>
+  <tr>
+    <td width="50%">om_camera_mode_on_game_view_mode()</td>
+    <td width="50%">Set camera mode to game main mode</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_common.c</strong></p>
+
+<p><strong>The functions which are commonly used in the sample game are defined in this source file. </strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_com_character_cur_instance_change()</td>
+    <td width="50%">Function to set character's current instance pointer</td>
+  </tr>
+  <tr>
+    <td width="50%">om_com_character_globalresource_change()</td>
+    <td width="50%">Change character resource data function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_com_charast_chain_search()</td>
+    <td width="50%">Function to get any OM_CHARACTER_DATA pointer</td>
+  </tr>
+  <tr>
+    <td width="50%">om_com_circle_hit_check()</td>
+    <td width="50%">Calculate distance between character 1 and character 2 and evaluate whether character 1 is touching character 2</td>
+  </tr>
+  <tr>
+    <td width="50%">om_com_memcpy()</td>
+    <td width="50%">Memory copy function</td>
+  </tr>
+  <tr>
+    <td width="50%">om_com_memset()</td>
+    <td width="50%">Memory set function</td>
+  </tr>
+</table>
+
+<p></p>
+
+<p><strong>om_func.c</strong></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">om_expad_lookat_xydeg()</td>
+    <td width="50%">Get angle made by two points</td>
+  </tr>
+  <tr>
+    <td width="50%">om_expad_lookat_xydegf()</td>
+    <td width="50%">Get angle made by two points at floating pointer</td>
+  </tr>
+</table>
+<!--msnavigation--></td></tr><!--msnavigation--></table>
+</body>
+</html>

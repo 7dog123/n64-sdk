@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 20</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro20/index20.4.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro20/index20.6.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+
+<P>
+<b><font face="arial" color="#29296b">MIDI Files</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Sequences can be stored in the game in one of two ways. Either as MIDI file Type 0, or in a compressed MIDI file format. To use MIDI Type 0, save the file as either a Type 0 or Type 1 MIDI file, and then use midicvt. To use the compressed sequence format, save the file as either a Type 0 or Type 1 MIDI file, and then use midicomp.
+
+<P>
+The process for creating MIDI sequence bank files is as follows:
+<ol>
+<li>Create the sequences and save them as MIDI files of either Type 0 or Type 1.
+<P>
+<li>Convert the sequences using either midicvt or midicomp.
+<P>
+<li>Compile the sequences using sbc.
+</ol>
+
+<P>
+The following MIDI messages are supported by both file formats:
+<ul>
+<li>Note on
+<P>
+<li>Note off
+<P>
+<li>Polyphonic key pressure
+<P>
+<li>Midi Controllers:
+<br>
+ — Controller 7: Channel volume<br>
+ — Controller 10: Channel Pan<br>
+ — Controller 64: Sustain<br>
+ — Controller 91: FXMix
+<P>
+<li>Program Control changes 0-127
+<P>
+<li>Pitch Bend Change
+</ul>
+
+<P>
+
+In addition to the above MIDI messages, the MIDI file meta tempo event is supported.
+
+<P>
+<a name="01"></a>
+<b>Loops in the Sequence</b>
+<br>
+The way loops are implemented in the two sequence formats are very different. If a game uses MIDI Type 0 format, the loops must be created by the programmer using audio library calls from within the game code. 
+If the compressed sequence type is used, loops are inserted by the musician. This is done using midi controllers.
+<P>
+The compressed sequence format supports looping within tracks. A track can have as many as 128 loops, which can be sequential or nested. Each loop is numbered, and must have a loop start and a loop end. Optionally, it can have a loop count, that specifies the number of times the looped section should play. Loop counts are limited from 1 to 255. A loop count of zero, the default, will loop forever.
+<P>
+Although the format used in the compressed midi file is not detailed here, it should be noted that when a file is compressed, midi events are rearranged into tracks based on channel. All midi events for channel 1 are put in the first track, and all midi events for channel 2 are put in the second track, and so on. This is particularly important when considering loops. If a loop is put  in a track, all midi events from that channel will loop. 
+<P>
+To insert loops into a compressed midi sequence, you will need to insert extra controllers. These controllers serve as markers for the loop. A loop start is defined as a controller number 102. A loop end is defined as a controller 103. Within a channel, each loop start and loop end pair must have a unique number between 0 and 127. This number is what the loop start and loop end controller’s value should be set to. A loop count between 0 and 127 is created with a controller 104, using values 0 to 127. A loop count between 128 and 255 is created using controller 105, with values 0 to 127. (When a loop count controller 105 is encountered, the value is added to 128 to produce loop counts from 128 to 255.)
+<P>
+As a simple example, consider the following sequence:
+<pre><font face="courier" size="3">loop 0 start	(controller 102 with value 0)
+loop count of 6	(controller 104 with value 6)
+loop 0 end	(controller 103 with value 0)
+</pre></font>
+
+<P>
+In this case the section between the loop start and the loop end will be played six times. 
+
+
+<P>
+It is important to understand that the loop count is not associated with a start and end pair. When a loop end is encountered, it uses the most recent loop count, even if there has already been a loop end for another loop. Consider the following sequence: 
+<pre><font face="courier" size="3">loop 0 start		(controller 102 with value 0)
+loop count of 8	(controller 104 with value 8)
+loop 0 end	(controller 103 with value 0)
+loop 1 start	(controller 102 with value 1)
+loop 1 end	(controller 103 with value 1)
+</pre></font>
+
+<P>
+In this case, the first loop (loop 0) will have a loop count of 8. The second loop (loop 1) will also have a loop count of 8, since once set, the loop count continues until changed. If there has never been a loop count in the sequence, the loop count is set at its default of 0, which is interpretted as loop forever.
+
+<P>
+<b>Warning:</b> All loops must have a loop start and a loop end with at least one valid midi event in between.
+
+<P>
+<a name="02"></a>
+<b>Nesting Loops</b>
+<br>
+In the compact sequence format it is easy to nest loops. Consider the following sequence:
+<pre><font face="courier" size="3">loop 0 start	(controller 102 with value 0)
+loop 1 start	(controller 102 with value 1)
+loop count of 8	(controller 104 with value 8)
+loop 1 end	(controller 103 with value 1)
+loop 2 start	(controller 102 with value 2)
+loop 2 end	(controller 103 with value 2)
+loop 3 start	(controller 102 with value 3)
+loop count of 4	(controller 104 with value 4)
+loop 3 end	(controller 103 with value 3)
+loop forever	(controller 104 with value 0)
+loop 0 end	(controller 103 with value 0)
+</pre></font>
+
+<P>
+In this case loop 1 will loop eight times, before the sequence proceeds to loop 2, which will also loop eight times. After that, loop 3 will loop 4 times, and then the entire sequence will loop infinitely.
+
+<P>
+<a name="03"></a>
+<b>Putting Things Into Makefiles</b>
+<br>
+In the developer’s kit, there is a directory named viper that shows how files would be arranged to build a bank of music samples. The makefile in this directory shows examples of setting up rules for files, and dependencies in a logical order. When you start a project, you can use these files as a template.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

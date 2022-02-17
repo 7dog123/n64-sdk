@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>4.3.5 Accessing the Disk</H1>
+
+<P>64DD-related instructions are designed on the assumption that another PI device is not being accessed. That is why a system using 64DD should not access the disk and another PI device (such as a Game Pak, Mask ROM, SRAM, etc.) at the same time.
+
+<P>The same thing applies to the use of font data and wave data. For this reason, you must come up with some work-around, such as accessing the disk after you have read the necessary data into a buffer. One way to prevent simultaneous access of the disk and another PI device is to create the program so that instructions to the disk and the ROM cartridge are managed with a single thread, and processes are performed while messages are checked.
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

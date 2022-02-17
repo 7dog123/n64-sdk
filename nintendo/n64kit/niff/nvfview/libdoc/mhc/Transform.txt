@@ -1,0 +1,25 @@
+Function 
+- Transform defines the coordinate conversion mode. 
+
+Functions
+- void mhcTransformGenerateMatrix( MhcTransform *transform_ptr,
+				   MvmMatrix44f matrix )
+  Generates a 4x4 matrix from transform. 
+
+- void mhcTransformGenerateOrientation( MhcTransform *transform_ptr,
+					MvmMatrix33f orientation )
+  Generates a 3x3 matrix from transform which indicates only rotation. 
+
+- void mhcTransformGenerateMtx( MhcTransform *transform_ptr,
+				Mtx *mtx_ptr )
+  Generates a Mtx from transform. 
+
+Macros 
+(  _mhcTransformCopy(dest_ptr,src_ptr) \
+  Copies transform. 
+
+History 
+  1998/11/11 Takamitsu Hirata 
+    Transform.h, transform.c:  Initial version 
+  1999/ 1/20 Takamitsu Hirata
+    Delete mhcTransformInit( )

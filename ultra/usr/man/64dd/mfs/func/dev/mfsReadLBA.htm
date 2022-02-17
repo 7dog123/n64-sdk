@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsReadLBA</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsReadLBA</h1>
+
+<hr>
+
+<p><strong>Format</strong></p>
+
+<dl>
+    <dd>s32 mfsReadLBA(u32 startLBA, u32 nLBAs, void* buf)</dd>
+</dl>
+
+<p><strong>Arguments</strong></p>
+
+<dl>
+    <dd>startLBA Starting block address</dd>
+    <dd>nLBAs Number of blocks</dd>
+    <dd>*buf Buffer</dd>
+</dl>
+
+<p><strong>Return Value</strong></p>
+
+<dl>
+    <dd>Error</dd>
+</dl>
+
+<p><strong>Function</strong></p>
+
+<dl>
+    <dd>Reads disk</dd>
+</dl>
+
+<p><strong>Description</strong></p>
+
+<p>This function reads data from disk in units of LBAs.  
+This is an mfsReadWriteLBA macro.</p>
+
+<p><strong>Main errors</strong></p>
+
+<dl>
+    <dd>MFS_ERR_NO</dd>
+    <dd>Å@</dd>
+    <dd>Normal termination</dd>
+    <dt>Å@</dt>
+    <dd>MFS_ERR_DEVICE</dd>
+    <dt>Å@</dt>
+    <dd>Device error</dd>
+    <dd>An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.</dd>
+</dl>
+
+<hr>
+</body>
+</html>

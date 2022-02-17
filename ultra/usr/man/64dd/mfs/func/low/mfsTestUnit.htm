@@ -1,0 +1,13 @@
+Function name:mfsTestUnit
+──────────────────────────────────────
+Format:	s32 mfsTestUnit(LEOStatus* status)
+Arguments:	*status
+Return value: Error
+Function:	Checks status of 64DD
+Description:	This function enables LeoTestUnitReady to be handled by using the MFS library.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_DEVICE	Device error
+			An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.

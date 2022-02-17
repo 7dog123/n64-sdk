@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContReadFuncSet</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContReadFuncSet(NUContReadFunc func)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>func	Callback function</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Registers the function that will be executed when Controller data has been read
+</strong></p>
+
+<p>Registers the callback function to execute when Controller data has been read at retrace time.  In the default, no function is registered. To remove the registered function, use the nuContReadFuncRemove function. The callback function registered with this function is executed from a high-priority Controller Manager thread, so please only use it when absolutely necessary.
+</p>
+
+<hr>
+
+<pre>Reference:	<a href="nuContReadFuncRemove.htm">nuContReadFuncRemove</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

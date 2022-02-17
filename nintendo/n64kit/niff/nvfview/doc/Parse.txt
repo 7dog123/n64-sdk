@@ -1,0 +1,28 @@
+Loading NVF
+NVF loading is performed by the MifFileParser, but the type of chunks which can be identified depends on the set up of the MifFormParser.  Normally, give the gMhcModuleChunkParserList and gMsnChunkParserList when initializing the MifFormParser in order to support NVF chunks.  Calling msnFormParserInit() will have the same effect. 
+
+    mifFormParserInit( parser_ptr,
+		       _mifMagicDefine( 'N', 'V', 'F', 'B' ),
+		       gMsnChunkParserList,
+		       gMhcModuleChunkParserList,
+		       NULL );
+
+In addition, when an individual chunk has been added, add the expanded ChunkParser list to the variable argument of mifFormParserInit(). 
+
+    MifChunkParser *MyChunkParserList[ ] =
+	{ &gMyChunkParser, NULL };
+
+    mifFormParserInit( parser_ptr,
+		       _mifMagicDefine( 'N', 'V', 'F', 'B' ),
+		       gMsnChunkParserList,
+		       gMhcModuleChunkParserList,
+		       gMyChunkParserList,	/* Expansion */
+		       NULL );
+
+ChunkParser must initialize only chunk_magic and read. 
+
+    #define MAGIC _mifMagicDefine( 'D', 'A', 'T', 'A' )
+    MifChunkParser gMyChunkParser = { MAGIC, read_chunk, NULL, NULL };
+
+Be careful that MAGIC does not interfere with any other ChunkParser. 
+When a chunk with MAGIC is found, read_chunk is called.  If the load is successful, read_chunk must return a 0 [zero].  If something other than a 0 [zero] is returned, the load will immediately be stopped and mifFileParserRead() will return the read_chunk return value. 

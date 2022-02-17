@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuSiCallBackAdd</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>u8 nuSiCallBackAdd(NUCallBackList* list)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>list   Pointer to NUCallBackList structure</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><font color="#FF0000">Registers the device manager</font></p>
+
+<p>Registers the deivce manager specified by list in the SI manager.  The actual state of a device manager is a function pointer array to callback functions.  Because of this, this function registers the NUCallBackList structure that contains the function pointer array specified by list in the SI manager. </P>
+<P>
+Each device manager is given a unique number.  This value is compared with the message sent to the SI manager and the required function is called.</P>
+<P>
+The NUCallBackList structure is a link list.  Use the nuSiCallBackRemove function to remove a function which has been registered.</p>
+
+<p>This function is used when creating a device manager that is unique to an application.</p>
+
+<hr>
+
+<p>Reference: <a href="nuSiMgrInit.htm">nuSiMgrInit</a>, <a
+href="nuSiCallBackRemove.htm">nuSiCallBackRemove</a></p>
+
+<hr>
+<P>- Revision History</p>
+<P>
+1999/2/1 Changed "format" and changed description text. 
+</P>
+
+<p><a href="index.htm"><img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a></p>
+</body>
+</html>

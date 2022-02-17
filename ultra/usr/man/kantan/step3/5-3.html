@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.5.3 Matrix Multiplication</H1>
+
+<P>When you multiply one matrix by another matrix, the result is also a matrix. If you multiply matrix <IMG SRC="../images/3-5-3-1.gif" ALIGN="bottom" WIDTH=28 HEIGHT=20 BORDER=0> by matrix <IMG SRC="../images/3-5-3-2.gif" ALIGN="bottom" WIDTH=28 HEIGHT=20 BORDER=0>, the result is matrix <IMG SRC="../images/3-5-3-3.gif" ALIGN="bottom" WIDTH=28 HEIGHT=18 BORDER=0>.</P>
+
+<P>Use the following formula to obtain each element of row i and column j in the resulting matrix <IMG SRC="../images/3-5-3-3.gif" ALIGN="bottom" WIDTH=28 HEIGHT=18 BORDER=0> where <IMG SRC="../images/3-5-3-4.gif" ALIGN="bottom" WIDTH=90 HEIGHT=20 BORDER=0>:</P>
+
+<P><IMG SRC="../images/3-5-3-5.gif" ALIGN="bottom" WIDTH=93 HEIGHT=64 BORDER=0>
+
+<P>For example, to calculate the element in the second row and third column of <IMG SRC="../images/3-5-3-3.gif" ALIGN="bottom" WIDTH=28 HEIGHT=18 BORDER=0>, use this formula:</P>
+
+<P><IMG SRC="../images/3-5-3-6.gif" ALIGN="bottom" WIDTH=236 HEIGHT=95 BORDER=0>
+ 
+<P>As you can see, the element of the second row and the third column is the product-sum of the second row of the matrix <IMG SRC="../images/3-5-3-1.gif" ALIGN="bottom" WIDTH=28 HEIGHT=20 BORDER=0> and third column of the matrix <IMG SRC="../images/3-5-3-2.gif" ALIGN="bottom" WIDTH=28 HEIGHT=20 BORDER=0> as illustrated here:</P>
+
+
+<P><IMG SRC="../images/3-5-3-7.gif" ALIGN="bottom" BORDER=0>
+
+<P>Note that for matrix multiplication to be possible, the number of columns in matrix A must equal the number of rows in matrix B. In other words, n and p in the following illustration must be equal:</P>
+
+<P><IMG SRC="../images/3-5-3-8.gif" ALIGN="bottom" WIDTH=425 HEIGHT=291 BORDER=0>
+
+
+<H2>Simple Example Matrix Multiplication</H2>
+
+<P><IMG SRC="../images/3-5-3-9.gif" ALIGN="bottom" WIDTH=425 HEIGHT=389 BORDER=0>
+
+<P>Following is another example that shows that if you change the order of the matrix multiplication, the result is different:</P>
+
+<P><IMG SRC="../images/3-5-3-10.gif" ALIGN="bottom" WIDTH=425 HEIGHT=401 BORDER=0>
+
+<P>In other words, the commutative law is invalid for matrix multiplication, so you need to pay close attention to the order you use when multiplying matrices together:</P>
+
+<P><IMG SRC="../images/3-5-3-11.gif" ALIGN="bottom" WIDTH=114 HEIGHT=22 BORDER=0>
+
+<P>However the associative law is valid for matrix multiplication:</P>
+
+<P><IMG SRC="../images/3-5-3-12.gif" ALIGN="bottom" WIDTH=270 HEIGHT=22 BORDER=0>
+
+
+<H2>N64 Functions to Use for Matrix Multiplication</H2>
+
+<P>You can use the following two N64 functions for matrix multiplication:</P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guMtxCatF.html" TARGET="new">guMtxCatF</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guMtxCatL.html" TARGET="new">guMtxCatL</A></FONT>
+</UL>
+
+
+
+
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

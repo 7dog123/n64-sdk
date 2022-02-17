@@ -1,0 +1,187 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <meta name="GENERATOR" content="Mozilla/4.5 [ja] (Win95; I) [Netscape]">
+   <title>seg10</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h2>
+<font size=+0>第3章　バイナリフォーマット</font></h2>
+
+<hr size=3>
+<h3>
+<font size=+0>3-10. StList</font></h3>
+
+<hr size=3>
+<h4>
+<font size=+0>(1)StListエリア</font></h4>
+
+<blockquote><font size=+0>　StListエリアはテクスチャのs, t座標に関する記述を行うエリアです。下記のようにマッピングされています。</font></blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="9">StListHeader</th>
+
+<td>u32</td>
+
+<td>st_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_size(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>st_group_size(st_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>StGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>・・・</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>StGroup(st_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<center>
+<p><font size=+0>図　StList Area Memory Map</font></center>
+
+<center><table BORDER WIDTH="600" >
+<tr>
+<td NOWRAP>u32 st_list_tag</td>
+
+<td><font size=+0>Tag indicating StList area.</font>
+<pre><b><font size=+0>TAG_ST_LIST&nbsp;&nbsp;&nbsp;&nbsp; 0x00070000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_list_header_size</td>
+
+<td><font size=+0>Size of StListHeader area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_list_size</td>
+
+<td><font size=+0>Size of StList area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_num</td>
+
+<td><font size=+0>A total number of StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 st_group_size</td>
+
+<td><font size=+0>Size of each StGroup area.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg10-2.htm">StGroup</a></td>
+
+<td><font size=+0>'S' and 'T' value per 1 shape.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block.</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block.</font></td>
+</tr>
+</table></center>
+
+<p>
+<hr><font size=-1>Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.</font>
+<div align=right><font size=+0><a href="../index.htm">目次へ<a href="../index.htm"><img SRC="index.gif" BORDER=0 height=17 width=65></a></a><a href="seg10-2.htm">次へ</a></font><a href="seg10-2.htm"><img SRC="next.gif" BORDER=0 height=17 width=65></a></div>
+
+</body>
+</html>

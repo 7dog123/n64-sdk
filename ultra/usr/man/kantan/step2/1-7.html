@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.1.7 Scheduler</H1>
+
+<P>The biggest job of the Scheduler is to coordinate between audio and graphics processing.
+
+<H2>RSP Scheduling</H2>
+
+<P>The RSP executes both graphics and audio processes. A graphics process sometimes extends over one frame, but an audio process must be provided in each frame to prevent inappropriate pausing. Therefore, in each frame, if the graphics task is executing, the Scheduler suspends it and saves the task state.  Then it starts the audio task executing and prepares the RSP for the restart of the graphics task execution when the audio task finishes.  This series of breaks and process restarts  is called the yield process.
+
+<H2>Other Scheduler Jobs</H2>
+
+<P>Other jobs managed by the Scheduler include:</P>
+
+<UL>
+<LI>Scheduling graphics.
+<LI>Sending a message to a client (a thread waiting for the message) by using the timing of a VI retrace.
+<LI>Processing messages for hardware events.
+</UL>
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

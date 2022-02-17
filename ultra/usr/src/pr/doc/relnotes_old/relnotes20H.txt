@@ -1,0 +1,120 @@
+
+2/24 Release  RELEASE NOTES
+===============================
+
+Summary:
+-----
+	This release of Ultra 64(version 2.0H for RCP 2.0) includes a variety of patches that have been released since 2.0G.
+
+	Please note the multiplication problem with R4300 CPU which was explained in the 2.0C release.  In order to solve this problem, it is necessary to install a patch that is contained in the IRIX5.3.  A brief explanation is described later in the Appendix A; More detailed instruction of installing the patch is explained in the release note attached to the patch. (This patch is contained in this tape, too.)  
+
+	"Appendix B: The procedure of installing and building the N64 development environment to IRIX6.2 hardware" which existed before the previous release, was removed. 
+Compatibility with IRIX 6.2 (Indy) and 6.3 (O2) is scheduled to be released at the end of February as a patch for 2.0H.   
+
+
+New Functions:
+-----------
+	A new microcode F3DEX has been included. Refer to the documentation in \usr\src\PR\gfxucode.F3DEX for functions and usage. This is the same as Release 1.21 of the F3DEX microcode that was distributed as a patch for version 2.0g.
+
+
+New Demo Software:
+-----------------
+	nnsample1
+	This is a sample which uses the NTSC (Nintendo Technical Support Center)Scheduler. Since the NTSC Scheduler source code has also been added, it is recommended that the developer create an optimum scheduler for each game after gaining a good understanding of this source code and the SGI Scheduler source code. See the attached documentation for details.
+
+	nnsample2
+	This is a sample related to the direct loading and LOD (Level of Detail) of the F3DEX microcode. See the attached documentation for details.
+
+Modified Demo Software:
+---------------------
+        nosPak
+	Changed so that at the time of initialization,  new functions osPfsInitPak() and osPfsRepairId() are used instead of osPfsInit().  
+	
+
+Corrected Problems:
+-----------------
+
+	AUDIO 
+
+	GRAPHICS 
+	The bug which would display the first sizzling sprite has been corrected.
+	In the sprites, the bug that occurred when an inappropriate value was entered in the palette mode register has been corrected.
+
+	OS 
+	The bug related to sprintf has been corrected.
+
+	The PAL table values have been corrected.
+
+	The bug where the correct value could not be obtained when osViClock was used prior to starting the VI Manager has been corrected.
+	
+	The bug related to the VI Manager initial values has been corrected.
+
+	TOOL
+	The bug that the alpha value cannot be converted in the CI mode of rgb2c has been corrected.  
+
+Expanded Functions:
+---------------
+
+	AUDIO
+
+	GRAPHICS
+	The sprite structure has been divided into several (the sprite components have been separated from the sprite location and scale).
+
+	OS
+	Controller Pak functions osPfsInitPak(), isPfsRepairld() have been added.
+
+	Rumble Pak functions osMotorInit(), osMotorStart(), osMotorStop() have been added.
+
+	HostIO has been compatible with PARTNER-N64(NW).  
+
+Functions No Longer Supported:
+-------------------------
+
+	Super 3D has been eliminated.
+
+	Turbo3D is already not supposrted. It remains in this release, but it is scheduled to be eliminated in the next one (2.0I).
+
+Note:
+-------
+
+Documentation:
+-------------
+
+	Information has been added to and correlated in the documentation.
+
+
+----------------------------------------------------------------------------
+Warning:
+----------------------------------------------------------------------------
+
+Graphics:
+---------------
+
+Audio:
+-----------
+
+OS:
+---
+
+Demo:
+-----
+	In libultra.a version (/usr/src/PR/simple/simple) of the simple demo, there is a bug which causes sound interruption.   
+
+Tools:
+-------
+	Outputs are sometimes not right when output in the 4bits mode of CI with rgb2c.   
+
+Debugger:
+---------
+
+----------------------------------------------------------------------------
+Document A
+----------------------------------------------------------------------------
+
+Important notes requiring attention from previous release:
+----------------------------------------------------------
+
+	In order to run the application 'spin', 'sgitcl' is  necessary.
+	This tool is included in the distribution CD of IRIX5.3, but also included in this release for convenience's sake. This will not be installed when you try to install it when NINTENDO64 software development environment is in default. 
+	It is necessary to install the IRIX patch, patchSG0001118 to the system.	This patch fixes your C compiler and assembler in order to avoid the     R4300 problem.   This patch is included in this release for convenience's sake. This will not be installed if NINTENDO64 software development environment is in default.  Refer to patch1118/patchSG0001118/relnotes/ch1.z for details of the installation instruction.  
+	Note: This patch needs to be selected for installation.  With the default installation of 'inst',  the patch will not be installed.  Hence, it must be clealy stated so that this patch will be installed. (More detailed information can be found in the on-line manual of inst.)

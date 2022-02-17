@@ -1,0 +1,19 @@
+Function 
+(  Provides input stream from ROM which uses PI manager. 
+
+Functions 
+(  void misRomInputPiInit( MisRomInputPi *rom_input_ptr )
+  Initializes misRomInput. 
+
+(  void misRomInputPiOpen( MisRomInputPi *rom_input_ptr, const u32 dev_addr,
+			const u32 size )
+  Opens misRomInputPi.  Device address at head of load is specified by dev_address and size is specified 
+  by size (number of bytes). 
+
+NOTE 
+*  Cast from MisRomInputPi * to MisInput * as follows: 
+   input_ptr = _msoUpCast( MisInput, rom_input_ptr );
+
+History 
+  1998/ 9/24 Takamitsu Hirata 
+    RomInputPi.h, rominputpi.c :  Initial version 

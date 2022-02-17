@@ -1,0 +1,186 @@
+<html>
+<title>
+WeightNode
+</title>
+
+<body bgcolor="ffffff">
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+<h2>
+17. Weight Node
+</h2>
+
+<hr size="3">
+
+<h3>
+<A NAME="weightListD">(1) WeightList Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 weight_list_tag
+</td>
+<td>
+Specifies the tags of WeightList.  Please set the tags shown below.
+<pre>
+<b>
+TAG_WEIGHT_LIST         0x00230000
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_list_header_size
+</td>
+<td>
+Specifies the byte size of the WeightListHeader.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_list_size
+</td>
+<td>
+Specifies the byte size of the WeightList.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_group_num
+</td>
+<td>
+Specifies the total number of the WeightGroup.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_group_num_byte
+</td>
+<td>
+Specifies the byte size of the WeightGroup.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+WeightGroup
+</td>
+<td>
+This area specifies the weight value used in a single EnvelopePart.
+</td>
+</tr>
+</table>
+<P><A HREF="weight_C.htm#weightListC">See Data Chunk</A></P>
+</blockquote>
+
+<h3>
+<A NAME="weightGroupD">(2) WeightGroup Description (English)</A>
+</h3>
+
+<blockquote>
+
+
+<table border width="600">
+
+<tr>
+<td nowrap>
+u32 weight_group_tag
+</td>
+<td>
+Specifies the tags of WeightGroup.  Please set the tags shown below.
+<pre>
+<b>
+TAG_WEIGHT_GROUP        0x00230100
+</b>
+</pre>
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 this_weight_group_index
+</td>
+<td>
+Specifies the index number for this WeightGroup.
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td nowrap
+u32 weight_group_header_size
+</td
+<td>
+Specifies the byte size of the WeightGroupHeader.
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td nowrap>
+u32 weight_group_size
+</td>
+<td>
+Specifies the byte size of the WeightGroup.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_group_name_index
+</td>
+<td>
+Uses a NameList index number to describe the WeightGroup name.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+u32 weight_num
+</td>
+<td>
+Specifies the total number of the Weight.
+</td>
+</tr>
+
+<tr>
+<td nowrap>
+float weight
+</td>
+<td>
+Specifies the Weight value as a percentile (%).
+</td>
+</tr>
+
+</table>
+<P><A HREF="weight_C.htm#weightGroupC">See Data Chunk</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+
+</body>
+</html>

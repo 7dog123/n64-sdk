@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.2.2 Hardware Processes</H1>
+
+
+<H2>CPU Process</H2>
+
+<OL>
+<LI>Create the display list in RDRAM.
+<LI>Post the pointer to the display list to the RSP and load the graphics microcode into the RSP.
+<LI>Designate the transfer of the data, transferred to the frame buffer from the RCP, to the VI.
+</OL>
+
+
+<H2>RCP Process</H2>
+
+<P>The RCP receives the necessary drawing parameters from the CPU in the form of the display list. Then it executes the display list as shown here:
+
+<P><IMG SRC="../images/2-2-2-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=394 HEIGHT=531 BORDER=0><BR><BR>
+
+<P>Basically, the RCP executes the display list to perform the necessary coordinate conversions and drawing calculations by pipelining the work through its three internal components -- the RSP (Reality Signal Processor), the RDP (Reality Display Processor), and the VI (Video Interface).
+
+
+<H2>RSP Process</H2>
+
+<P>The RSP completes these steps:</P>
+
+<OL>
+<LI>Execute the graphics microcode transferred from RDRAM by the CPU.
+<LI>Accept the display list within RDRAM and perform vertex conversions and other calculations.
+<LI>Transfer the drawing instructions to the RDP.
+</OL>
+
+<P>The following subprocesses are performed as part of the calculations and conversions done in the second step:</P>
+
+<UL>
+<LI>matrix stack manipulation process
+<LI>3D geometry conversion process
+<LI>Lighting process
+<LI>Clipping process to remove objects and parts of objects that lie outside the view and clipping the backs of objects
+<LI>Illumination and the reflection mapping process
+<LI>Setup process for polygons and line rasterization process
+</UL>
+
+
+<H2>RDP Process</H2>
+
+<P>The RDP manipulates the data that the RSP converted to form the actual display data. Then it writes the display data to the frame buffer in RDRAM. The RDP performs the following subprocesses as part of its manipulation process:</P>
+
+<UL>
+<LI>Rasterizing
+<LI>texturing
+<LI>filtering
+<LI>color blending
+<LI>anti-aliasing
+<LI>drawing translucent polygons
+<LI>Processing the surfaces that lie between polygons
+<LI>Applying fog
+<LI>Dithering
+<LI>Completing scissoring calculations
+</UL>
+
+
+<H2>VI Process</H2>
+
+<P>The VI process sends the data currently residing in the frame buffer to the video DAC as shown here:
+ 
+<P><IMG SRC="../images/2-2-2-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=388 HEIGHT=226 BORDER=0>
+
+
+<H2>Video DAC Process</H2>
+
+<P>The video DAC is a piece of hardware that actually outputs the displayable video signal on the TV monitor by converting the digital data transferred from the VI into analog data that can be viewed on the screen.
+ 
+<P><IMG SRC="../images/2-2-2-3.gif" ALT="Illustration" ALIGN="bottom" WIDTH=388 HEIGHT=226 BORDER=0>
+
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

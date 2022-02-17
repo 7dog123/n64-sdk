@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 20</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro20/index20.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro20/index20.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<b><font face="arial" color="#29296b">Creating Samples</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Creating samples for the Nintendo 64 is similar to creating samples for any sample player. However, there are several additional facts to keep in mind.
+<P>
+To be recognized by the ADPCM tools, the samples should be stored as AIFF files, or uncompressed AIFC.
+<P>
+Samples benefit from being sampled at the same sample rate as the output playback sample rate. Because all samples are compressed with a variation of ADPCM, when they are played back at rates significantly different from their sampled rate, the noise can become rather obvious.
+<P>
+As an example, if the output sample rate is set to 44100 Hz, but the sample is sampled at only 22050 Hz, then to playback the sample at its original pitch, the sample converter must create two samples from each sample. Worse, if the sample is to be played an octave below its original pitch, the sample converter must create four samples for each sample. Because of the noise and distortion introduced from ADPCM, this will not be nearly as good quality as it would be if samples were recorded at 44100 Hz, or if the output playback rate were changed to 22050 Hz. For this reason, you may want to resample all samples to match the output sample rate, before performing the ADPCM conversion
+
+<P>
+Samples may be looped at any location in the sample. Although many ADPCM systems require you to loop samples at specific boundaries (the Super Nintendo, for example, required that loop points be multiples of 16), the Nintendo 64 makes no such requirement. If a sound is looped, it will loop as long as the sound is playing. When a looped sound’s envelope enters the release phase, then the sound will still continue to loop. 
+
+<P>
+All looped samples should last until the next multiple of 16, after the loop end. (This is because the ADPCM encoding stores the samples in blocks of 16.) For this reason, it is prudent to leave at least 16 samples after the loop end, on any sample that loops. As a nice feature, the adpcm tools provided have an option that truncates any sample to the shortest viable length, so there is no benefit to the musician calculating and truncating looped samples. 
+
+<P>
+In other words, when creating looped samples, find your loop points, and don’t worry about the release portion of the sample. If you want to truncate the sample, to keep samples on your hard disk smaller, but always leave at least 16 samples after the loop end. Then when you encode the samples, make sure you use the -t option, and the samples will be automatically truncated for you.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

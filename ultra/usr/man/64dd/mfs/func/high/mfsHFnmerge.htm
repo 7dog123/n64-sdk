@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFnmerge</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFnmerge</h1>
+
+<hr>
+
+<p><strong>Format:</strong> void mfsHFnmerge(u8* path,const u8*
+drive, const u8* dir,const u8* name, const u8* type)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>*path	Path name
+*drive	Drive name
+*dir	Directory name
+*name	File name
+*type	Extension</pre>
+
+<p><strong>Return value:</strong>None</p>
+
+<p><strong>Function:</strong>
+Creates a pathname by combining components</p>
+
+<p><strong>Description:</strong> This function creates a pathname by combining the components specified by drive, dir, name, and type and stores it in path.
+When drive is NULL or empty, no drive name is added to the pathname.  If the delimiter ':' is missing, it is added to the pathname.
+When dir is NULL or empty, no directory name is added.  If the delimiter '/' is missing, it is added to the pathname.
+When name is NULL or empty, no file name is added.
+When type is NULL or empty, no extension is added.  If the leading period '.' is missing, it is added to the pathname.</p>
+
+<p>mfsHFmerge performs the opposite operation to the operation performed by mfsHFnsplit.</p>
+
+<hr>
+</body>
+</html>

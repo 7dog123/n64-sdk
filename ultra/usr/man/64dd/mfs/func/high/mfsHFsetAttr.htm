@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFsetAttr</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFsetAttr</h1>
+
+<hr>
+
+<p><strong>Format</strong> s32 mfsHFsetAttr(MfsFile handle,
+u16 attr)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>handle	File handle
+attr	Attribute</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Sets file attribute</p>
+
+<p><strong>Description:</strong> his function sets the attribute of the file specified by handle to attr.</p>
+
+<p>The following values can be specified for attr.</p>
+
+<p>MFS_FILE_ATTR_FORBID_W 0x2000 Write protected<br>
+MFS_FILE_ATTR_FORBID_R 0x1000 Read protected<br>
+MFS_FILE_ATTR_HIDDEN 0x0800 Hidden file<br>
+MFS_FILE_ATTR_ENCODE 0x0400 Encoded file<br>
+MFS_FILE_ATTR_COPYLIMIT 0x0200 Copy limited</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination
+MFS_ERR_FATAL	File open error
+		The file is not opened.
+MFS_ERR_DEVICE	Device error
+		
+                       An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_PROTECT Write protected
+		The volume attribute is write protected, or the parent directory is write protected.</pre>
+
+<hr>
+</body>
+</html>

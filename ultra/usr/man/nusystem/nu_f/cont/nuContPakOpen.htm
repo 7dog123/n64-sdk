@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="6"><strong><img src="../nusystem2.gif" width="176"
+height="30"></strong></font><font size="5"><strong>Function</strong></font></p>
+
+<hr>
+
+<pre><font size="6"><strong>nuContPakOpen</strong></font></pre>
+
+<hr>
+
+<pre><font size="4"><strong>Syntax:</strong></font></pre>
+
+<pre>void nuContPakOpen(NUContPakFile *file, u32 cont_no)</pre>
+
+<pre><font size="4"><strong>Arguments:</strong></font></pre>
+
+<pre>file	Controller Pak file structure
+cont_no	Controller number to open</pre>
+
+<pre><font size="4"><strong>Return Value:</strong></font></pre>
+
+<pre>None</pre>
+
+<pre><font size="4"><strong>Explanation:</strong></font></pre>
+
+<p><strong>Opens a Controller Pak device
+</strong></p>
+
+<p>Checks to see whether a Controller Pak or a Rumble Pak is inserted.  If a Controller Pak is inserted, a file is initialized so it can be accessed by the Controller Pak.
+</p>
+
+<p>When a Controller Pak is inserted, NU_CONT_PAK_TYPE_PAK is set in file.type. If nothing is inserted, NU_CONT_PAK_TYPE_NONE is set.
+ This function can be used to determine which Controller(s) contain Controller Pak(s).
+</p>
+
+<p>The value returned from the osPfsInitPak function or from the osMotorInit function is set in file.error.  For details about the returned values, please see the explanation for each function.
+</p>
+
+<pre>For example:
+	NUContPakFile pakFile;
+
+	// Register company code and game code
+	nuContPakCodeSet(&quot;64&quot;, &quot;TEST&quot;);
+
+	// Open Controller Pak device
+	nuContPakOpen(&amp;pakFile, 0);
+
+	if(!pakFile.error){
+		// Error processes for PFS_ERR_NOPACK, PFS_ERR_NEW_PACK,
+		// PFS_ERR_CONTRFAIL, PFS_ERR_ID_FATAL, PFS_ERR_DEVICE
+		......
+		return ERROR;
+	}
+
+	if(pakFile.type !=NU_CONT_PAK_TYPE_PAK){
+		// Process if not a Controller Pak
+		......
+		return ERROR;
+	}
+
+	// Open game note
+	nuContPakFileOpenJis(&amp;pakFile, &quot;NuSystemSaveData&quot;, &quot;a&quot;, NU_CONT_PAK_CREATE, 256);
+
+	if(!pakFile.error){
+		// Error processes for PFS_ERR_INCONSISTENT, PFS_ERR_INVALID
+		// PFS_ERR_DATA_FULL, PFS_DIR_FULL
+		......
+		return ERROR;
+	}</pre>
+
+<hr>
+
+<pre>Reference: <a href="nuContPakFileOpen.htm">nuContPakFileOpen</a>, <a
+href="nuContPakFileOpenJis.htm">nuContPakFileOpenJis </a></pre>
+
+<hr>
+
+<P>
+- Revision History
+</P>
+
+<P>
+1999/2/1 Deleted text regarding Rumble Pak
+</P>
+
+<hr>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

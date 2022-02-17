@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.11 TriList</font></h3>
+
+<hr size=3>
+<h4>1) TriList Area</h4>
+
+<blockquote>
+TriList is the list that contains triangle data. Triangles are constructed by referencing
+the vertex groups in VtxList. Mapping of TriList is as follows.
+</blockquote>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="9">TriListHeader</th>
+
+<td>u32</td>
+
+<td>tri_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>tri_group_num_byte(tri_group_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>TriGroup(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>TriGroup(tri_group_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBloock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>TriList Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 tri_list_tag</td>
+
+<td><font size=+0>Tag indicating TriList. Set the following flag.</font>
+<pre><b><font size=+0>TAG_TRI_LIST&nbsp;&nbsp;&nbsp; 0x00080000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_list_header_size</td>
+
+<td><font size=+0>Size of TriListHeader area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_list_size</td>
+
+<td><font size=+0>Size of TriList area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_group_num</td>
+
+<td><font size=+0>Total number of TriGroup in the TriList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 tri_group_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to TriGroup</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg11-2.htm">TriGroup</a></td>
+
+<td><font size=+0>Triangle list per one shape</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg10-3.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg11-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

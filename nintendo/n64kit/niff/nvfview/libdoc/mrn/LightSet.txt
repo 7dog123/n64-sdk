@@ -1,0 +1,31 @@
+Function 
+-  Defines LightSet. 
+
+Functions 
+-  void mrnLightSetInit( MrnLightSet *light_set_ptr );
+  Initializes mrnLightSet. 
+
+-  Gfx *mrnLightSetDrawObjects( MrnLightSet *light_set_ptr,
+			       MrnContext *context_ptr,
+			       Gfx *gfx_ptr )
+  Displays all objects which use the light set sorted in material order. 
+
+-  Gfx *mrnLightSetGenerateGfx( const MrnLightSet *light_set_ptr,
+			       MrnContext *context_ptr,
+			       const MrnMaterial *material_ptr,
+			       Gfx *gfx_ptr )
+  Generates a gfx that sets up the light set. 
+
+-  Gfx *mrnLightSetModifyColor( const MrnLightSet *light_set_ptr,
+			       MrnContext *context_ptr,
+			       const MrnMaterial *material_ptr,
+			       Gfx *gfx_ptr )
+  Changes the color of the N64 light source to match the material. 
+
+History 
+  1998/10/13 Takamitsu Hirata 
+    LightSet.h, lightset.c :  Initial version 
+  1999/01/22 Takamitsu Hirata
+    Support light point source
+  1999/02/09 Takamitsu Hirata
+    Fixed the bug of light point source

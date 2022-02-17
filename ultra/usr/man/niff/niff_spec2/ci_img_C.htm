@@ -1,0 +1,343 @@
+<html>
+<body bgcolor="ffffff">
+<title>
+CiImgNode
+</title>
+
+<H3><FONT COLOR="#FF0000"><I>Nintendo Confidential</I></FONT></H3>
+
+
+<h2>
+13. CiImg Node
+
+</h2>
+<hr size="3">
+<h3>
+<A NAME="ciImgListC">(1) CiImgList Data Chunk</A>
+</h3>
+<blockquote>
+CiImgNode contains the color indexed image for Nintendo 64.
+
+
+<table border bgcolor="ffc0c0">
+<tr>
+<th rowspan="9">
+CiImgListHeader
+</th>
+<td>
+u32
+</td>
+<td>
+ci_img_list_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_list_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_list_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_num_byte(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_num_byte(ci_img_num - 1)
+</td>
+</tr>
+
+<tr>
+<th rowspan="5">
+</th>
+<td colspan="2">
+<center>
+CiImg(0)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+CiImg(ci_img_num - 1)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+
+
+</table>
+<P><A HREF="ci_img_E.htm#ciImgListD">See Description</A></P>
+</blockquote>
+
+<h3>
+<A NAME="ciImgC">(2) CiImg Data Chunk</A>
+</h3>
+
+<blockquote>
+
+<table border width="300" bgcolor="ffc0c0">
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<th rowspan="12"
+
+
+
+CiImgHeader
+</th
+
+-- DELETE END --
+..>
+
+<td>
+u32
+</td>
+<td>
+ci_img_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_ci_img_index
+</td>
+</tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<tr
+<td
+u32
+</td
+<td
+ci_img_header_size
+</td
+</tr
+
+-- DELETE END --
+..>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_width
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_height
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+ci_img_pixel_depth
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+reserved(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+reserved(11)
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+
+<tr>
+
+<!..
+-- DELETE START --
+1998/09/30
+
+<th rowspan="5"
+</th
+
+-- DELETE END --
+..>
+
+<td>
+u32
+</td>
+<td>
+pixel_index_array(0)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+...
+</center>
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td nowrap>
+pixel_index_array(pixel_array_num - 1)
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+</table>
+<P><A HREF="ci_img_E.htm#ciImgD">See Description</A></P>
+<P><A HREF="../index_frame.htm" TARGET="_top">Back to Index</A></P>
+
+</blockquote>
+
+<hr>
+<i>
+Copyright 1998, 1999 NINTENDO Co., Ltd. All rights reserved.<br>
+Copyright 1998, 1999 MONEGI CORPORATION All rights reserved.
+</i>
+
+</body>
+</html>

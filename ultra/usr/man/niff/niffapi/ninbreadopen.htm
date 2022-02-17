@@ -1,0 +1,41 @@
+<html>
+<head>
+   <title>niNbReadOpen</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<BASEFONT SIZE=2>
+<h1>
+niNbReadOpen</h1>
+<font color="#FF0000">Opens a NIFF binary file to read it</font>
+
+<h3>
+Syntax</h3>
+
+<blockquote>#include&nbsp; "niffapi.h"
+<p>FILE *niNbReadOpen(char *filename);</blockquote>
+
+<h3>
+Arguments</h3>
+<b>filename</b>
+<blockquote>Name of the NIFF binary file to read</blockquote>
+
+<h3>
+Returned value</h3>
+If there is no error, the file pointer is returned.  If there is an error, 0 is returned.
+<h3>
+Explanation</h3>
+Opens a NIFF binary file in order to read the file.  A message is output when an error occurs.
+<h3>Notes</h3>
+This function does not need to be used if the function niOpenNb() is used.
+<h3>
+See also</h3>
+<a href="niopennb.htm">niOpenNb</a>
+<p>
+
+<P><A HREF="index.htm">Back to NIFFAPI Index</A></P>
+
+<P><font size=-1>Copyright 1998-1999 NINTENDO Co., Ltd. <BR>
+1998-1999 MONEGI CORPORATION All rights reserved.</P>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>nvfview Previewer</title>
+</head>
+<body bgcolor="ffffff">
+
+<A NAME="top"><h2>nvfview Previewer</h2></a>
+
+<hr size=3>
+
+<ul>
+ <li> <a href=#MAP>Memory Map</a>
+ <li> <a href=#MAIN>Main Flow of the Program</a>
+ <li> <a href="./how2play.htm">Operating the Previewer</a>
+ <li> <a href="#LIMITATION">Current Restrictions</a>
+ <li> <a href="./history.htm">Revision History</a> 
+</ul>
+
+<hr size=3>
+
+<a name="MAP"></a>
+<h3>Memory Map</h3>
+<p>
+<blockquote>
+  The memory map of the nvfview Previewer is shown below.
+</blockquote>
+<p>
+
+
+<IMG SRC="memmap.gif" ALIGN="bottom" WIDTH=480 HEIGHT=640>
+
+<ul>
+ <li>It does not matter whether or not expanded memory is installed.
+ <li>Allocate both the frame buffer and the Z buffer inside DynamicHeap.
+</ul>
+
+<p>
+<hr size=3>
+<p>
+<a name="MAIN"></a>
+<h3>Main Flow of the Program</h3>
+<p>
+<blockquote>
+  When the previewer software plays graphics, the process flows as described below. 
+</blockquote>
+<p>
+<ol>
+ <li>Initialize.
+ <li>Load the scene.
+<h4>From here on, the operations are repeated for each frame.</h4>
+ <li>Call back the game process.
+ <li>Evaluate the hierarchy.
+  <br>Resolve the dependency between nodes and generate drawing objects.
+ <li>Rearrange the drawing objects.
+  <br>Rearrange the drawing objects according to texture and light to improve drawing performance. 
+ <li>Generate Gfx.
+  <br>Convert the drawing objects to Gfx.
+</ol>
+<a name="LIMITATION"></a>
+<h3>Current Restrictions</h3>
+<p>
+<ul>
+ <li>Point light source is not supported.
+ <li>Vertex and fog can not be used at same time.
+ <li>TriColor is reflected.
+ <li>Morph Part of Envelope has not been finalized, yet.
+ <li>IK supports only 2 joints.
+</ul>
+<p>
+
+<hr>
+
+<p><a href="seg1.htm#top">Back to nvfview Index<BR>
+<img src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<P><font size=-1>Copyright 1998-1999 NINTENDO Co., Ltd. <BR>
+MONEGI CORPORATION <BR>
+All rights reserved.</font></P>
+
+</body>
+</html>

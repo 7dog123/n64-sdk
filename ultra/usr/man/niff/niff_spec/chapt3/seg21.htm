@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.21 SwitchList</h3>
+
+<hr size=3>
+<h4>1) SwitchList Area</h4>
+
+<blockquote>
+The SwitchList area stores a Switch node in the scene. SwitchList is mapped as follows.</font></blockquote>
+
+<center><table BORDER >
+<tr>
+<th ROWSPAN="9">SwitchListHeader</th>
+
+<td>u32</td>
+
+<td>switch_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintnedo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>switch_num_byte(switch_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>Switch(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Switch(switch_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>SwitchList Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 switch_list_tag</td>
+
+<td><font size=+0>Tag indicating SwitchList. Set the following:</font>
+<pre><b><font size=+0>TAG_SWITCH_LIST 0x00130000</font></b>
+
+</pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_list_header_size</td>
+
+<td><font size=+0>Size of SwitchListHeader</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_list_size</td>
+
+<td><font size=+0>Size of this SwitchList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_num</td>
+
+<td><font size=+0>Total number of Switch in this SwitchList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extension_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 switch_num_byte</td>
+
+<td><font size=+0>Number of bytes corresponding to Switch</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg21-2.htm">Switch</a></td>
+
+<td><font size=+0>Actual switch area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensionBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg20-2.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg21-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

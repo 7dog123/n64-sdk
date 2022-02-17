@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+<pre><font size="6"><strong><img src="../nusystem2.gif"
+width="176" height="30"></strong></font><font FACE="ARIAL" size="4"><strong>Function</strong></font></pre>
+
+<hr>
+
+<pre><font face="arial" color="#0000A0" size="6"><strong>nuGfxFuncSet</strong></font></pre>
+
+<hr>
+<font face="arial" size="-1">
+<strong>Syntax</strong><br>
+<font face="courier" size="3"><pre>void nuGfxFuncSet(NUGfxFunc func)</pre></font>
+
+<P>
+<strong>Arguments</strong>
+<ul>
+<li>func	is the call back function</ul>
+
+<P>
+<strong>Return Value</strong>
+<br>
+None
+
+<P>
+<strong>Explanation</strong>
+<br>
+Register the call back function in the graphics thread.
+
+<p>Register the call back function which executes synchronously	with retrace in the graphics thread.
+	Send the graphics task number which is left in the graphics task		thread queue as an argument to the 
+function which was specified 		by the func file.	The func file is a function which was defined as void the	func(u32 gfxTaskNum) function.
+	Use the nuGfxFuncRemove function to delete the call back	function.
+</p>
+
+<P>
+<b>Example</b>
+<br>
+<pre><font face="courier" size="3">
+	/* the retrace function */
+	void retraceFunc(u32 gfxTaskNum)
+	{
+		/* Nothing is processed when the graphics task remains */
+		if(gfxTaskNum &gt;0) return;
+		......
+	}
+	
+	void gameGfxInit(void)
+	{
+		......
+		/* Register the function which is executed by retrace */
+		nuGfxFuncSet(retraceFunc);
+	}</pre></font>
+
+<hr>
+<P>
+<b>See Also</b><BR>
+<a href="nuGfxFuncRemove.htm">nuGfxFuncRemove</a></pre>
+
+<p><a href="index.htm"><img src="../index.gif" border="0"
+width="65" height="17"></a></p>
+</body>
+</html>

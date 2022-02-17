@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>NIFF 1.0: Binary Format</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<H4>NIFF 1.0 Specification</H4>
+
+<h2>3. Binary Format</h2>
+
+<h3>3.12 PartList</font></h3>
+
+<hr size=3>
+<h4>1) PartList Area</h4>
+
+<center><table BORDER>
+<tr>
+<th ROWSPAN="9">PartListHeader</th>
+
+<td>u32</td>
+
+<td>part_list_tag</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_list_header_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_list_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_num</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>nintendo_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>user_extension_block_size</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_num_byte(0)</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td>u32</td>
+
+<td>part_num_byte(part_num - 1)</td>
+</tr>
+
+<tr>
+<th ROWSPAN="5"></th>
+
+<td COLSPAN="2">
+<center>Part(0)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>...</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>Part(part_num - 1)</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>NintendoExtensionBlock</center>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<center>UserExtensionBlock</center>
+</td>
+</tr>
+</table></center>
+
+<P></P>
+
+<center>
+<CAPTION ALIGN="top"><b>ParList Area Memory Map</b></CAPTION>
+
+<table BORDER WIDTH=75%>
+<tr>
+<td NOWRAP>u32 part_list_tag</td>
+
+<td><font size=+0>Tag indicating PartList. Set the following flag.</font>
+<pre><b><font size=+0>TAG_PART_LIST&nbsp;&nbsp; 0x00090000</font></b></pre>
+</td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_list_header_size</td>
+
+<td><font size=+0>Size of PartListHeader area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_list_size</td>
+
+<td><font size=+0>Size of PartList area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_num</td>
+
+<td><font size=+0>Number of Part contained in the PartList</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 nintendo_extensino_block_size</td>
+
+<td><font size=+0>Nintendo extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 user_extension_block_size</td>
+
+<td><font size=+0>User extension block size</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>u32 part_num_byte</td>
+
+<td><font size=+0>Size of corresponding Part&nbsp;</font></td>
+</tr>
+
+<tr>
+<td NOWRAP><a href="seg12-2.htm">Part</a></td>
+
+<td><font size=+0>Part area</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>NintendoExtensinoBlock</td>
+
+<td><font size=+0>Nintendo extension block</font></td>
+</tr>
+
+<tr>
+<td NOWRAP>UserExtensionBlock</td>
+
+<td><font size=+0>User extension block</font></td>
+</tr>
+</table></center>
+
+<HR>
+
+<A HREF="seg11-9.htm"><IMG SRC="../../../gif/previous.gif" ALT="Previous" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A><A HREF="seg12-2.htm"><IMG SRC="../../../gif/next.gif" ALT="Next" ALIGN="bottom" WIDTH=65 HEIGHT=17 BORDER=0></A>
+
+<P><font size=-1>Copyright 1997-1999 NINTENDO Co., Ltd. All rights reserved.</font></P>
+
+</body>
+</html>

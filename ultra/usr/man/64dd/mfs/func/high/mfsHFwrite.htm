@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHFwrite</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHFwrite</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHFwrite(MfsFile handle,
+void* buf, s32 len)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>handle	File handle
+*buf	Pointer to buffer in which data to be written is stored
+len	Size of data to be written</pre>
+
+<p><strong>Return value:</strong>Size of data that was written (a negative value is an error)</p>
+
+<p><strong>Function:</strong> Writes data</p>
+
+<p><strong>Description:</strong> This function writes data to the file specified by handle. </p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_FATAL	File open error
+		The file is not opened.
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.
+MFS_ERR_HEADER	Header error
+		The header area is corrupted.  If it is the RAM area, try to repair it.
+MFS_ERR_PROTECT Write protected
+		The medium is write protected.</pre>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<!---------------------------------------------------->
+<!--Title, Header, and META Block-->
+<!---------------------------------------------------->
+
+<HEAD>
+<TITLE>N64 Functions Reference (HTML Manual Pages) Function Page</TITLE>
+
+<META Name="DESCRIPTION" CONTENT="The N64 Functions Reference completely describes all the N64 functions that you can use to develop games for the N64 operating system.">
+<META NAME="CLASSIFICATION" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META HTTP-EQUIV="KEYWORDS" CONTENT="functions, reference, N64, man pages, HTML, manpages, pages, development, Nintendo, license, tips, secrets, help, manual, guide, success, money, profit, index, indexing, online, on-line">
+<META NAME="Author" CONTENT="Nintendo of America Inc.">
+<META NAME="Generator" CONTENT="WebEdit Pro version 2.0 for Windows 95">
+</HEAD>
+
+
+<!---------------------------------------------------->
+<!--Colors and Background Graphic Block-->
+<!---------------------------------------------------->
+
+<BODY BGCOLOR="#FFFFFF" BACKGROUND = "../images/lineback.gif" text=29296B link=#0000A0
+vlink=20297c alink=86ffff>
+<A NAME="TOP"></A>
+
+
+<!---------------------------------------------------->
+<!--Define Master Table Structure-->
+<!---------------------------------------------------->
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 UNITS="pixels" WIDTH=600>
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=175>
+         <IMG SRC="../images/space.gif" WIDTH=175 HEIGHT=1 BORDER=0></FONT></TD>
+      <TD COLSPAN=1 WIDTH=10>
+         <IMG SRC="../images/space.gif" WIDTH=10 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=25>
+         <IMG SRC="../images/space.gif" WIDTH=25 HEIGHT=1 BORDER=0></TD>
+      <TD COLSPAN=1 WIDTH=375>
+         <IMG SRC="../images/space.gif" WIDTH=375 HEIGHT=1 BORDER=0></TD>
+   </TR>
+
+
+<!---------------------------------------------------->
+<!--Define Left Column Contents-->
+<!---------------------------------------------------->
+
+   <TR VALIGN="top" ALIGN="left">
+      <TD COLSPAN=2 WIDTH=200 ROWSPAN=1>
+      <FONT SIZE=-2 COLOR=#0000A0 FACE="ARIAL">
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=180>
+         <TR VALIGN="bottom" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/ncube.gif"></A><BR><BR>
+            <FONT COLOR=#29296B FACE="ARIAL" SIZE=-1>
+            <B>N64<SUP>&reg;</SUP> Functions Menu</B><BR>
+
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<A HREF="../al/al.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> al - Audio Library Functions</A><BR>
+<A HREF="../gdp/gdp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gDP - DP GBI Macros</A><BR>
+<A HREF="../gdsp/gdsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gdSP - General GBI Macros</A><BR>
+<A HREF="../gsp/gsp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gSP - SP GBI Macros</A><BR>
+<A HREF="../gt/gt.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gt - Turbo Microcode RDP</A><BR>
+<A HREF="../gu/gu.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> gu - Graphics Utilities</A><BR>
+<A HREF="../math/math.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> Math - Math Functions</A><BR>
+<A HREF="../nusys/nusys.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> nuSys - NuSystem</A><BR>
+<A HREF="../os/os.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> os - N64 Operating System</A><BR>
+<A HREF="../sp/sp.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> sp - Sprite Library Functions</A><BR>
+<A HREF="../uh/uh.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> uh - Host to Target IO</A><BR>
+<A HREF="../64dd/64dd.html">
+   <IMG BORDER=0 SRC="../images/bookclosed.gif"> 64DD - N64 Disk Drive</A><BR><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=170><TR VALIGN="bottom" ALIGN="center" ><TD><BR><FONT COLOR="FF0000" FACE="arial" SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B></FONT></TD></TR></TABLE>
+
+<!---------------------------------------------------->
+<!--Define Bottom-Left Graphics-->
+<!---------------------------------------------------->
+
+<BR>
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="left">
+         <TR VALIGN="top" ALIGN="center" WIDTH=210>
+            <TD>
+            <A HREF="../misc/home.html">
+               <IMG BORDER=0 SRC="../images/btn_home.gif" WIDTH=54></A>
+
+            <A HREF="../misc/search.html">
+               <IMG BORDER=0 SRC="../images/btn_search.gif" WIDTH=54></A>
+
+            <A HREF="../misc/glossary.html">
+               <IMG BORDER=0 SRC="../images/btn_glossary.gif" WIDTH=54></A>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+<!---------------------------------------------------->
+<!--Define Spacer Column Contents-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=1 WIDTH=10 HEIGHT=400 ROWSPAN=1>
+      <IMG SRC="../images/space.gif" BORDER=0></TD>
+
+
+<!---------------------------------------------------->
+<!--Define Right Column Graphics-->
+<!---------------------------------------------------->
+
+      <TD COLSPAN=2 ROWSPAN=1 WIDTH=425 ALIGN="left">
+      <FONT COLOR=#000000 FACE="ARIAL" SIZE=-1>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="center" >
+            <TD>
+            <A HREF="../misc/home.html">
+            <IMG BORDER=0 HEIGHT=85 SRC="../images/mantitle.gif"></A><BR><BR>
+            </TD>
+         </TR>
+      </TABLE>
+
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=427>
+         <TR VALIGN="top" ALIGN="left" >
+            <TD>
+            <A HREF="../ucode/ucode.html">
+            <IMG BORDER=0 SRC="../images/mh_ucode.gif"></A>
+            </TD>
+         </TR>
+      </TABLE><BR>
+
+<!---------------------------------------------------->
+<!--Define Right Column Text ** INSERT TEXT HERE ** -->
+<!---------------------------------------------------->
+
+
+<FONT COLOR="0000A0"><H2>gspL3DEX.fifo Microcode</H2></FONT>
+
+This microcode is part of the F3DEX series that includes the following seven microcode object files:
+
+
+<UL><LI>gspF3DEX.fifo.o
+<LI>gspF3DEX.NoN.fifo.o
+<LI>gspF3DLX.fifo.o
+<LI>gspF3DLX.NoN.fifo.o
+<LI>gspF3DLX.Rej.fifo.o
+<LI>gspF3DLP.Rej.fifo.o
+<LI>gspL3DEX.fifo.o</UL>
+
+For information about the various microcode types and subtypes, please see the <FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/microcode.html">Introduction to N64 Microcode</A></FONT> page.
+
+<BR>
+<BR>
+<B>F3DEX Microcode Series (F3DEX Package)</B><BR>
+The F3DEX microcode series includes seven tuned and updated versions of the previous Fast3D, F3DNoN, and Line3D microcodes. All the new versions are of the .fifo subtype; that is, they use fifo exclusively as the method by which commands are passed from the RSP to the RDP. In addition, the vertex cache size is increased, and the matrix stack is increased from 10 levels to 18 levels. The seven microcode versions in this series are listed below. Among them are several versions designed to improve performance by restricting function:
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspF3DEX.html">gspF3DEX</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspF3DEX.html">gspF3DEX.NoN</A></FONT><BR><BR>
+
+
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspF3DLX.html">gspF3DLX</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspF3DLX.html">gspF3DLX.NoN</A></FONT><BR><BR>
+
+
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspF3DLX.Rej.html">gspF3DLX.Rej</A></FONT><BR>
+<BR>
+
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspF3DLP.Rej.html">gspF3DLP.Rej</A></FONT><BR><BR>
+
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/gspL3DEX.html">gspL3DEX</A></FONT></UL>
+
+
+These seven modified microcodes comprise what is known as the "F3DEX microcode series" or the "F3DEX package." These modified microcodes have been specially modified to .fifo subtypes to improve performance. The following sections describe their features.
+
+<BR>
+<BR>
+<U><B>F3DEX</B> - gspF3DEX.fifo.o or gspF3DEX.NoN.fifo.o<BR></U>
+
+These are extended versions of the Fast3D microcode. The vertex cache size is increased to 32, and <FONT FACE="COURIER NEW,COURIER">gSP2Triangles</FONT>, a GBI command for displaying two triangles at once, is supported. Not supported is the <FONT FACE="COURIER NEW,COURIER">gSP1Quadrangle</FONT> command, a GBI command for displaying rectangles that was supported in F3DEX Version 1.21 and earlier versions. (However, this is emulated by <FONT FACE="COURIER NEW,COURIER">gSP2Triangles</FONT>.)<BR>
+<BR>
+In  addition, the number of DL links has been increased from 10 to 18 levels.
+
+<UL><LI>gspF3DEX.fifo.o is a version with Near Clip. 
+<LI>gspF3DEX.NoN.fifo.o is a version without Near Clip.</UL>
+
+<U><B>F3DLX</B> - gspF3DLX.fifo.o or gspF3DLX.NoN.fifo.o<BR></U>
+To improve processing speed, this version simplifies the subpixel calculation from that in the F3DEX microcode. Therefore, little wrinkles may appear 
+ when using textures.<BR>
+<BR>
+
+This microcode retains compatibility with F3DEX and GBI, and improves the processing capacity of the RSP. They do so by simplifying the calculation for each vertex of a polygon from subpixel precision to pixel precision.<BR>
+<BR>
+
+An extension unique to F3DLX allows clipping to be turned ON or OFF using a DL command. The graphics binary interface (GBI) of the F3DLX microcode is identical to that of the F3DEX microcode. However, in F3DLX, clipping can be controlled by turning it on or off. When the clipping is off, performance improves a little. For details, see the macros listed in the "See Also" section at the bottom of this page.
+
+<UL><LI>gspF3DLX.fifo.o is a version with Near Clip. 
+<LI>gspF3DLX.NoN.fifo.o is a version without Near Clip</UL>
+
+<U><B>F3DLX.Rej</B> - gspF3DLX.Rej.fifo.o<BR></U>
+For this microcode, the clipping processing in the general microcode is removed. 
+Instead, reject processing is included. In other words, this version substitutes rejection processing for clipping. This processing is lighter than the old clipping processing. The vertex cache size is 64, and the <FONT FACE="COURIER NEW,COURIER">gSPTriangles</FONT> commands are supported. This has been optimized using the assumption that 2Tri operation will be performed. When the vertex of a triangle falls outside the defined reject rectangle, no portion of that triangle is rendered. Consequently, this version is not suited for large triangles. Texture perspective correction is implemented.
+
+<BR>
+<BR>
+<U><B>F3DLP.Rej</B> - gspF3DLP.Rej.fifo.o<BR></U>
+This has macros equivalent to those of F3DLX.Rej. However, because texture perspective correction is not implemented, the RSP processing speed is faster. The vertex cache size is 80.
+
+<BR>
+<BR>
+<U><B>L3DEX</B> - gspL3DEX.fifo.o<BR></U>
+This is a modified version of the Line3D microcode adapted to a cache size of 32. It is the same as gspLine3D and allows polygons rendered by F3DEX to be displayed using wireframes. 
+
+<BR>
+<BR>
+<B>Loading F3DEX Series Microcode</B><BR>
+
+You can use the <FONT FACE="COURIER NEW,COURIER">gSPLoadUcode</FONT> or <FONT FACE="COURIER NEW,COURIER">gSPloadUcodeL</FONT> macro to load any of the seven package microcodes.
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>gSPLoadUcode(Gfx *gdl, u64 *uc_start, u64 *uc_dstart)
+gsSPLoadUcode(u64 *uc_start, u64 *uc_dstart)</PRE></FONT>
+
+<UL><LI><FONT FACE="COURIER NEW,COURIER">uc_start</FONT> points to the start of the microcode text section (physical address)
+<LI><FONT FACE="COURIER NEW,COURIER">uc_dstart</FONT> points to the start of the microcode data section (physical address)</UL>
+
+These functions load the specified microcode. However, they can load only the microcode included in the package (F3DEX, F3DLX, F3DLX.Rej, F3DLP.Rej, and L3DEX); they cannot load other microcode, such as Fast3D or Turbo3D. Because microcode loading increases overhead, discretion in loading is recommended to obtain good performance. For practical purposes, this means intermittently switching between the microcode types used for rendering. For example, use a clip-capable microcode such as F3DLX to render landscapes, and use fast microcode such as F3DLX.Rej to render characters. As with previous releases, you can switch between F3DEX and L3DEX when rendering lines without CPU involvement.<BR>
+<BR>
+
+<B>Note:</B> When microcode is loaded using this GBI, the internal state of the RSP is initialized (segment address, viewport, geometry mode, matrix, link information of display).   Thus, RSP-related settings must be reset immediately after microcode loading. Furthermore, the DL linking information is initialized. Caution is therefore recommended when using these commands in a DL called using the <FONT FACE="COURIER NEW,COURIER">gSPDisplayList</FONT> macro because control will not return to the calling DL.<BR>
+<BR>
+
+To enable use of the <FONT FACE="COURIER NEW,COURIER">gSPLoadUcode</FONT> macro, you must set <FONT FACE="COURIER NEW,COURIER">t.flag</FONT>, which is a member of the <FONT FACE="COURIER NEW,COURIER">OSTask</FONT> structure, to <FONT FACE="COURIER NEW,COURIER">OS_TASK_LOADABLE</FONT> as shown here:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+   OSTask *tp;
+   tp-&gt;t.flag = OS_TASK_LOADABLE | OS_TASK_DP_WAIT;</PRE></FONT>
+
+To make this flag valid, a patch must be applied to the OS. Please see the "OS Patchs" section of the README file for information on applying the patch. Applying the patch makes the OS upward/host compatible. This patch is already contained in OSs using the N64 Software Library 2.0H or later.<BR>
+<BR>
+
+The gSPloadUcodeL macro makes loading microcode even easier:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+gSPLoadUcodeL(Gfx *gdl, ucode_name)
+gsSPLoadUcodeL(ucode_name)</PRE></FONT>
+
+Commands (a) and (b) below are equivalent:
+ 
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>
+(a)  gsSPLoadUcode(
+        OS_K0_TO_PHYSICAL(&gspF3DEX_fifoTextStart),
+        OS_K0_TO_PHYSICAL(&gspF3DEX_fifoDataStart))
+
+(b)  gsSPLoadUcodeL(gspF3DEX_fifo)</PRE></FONT>
+
+<B>Rejection Processing</B><BR>
+
+In rejection processing, the only triangles drawn are those for which all three vertexes are inside a  certain area of the screen. This area is slightly 
+ wider than the screen. Even if just one vertex is outside the area, 
+ the triangle is not drawn. This area is called the "reject box."<BR>
+<BR>
+
+ The reject box varies depending on the size of the TV screen. For X and Y, when the screen size is 320 x 240, the reject box is twice as big as the screen at 
+ beginning as shown in the following drawing:<BR>
+<BR>
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=2><PRE>
+          -160                                 480
+          -120 +---------------------------------+
+               |                                 | ___When FRUSTRATIO_2,
+               |      0                 320      |/   Reject Box
+               |    0 +-------------------+      |
+               |      |                   |      |
+               |      |                   |      |
+               |      |       Screen      |      |
+               |      |                   |      |
+               |      |                   |      |
+               |   240+-------------------+      |
+               |                                 |
+               |                                 |
+           360 +---------------------------------+</PRE></FONT>
+
+
+ The area can be changed by calling <FONT FACE="COURIER NEW,COURIER">gSPClipRatio</FONT>. A value can 
+ be selected from <FONT FACE="COURIER NEW,COURIER">FRUSTRATIO_2</FONT> to <FONT FACE="COURIER NEW,COURIER">FRUSTRATIO_6</FONT>.<BR>
+<BR>
+
+ For the Z direction (depth of screen), a reject box can be done with 
+ the far plane, but not with the near plane.<BR>
+<BR>
+
+ If you draw a big triangle and want part of it to appear on the screen,
+ but one vertex of the triangle is out of the reject box, the triangle will
+ not be drawn because of reject processing. In this case, you need to divide the big triangle into several small triangles so that an unnatural "missing polygon" can 
+ be avoided.<BR>
+<BR>
+
+ In <FONT FACE="COURIER NEW,COURIER">F3DLX.Rej</FONT> and <FONT FACE="COURIER NEW,COURIER">F3DLP.Rej</FONT>, the processing speed of the <FONT FACE="COURIER NEW,COURIER">gSP2Triangles</FONT> command has been improved by using reject 
+ processing. Therefore, when creating the display list (DL), please use 
+ <FONT FACE="COURIER NEW,COURIER">gSP2Triangles</FONT> whenever possible.<BR>
+<BR>
+
+<B>Notes for Reject Processing</B><BR>
+<UL>
+<LI>The <B>gspF3DLX.Rej.fifo.o</B> microcode object
+ file is a version with texture perspective 
+ correction.
+<LI>The <B>gspF3DLP.Rej.fifo.o</B> microcode object file is a version without texture perspective correction.
+<LI><FONT FACE="COURIER NEW,COURIER">F3DLP.Rej</FONT> is slightly faster than 
+ <FONT FACE="COURIER NEW,COURIER">F3DLX.Rej</FONT>. The processing performance of the SP is improved, but because there are no changes in DP itself, DP often is not fast enough in parallel with SP. In such cases, consideration must be given to setting the render mode to a mode such as RA mode (<FONT FACE="COURIER NEW,COURIER">G_RM_RA_ZB_OPA_SURF</FONT>). 
+<LI>The rejection processing microcode does not support <FONT FACE="COURIER NEW,COURIER">G_CULL_BOTH</FONT>.
+</UL>
+
+<B>Header file</B><BR>
+
+<UL><LI>headers-2.0e/*.h is the header file for U64 Dev 2.0e
+<LI>headers-2.0f/*.h is the header file for U64 Dev 2.0f
+<LI>headers-2.0g/*.h is the header file for U64 Dev 2.0g</UL>
+
+Please use this after moving the file which corresponds to your 
+development environment to /usr/include/PR.
+
+<BR>
+<BR>
+<B>GBI Compatibility Issues</B><BR>
+	There is no compatibility on a binary level between the 
+	GBI (graphics binary interface) of this F3DEX microcode series 
+	and the previous Fast3D microcode.<BR>
+<BR>
+
+	However, the differences between them can be eliminated by 
+	using <B>gbi.h</B>. Even though they use the same DL, a suitable GBI for each 
+	can be specified by using the compile option; that is, by defining the keyword <FONT FACE="COURIER NEW,COURIER">F3DEX_GBI</FONT> before including the <B>gbi.h</B> file.	For example, when the DL is written in the <FONT FACE="COURIER NEW,COURIER">static_ex.c</FONT> file, please add 
+	<FONT FACE="COURIER NEW,COURIER">#define F3DEX_GBI</FONT> before including <B>ultra64.h</B> as shown here:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>       static_ex.c:
+
+          |
+          |#define  F3DEX_GBI
+          |#include 
+          |</PRE></FONT>
+
+	All the microcodes F3DEX, F3DLX, F3DLX.Rej, and F3DLP.Rej are 
+	compatible at the GBI binary level. Therefore, the DL can be shared. 
+	However, even the same commands process differently because of 
+	things such as the reject processing described previously, so the
+	same graphics may not be drawn even when using the same DL.
+
+<BR>
+<BR>
+<B>OS Patch Installation</B><BR>
+
+	There are patches of the OS for <FONT FACE="COURIER NEW,COURIER">gSPLoadUcode</FONT> in the 
+	<B>os_patches</B> directory. Please use the following procedure to install a patch:
+
+<FONT FACE="COURIER NEW,COURIER" SIZE=3><PRE>		% cd os_patches
+		% make</PRE></FONT>
+
+	By doing this, the patched libraries (<B>libultra.a</B>, <B>libultra_rom.a</B>, and <B>libultra_d.a</B>) are created in the <B>os_patches</B> directory. Please 
+	move them to <B>/usr/lib</B> before using them.
+
+<BR>
+<BR>
+<B>See Also</B><BR><BR>
+
+
+<FONT FACE="COURIER NEW,COURIER"><A HREF="../ucode/microcode.html">Introduction to N64 Microcode</A></FONT><BR>
+<BR>
+
+
+The following macros were added or changed when the F3DEX microcode series was added to the N64 development environment.<BR>
+
+<FONT FACE="COURIER NEW,COURIER"><BR><A HREF="../gsp/gSPVertex.html">gSPVertex</A>
+<BR><A HREF="../gsp/gSP2Triangles.html">gSP2Triangles</A>
+<BR><A HREF="../gsp/gSPSetGeometryMode.html">gSPSetGeometryMode</A>
+<BR><A HREF="../gsp/gSPCullDisplayList.html">gSPCullDisplayList</A>
+<BR><A HREF="../gsp/gSPClipRatio.html">gSPClipRatio</A>
+<BR><A HREF="../gsp/gSPModifyVertex.html">gSPModifyVertex</A>
+<BR><A HREF="../gsp/gSPBranchLessZ.html">gSPBranchLessZ</A>
+<BR><A HREF="../gsp/gSPBranchLessZrg.html">gSPBranchLessZrg</A>
+<BR><A HREF="../gsp/gSPLoadUcode.html">gSPLoadUcode</A>
+<BR><A HREF="../gsp/gSPLoadUcodeL.html">gSPLoadUcodeL</A></FONT>
+
+<!---------------------------------------------------->
+<!--Define Button Bar in a Table for Bottom-Right-->
+<!---------------------------------------------------->
+<BR>
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+
+         <TR VALIGN="top" ALIGN="center" WIDTH=312>
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <IMG SRC="../images/space.gif" WIDTH=52 HEIGHT=30 BORDER=0></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="center">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../al/al.html">
+               <IMG SRC="../images/bb_al.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdp/gdp.html">
+               <IMG SRC="../images/bb_gdp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gdsp/gdsp.html">
+               <IMG SRC="../images/bb_gdsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gsp/gsp.html">
+               <IMG SRC="../images/bb_gsp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gt/gt.html">
+               <IMG SRC="../images/bb_gt.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../gu/gu.html">
+               <IMG SRC="../images/bb_gu.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+         </TR>
+         <TR VALIGN="top" ALIGN="right">
+            
+               
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../math/math.html">
+               <IMG SRC="../images/bb_math.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../nusys/nusys.html">
+               <IMG SRC="../images/bb_nusys.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../os/os.html">
+               <IMG SRC="../images/bb_os.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../sp/sp.html">
+               <IMG SRC="../images/bb_sp.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../uh/uh.html">
+               <IMG SRC="../images/bb_uh.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+            <TD COLSPAN=1 WIDTH=52>
+               <A HREF="../64dd/64dd.html">
+               <IMG SRC="../images/bb_64dd.gif" WIDTH=52 HEIGHT=21 BORDER=0></A></TD>
+      </TABLE>
+
+      <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=425>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD><BR><BR>
+            <IMG BORDER=0 HEIGHT=25 SRC="../images/nin_logo.gif">
+            </TD>
+         </TR>
+         <TR VALIGN="bottom" ALIGN="center" WIDTH=425>
+            <TD>
+            <FONT FACE="arial" COLOR=FF0000 SIZE="-1"><B>Nintendo<SUP>&reg;</SUP> Confidential</B><BR>
+            <BR>
+               <B>Warning:</B> all information in this document is confidential and covered by a non-disclosure agreement. You are responsible for keeping this information confidential and protected. Nintendo will vigorously enforce this responsibility.<BR><BR></FONT><FONT FACE="arial" SIZE=-2 COLOR=0000A0><B>Copyright &copy; 1998<BR>
+               Nintendo of America Inc. All rights reserved<BR>Nintendo and N64 are registered trademarks of Nintendo<BR>
+               Last updated March 1998
+            </B>
+            </FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      </FONT>
+      </TD>
+   </TR>
+</TABLE>
+</BODY>
+</HTML>
+

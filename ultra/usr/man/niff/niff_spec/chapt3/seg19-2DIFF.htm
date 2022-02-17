@@ -1,0 +1,338 @@
+<html>
+<basefont size=3>
+<body bgcolor="#ffffffff">
+<h2>第3章　バイナリフォーマット</h2>
+<br>
+<hr size=3>
+<br>
+<h3>3-19. LightList</h3>
+<br>
+<hr size=3>
+<br>
+<h4>
+(2)Lightエリア
+</h4>
+<p>
+<blockquote>
+　Lightエリアは実際のライトデータを格納するエリアです。マッピングは以下のようになっています。
+</blockquote>
+<p>
+<center>
+<table border>
+
+<tr>
+<th rowspan="12">
+LightHeader
+</th>
+<td>
+u32
+</td>
+<td>
+light_tag
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+this_light_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+light_header_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+light_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+light_name_index
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+light_type
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+ambient_r
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+ambient_g
+</td>
+</tr>
+<tr>
+<td>
+float
+</td>
+<td>
+ambient_b
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+dir_light_num
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+nintendo_extension_block_size
+</td>
+</tr>
+<tr>
+<td>
+u32
+</td>
+<td>
+user_extension_block_size
+</td>
+</tr>
+
+<tr>
+<th rowspan="5">
+</th>
+<td colspan="2">
+<center>
+DirLight(0)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+・・・
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+DirLight(dir_light_num - 1)
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+NintendoExtensionBlock
+</center>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+UserExtensionBlock
+</center>
+</td>
+</tr>
+
+</table>
+<p>
+<b>
+図　Lightエリアメモリマップ
+</b>
+<p>
+<table border>
+<tr>
+<td nowrap>
+u32 light_tag
+</td>
+<td>
+<font size=3>
+Lightエリアを示すタグを記述します。以下のタグを記述してください。
+<pre>
+<b>
+TAG_LIGHT&#9;0x000f0100
+</b>
+</pre>
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 this_light_index
+</td>
+<td>
+<font size=3>
+このLightエリアのインデックス番号を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 light_header_size
+</td>
+<td>
+<font size=3>
+このLightHeaderエリアのバイト数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 light_size
+</td>
+<td>
+<font size=3>
+このLightエリアのバイト数を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 light_name_index
+</td>
+<td>
+<font size=3>
+Light名を記述するNameList中のインデックス番号を記述します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="../chapt5/seg1.htm#LIGHT_TYPE">u32 light_type</a>
+</td>
+<td>
+<font size=3>
+ライトのタイプを記述します。現在下記のタイプが定義されています。
+<pre>
+<b>
+LIGHT_TYPE_DIRECTION&#9;0X00000000
+LIGHT_TYPE_POSITION&#9;0x00000001
+</b>
+</pre>
+LIGHT_TYPE_DIRECTIONは方向付きライトに平行光を指定します。<br>
+LIGHT_TYPE_POSITIONは方向付きライトに疑似ポジショナルライトを指定します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+float ambient_r
+</td>
+<td>
+<font size=3>
+アンビエントライトカラーのRed成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float ambient_g
+</td>
+<td>
+<font size=3>
+アンビエントライトカラーのGreen成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+float ambient_b
+</td>
+<td>
+<font size=3>
+アンビエントライトカラーのRed成分
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 dir_light_num
+</td>
+<td>
+<font size=3>
+DirLightエリアの数を指定します。
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 nintendo_extension_block_size
+</td>
+<td>
+<font size=3>
+任天堂拡張ブロックサイズ
+</td>
+</tr>
+<tr>
+<td nowrap>
+u32 user_extension_block_size
+</td>
+<td>
+<font size=3>
+ユーザー拡張ブロックサイズ
+</td>
+</tr>
+<tr>
+<td nowrap>
+<a href="./seg19-3.htm">DirLight</a>
+</td>
+<td>
+<font size=3>
+１つの方向付きライトに関するデータを記述するエリアです。
+</td>
+</tr>
+<tr>
+<td nowrap>
+NintendoExtensionBlock
+</td>
+<td>
+<font size=3>
+任天堂拡張ブロック
+</td>
+</tr>
+<tr>
+<td nowrap>
+UserExtensionBlock
+</td>
+<td>
+<font size=3>
+ユーザー拡張ブロック
+</td>
+</tr>
+</table>
+</center>
+<p>
+
+
+<hr>
+<font size=-1>
+Copyright 1997 NINTENDO Co.,Ltd. All rights reserved.
+</font>
+
+<p align="right"><a href="../index.htm">
+目次へ
+<img src="../../../gif/index.gif"
+border="0" width="65" height="17"></a>
+<a href="./seg19-3.htm">
+次へ
+<img src="../../../gif/next.gif"
+border="0" width="65" height="17"></a></p>
+
+</body>
+</html>
+
+

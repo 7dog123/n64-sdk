@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetDirID</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetDirID<br>
+mfsRamGetDirID</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetDirID(MfsDirID upDirID, u8* name)
+	s32 mfsRamGetDirID(MfsDirID upDirID, u8* name)
+Arguments:	upDirID		Directory ID of directory to which target directory belongs
+	*name		Directory name
+Return value:Directory ID of directory  (a negative value is an error)
+Function:	Obtains directory ID
+Description:	This function obtains the directory ID of the directory that has the name specified by name and that belongs to the directory specified by upDirID.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

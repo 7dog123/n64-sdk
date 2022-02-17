@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRomGetFileName</title>
+</head>
+
+<body>
+
+<h1>mfsRomGetFileName<br>
+mfsRamGetFileName</h1>
+
+<hr>
+
+<pre>Format:	s32 mfsRomGetFileName( MfsDirID dirID,u8* name, u8* type)
+	s32 mfsRamGetFileName( MfsDirID dirID,u8* name, u8* type)
+Arguments:	dirID	Directory ID of file
+	*name	Buffer for storing file name that was obtained
+	*type	Buffer for storing file type that was obtained
+Return value:Error
+Function:	Obtains file name
+Description:	This function obtains the file name and file type of the file specified by dirID.
+The size of the name buffer must be MFS_FILE_NAME_SIZE and the size of the type buffer must be MFS_FILE_TYPE_SIZE.
+The termination of the character string is NULL.
+
+Main errors:
+	MFS_ERR_NO	Normal termination
+	MFS_ERR_NOTFOUND	Specified directory not found </pre>
+</body>
+</html>

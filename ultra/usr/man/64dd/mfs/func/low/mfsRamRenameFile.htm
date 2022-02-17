@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-euc-jp">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsRamRenameFile</title>
+</head>
+
+<body>
+
+<h1>mfsRamRenameFile</h1>
+
+<hr>
+
+<pre>Format:s32 mfsRamRenameFile(MfsDirID dirID, u8* name, u8* type)
+Arguments:	dirID	Directory ID for a file
+	*name	File name
+	*type	File type
+Return value:Error
+Function:	Renames file
+Description:	This function changes the name of the file specified by dirID to name and type.
+
+Main errors:
+	MFS_ERR_NOTFOUND Specified file not found	
+	MFS_ERR_PROTECT	Write protected
+			The file attribute is write protected, or the volume attribute is write protected, or the parent directory is write protected.</pre>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>3.6.3 Projection Transformation</H1>
+
+<P>There are two ways to project a virtual 3D world. You can project it so that exact sizes (precise measurements) are depicted as in a floor plan of a house or a cut-away diagram of an engine, or you can project it with perspective that gives an impression of depth at the expense of accurate measurements. The former is known as an "orthographic" or "parallel" projection, and the latter is known as a "perspective" projection. Projection conversion calculations determine the level of perspective that will be provided when you display your virtual 3D world on a TV screen for your game players.</P>
+
+
+<H2>Orthographic Projection</H2>
+
+<P>An orthographic projection shows the view volume (the portion of a 3D space that a camera can capture in a picture) as a rectangular parallelepiped without any perspective at all.  The world appears flat but accurate measurements are possible given that you know how close or how far away the objects are in the 3D virtual world. Here is an example:</P>
+
+<P><IMG SRC="../images/3-6-3-1.gif" ALIGN="bottom" WIDTH=425 HEIGHT=278 BORDER=0>
+
+<P>Given the following settings:</P>
+
+<UL>
+<LI>t=top (top of the screen)
+<LI>b=bottom (bottom of the screen)
+<LI>r=right (right side of the screen)
+<LI>l=left (left side of the screen)
+<LI>n=near clip (position of the near clipping plane)
+<LI>f=far clip (position of the far clipping plane)
+</UL>
+
+<P>the conversion matrix of a orthographic projection looks like this:</P>
+
+
+<P><IMG SRC="../images/3-6-3-2.gif" ALIGN="bottom" WIDTH=270 HEIGHT=162 BORDER=0>
+
+<P>Although this matrix seems to be pretty complicated, N64 functions calculate it for you. All you need to do is pass the original settings listed above, so you don't really need to understand the matrix.</P>
+
+<P>The following are examples of N64 functions that calculate the orthographic projection matrix:</P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guOrtho.html" TARGET="new">guOrtho</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guOrthoF.html" TARGET="new">guOrthoF</A></FONT>
+</UL>
+
+
+<H2>Perspective Projection</H2>
+
+<P>A perspective projection shows the view volume (the portion of a 3D space that a camera can capture in a picture) as a quadrilateral pyramid to give the view volume perspective. Here is an example:</P>
+
+<P><IMG SRC="../images/3-6-3-3.gif" ALIGN="bottom" WIDTH=354 HEIGHT=216 BORDER=0>
+
+<P>Given the following settings:</P>
+
+<UL>
+<LI>t=top (top of the screen)
+<LI>b=bottom (bottom of the screen)
+<LI>r=right (right side of the screen)
+<LI>l=left (left side of the screen)
+<LI>n=near clip (position of the near clipping plane)
+<LI>f=far clip (position of the far clipping plane)
+</UL>
+
+<P>the conversion matrix of a perspective projection looks like this:</P>
+
+<P><IMG SRC="../images/3-6-3-4.gif" ALIGN="bottom" WIDTH=229 HEIGHT=162 BORDER=0>
+
+<P>The following are examples of N64 functions that calculate the perspective projection matrix:</P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guFrustum.html" TARGET="new">guFrustum</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guFrustumF.html" TARGET="new">guFrustumF</A></FONT>
+</UL>
+
+<P>In this matrix the ratio of length to width is 1:1, so it is sometimes a little hard to use for actual display on a screen. Therefore, you may need to add a different length to width ratio when preparing your projection matrix as shown here:</P>
+
+<P><IMG SRC="../images/3-6-3-5.gif" ALIGN="bottom" WIDTH=334 HEIGHT=172 BORDER=0>
+
+<P>Given the following settings:</P>
+
+<UL>
+<LI>a=aspect ratio (ratio of length to breadth)
+<LI><IMG SRC="../images/3-6-3-6.gif" ALIGN="bottom" WIDTH=14 HEIGHT=13 BORDER=0>=fovy/2 (fovy)
+<LI>n=near clip (position of the nearest clipping plane)
+<LI>f=far clip (position of the farthest clipping plane)
+</UL>
+
+<P>the conversion matrix of a perspective projection that includes a length to breadth ratio looks like this:</P>
+
+<P><IMG SRC="../images/3-6-3-7.gif" ALIGN="bottom" WIDTH=238 HEIGHT=181 BORDER=0>
+
+<P>The following N64 functions can be used to calculate this kind of perspective projection matrix:</P>
+
+<UL>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guPerspective.html" TARGET="new">guPerspective</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gu/guPerspectiveF.html" TARGET="new">guPerspectiveF</A></FONT>
+<LI><FONT FACE="COURIER NEW,COURIER"><A HREF="../../n64man/gsp/gSPPerspNormalize.html" TARGET="new">gSPPerspNormalize</A></FONT>
+</UL>
+
+<H2>Note:</H2>
+
+<P>For example, for parallel movement,</P>
+
+<P>The conversion formula would look like this.</P>
+
+<P><img src="../images/img00211.gif" align="absmiddle" width="138" height="96"></P>
+
+<P>It would look like this for N64.</P>
+
+<P><img src="../images/img00212.gif" align="absmiddle" width="209" height="98"></P>
+
+<P>The conversion matrix is transverse for OpenGL and N64.</P>
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<pre><font size="6"><strong><img src="nusystem2.gif"
+width="176" height="30">Function</strong> Revision History</font></pre>
+
+<hr>
+
+<P>
+<FONT size="4"><STRONG>Version2.0(1999/02/01)</STRONG></FONT>
+</P>
+<P>
+Changed nuAuInit content<BR>
+Added nuAuInitEx<BR>
+Changed nuAuMgrInit content<BR>
+Added nuAuMgrInitEx<BR>
+Added nuAuHeapAlloc<BR>
+Added nuAuHeapGetFree<BR>
+Added nuAuHeapGetUsed<BR>
+Added nuAuRetraceCount<BR>
+Added nuAuExtraSampleSize<BR>
+Added nuAuAcmdLen<BR>
+Added nuAuDmaBufNum<BR>
+Added nuAuDmaBufSize<BR>
+Added nuAuDebFlag<BR>
+Added nuAuDebStatus<BR>
+Added nuAuDebDmaCount<BR>
+Added nuAuDebDmaMax<BR>
+Added nuAuDebDmaBufMaxUse<BR>
+Added nuAuDebDmaCallBackCount<BR>
+Added nuAuDebDmaCallBackMax<BR>
+Added nuAuDebAcmdLenMax<BR>
+Changed nuAuStlInit<BR>
+Changed nuAuStlMgrInit<BR>
+Added nuAuStlPtrBankInit<BR>
+Added nuAuStlPtrBankSet<BR>
+Added nuAuStlHeapAlloc<BR>
+Added nuAuStlHeapGetFree<BR>
+Added nuAuStlHeapGetUsed<BR>
+Added nuAuStlSeqPlayerInit<BR>
+Added nuAuStlSeqPlayerDataSet<BR>
+Changed nuAuStlSeqPlayerPlay<BR>
+Changed nuAuStlSeqPlayerGetSeqState<BR>
+Changed nuAuStlSeqPlayerSetSeqStop<BR>
+Changed nuAuStlSeqPlayerSetSeqTempo<BR>
+Changed nuAuStlSeqPlayerSetSeqVol<BR>
+Changed nuAuStlSeqPlayerSetSeqPan<BR>
+Deleted nuAuStlPlayerInit<BR>
+Deleted nuAuStlBankSet<BR>
+Deleted nuAuStlSeqPlayerSetData<BR>
+Changed nuSiMgrInit<BR>
+Changed nuSiCallBackAdd<BR>
+Added nuSiMgrStop<BR>
+Added nuSiMgrRestart<BR>
+Added nuSiSendMesg<BR>
+Added nuSiSendMesgNW<BR>
+Changed nuContPakOpen<BR>
+Added nuContRmbStop<BR>
+Added nuVrsMgrInit<BR>
+Added nuVrsOpen<BR>
+Added nuVrsClearDictionary<BR>
+Added nuVrsSetWord<BR>
+Added nuVrsMaskDictionary<BR>
+Added nuVrsStartReadData<BR>
+Added nuVrsGetReadData<BR>
+Added nuVrsStopReadData<BR>
+Added nuVrsControlGain<BR>
+Added nuVrsCheckWord<BR>
+Added nuVrsCountSyllables<BR>
+Changed nuDebConTextAttr<BR>
+Changed nuGfxTaskStart<BR>
+Changed nuGfxSetCfb<BR>
+Changed nuPiReadRom<BR>
+Changed nuScCreateScheduler<BR>
+Changed nuScAddClient<BR>
+Added nuScResetClientMesgType<BR>
+Added nuScGetFrameRate<BR>
+Added nuScSetFrameBufferNum<BR>
+Added nuScPreNMIFlag
+</P>
+
+<p><font size="4"><strong>Version1.2(1998/07/15)</strong></font></p>
+
+<p>nuContGBPakMgrInit‚ Added<br>
+nuContGBPakMgrRemove‚ Added<br>
+nuContGBPakOpen‚ Added<br>
+nuContGBPakGetStatus‚ Added<br>
+nuContGBPakReadID‚ Added<br>
+nuContGBPakReadWrite‚ Added<br>
+nuContGBPakPower‚ Added<br>
+nuContGBPakCheckConnector‚ Added<br>
+nuContGBPakFread‚ Added<br>
+nuContGBPakFwrite‚ Added<br>
+nuContGBPakRegWrite‚ Added<br>
+nuContPakFileFread‚ Added<br>
+nuContPakFileFwrite‚ Added<br>
+nuContPakFileOpen‚ Changed the type<br>
+nuContPakRepairId‚ Changed the type<br>
+nuContPakFileOpen‚ Changed the type<br>
+nuContPakFileOpenJis‚ Changed the type<br>
+nuContPakFileReadWrite‚ Changed the type<br>
+nuContPakFileDelete‚ Changed the type<br>
+nuContPakFileDeleteJis‚ Changed the type<br>
+nuContPakFileState‚ Changed the type<br>
+nuContPakFileNum‚ Changed the type<br>
+nuContPakFileFread‚ Added<br>
+nuContPakFileFwrite‚ Added<br>
+nuDebConPrintf‚ Added<br>
+nuDebConDisp‚ Changed the font<br>
+nuDebConDisp‚ Changed<br>
+nuDebConDispEX2‚ Added<br>
+nuDebTaskPerfBar0‚ Changed<br>
+nuDebTaskPerfBar1‚ Changed<br>
+nuDebTaskPerfBar0EX2‚ Added<br>
+nuDebTaskPerfBar1EX2‚ Added<br>
+nuPiInitSram‚ Added<br>
+nuPiReadWriteSram‚ Added<br>
+nuPiReadSram‚ Added<br>
+nuPiWriteSram‚ Added</p>
+
+<p><font size="4"><strong>(1998/04/02)</strong></font></p>
+
+<p>Since the deleted nuContRmbFuncSet and nuContPakFuncSet appear in nuSiMgrInit, both were corrected to nuSiCallBackAdd.</p>
+
+<p><font size="4"><strong>(1998/04/03)</strong></font></p>
+
+<p>Corrected "len*8" in nuEepromRead and nuEepromWrite to "len".</p>
+
+<p><font size="4"><strong>Version1.1(1997/12/24)</strong></font></p>
+
+<p>Corrected nuPiRomRead to nuPiReadRom<br>
+Corrected nuPiInit, nuPiReadRom<br>
+nuDebTaskPerfBar1‚ Changed contents<br>
+nuContInit‚ Changed contents<br>
+nuContMgrInit‚ Changed contents<br>
+nuContDataGet,nuContDataGetAll‚ Changed<br>
+nuGfxSwapCfb‚ Changed contents<br>
+nuGfxSwapCfbFuncSet‚ Changed contents<br>
+nuGfxTaskEndFuncSet‚ Changed contents<br>
+nuGfxTaskStart‚ Changed contents<br>
+nuContPakMgrInit‚ Changed contents<br>
+nuContRmbMgrInit‚ Changed<br>
+nuDebConDisp‚ Corrected</p>
+
+<p>nuEepromMgrInit‚ Added<br>
+nuEepromMgrRemove‚ Added<br>
+nuEepromCheck‚ Added<br>
+nuEepromRead‚ Added<br>
+nuEepromWrite‚ Added<br>
+nuDebConTextPos‚ Added<br>
+nuContMgrRemove‚ Added<br>
+nuSiMgrInit‚ Added<br>
+nuSiCallBackAdd‚ Added<br>
+nuSiCallBackRemove‚ Added<br>
+nuContPakMgrRemove‚ Added<br>
+nuContRmbMgrRemove‚ Added</p>
+
+<p>nuContRmbFuncSet‚ Deleted<br>
+nuContRmbFuncRemove‚ Deleted<br>
+nuContPakFileReSize‚ Deleted<br>
+nuContPakFileReSizeJis‚ Deleted<br>
+nuContPakFuncSet‚ Deleted<br>
+nuContPakFuncRemove‚ Deleted</p>
+</body>
+</html>

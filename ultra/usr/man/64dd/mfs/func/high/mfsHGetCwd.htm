@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHGetCwd</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHGetCwd</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHGetCwd(u8* path, s32
+bufLen)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Buffer for storing full pathname<br>
+bufLen Buffer size</p>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>
+Obtains current directory</p>
+
+<p><strong>Description:</strong>
+This function obtains the full pathname (including drive name) of the current directory and stores it, up to a maximum size of bufLen, in path.  If the size of the full pathname (including the terminating NULL) is greater than bufLen, MFS_ERR_LENGTH is returned as an error.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination
+MFS_ERR_LENGTH	The length of the full pathname is larger than bufLen.</pre>
+
+<hr>
+</body>
+</html>

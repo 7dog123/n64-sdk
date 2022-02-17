@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>low</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2><font color="#008080">Multi File System (MFS)Function Manual</font></h2>
+
+<hr>
+
+<h2>Low Standard Library Function</h2>
+
+<p><strong>(1)Initializing Function</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="low/mfsInit.htm"><strong>mfsInit</strong></a></td>
+        <td><font size="2">Initializing Internal Variables</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsInitDiskRom.htm"><strong>mfsInitDiskRom<br>
+        mfsInitDiskRam<br>
+        mfsInitDiskRomRam</strong></a></td>
+        <td><font size="2">Initializing Disk Boot</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamInit.htm"><strong>mfsRamInit</strong></a></td>
+        <td><font size="2">Initializing RAM Area Library</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomInit.htm"><strong>mfsRomInit</strong></a></td>
+        <td><font size="2">Initializing ROM Area Library</font></td>
+    </tr>
+</table>
+
+<p><strong>(2)Disk Control Function</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="low/mfsDiskIdCheck.htm"><strong>mfsDiskIdCheck</strong></a></td>
+        <td><font size="2">Read and Check on Disk ID</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamMediaFormat.htm"><strong>mfsRamMediaFormat</strong></a></td>
+        <td><font size="2">Formatting Media</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomMediaCheck.htm"><strong>mfsRomMediaCheck<br>
+        mfsRamMediaCheck</strong></a></td>
+        <td><font size="2">Checking Media</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamFlash.htm"><strong>mfsRamFlash</strong></a></td>
+        <td><font size="2">Write on Header Area</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamGetFreeSize.htm"><strong>mfsRamGetFreeSize</strong></a></td>
+        <td><font size="2">Obtain a size of Free Disk Space</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamGetFreeDirEntryNum.htm"><strong>mfsRamGetFreeDirEntryNum</strong></a></td>
+        <td><font size="2">Obtaining a Number of Readwrite Files/Directory</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileNum.htm"><strong>mfsRomGetFileNum<br>
+        mfsRamGetFileNum</strong></a></td>
+        <td><font size="2">Obtaining a Number of Files belonging to Specified Directory</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetVolumeAttr.htm"><strong>mfsRomGetVolumeAttr<br>
+        mfsRamGetVolumeAttr</strong></a></td>
+        <td><font size="2">Obtaining a Volume Attribute</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetVolumeName.htm"><strong>mfsRomGetVolumeName<br>
+        mfsRamGetVolumeName</strong></a></td>
+        <td><font size="2">Obtaining a Volume Name</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetVolumeDate.htm"><strong>mfsRomGetVolumeDate<br>
+        mfsRamGetVolumeDate</strong></a></td>
+        <td><font size="2">Obtaining a Volume Date</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamGetVolumeRC.htm"><strong>mfsRamGetVolumeRC</strong></a></td>
+        <td><font size="2">Obtaining Value in Renewal Counter</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetDiskType.htm"><strong>mfsRomGetDiskType<br>
+        mfsRamGetDiskType</strong></a></td>
+        <td><font size="2">Obtaining a Disk Type</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetDestination.htm"><strong>mfsRomGetDestination<br>
+        mfsRamGetDestination</strong></a></td>
+        <td><font size="2">Obtaining Destination Code</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetVolumeAttr.htm"><strong>mfsRamSetVolumeAttr</strong></a></td>
+        <td><font size="2">Setting a Volume Attribute</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetVolumeName.htm"><strong>mfsRamSetVolumeName</strong></a></td>
+        <td><font size="2">Setting a Volume Name</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetVolumeDate.htm"><strong>mfsRamSetVolumeDate</strong></a></td>
+        <td><font size="2">Setting a Volume Date</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetDestination.htm"><strong>mfsRamSetDestination</strong></a></td>
+        <td><font size="2">Setting Destination Code</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamResetVolumeRC.htm"><strong>mfsRamResetVolumeRC</strong></a></td>
+        <td><font size="2">Resetting Renewal Counter</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamRepairHeader.htm"><strong>mfsRamRepairHeader</strong></a></td>
+        <td><font size="2">Restoring Header Area</font></td>
+    </tr>
+</table>
+
+<p><strong>(3)Directory Function</strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="low/mfsRamMakeDir.htm"><strong>mfsRamMakeDir</strong></a></td>
+        <td><font size="2">Creating a Directory</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetDirID.htm"><strong>mfsRomGetDirID<br>
+        mfsRamGetDirID</strong></a></td>
+        <td><font size="2">Obtaining a Directory ID</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetDirName.htm"><strong>mfsRomGetDirName<br>
+        mfsRamGetDirName</strong></a></td>
+        <td><font size="2">Obtaining a Directory Name</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamRemoveDir.htm"><strong>mfsRamRemoveDir</strong></a></td>
+        <td><font size="2">Deleting a Directory</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamRenameDir.htm"><strong>mfsRamRenameDir</strong></a></td>
+        <td><font size="2">Changing a Directory Name</font></td>
+    </tr>
+</table>
+
+<p><strong>(4)File Control Function </strong></p>
+
+<table border="1" cellspacing="1">
+    <tr>
+        <td><a href="low/mfsRamCreateFile.htm"><strong>mfsRamCreateFile</strong></a></td>
+        <td><font size="2">Creating a File</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileDirID.htm"><strong>mfsRomGetFileDirID</strong></a></td>
+        <td><font size="2">Obtaining a Directory ID on a File</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomReadFile.htm"><strong>mfsRomReadFile</strong></a></td>
+        <td><font size="2">Reading Data</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamWriteFile.htm"><strong>mfsRamWriteFile</strong></a></td>
+        <td><font size="2">Writing Data on File</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomSeekFile.htm"><strong>mfsRomSeekFile</strong></a></td>
+        <td><font size="2">Seeking Head</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileName.htm"><strong>mfsRomGetFileName<br>
+        mfsRamGetFileName</strong></a></td>
+        <td><font size="2">Obtaining a File Name</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamRemoveFile.htm"><strong>mfsRamRemoveFile</strong></a></td>
+        <td><font size="2">Deleting a File</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamRenameFile.htm"><strong>mfsRamRenameFile</strong></a></td>
+        <td><font size="2">Changing a File Name</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileAttr.htm"><strong>mfsRomGetFileAttr<br>
+        mfsRamGetFileAttr</strong></a></td>
+        <td><font size="2">Obtaining Attribute on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileDate.htm"><strong>mfsRomGetFileDate<br>
+        mfsRamGetFileDate</strong></a></td>
+        <td><font size="2">Obtaining Date on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileParentDir.htm"><strong>mfsRomGetFileParentDir<br>
+        mfsRamGetFileParentDir</strong></a></td>
+        <td><font size="2">Obtaining a Directory ID of Parent Directory</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileSize.htm"><strong>mfsRomGetFileSize</strong></a></td>
+        <td><font size="2">Obtaining File Size</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamGetFileCopyCount.htm"><strong>mfsRamGetFileCopyCount</strong></a></td>
+        <td><font size="2">Obtaining Copy Count on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileGameCode.htm"><strong>mfsRomGetFileGameCode</strong></a><strong><br>
+        </strong><a href="low/mfsRomGetFileGameCode.htm"><strong>mfsRamGetFileGameCode</strong></a></td>
+        <td><font size="2">Obtaining Company and Game Code on File(Directory) </font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamGetFileRC.htm"><strong>mfsRamGetFileRC</strong></a></td>
+        <td><font size="2">Obtaining Renewal Counter Value on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetFiletAttr.htm"><strong>mfsRamSetFiletAttr</strong></a></td>
+        <td><font size="2">Setting Attribute on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetFileDate.htm"><strong>mfsRamSetFileDate</strong></a></td>
+        <td><font size="2">Setting Date on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetFileCopyCount.htm"><strong>mfsRamSetFileCopyCount</strong></a></td>
+        <td><font size="2">Setting Copy Counter Value on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetFileGameCode.htm"><strong>mfsRamSetFileGameCode</strong></a></td>
+        <td><font size="2">Setting Company/Game Code on File(Directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamResetFileRC.htm"><strong>mfsRamResetFileRC</strong></a></td>
+        <td><font size="2">Resetting Renewal Counter Value on File(directory)</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamSetFileParentDir.htm"><strong>mfsRamSetFileParentDir</strong></a></td>
+        <td><font size="2">Changing a Parent Directory</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRamResizeFile.htm"><strong>mfsRamResizeFile</strong></a></td>
+        <td><font size="2">Modifying File Size</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetFileStat.htm"><strong>mfsRomGetFileStat<br>
+        mfsRamGetFileStat</strong></a></td>
+        <td><font size="2">Obtaining Information</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetDirListFirst.htm"><strong>mfsRomGetDirListFirst<br>
+        mfsRamGetDirListFirst</strong></a></td>
+        <td><font size="2">Obtaining Directory Content</font></td>
+    </tr>
+    <tr>
+        <td><a href="low/mfsRomGetDirListNext.htm"><strong>mfsRomGetDirListNext<br>
+        mfsRamGetDirListNext</strong></a></td>
+        <td><font size="2">Obtaining Directory Content (Cont.)</font></td>
+    </tr>
+</table>
+
+<hr>
+</body>
+</html>

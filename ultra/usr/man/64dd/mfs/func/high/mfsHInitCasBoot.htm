@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHInitCasBoot</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHInitCasBoot</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHInitCasBoot(MfsFile
+handle,u8 handleNum,u8 *company, u8* game,u8 dest)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<pre>handle		File handle structure array pointer
+handleNum	Number of file handle structures
+*company	Company code
+*game		Game code
+dest		Destination code</pre>
+
+<p><strong>Return value:</strong>Error</p>
+
+<p><strong>Function:</strong>Initializes libraries (for Game Pak booting)</p>
+
+<p><strong>Description: </strong>This function initializes the Leo library, MFS low-level library, and MFS high-level library so that the NINTENDO64 Disk Drive (64DD) can be accessed.  This function is used when the Game Pak is used for booting.</p>
+
+<p>When an application handles files, it prepares the MfsFileHandle structure array in a buffer for specified file handles.  "handle" is the pointer to this buffer.  The MfsFileHandle structure pointer is declared as MfsFile.  The array size is specified by handleNum.  The number of files that the application can open at the same time is equal to the number of file handles specified here.</p>
+
+<p>The Nintendo-issued company code and game code (initial codes) are specified for company and game.  Besides being recorded as file attributes, these are used to restrict file access.</p>
+
+<p>dest, which is the destination code, is used as disk information when the RAM area is formatted.  The following values can be specified.</p>
+
+<pre>MFS_DESTINATION_JAPAN	0	Japan-oriented
+MFS_DESITNATION_US	1	US-oriented</pre>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination
+MFS_ERR_DEVICE	Device error
+		An error occurred in LeoC*CreateLeoManager().
+Check the variable mfsError.  The value returned from LeoC*CreateLeoManager() is stored here.</pre>
+
+<hr>
+</body>
+</html>

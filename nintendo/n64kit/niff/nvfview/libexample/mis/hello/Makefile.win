@@ -1,0 +1,9 @@
+# Makefile for gmake on win32
+#  Copyright (C) 1998, NINTENDO Co,Ltd, MONEGI CORPORATION.
+
+# In most cases, rewriting only TARGET and SRCS is OK.
+TARGET		=	hello.N64
+SRCS		=	boot.c \
+			main.c
+
+include ..\..\..\commonx.win

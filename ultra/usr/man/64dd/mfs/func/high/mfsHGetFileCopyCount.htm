@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>mfsHGetFileCopyCount</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>mfsHGetFileCopyCount</h1>
+
+<hr>
+
+<p><strong>Format:</strong> s32 mfsHGetFileCopyCount(const u8*
+path)</p>
+
+<p><strong>Arguments:</strong></p>
+
+<p>*path Pathname</p>
+
+<p><strong>Return value:</strong>Copy count (a negative value is an error)</p>
+
+<p><strong>Function:</strong>
+Obtains copy count of file</p>
+
+<p><strong>Description:</strong> This function obtains the copy count value of the file specified by path.
+This value is effective when bit 9 of the attribute is 1.
+Processing that references the copy count to determine whether or not the file can be copied should be performed by the application.</p>
+
+<p><strong>Main errors:</strong></p>
+
+<pre>MFS_ERR_NO	Normal termination 
+MFS_ERR_DEVICE	Device error
+		An error occurred in an internally called Leo function.
+Since a Leo function error is stored in the variable mfsError, check this variable to perform processing.  
+      MFS_ERR_NOTFOUND  File not found
+MFS_ERR_NOTFOUND File not found
+		The file was not found, or the directory was not found.</pre>
+
+<hr>
+</body>
+</html>

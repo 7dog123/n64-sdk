@@ -1,0 +1,17 @@
+Function name:mfsStrnCmp
+──────────────────────────────────────
+Format:	s32 mfsStrnCmp(const u8* s1, const u8* s2, s32 count)
+Arguments:	s1	Character string 1
+	s2	Character string 2
+	count	Maximum number of characters to be compared
+Return value: Comparison result
+Function:	Compares two character strings
+Description:	This function compares character string s1 with character string s2.  The comparison begins with the leading characters and continues for count characters or until a different character is detected or one character string ends.
+
+	Uppercase and lowercase characters are distinguished.
+
+	The meaning of the return value is as follows.
+
+	< 0(negative value)	s1 is less than s2
+	= 0			s1 is equal to s2
+	> 0(positive value)	s1 is greater than s2

@@ -1,0 +1,17 @@
+Function 
+-  Integrates two Allocators and handles them as one Allocator. 
+
+Functions 
+-  void msoCascadeAllocatorInit( MsoCascadeAllocator *cascade_alloc_ptr,
+				MsoAllocator *primary_ptr,
+				const u32 primary_start_addr,
+				const u32 primary_end_addr,
+				MsoAllocator *secondary_ptr,
+				const u32 secondary_start_addr,
+				const u32 secondary_end_addr );
+  Initializes msoCascadeAllocator.  start_addr and end_addr are used to identify which allocator has 
+  allocated the memory block when memory is released. 
+
+History
+  1998/12/04 Takamitsu Hirata 
+    CascadeAllocator.h, cascadeallocator.c :  Initial version 

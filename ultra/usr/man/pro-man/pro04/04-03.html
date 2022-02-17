@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 4</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro04/index4.2.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro04/index4.4.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Memory Management</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+<a name="01"></a>
+<b>No Default Dynamic Memory Allocation</b>
+<br>
+The Nintendo 64 software does not impose a memory map on the game.  The Nintendo 64 system leaves the memory allocation problem up to the game application. It assumes that the application knows the memory partitioning scheme most suitable for the particular game.  However, the Nintendo 64 library does have a heap library that is available.
+<P>
+<a name="02"></a>
+<b>Region Library</b>
+<br>
+The Nintendo 64 system provides a region allocation library that can partition a memory region specified by the application into a number of fixed-sized blocks. This gives the application the capability of using a dynamic memory allocation scheme. However, the game application must be able to handle situations where memory in the region has run out.
+<P>
+<a name="03"></a>
+<b>Memory Buffer Placement</b>
+<br>
+There are some optimizations on the placement of memory buffers. For example, it is best to keep the color and depth buffers on separate 1 MB memory banks. The RDRAM has an active page register for each megabyte.  Splitting the color and z-buffers into separate megabytes prevents the memory system from constantly having to change the page register.  This technique minimizes page misses.
+<P>
+<a name="04"></a>
+<b>Memory Alignment</b>
+<br>
+The DMA engines responsible for shuffling data around in the hardware all require the 64-bit aligned source address, the destination address, and  lengths. Addresses in ROM do not have this 64-bit alignment restriction.  ROM addresses only need to be 16-bit aligned.  The loader from the compiler suite (see the man page for <i>ld (1)</i>)  makes sure that all C-language <font face="Courier" size="-1"> long long</font> types are 64-bit aligned. Using C language, the stack for a thread must also be 64-bit aligned. Therefore, all stacks should be defined as <font face="Courier" size="-1">long long</font> and type-casted when calling <i>osCreateThread</i>. See the man page for additional details.
+<P>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>N64 Introductory Manual</title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../kantan.css">
+</head>
+<body>
+
+<H1>2.2.4 Use of Frame Buffers</H1>
+
+<H2>Double-Buffering Frame Buffers</H2>
+
+<P>N64 accommodates two frame buffers. When one is busy displaying, the other is collecting drawing data for the next frame.  This is called double-buffering. It is used to ensure smooth animation.
+
+<P><IMG SRC="../images/2-2-4-1.gif" ALT="Illustration" ALIGN="bottom" WIDTH=425 HEIGHT=472 BORDER=0>
+
+<P>As shown here, because no writing is occurring in the frame buffer that is currently displaying, the N64 can display a complete image while at the same time, in the other buffer, it is writing (buffering) new display data for the next frame.
+
+<P>Note that the N64 does not dictate how many frame buffers you can have. You can have as many or as few frame buffers as your game application requires.
+
+<H2>Rendering 3D Images</H2>
+
+<P>The N64 hardware is optimized for the 3D graphics process. Therefore, the 3D image drawing process automatically provides geometry conversion of the vertex information and executes the process to place the 3D object in the virtual viewing space as illustrated here:
+ 
+<P><IMG SRC="../images/2-2-4-2.gif" ALT="Illustration" ALIGN="bottom" WIDTH=336 HEIGHT=157 BORDER=0>
+
+
+
+
+<!-- Begin Footer -->
+
+<P CLASS=copyright>
+<FONT COLOR="#FF0000">Nintendo&reg; Confidential</FONT><BR><BR>
+
+Copyright &copy; 1999<br>
+
+Nintendo of America Inc. All Rights Reserved<BR>
+
+Nintendo and N64 are registered trademarks of Nintendo<br><BR>
+
+Last Updated March, 1999</P>
+
+
+</body>
+</html>

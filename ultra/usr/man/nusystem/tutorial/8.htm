@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body bgcolor="#FFFFFF">
+
+<p><strong><img src="../../gif/nusystem2.gif" width="176"
+height="30"> </strong><font size="5"><strong>Tutorial</strong></font></p>
+
+<hr>
+
+<h2>8 Appendix - Using the Controller Pak with NuSystem</h2>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h3><a name="1">[1] Handling the Controller with NuSystem</a></h3>
+
+<p>Exclusive control is necessary when accessing devices like the Controller, Controller Pak and Rumble Pak which utilize the serial interface in N64.</p>
+
+<p>In NuSystem, the controller manager handles access to the serial interface for the Controller, Controller Pak and Rumble Pak.  Thus, the game application does not need to bother itself with the question of exclusive control, and instead can just access the devices.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h3><a name="2">[2] Procedure for accessing the Controller Pak</a></h3>
+
+<p>The following procedure is used to access the Controller Pak.  Note that  different error checks are made at each step. Device error checks are made in step (1),  game note error checks in step (2), and note access error checks in step (3).   Apportioning the errors in this manner simplifies the procedure for accessing the Controller Pak.</p>
+
+<h4>(1) Recognize Controller Pak </h4>
+
+<p>Check to see if a Controller Pak has been inserted into the Controller.</p>
+
+<p><strong>Example:</strong></p>
+
+<blockquote>
+    <pre>NUContPakFile pakFile;
+
+nuContPakOpen(&amp;pakFile, 0);
+
+if(pakFile.error){
+	// process errors  PFS_ERR_NOPACK, PFS_ERR_NEW_PACK,
+	// PFS_ERR_CONTRFAIL, PFS_ERR_ID_FATAL,  PFS_ERR_DEVICE
+}</pre>
+</blockquote>
+
+<h4>(2) Open the Game Note</h4>
+
+<p>If a Controller Pak is recognized, the next step is to open the game note you want to access.  This step is similar to "File Open" in DOS.</p>
+
+<p>Before accessing a note the company code and game code is set in the controller manager.  (These values are normally unique to each game, so once they have been set there is no particular reason to reset them.)</p>
+
+<p>After this, the note with the specified note name and extension is opened.</p>
+
+<P>In NuSystem there are two ways to specify the note name and extension. One way is with the N64 font code, and the other is with the ASCII code.  N64 requires that N64 font code be used for the note name and extension, but this is a big nuisance for the programmer.  For this reason, a function has been prepared in NuSystem that enables the name and extension to be specified using JIS code.  The conversion of JIS code to N64 font code is carried out internally by the function. (The code conversion functions are nuContPakJisToN64 and nuContPakN64ToJis. Note that the kana voiced and semi-voiced consonant marks are also converted, so the number of characters will change.)</p>
+
+<p><strong>Example:</strong></p>
+
+<blockquote>
+    <pre>// register company code and game code 
+nuContPakCodeSet(&quot;64&quot;, &quot;mami&quot;);	
+
+// open note
+nuContPakFileOpenJis(&amp;pakFile, &quot;mami no himitu&quot;, &quot;a&quot;
+			,NU_CONT_PAKCREATE, 256);
+
+if(!pakFile.error){
+	// process errors PFS_ERR_INCONSISTENT,  PFS_ERR_INVALID,
+	// PFS_DATA_FULL, PFS_DIR_FULL
+}</pre>
+</blockquote>
+
+<h4>(3)  Read/write to Game Note</h4>
+
+<p>When the game note opens without errors, read/write can be performed.</p>
+
+<blockquote>
+    <pre>u8 buffer[256];
+nuContPakFileRead(&amp;pakFile, 0, 256, buffer);
+
+if(!pakFile.error){
+	// process errors PFS_ERR_BAD_DATA
+}</pre>
+</blockquote>
+
+<h4>(4) Controller Pak Access Flow Diagram</h4>
+
+<blockquote>
+    <pre>                                   Class of 
+      -------------   error        errors checked
+    &lt; nuContPakOpen &gt;------------&gt;PFS_ERR_NOPACK
+      -------------               PFS_ERR_NEW_PACK
+           |                      PFS_ERR_CONTRFAIL
+           |                      PFS_ERR_ID_FATAL
+           |/                     PFS_ERR_DEVICE
+     ---------------   error
+   &lt; nuContPakFileOen &gt;----------&gt;PFS_ERR_INCONSISTENT
+     ---------------              PFS_ERR_INVALID
+           |                      PFS_ERR_DATA_FULL
+           |                      PFS_ERR_DIR_FULL
+           |/
+   -------------------   error
+ &lt;   nuConrPakFileRead &gt;---------&gt;PFS_ERR_BAD_DATA
+ &lt;or nuConrPakFileWrite&gt;           
+   -------------------
+           |
+           |/</pre>
+</blockquote>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+
+<h3><a name="3">[3] Notes Concerning Controller Pak Access</a></h3>
+
+<p>The Controller Pak can be removed during use.  Some game programs do not recognize that this has happened, so it is a good idea to use the described procedure whenever accessing the Controller Pak.  Step (1) to recognize the Controller Pak is particularly important with game applications that use both the Controller Pak and Rumble Pak.</p>
+
+<p align="left"><a href="index.htm"><img
+src="../../gif/index.gif" border="0" width="65" height="17"></a></p>
+
+<hr>
+</body>
+</html>

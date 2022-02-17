@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<BASE TARGET="main">
+<head>
+<title>N64 Programming Manual Chapter 7</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table border=0><tr><td><a target="_top" href="../pro07/index7.10.html"><img border=0 src="../images/previous.gif"></a></td>
+<td>&nbsp;</td>
+<td><a target="_top" href="../pro08/index8.1.html"><img border=0  src="../images/next.gif"></a></td></tr></table>
+<P>
+
+<font face="arial" color="#29296b"><b>Internal OS Functions</font></b>
+
+<P>
+<font face="arial" size="-1" color="#000000">
+Some of the internal OS functions are briefly described below. Broken into three groups, these functions are mentioned here with the purpose to reduce potential duplicate effort from developers. Most of these functions are simple routines to access various R4300 registers, Translation-Lookaside Buffer (TLB) information, and internal active thread queue. Please refer to the reference (man) pages for specifics about the arguments, return values, and behavior of these functions.
+<P>
+<b>Group 1: </b>&nbsp;Provides functions to access various common R4300 registers:
+<ul>
+<li>__osGetCause, __osSetCause<br>
+These functions returns and specifies the content of the R4300 Cause register, respectively.
+<P>
+<li>__osGetCompare, __osSetCompare</br>
+These functions returns and specifies the content of the R4300 Compare register, respectively.
+<P>
+<li>__osGetConfig, __osSetConfig<br>
+These functions returns and specifies the content of the R4300 Configuration register, respectively.
+<P>
+<li>__osGetSR, __osSetSR<br>
+These functions returns and specifies the content of the R4300 Status register, respectively.
+<P>
+<li>__osGetFpcCsr, __osSetFpcCsr<br>
+These functions returns and specifies the content of the R4300 floating-point Control/Status register, respectively.
+</ul>
+<P>
+<b>Group 2: </b>&nbsp;Provides functions to access TLB information:
+<ul>
+<li>__osGetTLBASID<br>
+This function returns the TLB Application Space ID in the R4300 EntryHi register.
+<P>
+<li>__osGetTLBPageMask<br>
+For a specified TLB entry, this function returns the content of the R4300 PageMask register.
+<P>
+<li>__osGetTLBHi<br>
+For a specified TLB entry, this function returns the content of the R4300 EntryHi register.
+<P>
+<li>__osGetTLBLo0<br>
+For a specified TLB entry, this function returns the content of the R4300 EntryLo0 register.
+<P>
+<li>__osGetTLBLo1<br>
+For a specified TLB entry, this function returns the content of the R4300 EntryLo1 register.</ul>
+<P>
+<b>Group 3: </b>&nbsp;Provides functions to access internal active thread queue to find faulted thread(s):
+<ul>
+<li>__osGetCurrFaultedThread<br>
+This function returns the most recent faulted thread.
+<P>
+<li>__osGetNextFaultedThread<br>
+This function returns the next faulted thread from the internal active thread queue.
+<P>
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 ALIGN="center">
+         <TR><td align="center"><font face="Arial" size="-2" color="#29296B">
+Copyright &copy; 1999<br>
+Nintendo of America Inc. All Rights Reserved<BR>
+Nintendo and N64 are registered trademarks of Nintendo<br>
+Last Updated January, 1999</FONT>
+</TD></TR></TABLE>
+</body>
+</html>

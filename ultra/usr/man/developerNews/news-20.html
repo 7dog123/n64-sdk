@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Developers News 2.0</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<hr>
+<p align="center">
+<font size="6"><strong><IMG src="gif/devnews.gif" height="44" width="453">2.0</strong></font>
+</p>
+
+<p align="left">
+<b> Nintendo 64 Developers Newsletters will be published periodically,
+as needed.  These feature software and hardware system anomalies, which
+have been discovered, and their solutions and/or work-arounds.  Development
+tips will also be included.</b>
+</b>
+</p>
+
+<hr>
+
+<h2>Problems with 64DD Disk Formatting</h2>
+<h3>1. Summary</h3>
+<p>
+We have discovered that some of the development disks (blue disks) included 
+with the N64DD Development System have been formatted incorrectly.  Disks 
+with this problem will operate differently from normal disks when they are 
+read while not being used.  Error 23 will occur when normal disks are read 
+while not being used, but problem disks will hang up an application.
+<p>
+The problem disks work the same as normal disks, and once they are 
+written using the development tools, they will work without problems 
+as long as they are used normally.  
+<p>
+However, some disks can have unused portions different from normal disks, 
+even once they have been used.  Problems may arise when you attempt to 
+use this portion in the future.
+<p>
+To counter this problem, determine whether your disks have the problem, 
+and if so, use the dn (disk normalizer) tool to correct the formatting.  
+We apologize for the inconvenience.
+<p>
+The dn tool rewrites portions of the disk that are unrelated to the user 
+area.  If you use it on a disk that contains important programs or data, 
+the contents will not be deleted.  Please use the tool freely.
+
+<hr>
+
+<h3>2. Identifying Normal and Problem Disks</h3>
+<p>
+Normal and problem disks can be identified by the number printed on the 
+front of the disk (where the index label is attached).  Disks with the 
+following numbers were formatted incorrectly:
+
+<ul> 
+197-8-**-01 <br>
+197-9-**-01 
+</ul>
+
+Identification will be difficult if a label has already been applied.  In 
+such cases it is not necessary to peel the label off to identify the disk.  
+The dn tool can automatically determine whether or not a disk is a problem 
+disk, so is not crucial that you be able to identify the disk by its 
+appearance.
+
+<hr>
+
+<h3>3. About the "dn" Tool</h3>
+<p>
+dn operates on the N64 and is stored in /usr/lib/PR/ when Development 
+Environment 2.0J is installed.  Because it is a N64 program, it can be 
+executed by transferring it to the emulation ROM using a tool such as 
+PARTNER, or by burning it into the flash ROM.
+<p>
+The procedure for executing dn with PARTNER-PC is shown below (for the 
+Partner-NW version, substitute /usr/lib/PR/dn for c:\ultra\usr\PR\lib\dn)
+
+<ul>
+>rd c:\ultra\usr\PR\lib\dn, 0xb0000000 <br>
+>reset <br>
+>g 
+</ul>
+
+dn is already in the format executed by makemask, so it can be directly 
+burned into the flash ROM when executing by that method.  dn will check the 
+inserted disk and process it if there is a problem.  When processing is 
+finished, the message "REWORK COMPLETE" will be displayed.  If the disk is 
+normal, nothing will be done.  In this case, the message "NO PROBLEM" will 
+be displayed.  Once processing is finished, the disk will be correctly
+formatted.  Once one disk is processed, the prompt "REPLACE DISK" will be 
+displayed.  Processing can be continued for the next disk by inserting 
+another disk.
+
+<hr>
+
+<h3>4. FAQ</h3>
+<p>
+<b>Q1.  I can't tell if the disks I've got are normal.</b>
+<p>
+A1.  If the inserted disk is normal, dn won't do anything.  Consequently, 
+if you're not sure whether the disk is normal or not, try running 
+dn with the disk.
+<p>
+<b>Q2.  I have a problem disk, but I can't remember if I've already run dn 
+or not.</b>
+<p>
+A2.  dn can be executed any number of times.  If you don't know whether or 
+not you've already done it, run dn again just to make sure.  If dn has 
+already been run for that disk, it will be determined to be normal on the 
+second and subsequent tries, and dn will complete processing without doing 
+anything.
+<p>
+<b>Q3.  I have a disk on which I've already written important programs and 
+data.  Won't they be deleted if I run dn?</b>
+<p>
+A3.  It's OK!  Since dn rewrites the portions which are unrelated to the user 
+area, none of your content will be deleted, even if you run dn on a disk that 
+has already been used.
+<p>
+<b>Q4.  Does this mean that I could run dn on all of my disks just to make 
+sure?</b>
+<p>
+A4.  Yes.  It only takes a moment to run dn and you can process multiple 
+disks, one right after the other.  It can be used on normal disks without 
+any problem, and important programs and data which have already been written 
+will not be deleted.  If it is difficult to tell the normal disks from the 
+problem disks, don't hesitate to run dn on all of your disks.
+
+<hr>
+
+&copy; 1999 Nintendo of America Inc.
+
+</body>
+</html>
